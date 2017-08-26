@@ -91,7 +91,7 @@ sarun:
 
 clean:
 	@echo Cleaning...
-	@$(RMDIR) *~ *.o
+	@$(RMDIR) obj/*
 
 dist-clean: clean
 	@$(RMDIR) $(TARGET)/$(NAME)
