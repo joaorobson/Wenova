@@ -234,7 +234,9 @@ void Blood::update_machine_state(float delta) {
 
     case FighterState::SPECIAL_1_2:
       attack_damage = 0.5;
-      if (grab) increment_life(attack_damage);
+      if (grab) {
+        increment_life(attack_damage);
+      }
       attack_mask = get_attack_orientation();
       if (sprite[state].is_finished() or not grab) {
         check_fall();
@@ -595,7 +597,9 @@ void Blood::check_idle_atk_down(bool change, bool condition) {
 void Blood::check_pass_through_platform(bool change) {
   if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
     if (crouch_timer.get() < CROUCH_COOLDOWN) {
-      if (change) temporary_state = FighterState::FALLING;
+      if (change) {
+        temporary_state = FighterState::FALLING;
+      }
       pass_through_timer.restart();
     }
     crouch_timer.restart();
