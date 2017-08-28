@@ -42,7 +42,7 @@ Text::Text() {
  */
 Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
            SDL_Color ccolor, int x, int y) {
-  font_size = cfont_size; 
+  font_size = cfont_size;
   style = cstyle;
   text = ctext;
   color = ccolor;
