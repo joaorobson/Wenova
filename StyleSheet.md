@@ -28,3 +28,31 @@ Todos os comentários deverão inicializar com letra maiúscula e não terão po
 
 ## Copyright
 Ao contrário da folha de estilo do Google, não será necessário adicionar linhas sobre copyright nos arquivos, pois não é conveniente ao nosso contexto.
+
+## Estruturas de controle (condicionais e laços de repetição) e funções
+
+### Corpos curtos
+Mesmo em se a declaração couber em uma linha, ela deverá ser quebrarada após a chave de início e antes da de fim.
+
+#### Exceções
+As chaves deverão estar na mesma linha em caso do corpo da função estar vazio.
+
+### Espaços dentro do argumento
+Não deverá haver espaços depois do primeiro parêntese do argumento e nem antes do segundo.
+
+### Espaço antes do argumento
+Para estruturas de controle deverá ser dado espaço antes do primeiro parêntese do argumento da função. Porém, não para funções.
+
+### Uso das chaves
+Sempre usar chaves, mesmo em declarações de uma única linha.
+
+## Operadores
+
+### Aritméticos
+Operadores em expressões algébricas deverão seguir as seguintes regras:
+* Deverá conter espaços antes e depois dos operadores + e -;
+* Não deverá conter espaços antes e depois dos operadores * e /;
+* Operadores cujo um dos argumentos for um parêntese deverão ser cercados por espaços.
+
+## Switch
+Case Blocks não deverão usar chaves.
