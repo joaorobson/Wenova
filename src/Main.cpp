@@ -2,12 +2,12 @@
 #include "MenuState.h"
 
 int main(int, char **){
-	Game game("Wenova - Rise of Conquerors");
+    Game game("Wenova - Rise of Conquerors");
 
-	State * state =  new MenuState(false);
-	game.push(state);
+    State * state =  new MenuState(false);
+    game.push(state);
 
-	game.run();
+    game.run();
 
-	return 0;
+    return 0;
 }
