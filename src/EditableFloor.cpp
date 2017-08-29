@@ -29,8 +29,7 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
     box.width = normal_sprite.get_width();
 }
 
-EditableFloor::~EditableFloor() {
-}
+EditableFloor::~EditableFloor() {}
 
 void EditableFloor::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
