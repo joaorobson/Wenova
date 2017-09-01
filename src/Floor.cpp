@@ -23,6 +23,7 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform){
 Floor::~Floor(){}
 
 void Floor::update(float){}
+    //Comentário de printf para testes
     //printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height, rotation);
 
 void Floor::render(){}
