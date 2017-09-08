@@ -1,5 +1,4 @@
 #include "Floor.h"
-
 #include "InputManager.h"
 #include "Camera.h"
 
@@ -9,31 +8,38 @@
 
 int Floor::floor_id = 1;
 
-Floor::Floor(float x, float y, float width, float crotation, bool cplatform){
+//Saves the platmorm traits
+Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     is_platform = cplatform;
     rotation = crotation * PI / 180.0;
     box = Rectangle(x, y, width, HEIGHT);
     id = floor_id++;
     tags["floor"] = true;
-    if(is_platform){
+    if(is_platform) {
         tags["platform"] = true;
     }
 }
 
-Floor::~Floor(){}
+//Destroy the platform
+Floor::~Floor() {}
 
-void Floor::update(float){}
+//Update the traits os platform
+void Floor::update(float) {}
     //Comentário de printf para testes
     //printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height, rotation);
 
-void Floor::render(){}
+//Render the platform
+void Floor::render() {}
 
-bool Floor::is_dead(){
+//Check if the platform is dead
+bool Floor::is_dead() {
     return false;
 }
 
-void Floor::notify_collision(GameObject &){}
+//Notify a collision in the platform
+void Floor::notify_collision(GameObject &) {}
 
-int Floor::get_id(){
+//Check the ID of platform
+int Floor::get_id() {
     return id;
 }

@@ -1,21 +1,26 @@
 #include "Timer.h"
 
-Timer::Timer(){
+//Initialize a timer
+Timer::Timer() {
     time = 0;
 }
 
-void Timer::update(float delta){
+//Update the timer
+void Timer::update(float delta) {
     time += delta;
 }
 
-void Timer::restart(){
+//Restart the timer
+void Timer::restart() {
     time = 0;
 }
 
-float Timer::get(){
+//Check the timer
+float Timer::get() {
     return time;
 }
 
-void Timer::set(float ctime){
+//Insert a timer
+void Timer::set(float ctime) {
     time = ctime;
 }
