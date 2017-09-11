@@ -18,6 +18,10 @@
 #define LIGHT_GREEN { 181, 201, 60, 1 }
 #define WHITE { 255, 255, 255, 255 }
 
+/** Constructor.
+ * This constructor builds the options and sub options to initialize the
+ * attributes.
+ */
 OptionsState::OptionsState() {
     Mix_AllocateChannels(50);
 
@@ -45,6 +49,12 @@ OptionsState::OptionsState() {
         InputManager::MENU_MODE);
 }
 
+/** Update function.
+ * This function identifies the pressed button and updates the values of the
+ * selected option.
+ *
+ * @param delta a float variation to update menu state.
+ */
 void OptionsState::update(float) {
     process_input();
 
@@ -187,6 +197,10 @@ void OptionsState::update(float) {
     options.back()->set_pos(FONT_X, FONT_Y, true, true);
 }
 
+/** Render function.
+ * This function renders all text of the menu 'Options' and changes its color
+ * according to the menu tha user selected.
+ */
 void OptionsState::render() {
     background.render(0, 0);
 
@@ -228,6 +242,10 @@ void OptionsState::render() {
     }
 }
 
+/** Build options function.
+ * This function builds the text of all options and sub options of the menu
+ * 'Options' and update the attributes that represent these options.
+ */
 void OptionsState::build_options() {
     options.push_back(new Text("font/8-BIT WONDER.ttf", 30,
                                Text::TextStyle::SOLID, "SCREEN RESOLUTION",
@@ -272,6 +290,15 @@ void OptionsState::build_options() {
                                                  WHITE));
 }
 
+/** Get the option on a sub menu.
+ * This function identifies which sub menu and option the user selected.
+ *
+ * @param option an integer argument that represents the selected option of the
+ * main menu.
+ *
+ * @return an integer value that represents the current sub option of a sub
+ * menu.
+ */
 int OptionsState::get_current_sub_option(int option) {
     if (option == 0) {  // Screen resolution
         int width = Config::get_width();
@@ -281,8 +308,9 @@ int OptionsState::get_current_sub_option(int option) {
         int sub_option = 0;
 
         for (auto text : sub_options["SCREEN RESOLUTION"]) {
-            if (text->get_text() == resolution) return sub_option;
-
+            if (text->get_text() == resolution) {
+                return sub_option;
+            }
             sub_option++;
         }
         return 0;
@@ -291,6 +319,10 @@ int OptionsState::get_current_sub_option(int option) {
     }
 }
 
+/** Process an input of the user.
+ * This function maps the buttons that are used on the menu 'Option' according
+ * to constants of the InputManager class.
+ */
 void OptionsState::process_input() {
     InputManager *input_manager = InputManager::get_instance();
 
@@ -310,6 +342,12 @@ void OptionsState::process_input() {
     }
 }
 
+/** Pause function.
+ * Nothing to do.
+ */
 void OptionsState::pause() {}
 
+/** Resume function.
+ * Nothing to do.
+ */
 void OptionsState::resume() {}
