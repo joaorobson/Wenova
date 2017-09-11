@@ -1,3 +1,15 @@
+/*
+ *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ *This work is licensed under the terms of the MIT license.
+ *For a copy, see <https://opensource.org/licenses/MIT>.
+ *
+ *This file contains implementation of the methods of the class
+ *TimeCounter.
+ *
+ *This file renders and updates a clock during a battle indicating the remaining
+ *time.
+ */
 #include "TimeCounter.h"
 
 using std::to_string;

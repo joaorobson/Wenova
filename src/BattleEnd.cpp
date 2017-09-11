@@ -1,3 +1,14 @@
+/*
+ *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ *This work is licensed under the terms of the MIT license.
+ *For a copy, see <https://opensource.org/licenses/MIT>.
+ *
+ *This file contains implementation of the methods of the class
+ *BattleEnd.
+ *
+ *This file renders images at the end of a battle indicating the team that won.
+ */
 #include "BattleEnd.h"
 #include "InputManager.h"
 
