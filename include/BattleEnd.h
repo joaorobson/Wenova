@@ -1,5 +1,5 @@
-#ifndef BATTLEEND_H
-#define BATTLEEND_H
+#ifndef INCLUDE_BATTLEEND_H_
+#define INCLUDE_BATTLEEND_H_
 
 #define N_SPRITES 8
 
@@ -13,28 +13,61 @@
 using std::string;
 using std::vector;
 
-class BattleEnd : public GameObject{
-	public:
-		BattleEnd(int id_winner);
+class BattleEnd : public GameObject {
+ public:
+    /** Constructor.
+     * This constructor builds sprites and texts to indicates the team that won
+     * the match redering an image at the end of the battle.
+     *
+     * @param id_winner and integer argument that represents the id of the team
+     * that won the battle.
+     */
+    explict BattleEnd(int id_winner);
 
-		void update(float delta);
-		void render();
+    /** Function that updates sprite of the end of a Battle.
+     * This function makes sprites variate accoding to the input user state.
+     *
+     * @param delta a float variation to update the sprite that is rendered at
+     * the end of the battle.
+     */
+    void update(float delta);
 
-		bool is_dead();
+    /** Function that renders sprite and texts.
+     * This function renders sprite and texts at right position when a Battle is
+     * finished.
+     */
+    void render();
 
-		bool quit_requested();
+    /** Function get state dead.
+     * This function returns the state dead.
+     *
+     * @return a boolean default value.
+     */
+    bool is_dead();
 
-		void notify_collision(GameObject & object);
+    /** Function get quit request.
+     * This function returns true when a quit request is open by the user.
+     *
+     * @return a boolean value that represents the the quit request of the user.
+     */
+    bool quit_requested();
 
-	private:
-		vector <Sprite> sprite;
+    /** Function notify collision.
+     * Nothing to do.
+     *
+     * @param GameObject a pointer to a GameObject.
+     */
+    void notify_collision(GameObject *object);
 
-		int current_sprite;
+ private:
+    vector<Sprite> sprite;
 
-		bool back_selected, quitRequested;
+    int current_sprite;
 
-		Sprite back_btn;
-		Text *back_txt;
+    bool back_selected, quitRequested;
+
+    Sprite back_btn;
+    Text  *back_txt;
 };
 
-#endif
+#endif  // INCLUDE_BATTLEEND_H_
