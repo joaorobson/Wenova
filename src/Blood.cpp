@@ -1,3 +1,12 @@
+/** Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+*
+* This work is licensed under the terms of the MIT license.
+
+* For a copy, see <https://opensource.org/licenses/MIT>.
+*
+* This file contains the definition of the Blood class methods.
+*/
+
 #include "Blood.h"
 
 #include "Game.h"
@@ -10,6 +19,16 @@
 
 using std::min;
 
+/** The constructor.
+* Initialize the partner fighter and his respective skin, besides the box
+* container coordinates of the Blood class. The Blood class inherits the Fighter
+* class.
+*
+* @param skin is the Fighter skin.
+* @param x is the box horizontal coordinate.
+* @param y is the box veretical coordinate.
+* @param cid is the partner fighter identifier.
+*/
 Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
              Fighter(cid, x, cpartner) {
   path = "characters/blood/" + skin + "/";
@@ -66,6 +85,12 @@ Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
   box = Rectangle(x, y, 84, 84);
 }
 
+/** Fighter's state machine
+* Check and update the Fighter's state according to the attack type and damage
+* suffered.
+*
+* @param delta is the variation of character state.
+*/
 void Blood::update_machine_state(float delta) {
   switch (state) {
     case FighterState::IDLE_ATK_NEUTRAL_1:
