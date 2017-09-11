@@ -1,3 +1,14 @@
+/*
+ *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ *This work is licensed under the terms of the MIT license.
+ *For a copy, see <https://opensource.org/licenses/MIT>.
+ *
+ *Implementation of methods.
+ *
+ *This file contains the definitions of the methods and attributes of the class
+ *JoystickConfigState.
+ */
 #ifndef INCLUDE_JOYSTICKCONFIGSTATE_H_
 #define INCLUDE_JOYSTICKCONFIGSTATE_H_
 
