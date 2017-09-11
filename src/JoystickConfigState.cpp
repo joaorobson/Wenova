@@ -29,6 +29,15 @@
 #define LIGHT_GREEN { 181, 201, 60, 1 }
 #define BLUE { 0, 108, 166, 1 }
 
+/** Constructor.
+ * This constructor builds sprites to render the option 'JOYSTICK' located on
+ * the menu 'Options' of the game.
+ *
+ * @param joystick_id and integer argument that represents the id of one of the
+ * four joysticks that can be pluged.
+ * @param ckeyboard a boolean argument that indicates if a keyboard is
+ * connected.
+ */
 JoystickConfigState::JoystickConfigState(int  joystick_id,
                                          bool ckeyboard) {
     Mix_AllocateChannels(50);
@@ -139,6 +148,13 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
         InputManager::MENU_MODE);
 }
 
+/** Function that updates sprites on joystick test mode.
+ * This function makes sprites change color accoding to the button pressed by
+ * the user on the joystick test mode located at the menu
+ * "Options->Joystick->Test".
+ *
+ * @param delta a float variation to update joystick state.
+ */
 void JoystickConfigState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
@@ -182,6 +198,11 @@ void JoystickConfigState::update(float delta) {
     update_array(delta);
 }
 
+/** Function that renders keyboard or joystick help images.
+ * This function renders keyboard or joystick help images if user select one of
+ * the options: 'keyboard' and 'joystick'; located at the menu 'Options'.
+ * Besides that, it will render buttons on the joystick test mode.
+ */
 void JoystickConfigState::render() {
     if (not on_test) {
         if (!is_keyboard) {
@@ -206,6 +227,12 @@ void JoystickConfigState::render() {
     }
 }
 
+/** Pause function.
+ * Nothing to do.
+ */
 void JoystickConfigState::pause() {}
 
+/** Resume function.
+ * Nothing to do.
+ */
 void JoystickConfigState::resume() {}
