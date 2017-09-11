@@ -1,3 +1,14 @@
+/*
+ *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ *This work is licensed under the terms of the MIT license.
+ *For a copy, see <https://opensource.org/licenses/MIT>.
+ *
+ *This file contains the definitions of all methods of the class OptionsState.
+ *
+ *This file builds all options and sub options of the menu 'Options' of
+ *the game and control their behavior.
+ */
 #include "SDL_mixer.h"
 
 #include "OptionsState.h"
