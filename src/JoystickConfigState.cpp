@@ -1,3 +1,15 @@
+/*
+ *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ *This work is licensed under the terms of the MIT license.
+ *For a copy, see <https://opensource.org/licenses/MIT>.
+ *
+ *This file contains implementation of the methods of the class
+ *JoystickConfigState.
+ *
+ *This file renders images of options 'JOYSTICK' and 'KEYBOARD' of the menu
+ *'Options' and controls the behavior of the joystick test mode functionality.
+ */
 #include "SDL_mixer.h"
 
 #include "JoystickConfigState.h"
