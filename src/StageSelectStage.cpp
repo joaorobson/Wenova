@@ -10,6 +10,13 @@
 
 using std::to_string;
 
+/** Constructor.
+ * This constructor builds sprites to render the options of stages to start
+ * a battle.
+ *
+ * @param cgo_to_edit a boolean argument that represents if user selected
+ * edit mode on the menu.
+ */
 StageSelectState::StageSelectState(bool cgo_to_edit) {
     planet = Sprite("stage_select/planet.png", 8, FRAME_TIME);
     planet.set_scale(1.5);
@@ -33,6 +40,12 @@ StageSelectState::StageSelectState(bool cgo_to_edit) {
         InputManager::MENU_MODE);
 }
 
+/** Update function.
+ * This function identifies the pressed button and updates the values of the
+ * selected option.
+ *
+ * @param delta a float variation to update menu state.
+ */
 void StageSelectState::update(float delta) {
     process_input();
 
@@ -81,6 +94,9 @@ void StageSelectState::update(float delta) {
     planet.update(delta);
 }
 
+/** Function that renders sprite.
+ * This function renders the stages that can be selected by the user.
+ */
 void StageSelectState::render() {
     background[0].render();
     planet.render(640 - planet.get_width() / 2, 360 - planet.get_height() / 2);
@@ -91,6 +107,11 @@ void StageSelectState::render() {
     }
 }
 
+/** Update selected stage function.
+ * This function increments the integer id value of the selected stage.
+ *
+ * @param increment an integer value that updates the current stage.
+ */
 void StageSelectState::update_stage_select(int increment) {
     stage_select += increment;
 
@@ -105,6 +126,10 @@ void StageSelectState::update_stage_select(int increment) {
     }
 }
 
+/** Process an input of the user.
+ * This function maps the buttons that are used on the menu that select a stage
+ * according to constants of the InputManager class.
+ */
 void StageSelectState::process_input() {
     InputManager *input_manager = InputManager::get_instance();
 
@@ -124,6 +149,12 @@ void StageSelectState::process_input() {
     }
 }
 
+/** Pause function.
+ * Nothing to do.
+ */
 void StageSelectState::pause() {}
 
+/** Resume function.
+ * Nothing to do.
+ */
 void StageSelectState::resume() {}
