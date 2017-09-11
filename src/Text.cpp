@@ -37,8 +37,8 @@ Text::Text() {
  * @param cstyle is the text style from the class TextStyle.
  * @param ctext is the text that will be rendered.
  * @param ccolor is text color.
- * @param x is the text horizontal position.
- * @param y is the text vertical position.
+ * @param x_axis_position is the text horizontal position.
+ * @param y_axis_position is the text vertical position.
  */
 Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
            SDL_Color ccolor, int x_axis_position, int y_axis_position) {
