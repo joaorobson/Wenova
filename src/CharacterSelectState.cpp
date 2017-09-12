@@ -15,6 +15,12 @@
 #define N_COLS 2
 #define N_ROWS 4
 
+/** 
+ * Load all artistic files and initializes board variables based
+ * on the stage that was selected
+ * 
+ * @param cselected_stage Name of the stage that was selected.
+ */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
     Mix_AllocateChannels(50);
 
@@ -62,12 +68,17 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
         InputManager::MENU_MODE);
 }
 
+/** 
+ * Updates player selection while player move between characters.  
+ * 
+ * @param delta Variation of how much the characters player travelled
+ */
 void CharacterSelectState::update(float delta) {
     process_input();
 
     InputManager* input_manager = InputManager::get_instance();
 
-    // inputs
+    // Inputs
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
@@ -81,7 +92,7 @@ void CharacterSelectState::update(float delta) {
         return;
     }
 
-    // only enable start when all players have selected a character
+    // Only enable start when all players have selected a character
     if (all_players_selected()) {
         ready = true;
         if (pressed[FIRST_PLAYER][START] or pressed[FIRST_PLAYER][A]) {
@@ -96,7 +107,7 @@ void CharacterSelectState::update(float delta) {
 
     for (int i = 0; i < N_PLAYERS; i++) {
         if (not selected[i]) {
-            // random character
+            // Random character
             if (pressed[i][Y]) {
                 selected_sound.play();
                 int rand_col = 0, rand_row = 0, rand_skin = 0, char_sel = 0;
@@ -208,6 +219,10 @@ void CharacterSelectState::update(float delta) {
     planet.update(delta);
 }
 
+/** 
+ * Render the board.  
+ * Render the board of with characters options, including all effects.
+ */
 void CharacterSelectState::render() {
     background[0].render(0, 0);
     planet.render(640 - planet.get_width() / 2, 360 - planet.get_height() / 2);
@@ -253,6 +268,11 @@ void CharacterSelectState::render() {
     }
 }
 
+/** 
+ * Searchs for characters identifying which the player chose.  
+ * 
+ * @returns   
+ */
 bool CharacterSelectState::all_players_selected() {
     for (auto cur : selected) {
         if (not cur) {
@@ -262,7 +282,13 @@ bool CharacterSelectState::all_players_selected() {
     return true;
 }
 
-// Returns name and number of frames in corresponding sprite
+/** 
+ * Get information about the character the player choose.  
+ * 
+ * @param idx  Index of the character
+ * 
+ * @returns Name and number of frames in corresponding sprite   
+ */
 pair<string, int> CharacterSelectState::get_char_info(int idx) {
     vector<string> names = {"blood", "flesh", "hookline", "sinker",
                             "trap",  "trip",  "dusk",     "dawn"};
@@ -271,6 +297,12 @@ pair<string, int> CharacterSelectState::get_char_info(int idx) {
     return make_pair(names[idx], frames[idx]);
 }
 
+/** 
+ * Get information about players choice about characters and skins.  
+ * 
+ * @returns Vector of pairs of strings containing information about
+ * characters and skins choosen.
+ */
 vector<pair<string, string> > CharacterSelectState::export_players() {
     vector<pair<string, string> > players;
 
@@ -284,6 +316,10 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
     return players;
 }
 
+/** 
+ * Process interaction of the player with joystick while
+ * choosing character.  
+ */
 void CharacterSelectState::process_input() {
     InputManager* input_manager = InputManager::get_instance();
 
@@ -303,11 +339,25 @@ void CharacterSelectState::process_input() {
     }
 }
 
+/** 
+ * Get slot of character on the board.  
+ * 
+ * @param row [510 or 645]
+ * @param col [55 or 197 or 395 or 536]
+ * 
+ * @returns pair of ints which indicates the corresponding slot.
+ */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     vector<int> x = {510, 645}, y = {55, 197, 395, 536};
     return ii(x[col], y[row]);
 }
 
+/** 
+ * Not implemented.  
+ */
 void CharacterSelectState::pause() {}
 
+/** 
+ * Not implemented.  
+ */
 void CharacterSelectState::resume() {}
