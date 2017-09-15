@@ -63,7 +63,7 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
 EditableFloor::~EditableFloor() {}
 
 /** 
- * Manages player interecation with the box.  
+ * Manages player interaction with the box.  
  * 
  * @param delta Difference in position of the box.
  */
