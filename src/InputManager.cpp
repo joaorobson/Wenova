@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file InputManager.cpp
+ * Implements methods of class InputManager.
+ */
+
 #include "InputManager.h"
 
 #include "Game.h"
@@ -41,6 +51,9 @@ const int InputManager::K_MENU_A, InputManager::K_MENU_B,
     InputManager::K_MENU_Y, InputManager::K_MENU_LB;
 const int InputManager::MENU_MODE, InputManager::BATTLE_MODE;
 
+/**
+ * Initializes variables.
+ */
 InputManager::InputManager() {
     memset(mouse_state, false, sizeof mouse_state);
     memset(mouse_update, 0, sizeof mouse_update);
@@ -57,6 +70,9 @@ InputManager::InputManager() {
     mouse_y = 0;
 }
 
+/**
+ * Clear states about joystick and keyboard.
+ */
 InputManager::~InputManager() {
     for (int i = 0; i < 4; i++) {
         joystick_state[i].clear();
@@ -67,6 +83,9 @@ InputManager::~InputManager() {
     key_update.clear();
 }
 
+/**
+ * Integrates engine's resources with project variables.
+ */
 void InputManager::update() {
     SDL_Event event;
 
@@ -184,54 +203,141 @@ void InputManager::update() {
     }
 }
 
+/**
+ * Manages player presses of the key (keyboard).
+ *
+ * @param key [0, 14 (number of keys used in the game)]
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
 bool InputManager::key_press(int key) {
     return key_state[key] and key_update[key] == update_counter;
 }
 
+/**
+ * Manages player release of the key (keyboard).
+ *
+ * @param key [0, 14 (number of keys used in the game)]
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
 bool InputManager::key_release(int key) {
     return not key_state[key] and key_update[key] == update_counter;
 }
 
+/**
+ * Watch holding of the player on the key (keyboard).
+ *
+ * @param key [0, 14 (number of keys used in the game)]
+ *
+ * @returns True if key is holded
+ */
 bool InputManager::is_key_down(int key) {
     return key_state[key];
 }
 
+/**
+ * Manages player press of a mouse button.
+ *
+ * @param button which button was pressed [0, 2]
+ *
+ * @returns True if everything went ok.
+ */
 bool InputManager::mouse_press(int button) {
     return mouse_state[button] and mouse_update[button] == update_counter;
 }
 
+/**
+ * Manages player release of a mouse button.
+ * @param button which button was pressed [0, 2]
+ *
+ * @returns True if everything went ok.
+ */
 bool InputManager::mouse_release(int button) {
     return not mouse_state[button] and mouse_update[button] == update_counter;
 }
+
+/**
+ * Watch holding of the player on the button (mouse).
+ * @param button
+ *
+ * @returns True if button is being pressed.
+ */
 bool InputManager::is_mouse_down(int button) {
     return mouse_state[button];
 }
 
+/**
+ * Manages player presses of the button (joystick).
+ * @param button Which button is being pressed.
+ * @param joystick Which joystick pressed the button.
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
 bool InputManager::joystick_button_press(int button, int joystick) {
     return joystick_state[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 }
 
+/**
+ * Manages player release of the button (joystick).
+ *
+ * @param button Which button is being released.
+ * @param joystick Which joystick is releasing the button.
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
 bool InputManager::joystick_button_release(int button, int joystick) {
     return not joystick_state[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 }
+
+/**
+ * Watch holding of the player on the key (keyboard).
+ *
+ * @param button Which button is holding the button.
+ * @param joystick Which joystick is holding the button.
+ *
+ * @returns True if button is being held.
+ */
 bool InputManager::is_joystick_button_down(int button, int joystick) {
     return joystick_state[joystick][button];
 }
 
+/**
+ * Get mouse position in axis X.
+ *
+ * @returns number respresenting mouse position in axis X.
+ * [0,], Unit: px
+ */
 int InputManager::get_mouse_x() {
     return mouse_x;
 }
 
+/**
+ * Get mouse position in axis Y.
+ *
+ * @returns number respresenting mouse position in axis Y. [0,]
+ */
 int InputManager::get_mouse_y() {
     return mouse_y;
 }
 
+/**
+ * Manages player's request for leaving the game.
+ *
+ * @returns True if there is a request [0,1]
+ */
 bool InputManager::quit_requested() {
     return m_quit_requested;
 }
 
+/**
+ * Get instance of InputManage.
+ * Creates if not exists
+ *
+ * @returns Instance of InputManager.
+ */
 InputManager *InputManager::get_instance() {
     if (input_manager == nullptr) {
         input_manager = new InputManager();
@@ -239,16 +345,32 @@ InputManager *InputManager::get_instance() {
     return input_manager;
 }
 
+/**
+ * Configure mouse scale to calibrae sensibility.
+ * Bigger the values, more sensible the mouse will be
+ *
+ * @param cscale Unit: px, [0,]
+ * @param coffset_x Unit: px, [0,]
+ * @param coffset_y Unit: px, [0,]
+ */
 void InputManager::set_mouse_scale(float cscale, int coffset_x, int coffset_y) {
     scale = cscale;
     offset_x = coffset_x;
     offset_y = coffset_y;
 }
 
+/**
+ * Set value for joystick hand crank.
+ *
+ * @param value
+ */
 void InputManager::set_analogic_value(int value) {
     analogic_value = value;
 }
 
+/**
+ * Manages connection of joysticks to the game.
+ */
 void InputManager::connect_joysticks() {
     int max = SDL_NumJoysticks();
     if (max > 4) {
@@ -283,6 +405,11 @@ void InputManager::connect_joysticks() {
     }
 }
 
+/**
+ * Translate keyboard keys to the joystick buttons.
+ *
+ * @param map_id Represents if command is for gameplay or menus handle
+ */
 void InputManager::map_keyboard_to_joystick(int map_id) {
     keyboard_to_joystick = {
         {K_LEFT, LEFT + 1},     {K_RIGHT, RIGHT + 1}, {K_UP, UP + 1},
@@ -304,6 +431,12 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
     }
 }
 
+/**
+ * Manages joystick interaction with the game.
+ *
+ * @param key_id Id of the key is that is interacting with the game
+ * @param state State of the key that is interacting with the game
+ */
 void InputManager::emulate_joystick(int key_id, bool state) {
     if (state) {
         switch (key_id) {
@@ -348,6 +481,9 @@ void InputManager::emulate_joystick(int key_id, bool state) {
     }
 }
 
+/**
+ * Manages transition of inputs from keyboard to joystick.
+ */
 void InputManager::reset_keyboard_to_joystick() {
     if (keyboard_to_joystick_id < 0 or keyboard_to_joystick_id > 4) {
         return;

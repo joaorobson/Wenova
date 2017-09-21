@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ * 
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/** 
+ * @file EditableFloor.cpp
+ * Implements class EditableFloor methods.  
+ */
+
 #include "EditableFloor.h"
 
 #include "Collision.h"
@@ -9,6 +19,15 @@
 #define LAYER 0
 #define PI 3.14159265358979
 
+
+/** 
+ * Create box with default width of 100px.
+ * 
+ * @param x Position in X axis. Unit: px, [0,screen_width]
+ * @param y Position in Y axis. Unit: px, [0,screen_height]
+ * @param crotation Unit: degrees
+ * @param cplatform [0,1]
+ */
 EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
     : Floor(x, y, 100, crotation, cplatform),
       normal_sprite(Sprite("edit_state/floor/editable_floor.png")),
@@ -20,6 +39,15 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
     selected = false;
 }
 
+/** 
+ * Create box with specific width.
+ * 
+ * @param x Position in X axis. Unit: px, [0,screen_width]
+ * @param y Position in Y axis. Unit: px, [0,screen_height]
+ * @param width Unit: px, [0,]
+ * @param crotation Unit: degrees
+ * @param cplatform [0,1]
+ */
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
                              bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
@@ -29,8 +57,16 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
     box.width = normal_sprite.get_width();
 }
 
+/** 
+ * Not implemented.
+ */
 EditableFloor::~EditableFloor() {}
 
+/** 
+ * Manages player interaction with the box.  
+ * 
+ * @param delta Difference in position of the box.
+ */
 void EditableFloor::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
@@ -131,6 +167,9 @@ void EditableFloor::update(float delta) {
     }
 }
 
+/** 
+ * Render selected box considering if it is selected.  
+ */
 void EditableFloor::render() {
     if (selected) {
         selected_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
@@ -142,13 +181,27 @@ void EditableFloor::render() {
         normal_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
 }
 
+/** 
+ * True if box has been deleted.  
+ * 
+ * @returns [0,1] 
+ */
 bool EditableFloor::is_dead() {
     return deleted;
 }
 
-void EditableFloor::notify_collision(GameObject &) {
-}
+/** 
+ * Not implemented.  
+ * 
+ * @param unamed An game object.
+ */
+void EditableFloor::notify_collision(GameObject &) {}
 
+/** 
+ * Get information about many aspects of an box.  
+ * 
+ * @returns String in format: "x y width rotated level is_platform?"
+ */
 string EditableFloor::get_information() {
     char info[500];
     snprintf(info, sizeof(info), "%f %f %f %f %d", box.x, box.y, box.width,
@@ -161,6 +214,11 @@ string EditableFloor::get_information() {
     return s;
 }
 
+/** 
+ * Select elements which will be edited. 
+ * 
+ * @param cselected [0,1]
+ */
 void EditableFloor::set_selected(bool cselected) {
     selected = cselected;
 }
