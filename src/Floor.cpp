@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ * 
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/** 
+ * @file Floor.cpp
+ * Implements class Floor methods.  
+ */
+
 #include "Floor.h"
 #include "InputManager.h"
 #include "Camera.h"
@@ -15,6 +25,7 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     box = Rectangle(x, y, width, HEIGHT);
     id = floor_id++;
     tags["floor"] = true;
+    //
     if(is_platform) {
         tags["platform"] = true;
     }

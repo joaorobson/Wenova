@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ * 
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/** 
+ * @file Flesh.cpp
+ * Implements class Flesh methods.  
+ */
+
 #include "Flesh.h"
 #include "Game.h"
 #include "FleshUltimateEffect.h"

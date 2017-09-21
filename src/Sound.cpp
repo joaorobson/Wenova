@@ -1,5 +1,14 @@
-#include "Sound.h"
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ * 
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/** 
+ * @file Sound.cpp
+ * Implements class Sound methods.  
+ */
 
+#include "Sound.h"
 #include "Resources.h"
 #include "Config.h"
 
