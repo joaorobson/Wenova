@@ -33,7 +33,7 @@ class BattleEnd : public GameObject {
      * @param id_winner and integer argument that represents the id of the team
      * that won the battle.
      */
-    explict BattleEnd(int id_winner);
+    explicit BattleEnd(int id_winner);
 
     /** Function that updates sprite of the end of a Battle.
      * This function makes sprites variate accoding to the input user state.
@@ -68,7 +68,7 @@ class BattleEnd : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject *object);
+    void notify_collision(GameObject & object);
 
  private:
     vector<Sprite> sprite;
