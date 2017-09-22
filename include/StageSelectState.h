@@ -45,7 +45,7 @@ class StageSelectState : public State {
      * @param cgo_to_edit a boolean argument that represents if user selected
      * edit mode on the menu.
      */
-    explict StageSelectState(bool cgo_to_edit = false);
+    explicit StageSelectState(bool cgo_to_edit = false);
 
     /** Update function.
      * This function identifies the pressed button and updates the values of the

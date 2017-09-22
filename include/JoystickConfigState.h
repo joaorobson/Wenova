@@ -36,7 +36,7 @@ class JoystickConfigState : public State{
 		* @param ckeyboard a boolean argument that indicates if a keyboard is
 		* connected.
 		*/
-    explict JoystickConfigState(int joystick_id, bool ckeyboard = false);
+    explicit JoystickConfigState(int joystick_id, bool ckeyboard = false);
 
 		/** Function that updates sprites on joystick test mode.
 		 * This function makes sprites change color accoding to the button pressed by

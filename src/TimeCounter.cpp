@@ -94,4 +94,4 @@ bool TimeCounter::is_over() {
  *
  * @param GameObject a pointer to a GameObject.
  */
-void TimeCounter::notify_collision(GameObject*) {}
+void TimeCounter::notify_collision(GameObject&) {}

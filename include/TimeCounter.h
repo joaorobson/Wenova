@@ -67,7 +67,7 @@ class TimeCounter : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject *object);
+    void notify_collision(GameObject & object);
 
     static const int total_time = 100;
 
