@@ -1,9 +1,11 @@
-/** Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
 *
 * This work is licensed under the terms of the MIT license.
 
 * For a copy, see <https://opensource.org/licenses/MIT>.
-*
+*/
+/**
+* @file Blood.cpp
 * This file contains the definition of the Blood class methods.
 */
 
@@ -19,7 +21,8 @@
 
 using std::min;
 
-/** The constructor.
+/**
+* The constructor.
 * Initialize the partner fighter and his respective skin, besides the box
 * container coordinates of the Blood class. The Blood class inherits the Fighter
 * class.
@@ -85,7 +88,8 @@ Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
   box = Rectangle(x, y, 84, 84);
 }
 
-/** Fighter's state machine
+/**
+* Fighter's state machine
 * Check and update the Fighter's state according to the attack type and damage
 * suffered.
 *
@@ -361,7 +365,8 @@ void Blood::update_machine_state(float delta) {
   }
 }
 
-/** Check jump action method.
+/**
+* Check jump action method.
 * Check if pressed button is referent to the jump action. If so, and if there is
 * change in the Fighter state, change his temporary state to "Jumping".
 *
@@ -378,7 +383,8 @@ void Blood::check_jump(bool change) {
   }
 }
 
-/** Check fall action method.
+/**
+* Check fall action method.
 * Check if fighter has speed in relation to the y axis. If so, and if there is
 * change in the Fighter state, change his temporary state to "Falling".
 *
@@ -393,7 +399,8 @@ void Blood::check_fall(bool change) {
   }
 }
 
-/** Check movement in left direction method.
+/**
+* Check movement in left direction method.
 * Check if user is pressing the left button. If so, and if there is change in
 * the Fighter state,  change his temporary state to "Running" and orientation
 * to "Left".
@@ -411,7 +418,8 @@ void Blood::check_left(bool change) {
   }
 }
 
-/** Check movement in right direction method.
+/**
+* Check movement in right direction method.
 * Check if user is pressing the right button. If so, and if there is change in
 * the Fighter state, change his temporary state to "Running" and orientation to
 * "Right".
@@ -429,7 +437,8 @@ void Blood::check_right(bool change) {
   }
 }
 
-/** Check if there is no movement.
+/**
+* Check if there is no movement.
 * Check if Fighter has no speed/movement. If so, and if there is change in the
 * Fighter state, change his temporary state to "Idle".
 *
@@ -447,7 +456,8 @@ void Blood::check_idle(bool change) {
   }
 }
 
-/** Check if Fighter is crouched.
+/**
+* Check if Fighter is crouched.
 * Check if user is pressing the down button and if Fighter is on the floor.
 * If so, and if there is change in the Fighter state, change his temporary
 * state to "Crouch".
@@ -463,7 +473,8 @@ void Blood::check_crouch(bool change) {
     }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button. If so, and if there is change in the
 * Fighter state,  change his speed on y axis to 0 and his temporary state to
 * "Idle attack neutral 1".
@@ -480,7 +491,8 @@ void Blood::check_idle_atk_neutral_1(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if attack is a combo. If so, and if there is change in the Fighter
 * state, decreases the combo value and change his temporary state to
 * "Idle attack neutral 2".
@@ -497,7 +509,8 @@ void Blood::check_idle_atk_neutral_2(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if attack is a combo. If so, and if there is change in the Fighter
 * state, decreases the combo value and change his temporary state to "Idle
 * attack neutral 3".
@@ -514,7 +527,8 @@ void Blood::check_idle_atk_neutral_3(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button and is holding the left or the right
 * button. If so, and if there is change in the Fighter state,  change his
 * temporary state to "Idle attack front".
@@ -534,7 +548,8 @@ void Blood::check_idle_atk_front(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button and is holding the up button. If so,
 * and if there is change in the Fighter state, change his temporary state to
 * "Idle attack up".
@@ -550,7 +565,8 @@ void Blood::check_idle_atk_up(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button and is holding the down button or the
 * attack condition is true. If so, and if there is change in the Fighter state,
 * change his temporary state to "Idle attack down".
@@ -567,7 +583,8 @@ void Blood::check_idle_atk_down(bool change, bool condition) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button and is holding the up button. If so,
 * and if there is change in the Fighter state, change his temporary state to
 * "Idle attack up".
@@ -585,7 +602,8 @@ void Blood::check_pass_through_platform(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button. If so, and if there is change in the
 * Fighter state, change his temporary state to "Crouch attack".
 *
@@ -600,7 +618,8 @@ void Blood::check_crouch_atk(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button and is holding the down button. If so,
 *  and if there is change in the Fighter state, change his temporary state to
 * "Jump attack down".
@@ -616,7 +635,8 @@ void Blood::check_jump_atk_down(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button. If so, and if there is change in the
 * Fighter state, change his temporary state to "Jump attack neutral".
 *
@@ -631,7 +651,8 @@ void Blood::check_jump_atk_neutral(bool change) {
   }
 }
 
-/** Check attack type.
+/**
+* Check attack type.
 * Check if user pressed the attack button and is holding the up button. If so,
 * and if the combo is bigger than 0, there will be no attack.
 * If not, the combo value increases, the speed on y axis decreases and, if there
@@ -654,7 +675,8 @@ void Blood::check_jump_atk_up(bool change) {
   }
 }
 
-/** Check defense.
+/**
+* Check defense.
 * Check if user is pressing the block button and if Fighter is on the floor. If
 * so, and if there is change in the Fighter state, change his temporary state to
 * "Defending".
@@ -670,7 +692,8 @@ void Blood::check_defense(bool change) {
     }
 }
 
-/** Check stunning.
+/**
+* Check stunning.
 * Check if speed on x axis is 0. If so, and if there is change in the
 * Fighter state, change his temporary state to "Stunned".
 *
@@ -684,7 +707,8 @@ void Blood::check_stunned(bool change) {
   }
 }
 
-/** Check special attack type.
+/**
+* Check special attack type.
 * Check if user pressed the special button #1. If so, and if there is change in the
 * Fighter state, change his temporary state to "Special 1.1".
 *
@@ -699,7 +723,8 @@ void Blood::check_special_1_1(bool change) {
   }
 }
 
-/** Check special attack type.
+/**
+* Check special attack type.
 * Check if the attack damage if one half. If so, and if there is change in the
 * Fighter state, change his temporary state to "Special 1.2".
 *
@@ -713,7 +738,8 @@ void Blood::check_special_1_2(bool change) {
   }
 }
 
-/** Check special attack type.
+/**
+* Check special attack type.
 * Check if user pressed the special button #2 and if there is a partner. If so,
 * and if there is change in the Fighter state, change his temporary state to
 * "Special 2".
@@ -729,7 +755,8 @@ void Blood::check_special_2(bool change) {
   }
 }
 
-/** Check death.
+/**
+* Check death.
 * Check if Fighter state is "dying". If so, and if there is change in the
 * Fighter state, change his temporary state to "Dying".
 *
@@ -744,7 +771,8 @@ void Blood::check_dead(bool change) {
   }
 }
 
-/** Check ultimate attack.
+/**
+* Check ultimate attack.
 * Check if user pressed the ultimate button and if special level is equal to the
 * maximum special level. If so, activate the UltimateEffect images and sounds.
 */

@@ -1,15 +1,18 @@
-/** Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
 *
 * This work is licensed under the terms of the MIT license.
 
 * For a copy, see <https://opensource.org/licenses/MIT>.
-*
+*/
+/**
+* @file UltimateEffect.cpp
 * This file contains the definition of the Sprite class methods.
 */
 
 #include "UltimateEffect.h"
 
-/** A constructor.
+/**
+* A constructor.
 * Initialize the Fighter and his corresponding sprite, aura, tags and
 * frames when he is apllying a UltimateEffect.
 * The UltimateEffect class inherits the Effect class.
@@ -34,7 +37,8 @@ UltimateEffect::UltimateEffect(Fighter * cparent,
   }
 }
 
-/** Update method.
+/**
+* Update method.
 * Update the effect in the game updating positions and corresponding sprites.
 *
 * @param delta is the variation of character state.
@@ -53,7 +57,8 @@ void UltimateEffect::update(float delta) {
   aura.update(delta);
 }
 
-/** Render method.
+/**
+* Render method.
 * Render the UltimateEffect sprites in the game.
 */
 void UltimateEffect::render() {
@@ -61,7 +66,8 @@ void UltimateEffect::render() {
   aura.render(box.get_draw_x(), box.get_draw_y(), rotation);
 }
 
-/** Check death.
+/**
+* Check death.
 * Check if the last state of Figher is dead.
 */
 bool UltimateEffect::is_dead() {
@@ -72,7 +78,8 @@ bool UltimateEffect::is_dead() {
   return dead;
 }
 
-/** Notify collision between two fighters.
+/**
+* Notify collision between two fighters.
 * Check if the fighters have collided.
 */
 void UltimateEffect::notify_collision(GameObject & object) {

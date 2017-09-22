@@ -1,9 +1,11 @@
-/** Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
 *
 * This work is licensed under the terms of the MIT license.
 
 * For a copy, see <https://opensource.org/licenses/MIT>.
-*
+*/
+/**
+* @file Sprite.cpp
 * This file contains the definition of the Sprite class methods.
 */
 
@@ -18,7 +20,8 @@
 
 #define PI 3.14159265358979
 
-/** A constructor.
+/**
+* A constructor.
 * Initialize the texture, scales of x and y, counting and time of frames and the
 * current frame and the elapsed time to each one initial value.
 */
@@ -30,7 +33,8 @@ Sprite::Sprite() {
   current_frame = time_elapsed = 0;
 }
 
-/** A constructor.
+/**
+* A constructor.
 * Initialize the file where the images come from, counting and time of frames,
 * number of columns and the current frame.
 *
@@ -55,13 +59,15 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
   scale_x = scale_y = 1;
 }
 
-/** The destructor.
+/**
+* The destructor.
 * Free the memory allocated to store Sprite objects.
 */
 Sprite::~Sprite() {
 }
 
-/* Sprite width getter.
+/**
+* Sprite width getter.
 * Returns the saved sprite width on x scale units.
 *
 * @return the sprite width.
@@ -70,7 +76,8 @@ int Sprite::get_width() {
   return width * scale_x;
 }
 
-/* Sprite width getter.
+/**
+* Sprite width getter.
 * Returns the saved sprite height on y scale units.
 *
 * @return the sprite height.
@@ -79,7 +86,8 @@ int Sprite::get_height() {
   return height * scale_y;
 }
 
-/* Check if Sprite is open.
+/**
+* Check if Sprite is open.
 * Returns true if texture has some value (if is not null).
 *
 * @return true or false according to texture pointer value.
@@ -88,7 +96,8 @@ bool Sprite::is_open() {
   return texture != nullptr;
 }
 
-/* Open the Sprite.
+/**
+* Open the Sprite.
 * Initialize the sprites images from the corresponding source file.
 *
 * @param name of the file from the image come from.
@@ -112,8 +121,8 @@ void Sprite::open(string file) {
             height);
 }
 
-
-/** Clip setter.
+/**
+* Clip setter.
 * Sets a the frames sequence  position.
 *
 * @param x stores the horizontal coordinate value.
@@ -125,7 +134,8 @@ void Sprite::set_clip(int x, int y, int w, int h) {
   clip_rect = SDL_Rect{x, y, w, h};
 }
 
-/** Frame setter.
+/**
+* Frame setter.
 * Sets a new frame.
 *
 * @param frame stores the value of the new frame that will be saved and updated
@@ -139,7 +149,8 @@ void Sprite::set_frame(int frame) {
             height);
 }
 
-/** Frame counting setter.
+/**
+* Frame counting setter.
 * Sets the current value of the frame counter.
 *
 * @param cframe_count stores the value that will be saved and updated the time
@@ -149,7 +160,8 @@ void Sprite::set_frame_count(int cframe_count) {
   frame_count = cframe_count;
 }
 
-/** Frame time setter.
+/**
+* Frame time setter.
 * Sets the current time of a frame.
 *
 * @param cframe_time stores the value that will be saved and updated the time of
@@ -159,7 +171,8 @@ void Sprite::set_frame_time(float cframe_time) {
   frame_time = cframe_time;
 }
 
-/** Update method.
+/**
+* Update method.
 * Update the sprites in the game.
 *
 * @param delta is the variation of time in the game. The elapsed time increases
@@ -182,7 +195,8 @@ void Sprite::update(float delta) {
   }
 }
 
-/** Render method.
+/**
+* Render method.
 * Render the sprites in the game.
 *
 * @param x is the scenario horizontal position.
@@ -210,7 +224,8 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
   }
 }
 
-/** Scale x setter.
+/**
+* Scale x setter.
 * Sets individually the x axis scale to a new value.
 *
 * @param scale stores the value that will be saved and updated in the
@@ -220,7 +235,8 @@ void Sprite::set_scale_x(float scale) {
   scale_x = scale;
 }
 
-/** Scale y setter.
+/**
+* Scale y setter.
 * Sets individually the y axis scale to a new value.
 *
 * @param scale stores the value that will be saved and updated in the
@@ -230,7 +246,8 @@ void Sprite::set_scale_y(float scale) {
   scale_y = scale;
 }
 
-/** Scale y and xsetter.
+/**
+* Scale y and xsetter.
 * Sets simultaneously the y and the x axis scale to the same value.
 *
 * @param scale stores the value that will be saved and updated in the
@@ -240,7 +257,8 @@ void Sprite::set_scale(float scale) {
   scale_x = scale_y = scale;
 }
 
-/** Scale y and xsetter.
+/**
+* Scale y and xsetter.
 * Sets simultaneously the y and the x axis scale to the different value.s
 *
 * @param cscale_x stores the value that will be saved and updated in the
@@ -253,7 +271,8 @@ void Sprite::set_scale(float cscale_x, float cscale_y) {
   scale_y = cscale_y;
 }
 
-/** Update scale x.
+/**
+* Update scale x.
 * Updates the scale x to a new value.
 *
 * @param scale stores value of the scale that will be saved and updated in the

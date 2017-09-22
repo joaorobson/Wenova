@@ -1,15 +1,18 @@
-/** Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
 *
 * This work is licensed under the terms of the MIT license.
 
 * For a copy, see <https://opensource.org/licenses/MIT>.
-*
+*/
+/**
+* @file FleshUltimateEffect.cpp
 * This file contains the definition of the FleshUltimateEffect class methods.
 */
 
 #include "FleshUltimateEffect.h"
 
-/** The constructor.
+/**
+* The constructor.
 * Initialize the fighter character and the respective sprite, tags and frames
 * of the FleshUltimateEffect.
 *
@@ -30,7 +33,8 @@ FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
   parent->MAX_LIFE *= 1.5;
 }
 
-/** Update effect position.
+/**
+* Update effect position.
 * Update effect position according to character old position.
 *
 * @param delta is the character state variation.
@@ -44,14 +48,16 @@ void FleshUltimateEffect::update(float delta) {
   sprite.update(delta);
 }
 
-/** Render method.
+/**
+* Render method.
 * Show effect on screen according to character current position.
 */
 void FleshUltimateEffect::render() {
   sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
 }
 
-/** Check life condition method.
+/**
+* Check life condition method.
 * Check if the character is dead and change his tags.
 *
 *@return Return true if the character is dead and false if not.
