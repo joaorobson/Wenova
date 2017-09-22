@@ -1,13 +1,12 @@
-/*
- *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
  *
- *This work is licensed under the terms of the MIT license.
- *For a copy, see <https://opensource.org/licenses/MIT>.
- *
- *This file contains the definitions of all methods of the class OptionsState.
- *
- *This file builds all options and sub options of the menu 'Options' of
- *the game and control their behavior.
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file OptionsState.cpp
+ * This file builds all options and sub options of the menu 'Options' of
+ * the game and control their behavior.
  */
 #include "SDL_mixer.h"
 
@@ -29,7 +28,8 @@
 #define LIGHT_GREEN { 181, 201, 60, 1 }
 #define WHITE { 255, 255, 255, 255 }
 
-/** Constructor.
+/**
+ * Constructor.
  * This constructor builds the options and sub options to initialize the
  * attributes.
  */
@@ -60,7 +60,8 @@ OptionsState::OptionsState() {
         InputManager::MENU_MODE);
 }
 
-/** Update function.
+/**
+ * Update function.
  * This function identifies the pressed button and updates the values of the
  * selected option.
  *
@@ -208,7 +209,8 @@ void OptionsState::update(float) {
     options.back()->set_pos(FONT_X, FONT_Y, true, true);
 }
 
-/** Render function.
+/**
+ * Render function.
  * This function renders all text of the menu 'Options' and changes its color
  * according to the menu tha user selected.
  */
@@ -253,7 +255,8 @@ void OptionsState::render() {
     }
 }
 
-/** Build options function.
+/**
+ * Build options function.
  * This function builds the text of all options and sub options of the menu
  * 'Options' and update the attributes that represent these options.
  */
@@ -301,7 +304,8 @@ void OptionsState::build_options() {
                                                  WHITE));
 }
 
-/** Get the option on a sub menu.
+/**
+ * Get the option on a sub menu.
  * This function identifies which sub menu and option the user selected.
  *
  * @param option an integer argument that represents the selected option of the
@@ -330,7 +334,8 @@ int OptionsState::get_current_sub_option(int option) {
     }
 }
 
-/** Process an input of the user.
+/**
+ * Process an input of the user.
  * This function maps the buttons that are used on the menu 'Option' according
  * to constants of the InputManager class.
  */
@@ -353,12 +358,14 @@ void OptionsState::process_input() {
     }
 }
 
-/** Pause function.
+/**
+ * Pause function.
  * Nothing to do.
  */
 void OptionsState::pause() {}
 
-/** Resume function.
+/**
+ * Resume function.
  * Nothing to do.
  */
 void OptionsState::resume() {}

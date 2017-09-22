@@ -1,14 +1,12 @@
-/*
- *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
  *
- *This work is licensed under the terms of the MIT license.
- *For a copy, see <https://opensource.org/licenses/MIT>.
- *
- *This file contains implementation of the methods of the class
- *JoystickConfigState.
- *
- *This file renders images of options 'JOYSTICK' and 'KEYBOARD' of the menu
- *'Options' and controls the behavior of the joystick test mode functionality.
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file JoystickConfigState.cpp
+ * This file renders images of options 'JOYSTICK' and 'KEYBOARD' of the menu
+ * 'Options' and controls the behavior of the joystick test mode functionality.
  */
 #include "SDL_mixer.h"
 
@@ -41,7 +39,8 @@
 #define LIGHT_GREEN { 181, 201, 60, 1 }
 #define BLUE { 0, 108, 166, 1 }
 
-/** Constructor.
+/**
+ * Constructor.
  * This constructor builds sprites to render the option 'JOYSTICK' located on
  * the menu 'Options' of the game.
  *
@@ -160,7 +159,8 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
         InputManager::MENU_MODE);
 }
 
-/** Function that updates sprites on joystick test mode.
+/**
+ * Function that updates sprites on joystick test mode.
  * This function makes sprites change color accoding to the button pressed by
  * the user on the joystick test mode located at the menu
  * "Options->Joystick->Test".
@@ -210,7 +210,8 @@ void JoystickConfigState::update(float delta) {
     update_array(delta);
 }
 
-/** Function that renders keyboard or joystick help images.
+/**
+ * Function that renders keyboard or joystick help images.
  * This function renders keyboard or joystick help images if user select one of
  * the options: 'keyboard' and 'joystick'; located at the menu 'Options'.
  * Besides that, it will render buttons on the joystick test mode.
@@ -239,12 +240,14 @@ void JoystickConfigState::render() {
     }
 }
 
-/** Pause function.
+/**
+ * Pause function.
  * Nothing to do.
  */
 void JoystickConfigState::pause() {}
 
-/** Resume function.
+/**
+ * Resume function.
  * Nothing to do.
  */
 void JoystickConfigState::resume() {}
