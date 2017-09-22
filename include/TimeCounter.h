@@ -1,13 +1,12 @@
-/*
- *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
  *
- *This work is licensed under the terms of the MIT license.
- *For a copy, see <https://opensource.org/licenses/MIT>.
- *
- *Definitions of attributes and methods.
- *
- *This file contains the definitions of all methods and attributes of the class
- *TimeCounter.
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file TimeCounter.h
+ * This file contains the definitions of all methods and attributes of the class
+ * TimeCounter.
  */
 #ifndef INCLUDE_TIMECOUNTER_H_
 #define INCLUDE_TIMECOUNTER_H_
@@ -23,18 +22,21 @@ using std::string;
 
 class TimeCounter : public GameObject {
  public:
-    /** Constructor.
+    /**
+     * Constructor.
      * This constructor builds sprites and texts to indicate the remaining time
      * in a battle.
      */
     TimeCounter();
 
-    /** Destructor.
+    /**
+     * Destructor.
      * Nothing to do.
      */
     ~TimeCounter();
 
-    /** Function that updates the time showed.
+    /**
+     * Function that updates the time showed.
      * This function makes sprites variate and texts accoding to the remaining
      * time.
      *
@@ -42,27 +44,31 @@ class TimeCounter : public GameObject {
      */
     void update(float delta);
 
-    /** Function that renders a the time.
+    /**
+     * Function that renders a the time.
      * This function renders the text that represents the remaining
      * time of a battle.
      */
     void render();
 
-    /** Function get state dead.
+    /**
+     * Function get state dead.
      * This function returns the state dead.
      *
      * @return a boolean default value.
      */
     bool is_dead();
 
-    /** Function get end of battle.
+    /**
+     * Function get end of battle.
      * This function indicates if a battle has finished or not.
      *
      * @return a boolean value accoding to the remaining time.
      */
     bool is_over();
 
-    /** Function notify collision.
+    /**
+     * Function notify collision.
      * Nothing to do.
      *
      * @param GameObject a pointer to a GameObject.
@@ -77,7 +83,8 @@ class TimeCounter : public GameObject {
     Text  *text;
     float  remaining_seconds;
 
-    /** Function that returns remaining time.
+    /**
+     * Function that returns remaining time.
      * This function returns a string representation of the remaining time
      * of a battle.
      *

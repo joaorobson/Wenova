@@ -1,13 +1,12 @@
-/*
- *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
  *
- *This work is licensed under the terms of the MIT license.
- *For a copy, see <https://opensource.org/licenses/MIT>.
- *
- *Implementation of methods.
- *
- *This file contains the definitions of the methods and attributes of the class
- *JoystickConfigState.
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file JoystickConfigState.h
+ * This file contains the definitions of the methods and attributes of the class
+ * JoystickConfigState.
  */
 #ifndef INCLUDE_JOYSTICKCONFIGSTATE_H_
 #define INCLUDE_JOYSTICKCONFIGSTATE_H_
@@ -27,39 +26,44 @@ class JoystickConfigState : public State{
     Sound blocked, selected, changed;
 
  public:
-	 /** Constructor.
-		* This constructor builds sprites to render the option 'JOYSTICK' located on
-		* the menu 'Options' of the game.
-		*
-		* @param joystick_id and integer argument that represents the id of one of
-		* the four joysticks that can be pluged.
-		* @param ckeyboard a boolean argument that indicates if a keyboard is
-		* connected.
-		*/
+   /**
+    * Constructor.
+    * This constructor builds sprites to render the option 'JOYSTICK' located on
+    * the menu 'Options' of the game.
+    *
+    * @param joystick_id and integer argument that represents the id of one of
+    * the four joysticks that can be pluged.
+    * @param ckeyboard a boolean argument that indicates if a keyboard is
+    * connected.
+    */
     explicit JoystickConfigState(int joystick_id, bool ckeyboard = false);
 
-		/** Function that updates sprites on joystick test mode.
-		 * This function makes sprites change color accoding to the button pressed by
-		 * the user on the joystick test mode located at the menu
-		 * "Options->Joystick->Test".
-		 *
-		 * @param delta a float variation to update joystick state.
-		 */
+    /**
+     * Function that updates sprites on joystick test mode.
+     * This function makes sprites change color accoding to the button pressed by
+     * the user on the joystick test mode located at the menu
+     * "Options->Joystick->Test".
+     *
+     * @param delta a float variation to update joystick state.
+     */
     void update(float delta);
-		/** Function that renders keyboard or joystick help images.
-		 * This function renders keyboard or joystick help images if user select one of
-		 * the options: 'keyboard' and 'joystick'; located at the menu 'Options'.
-		 * Besides that, it will render buttons on the joystick test mode.
-		 */
+    /**
+     * Function that renders keyboard or joystick help images.
+     * This function renders keyboard or joystick help images if user select one of
+     * the options: 'keyboard' and 'joystick'; located at the menu 'Options'.
+     * Besides that, it will render buttons on the joystick test mode.
+     */
     void render();
 
-		/** Pause function.
-		 * Nothing to do.
-		 */
+    /**
+     * Pause function.
+     * Nothing to do.
+     */
     void pause();
-		/** Resume function.
-		 * Nothing to do.
-		 */
+    /**
+     * Resume function.
+     * Nothing to do.
+     */
     void resume();
 };
 

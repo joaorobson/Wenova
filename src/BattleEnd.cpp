@@ -1,13 +1,11 @@
-/*
- *Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
  *
- *This work is licensed under the terms of the MIT license.
- *For a copy, see <https://opensource.org/licenses/MIT>.
- *
- *This file contains implementation of the methods of the class
- *BattleEnd.
- *
- *This file renders images at the end of a battle indicating the team that won.
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file BattleEnd.cpp
+ * This file renders images at the end of a battle indicating the team that won.
  */
 #include "BattleEnd.h"
 #include "InputManager.h"
@@ -16,7 +14,8 @@ using std::to_string;
 
 #define WHITE { 255, 255, 255, 255 }
 
-/** Constructor.
+/**
+ * Constructor.
  * This constructor builds sprites and texts to indicates the team that won
  * the match redering an image at the end of the battle.
  *
@@ -45,7 +44,8 @@ BattleEnd::BattleEnd(int id_winner) {
     quitRequested = false;
 }
 
-/** Function that updates sprite of the end of a Battle.
+/**
+ * Function that updates sprite of the end of a Battle.
  * This function makes sprites variate accoding to the input user state.
  *
  * @param delta a float variation to update the sprite that is rendered at the
@@ -80,7 +80,8 @@ void BattleEnd::update(float delta) {
     }
 }
 
-/** Function that renders sprite and texts.
+/**
+ * Function that renders sprite and texts.
  * This function renders sprite and texts at right position when a Battle is
  * finished.
  */
@@ -90,7 +91,8 @@ void BattleEnd::render() {
     back_txt->render();
 }
 
-/** Function get state dead.
+/**
+ * Function get state dead.
  * This function returns the state dead.
  *
  * @return a boolean default value.
@@ -99,7 +101,8 @@ bool BattleEnd::is_dead() {
     return false;
 }
 
-/** Function get quit request.
+/**
+ * Function get quit request.
  * This function returns true when a quit request is open by the user.
  *
  * @return a boolean value that represents the the quit request of the user.
@@ -108,7 +111,8 @@ bool BattleEnd::quit_requested() {
     return quitRequested;
 }
 
-/** Function notify collision.
+/**
+ * Function notify collision.
  * Nothing to do.
  *
  * @param GameObject a pointer to a GameObject.
