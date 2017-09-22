@@ -160,6 +160,7 @@ void Sprite::set_frame_count(int cframe_count) {
   frame_count = cframe_count;
 }
 
+
 /**
 * Frame time setter.
 * Sets the current time of a frame.
@@ -242,6 +243,7 @@ void Sprite::set_scale_x(float scale) {
 * @param scale stores the value that will be saved and updated in the
 * scale_y.
 */
+
 void Sprite::set_scale_y(float scale) {
   scale_y = scale;
 }

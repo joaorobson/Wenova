@@ -21,6 +21,7 @@
 
 using std::min;
 
+
 /**
 * The constructor.
 * Initialize the partner fighter and his respective skin, besides the box
@@ -383,7 +384,7 @@ void Blood::check_jump(bool change) {
   }
 }
 
-/**
+inc/**
 * Check fall action method.
 * Check if fighter has speed in relation to the y axis. If so, and if there is
 * change in the Fighter state, change his temporary state to "Falling".
