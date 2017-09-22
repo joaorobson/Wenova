@@ -52,3 +52,4 @@ bool Sound::is_open() {
 string Sound::get_file() {
     return file;
 }
+

@@ -28,7 +28,6 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     if(is_platform) {
         tags["platform"] = true;
     }
-}
 
 //Destroy the platform
 Floor::~Floor() {}
@@ -52,4 +51,3 @@ void Floor::notify_collision(GameObject &) {}
 //Check the ID of platform
 int Floor::get_id() {
     return id;
-}

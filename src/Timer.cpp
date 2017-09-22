@@ -34,3 +34,7 @@ float Timer::get() {
 void Timer::set(float ctime) {
     time = ctime;
 }
+
+void Timer::set(float ctime){
+	time = ctime;
+}

@@ -31,6 +31,7 @@ void Music::play(int times) {
     }
 }
 
+<<<<<<< HEAD
 //Stop the music
 void Music::stop() {
     int mix_fade_out_music = Mix_FadeOutMusic(0);
@@ -43,6 +44,18 @@ void Music::stop() {
 //Open the object music
 void Music::open(string file) {
     music = Resources::get_music(RES_FOLDER + file);
+=======
+void Music::stop(){
+	int mix_fade_out_music = Mix_FadeOutMusic(0);
+	if(!mix_fade_out_music){
+		printf("Stop music: %s\n", Mix_GetError());
+		exit(-1);
+	}
+}
+
+void Music::open(string file){
+	music = Resources::get_music(RES_FOLDER + file);
+>>>>>>> origin/devel
 }
 
 //Check if the music is open
