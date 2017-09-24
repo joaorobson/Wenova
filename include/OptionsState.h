@@ -29,14 +29,18 @@ using std::map;
 
 class OptionsState : public State {
  private:
-    Sprite background;
-    Text *title;
-    Sound blocked, selected, changed;
-    int current_option;
-    bool on_submenu;
-    map<string, vector<Text *> > sub_options;
-    vector<Text *> options;
-    vector<int> current_sub_option;
+    Sprite background;  /**< Background image of menu "Options". */
+    Text *title;  /**< Text title of menu "Options". */
+    Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
+    Sound selected;  /**< Select sound activated after select button pressed. */
+    Sound changed;  /**< Change sound activated after cursor button pressed. */
+    int current_option;  /**< Number of current option of main Menu. */
+    bool on_submenu;  /**< Indicates if user is on submenu of menu "Options". */
+    map<string, vector<Text *> > sub_options;  /**< Map of sub options of the */
+                                               /**< menu "Options". */
+    vector<Text *> options;  /**< Text of all options of the menu "Options". */
+    vector<int> current_sub_option;  /**< Vector with current options */
+                                     /**< of submenu. */
 
     /**
      * Get the option on a sub menu.

@@ -19,11 +19,24 @@
 
 class JoystickConfigState : public State{
  private:
-    Sprite background, joystick_help, back_btn, test_btn, keyboard;
-    Text *back_txt, *test_txt, *press, *select_text, *and_text, *start_text,
-        *to_go_back;
-    bool on_test, is_keyboard;
-    Sound blocked, selected, changed;
+    Sprite background;  /**< Background image of menu "Options". */
+    Sprite joystick_help;  /**< Image joystick help of menu "Options". */
+    Sprite back_btn;  /**< Image of button "B" to get out of the test mode. */
+    Sprite test_btn;  /**< Image of button "A" to enter on test mode. */
+    Sprite keyboard;  /**< Image keyboard help of menu "Options". */
+    Text *back_txt;  /**< Text "BACK" to close joystick help image. */
+    Text *test_txt;  /**< Text "TEST" to enter on test mode. */
+    Text *press;  /**< Text "PRESS" on test mode. */
+    Text *select_text;  /**< Text "SELECT" on test mode. */
+    Text *and_text;  /**< Text "AND" on test mode. */
+    Text *start_text;  /**< Text "START" on test mode. */
+    Text *to_go_back;  /**< Text "TO GO BACK" on test mode. */
+    bool on_test;  /**< Indicates if the user has entered at mode test on */
+                   /**< menu "Options" using joystick. */
+    bool is_keyboard;  /**< Indicates if user is using a keyboard. */
+    Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
+    Sound selected;  /**< Select sound activated after select button pressed. */
+    Sound changed;  /**< Change sound activated after cursor button pressed. */
 
  public:
    /**
