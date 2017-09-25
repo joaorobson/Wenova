@@ -24,39 +24,95 @@ using std::vector;
 
 class Fighter : public GameObject {
  protected:
-    enum FighterState { IDLE, RUNNING, JUMPING, FALLING, CROUCH,
-                        IDLE_ATK_NEUTRAL_1, IDLE_ATK_NEUTRAL_2,
-                        IDLE_ATK_NEUTRAL_3, IDLE_ATK_FRONT, IDLE_ATK_UP,
-                        IDLE_ATK_DOWN, CROUCH_ATK, JUMP_ATK_UP,
-                        JUMP_ATK_NEUTRAL, JUMP_ATK_DOWN, JUMP_ATK_DOWN_FALLLOOP,
-                        JUMP_ATK_DOWN_DMG, DEFENDING, STUNNED, SPECIAL_1,
-                        SPECIAL_1_1, SPECIAL_1_2, SPECIAL_2, DYING, LAST };
-    enum Button { JUMP_BUTTON, UP_BUTTON, DOWN_BUTTON, LEFT_BUTTON,
-                  RIGHT_BUTTON, ATTACK_BUTTON, SPECIAL1_BUTTON, SPECIAL2_BUTTON,
-                  BLOCK_BUTTON, ULTIMATE_BUTTON };
-    enum Orientation { LEFT, RIGHT };
-    enum AttackDirection { ATK_DOWN = 1, ATK_LEFT = 2, ATK_UP = 4,
-                           ATK_RIGHT = 8 };
-    vector<Sprite>sprite;
-    vector<Sound>sound;
-    Sound hit_sounds[4];
-    FighterState state, temporary_state;
-    Orientation orientation;
-    Vector speed;
-    Vector acceleration;
-    Sound land_sound, ultimate_sound;
-    Vector crouching_size, not_crouching_size;
-    float vertical_speed;
-    bool on_floor, grab;
-    int last_collided_floor;
-    float max_speed;
-    float remaining_life;
-    int id;
-    int combo;
-    int n_sprite_start;
-    float attack_damage;
-    int attack_mask;
-    Fighter *partner;
+    enum FighterState { IDLE,  /**< enum value of a idle character. */
+                        RUNNING,  /**< enum value of a character running. */
+                        JUMPING,  /**< enum value of a character jumping. */
+                        FALLING,  /**< enum value of a character falling. */
+                        CROUCH,  /**< enum value of a character crouching. */
+                        IDLE_ATK_NEUTRAL_1,  /**< enum value of a idle attack */
+                                             /**< . */
+                        IDLE_ATK_NEUTRAL_2,  /**< enum value of a idle attack */
+                                             /**< . */
+                        IDLE_ATK_NEUTRAL_3,  /**< enum value of a idle attack */
+                                             /**< . */
+                        IDLE_ATK_FRONT,  /**< enum value of a idle attack. */
+                        IDLE_ATK_UP,  /**< enum value of a idle attack. */
+                        IDLE_ATK_DOWN,  /**< enum value of a idle attack. */
+                        CROUCH_ATK,  /**< enum value of a crouching attack. */
+                        JUMP_ATK_UP,  /**< enum value of a jumping attack up. */
+                        JUMP_ATK_NEUTRAL, /**< enum value of a jumping attack */
+                                          /**< . */
+                        JUMP_ATK_DOWN,  /**< enum value of a jumping attack */
+                                        /**< down. */
+                        JUMP_ATK_DOWN_FALLLOOP,  /**< enum value of a jumping */
+                                                 /**< attack down. */
+                        JUMP_ATK_DOWN_DMG,  /**< enum value of a jumping */
+                                            /**< attack down with damage. */
+                        DEFENDING,  /**< enum value of a character defending. */
+                        STUNNED,  /**< enum value of a character stunned. */
+                        SPECIAL_1, /**< enum value of a special move. */
+                        SPECIAL_1_1,  /**< enum value of a special move. */
+                        SPECIAL_1_2,  /**< enum value of a special move. */
+                        SPECIAL_2,  /**< enum value of a special move. */
+                        DYING,  /**< enum value of a character dying. */
+                        LAST  /**< enum value for the last character standing */
+                              /**< . */
+                       };
+    enum Button { JUMP_BUTTON,  /**< enum value for the jump button. */
+                  UP_BUTTON,  /**< enum value for the up button. */
+                  DOWN_BUTTON,  /**< enum value for the down button. */
+                  LEFT_BUTTON,  /**< enum value for the left button. */
+                  RIGHT_BUTTON,  /**< enum value for the right button. */
+                  ATTACK_BUTTON,  /**< enum value for the attack button. */
+                  SPECIAL1_BUTTON,  /**< enum value for the special attack */
+                                    /**< button. */
+                  SPECIAL2_BUTTON,  /**< enum value for the special attack */
+                                    /**< button. */
+                  BLOCK_BUTTON,  /**< enum value for the block button. */
+                  ULTIMATE_BUTTON  /**< enum value for the ultimate attack */
+                                   /**<  button. */
+                };
+    enum Orientation { LEFT, RIGHT };  /**< enum values for orientation left */
+                                       /**< and right. */
+    enum AttackDirection { ATK_DOWN = 1,  /**< enum value to attack down */
+                                          /**< orientation. */
+                           ATK_LEFT = 2,  /**< enum value to attack left */
+                                          /**< orientation. */
+                           ATK_UP = 4,  /**< enum value to attack up */
+                                        /**< orientation. */
+                           ATK_RIGHT = 8  /**< enum value to attack right */
+                                          /**< orientation. */
+                         };
+    vector<Sprite>sprite;  /**< Vector of sprites to chose from. */
+    vector<Sound>sound;  /**< Vector of sounds to be played. */
+    Sound hit_sounds[4];  /**< Vector o sounds played when the fighter is */
+                          /**< hit. */
+    FighterState state, temporary_state;  /**< Variables that define the */
+                                          /**< default state of a fighter */
+                                          /**< and it's temporary state. */
+    Orientation orientation;  /**< Indicates the fight orientation on the */
+                              /**< screen. Faced left or right. */
+    Vector speed;  /**< Value of the speed a fighter has. */
+    Vector acceleration;  /**< Value of the acceleration a fighter has. */
+    Sound land_sound, ultimate_sound; /**< Sounds for when the fighter hits */
+                                      /**< the ground and uses a special. */
+    Vector crouching_size, not_crouching_size; /**< Vector that 'calculates' */
+                                               /**< the fighter size when in */
+                                               /**< both situations. */
+    float vertical_speed;  /**< The vertical speed of the fighter on screen. */
+    bool on_floor, grab;  /**< Boolean that indicates if the fighter is on */
+                          /**< floor and if he is grabbed. */
+    int last_collided_floor;  /**<  Indicates the position where the fighter */
+                              /**< last touched the floor. */
+    float max_speed;  /**< Indicates the fighter max speed on screen. */
+    float remaining_life;  /**< Indicates the fighter remaining life. */
+    int id;  /**< Indicates the fight id. */
+    int combo;  /**< Indicates whether the fighter has achieved a combo. */
+    int n_sprite_start;  /**< Indicates the initial sprite for the fighter. */
+    float attack_damage;  /**< Indicates the amount of damage the fighter */
+                          /**< does. */
+    int attack_mask;  /**< Reference to the position of the fighter's mask. */
+    Fighter *partner;  /**< Indicates the existance of a partner. */
 
     /**
      * test_limits method.

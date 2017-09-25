@@ -20,17 +20,37 @@
 
 class MenuState : public State {
  private:
-    Sprite background, green_ship, red_ship, title, planet;
-    Text *start_option;
-    Sound blocked, selected, changed;
-    Music music;
-    Timer text_timer;
-    int current_option;
-    bool start_pressed, show_text;
-    vector<Text *>options;
+    Sprite background,  /**< Sprite of the background. */
+           green_ship,  /**< Sprite of the green ship. */
+           red_ship,  /**<  Sprite of the red ship. */
+           title,  /**< Sprite of the title. */
+           planet;  /**< Sprite of the planet. */
+    Text *start_option;  /**< Pointer to the start option. */
+    Sound blocked,  /**< Sounds is blocked. */
+          selected,  /**< Sound is selected. */
+          changed;  /**< Soud is changed. */
+    Music music;  /**<  Sound effect to be played. */
+    Timer text_timer;  /**< Text of the time that is displayed. */
+    int current_option;  /**< Current selected option by its integer. */
+    bool start_pressed,  /**< Bool value that indicates if the start was */
+                        /**< pressed. */
+         show_text;  /**< Bool value that indicates whether to show text or */
+                      /**< not. */
+    vector<Text *>options;  /**<Vector of text options. */
 
-    enum Button { A, B, Y, LEFT, RIGHT, SELECT, START, LB, RT };
-    bool pressed[15], is_holding[15];
+    enum Button { A,  /**< enum value of the A button. */
+                  B,  /**< enum value of the B button. */
+                  Y,  /**< enum value of the Y button. */
+                  LEFT,  /**< enum value of the LEFT button cursor. */
+                  RIGHT,  /**< enum value of the RIGHT button cursor. */
+                  SELECT,  /**< enum value of the SELECT button. */
+                  START,  /**< enum value of the START button. */
+                  LB,  /**< enum value of the LB button. */
+                  RT   /**<enum value of the RT button. */
+                };
+    bool pressed[15],  /**< Bool that indicates if a button is pressed. */
+         is_holding[15];  /**< Bool that indicates if the button is held */
+                           /**< pressed. */
 
  public:
     /**
