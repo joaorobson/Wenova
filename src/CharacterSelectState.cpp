@@ -123,17 +123,17 @@ void CharacterSelectState::update(float delta) {
                 int rand_col = 0, rand_row = 0, rand_skin = 0, char_sel = 0;
 
                 do {
-                    // Needs better strategy
-                    unsigned int seed1 = 1;
-                    unsigned int seed2 = 2;
+                    unsigned int seed1 = clock();
+                    unsigned int seed2 = clock();
 
                     rand_col = rand_r(&seed1) % N_COLS;
                     rand_row = rand_r(&seed2) % N_ROWS;
+
                     char_sel = rand_row * N_COLS + rand_col;
                 } while (not chars[char_sel].is_enabled());
 
                 do {
-                    unsigned int seed = 3;
+                    unsigned int seed = clock();
 
                     rand_skin = rand_r(&seed) % N_SKINS;
                 } while (not chars[char_sel].is_skin_available(rand_skin));
