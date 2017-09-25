@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+
+/**
+ * @file EditState.h
+ * This file contains the definition of the EditState.h class methods.
+ */
 #ifndef EDITSTATE_H
 #define EDITSTATE_H
 
@@ -16,25 +26,53 @@
 using std::vector;
 using std::pair;
 
-class EditState : public State{
+class EditState : public State {
 private:
-	vector<pair<Sprite, Vector> > backgrounds;
-	Fighter * test_fighter;
-	string stage;
-	Music music;
-	Sound sound;
+    vector<pair<Sprite, Vector> >backgrounds;
+    Fighter *test_fighter;
+    string stage;
+    Music music;
+    Sound sound;
 
-	void read_level_design();
-	void update_level_design();
+    void read_level_design();
+    void update_level_design();
 
 public:
-	EditState(string stage);
+    /**
+     * The constructor.
+     * Initialize the EditState object.
+     *
+     * @param cstage is a name.
+     */
+    EditState(string stage);
 
-	void update(float delta);
-	void render();
+    /**
+     * update method.
+     * Edits some level design characteristics.
+     * This method allows resetting the position of the fighter, creating floors
+     * or stages and saving them.
+     *
+     * @param delta is a number of the type float used to update the background.
+     */
+    void update(float delta);
 
-	void pause();
-	void resume();
+    /**
+     * render method.
+     * renders the background given a x and y positions.
+     */
+    void render();
+
+    /**
+     * pause method.
+     * Not implemented.
+     */
+    void pause();
+
+    /**
+     * resume method.
+     * Not implemented.
+     */
+    void resume();
 };
 
-#endif
+#endif // ifndef EDITSTATE_H
