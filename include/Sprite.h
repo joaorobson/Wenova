@@ -12,19 +12,19 @@ using std::shared_ptr;
 
 class Sprite{
  private:
-  shared_ptr<SDL_Texture> texture = nullptr;  ///< Sprite texture.
-  int width;  ///< Sprite width. Unit: px.
-  int height;  ///< Sprite height. Unit: px.
-  int current_frame;  ///< Current frame exhibited from all sprites frames.
-  float time_elapsed;  ///< Counted time over Sprite exhibition.
-  float frame_time;  ///< Time of a frame ocurrence.
-  int frame_count;  ///< Number of the frame.
-  int rows;  ///< Number of rows filled by a sprite.
-  int columns;  ///< Number of columns filled by a sprite.
-  SDL_Rect clip_rect;  ///< Sprites frames positioning box.
-  float scale_x;  ///< Horizontal scale.
-  float scale_y;  ///< Vertical scale.
-  bool finished;  ///< Check if the sprite use is no longer required.
+  shared_ptr<SDL_Texture> texture = nullptr;  /**< Sprite texture. */
+  int width;  /**< Sprite width. Unit: px. */
+  int height;  /**< Sprite height. Unit: px. */
+  int current_frame;  /**< Current frame exhibited from all sprites frames. */
+  float time_elapsed;  /**< Counted time over Sprite exhibition. */
+  float frame_time;  /**< Time of a frame ocurrence. */
+  int frame_count;  /**< Number of the frame. */
+  int rows;  /**< Number of rows filled by a sprite. */
+  int columns;  /**< Number of columns filled by a sprite. */
+  SDL_Rect clip_rect;  /**< Sprites frames positioning box. */
+  float scale_x;  /**< Horizontal scale. */
+  float scale_y;  /**< Vertical scale. */
+  bool finished;  /**< Check if the sprite use is no longer required. */
 
  public:
   Sprite();
