@@ -147,11 +147,6 @@ void Text::remake_texture() {
   clip_rect.h = h;
 }
 
-<<<<<<< HEAD
-void Text::open(string file, int size){
-	font = Resources::get_font(RES_FOLDER + file, size);
-=======
 void Text::open(string file, int size) {
   font = Resources::get_font(RES_FOLDER + file, size);
->>>>>>> origin/devel
 }

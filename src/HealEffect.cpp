@@ -30,3 +30,4 @@ void HealEffect::update(float delta) {
 //Check if the Heal Effect is dead
 bool HealEffect::is_dead() {
     return sprite.is_finished();
+}
