@@ -75,13 +75,16 @@ class TimeCounter : public GameObject {
      */
     void notify_collision(GameObject & object);
 
-    static const int total_time = 100;
+    static const int total_time = 100;  /**< Const int number with duration */
+                                        /**< of a battle. */
 
  private:
-    Sprite bg;
-    Timer  timer;
-    Text  *text;
-    float  remaining_seconds;
+    Sprite bg;  /**< Background image of the clock of a battle. */
+    Timer timer;  /**< Timer of a battle with countdown. */
+    Text *text;  /**< Text that shows the remaining time on screen during a */
+                 /**< battle. */
+    float remaining_seconds;  /**< Float number with the remaining time in */
+                              /**< seconds. */
 
     /**
      * Function that returns remaining time.
