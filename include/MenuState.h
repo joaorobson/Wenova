@@ -19,7 +19,7 @@
 #include "Music.h"
 
 class MenuState : public State {
-private:
+ private:
     Sprite background, green_ship, red_ship, title, planet;
     Text *start_option;
     Sound blocked, selected, changed;
@@ -32,7 +32,7 @@ private:
     enum Button { A, B, Y, LEFT, RIGHT, SELECT, START, LB, RT };
     bool pressed[15], is_holding[15];
 
-public:
+ public:
     /**
      * The constructor.
      * Initialize the game menu.
@@ -75,4 +75,4 @@ public:
     void process_input();
 };
 
-#endif // ifndef MENU_STATE_H
+#endif  // ifndef MENU_STATE_H

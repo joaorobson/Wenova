@@ -23,11 +23,20 @@
 using std::vector;
 
 class Fighter : public GameObject {
-protected:
-    enum FighterState { IDLE, RUNNING, JUMPING, FALLING, CROUCH, IDLE_ATK_NEUTRAL_1, IDLE_ATK_NEUTRAL_2, IDLE_ATK_NEUTRAL_3, IDLE_ATK_FRONT, IDLE_ATK_UP, IDLE_ATK_DOWN, CROUCH_ATK, JUMP_ATK_UP, JUMP_ATK_NEUTRAL, JUMP_ATK_DOWN, JUMP_ATK_DOWN_FALLLOOP, JUMP_ATK_DOWN_DMG, DEFENDING, STUNNED, SPECIAL_1, SPECIAL_1_1, SPECIAL_1_2, SPECIAL_2, DYING, LAST };
-    enum Button { JUMP_BUTTON, UP_BUTTON, DOWN_BUTTON, LEFT_BUTTON, RIGHT_BUTTON, ATTACK_BUTTON, SPECIAL1_BUTTON, SPECIAL2_BUTTON, BLOCK_BUTTON, ULTIMATE_BUTTON };
+ protected:
+    enum FighterState { IDLE, RUNNING, JUMPING, FALLING, CROUCH,
+                        IDLE_ATK_NEUTRAL_1, IDLE_ATK_NEUTRAL_2,
+                        IDLE_ATK_NEUTRAL_3, IDLE_ATK_FRONT, IDLE_ATK_UP,
+                        IDLE_ATK_DOWN, CROUCH_ATK, JUMP_ATK_UP,
+                        JUMP_ATK_NEUTRAL, JUMP_ATK_DOWN, JUMP_ATK_DOWN_FALLLOOP,
+                        JUMP_ATK_DOWN_DMG, DEFENDING, STUNNED, SPECIAL_1,
+                        SPECIAL_1_1, SPECIAL_1_2, SPECIAL_2, DYING, LAST };
+    enum Button { JUMP_BUTTON, UP_BUTTON, DOWN_BUTTON, LEFT_BUTTON,
+                  RIGHT_BUTTON, ATTACK_BUTTON, SPECIAL1_BUTTON, SPECIAL2_BUTTON,
+                  BLOCK_BUTTON, ULTIMATE_BUTTON };
     enum Orientation { LEFT, RIGHT };
-    enum AttackDirection { ATK_DOWN = 1, ATK_LEFT = 2, ATK_UP = 4, ATK_RIGHT = 8 };
+    enum AttackDirection { ATK_DOWN = 1, ATK_LEFT = 2, ATK_UP = 4,
+                           ATK_RIGHT = 8 };
     vector<Sprite>sprite;
     vector<Sound>sound;
     Sound hit_sounds[4];
@@ -93,7 +102,7 @@ protected:
 
     virtual void    update_machine_state(float delta) = 0;
 
-public:
+ public:
     /**
      * The constructor.
      * Initialize the fighter character.
@@ -266,4 +275,4 @@ public:
     static const int MAX_SPECIAL = 250;
 };
 
-#endif // ifndef FIGHTER_H
+#endif  // ifndef FIGHTER_H

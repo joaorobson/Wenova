@@ -27,7 +27,7 @@ using std::vector;
 using std::pair;
 
 class EditState : public State {
-private:
+ private:
     vector<pair<Sprite, Vector> >backgrounds;
     Fighter *test_fighter;
     string stage;
@@ -37,7 +37,7 @@ private:
     void read_level_design();
     void update_level_design();
 
-public:
+ public:
     /**
      * The constructor.
      * Initialize the EditState object.
@@ -75,4 +75,4 @@ public:
     void resume();
 };
 
-#endif // ifndef EDITSTATE_H
+#endif  // ifndef EDITSTATE_H

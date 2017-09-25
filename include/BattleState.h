@@ -31,7 +31,7 @@ using std::vector;
 using std::pair;
 
 class BattleState : public State {
-private:
+ private:
     vector<pair<Sprite, Vector> >backgrounds;
     Fighter *players[N_PLAYERS];
     Music music;
@@ -42,7 +42,7 @@ private:
     TimeCounter *time_counter;
     BattleEnd *battleEnd;
 
-public:
+ public:
     /**
      * The constructor.
      * Initialize the battle stage and the character locations.
@@ -88,4 +88,4 @@ public:
     void resume();
 };
 
-#endif // ifndef BATTLESTATE_H
+#endif  // ifndef BATTLESTATE_H
