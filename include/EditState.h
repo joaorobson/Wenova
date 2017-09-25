@@ -28,11 +28,13 @@ using std::pair;
 
 class EditState : public State {
  private:
-    vector<pair<Sprite, Vector> >backgrounds;
-    Fighter *test_fighter;
-    string stage;
-    Music music;
-    Sound sound;
+    vector<pair<Sprite, Vector> >backgrounds;  /**< Vector with thebackground */
+                                               /**< sprites to be loaded. */
+    Fighter *test_fighter;  /**< Pointer of the class Fighter that tests */
+                            /**< the loading of a fighter. */
+    string stage;  /**< Name of the stage to be loaded from a file. */
+    Music music;  /**< Music to be loaded. */
+    Sound sound;  /**<  Sound effect to be played. */
 
     void read_level_design();
     void update_level_design();

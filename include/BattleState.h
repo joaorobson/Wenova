@@ -32,15 +32,18 @@ using std::pair;
 
 class BattleState : public State {
  private:
-    vector<pair<Sprite, Vector> >backgrounds;
-    Fighter *players[N_PLAYERS];
-    Music music;
-    Sound sound;
+    vector<pair<Sprite, Vector> >backgrounds;  /**< Vector with thebackground */
+                                               /**< sprites to be loaded. */
+    Fighter *players[N_PLAYERS];  /**< Vector of players to play the game. */
+    Music music;  /**< Music to be loaded in the Battlestate. */
+    Sound sound;  /**<  Sound effect to be played. */
     void read_level_design(string stage);
-    bool game_over;
-    int alive[5];
-    TimeCounter *time_counter;
-    BattleEnd *battleEnd;
+    bool game_over;  /**< Bool value that indicates if the game is over. */
+    int alive[5];  /**< Vector that shows how many lives the player has. */
+    TimeCounter *time_counter;  /**< Pointer of the class TimeCounter that */
+                                /**< counts the remaining time. */
+    BattleEnd *battleEnd;  /**< Pointer of the class BattleEnd that shows */
+                           /**<  when the battle is over. */
 
  public:
     /**
