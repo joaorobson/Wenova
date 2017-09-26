@@ -19,11 +19,15 @@
 
 class EditableFloor : public Floor {
  private:
-    enum FloorState { SELECTED, NOT_SELECTED };
-    Sprite normal_sprite, platform_sprite, selected_sprite;
-    FloorState state;
-    bool deleted;
-    bool selected;
+    enum FloorState { SELECTED,  /**< enum value of Selected. */
+                      NOT_SELECTED  /**< enum value of not selectec. */
+                    };
+    Sprite normal_sprite,  /**<  Represents the default sprite. */
+           platform_sprite,  /**< Represents the plataform sprite. */
+           selected_sprite;  /**< Represents the selected sprite. */
+    FloorState state;  /**< Indicates the state of the class object. */
+    bool deleted;  /**< Bool that indicates if deleted. */
+    bool selected;  /**< Bool that indicats if selected. */
 
  public:
     /**

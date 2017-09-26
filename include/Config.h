@@ -54,9 +54,10 @@ class Config {
     static void update_information(int cwidth, int cheight, int cfullscreen);
 
  private:
-    static int width;
-    static int height;
-    static int fullscreen;
+    static int width;  /**< Represents the width value of the screen. */
+    static int height;  /**< Represents the height value of the screen. */
+    static int fullscreen;  /**< Represents the fullscreen value of the */
+                            /**< screen. */
 };
 
 #endif  // INCLUDE_CONFIG_H_

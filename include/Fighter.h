@@ -83,7 +83,7 @@ class Fighter : public GameObject {
                            ATK_RIGHT = 8  /**< enum value to attack right */
                                           /**< orientation. */
                          };
-    vector<Sprite>sprite;  /**< Vector of sprites to chose from. */
+    vector<Sprite>sprite;  /**< Vector of sprites of the fighter. */
     vector<Sound>sound;  /**< Vector of sounds to be played. */
     Sound hit_sounds[4];  /**< Vector o sounds played when the fighter is */
                           /**< hit. */
