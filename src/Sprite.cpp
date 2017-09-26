@@ -72,10 +72,6 @@ Sprite::~Sprite() {
 *
 * @return the sprite width.
 */
-Sprite::~Sprite() {
-}
-
->>>>>>> bd20302... Folha de estilo: Aplicação 4
 int Sprite::get_width() {
   return width * scale_x;
 }
