@@ -55,21 +55,29 @@ BattleState::BattleState(string stage,
                                                ii(1147, 589.5),
                                                ii(1147, 679.5)
                                              };
-
+    /**
+     * If the condition is met, the character position is set one way. if not
+     * the default settins are used.
+     */
     if (stage == "1") {
         char_positions = { ii(177, 313),
                            ii(276, 510), ii(1128, 245), ii(954, 474)
     } else {
         char_positions = { ii(116, 227),
-                           ii(146, 394),
-                           ii(1036, 221),
-                           ii(1063, 382)
+                           ii(146, 394), ii(1036, 221), ii(1063, 382)
         };
 
+    /**
+     * Runs each iteration from 0 to the size of players_info -1.
+     */
     for (int i = 0; i < (int)players_info.size(); i++) {
         string char_name = players_info[i].first;
         string skin_name = players_info[i].second;
 
+        /**
+         * If the condition is met, Blood method is called, else Flesh method
+         * is called.
+         */
         if (char_name == "blood") {
             players[i] = new Blood(skin_name, char_positions[i].first,
                                    char_positions[i].second, i);
@@ -84,12 +92,19 @@ BattleState::BattleState(string stage,
     players[2]->set_partner(players[3]);
     players[3]->set_partner(players[2]);
 
+    /**
+     * Runs each iteration from N_PLAYERS-1 until bigger or equal to 0.
+     * Each iteration decreases de variable count.
+     */
     for (int i=N_PLAYERS-1; i >= 0; i--) {
         add_object(new FighterStats(players[i], i + 1, i > 1,
             hud_positions[i].first,
             hud_positions[i].second));
     }
 
+    /**
+     * Runs each iteration from 0 to the size of players_info -1.
+     */
     for (int i=N_PLAYERS-1; i >= 0; i--) {
         add_object(players[i]);
     }
@@ -118,11 +133,18 @@ BattleState::~BattleState() {}
 void BattleState::update(float delta) {
     InputManager * input_manager = InputManager::get_instance();
 
+    /**
+     * If quit_requested = true, then m_quit_requested = true.
+     */
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
     }
 
+    /**
+     * If joystick_button_press = true, the body is executed.
+     * The music stops playing and the menu is updated.
+     */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0)) {
         music.stop();
         Game::get_instance().push(new MenuState(true));
@@ -130,17 +152,34 @@ void BattleState::update(float delta) {
         return;
     }
 
+    /**
+     * Runs each iteration from 0 to the size of N_PLAYERS -1.
+     */
     for (int i = 0; i < N_PLAYERS; i++) {
+        /**
+         * If alive on a give index returns true, the body is executed.
+         */
         if (alive[i]) {
+            /**
+             * If players on a given index returns the text "dying", the
+             * variable alive on that index is set to false.
+             */
             if (players[i]->is("dying")) {
                 alive[i] = false;
             }
         }
     }
 
+    /**
+     * If is_over returns true and game_over equals false, the body is executed.
+     */
     if (time_counter->is_over() and not game_over) {
         game_over = true;
 
+        /**
+         * If the first condition is met, battleEnd is instanciated and passed as a
+         * parameter on add_object method. If not, the else body is run.
+         */
         if (alive[0] + alive[1] > alive[2] + alive[3]) {
             battleEnd = new BattleEnd(1);
             add_object(battleEnd);
@@ -149,19 +188,38 @@ void BattleState::update(float delta) {
             add_object(battleEnd);
         } else {
             int sum_life_team_1 = 0;
+            /**
+             * Runs each iteration from 0 to the size of players_info divided
+             * by 2.
+             */
             for (int i = 0; i < N_PLAYERS / 2; i++) {
+                /**
+                 * If condition is met, the remaining life of a player is added
+                 * to the sum_life_team_1 variable.
+                 */
                 if (alive[i]) {
                     sum_life_team_1 += players[i]->get_remaining_life();
                 }
             }
 
             int sum_life_team_2 = 0;
+                /**
+                 * Runs each iteration from N_PLAYERS divided by 2 until
+                 * N_PLAYERS -1.
+                 */
                 for (int i = N_PLAYERS / 2; i < N_PLAYERS; i++) {
+                    /**
+                     * If condition is met, the remaining life of a player is added
+                     * to the sum_life_team_1 variable.
+                     */
                     if (alive[i]) {
                         sum_life_team_2 += players[i]->get_remaining_life();
                     }
                 }
-
+            /**
+             * If the first condition is met, battleEnd is instanciated and passed as a
+             * parameter on add_object method. If not, the else body is run.
+             */
             if (sum_life_team_1 > sum_life_team_2) {
                 battleEnd = new BattleEnd(1);
                 add_object(battleEnd);
@@ -174,7 +232,11 @@ void BattleState::update(float delta) {
             }
         }
   }
-
+    /**
+     * If the condition is met, battleEnd is instanciated and passed as a
+     * parameter on add_object method. If not, the else body is run and the
+     * game over tag is added to a player.
+     */
     if (not alive[0] && not alive[1] && not alive[2] && not alive[3] &&
         not game_over) {
         game_over = true;
@@ -199,7 +261,10 @@ void BattleState::update(float delta) {
             }
         }
     }
-
+    /**
+     * If game_over is true and quit_requested is also true, the music stops,
+     * the sound stops and the menu is loaded again.
+     */
     if (game_over) {
         if (battleEnd->quit_requested()) {
             music.stop();
@@ -209,7 +274,9 @@ void BattleState::update(float delta) {
             return;
         }
     }
-
+    /**
+     * Updates the background list.
+     */
     for (auto & background : backgrounds) {
         background.first.update(delta);
     }
@@ -222,6 +289,9 @@ void BattleState::update(float delta) {
  * renders the background given a x and y positions.
  */
 void BattleState::render() {
+    /**
+    * Renders each background from the background list.
+    */
     for (auto & background : backgrounds) {
         background.first.render(background.second.x, background.second.y);
     }
@@ -251,6 +321,9 @@ void BattleState::read_level_design(string stage) {
     float x, y, width, crotation;
     int platform;
     fstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat");
+    /**
+     * If the condition is false, a message is displayed.
+     */
     if (not level_design.is_open()) {
         printf("Level design of stage %s can't be opened\n", stage.c_str());
         exit(-5);
@@ -259,13 +332,17 @@ void BattleState::read_level_design(string stage) {
     int n_backgrounds, n_sprites, speed, n_columns;
 
     std::getline(level_design, s);
-    for (auto & c : s) c -= 15;
+    for (auto & c : s) {
+      c -= 15;
+    }
     stringstream n_background_line(s);
     n_background_line >> n_backgrounds;
 
     for (int i = 0; i < n_backgrounds; ++i) {
         std::getline(level_design, s);
-        for (auto & c : s) c -= 15;
+        for (auto & c : s) {
+          c -= 15;
+        }
         stringstream backgrounds_line(s);
         backgrounds_line >> x >> y >> n_sprites >> speed >> n_columns;
         //printf("Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed, n_columns);
@@ -276,6 +353,9 @@ void BattleState::read_level_design(string stage) {
         backgrounds.push_back(std::make_pair(background_sprite, position));
     }
 
+    /**
+     * For as long as the condition is true, add_object is called.
+     */
     while (std::getline(level_design, s)) {
         for (auto & c : s) c -= 15;
         stringstream floors_line(s);
