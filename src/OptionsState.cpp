@@ -156,7 +156,7 @@ void OptionsState::update(float) {
         int prev_text_size = 1;
 
         if (i) {
-            prev_text_size = max(static_cast<int>(sub_options[options[i - 1]->
+            prev_text_size = std::max(static_cast<int>(sub_options[options[i - 1]->
                                  get_text()].size()), 1);
         }
         int prev_text_height = (TEXT_HEIGHT + TEXT_OFFSET * 2) * prev_text_size;
