@@ -106,10 +106,13 @@ void Sprite::open(string file) {
   texture = Resources::get_image(file);
 
   int query_texture = SDL_QueryTexture(texture.get(), nullptr, nullptr,
-  &width, &height);
+                                       &width, &height);
 
   width /= columns;
   height /= rows;
+  /**
+   * Check if the SDL texture was initialized correctly.
+   */
   if (query_texture) {
     printf("Open: %s\n", SDL_GetError());
     exit(-1);
@@ -180,10 +183,17 @@ void Sprite::set_frame_time(float cframe_time) {
 */
 void Sprite::update(float delta) {
   time_elapsed += delta;
+  /**
+   * Check if the elapsed time of a frame was enough. If so, the elapsed time
+   * restarts.
+   */
   if (time_elapsed >= frame_time) {
     time_elapsed = 0;
 
     current_frame = current_frame + 1;
+    /**
+     * Check if the current frame has reached the limit number of repetitions.
+     */
     if (current_frame == frame_count) {
       finished = true;
       current_frame = 0;
@@ -210,7 +220,7 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
                               static_cast<int>(clip_rect.w * scale_x),
                               static_cast<int>(clip_rect.h * scale_y)};
 
-  angle *= (180 / PI);
+  angle *= (180 / PI);  /**< Conversion from degrees to radians. */
   int render_copy = SDL_RenderCopyEx(Game::get_instance().get_renderer(),
                                      texture.get(),
                                      &clip_rect,
@@ -218,6 +228,9 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
                                      angle,
                                      nullptr,
                                      flip);
+  /**
+   * Check if the texture portion copied was initialized correctly.
+   */
   if (render_copy) {
     printf("Render: %s\n", SDL_GetError());
     exit(-1);
@@ -280,7 +293,12 @@ void Sprite::set_scale(float cscale_x, float cscale_y) {
 */
 void Sprite::update_scale_x(float scale) {
   scale_x += scale;
-  if (scale_x < 0.05) scale_x = 0.05;
+  /**
+   * Check if the x axis is very small. If so, the scale is set to 0.05.
+   */
+  if (scale_x < 0.05) {
+    scale_x = 0.05;
+  }
 }
 
 /* Restart frame counting.

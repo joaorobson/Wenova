@@ -29,9 +29,12 @@ UltimateEffect::UltimateEffect(Fighter * cparent,
                                string ctags,
                                int frames) :
                                Effect(cparent, csprite, ctags, frames) {
-  aura = Sprite(caura, 14, 10, 4);
+  aura = Sprite(caura, 14, 10, 4);  /**< Initialize the fighter aura iamge. */
   sprite_box = box;
   box = Rectangle(0, 0, aura.get_width(), aura.get_height());
+  /**
+   * Check if is the parent fighter. If so, adds the "in ultimate" tag.
+   */
   if (parent) {
     parent->add_tags("in_ultimate");
   }
@@ -72,6 +75,10 @@ void UltimateEffect::render() {
  */
 bool UltimateEffect::is_dead() {
   bool dead = parent->get_special() <= 0 or parent->is_dead();
+  /**
+   * Check if fighter is dead. If so, update his life tags.
+   *
+   */
   if (dead) {
     parent->remove_tags("in_ultimate");
   }
