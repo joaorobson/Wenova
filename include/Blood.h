@@ -1,3 +1,14 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Blood.h
+ * This file contains the declaration of the Blood class methods and attributes.
+ */
+
 #ifndef INCLUDE_BLOOD_H_
 #define INCLUDE_BLOOD_H_
 

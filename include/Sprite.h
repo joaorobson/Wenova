@@ -1,3 +1,14 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+*
+* This work is licensed under the terms of the MIT license.
+
+* For a copy, see <https://opensource.org/licenses/MIT>.
+*/
+/**
+* @file Sprite.h
+* This file contains the declaration of the Sprite class methods and attributes.
+*/
+
 #ifndef INCLUDE_SPRITE_H_
 #define INCLUDE_SPRITE_H_
 
