@@ -18,9 +18,9 @@
 
 class UltimateEffect : public Effect{
  private:
-  Sprite aura;
-  Rectangle sprite_box;
-  float healing_factor;
+  Sprite aura;  /**< Character aura. */
+  Rectangle sprite_box;  /**< Box where the effect sprite is positionated. */
+  float healing_factor;  /**< Healing factor applied after a attack. */
 
  public:
   UltimateEffect(Fighter * cparent, string csprite, string caura, string ctags,
