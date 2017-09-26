@@ -20,13 +20,17 @@
  * @param csprite is the respective sprite.
  * @param ctags is the character condition tag.
  * @param frames is the respective effect frame.
- f*/
+ */
 FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
                                          string csprite,
                                          string ctags,
                                          int frames) :
                                          Effect(cparent, csprite,
                                          ctags, frames) {
+ /**
+  * Check if is the parent fighter. If so, adds the "in ultimate" tag and
+  * multiply his maximum life by 1.5.W
+  */
   if (parent) {
     parent->add_tags("in_ultimate");
   }
@@ -40,6 +44,10 @@ FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
  * @param delta is the character state variation.
  */
 void FleshUltimateEffect::update(float delta) {
+  /**
+   * Check if is the parent fighter. If so, set his position and decreases his
+   * special attack level.
+   */
   if (parent) {
     box.x = parent->box.x;
     box.y = parent->box.get_draw_y() - box.get_height() / 2 - 10;
@@ -60,10 +68,14 @@ void FleshUltimateEffect::render() {
  * Check life condition method.
  * Check if the character is dead and change his tags.
  *
- *@return Return true if the character is dead and false if not.
+ * @return Return true if the character is dead and false if not.
  */
 bool FleshUltimateEffect::is_dead() {
   bool dead = parent->get_special() <= 0 or parent->is("dying");
+  /**
+   * Check if is the fighter is dead. If so, remove the parent's "in ultimate"
+   * tag and divide the parent's maximum life by 1.5.
+   */
   if (dead) {
     parent->remove_tags("in_ultimate");
     parent->MAX_LIFE /= 1.5;

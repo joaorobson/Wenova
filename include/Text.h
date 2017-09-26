@@ -16,15 +16,15 @@ class Text{
   enum TextStyle {SOLID, SHADED, BLENDED};
 
  private:
-  shared_ptr<TTF_Font> font;  ///< Text font type.
-  SDL_Texture * texture;  ///< Exhibited text texture.
+  shared_ptr<TTF_Font> font;  /**< Text font type. */
+  SDL_Texture * texture;  /**< Exhibited text texture. */
 
-  string text;  ///< Words from the text.
-  TextStyle style;  ///< Exhibited text style.
-  int font_size;  ///< Size of the exhibited text.
-  SDL_Color color;  ///< Color of the exhibited text.
-  Rectangle box;  ///< /Text box.
-  SDL_Rect clip_rect;  ///< Text frames positioning box.
+  string text;  /**< Words from the text. */
+  TextStyle style;  /**< Exhibited text style. */
+  int font_size;  /**< Size of the exhibited text. */
+  SDL_Color color;  /**< Color of the exhibited text. */
+  Rectangle box;  /**< /Text box. */
+  SDL_Rect clip_rect;  /**< Text frames positioning box. */
 
  public:
   Text();
