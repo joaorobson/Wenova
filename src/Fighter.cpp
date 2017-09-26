@@ -80,6 +80,9 @@ Fighter::~Fighter() {}
  * Implements the controls of the character.
  */
 void Fighter::process_input() {
+   /**
+    * If condition is not met, the controls are mapped.
+    */
     if (not is("game_over")) {
         InputManager * input_manager = InputManager::get_instance();
         vector< pair<int, int> > joystick_buttons = {
@@ -96,7 +99,9 @@ void Fighter::process_input() {
         };
 
         bool alive = !is("dying");
-
+        /**
+         * Each iteration checks the button pressed and its conditions.
+         */
         for (ii button : joystick_buttons) {
             pressed[button.first] = alive and input_manager->joystick_button_press(button.second, id);
             is_holding[button.first] = alive and input_manager->is_joystick_button_down(button.second, id);
@@ -123,7 +128,13 @@ void Fighter::update(float delta) {
 
     speed.y = std::min(speed.y + !on_floor * acceleration.y * delta, max_speed);
     box.x += speed.x * delta;
-    if (not on_floor) box.y += speed.y * delta;
+
+    /**
+     * If on_floor is false, calculates the character box on y axis.
+     */
+    if (not on_floor) {
+      box.y += speed.y * delta;
+    }
 
     test_limits();
 
@@ -151,6 +162,11 @@ void Fighter::notify_collision(GameObject & object) {
 
     float floor_y = object.box.y + (box.x - object.box.x) * tan(object.rotation)
                      - object.box.height * 0.5;
+
+   /**
+    * Checks the condition of the player colision with the plataform or other
+    * players.
+    */
     if (object.is("floor") and speed.y >= 0 and abs(floor_y - (box.y +
                                                                box.height *
                                                                0.5)) < 10){
@@ -176,6 +192,10 @@ void Fighter::notify_collision(GameObject & object) {
                and !is("dying") and not(object.is("dying"))) {
         Fighter & fighter = (Fighter &) object;
 
+        /**
+         * Checks if the targeted player is friend or foe and deals damage
+         * depending on the orientation of the character.
+         */
         if (fighter.is_attacking() and fighter.get_id() != partner_id) {
             int left = AttackDirection::ATK_LEFT * (fighter.box.x > box.x);
             int right = AttackDirection::ATK_RIGHT * (fighter.box.x <= box.x);
@@ -233,6 +253,10 @@ void Fighter::render() {
  */
 bool Fighter::is_dead() {
     bool dead = remaining_life <= 0;
+
+    /**
+     * Checks if the partner is dead.
+     */
     if (dead and partner) {
         partner->set_partner(nullptr);
     }
@@ -270,12 +294,19 @@ void Fighter::change_state(FighterState cstate) {
     float old_height = box.height;
     played = false;
 
+    /**
+     * Plays land sound depending on the character state.
+     */
     if ((state == FALLING or state == JUMPING) and (cstate == IDLE or cstate
 																										== RUNNING)) {
         land_sound.play();
         state = cstate;
         Vector csize;
     }
+
+    /**
+     * Modify the characters hit box depending on crouching.
+     */
     if (cstate == CROUCH or cstate == CROUCH_ATK or cstate == SPECIAL_1 or
 									cstate == JUMP_ATK_DOWN_FALLLOOP or cstate ==
 									JUMP_ATK_DOWN_DMG) {
@@ -299,6 +330,10 @@ void Fighter::change_state(FighterState cstate) {
  * this method checks the limits the character can reach in the game frame.
  */
 void Fighter::test_limits() {
+
+    /**
+     * Sets the character box on the x axis to a default value.
+     */
     if (box.x < box.width / 2) {
         box.x = box.width / 2;
     }
@@ -309,6 +344,10 @@ void Fighter::test_limits() {
         box.y = -100;
     }
 
+    /**
+     * Checks the character box on the y axis and if condition is met sets it
+     * to a defaul value or diminishes the players life.
+     */
     if (box.y > 900) {
         if (is("test")) {
             box.y = -100;
@@ -378,6 +417,11 @@ int Fighter::get_id() {
  */
 void Fighter::increment_life(float increment) {
     remaining_life += increment;
+
+    /**
+     * If the condition is met sets the players life to 1 and adds the tags
+     * "dying".
+     */
     if (remaining_life < 1) {
         remaining_life = 1;
         special = 0;
@@ -387,6 +431,9 @@ void Fighter::increment_life(float increment) {
         add_tags("dying");
     }
 
+    /**
+     * Sets the remaining life of the player to its max life if over the limit.
+     */
     if (remaining_life > MAX_LIFE) {
         remaining_life = MAX_LIFE;
     }
@@ -401,9 +448,17 @@ void Fighter::increment_life(float increment) {
  */
 void Fighter::increment_special(float increment) {
     special += increment;
+
+    /**
+     * Sets the special to 0 if condition is met.
+     */
     if (special < 0) {
       special = 0;
     }
+
+    /**
+     * Sets the special to max if over the limit.
+     */
     if (special > MAX_SPECIAL) {
         special = MAX_SPECIAL;
     }
@@ -441,6 +496,10 @@ string Fighter::get_path() {
  * this method plays a given sound if the file is open.
  */
 void Fighter::play_sound() {
+
+  /**
+   * Sets the default sound to play.
+   */
     if (sound[state].is_open()) {
         sound[state].play(0);
     }
@@ -465,6 +524,10 @@ void Fighter::play_hit() {
     played = true;
     string sound_file = sound[state].get_file();
     int sound_index = -1;
+
+    /**
+     * Plays a specific sound depending on the condition.
+     */
     if (sound_file == sound_path + "slash.ogg") {
         sound_index = 0;
     } else if (sound_file == sound_path + "attack_1.ogg") {
