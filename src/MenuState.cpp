@@ -80,7 +80,9 @@ MenuState::MenuState(bool main_menu) {
     changed  = Sound("menu/sound/cursor.ogg");
 
     music = Music("menu/wenova.ogg");
-
+    /**
+     * Plays music if it is not playing.
+     */
     if (!Mix_PlayingMusic()) {
         music.play();
     }
@@ -103,29 +105,44 @@ void MenuState::update(float delta) {
 
     InputManager *input_manager = InputManager::get_instance();
 
+    /**
+     * If conditions are met, the body is executed.
+     * The music stops playing and leaves the edit state.
+     */
     if (input_manager->quit_requested() || pressed[SELECT] || pressed[B]) {
         music.stop();
         m_quit_requested = true;
         return;
     }
 
-    // handling options input
+    /**
+     * Select options in the menu.
+     */
     if (pressed[LEFT] && (current_option != 0)) {
         changed.play();
         current_option--;
     }
 
+    /**
+     * Select options in the menu.
+     */
     if (pressed[RIGHT] && (current_option != (int)options.size() - 1)) {
         changed.play();
         current_option++;
     }
 
+    /**
+     * Select options in the menu.
+     */
     if (is_holding[LB] and is_holding[RT] and is_holding[Y]) {
         m_quit_requested = true;
         Game::get_instance().push(new EditState("2"));
         return;
     }
 
+    /**
+     * Starts the game when selected.
+     */
     if (pressed[START] || pressed[A]) {
         selected.play();
 
@@ -135,6 +152,9 @@ void MenuState::update(float delta) {
         } else {
             m_quit_requested = true;
 
+            /**
+             * Opens selected option depending on selected index.
+             */
             if (current_option == 0) {
                 Game::get_instance().push(new StageSelectState());
             } else if (current_option == 1) {
@@ -147,18 +167,25 @@ void MenuState::update(float delta) {
         }
     }
 
+    /**
+     * Sets new configuration.
+     */
     if (is_holding[LB] && is_holding[RT] && is_holding[Y]) {
         m_quit_requested = true;
         Game::get_instance().push(new EditState("1"));
         return;
     }
 
+    /**
+     * Selects a option.
+     */
     if (start_pressed) {
-        // handling options positioning
         options[current_option]->set_pos(FONT_X, FONT_Y, true, true);
         options[current_option]->set_color(LIGHT_GREEN);
 
-        // positioning options before current option
+        /**
+         * Modify the options positioning.
+         */
         for (int idx = 0; idx < current_option; idx++) {
             Text *next_option = options[idx + 1];
 
@@ -168,7 +195,9 @@ void MenuState::update(float delta) {
             options[idx]->set_color(WHITE);
         }
 
-        // positioning options after current option
+        /**
+         * Modify the options positioning after current option select.
+         */
         for (unsigned int idx = current_option + 1; idx < options.size(); idx++) {
             Text *prev_option = options[idx - 1];
 
@@ -179,6 +208,9 @@ void MenuState::update(float delta) {
         }
     }
 
+    /**
+     * Cycles through the options.
+     */
     if (text_timer.get() > TEXT_TIMER_COOLDOWN) {
         show_text = !show_text;
         text_timer.restart();
@@ -199,6 +231,9 @@ void MenuState::render() {
     red_ship.render(36, 400);
     title.render(260, 0);
 
+    /**
+     * Renders all the options on screen.
+     */
     if (start_pressed) {
         for (auto option_text : options) {
             option_text->render(0, 0);
@@ -228,6 +263,9 @@ void MenuState::process_input() {
         ii(RT,     InputManager::RT)
     };
 
+    /**
+     * Checks the state of the button the user pressed.
+     */
     for (ii button : joystick_buttons) {
         pressed[button.first]    = input_manager->joystick_button_press(
             button.second,
