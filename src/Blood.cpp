@@ -10,7 +10,6 @@
  */
 
 #include "Blood.h"
-
 #include "Game.h"
 #include "HealEffect.h"
 #include "UltimateEffect.h"
@@ -25,18 +24,26 @@ using std::min;
 /**
  * The constructor.
  * Initialize the partner fighter and his respective skin, besides the box
- * container coordinates of the Blood class. The Blood class inherits the Fighter
- * class.
+ * container coordinates of the Blood class. The Blood class inherits the
+ * Fighter class.
  *
  * @param skin is the Fighter skin.
  * @param x is the box horizontal coordinate.
  * @param y is the box veretical coordinate.
  * @param cid is the partner fighter identifier.
-*/
+ */
 Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
              Fighter(cid, x, cpartner) {
+  /**
+   * File path indicating the relative skin to each attack type.
+   */
   path = "characters/blood/" + skin + "/";
+
+  /**
+   * File path indicating the relative sound to each attack type.
+   */
   sound_path = "characters/blood/sound/";
+
 
   sprite[IDLE] = Sprite(path + "idle.png", 12, 10);
   sprite[RUNNING] = Sprite(path + "running.png", 8, 10);
@@ -90,17 +97,30 @@ Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
 }
 
 /**
- * Fighter's state machine
+ * Fighter's state machine.
  * Check and update the Fighter's state according to the attack type and damage
  * suffered.
  *
  * @param delta is the variation of character state.
  */
 void Blood::update_machine_state(float delta) {
+  /**
+   * Fighter's state machine.
+   * Switch around fighter states according to suffered attacks and update
+   * attack damage.
+   *
+   * @param state is the character state.
+   */
   switch (state) {
     case FighterState::IDLE_ATK_NEUTRAL_1:
       attack_damage = 3 * (sprite[state].get_current_frame() == 1);
       attack_mask = get_attack_orientation();
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       * Instead of that, if the attack button is pressed, the comobo attack
+       * level is incremented.
+       */
       if (sprite[state].is_finished()) {
         check_idle();
         check_defense();
@@ -114,6 +134,12 @@ void Blood::update_machine_state(float delta) {
     case FighterState::IDLE_ATK_NEUTRAL_2:
       attack_damage = 5 * (sprite[state].get_current_frame() == 1);
       attack_mask = get_attack_orientation();
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       * Instead of that, if the attack button is pressed, the comobo attack
+       * level is incremented.
+       */
       if (sprite[state].is_finished()) {
         check_idle();
         check_defense();
@@ -127,6 +153,10 @@ void Blood::update_machine_state(float delta) {
     case FighterState::IDLE_ATK_FRONT:  // 2
       attack_damage = 10 * (sprite[state].get_current_frame() == 2);
       attack_mask = get_attack_orientation();
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       */
       if (sprite[state].is_finished()) {
         check_idle();
         check_defense();
@@ -137,6 +167,10 @@ void Blood::update_machine_state(float delta) {
     case FighterState::IDLE_ATK_DOWN:  // 3
       attack_damage = 10 * (sprite[state].get_current_frame() == 3);
       attack_mask = AttackDirection::ATK_DOWN;
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       */
       if (sprite[state].is_finished()) {
         check_idle();
         check_defense();
@@ -146,6 +180,10 @@ void Blood::update_machine_state(float delta) {
     case FighterState::CROUCH_ATK:  // 1
     attack_damage = 3 * (sprite[state].get_current_frame() == 1);
     attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
+    /**
+     * Check if sprite use is finished and allow character actions according
+     * to finished state.
+     */
     if (sprite[state].is_finished()) {
       check_idle();
       check_defense();
@@ -156,6 +194,10 @@ void Blood::update_machine_state(float delta) {
     case FighterState::IDLE_ATK_UP:  // 1
       attack_damage = 3 * (sprite[state].get_current_frame() == 1);
       attack_mask = get_attack_orientation();
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       */
       if (sprite[state].is_finished()) {
         check_idle();
         check_defense();
@@ -168,6 +210,9 @@ void Blood::update_machine_state(float delta) {
       attack_mask = AttackDirection::ATK_DOWN;
       check_left(false);
       check_right(false);
+      /**
+       * Check if character is on the floor. If so, allow "Idle attack down".
+       */
       if (on_floor) {
         n_sprite_start = 2;
         check_idle_atk_down(true, true);
@@ -179,9 +224,18 @@ void Blood::update_machine_state(float delta) {
       attack_mask = get_attack_orientation();
       check_right(false);
       check_left(false);
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished
+       * state.
+       */
       if (sprite[state].is_finished()) {
         check_fall();
       }
+      /**
+       * Check if character is on the floor and set true in the respective
+       * allowed actions.
+       */
       if (on_floor) {
         check_idle();
         check_right();
@@ -196,6 +250,10 @@ void Blood::update_machine_state(float delta) {
       attack_mask = AttackDirection::ATK_UP;
       check_left(false);
       check_right(false);
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       */
       if (sprite[state].is_finished()) {
         speed.y = 0.1;
         check_fall();
@@ -208,6 +266,10 @@ void Blood::update_machine_state(float delta) {
     case FighterState::STUNNED:
       attack_damage = 0;
       attack_mask = 0;
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       */
       if (sprite[state].is_finished()) {
         check_fall();
         check_defense();
@@ -219,7 +281,9 @@ void Blood::update_machine_state(float delta) {
 
     case FighterState::SPECIAL_1_1:
       attack_damage = 0.1 * (sprite[state].get_current_frame() > 3);
-      if (grab) increment_life(attack_damage);
+      if (grab) {
+        increment_life(attack_damage);
+      }
       attack_mask = get_attack_orientation();
       if (sprite[state].is_finished()) {
         if (grab) {
@@ -239,6 +303,10 @@ void Blood::update_machine_state(float delta) {
         increment_life(attack_damage);
       }
       attack_mask = get_attack_orientation();
+      /**
+       * Check if sprite use is finished and allow character actions according
+       * to finished state.
+       */
       if (sprite[state].is_finished() or not grab) {
         check_fall();
         check_defense();
@@ -250,6 +318,10 @@ void Blood::update_machine_state(float delta) {
     case FighterState::SPECIAL_2:
       increment_special(0.2 * delta);
       increment_life(-0.2 * delta);
+      /**
+       * Check if sprite use is finished according to exhibited state.
+       * If so, character is healed.
+       */
       if (sprite[state].is_finished()) {
         Game::get_instance().get_current_state().add_object(
             new HealEffect(partner,
@@ -782,6 +854,10 @@ void Blood::check_dead(bool change) {
  * maximum special level. If so, activate the UltimateEffect images and sounds.
  */
 void Blood::check_ultimate() {
+  /**
+   * Check if the Ultimate button is pressed and the special accumulated level is the maximum.
+   * If so, the fighter uses the UltimateEffect.
+   */
   if (pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
     Game::get_instance().get_current_state().add_object(
         new UltimateEffect(this,
