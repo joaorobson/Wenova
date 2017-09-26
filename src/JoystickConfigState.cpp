@@ -90,7 +90,10 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
 
     on_test = false;
 
-    // D-Pad
+    /**
+     * Iterates four times to create the buttons of the test mode on menu
+     * "Options".
+     */
     for (int i = 0; i < 4; i++) {
         joystick_id = i;
         int offset_x = OFFSET_X * (i % 2) + 20;
@@ -170,12 +173,21 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
 void JoystickConfigState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
+    /**
+     * Check if user has request to quit the menu "Options".
+     */
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
     }
 
+    /**
+     * Check if user request to enter in joystick test mode.
+     */
     if (on_test) {
+        /**
+         * Check if user request to quit the joystick test screen.
+         */
         if (input_manager->is_joystick_button_down(InputManager::SELECT, 0) and
             input_manager->is_joystick_button_down(InputManager::START, 0)
             ) {
@@ -185,12 +197,17 @@ void JoystickConfigState::update(float delta) {
                 InputManager::MENU_MODE);
         }
 
-        // Workaround to uncheck A button pressed in joystick test screen
+        /**
+         * Workaround to uncheck A button pressed in joystick test screen.
+         */
         if (input_manager->joystick_button_release(InputManager::A, 0)) {
             InputManager::get_instance()->map_keyboard_to_joystick(
                 InputManager::BATTLE_MODE);
         }
     } else {
+        /**
+         * Check if user request to quit the joystick help screen.
+         */
         if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
             input_manager->joystick_button_press(InputManager::B, 0)) {
             selected.play();
@@ -199,6 +216,9 @@ void JoystickConfigState::update(float delta) {
             return;
         }
 
+        /**
+         * Check if user request to enter the joystick test mode.
+         */
         if (input_manager->joystick_button_press(InputManager::A, 0) and
             not is_keyboard
             ) {
@@ -217,6 +237,11 @@ void JoystickConfigState::update(float delta) {
  * Besides that, it will render buttons on the joystick test mode.
  */
 void JoystickConfigState::render() {
+    /**
+     * Check if user selected to enter on joystick test mode.
+     * If not, render the joystick or keyboard help image. Otherwise, render
+     * the test screen mode.
+     */
     if (not on_test) {
         if (!is_keyboard) {
             joystick_help.render(0, 0);
