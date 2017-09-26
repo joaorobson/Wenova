@@ -35,6 +35,9 @@ BattleEnd::BattleEnd(int id_winner) {
 
     string path = "victory/" + to_string(id_winner) + "/";
 
+    /**
+     * Iterates over the 8 images of victory to create an array of sprites.
+     */
     for (int i = 1; i <= N_SPRITES; i++) {
         sprite[i] = Sprite(path + to_string(i) + ".png", 1, 5);
     }
@@ -54,6 +57,9 @@ BattleEnd::BattleEnd(int id_winner) {
 void BattleEnd::update(float delta) {
     sprite[current_sprite].update(delta);
 
+    /**
+     * Check if has rendered all 8 sprites on the vector "sprite".
+     */
     if (sprite[current_sprite].is_finished()) {
         if (back_selected and(current_sprite > 1)) {
             current_sprite--;
@@ -64,6 +70,10 @@ void BattleEnd::update(float delta) {
 
     InputManager *input_manager = InputManager::get_instance();
 
+    /**
+     * Check if user has requested to quit the battle so it can restart
+     * the sprite count to current_sprite recieve 1.
+     */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
         input_manager->joystick_button_press(InputManager::B, 0)
         ) {
@@ -73,6 +83,9 @@ void BattleEnd::update(float delta) {
         back_selected = true;
     }
 
+    /**
+     * Check if user has requested to quit the battle.
+     */
     if (back_selected and sprite[current_sprite].is_finished() and
         (current_sprite == 1)) {
         quitRequested = true;
