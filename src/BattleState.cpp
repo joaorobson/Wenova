@@ -143,7 +143,7 @@ void BattleState::update(float delta) {
 
     /**
      * If joystick_button_press = true, the body is executed.
-     * The music stops playing and the menu is updated.
+     * The music stops playing and the menu is updated and leave the edit state.
      */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0)) {
         music.stop();

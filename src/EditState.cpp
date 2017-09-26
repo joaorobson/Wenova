@@ -65,12 +65,19 @@ EditState::EditState(string cstage) : stage(cstage) {
 void EditState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
+    /**
+     * If quit_requested = true, then m_quit_requested = true.
+     */
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
     }
 
-    // leave edit state
+    /**
+     * If joystick_button_press = true, the body is executed.
+     * The music stops playing and the menu is updated and leaves the edit
+     * state.
+     */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0)) {
         music.stop();
         sound.stop();
@@ -79,20 +86,28 @@ void EditState::update(float delta) {
         return;
     }
 
-    // reset position of fighter
+    /**
+     * If mouse_press is true the position of the fighter is reseted.
+     */
     if (input_manager->mouse_press(InputManager::RIGHT_MOUSE_BUTTON)) {
         int x = input_manager->get_mouse_x();
         int y = input_manager->get_mouse_y();
         test_fighter->reset_position(x, y);
     }
 
-    // create floor or platform
+    /**
+     * If key_press is true with either parameters, the plataform is created.
+     */
     if (input_manager->key_press(InputManager::K_F) or
         input_manager->key_press(InputManager::K_P)) {
         int  x           = input_manager->get_mouse_x();
         int  y           = input_manager->get_mouse_y();
         bool is_platform = input_manager->key_press(InputManager::K_P);
 
+        /**
+         * For each iteration, if 'is' method returns "floor" the object is
+         * unselected.
+         */
         for (auto& go : object_array) {
             if (go->is("floor")) {
                 ((EditableFloor *)go.get())->set_selected(false);
@@ -104,18 +119,25 @@ void EditState::update(float delta) {
         add_object(go);
     }
 
-    // save level design
+    /**
+     * If is_key_down is true, the level is saved.
+     */
     if (input_manager->is_key_down(InputManager::K_CTRL) and
         input_manager->key_press(InputManager::K_S)) {
         update_level_design();
     }
 
-    // output
+    /**
+     * If is_key_down is true, a message is shown.
+     */
     if (input_manager->is_key_down(InputManager::K_O)) {
         printf("%f, %f\n", object_array[0].get()->box.x,
                object_array[0].get()->box.y);
     }
 
+    /**
+     * If key_press is true, creates a new fighter or replenishes its life.
+     */
     if (input_manager->key_press(InputManager::K_SHIFT)) {
         Rectangle player_box = test_fighter->box;
         bool is_blood        = test_fighter->is("blood");
@@ -129,6 +151,9 @@ void EditState::update(float delta) {
         }
     }
 
+    /**
+     * If updates the background list.
+     */
     for (auto& background : backgrounds) {
         background.first.update(delta);
     }
@@ -141,6 +166,9 @@ void EditState::update(float delta) {
  * renders the background given a x and y positions.
  */
 void EditState::render() {
+   /**
+    * Renders the first background of the list.
+    */
     for (auto& background : backgrounds) {
         background.first.render(background.second.x, background.second.y);
     }
@@ -169,6 +197,9 @@ void EditState::read_level_design() {
     int   platform;
     ifstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat");
 
+    /**
+     * If the condition is false a message is displayed.
+     */
     if (not level_design.is_open()) {
         printf("Level design of stage %s can't be opened\n", stage.c_str());
         exit(-5);
@@ -182,22 +213,26 @@ void EditState::read_level_design() {
     stringstream n_background_line(s);
     n_background_line >> n_backgrounds;
 
+    /**
+     * Each iteration switches between backgrounds.
+     * Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed, n_columns;
+     */
     for (int i = 0; i < n_backgrounds; ++i) {
         std::getline(level_design, s);
 
         for (auto& c : s) c -= 15;
         stringstream backgrounds_line(s);
         backgrounds_line >> x >> y >> n_sprites >> speed >> n_columns;
-
-        // printf("Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed,
-        // n_columns);
         Sprite background_sprite("stage_" + stage + "/background_" + to_string(
                                      i) + ".png", n_sprites, speed, n_columns);
         Vector position(x, y);
         backgrounds.push_back(std::make_pair(background_sprite, position));
     }
 
-
+    /**
+     * For as long as the condition is true, a new object of EditableFloor
+     * is added.
+     */
     while (std::getline(level_design, s)) {
         for (auto& c : s) c -= 15;
         stringstream editable_floors_line(s);
@@ -231,12 +266,19 @@ void EditState::update_level_design() {
                     std::ios::binary);
     string s;
 
+    /**
+     * Each iteration new_level_design receives s.
+     */
     for (unsigned i = 0; i <= backgrounds.size(); ++i) {
         std::getline(backup, s);
         new_level_design << s << std::endl;
     }
     old_level_design.close();
 
+    /**
+     * Each iteration, if condition is met, new_level_design receives the
+     * get_information return.
+     */
     for (auto& go : object_array) {
         if (go->is("floor")) {
             new_level_design << ((EditableFloor *)go.get())->get_information() <<
