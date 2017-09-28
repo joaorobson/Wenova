@@ -10,27 +10,42 @@
 
 #include "Timer.h"
 
-//Initialize a timer
+/*
+ * Initialize a timer
+ */
 Timer::Timer() {
     time = 0;
 }
 
-//Update the timer
+/*
+ * Update the timer
+ * @param delta is the variation of the time 
+ */
 void Timer::update(float delta) {
     time += delta;
 }
 
-//Restart the timer
+/*
+ * Restart the timer
+ */
 void Timer::restart() {
     time = 0;
 }
 
-//Check the timer
+/*
+ * Check the timer
+ *
+ * @return the time of the timer
+ */
 float Timer::get() {
     return time;
 }
 
-//Insert a timer
+/*
+ * Insert a timer
+ *
+ *@param ctime is the time to be put in timer
+ */
 void Timer::set(float ctime) {
     time = ctime;
 }

@@ -12,19 +12,33 @@
 #include "Resources.h"
 #include "Config.h"
 
-//Create a object "sound" null
+/*
+ * The constructor.
+ * Initialize the sound null
+ * container coordinates of the Sound class.
+ */
 Sound::Sound() {
     file = "";
     sound = nullptr;
 }
 
-//Create a object "sound" complete
+/*
+ * The constructor.
+ * Initialize the sound
+ * container coordinates of the Sound class.
+ *
+ *@param cfile is the file where is the sound
+ */
 Sound::Sound(string cfile) {
     file = cfile;
     this->open(cfile);
 }
 
-//Play a sound
+/*
+ * Play a sound
+ *
+ * @param times is the times to play the sound
+ */
 void Sound::play(int times) {
     channel = Mix_PlayChannel(-1, sound.get(), times);
     if(channel == -1) {
@@ -33,22 +47,34 @@ void Sound::play(int times) {
     }
 }
 
-//Stop the sound
+/*
+ * Stop the sound
+ */
 void Sound::stop() {
     Mix_HaltChannel(channel);
 }
 
-//Open the sound
+/*
+ * Open the sound
+ *
+ * @param cfile is where is the sound.
+ */
 void Sound::open(string cfile) {
     sound = Resources::get_sound(RES_FOLDER + cfile);
 }
 
-//Check if the sound is open
+/*
+ * Check if the sound is open
+ */
 bool Sound::is_open() {
     return sound != nullptr;
 }
 
-//Check the file of the sound
+/*
+ * Check the file of the sound
+ *
+ * @return the file of the sound
+ */
 string Sound::get_file() {
     return file;
 }

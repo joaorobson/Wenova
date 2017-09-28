@@ -12,17 +12,31 @@
 #include "Resources.h"
 #include "Config.h"
 
-//Create the object "music" null
+/*
+ * The constructor.
+ * Initialize the music null
+ * container coordinates of the Music class.
+ */
 Music::Music() {
     music = nullptr;
 }
 
-//Create the object "music" complete
+/*
+ * The constructor
+ * Initialize the music
+ * container coordinates of the Music class.
+ *
+ * @param file is the file where is the music.
+ */
 Music::Music(string file) {
     this->open(file);
 }
 
-//Play the music
+/*
+ * Play the music
+ *
+ * @param times is the times to play the music
+ */
 void Music::play(int times) {
     int mix_play_music = Mix_PlayMusic(music.get(), times);
     if(mix_play_music) {
@@ -31,7 +45,9 @@ void Music::play(int times) {
     }
 }
 
-//Stop the music
+/*
+ * Stop the music
+ */
 void Music::stop() {
     int mix_fade_out_music = Mix_FadeOutMusic(0);
     if(not mix_fade_out_music) {
@@ -40,12 +56,18 @@ void Music::stop() {
     }
 }
 
-//Open the object music
+/*
+ * Open the object music
+ *
+ * @param file is where is the music.
+ */
 void Music::open(string file) {
     music = Resources::get_music(RES_FOLDER + file);
 }
 
-//Check if the music is open
+/*
+ * Check if the music is open
+ */
 bool Music::is_open() {
     return music != nullptr;
 }

@@ -18,7 +18,19 @@
 
 int Floor::floor_id = 1;
 
-//Saves the platform traits
+/**
+ * The constructor.
+ * Initialize the floor
+ * container coordinates of the Floor class. The Floor class inherits the
+ * GameObject class.
+ *
+ * @param x is the box horizontal coordinate.
+ * @param y is the box veretical coordinate.
+ * @param widht is the widht of the floor.
+ * @param height is the height of the floor.
+ * @param crotation is the rotation of the floor.
+ * @param cplataform is the type of the plataform selected.
+ */
 Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     is_platform = cplatform;
     rotation = crotation * PI / 180.0;
@@ -30,26 +42,44 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     }
 }
 
-//Destroy the platform
+/*
+ * The destructor.
+ * Destroy the floor.
+ */
 Floor::~Floor() {}
 
-//Update the traits os platform
+/*
+ * Update the traits of floor
+ */
 void Floor::update(float) {}
-    //Comentário de printf para testes
-    //printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height, rotation);
+    /*
+     * Comentário de printf para testes
+     * printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height, 
+     *         rotation);
+     */
 
-//Render the platform
+/*
+ * Render the floor
+ */
 void Floor::render() {}
 
-//Check if the platform is dead
+/*
+ * Check if the floor is dead
+ */
 bool Floor::is_dead() {
     return false;
 }
 
-//Notify a collision in the platform
+/*
+ * Notify a collision in the floor
+ */
 void Floor::notify_collision(GameObject &) {}
 
-//Check the ID of platform
+/*
+ * Check the ID of floor
+ *
+ * @return the id of the floor
+ */
 int Floor::get_id() {
     return id;
 }

@@ -10,7 +10,10 @@
 #include "Game.h"
 #include "MenuState.h"
 
-//Inicializes the game
+/*
+ * Main.
+ * Inicializes the game.
+ */
 int main(int, char **) {
     Game game("Wenova - Rise of Conquerors");
 

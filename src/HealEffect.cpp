@@ -10,12 +10,27 @@
 
 #include "HealEffect.h"
 
-//Saves the traits of the Heal Effects
+/**
+ * The constructor.
+ * Initialize the heal effect
+ * container coordinates of the HealEffect class. The HealEffect class inherits
+ * the Effect class.
+ *
+ * @param cparent is the fighter.
+ * @param csprite is the sprite of the fighter.
+ * @param ctags is the tag of the fighter.
+ * @param frames is the frames to show the heal.
+ * @param chealing_factor is the chealing factor.
+ */
 HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags, int frames, float chealing_factor) : Effect(cparent, csprite, ctags, frames) {
     healing_factor = chealing_factor;
 }
 
-//Update the Heal Effects
+/*
+ * Update the Heal Effects
+ * 
+ * @params delta is the variation of the heal.
+ */
 void HealEffect::update(float delta) {
     if(parent) {
         box.x = parent->box.x;
@@ -27,7 +42,9 @@ void HealEffect::update(float delta) {
     }
 }
 
-//Check if the Heal Effect is dead
+/*
+ * Check if the Heal Effect is dead
+ */
 bool HealEffect::is_dead() {
     return sprite.is_finished();
 }

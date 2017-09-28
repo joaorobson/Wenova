@@ -14,7 +14,18 @@
 
 #define CROUCH_COOLDOWN 400.0
 
-//Saves all character traits
+/**
+ * The constructor.
+ * Initialize the flesh
+ * container coordinates of the Flesh class. The Flesh class inherits the
+ * Fighter class.
+ *
+ * @param skin is the Fighter skin.
+ * @param x is the box horizontal coordinate.
+ * @param y is the box veretical coordinate.
+ * @param cid is the partner fighter identifier.
+ * @param cparter is the fighter
+ */
 Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner) : Fighter(cid, x, cpartner) {
     path = "characters/flesh/" + skin + "/";
     sound_path = "characters/flesh/sound/";
@@ -69,7 +80,13 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner) : Fighte
     additional_speed = 0;
 }
 
-//Switch the state of character in-game
+/**
+ * Fighter's state machine
+ * Check and update the Fighter's state according to the attack type and damage
+ * suffered.
+ *
+ * @param float is the variation of character state.
+ */
 void Flesh::update_machine_state(float) {
     switch(state) {
         case FighterState::JUMP_ATK_UP:
@@ -331,7 +348,11 @@ void Flesh::update_machine_state(float) {
     }
 }
 
-//Makes the character jump
+/*
+ * Makes the character jump
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_jump(bool change) {
     if(pressed[JUMP_BUTTON]){
         if(change) {
@@ -342,7 +363,11 @@ void Flesh::check_jump(bool change) {
     }
 }
 
-//Change de state of character if it is falling
+/*
+ * Change de state of character if it is falling
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_fall(bool change) {
     if(speed.y > 0) {
         if(change) {
@@ -351,7 +376,11 @@ void Flesh::check_fall(bool change) {
     }
 }
 
-//Makes the character go to left
+/*
+ *Makes the character go to left
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_left(bool change) {
     if(is_holding[LEFT_BUTTON]) {
         if(change) {
@@ -362,7 +391,11 @@ void Flesh::check_left(bool change) {
     }
 }
 
-//Makes the character go to right
+/*
+ *Makes the character go to right
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_right(bool change) {
     if(is_holding[RIGHT_BUTTON]) {
         if(change){
@@ -373,7 +406,11 @@ void Flesh::check_right(bool change) {
     }
 }
 
-//Makes the character stay stoped
+/*
+ * Makes the character stay stoped
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_idle(bool change, bool condition) {
     if((speed.x == 0 and on_floor and not is_holding[DOWN_BUTTON] and not is_holding[BLOCK_BUTTON]) or condition) {
         if(change) {
@@ -382,7 +419,11 @@ void Flesh::check_idle(bool change, bool condition) {
     }
 }
 
-//Makes the character crounch
+/*
+ * Makes the character crounch
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_crouch(bool change) {
     if(is_holding[DOWN_BUTTON] and on_floor) {
         if(change) {
@@ -391,7 +432,11 @@ void Flesh::check_crouch(bool change) {
     }
 }
 
-//Makes the character attack
+/*
+ * Makes the character attack
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_idle_atk_neutral_1(bool change) {
     if(pressed[ATTACK_BUTTON] and not is_holding[DOWN_BUTTON]) {
         if(change) {
@@ -400,7 +445,11 @@ void Flesh::check_idle_atk_neutral_1(bool change) {
     }
 }
 
-//Keep the character attacking
+/*
+ * Keep the character attacking
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_idle_atk_neutral_2(bool change) {
     if(combo) {
         combo--;
@@ -410,7 +459,11 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
     }
 }
 
-//Keep the character attacking
+/*
+ * Keep the character attacking
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_idle_atk_neutral_3(bool change) {
     if(combo) {
         combo--;
@@ -420,7 +473,12 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
     }
 }
 
-//Makes the character attack
+/*
+ * Makes the character attack
+ *
+ * @param change check if the state os character changed
+ * @param condition check if the character is in condition
+ */
 void Flesh::check_idle_atk_front(bool change, bool condition) {
     if((pressed[ATTACK_BUTTON] and (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) or condition) {
         speed.y = 0;
@@ -433,7 +491,11 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
     }
 }
 
-//Makes the character attack
+/*
+ * Makes the character attack
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_jump_atk_down_fallloop(bool change) {
     if(pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
         if(change) {
@@ -442,7 +504,11 @@ void Flesh::check_jump_atk_down_fallloop(bool change) {
     }
 }
 
-//Makes the character attack
+/*
+ *Makes the character attack
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_jump_atk_down_dmg(bool change) {
     if(grab) {
         if(change) {
@@ -451,7 +517,11 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
     }
 }
 
-//Makes the character attack
+/*
+ * Makes the character attack
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_jump_atk_neutral(bool change) {
     if(is_holding[ATTACK_BUTTON] and not is_holding[DOWN_BUTTON] and not is_holding[UP_BUTTON]) {
         if(change) {
@@ -460,7 +530,11 @@ void Flesh::check_jump_atk_neutral(bool change) {
     }
 }
 
-//Makes the character attack
+/*
+ * Makes the character attack
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_idle_atk_down(bool change) {
     if(is_holding[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
         if(change) {
@@ -469,7 +543,11 @@ void Flesh::check_idle_atk_down(bool change) {
     }
 }
 
-//Makes the character activate him special
+/*
+ * Makes the character activate him special
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_special_1(bool change){
     if(pressed[SPECIAL1_BUTTON]) {
         if(speed.y == 0){
@@ -482,13 +560,21 @@ void Flesh::check_special_1(bool change){
     }
 }
 
-//Makes the character more stronger cause him special
+/*
+ * Makes the character more stronger cause him special
+ *
+ * @param bool
+ */
 void Flesh::check_special_2(bool) {
     additional_attack_damage = 1 + (1.0 - (get_remaining_life()) / MAX_LIFE);
     additional_speed = (1.0 - (1.0 * get_remaining_life()) / MAX_LIFE) * INITIAL_SPEED * 0.5;
 }
 
-//Makes the character activate him ultimate
+/*
+ *Makes the character activate him ultimate
+ *
+ * @param bool
+ */
 void Flesh::check_ultimate(bool) {
     if(pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
         Game::get_instance().get_current_state().add_object(new FleshUltimateEffect(this, path + "ult_effect.png", "has_sprite", 1));
@@ -496,7 +582,11 @@ void Flesh::check_ultimate(bool) {
     }
 }
 
-//Makes the character pass through platform
+/*
+ * Makes the character pass through platform
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_pass_through_platform(bool change) {
     if(pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
         if(crouch_timer.get() < CROUCH_COOLDOWN) {
@@ -509,7 +599,11 @@ void Flesh::check_pass_through_platform(bool change) {
     }
 }
 
-//Makes the character in defense mode
+/*
+ * Makes the character in defense mode
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_defense(bool change) {
     if(is_holding[BLOCK_BUTTON] and on_floor) {
         if(change) {
@@ -518,7 +612,11 @@ void Flesh::check_defense(bool change) {
     }
 }
 
-//Makes the character in stunned mode
+/*
+ * Makes the character in stunned mode
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_stunned(bool change) {
     speed.x = 0;
     if(change) {
@@ -526,7 +624,11 @@ void Flesh::check_stunned(bool change) {
     }
 }
 
-//Makes the character dead
+/*
+ * Makes the character dead
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_dead(bool change) {
     if(is("dying")) {
         if(change) {
@@ -535,7 +637,11 @@ void Flesh::check_dead(bool change) {
     }
 }
 
-//Makes the character attack crounched
+/*
+ * Makes the character attack crounched
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_crouch_atk(bool change) {
     if(pressed[ATTACK_BUTTON]) {
         if(change) {
@@ -544,7 +650,11 @@ void Flesh::check_crouch_atk(bool change) {
     }
 }
 
-//Makes the character attack jumping
+/*
+ * Makes the character attack jumping
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_jump_atk_up(bool change) {
     if(pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
         if(combo){
@@ -558,7 +668,11 @@ void Flesh::check_jump_atk_up(bool change) {
     }
 }
 
-//Makes the character attack
+/*
+ * Makes the character attack
+ *
+ * @param change check if the state os character changed
+ */
 void Flesh::check_idle_atk_up(bool change) {
     if(pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
         if(change) {
