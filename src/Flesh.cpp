@@ -44,8 +44,8 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner)
                                         10);
     sprite[IDLE_ATK_UP] = Sprite(path + "idle_atk_up.png", 4, 10);
     sprite[IDLE_ATK_FRONT] = Sprite(path + "idle_atk_front.png", 4, 10);
-    sprite[JUMP_ATK_DOWN_FALLLOOP] = Sprite(path + "jump_atk_down_fallloop
-                                            .png", 3, 10);
+    sprite[JUMP_ATK_DOWN_FALLLOOP] = Sprite(path + 
+           "jump_atk_down_fallloop.png", 3, 10);
     sprite[JUMP_ATK_DOWN_DMG] = Sprite(path + "jump_atk_down_dmg.png", 3, 10);
     sprite[JUMP_ATK_UP] = Sprite(path + "jump_atk_up.png", 4, 10);
     sprite[JUMP_ATK_NEUTRAL] = Sprite(path + "jump_atk_neutral.png", 4, 10);
