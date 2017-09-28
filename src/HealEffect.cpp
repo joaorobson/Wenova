@@ -22,7 +22,9 @@
  * @param frames is the frames to show the heal.
  * @param chealing_factor is the chealing factor.
  */
-HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags, int frames, float chealing_factor) : Effect(cparent, csprite, ctags, frames) {
+HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags, 
+                       int frames, float chealing_factor) 
+    : Effect(cparent, csprite, ctags, frames) {
     healing_factor = chealing_factor;
 }
 

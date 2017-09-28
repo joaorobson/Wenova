@@ -26,7 +26,8 @@
  * @param cid is the partner fighter identifier.
  * @param cparter is the fighter
  */
-Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner) : Fighter(cid, x, cpartner) {
+Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner) 
+    : Fighter(cid, x, cpartner) {
     path = "characters/flesh/" + skin + "/";
     sound_path = "characters/flesh/sound/";
 
@@ -35,18 +36,22 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner) : Fighte
     sprite[JUMPING] = Sprite(path + "jumping.png", 6, 10);
     sprite[FALLING] = Sprite(path + "falling.png", 7, 10);
     sprite[CROUCH] = Sprite(path + "crouch.png", 6, 20);
-    sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + "idle_atk_neutral_1.png", 4, 10);
-    sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + "idle_atk_neutral_2.png", 3, 10);
-    sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + "idle_atk_neutral_3.png", 5, 10);
+    sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + "idle_atk_neutral_1.png", 4, 
+                                        10);
+    sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + "idle_atk_neutral_2.png", 3, 
+                                        10);
+    sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + "idle_atk_neutral_3.png", 5, 
+                                        10);
     sprite[IDLE_ATK_UP] = Sprite(path + "idle_atk_up.png", 4, 10);
     sprite[IDLE_ATK_FRONT] = Sprite(path + "idle_atk_front.png", 4, 10);
-    sprite[JUMP_ATK_DOWN_FALLLOOP] = Sprite(path + "jump_atk_down_fallloop.png", 3, 10);
+    sprite[JUMP_ATK_DOWN_FALLLOOP] = Sprite(path + "jump_atk_down_fallloop
+                                            .png", 3, 10);
     sprite[JUMP_ATK_DOWN_DMG] = Sprite(path + "jump_atk_down_dmg.png", 3, 10);
     sprite[JUMP_ATK_UP] = Sprite(path + "jump_atk_up.png", 4, 10);
     sprite[JUMP_ATK_NEUTRAL] = Sprite(path + "jump_atk_neutral.png", 4, 10);
     sprite[IDLE_ATK_DOWN] = Sprite(path + "idle_atk_down.png", 4, 10);
     sprite[CROUCH_ATK] = Sprite(path + "crouch_atk.png", 4, 10);
-    sprite[SPECIAL_1] = Sprite(path + "special_1.png", 3, 30); //FIXME time
+    sprite[SPECIAL_1] = Sprite(path + "special_1.png", 3, 30);
     sprite[STUNNED] = Sprite(path + "stunned.png", 2, 10);
     sprite[DYING] = Sprite(path + "dying.png", 10, 10);
     sprite[DEFENDING] = Sprite(path + "defense.png", 2, 10);
@@ -90,7 +95,8 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner) : Fighte
 void Flesh::update_machine_state(float) {
     switch(state) {
         case FighterState::JUMP_ATK_UP:
-            attack_damage = (7 * additional_attack_damage) * (sprite[state].get_current_frame() == 1);
+            attack_damage = (7 * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             check_left(false);
             check_right(false);
@@ -102,7 +108,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_UP:
-            attack_damage = (3 * additional_attack_damage) * (sprite[state].get_current_frame() == 1);
+            attack_damage = (3 * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             if(sprite[state].is_finished()) {
                 check_idle();
@@ -112,7 +119,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_1:
-            attack_damage = (3 * additional_attack_damage) * (sprite[state].get_current_frame() == 1);
+            attack_damage = (3 * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             if(sprite[state].is_finished()) {
                 check_idle();
@@ -125,7 +133,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_2:
-            attack_damage = (1 * additional_attack_damage) * (sprite[state].get_current_frame() == 1);
+            attack_damage = (1 * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             if(sprite[state].is_finished()) {
                 check_idle();
@@ -159,7 +168,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_NEUTRAL:
-            attack_damage = (7 * additional_attack_damage) * (sprite[state].get_current_frame() < 1);
+            attack_damage = (7 * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() < 1);
             attack_mask = get_attack_orientation();
             check_right(false);
             check_left(false);
@@ -176,7 +186,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::CROUCH_ATK:
-            attack_damage = (3 * additional_attack_damage) * (sprite[state].get_current_frame() == 1);
+            attack_damage = (3 * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
             if(sprite[state].is_finished()) {
                 check_idle();
@@ -186,7 +197,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN_FALLLOOP:
-            speed.x = (INITIAL_SPEED + 1 + additional_speed) * (orientation == LEFT ? -1 : 1);
+            speed.x = (INITIAL_SPEED + 1 + additional_speed) * 
+                      (orientation == LEFT ? -1 : 1);
             speed.y = (INITIAL_SPEED + 1 + additional_speed);
             attack_damage = BASIC_ATTACK_DAMAGE + additional_attack_damage;
             attack_mask = get_attack_orientation();
@@ -203,7 +215,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN_DMG:
-            speed.x = (INITIAL_SPEED + 1 + additional_speed) * (orientation == LEFT ? -1 : 1);
+            speed.x = (INITIAL_SPEED + 1 + additional_speed) * 
+                      (orientation == LEFT ? -1 : 1);
             speed.y = (INITIAL_SPEED + 1 + additional_speed);
             if(sprite[state].is_finished() or on_floor) {
                 speed.x = 0;
@@ -215,7 +228,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_DOWN:
-            attack_damage = (BASIC_ATTACK_DAMAGE * additional_attack_damage) * (sprite[state].get_current_frame() == 1);
+            attack_damage = (BASIC_ATTACK_DAMAGE * additional_attack_damage) * 
+                            (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             if(sprite[state].is_finished()) {
                 check_idle();
@@ -412,7 +426,8 @@ void Flesh::check_right(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle(bool change, bool condition) {
-    if((speed.x == 0 and on_floor and not is_holding[DOWN_BUTTON] and not is_holding[BLOCK_BUTTON]) or condition) {
+    if((speed.x == 0 and on_floor and not is_holding[DOWN_BUTTON] and not 
+        is_holding[BLOCK_BUTTON]) or condition) {
         if(change) {
             temporary_state = FighterState::IDLE;
         }
@@ -480,13 +495,15 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
  * @param condition check if the character is in condition
  */
 void Flesh::check_idle_atk_front(bool change, bool condition) {
-    if((pressed[ATTACK_BUTTON] and (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) or condition) {
+    if((pressed[ATTACK_BUTTON] and (is_holding[LEFT_BUTTON] or 
+        is_holding[RIGHT_BUTTON])) or condition) {
         speed.y = 0;
         if(change) {
             temporary_state = FighterState::IDLE_ATK_FRONT;
         }
         if(not condition) {
-            orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT : Orientation::RIGHT;
+            orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT 
+            : Orientation::RIGHT;
         }
     }
 }
@@ -523,7 +540,8 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_neutral(bool change) {
-    if(is_holding[ATTACK_BUTTON] and not is_holding[DOWN_BUTTON] and not is_holding[UP_BUTTON]) {
+    if(is_holding[ATTACK_BUTTON] and not is_holding[DOWN_BUTTON] and not 
+       is_holding[UP_BUTTON]) {
         if(change) {
             temporary_state = FighterState::JUMP_ATK_NEUTRAL;
         }
@@ -567,7 +585,8 @@ void Flesh::check_special_1(bool change){
  */
 void Flesh::check_special_2(bool) {
     additional_attack_damage = 1 + (1.0 - (get_remaining_life()) / MAX_LIFE);
-    additional_speed = (1.0 - (1.0 * get_remaining_life()) / MAX_LIFE) * INITIAL_SPEED * 0.5;
+    additional_speed = (1.0 - (1.0 * get_remaining_life()) / MAX_LIFE) * 
+                        INITIAL_SPEED * 0.5;
 }
 
 /*
@@ -577,7 +596,9 @@ void Flesh::check_special_2(bool) {
  */
 void Flesh::check_ultimate(bool) {
     if(pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
-        Game::get_instance().get_current_state().add_object(new FleshUltimateEffect(this, path + "ult_effect.png", "has_sprite", 1));
+        Game::get_instance().get_current_state().add_object(new 
+            FleshUltimateEffect(this, path + "ult_effect.png", "has_sprite", 
+                                1));
         ultimate_sound.play();
     }
 }
@@ -607,7 +628,7 @@ void Flesh::check_pass_through_platform(bool change) {
 void Flesh::check_defense(bool change) {
     if(is_holding[BLOCK_BUTTON] and on_floor) {
         if(change) {
-            temporary_state = FighterState::DEFENDING;
+                temporary_state = FighterState::DEFENDING;
         }
     }
 }
