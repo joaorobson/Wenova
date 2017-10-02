@@ -69,7 +69,7 @@ BattleState::BattleState(string stage, vector< pair<string, string> > players_in
 	time_counter = new TimeCounter();
 	add_object(time_counter);
 
-	InputManager::get_instance()->set_analogic_value(20000);
+	InputManager::get_instance()->set_analogic_sensibility_value(20000);
 	InputManager::get_instance()->map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
 
