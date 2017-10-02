@@ -20,6 +20,9 @@
 
 InputManager *InputManager::input_manager;
 
+/**
+ * Expliciting buttons constants for this file, simplifying use..
+ */
 const int InputManager::UP, InputManager::DOWN, InputManager::RIGHT,
     InputManager::LEFT;
 const int InputManager::A, InputManager::B, InputManager::X, InputManager::Y;
@@ -61,6 +64,9 @@ InputManager::InputManager() {
     keyboard_to_joystick_id = 0;
     map_keyboard_to_joystick(keyboard_to_joystick_id);
 
+    /**
+     * Start controllers with nullptr.
+     */
     for (int i = 0; i < 4; i++) {
         controllers[i] = nullptr;
     }
@@ -74,6 +80,9 @@ InputManager::InputManager() {
  * Clear states about joystick and keyboard.
  */
 InputManager::~InputManager() {
+    /**
+     * Clear joystick data.
+     */
     for (int i = 0; i < 4; i++) {
         joystick_state[i].clear();
         joystick_update[i].clear();
@@ -96,15 +105,25 @@ void InputManager::update() {
     SDL_GetMouseState(&mouse_x, &mouse_y);
     mouse_x = mouse_x * scale + offset_x;
     mouse_y = mouse_y * scale + offset_y;
-    mouse_x = max(0, mouse_x);
-    mouse_x = min(mouse_x, 1280);
-    mouse_y = max(0, mouse_y);
-    mouse_y = min(mouse_y, 720);
+    mouse_x = std::max(0, mouse_x);
+    mouse_x = std::min(mouse_x, 1280);
+    mouse_y = std::max(0, mouse_y);
+    mouse_y = std::min(mouse_y, 720);
 
+    /**
+     * While proper event has not yet been found.
+     * Maybe can be removed if removed breaks for cases. Not sure.
+     */
     while (SDL_PollEvent(&event)) {
         int key_id, button_id;
         int joystick_id = controllers_id[event.cdevice.which];
 
+        /**
+         * Map events.
+         * Will map events from project variables to engine commands. Following
+         * cases will map keys to engine commands or connections and
+         * disconnections.
+         */
         switch (event.type) {
             case SDL_KEYDOWN:
                 if (event.key.repeat) {
@@ -372,12 +391,18 @@ void InputManager::set_analogic_value(int value) {
  * Manages connection of joysticks to the game.
  */
 void InputManager::connect_joysticks() {
+    /**
+     * Max number of joysticks can be only four.
+     */
     int max = SDL_NumJoysticks();
     if (max > 4) {
         max = 4;
     }
     int n_controller = 0;
 
+    /**
+     * To reset connections.
+     */
     for (int i = 0; i < max; i++) {
         if (controllers[i] != nullptr) {
             SDL_GameControllerClose(controllers[i]);
@@ -385,6 +410,9 @@ void InputManager::connect_joysticks() {
         }
     }
 
+    /**
+     * Detect compability for joystick connected.
+     */
     for (int i = 0; i < max; i++) {
         char guid[64];
         SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid,
@@ -433,12 +461,16 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
 
 /**
  * Manages joystick interaction with the game.
+ * Map joystick keys to interect with the game through keyboard keys.
  *
  * @param key_id Id of the key is that is interacting with the game
  * @param state State of the key that is interacting with the game
  */
 void InputManager::emulate_joystick(int key_id, bool state) {
     if (state) {
+        /**
+         * Map each key for corresponding.
+         */
         switch (key_id) {
             case SDLK_0:
                 reset_keyboard_to_joystick();
@@ -467,6 +499,9 @@ void InputManager::emulate_joystick(int key_id, bool state) {
         }
     }
 
+    /**
+     * Will update status for joystick based on profile.
+     */
     if (keyboard_to_joystick_id == 4) {
         for (int i = 0; i < 4; i++) {
             joystick_state[i][keyboard_to_joystick[key_id] - 1] = state;
@@ -485,9 +520,16 @@ void InputManager::emulate_joystick(int key_id, bool state) {
  * Manages transition of inputs from keyboard to joystick.
  */
 void InputManager::reset_keyboard_to_joystick() {
+    /**
+     * Check limits.
+     */
     if (keyboard_to_joystick_id < 0 or keyboard_to_joystick_id > 4) {
         return;
     }
+
+    /**
+     * Update all joysticks state based on profile.
+     */
     if (keyboard_to_joystick_id == 4) {
         for (int i = 0; i < 4; i++) {
             for (auto &c : joystick_state[i]) {
@@ -495,6 +537,11 @@ void InputManager::reset_keyboard_to_joystick() {
             }
         }
     }
+
+    /**
+     * Guess is not necessary.
+     * Else?
+     */
     for (auto &c : joystick_state[keyboard_to_joystick_id]) {
         c.second = false;
     }
