@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/joaorobson/Documentos/Wenova/test/tests.cpp
+../whattotest.cpp
+/home/joaorobson/Documentos/Wenova/whattotest.cpp
+gtest/gtest.h
+-
+
+/home/joaorobson/Documentos/Wenova/whattotest.cpp
+math.h
+-
+
