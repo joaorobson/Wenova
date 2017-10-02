@@ -1,6 +1,6 @@
 NAME = game
 SRC_DIR = src
-INC_DIR = inc
+INC_DIR = include
 OBJ_DIR = obj
 BIN_DIR = bin
 
