@@ -13,9 +13,7 @@
 
 #include <string>
 
-#define RES_FOLDER string("res/")
-
-using std::string;
+#define RESOURCES_FOLDER std::string("res/")
 
 class Config {
  public:

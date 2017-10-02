@@ -30,13 +30,13 @@
  */
 EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
     : Floor(x, y, 100, crotation, cplatform),
-      normal_sprite(Sprite("edit_state/floor/editable_floor.png")),
+      standard_sprite(Sprite("edit_state/floor/editable_floor.png")),
       platform_sprite(Sprite("edit_state/floor/editable_platform.png")),
       selected_sprite(Sprite("edit_state/floor/selected_editable_floor.png")) {
     box =
-        Rectangle(x, y, normal_sprite.get_width(), normal_sprite.get_height());
-    deleted = false;
-    selected = false;
+        Rectangle(x, y, standard_sprite.get_width(), standard_sprite.get_height());
+    is_deleted = false;
+    is_selected = false;
 }
 
 /** 
@@ -51,10 +51,10 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
                              bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
-    normal_sprite.set_scale_x(width / normal_sprite.get_width());
+    standard_sprite.set_scale_x(width / standard_sprite.get_width());
     platform_sprite.set_scale_x(width / platform_sprite.get_width());
     selected_sprite.set_scale_x(width / selected_sprite.get_width());
-    box.width = normal_sprite.get_width();
+    box.width = standard_sprite.get_width();
 }
 
 /** 
@@ -74,15 +74,17 @@ void EditableFloor::update(float delta) {
         int x = input_manager->get_mouse_x_position();
         int y = input_manager->get_mouse_y_position();
         Rectangle mouse = Rectangle(x, y, 1, 1);
-        selected = Collision::is_colliding(box, mouse, rotation, 0);
+        is_selected = Collision::is_colliding(box, mouse, rotation, 0);
     }
 
-    if (selected) {
+    if (is_selected) {
         static float acceleration = 1;
         float value = 0.5 * delta * acceleration;
         bool moved = false;
 
-        // Move floor
+        /**
+         * Move Floor
+         * */
         if (input_manager->is_key_down(InputManager::K_ARROW_RIGHT)) {
             box.x += value;
             moved = true;
@@ -116,41 +118,53 @@ void EditableFloor::update(float delta) {
             box.y = 720;
         }
 
-        // Rotate floor to left
+        /**
+         * Rotate floor to left.
+         * */
         if (input_manager->is_key_down(InputManager::K_ROT_LEFT)) {
             rotation += 0.01 * value / acceleration;
         }
 
-        // Rotate floor to right
+        /**
+         * Rotate floor to right.
+         * */
         if (input_manager->is_key_down(InputManager::K_ROT_RIGHT)) {
             rotation -= 0.01 * value / acceleration;
         }
 
-        // Reset rotation
+        /**
+         * Reset rotation.
+         * */
         if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
             rotation = 0;
         }
 
-        // Toggle floor
+        /**
+         * Toggle Floor.
+         * */
         if (input_manager->key_press(InputManager::K_C)) {
             is_platform = not is_platform;
         }
 
-        // Increase floor width
+        /**
+         * Increase floor width.
+         * */
         if (input_manager->is_key_down(InputManager::K_INC_W)) {
-            normal_sprite.update_scale_x(0.005 * value);
+            standard_sprite.update_scale_x(0.005 * value);
             platform_sprite.update_scale_x(0.005 * value);
             selected_sprite.update_scale_x(0.005 * value);
-            box.width = normal_sprite.get_width();
+            box.width = standard_sprite.get_width();
             moved = true;
         }
 
-        // Decrease floor width
+        /**
+         * Decrease floor width.
+         * */
         if (input_manager->is_key_down(InputManager::K_DEC_W)) {
-            normal_sprite.update_scale_x(-0.005 * value);
+            standard_sprite.update_scale_x(-0.005 * value);
             platform_sprite.update_scale_x(-0.005 * value);
             selected_sprite.update_scale_x(-0.005 * value);
-            box.width = normal_sprite.get_width();
+            box.width = standard_sprite.get_width();
             moved = true;
         }
 
@@ -160,9 +174,11 @@ void EditableFloor::update(float delta) {
             acceleration = 1;
         }
 
-        // Delete floor
+        /**
+         * Delete floor.
+         * */
         if (input_manager->is_key_down(InputManager::K_DEL)) {
-            deleted = true;
+            is_deleted = true;
         }
     }
 }
@@ -171,14 +187,14 @@ void EditableFloor::update(float delta) {
  * Render selected box considering if it is selected.  
  */
 void EditableFloor::render() {
-    if (selected) {
+    if (is_selected) {
         selected_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     }
 
     if (is_platform)
         platform_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     else
-        normal_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
+        standard_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
 }
 
 /** 
@@ -187,7 +203,7 @@ void EditableFloor::render() {
  * @returns [0,1] 
  */
 bool EditableFloor::is_dead() {
-    return deleted;
+    return is_deleted;
 }
 
 /** 
@@ -217,8 +233,8 @@ string EditableFloor::get_information() {
 /** 
  * Select elements which will be edited. 
  * 
- * @param cselected [0,1]
+ * @param cis_selected [0,1]
  */
-void EditableFloor::set_selected(bool cselected) {
-    selected = cselected;
+void EditableFloor::set_selected(bool cis_selected) {
+    is_selected = cis_selected;
 }

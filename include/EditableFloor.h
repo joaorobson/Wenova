@@ -20,10 +20,15 @@
 class EditableFloor : public Floor {
  private:
     enum FloorState { SELECTED, NOT_SELECTED };
-    Sprite normal_sprite, platform_sprite, selected_sprite;
+
+    Sprite standard_sprite;
+    Sprite platform_sprite;
+    Sprite selected_sprite;
+
     FloorState state;
-    bool deleted;
-    bool selected;
+
+    bool is_deleted;
+    bool is_selected;
 
  public:
     /**
@@ -89,9 +94,9 @@ class EditableFloor : public Floor {
     /**
      * Select elements which will be edited.
      *
-     * @param cselected [0,1]
+     * @param cis_selected [0,1]
      */
-    void set_selected(bool cselected);
+    void set_selected(bool cis_selected);
 };
 
 #endif  // INCLUDE_EDITABLEFLOOR_H_

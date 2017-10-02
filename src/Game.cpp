@@ -70,7 +70,7 @@ Game::Game(string title){
 		printf("Warning: No joysticks connected!\n");
 	}
 
-	SDL_GameControllerAddMappingsFromFile((RES_FOLDER + "joysticks/gamecontrollerdb.txt").c_str());
+	SDL_GameControllerAddMappingsFromFile((RESOURCES_FOLDER + "joysticks/gamecontrollerdb.txt").c_str());
 
 	InputManager::get_instance()->connect_joysticks();
 
