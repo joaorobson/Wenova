@@ -26,23 +26,23 @@
 class CharacterSelectState : public State {
  private:
     Sprite background[2]; /**< Images for background. */
-    Sprite planet; /**< Image from planet logo. */
+    Sprite planet_logo; /**< Image from planet logo. */
     Sprite character_slots;  /**< Images for character thumbnails. */
-    Sprite number[4]; /**< Images for numbers that represent the player. */
+    Sprite player_number[4]; /**< Images for numbers that represent the player. */
     Sprite name_tag[4]; /**< Images for characters name tag. */
     Sprite selected_tag; /**< Image to highlight selected characters. */
     Sprite ready_to_fight; /**< Image for when everything is ready. */
 
     Sound blocked; /**< Sound when try to select not allowed characters. */
-    Sound selected_sound; /**< Sound when really select characters.  */
+    Sound select_sound; /**< Sound when really select characters.  */
     Sound changed; /**< Sound when switching between characters. */
 
-    int cur_row[4];
-    int cur_col[4];
-    int cur_skin[4];
+    int current_row[4];
+    int current_column[4];
+    int current_skin[4];
 
-    bool selected[4];
-    bool ready;   /**< Ready to start the match. */
+    bool is_character_selected[4];
+    bool is_ready; /**< Ready to start the match. */
 
     string selected_stage;
 
@@ -50,7 +50,7 @@ class CharacterSelectState : public State {
                   RIGHT, UP, DOWN,
                   SELECT, START, LT, RT }; /**< Based on Xbox controller. */
 
-    bool pressed[4][15]; /**< One array of buttons for each player. */
+    bool is_key_pressed[4][15]; /**< One array of buttons for each player. */
 
 
     /** 
@@ -71,7 +71,7 @@ class CharacterSelectState : public State {
      * (Range for fit on screen)
      */
     vector<ii> name_tag_positions; /**< Relative to background image */
-    vector<ii> sprite_pos;  /**< Relative to background image. */
+    vector<ii> sprite_position;  /**< Relative to background image. */
     vector<ii> name_delta;  /**< Relative to name_tag_positions. */
     vector<ii> number_delta; /**< Relative to character thumbnail. */
 
