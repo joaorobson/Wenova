@@ -9,7 +9,6 @@ install:
 compiler:
    - g++
 script:
-  - make
-  - cmake test/CMakeLists.txt 
-  - make -f test/Makefile 
+  - sudo cmake test/CMakeLists.txt 
+  - sudo make -f test/Makefile 
   - test/runTests
