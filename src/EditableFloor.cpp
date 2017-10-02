@@ -71,8 +71,8 @@ void EditableFloor::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
     if (input_manager->mouse_press(InputManager::LEFT_MOUSE_BUTTON)) {
-        int x = input_manager->get_mouse_x();
-        int y = input_manager->get_mouse_y();
+        int x = input_manager->get_mouse_x_position();
+        int y = input_manager->get_mouse_y_position();
         Rectangle mouse = Rectangle(x, y, 1, 1);
         selected = Collision::is_colliding(box, mouse, rotation, 0);
     }

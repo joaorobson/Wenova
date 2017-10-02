@@ -134,7 +134,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                                       "select_start"));
     }
 
-    InputManager::get_instance()->set_analogic_value(20000);
+    InputManager::get_instance()->set_analogic_sensibility_value(20000);
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
 }

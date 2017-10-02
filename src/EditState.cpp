@@ -33,7 +33,7 @@ EditState::EditState(string cstage) : stage(cstage){
 	sound.play(-1);
 
 	read_level_design();
-	InputManager::get_instance()->set_analogic_value(20000);
+	InputManager::get_instance()->set_analogic_sensibility_value(20000);
 	InputManager::get_instance()->map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
 
@@ -56,8 +56,8 @@ void EditState::update(float delta){
 
 	// reset position of fighter
 	if(input_manager->mouse_press(InputManager::RIGHT_MOUSE_BUTTON)){
-		int x = input_manager->get_mouse_x();
-		int y = input_manager->get_mouse_y();
+		int x = input_manager->get_mouse_x_position();
+		int y = input_manager->get_mouse_y_position();
 		test_fighter->reset_position(x, y);
 	}
 
@@ -65,8 +65,8 @@ void EditState::update(float delta){
 	if(input_manager->key_press(InputManager::K_F) ||
 		input_manager->key_press(InputManager::K_P)
 	){
-		int x = input_manager->get_mouse_x();
-		int y = input_manager->get_mouse_y();
+		int x = input_manager->get_mouse_x_position();
+		int y = input_manager->get_mouse_y_position();
 		bool is_platform = input_manager->key_press(InputManager::K_P);
 
 		for(auto & go : object_array){
