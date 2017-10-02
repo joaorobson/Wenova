@@ -128,7 +128,7 @@ void EditState::resume(){
 void EditState::read_level_design(){
 	float x, y, width, crotation;
 	int platform;
-	ifstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat");
+	ifstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
 	if(not level_design.is_open()){
 		printf("Level design of stage %s can't be opened\n", stage.c_str());
 		exit(-5);
@@ -165,14 +165,14 @@ void EditState::read_level_design(){
 
 
 void EditState::update_level_design(){
-	ifstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat", std::ios::binary);
-	ofstream old_level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat.old", std::ios::trunc | std::ios::binary);
+	ifstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat", std::ios::binary);
+	ofstream old_level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old", std::ios::trunc | std::ios::binary);
 	old_level_design << level_design.rdbuf();
 	level_design.close();
 	old_level_design.close();
 
-	ofstream new_level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat", std::ios::trunc);
-	ifstream backup(RES_FOLDER + "stage_" + stage + "/level_design.dat.old", std::ios::binary);
+	ofstream new_level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat", std::ios::trunc);
+	ifstream backup(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old", std::ios::binary);
 	string s;
 	for(unsigned i = 0; i <= backgrounds.size(); ++i){
 		std::getline(backup, s);

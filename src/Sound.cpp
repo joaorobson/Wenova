@@ -26,7 +26,7 @@ void Sound::stop(){
 }
 
 void Sound::open(string cfile){
-	sound = Resources::get_sound(RES_FOLDER + cfile);
+	sound = Resources::get_sound(RESOURCES_FOLDER + cfile);
 }
 
 bool Sound::is_open(){
