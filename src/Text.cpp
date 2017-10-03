@@ -29,8 +29,8 @@ Text::Text() {
 
 /**
  * A constructor.
- * Initialize the style, color, textuxe, font size and position of the text in the
- * game.
+ * Initialize the style, color, textuxe, font size and position of the text in 
+ * the game.
  *
  * @param cfont_file is the font file where the respective font is.
  * @param cfont_size is the size of the font.
@@ -41,17 +41,17 @@ Text::Text() {
  * @param y is the text vertical position.
  */
 Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
-           SDL_Color ccolor, int x, int y) {
-  font_size = cfont_size;  //
+           SDL_Color ccolor, int x_axis_position, int y_axis_position) {
+  font_size = cfont_size;  
   style = cstyle;
   text = ctext;
   color = ccolor;
-  box.set_x(x);
-  box.set_y(y);
+  box.set_x(x_axis_position);
+  box.set_y(y_axis_position);
   texture = nullptr;
   open(cfont_file, font_size);
   remake_texture();
-  set_pos(x, y, true, true);
+  set_pos(x_axis_position, y_axis_position, true, true);
 }
 
 /**
@@ -102,9 +102,10 @@ void Text::render(int camera_x, int camera_y) {
  * @param center_x checks if the text is centered horizontally;
  * @param center_y checks if the text is centered vertically.
  */
-void Text::set_pos(int x, int y, bool center_x, bool center_y) {
-  box.set_x(x - (center_x ? clip_rect.w * 0.5 : 0));
-  box.set_y(y - (center_y ? clip_rect.h * 0.5 : 0));
+void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x, 
+                   bool center_y) {
+  box.set_x(x_axis_position - (center_x ? clip_rect.w * 0.5 : 0));
+  box.set_y(y_axis_position - (center_y ? clip_rect.h * 0.5 : 0));
 }
 
 /**

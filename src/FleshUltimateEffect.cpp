@@ -43,7 +43,7 @@ FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
  *
  * @param delta is the character state variation.
  */
-void FleshUltimateEffect::update(float delta) {
+void FleshUltimateEffect::update(float delta_character_state) {
   /**
    * Check if is the parent fighter. If so, set his position and decreases his
    * special attack level.
@@ -51,9 +51,9 @@ void FleshUltimateEffect::update(float delta) {
   if (parent) {
     box.x = parent->box.x;
     box.y = parent->box.get_draw_y() - box.get_height() / 2 - 10;
-    parent->increment_special(-0.4 * delta);
+    parent->increment_special(-0.4 * delta_character_state);
   }
-  sprite.update(delta);
+  sprite.update(delta_character_state);
 }
 
 /**
