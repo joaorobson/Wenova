@@ -7,12 +7,12 @@
 #IncludeRegexTransform: 
 
 /home/joaorobson/Documentos/Wenova/test/tests.cpp
-../whattotest.cpp
-/home/joaorobson/Documentos/Wenova/whattotest.cpp
+whattotest.cpp
+/home/joaorobson/Documentos/Wenova/test/whattotest.cpp
 gtest/gtest.h
 -
 
-/home/joaorobson/Documentos/Wenova/whattotest.cpp
+/home/joaorobson/Documentos/Wenova/test/whattotest.cpp
 math.h
 -
 
