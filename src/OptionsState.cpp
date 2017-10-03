@@ -183,9 +183,9 @@ void OptionsState::update(float) {
                     ii(1920, 1080)
                 };
 
-                int idx = current_sub_option[current_option];
-                int new_width = resolutions[idx].first;
-                int new_height = resolutions[idx].second;
+                int id_resolution = current_sub_option[current_option];
+                int new_width = resolutions[id_resolution].first;
+                int new_height = resolutions[id_resolution].second;
 
                 Game::get_instance().change_resolution(new_width, new_height);
             } else if (current_option == 1) {
@@ -211,25 +211,27 @@ void OptionsState::update(float) {
         }
         int prev_text_height = (TEXT_HEIGHT + TEXT_OFFSET * 2) * prev_text_size;
 
-        int text_x = 250;
-        int text_y = (i ? options[i - 1]->get_y() + prev_text_height : 200);
+        int text_position_axi_x = 250;
+        int text_position_axi_y = (i ? options[i - 1]->get_y() +
+                                       prev_text_height : 200);
 
-        cur_text->set_pos(text_x, text_y, false, false);
+        cur_text->set_pos(text_position_axi_x,
+                          text_position_axi_y, false, false);
 
         for (int j = 0;
              j < static_cast<int>(sub_options[cur_text->get_text()].size());
              j++) {
-            int x = 800;
-            int y = text_y;
+            text_position_axi_x = 800;
 
             if (j) {
                 Text *prev_option = sub_options[cur_text->get_text()][j - 1];
-                y = prev_option->get_y() + prev_option->get_height() +
-                    TEXT_OFFSET;
+                text_position_axi_y = prev_option->get_y() +
+                                      prev_option->get_height() +
+                                      TEXT_OFFSET;
             }
 
             Text *option = sub_options[cur_text->get_text()][j];
-            option->set_pos(x, y);
+            option->set_pos(text_position_axi_x, text_position_axi_y);
         }
     }
 
