@@ -45,7 +45,8 @@ class Blood : public Fighter {
   void update_machine_state(float delta);
 
  public:
-  Blood(string skin, float x, float y, int cid, Fighter * cpartner = nullptr);
+  Blood(string skin, float x_axis_position, float y_axis_position, 
+        int character_id, Fighter * cpartner = nullptr);
 };
 
 #endif  // INCLUDE_BLOOD_H_

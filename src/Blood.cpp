@@ -31,8 +31,10 @@ using std::min;
  * @param y is the box veretical coordinate.
  * @param cid is the partner fighter identifier.
  */
-Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
-             Fighter(cid, x, cpartner) {
+Blood::Blood(string skin, float x_axis_position, float y_axis_position,
+             int character_id, Fighter * cpartner) : Fighter(character_id,
+                                                            x_axis_position, 
+                                                            cpartner) {
   /**
    * File path indicating the relative skin to each attack type.
    */
@@ -92,7 +94,7 @@ Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
 
   tags["blood"] = true;
   tags[skin] = true;
-  box = Rectangle(x, y, 84, 84);
+  box = Rectangle(x_axis_position, y_axis_position, 84, 84);
 }
 
 /**
@@ -102,7 +104,7 @@ Blood::Blood(string skin, float x, float y, int cid, Fighter * cpartner) :
  *
  * @param delta is the variation of character state.
  */
-void Blood::update_machine_state(float delta) {
+void Blood::update_machine_state(float delta_character_state) {
   /**
    * Fighter's state machine.
    * Switch around fighter states according to suffered attacks and update
@@ -313,8 +315,8 @@ void Blood::update_machine_state(float delta) {
     break;
 
     case FighterState::SPECIAL_2:
-      increment_special(0.2 * delta);
-      increment_life(-0.2 * delta);
+      increment_special(0.2 * delta_character_state);
+      increment_life(-0.2 * delta_character_state);
       /**
        * Check if sprite use is finished according to exhibited state.
        * If so, character is healed.
