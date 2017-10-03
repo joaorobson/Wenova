@@ -31,7 +31,7 @@ StageSelectState::StageSelectState(bool cgo_to_edit) {
     planet = Sprite("stage_select/planet.png", 8, FRAME_TIME);
     planet.set_scale(1.5);
     go_to_edit = cgo_to_edit;
-    n_stages = 2 + (go_to_edit ? 0 : 1);
+    amount_stages = 2 + (go_to_edit ? 0 : 1);
 
     blocked = Sound("menu/sound/cancel.ogg");
     selected = Sound("menu/sound/select.ogg");
@@ -42,7 +42,7 @@ StageSelectState::StageSelectState(bool cgo_to_edit) {
                                to_string(i) + ".png");
     }
 
-    for (int i = 0; i < n_stages; i++) {
+    for (int i = 0; i < amount_stages; i++) {
         stage[i] = Sprite("stage_select/stage_" + to_string(i + 1) + ".png");
     }
 
@@ -89,7 +89,8 @@ void StageSelectState::update(float delta) {
         if (stage_select == 2) {
             srand(clock());
             unsigned int thread = 0;
-            stage_select = rand_r(&thread) % (n_stages - (go_to_edit ? 0 : 1));
+            stage_select = rand_r(&thread) % (amount_stages -
+                                              (go_to_edit ? 0 : 1));
         }
 
         if (go_to_edit) {
@@ -114,7 +115,7 @@ void StageSelectState::render() {
     planet.render(640 - planet.get_width() / 2, 360 - planet.get_height() / 2);
     background[1].render();
 
-    for (int i = 0; i < n_stages; i++) {
+    for (int i = 0; i < amount_stages; i++) {
         stage[i].render(i * 780 - stage_select * 780);
     }
 }
@@ -131,9 +132,9 @@ void StageSelectState::update_stage_select(int increment) {
     if (stage_select < 0) {
         blocked.play();
         stage_select = 0;
-    } else if (stage_select > n_stages - 1) {
+    } else if (stage_select > amount_stages - 1) {
         blocked.play();
-        stage_select = n_stages - 1;
+        stage_select = amount_stages - 1;
     } else {
         selected.play();
     }

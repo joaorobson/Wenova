@@ -35,7 +35,7 @@ class StageSelectState : public State {
                            /**< choosed by the user. */
     bool go_to_edit;  /**< Bool value that indicates if user is on edit mode */
                       /**< of a stage. */
-    int n_stages;  /**< Int number of the amount of stages that user can */
+    int amount_stages;  /**< Int number of the amount of stages that user can */
                    /**< select according if he's on edit mode or not. */
 
     enum Button {
