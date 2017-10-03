@@ -46,18 +46,18 @@ UltimateEffect::UltimateEffect(Fighter * cparent,
  *
  * @param delta is the variation of character state.
  */
-void UltimateEffect::update(float delta) {
-  healing_factor = 1 * delta;
+void UltimateEffect::update(float delta_character_state) {
+  healing_factor = 1 * delta_character_state;
   if (parent) {
     sprite_box.x = parent->box.x;
     sprite_box.y = parent->box.get_draw_y() - sprite_box.get_height() / 2 - 10;
     box.x = parent->box.x;
     box.y = parent->box.y;
-    parent->increment_special(-0.4 * delta);
+    parent->increment_special(-0.4 * delta_character_state);
     parent->increment_life(healing_factor);
   }
-  sprite.update(delta);
-  aura.update(delta);
+  sprite.update(delta_character_state);
+  aura.update(delta_character_state);
 }
 
 /**

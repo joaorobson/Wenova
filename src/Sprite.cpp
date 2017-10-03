@@ -27,7 +27,7 @@
 */
 Sprite::Sprite() {
   texture = nullptr;
-  scale_x = scale_y = 1;
+  scale_x_axis = scale_y_axis = 1;
   frame_count = 1;
   frame_time = 1;
   current_frame = time_elapsed = 0;
@@ -56,7 +56,7 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
   finished = false;
   open(RES_FOLDER + file);
 
-  scale_x = scale_y = 1;
+  scale_x_axis = scale_y_axis = 1;
 }
 
 /**
@@ -73,7 +73,7 @@ Sprite::~Sprite() {
 * @return the sprite width.
 */
 int Sprite::get_width() {
-  return width * scale_x;
+  return width * scale_x_axis;
 }
 
 /**
@@ -83,7 +83,7 @@ int Sprite::get_width() {
 * @return the sprite height.
 */
 int Sprite::get_height() {
-  return height * scale_y;
+  return height * scale_y_axis;
 }
 
 /**
@@ -133,8 +133,10 @@ void Sprite::open(string file) {
 * @param w stores the width value.
 * @param h stores the height value.
 */
-void Sprite::set_clip(int x, int y, int w, int h) {
-  clip_rect = SDL_Rect{x, y, w, h};
+void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, 
+                      int clip_width, int clip_height) {
+  clip_rect = SDL_Rect{x_axis_coordinate, y_axis_coordinate, clip_width, 
+                       clip_height};
 }
 
 /**
@@ -181,8 +183,8 @@ void Sprite::set_frame_time(float cframe_time) {
 * @param delta is the variation of time in the game. The elapsed time increases
 * according to this variation.
 */
-void Sprite::update(float delta) {
-  time_elapsed += delta;
+void Sprite::update(float delta_time) {
+  time_elapsed += delta_time;
   /**
    * Check if the elapsed time of a frame was enough. If so, the elapsed time
    * restarts.
@@ -217,8 +219,8 @@ void Sprite::update(float delta) {
 void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
   SDL_Rect dstrect = SDL_Rect{x,
                               y,
-                              static_cast<int>(clip_rect.w * scale_x),
-                              static_cast<int>(clip_rect.h * scale_y)};
+                              static_cast<int>(clip_rect.w * scale_x_axis),
+                              static_cast<int>(clip_rect.h * scale_y_axis)};
 
   angle *= (180 / PI);  /**< Conversion from degrees to radians. */
   int render_copy = SDL_RenderCopyEx(Game::get_instance().get_renderer(),
@@ -245,7 +247,7 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
 * scale_x.
 */
 void Sprite::set_scale_x(float scale) {
-  scale_x = scale;
+  scale_x_axis = scale;
 }
 
 /**
@@ -256,7 +258,7 @@ void Sprite::set_scale_x(float scale) {
 * scale_y.
 */
 void Sprite::set_scale_y(float scale) {
-  scale_y = scale;
+  scale_y_axis = scale;
 }
 
 /**
@@ -267,7 +269,7 @@ void Sprite::set_scale_y(float scale) {
 * scale_y and scale_x variables.
 */
 void Sprite::set_scale(float scale) {
-  scale_x = scale_y = scale;
+  scale_x_axis = scale_y_axis = scale;
 }
 
 /**
@@ -279,9 +281,9 @@ void Sprite::set_scale(float scale) {
 * @param cscale_y stores the value that will be saved and updated in the
 * scale_y variable.
 */
-void Sprite::set_scale(float cscale_x, float cscale_y) {
-  scale_x = cscale_x;
-  scale_y = cscale_y;
+void Sprite::set_scale(float cscale_x_axis, float cscale_y_axis) {
+  scale_x_axis = cscale_x_axis;
+  scale_y_axis = cscale_y_axis;
 }
 
 /**
@@ -292,12 +294,12 @@ void Sprite::set_scale(float cscale_x, float cscale_y) {
 * scale_x variable. If the value is very small (< 0.5), scale_x receive 0.5.
 */
 void Sprite::update_scale_x(float scale) {
-  scale_x += scale;
+  scale_x_axis += scale;
   /**
    * Check if the x axis is very small. If so, the scale is set to 0.05.
    */
-  if (scale_x < 0.05) {
-    scale_x = 0.05;
+  if (scale_x_axis < 0.05) {
+    scale_x_axis = 0.05;
   }
 }
 

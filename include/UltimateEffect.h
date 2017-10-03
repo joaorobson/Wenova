@@ -26,7 +26,7 @@ class UltimateEffect : public Effect{
   UltimateEffect(Fighter * cparent, string csprite, string caura, string ctags,
                  int frames = 1);
 
-  void update(float delta);
+  void update(float delta_character_state);
   void render();
   bool is_dead();
   void notify_collision(GameObject &object);

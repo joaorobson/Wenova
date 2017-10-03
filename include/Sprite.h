@@ -33,8 +33,8 @@ class Sprite{
   int rows;  /**< Number of rows filled by a sprite. */
   int columns;  /**< Number of columns filled by a sprite. */
   SDL_Rect clip_rect;  /**< Sprites frames positioning box. */
-  float scale_x;  /**< Horizontal scale. */
-  float scale_y;  /**< Vertical scale. */
+  float scale_x_axis;  /**< Horizontal scale. */
+  float scale_y_axis;  /**< Vertical scale. */
   bool finished;  /**< Check if the sprite use is no longer required. */
 
  public:
@@ -60,7 +60,7 @@ class Sprite{
   void set_scale_x(float scale);
   void set_scale_y(float scale);
   void set_scale(float scale);
-  void set_scale(float cscale_x, float cscale_y);
+  void set_scale(float cscale_x_axis, float cscale_y_axis);
   void update_scale_x(float scale);
   void restart_count(int cframe = 0);
   bool is_finished();
