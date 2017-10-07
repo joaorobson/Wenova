@@ -125,14 +125,14 @@ void Sprite::open(string file) {
 }
 
 /**
-* Clip setter.
-* Sets a the frames sequence  position.
-*
-* @param x stores the horizontal coordinate value.
-* @param y stores the vertical coordinate value.
-* @param w stores the width value.
-* @param h stores the height value.
-*/
+ * Clip setter.
+ * Sets a the frames sequence  position.
+ *
+ * @param x stores the horizontal coordinate value.
+ * @param y stores the vertical coordinate value.
+ * @param w stores the width value.
+ * @param h stores the height value.
+ */
 void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, 
                       int clip_width, int clip_height) {
   clip_rect = SDL_Rect{x_axis_coordinate, y_axis_coordinate, clip_width, 
@@ -140,12 +140,12 @@ void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate,
 }
 
 /**
-* Frame setter.
-* Sets a new frame.
-*
-* @param frame stores the value of the new frame that will be saved and updated
-* as a current frame.
-*/
+ * Frame setter.
+ * Sets a new frame.
+ *
+ * @param frame stores the value of the new frame that will be saved and updated
+ * as a current frame.
+ */
 void Sprite::set_frame(int frame) {
   current_frame = frame;
   set_clip((current_frame % columns) * width,
@@ -166,12 +166,12 @@ void Sprite::set_frame_count(int cframe_count) {
 }
 
 /**
-* Frame time setter.
-* Sets the current time of a frame.
-*
-* @param cframe_time stores the value that will be saved and updated the time of
-* the old frame.
-*/
+ * Frame time setter.
+ * Sets the current time of a frame.
+ *
+ * @param cframe_time stores the value that will be saved and updated the time of
+ * the old frame.
+ */
 void Sprite::set_frame_time(float cframe_time) {
   frame_time = cframe_time;
 }
@@ -189,6 +189,7 @@ void Sprite::update(float delta_time) {
    * Check if the elapsed time of a frame was enough. If so, the elapsed time
    * restarts.
    */
+
   if (time_elapsed >= frame_time) {
     time_elapsed = 0;
 

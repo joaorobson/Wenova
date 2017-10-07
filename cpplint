@@ -61,7 +61,6 @@ _header_extensions = set([])
 # if empty, use defaults
 _valid_extensions = set([])
 
-
 # Files with any of these extensions are considered to be
 # header files (and will undergo different style checks).
 # This set can be extended by using the --headers
@@ -559,6 +558,16 @@ for op, inv_replacement in [('==', 'NE'), ('!=', 'EQ'),
                             ('<=', 'GT'), ('<', 'GE')]:
   _CHECK_REPLACEMENT['EXPECT_FALSE'][op] = 'EXPECT_%s' % inv_replacement
   _CHECK_REPLACEMENT['ASSERT_FALSE'][op] = 'ASSERT_%s' % inv_replacement
+
+   # Control structures which has the same pattern
+  _CONTROL_STRUCTURES = [
+      'if',
+      'for',
+      r'else if',
+      'switch',
+      'case',
+      'while'
+  ]
 
 # Alternative tokens and their replacements.  For full list, see section 2.5
 # Alternative tokens [lex.digraph] in the C++ standard.
@@ -3872,7 +3881,6 @@ def GetPreviousNonBlankLine(clean_lines, linenum):
     prevlinenum -= 1
   return ('', -1)
 
-
 def CheckBraces(filename, clean_lines, linenum, error):
   """Looks for misplaced braces (e.g. at the end of line).
 
@@ -3990,6 +3998,33 @@ def CheckBraces(filename, clean_lines, linenum, error):
           elif next_indent > if_indent:
             error(filename, linenum, 'readability/braces', 4,
                   'If/else bodies with multiple statements require braces')
+
+
+  # Prepare to catch on multiple lines
+  if not len(CheckBraces.multiple_lines):
+    CheckBraces.multiple_lines = line
+  elif not CheckBraces.last_fail:
+    CheckBraces.multiple_lines = ''
+  elif CheckBraces.last_fail:
+    CheckBraces.multiple_lines += '`' + line
+
+  if Match(r'^\s*(' +
+           ('|'.join(_CONTROL_STRUCTURES + ['else'])) +
+           r')', CheckBraces.multiple_lines) and not Match(r'.*{($|`)',
+             CheckBraces.multiple_lines):
+
+    # Treat conditions
+    if ';' in CheckBraces.multiple_lines and not '{' in CheckBraces.multiple_lines:
+      CheckBraces.last_fail = False
+    elif '{' in CheckBraces.multiple_lines and '}' in CheckBraces.multiple_lines:
+      CheckBraces.last_fail = False
+    else:
+      CheckBraces.last_fail = True
+
+    # Get more lines
+    if not CheckBraces.last_fail:
+      error(filename, linenum, 'readability/braces', 5,
+            'Control structures must have braces and not on same line')
 
 
 def CheckTrailingSemicolon(filename, clean_lines, linenum, error):
@@ -4437,6 +4472,9 @@ def GetLineWidth(line):
   else:
     return len(line)
 
+
+CheckBraces.multiple_lines = ''
+CheckBraces.last_fail = ''
 
 def CheckStyle(filename, clean_lines, linenum, file_extension, nesting_state,
                error):

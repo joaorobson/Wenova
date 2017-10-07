@@ -44,8 +44,6 @@ Blood::Blood(string skin, float x_axis_position, float y_axis_position,
    * File path indicating the relative sound to each attack type.
    */
   sound_path = "characters/blood/sound/";
-
-
   sprite[IDLE] = Sprite(path + "idle.png", 12, 10);
   sprite[RUNNING] = Sprite(path + "running.png", 8, 10);
   sprite[JUMPING] = Sprite(path + "jumping.png", 6, 10);
@@ -135,6 +133,7 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::IDLE_ATK_NEUTRAL_2:
       attack_damage = 5 * (sprite[state].get_current_frame() == 1);
       attack_mask = get_attack_orientation();
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -154,6 +153,7 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::IDLE_ATK_FRONT:  // 2
       attack_damage = 10 * (sprite[state].get_current_frame() == 2);
       attack_mask = get_attack_orientation();
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -168,6 +168,7 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::IDLE_ATK_DOWN:  // 3
       attack_damage = 10 * (sprite[state].get_current_frame() == 3);
       attack_mask = AttackDirection::ATK_DOWN;
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -181,6 +182,7 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::CROUCH_ATK:  // 1
     attack_damage = 3 * (sprite[state].get_current_frame() == 1);
     attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
+
     /**
      * Check if sprite use is finished and allow character actions according
      * to finished state.
@@ -195,6 +197,7 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::IDLE_ATK_UP:  // 1
       attack_damage = 3 * (sprite[state].get_current_frame() == 1);
       attack_mask = get_attack_orientation();
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -211,6 +214,7 @@ void Blood::update_machine_state(float delta_character_state) {
       attack_mask = AttackDirection::ATK_DOWN;
       check_left(false);
       check_right(false);
+
       /**
        * Check if character is on the floor. If so, allow "Idle attack down".
        */
@@ -225,6 +229,7 @@ void Blood::update_machine_state(float delta_character_state) {
       attack_mask = get_attack_orientation();
       check_right(false);
       check_left(false);
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished
@@ -251,6 +256,7 @@ void Blood::update_machine_state(float delta_character_state) {
       attack_mask = AttackDirection::ATK_UP;
       check_left(false);
       check_right(false);
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -267,6 +273,7 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::STUNNED:
       attack_damage = 0;
       attack_mask = 0;
+
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -302,6 +309,7 @@ void Blood::update_machine_state(float delta_character_state) {
       attack_damage = 0.5;
       if (grab) increment_life(attack_damage);
       attack_mask = get_attack_orientation();
+      
       /**
        * Check if sprite use is finished and allow character actions according
        * to finished state.
@@ -315,6 +323,7 @@ void Blood::update_machine_state(float delta_character_state) {
     break;
 
     case FighterState::SPECIAL_2:
+
       increment_special(0.2 * delta_character_state);
       increment_life(-0.2 * delta_character_state);
       /**
@@ -781,6 +790,7 @@ void Blood::check_stunned(bool change) {
   }
 }
 
+
 /**
  * Check special attack type.
  * Check if user pressed the special button #1. If so, and if there is change in the
@@ -797,6 +807,7 @@ void Blood::check_special_1_1(bool change) {
   }
 }
 
+
 /**
  * Check special attack type.
  * Check if the attack damage if one half. If so, and if there is change in the
@@ -811,6 +822,7 @@ void Blood::check_special_1_2(bool change) {
     temporary_state = FighterState::SPECIAL_1_2;
   }
 }
+
 
 /**
  * Check special attack type.
@@ -851,6 +863,7 @@ void Blood::check_dead(bool change) {
  * maximum special level. If so, activate the UltimateEffect images and sounds.
  */
 void Blood::check_ultimate() {
+
   /**
    * Check if the Ultimate button is pressed and the special accumulated level is the maximum.
    * If so, the fighter uses the UltimateEffect.
