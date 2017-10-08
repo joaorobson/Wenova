@@ -260,5 +260,5 @@ void Text::remake_texture() {
  * @param size is the font size.
  */
 void Text::open(string file, int size) {
-  font = Resources::get_font(RES_FOLDER + file, size);
+  font = Resources::get_font(RESOURCES_FOLDER + file, size);
 }
