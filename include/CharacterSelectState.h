@@ -22,60 +22,77 @@
 #include <vector>
 
 #define N_CHARS 8
+#define N_BACKGROUNDS_SPRITES 2
+#define N_PLAYERS 4
+#define N_BUTTONS 15
 
 class CharacterSelectState : public State {
  private:
-    Sprite background[2]; /**< Images for background. */
-    Sprite planet_logo; /**< Image from planet logo. */
-    Sprite character_slots;  /**< Images for character thumbnails. */
-    Sprite player_number[4]; /**< Images for numbers that represent the player. */
-    Sprite name_tag[4]; /**< Images for characters name tag. */
-    Sprite selected_tag; /**< Image to highlight selected characters. */
-    Sprite ready_to_fight; /**< Image for when everything is ready. */
+    Sprite backgrounds_sprites[N_BACKGROUNDS_SPRITES];  ///< Some screens have
+                                                        ///< multilayer
+                                                        ///< background.
+    Sprite planet_sprite;
+    Sprite characters_slots_sprites; /**< Images for character thumbnails. */
+    Sprite players_numbers_sprites[N_PLAYERS];  ///< Numbers which jump
+                                                ///< for slots.
+    Sprite names_tags_sprites[N_PLAYERS];
+    Sprite selected_tags_sprites; /**< Highlight selected characters. */
+    Sprite ready_to_fight_sprite; /**< When everything is ready. */
 
-    Sound blocked; /**< Sound when try to select not allowed characters. */
-    Sound select_sound; /**< Sound when really select characters.  */
-    Sound changed; /**< Sound when switching between characters. */
+    Sound blocked_sound; /**< When try to select not allowed things. */
+    Sound select_sound; /**< When really select characters. */
+    Sound changed_sound; /**< When switching between characters. */
 
-    int current_row[4];
-    int current_column[4];
-    int current_skin[4];
+    int current_row[N_PLAYERS];
+    int current_column[N_PLAYERS];
+    int current_skin[N_PLAYERS];
 
-    bool is_character_selected[4];
+    bool is_character_selected[N_PLAYERS];
     bool is_ready; /**< Ready to start the match. */
 
     string selected_stage;
 
-    enum Button { A, B, Y, LEFT,
-                  RIGHT, UP, DOWN,
-                  SELECT, START, LT, RT }; /**< Based on Xbox controller. */
+    enum Button {
+        A,
+        B,
+        Y,
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN,
+        SELECT,
+        START,
+        LT,
+        RT
+    }; /**< Based on Xbox controller. */
 
-    bool is_key_pressed[4][15]; /**< One array of buttons for each player. */
+    bool is_key_pressed[N_PLAYERS][N_BUTTONS];
 
-
-    /** 
+    /**
      * Vectors for elements Positions.
      * The following vectors have ordered pairs which are the
-     * positions (x, y), given in pixels. Those pixels are not counted 
-     * based on window size, but instead, based on the picture on background.
-     * 
+     * positions (x, y), given in pixels. Those pixels are not counted
+     * based on window size, but instead, based on the picture on
+     * backgrounds_sprites.
+     *
      * For example, to centralize the left side of an object relative to
-     * background, suposing background picture has 1280 pixels in width,
+     * backgrounds_sprites, suposing backgrounds_sprites picture has 1280 pixels
+     * in width,
      * we would put x position of the object at 1280/2 ().
-     * 
+     *
      * Remembering (0 0) is on left top corner.
-     * 
+     *
      * So, for the following coordinates:
      * Unit: px;
-     * Range: [0, background_image_size - size_of_object].
+     * Range: [0, backgrounds_sprites_image_size - size_of_object].
      * (Range for fit on screen)
      */
-    vector<ii> name_tag_positions; /**< Relative to background image */
-    vector<ii> sprite_position;  /**< Relative to background image. */
-    vector<ii> name_delta;  /**< Relative to name_tag_positions. */
-    vector<ii> number_delta; /**< Relative to character thumbnail. */
+    vector<ii> names_tags_positions; /**< Relative to backgrounds_sprites. */
+    vector<ii> characters_positions; /**< Relative to backgrounds_sprites. */
+    vector<ii> names_positions_deltas; /**< Relative to names_tags_positions. */
+    vector<ii> numbers_positions_deltas; /**< Relative to slots. */
 
-    FighterMenu chars[N_CHARS];  /**< Board of fighters */
+    FighterMenu chars[N_CHARS]; /**< Board of fighters */
 
  public:
     /**
@@ -127,7 +144,7 @@ class CharacterSelectState : public State {
      *
      * @returns Name and number of frames in corresponding sprite
      */
-    pair<string, int> get_char_info(int idx);
+    pair<string, int> get_chars_info(int idx);
 
     /**
      * Searchs for characters identifying which the player chose.
