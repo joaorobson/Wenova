@@ -11,54 +11,60 @@
 #ifndef INCLUDE_INPUTMANAGER_H_
 #define INCLUDE_INPUTMANAGER_H_
 
+#include <algorithm>
 #include <map>
 #include <unordered_map>
 #include <utility>
-#include <algorithm>
 
 #include "SDL2/SDL.h"
 
-#define ii pair<int, int>
-
-using std::unordered_map;
-using std::map;
-using std::pair;
-using std::min;
-using std::max;
+#define ii std::pair<int, int>
 
 class InputManager {
  private:
     static InputManager* input_manager;
 
-    bool mouse_state[6];
+    /**
+     * For mouse is not unordered_map because there is only one mouse.
+     */
+    bool mouse_buttons_states[6];
     int mouse_update[6];
 
-    unordered_map<int, bool> joystick_state[10];
-    unordered_map<int, int> joystick_update[10];
+    std::unordered_map<int, bool> joysticks_buttons_states[10];
+    std::unordered_map<int, int> joystick_update[10];
 
-    unordered_map<int, bool> key_state;
-    unordered_map<int, int> key_update;
+    std::unordered_map<int, bool> keys_states;
+    std::unordered_map<int, int> keys_updates;
 
-    unordered_map<int, int> button_map;
-    unordered_map<int, int> controllers_id;
+    std::unordered_map<int, int> buttons_maps;
+    std::unordered_map<int, int> controllers_id;
 
-    unordered_map<int, int> keyboard_to_joystick;
+    std::unordered_map<int, int> keyboard_to_joystick;
 
     SDL_GameController* controllers[4];
 
-    bool m_quit_requested;
-    int update_counter;
+    bool has_quit_request;
+    int update_counter;  ///< Will be incrementes when updating input state,
+                         ///< refer to key presses.
 
-    int mouse_x;
-    int mouse_y;
+    int mouse_x_position; /**< Unit: px */
+    int mouse_y_position; /**< Unit: px */
 
-    int offset_x;
-    int offset_y;
-    float scale;
-    int keyboard_to_joystick_id;
+    /**
+     * Variations in mouse position in each axis.
+     * Unit: px;
+     */
+    int mouse_delta_x; /**< [0, 1280] */
+    int mouse_delta_y; /**< [0, 720] */
 
-    int analogic_value = 20000;
-    int trigger_value = 32000;
+    int keyboard_to_joystick_id;  ///< Which profile will be used for mapping
+                                  ///< keyboard_for_joystick.
+                                  ///< Ex: (Menu handler or gameplay).
+
+    float mouse_sensibility_value; /**< Refer to mouse sensibility. */
+    int analogic_sensibility_value = 20000; /**< Refer to joystick lever sensibility. */
+    int triggers_sensibility_value =
+        32000; /**< Refer to joystick RT and LT (triggers) lever sensibility. */
 
     /**
      * Manages joystick interaction with the game.
@@ -176,14 +182,14 @@ class InputManager {
      * @returns number respresenting mouse position in axis X.
      * [0,], Unit: px
      */
-    int get_mouse_x();
+    int get_mouse_x_position();
 
     /**
      * Get mouse position in axis Y.
      *
      * @returns number respresenting mouse position in axis Y. [0,]
      */
-    int get_mouse_y();
+    int get_mouse_y_position();
 
     /**
      * Manages player's request for leaving the game.
@@ -204,18 +210,18 @@ class InputManager {
      * Configure mouse scale to calibrae sensibility.
      * Bigger the values, more sensible the mouse will be
      *
-     * @param cscale Unit: px, [0,]
-     * @param coffset_x Unit: px, [0,]
-     * @param coffset_y Unit: px, [0,]
+     * @param cmouse_sensibility_value Unit: px, [0,]
+     * @param cmouse_delta_x Unit: px, [0,]
+     * @param cmouse_delta_y Unit: px, [0,]
      */
-    void set_mouse_scale(float scale, int offset_x, int offset_y);
+    void set_mouse_sensibility_value(float mouse_sensibility_value, int mouse_delta_x, int mouse_delta_y);
 
     /**
      * Set value for joystick hand crank.
      *
      * @param value
      */
-    void set_analogic_value(int value);
+    void set_analogic_sensibility_value(int value);
 
     /**
      * Manages connection of joysticks to the game.

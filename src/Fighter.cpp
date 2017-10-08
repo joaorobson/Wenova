@@ -8,8 +8,6 @@
 
 #define LAYER 0
 
-#define ii pair<int, int>
-
 #define PI 3.14159265358979
 #define INVALID_ID -100
 #define CROUCH_COOLDOWN 100.0

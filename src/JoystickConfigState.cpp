@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file JoystickConfigState.cpp
+ * This file renders images of options 'JOYSTICK' and 'KEYBOARD' of the menu
+ * 'Options' and controls the behavior of the joystick test mode functionality.
+ */
 #include "SDL_mixer.h"
 #include "JoystickConfigState.h"
 #include "InputManager.h"
@@ -27,6 +37,16 @@
 #define LIGHT_GREEN { 181, 201, 60, 1 }
 #define BLUE { 0, 108, 166, 1 }
 
+/**
+ * Constructor.
+ * This constructor builds sprites to render the option 'JOYSTICK' located on
+ * the menu 'Options' of the game.
+ *
+ * @param joystick_id and integer argument that represents the id of one of the
+ * four joysticks that can be pluged.
+ * @param ckeyboard a boolean argument that indicates if a keyboard is
+ * connected.
+ */
 JoystickConfigState::JoystickConfigState(int  joystick_id,
                                          bool ckeyboard) {
     Mix_AllocateChannels(50);
@@ -68,7 +88,10 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
 
     on_test = false;
 
-    // D-Pad
+    /**
+     * Iterates four times to create the buttons of the test mode on menu
+     * "Options".
+     */
     for (int i = 0; i < 4; i++) {
         joystick_id = i;
         int offset_x = OFFSET_X * (i % 2) + 20;
@@ -132,20 +155,37 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                                       "select_start"));
     }
 
-    InputManager::get_instance()->set_analogic_value(20000);
+    InputManager::get_instance()->set_analogic_sensibility_value(20000);
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
 }
 
+/**
+ * Function that updates sprites on joystick test mode.
+ * This function makes sprites change color accoding to the button pressed by
+ * the user on the joystick test mode located at the menu
+ * "Options->Joystick->Test".
+ *
+ * @param delta a float variation to update joystick state.
+ */
 void JoystickConfigState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
+    /**
+     * Check if user has request to quit the menu "Options".
+     */
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
     }
 
+    /**
+     * Check if user request to enter in joystick test mode.
+     */
     if (on_test) {
+        /**
+         * Check if user request to quit the joystick test screen.
+         */
         if (input_manager->is_joystick_button_down(InputManager::SELECT, 0) and
             input_manager->is_joystick_button_down(InputManager::START, 0)
             ) {
@@ -155,12 +195,17 @@ void JoystickConfigState::update(float delta) {
                 InputManager::MENU_MODE);
         }
 
-        // Workaround to uncheck A button pressed in joystick test screen
+        /**
+         * Workaround to uncheck A button pressed in joystick test screen.
+         */
         if (input_manager->joystick_button_release(InputManager::A, 0)) {
             InputManager::get_instance()->map_keyboard_to_joystick(
                 InputManager::BATTLE_MODE);
         }
     } else {
+        /**
+         * Check if user request to quit the joystick help screen.
+         */
         if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
             input_manager->joystick_button_press(InputManager::B, 0)) {
             selected.play();
@@ -169,6 +214,9 @@ void JoystickConfigState::update(float delta) {
             return;
         }
 
+        /**
+         * Check if user request to enter the joystick test mode.
+         */
         if (input_manager->joystick_button_press(InputManager::A, 0) and
             not is_keyboard
             ) {
@@ -180,7 +228,18 @@ void JoystickConfigState::update(float delta) {
     update_array(delta);
 }
 
+/**
+ * Function that renders keyboard or joystick help images.
+ * This function renders keyboard or joystick help images if user select one of
+ * the options: 'keyboard' and 'joystick'; located at the menu 'Options'.
+ * Besides that, it will render buttons on the joystick test mode.
+ */
 void JoystickConfigState::render() {
+    /**
+     * Check if user selected to enter on joystick test mode.
+     * If not, render the joystick or keyboard help image. Otherwise, render
+     * the test screen mode.
+     */
     if (not on_test) {
         if (!is_keyboard) {
             joystick_help.render(0, 0);
@@ -204,6 +263,14 @@ void JoystickConfigState::render() {
     }
 }
 
+/**
+ * Pause function.
+ * Nothing to do.
+ */
 void JoystickConfigState::pause() {}
 
+/**
+ * Resume function.
+ * Nothing to do.
+ */
 void JoystickConfigState::resume() {}

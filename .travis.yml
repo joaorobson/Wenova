@@ -4,7 +4,13 @@ language: cpp
 
 install:
   - sudo apt-get update
-  - sudo apt-get install libsdl2-2.0-0 libsdl2-dev libsdl2-image-2.0-0 libsdl2-image-dev libsdl2-ttf-2.0-0 libsdl2-ttf-dev libsdl2-mixer-2.0-0 libsdl2-mixer-dev -y
+  - sudo apt-get install cppcheck
+  - sudo apt-get install cccc
+  - sudo apt-get install libegl1-mesa-dev libgles2-mesa-dev libsdl2-2.0-0 libsdl2-dev libsdl2-image-2.0-0 libsdl2-image-dev libsdl2-ttf-2.0-0 libsdl2-ttf-dev libsdl2-mixer-2.0-0 libsdl2-mixer-dev -y
+  - ./cpplint include/* src/*
+  - SDL_PATH=$(sdl2-config --clags)
+  - cppcheck --enable=all --std=c++11 -I./include --suppress=missingIncludeSystem --suppress=missingInclude --error-exitcode=1 src/*.cpp
+  - cccc src/*.cpp
 compiler:
    - g++
 script:

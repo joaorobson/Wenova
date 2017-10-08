@@ -1,11 +1,11 @@
 /* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
- * 
+ *
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
-/** 
+/**
  * @file CharacterSelectState.cpp
- * Implements class CharacterSelectState methods.  
+ * Implements class CharacterSelectState methods.
  */
 
 #include "SDL_mixer.h"
@@ -23,62 +23,71 @@
 #define N_COLS 2
 #define N_ROWS 4
 
-/** 
+/**
  * Load all artistic files and initializes board variables based
  * on the stage that was selected
- * 
+ *
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
     Mix_AllocateChannels(50);
 
-    memset(cur_col, 0, sizeof cur_col);
-    memset(cur_row, 0, sizeof cur_row);
-    memset(cur_skin, 0, sizeof cur_skin);
-    memset(selected, false, sizeof selected);
+    memset(current_column, 0, sizeof current_column);
+    memset(current_row, 0, sizeof current_row);
+    memset(current_skin, 0, sizeof current_skin);
+    memset(is_character_selected, false, sizeof is_character_selected);
 
     character_slots = Sprite("character_select/character_slots.png");
     selected_tag = Sprite("character_select/selected.png");
     ready_to_fight = Sprite("character_select/ready_to_fight.png");
-    planet = Sprite("character_select/planet.png", 8, FRAME_TIME);
-    planet.set_scale(1.5);
+    planet_logo = Sprite("character_select/planet.png", 8, FRAME_TIME);
+    planet_logo.set_scale(1.5);
 
-    ready = false;
+    is_ready = false;
 
     selected_stage = cselected_stage;
     blocked = Sound("menu/sound/cancel.ogg");
-    selected_sound = Sound("menu/sound/select.ogg");
+    select_sound = Sound("menu/sound/select.ogg");
     changed = Sound("menu/sound/cursor.ogg");
 
+    /**
+     * Load backgrounds following standards for file name.
+     */
     for (int i = 0; i < N_BACKGROUNDS; i++) {
-        background[i] =
-            Sprite("character_select/background_" + to_string(i + 1) + ".png");
+        background[i] = Sprite("character_select/background_" +
+                               std::to_string(i + 1) + ".png");
     }
 
+    /**
+     * Load information for players based on standards for file name.
+     */
     for (int i = 0; i < N_PLAYERS; i++) {
-        name_tag[i] =
-            Sprite("character_select/name_tag_" + to_string(i + 1) + ".png");
-        number[i] =
-            Sprite("character_select/number_" + to_string(i + 1) + ".png");
+        name_tag[i] = Sprite("character_select/name_tag_" +
+                             std::to_string(i + 1) + ".png");
+        player_number[i] =
+            Sprite("character_select/number_" + std::to_string(i + 1) + ".png");
     }
 
+    /**
+     * Load information for characters based on standards for file name.
+     */
     for (int i = 0; i < N_CHARS; i++) {
         chars[i] =
             FighterMenu(get_char_info(i).first, get_char_info(i).second, i < 2);
     }
 
     name_tag_positions = {ii(91, 145), ii(92, 494), ii(956, 145), ii(955, 494)};
-    number_delta = {ii(12, 9), ii(93, 9), ii(12, 101), ii(93, 101)};
+    sprite_position = {ii(125, 32), ii(121, 379), ii(943, 34), ii(956, 381)};
     name_delta = {ii(173, 152), ii(172, 154), ii(102, 153), ii(105, 153)};
-    sprite_pos = {ii(125, 32), ii(121, 379), ii(943, 34), ii(956, 381)};
+    number_delta = {ii(12, 9), ii(93, 9), ii(12, 101), ii(93, 101)};
 
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
 }
 
-/** 
- * Updates player selection while player move between characters.  
- * 
+/**
+ * Updates player selection while player move between characters.
+ *
  * @param delta Variation of how much the characters player travelled
  */
 void CharacterSelectState::update(float delta) {
@@ -86,25 +95,32 @@ void CharacterSelectState::update(float delta) {
 
     InputManager* input_manager = InputManager::get_instance();
 
-    // Inputs
+    /**
+     * Process request for leaving the game.
+     */
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
     }
 
-    if (pressed[FIRST_PLAYER][SELECT] or
-        (not selected[FIRST_PLAYER] and pressed[FIRST_PLAYER][B])) {
-        selected_sound.play();
+    /**
+     * Process request for going next menu.
+     */
+    if (is_key_pressed[FIRST_PLAYER][SELECT] or
+        (not is_character_selected[FIRST_PLAYER] and is_key_pressed[FIRST_PLAYER][B])) {
+        select_sound.play();
         m_quit_requested = true;
         Game::get_instance().push(new StageSelectState());
         return;
     }
 
-    // Only enable start when all players have selected a character
+    /**
+     * Only enable start when all players have selected a character.
+     */
     if (all_players_selected()) {
-        ready = true;
-        if (pressed[FIRST_PLAYER][START] or pressed[FIRST_PLAYER][A]) {
-            selected_sound.play();
+        is_ready = true;
+        if (is_key_pressed[FIRST_PLAYER][START] or is_key_pressed[FIRST_PLAYER][A]) {
+            select_sound.play();
             vector<pair<string, string> > p = export_players();
             m_quit_requested = true;
             Game::get_instance().push(
@@ -113,13 +129,21 @@ void CharacterSelectState::update(float delta) {
         }
     }
 
+    /**
+     * Handle all players selection.
+     */
     for (int i = 0; i < N_PLAYERS; i++) {
-        if (not selected[i]) {
-            // Random character
-            if (pressed[i][Y]) {
-                selected_sound.play();
+        if (not is_character_selected[i]) {
+            /**
+             * Random Character.
+             */
+            if (is_key_pressed[i][Y]) {
+                select_sound.play();
                 int rand_col = 0, rand_row = 0, rand_skin = 0, char_sel = 0;
 
+                /**
+                 * Select random row and column.
+                 */
                 do {
                     unsigned int seed1 = clock();
                     unsigned int seed2 = clock();
@@ -130,92 +154,107 @@ void CharacterSelectState::update(float delta) {
                     char_sel = rand_row * N_COLS + rand_col;
                 } while (not chars[char_sel].is_enabled());
 
+                /**
+                 * Select random skin for character.
+                 */
                 do {
                     unsigned int seed = clock();
 
                     rand_skin = rand_r(&seed) % N_SKINS;
                 } while (not chars[char_sel].is_skin_available(rand_skin));
 
-                cur_col[i] = rand_col;
-                cur_row[i] = rand_row;
-                cur_skin[i] = rand_skin;
+                current_column[i] = rand_col;
+                current_row[i] = rand_row;
+                current_skin[i] = rand_skin;
             }
 
-            int old_col = cur_col[i];
-            int old_row = cur_row[i];
+            int old_col = current_column[i];
+            int old_row = current_row[i];
 
-            // Change character
-            if (pressed[i][LEFT]) {
+            /**
+             * Change current selected character.
+             */
+            if (is_key_pressed[i][LEFT]) {
                 changed.play();
-                if (cur_col[i] != 0) {
-                    cur_col[i]--;
+                if (current_column[i] != 0) {
+                    current_column[i]--;
+                }
+            }
+            if (is_key_pressed[i][RIGHT]) {
+                changed.play();
+                if (current_column[i] + 1 < N_COLS) {
+                    current_column[i]++;
+                }
+            }
+            if (is_key_pressed[i][UP]) {
+                changed.play();
+                if (current_row[i] != 0) {
+                    current_row[i]--;
+                }
+            }
+            if (is_key_pressed[i][DOWN]) {
+                changed.play();
+                if (current_row[i] + 1 < N_ROWS) {
+                    current_row[i]++;
                 }
             }
 
-            if (pressed[i][RIGHT]) {
+            /**
+             * Reset skin if character changed.
+             */
+            if (current_column[i] != old_col or current_row[i] != old_row) {
+                current_skin[i] = 0;
+            }
+
+            /**
+             * Change skin.
+             */
+            if (is_key_pressed[i][LT]) {
                 changed.play();
-                if (cur_col[i] + 1 < N_COLS) {
-                    cur_col[i]++;
-                }
+                current_skin[i] = (current_skin[i] - 1 + N_SKINS) % N_SKINS;
             }
-
-            if (pressed[i][UP]) {
+            if (is_key_pressed[i][RT]) {
                 changed.play();
-                if (cur_row[i] != 0) {
-                    cur_row[i]--;
-                }
+                current_skin[i] = (current_skin[i] + 1) % N_SKINS;
             }
 
-            if (pressed[i][DOWN]) {
-                changed.play();
-                if (cur_row[i] + 1 < N_ROWS) {
-                    cur_row[i]++;
-                }
-            }
+            /**
+             * Select character and lock skin.
+             */
+            if (is_key_pressed[i][A]) {
+                int char_sel = current_row[i] * N_COLS + current_column[i];
 
-            // Reset skin if character changed
-            if (cur_col[i] != old_col or cur_row[i] != old_row) {
-                cur_skin[i] = 0;
-            }
-
-            // Change skin
-            if (pressed[i][LT]) {
-                changed.play();
-                cur_skin[i] = (cur_skin[i] - 1 + N_SKINS) % N_SKINS;
-            }
-
-            if (pressed[i][RT]) {
-                changed.play();
-                cur_skin[i] = (cur_skin[i] + 1) % N_SKINS;
-            }
-
-            // Select character and lock skin
-            if (pressed[i][A]) {
-                int char_sel = cur_row[i] * N_COLS + cur_col[i];
-
+                /**
+                 * Check if character or skin are unblocked.
+                 */
                 if (chars[char_sel].is_enabled()) {
-                    if (not chars[char_sel].is_skin_available(cur_skin[i])) {
+                    if (not chars[char_sel].is_skin_available(current_skin[i])) {
                         blocked.play();
                     } else {
-                        selected_sound.play();
-                        chars[char_sel].lock_skin(cur_skin[i]);
-                        selected[i] = true;
+                        select_sound.play();
+                        chars[char_sel].lock_skin(current_skin[i]);
+                        is_character_selected[i] = true;
                     }
                 } else {
                     blocked.play();
                 }
             }
         } else {
-            // Unselect character
-            if (pressed[i][B]) {
-                int char_sel = cur_row[i] * N_COLS + cur_col[i];
-                chars[char_sel].unlock_skin(cur_skin[i]);
-                selected[i] = false;
-                ready = false;
+            /**
+             * Unselect character.
+             */
+            if (is_key_pressed[i][B]) {
+                int char_sel = current_row[i] * N_COLS + current_column[i];
+                chars[char_sel].unlock_skin(current_skin[i]);
+                is_character_selected[i] = false;
+                is_ready = false;
             }
         }
     }
 
+    /**
+     * Make characters move while you are selecting (not static).
+     */
     for (int i = 0; i < N_CHARS; i++) {
         chars[i].get_disabled().update(delta);
 
@@ -224,34 +263,40 @@ void CharacterSelectState::update(float delta) {
         }
     }
 
-    planet.update(delta);
+    planet_logo.update(delta);
 }
 
-/** 
- * Render the board.  
- * Render the board of with characters options, including all effects.
+/**
+ * Render the board.
+ * Render the board with characters options, including all effects.
  */
 void CharacterSelectState::render() {
     background[0].render(0, 0);
-    planet.render(640 - planet.get_width() / 2, 360 - planet.get_height() / 2);
+    planet_logo.render(640 - planet_logo.get_width() / 2, 360 - planet_logo.get_height() / 2);
     background[1].render(0, 0);
     character_slots.render(0, 0);
 
+    /**
+     * Iterate over elements rendering things.
+     */
     for (int i = 0; i < N_PLAYERS; i++) {
         SDL_RendererFlip flip = i >= 2 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
-        int row_selected = cur_row[i];
-        int col_selected = cur_col[i];
+        int row_selected = current_row[i];
+        int col_selected = current_column[i];
         int char_sel = row_selected * N_COLS + col_selected;
 
         FighterMenu char_selected = chars[char_sel];
 
-        char_selected.get_skin(cur_skin[i])
-            .render(sprite_pos[i].first, sprite_pos[i].second, 0, flip);
+        char_selected.get_skin(current_skin[i])
+            .render(sprite_position[i].first, sprite_position[i].second, 0, flip);
 
-        if (not char_selected.is_skin_available(cur_skin[i]) and
-            not selected[i]) {
-            char_selected.get_disabled().render(sprite_pos[i].first,
-                                                sprite_pos[i].second, 0, flip);
+        /**
+         * Render not available skins for not selected characters.
+         */
+        if (not char_selected.is_skin_available(current_skin[i]) and
+            not is_character_selected[i]) {
+            char_selected.get_disabled().render(sprite_position[i].first,
+                                                sprite_position[i].second, 0, flip);
         }
 
         char_selected.get_name_text()->set_pos(
@@ -262,27 +307,30 @@ void CharacterSelectState::render() {
         name_tag[i].render(name_tag_positions[i].first,
                            name_tag_positions[i].second);
         char_selected.get_name_text()->render();
-        number[i].render(slot.first + number_delta[i].first,
+        player_number[i].render(slot.first + number_delta[i].first,
                          slot.second + number_delta[i].second);
 
-        if (selected[i]) {
+        /**
+         * Mark selected character with skin.
+         */
+        if (is_character_selected[i]) {
             selected_tag.render(name_tag_positions[i].first,
                                 name_tag_positions[i].second, 0, flip);
         }
     }
 
-    if (ready) {
+    if (is_ready) {
         ready_to_fight.render(0, 0);
     }
 }
 
-/** 
- * Searchs for characters identifying which the player chose.  
- * 
- * @returns   
+/**
+ * Check if all players selected their characters and skins.
+ *
+ * @returns
  */
 bool CharacterSelectState::all_players_selected() {
-    for (auto cur : selected) {
+    for (auto cur : is_character_selected) {
         if (not cur) {
             return false;
         }
@@ -290,24 +338,24 @@ bool CharacterSelectState::all_players_selected() {
     return true;
 }
 
-/** 
- * Get information about the character the player choose.  
- * 
+/**
+ * Get information about the character the player choose.
+ *
  * @param idx  Index of the character
- * 
- * @returns Name and number of frames in corresponding sprite   
+ *
+ * @returns Name and number of frames in corresponding sprite
  */
 pair<string, int> CharacterSelectState::get_char_info(int idx) {
     vector<string> names = {"blood", "flesh", "hookline", "sinker",
                             "trap",  "trip",  "dusk",     "dawn"};
     vector<int> frames = {12, 8, 8, 7, 4, 4, 7, 5};
 
-    return make_pair(names[idx], frames[idx]);
+    return std::make_pair(names[idx], frames[idx]);
 }
 
-/** 
- * Get information about players choice about characters and skins.  
- * 
+/**
+ * Get information about players choice about characters and skins.
+ *
  * @returns Vector of pairs of strings containing information about
  * characters and skins choosen.
  */
@@ -315,18 +363,18 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
     vector<pair<string, string> > players;
 
     for (int i = 0; i < N_PLAYERS; i++) {
-        int char_sel = cur_row[i] * N_COLS + cur_col[i];
+        int char_sel = current_row[i] * N_COLS + current_column[i];
         players.push_back(
-            make_pair(chars[char_sel].get_name(),
-                      chars[char_sel].get_skin_name(cur_skin[i])));
+            std::make_pair(chars[char_sel].get_name(),
+                           chars[char_sel].get_skin_name(current_skin[i])));
     }
 
     return players;
 }
 
-/** 
+/**
  * Process interaction of the player with joystick while
- * choosing character.  
+ * choosing character.
  */
 void CharacterSelectState::process_input() {
     InputManager* input_manager = InputManager::get_instance();
@@ -341,18 +389,18 @@ void CharacterSelectState::process_input() {
 
     for (int id = 0; id < N_PLAYERS; id++) {
         for (ii button : joystick_buttons) {
-            pressed[id][button.first] =
+            is_key_pressed[id][button.first] =
                 input_manager->joystick_button_press(button.second, id);
         }
     }
 }
 
-/** 
- * Get slot of character on the board.  
- * 
+/**
+ * Get slot of character on the board.
+ *
  * @param row [510 or 645]
  * @param col [55 or 197 or 395 or 536]
- * 
+ *
  * @returns pair of ints which indicates the corresponding slot.
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
@@ -360,12 +408,12 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     return ii(x[col], y[row]);
 }
 
-/** 
- * Not implemented.  
+/**
+ * Not implemented.
  */
 void CharacterSelectState::pause() {}
 
-/** 
- * Not implemented.  
+/**
+ * Not implemented.
  */
 void CharacterSelectState::resume() {}

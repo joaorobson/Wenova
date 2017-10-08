@@ -70,7 +70,7 @@ Game::Game(string title){
 		printf("Warning: No joysticks connected!\n");
 	}
 
-	SDL_GameControllerAddMappingsFromFile((RES_FOLDER + "joysticks/gamecontrollerdb.txt").c_str());
+	SDL_GameControllerAddMappingsFromFile((RESOURCES_FOLDER + "joysticks/gamecontrollerdb.txt").c_str());
 
 	InputManager::get_instance()->connect_joysticks();
 
@@ -188,7 +188,7 @@ void Game::update_resolution() {
 		offset_y = (1280 / w) * (h - height) / 2;
 	}
 
-	InputManager::get_instance()->set_mouse_scale(1280 / w, offset_x, offset_y);
+	InputManager::get_instance()->set_mouse_sensibility_value(1280 / w, offset_x, offset_y);
 }
 
 void Game::change_resolution(int cwidth, int cheight){

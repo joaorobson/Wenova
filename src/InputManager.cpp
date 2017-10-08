@@ -20,6 +20,9 @@
 
 InputManager *InputManager::input_manager;
 
+/**
+ * Expliciting buttons constants for this file, simplifying use..
+ */
 const int InputManager::UP, InputManager::DOWN, InputManager::RIGHT,
     InputManager::LEFT;
 const int InputManager::A, InputManager::B, InputManager::X, InputManager::Y;
@@ -55,32 +58,38 @@ const int InputManager::MENU_MODE, InputManager::BATTLE_MODE;
  * Initializes variables.
  */
 InputManager::InputManager() {
-    memset(mouse_state, false, sizeof mouse_state);
+    memset(mouse_buttons_states, false, sizeof mouse_buttons_states);
     memset(mouse_update, 0, sizeof mouse_update);
 
     keyboard_to_joystick_id = 0;
     map_keyboard_to_joystick(keyboard_to_joystick_id);
 
+    /**
+     * Start controllers with nullptr.
+     */
     for (int i = 0; i < 4; i++) {
         controllers[i] = nullptr;
     }
-    m_quit_requested = false;
+    has_quit_request = false;
     update_counter = 0;
-    mouse_x = 0;
-    mouse_y = 0;
+    mouse_x_position = 0;
+    mouse_y_position = 0;
 }
 
 /**
  * Clear states about joystick and keyboard.
  */
 InputManager::~InputManager() {
+    /**
+     * Clear joystick data.
+     */
     for (int i = 0; i < 4; i++) {
-        joystick_state[i].clear();
+        joysticks_buttons_states[i].clear();
         joystick_update[i].clear();
     }
     keyboard_to_joystick.clear();
-    key_state.clear();
-    key_update.clear();
+    keys_states.clear();
+    keys_updates.clear();
 }
 
 /**
@@ -89,49 +98,60 @@ InputManager::~InputManager() {
 void InputManager::update() {
     SDL_Event event;
 
-    m_quit_requested = false;
+    has_quit_request = false;
 
     update_counter++;
 
-    SDL_GetMouseState(&mouse_x, &mouse_y);
-    mouse_x = mouse_x * scale + offset_x;
-    mouse_y = mouse_y * scale + offset_y;
-    mouse_x = max(0, mouse_x);
-    mouse_x = min(mouse_x, 1280);
-    mouse_y = max(0, mouse_y);
-    mouse_y = min(mouse_y, 720);
+    SDL_GetMouseState(&mouse_x_position, &mouse_y_position);
+    mouse_x_position = mouse_x_position * mouse_sensibility_value + mouse_delta_x;
+    mouse_y_position = mouse_y_position * mouse_sensibility_value + mouse_delta_y;
+    mouse_x_position = std::max(0, mouse_x_position);
+    mouse_x_position = std::min(mouse_x_position, 1280);
+    mouse_y_position = std::max(0, mouse_y_position);
+    mouse_y_position = std::min(mouse_y_position, 720);
 
+    /**
+     * While proper event has not yet been found.
+     * Maybe can be removed if removed breaks for cases. Not sure.
+     */
     while (SDL_PollEvent(&event)) {
-        int key_id, button_id;
+        int key_id; /**< key is used for keyboard */
+        int button_id; /**< button is used for mouse and joystick */
         int joystick_id = controllers_id[event.cdevice.which];
 
+        /**
+         * Map events.
+         * Will map events from project variables to engine commands. Following
+         * cases will map keys to engine commands or connections and
+         * disconnections.
+         */
         switch (event.type) {
             case SDL_KEYDOWN:
                 if (event.key.repeat) {
                     break;
                 }
                 key_id = event.key.keysym.sym;
-                key_state[key_id] = true;
-                key_update[key_id] = update_counter;
+                keys_states[key_id] = true;
+                keys_updates[key_id] = update_counter;
                 emulate_joystick(key_id, true);
                 break;
 
             case SDL_KEYUP:
                 key_id = event.key.keysym.sym;
-                key_state[key_id] = false;
-                key_update[key_id] = update_counter;
+                keys_states[key_id] = false;
+                keys_updates[key_id] = update_counter;
                 emulate_joystick(key_id, false);
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
                 button_id = event.button.button;
-                mouse_state[button_id] = true;
+                mouse_buttons_states[button_id] = true;
                 mouse_update[button_id] = update_counter;
                 break;
 
             case SDL_MOUSEBUTTONUP:
                 button_id = event.button.button;
-                mouse_state[button_id] = false;
+                mouse_buttons_states[button_id] = false;
                 mouse_update[button_id] = update_counter;
                 break;
 
@@ -140,28 +160,28 @@ void InputManager::update() {
 
             case SDL_CONTROLLERAXISMOTION:
                 if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTX) {
-                    joystick_state[joystick_id][RIGHT] =
-                        event.caxis.value > analogic_value;
-                    joystick_state[joystick_id][LEFT] =
-                        event.caxis.value < -analogic_value;
+                    joysticks_buttons_states[joystick_id][RIGHT] =
+                        event.caxis.value > analogic_sensibility_value;
+                    joysticks_buttons_states[joystick_id][LEFT] =
+                        event.caxis.value < -analogic_sensibility_value;
                     joystick_update[joystick_id][RIGHT] = update_counter;
                     joystick_update[joystick_id][LEFT] = update_counter;
                 } else if (event.caxis.axis == SDL_CONTROLLER_AXIS_LEFTY) {
-                    joystick_state[joystick_id][DOWN] =
-                        event.caxis.value > analogic_value;
-                    joystick_state[joystick_id][UP] =
-                        event.caxis.value < -analogic_value;
+                    joysticks_buttons_states[joystick_id][DOWN] =
+                        event.caxis.value > analogic_sensibility_value;
+                    joysticks_buttons_states[joystick_id][UP] =
+                        event.caxis.value < -analogic_sensibility_value;
                     joystick_update[joystick_id][DOWN] = update_counter;
                     joystick_update[joystick_id][UP] = update_counter;
                 } else if (event.caxis.axis ==
                            SDL_CONTROLLER_AXIS_TRIGGERLEFT) {
-                    joystick_state[joystick_id][LT] =
-                        event.caxis.value > trigger_value;
+                    joysticks_buttons_states[joystick_id][LT] =
+                        event.caxis.value > triggers_sensibility_value;
                     joystick_update[joystick_id][LT] = update_counter;
                 } else if (event.caxis.axis ==
                            SDL_CONTROLLER_AXIS_TRIGGERRIGHT) {
-                    joystick_state[joystick_id][RT] =
-                        event.caxis.value > trigger_value;
+                    joysticks_buttons_states[joystick_id][RT] =
+                        event.caxis.value > triggers_sensibility_value;
                     joystick_update[joystick_id][RT] = update_counter;
                 }
 
@@ -172,7 +192,7 @@ void InputManager::update() {
 
             case SDL_CONTROLLERBUTTONDOWN:
                 button_id = event.cbutton.button;
-                joystick_state[joystick_id][button_id] = true;
+                joysticks_buttons_states[joystick_id][button_id] = true;
                 joystick_update[joystick_id][button_id] = update_counter;
                 break;
 
@@ -189,12 +209,12 @@ void InputManager::update() {
 
             case SDL_CONTROLLERBUTTONUP:
                 button_id = event.cbutton.button;
-                joystick_state[joystick_id][button_id] = false;
+                joysticks_buttons_states[joystick_id][button_id] = false;
                 joystick_update[joystick_id][button_id] = update_counter;
                 break;
 
             case SDL_QUIT:
-                m_quit_requested = true;
+                has_quit_request = true;
                 break;
 
             default:
@@ -211,7 +231,7 @@ void InputManager::update() {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_press(int key) {
-    return key_state[key] and key_update[key] == update_counter;
+    return keys_states[key] and keys_updates[key] == update_counter;
 }
 
 /**
@@ -222,7 +242,7 @@ bool InputManager::key_press(int key) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_release(int key) {
-    return not key_state[key] and key_update[key] == update_counter;
+    return not keys_states[key] and keys_updates[key] == update_counter;
 }
 
 /**
@@ -233,18 +253,18 @@ bool InputManager::key_release(int key) {
  * @returns True if key is holded
  */
 bool InputManager::is_key_down(int key) {
-    return key_state[key];
+    return keys_states[key];
 }
 
 /**
  * Manages player press of a mouse button.
  *
- * @param button which button was pressed [0, 2]
+ * @param button which button was pressed [0, 5]
  *
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_press(int button) {
-    return mouse_state[button] and mouse_update[button] == update_counter;
+    return mouse_buttons_states[button] and mouse_update[button] == update_counter;
 }
 
 /**
@@ -254,7 +274,7 @@ bool InputManager::mouse_press(int button) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_release(int button) {
-    return not mouse_state[button] and mouse_update[button] == update_counter;
+    return not mouse_buttons_states[button] and mouse_update[button] == update_counter;
 }
 
 /**
@@ -264,7 +284,7 @@ bool InputManager::mouse_release(int button) {
  * @returns True if button is being pressed.
  */
 bool InputManager::is_mouse_down(int button) {
-    return mouse_state[button];
+    return mouse_buttons_states[button];
 }
 
 /**
@@ -275,7 +295,7 @@ bool InputManager::is_mouse_down(int button) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_press(int button, int joystick) {
-    return joystick_state[joystick][button] and
+    return joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 }
 
@@ -288,7 +308,7 @@ bool InputManager::joystick_button_press(int button, int joystick) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_release(int button, int joystick) {
-    return not joystick_state[joystick][button] and
+    return not joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 }
 
@@ -301,7 +321,7 @@ bool InputManager::joystick_button_release(int button, int joystick) {
  * @returns True if button is being held.
  */
 bool InputManager::is_joystick_button_down(int button, int joystick) {
-    return joystick_state[joystick][button];
+    return joysticks_buttons_states[joystick][button];
 }
 
 /**
@@ -310,8 +330,8 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
  * @returns number respresenting mouse position in axis X.
  * [0,], Unit: px
  */
-int InputManager::get_mouse_x() {
-    return mouse_x;
+int InputManager::get_mouse_x_position() {
+    return mouse_x_position;
 }
 
 /**
@@ -319,8 +339,8 @@ int InputManager::get_mouse_x() {
  *
  * @returns number respresenting mouse position in axis Y. [0,]
  */
-int InputManager::get_mouse_y() {
-    return mouse_y;
+int InputManager::get_mouse_y_position() {
+    return mouse_y_position;
 }
 
 /**
@@ -329,7 +349,7 @@ int InputManager::get_mouse_y() {
  * @returns True if there is a request [0,1]
  */
 bool InputManager::quit_requested() {
-    return m_quit_requested;
+    return has_quit_request;
 }
 
 /**
@@ -349,14 +369,14 @@ InputManager *InputManager::get_instance() {
  * Configure mouse scale to calibrae sensibility.
  * Bigger the values, more sensible the mouse will be
  *
- * @param cscale Unit: px, [0,]
- * @param coffset_x Unit: px, [0,]
- * @param coffset_y Unit: px, [0,]
+ * @param cmouse_sensibility_value Unit: px, [0,]
+ * @param cmouse_delta_x Unit: px, [0,]
+ * @param cmouse_delta_y Unit: px, [0,]
  */
-void InputManager::set_mouse_scale(float cscale, int coffset_x, int coffset_y) {
-    scale = cscale;
-    offset_x = coffset_x;
-    offset_y = coffset_y;
+void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value, int cmouse_delta_x, int cmouse_delta_y) {
+    mouse_sensibility_value = cmouse_sensibility_value;
+    mouse_delta_x = cmouse_delta_x;
+    mouse_delta_y = cmouse_delta_y;
 }
 
 /**
@@ -364,20 +384,26 @@ void InputManager::set_mouse_scale(float cscale, int coffset_x, int coffset_y) {
  *
  * @param value
  */
-void InputManager::set_analogic_value(int value) {
-    analogic_value = value;
+void InputManager::set_analogic_sensibility_value(int value) {
+    analogic_sensibility_value = value;
 }
 
 /**
  * Manages connection of joysticks to the game.
  */
 void InputManager::connect_joysticks() {
+    /**
+     * Max number of joysticks can be only four.
+     */
     int max = SDL_NumJoysticks();
     if (max > 4) {
         max = 4;
     }
     int n_controller = 0;
 
+    /**
+     * To reset connections.
+     */
     for (int i = 0; i < max; i++) {
         if (controllers[i] != nullptr) {
             SDL_GameControllerClose(controllers[i]);
@@ -385,6 +411,9 @@ void InputManager::connect_joysticks() {
         }
     }
 
+    /**
+     * Detect compability for joystick connected.
+     */
     for (int i = 0; i < max; i++) {
         char guid[64];
         SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid,
@@ -433,12 +462,16 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
 
 /**
  * Manages joystick interaction with the game.
+ * Map joystick keys to interect with the game through keyboard keys.
  *
  * @param key_id Id of the key is that is interacting with the game
  * @param state State of the key that is interacting with the game
  */
 void InputManager::emulate_joystick(int key_id, bool state) {
     if (state) {
+        /**
+         * Map each key for corresponding.
+         */
         switch (key_id) {
             case SDLK_0:
                 reset_keyboard_to_joystick();
@@ -467,14 +500,17 @@ void InputManager::emulate_joystick(int key_id, bool state) {
         }
     }
 
+    /**
+     * Will update status for joystick based on profile.
+     */
     if (keyboard_to_joystick_id == 4) {
         for (int i = 0; i < 4; i++) {
-            joystick_state[i][keyboard_to_joystick[key_id] - 1] = state;
+            joysticks_buttons_states[i][keyboard_to_joystick[key_id] - 1] = state;
             joystick_update[i][keyboard_to_joystick[key_id] - 1] =
                 update_counter;
         }
     } else if (keyboard_to_joystick_id >= 0) {
-        joystick_state[keyboard_to_joystick_id]
+        joysticks_buttons_states[keyboard_to_joystick_id]
                       [keyboard_to_joystick[key_id] - 1] = state;
         joystick_update[keyboard_to_joystick_id]
                        [keyboard_to_joystick[key_id] - 1] = update_counter;
@@ -485,17 +521,29 @@ void InputManager::emulate_joystick(int key_id, bool state) {
  * Manages transition of inputs from keyboard to joystick.
  */
 void InputManager::reset_keyboard_to_joystick() {
+    /**
+     * Check limits.
+     */
     if (keyboard_to_joystick_id < 0 or keyboard_to_joystick_id > 4) {
         return;
     }
+
+    /**
+     * Update all joysticks state based on profile.
+     */
     if (keyboard_to_joystick_id == 4) {
         for (int i = 0; i < 4; i++) {
-            for (auto &c : joystick_state[i]) {
+            for (auto &c : joysticks_buttons_states[i]) {
                 c.second = false;
             }
         }
     }
-    for (auto &c : joystick_state[keyboard_to_joystick_id]) {
+
+    /**
+     * Guess is not necessary.
+     * Else?
+     */
+    for (auto &c : joysticks_buttons_states[keyboard_to_joystick_id]) {
         c.second = false;
     }
 }

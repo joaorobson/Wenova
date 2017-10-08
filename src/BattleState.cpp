@@ -69,7 +69,7 @@ BattleState::BattleState(string stage, vector< pair<string, string> > players_in
 	time_counter = new TimeCounter();
 	add_object(time_counter);
 
-	InputManager::get_instance()->set_analogic_value(20000);
+	InputManager::get_instance()->set_analogic_sensibility_value(20000);
 	InputManager::get_instance()->map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
 
@@ -193,7 +193,7 @@ void BattleState::resume(){
 void BattleState::read_level_design(string stage){
 	float x, y, width, crotation;
 	int platform;
-	fstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat");
+	fstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
 	if(not level_design.is_open()){
 		printf("Level design of stage %s can't be opened\n", stage.c_str());
 		exit(-5);
