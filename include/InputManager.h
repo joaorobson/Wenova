@@ -49,7 +49,7 @@ class InputManager {
 
     bool has_quit_request;
     int update_counter;  ///< Will be incrementes when updating input state,
-                         ///< refer to key presses.
+    ///< refer to key presses.
 
     int mouse_x_position; /**< Unit: px */
     int mouse_y_position; /**< Unit: px */
@@ -62,8 +62,8 @@ class InputManager {
     int offset_y; /**< Unit: px, [0, 720] */
 
     int keyboard_to_joystick_id;  ///< Which profile will be used for mapping
-                                  ///< keyboard_for_joystick.
-                                  ///< Ex: (Menu handler or gameplay).
+    ///< keyboard_for_joystick.
+    ///< Ex: (Menu handler or gameplay).
 
     float mouse_sensibility_value; /**< Refer to mouse sensibility. */
     int analogic_sensibility_value; /**< Refer to joystick lever sensibility.*/
