@@ -39,6 +39,9 @@ Music::Music(string file) {
  */
 void Music::play(int times) {
     int mix_play_music = Mix_PlayMusic(music.get(), times);
+    /*
+     * Check if the music played
+     */
     if (mix_play_music) {
         printf("Play music: %s\n", Mix_GetError());
         exit(-1);
@@ -50,6 +53,9 @@ void Music::play(int times) {
  */
 void Music::stop() {
     int mix_fade_out_music = Mix_FadeOutMusic(0);
+    /*
+     * Check if the music stoped
+     */
     if (not mix_fade_out_music) {
         printf("Stop music: %s\n", Mix_GetError());
         exit(-1);

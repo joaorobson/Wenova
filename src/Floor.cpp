@@ -37,6 +37,9 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     box = Rectangle(x, y, width, HEIGHT);
     id = floor_id++;
     tags["floor"] = true;
+    /*
+     * Check if exist floor on platform
+     */
     if (is_platform) {
         tags["platform"] = true;
     }

@@ -34,11 +34,17 @@ HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
  * @params delta is the variation of the heal.
  */
 void HealEffect::update(float delta) {
+    /*
+     * Check if the parent
+     */
     if (parent) {
         box.x = parent->box.x;
         box.y = parent->box.y;
     }
     sprite.update(delta);
+    /*
+     * Check if the parent
+     */
     if (parent) {
         parent->increment_life(healing_factor);
     }
