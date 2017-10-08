@@ -563,9 +563,8 @@ for op, inv_replacement in [('==', 'NE'), ('!=', 'EQ'),
   _CONTROL_STRUCTURES = [
       'if',
       'for',
-      r'else if',
+      'else if',
       'switch',
-      'case',
       'while'
   ]
 
