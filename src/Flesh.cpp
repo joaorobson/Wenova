@@ -93,6 +93,9 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner)
  * @param float is the variation of character state.
  */
 void Flesh::update_machine_state(float) {
+    /*
+     * State Machine
+     */
     switch (state) {
         case FighterState::JUMP_ATK_UP:
             attack_damage = (7 * additional_attack_damage) *
@@ -100,6 +103,9 @@ void Flesh::update_machine_state(float) {
             attack_mask = get_attack_orientation();
             check_left(false);
             check_right(false);
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 speed.y = 0.1;
                 check_fall();
@@ -111,6 +117,9 @@ void Flesh::update_machine_state(float) {
             attack_damage = (3 * additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_defense();
@@ -122,6 +131,9 @@ void Flesh::update_machine_state(float) {
             attack_damage = (3 * additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_defense();
@@ -136,6 +148,9 @@ void Flesh::update_machine_state(float) {
             attack_damage = (1 * additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_defense();
@@ -149,6 +164,9 @@ void Flesh::update_machine_state(float) {
         case FighterState::IDLE_ATK_NEUTRAL_3:
             attack_damage = 1 * additional_attack_damage;
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_defense();
@@ -159,6 +177,9 @@ void Flesh::update_machine_state(float) {
         case FighterState::IDLE_ATK_FRONT:
             attack_damage = 1 * additional_attack_damage;
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_fall();
@@ -173,9 +194,15 @@ void Flesh::update_machine_state(float) {
             attack_mask = get_attack_orientation();
             check_right(false);
             check_left(false);
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_fall();
             }
+            /*
+             * Check if in use sprite is on floor
+             */
             if (on_floor) {
                 check_idle();
                 check_defense();
@@ -189,6 +216,9 @@ void Flesh::update_machine_state(float) {
             attack_damage = (3 * additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_defense();
@@ -204,6 +234,9 @@ void Flesh::update_machine_state(float) {
             attack_mask = get_attack_orientation();
 
             check_jump_atk_down_dmg();
+            /*
+             * Check if in use sprite is on floor
+             */
             if (on_floor) {
                 speed.x = 0;
                 check_idle();
@@ -218,6 +251,9 @@ void Flesh::update_machine_state(float) {
             speed.x = (INITIAL_SPEED + 1 + additional_speed) *
                       (orientation == LEFT ? -1 : 1);
             speed.y = (INITIAL_SPEED + 1 + additional_speed);
+            /*
+             * Check if in use sprite is finished or on floor
+             */
             if (sprite[state].is_finished() or on_floor) {
                 speed.x = 0;
                 check_idle();
@@ -231,6 +267,9 @@ void Flesh::update_machine_state(float) {
             attack_damage = (BASIC_ATTACK_DAMAGE * additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_idle();
                 check_defense();
@@ -242,6 +281,9 @@ void Flesh::update_machine_state(float) {
             attack_damage = 0;
             attack_mask = 0;
             check_special_2();
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 check_fall();
                 check_idle();
@@ -252,9 +294,12 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::SPECIAL_1:
-            attack_damage = SPECIAL_1_DAMAGE*additional_attack_damage;
+            attack_damage = SPECIAL_1_DAMAGE * additional_attack_damage;
             speed.x = 4 * (orientation == LEFT ? -1 : 1);
             attack_mask = get_attack_orientation();
+            /*
+             * Check if in use sprite is grabbing
+             */
             if (grab) {
                 check_idle_atk_front(true, true);
             }
@@ -346,6 +391,9 @@ void Flesh::update_machine_state(float) {
 
         case FighterState::DYING:
             attack_damage = 0;
+            /*
+             * Check if in use sprite is finished
+             */
             if (sprite[state].is_finished()) {
                 remaining_life = 0;
             }
@@ -368,7 +416,13 @@ void Flesh::update_machine_state(float) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump(bool change) {
+    /*
+     * Check if the user is pressing the jump button
+     */
     if (pressed[JUMP_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::JUMPING;
         }
@@ -383,7 +437,13 @@ void Flesh::check_jump(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_fall(bool change) {
+    /*
+     * Check if in use sprite is falling
+     */
     if (speed.y > 0) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::FALLING;
         }
@@ -396,7 +456,13 @@ void Flesh::check_fall(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_left(bool change) {
+    /*
+     * Check if user is pressing the left button
+     */
     if (is_holding[LEFT_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::RUNNING;
         }
@@ -411,7 +477,13 @@ void Flesh::check_left(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_right(bool change) {
+    /*
+     * Check if user is pressing the right button
+     */
     if (is_holding[RIGHT_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::RUNNING;
         }
@@ -426,8 +498,14 @@ void Flesh::check_right(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle(bool change, bool condition) {
+    /*
+     * Check if the character isn't doing anything
+     */
     if ((speed.x == 0 and on_floor and not is_holding[DOWN_BUTTON] and not
         is_holding[BLOCK_BUTTON]) or condition) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE;
         }
@@ -440,7 +518,13 @@ void Flesh::check_idle(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_crouch(bool change) {
+    /*
+     * Check if user is pressing down button when his character is on floor
+     */
     if (is_holding[DOWN_BUTTON] and on_floor) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::CROUCH;
         }
@@ -453,7 +537,13 @@ void Flesh::check_crouch(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_1(bool change) {
+    /*
+     * Check if user is pressing attack button without pressing down button
+     */
     if (pressed[ATTACK_BUTTON] and not is_holding[DOWN_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_NEUTRAL_1;
         }
@@ -466,8 +556,14 @@ void Flesh::check_idle_atk_neutral_1(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_2(bool change) {
+    /*
+     * Check if combo happened
+     */
     if (combo) {
         combo--;
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_NEUTRAL_2;
         }
@@ -480,8 +576,14 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_3(bool change) {
+    /*
+     * Check if combo happened
+     */
     if (combo) {
         combo--;
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_NEUTRAL_3;
         }
@@ -495,12 +597,21 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
  * @param condition check if the character is in condition
  */
 void Flesh::check_idle_atk_front(bool change, bool condition) {
+    /*
+     * Check if user is pressing attack button and left or right button
+     */
     if ((pressed[ATTACK_BUTTON] and (is_holding[LEFT_BUTTON] or
         is_holding[RIGHT_BUTTON])) or condition) {
         speed.y = 0;
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_FRONT;
         }
+        /*
+         * Check if condition did't happen
+         */
         if (not condition) {
             orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT
             : Orientation::RIGHT;
@@ -514,7 +625,13 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_fallloop(bool change) {
+    /*
+     * Check if user is pressing attack and down button
+     */
     if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_DOWN_FALLLOOP;
         }
@@ -527,7 +644,13 @@ void Flesh::check_jump_atk_down_fallloop(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_dmg(bool change) {
+    /*
+     * Check if grab happened
+     */
     if (grab) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_DOWN_DMG;
         }
@@ -540,8 +663,14 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_neutral(bool change) {
+    /*
+     * Check if user is pressing attack button without down or up button
+     */
     if (is_holding[ATTACK_BUTTON] and not is_holding[DOWN_BUTTON] and not
         is_holding[UP_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_NEUTRAL;
         }
@@ -554,7 +683,13 @@ void Flesh::check_jump_atk_neutral(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_down(bool change) {
+    /*
+     * Check if user is pressing attack and down button
+     */
     if (is_holding[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_DOWN;
         }
@@ -567,11 +702,17 @@ void Flesh::check_idle_atk_down(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_special_1(bool change) {
+    /*
+     * Check if user is pressing special button
+     */
     if (pressed[SPECIAL1_BUTTON]) {
         if (speed.y == 0) {
             speed.y = -5;
         }
         box.y -= 15;
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::SPECIAL_1;
         }
@@ -595,6 +736,10 @@ void Flesh::check_special_2(bool) {
  * @param bool
  */
 void Flesh::check_ultimate(bool) {
+    /*
+     * Check if user is pressing ultimate button with his atribute special on
+     * maximun
+     */
     if (pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
         Game::get_instance().get_current_state().add_object(new
             FleshUltimateEffect(this, path + "ult_effect.png", "has_sprite",
@@ -609,8 +754,17 @@ void Flesh::check_ultimate(bool) {
  * @param change check if the state os character changed
  */
 void Flesh::check_pass_through_platform(bool change) {
+    /*
+     * Check if user is pressing down button without attack button
+     */
     if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
+        /*
+         * Check if the crouch isn't in cooldown
+         */
         if (crouch_timer.get() < CROUCH_COOLDOWN) {
+            /*
+             * Check if change happened
+             */
             if (change) {
                 temporary_state = FighterState::FALLING;
             }
@@ -626,7 +780,13 @@ void Flesh::check_pass_through_platform(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_defense(bool change) {
+    /*
+     * Check if user is pressing block button with his character on floor
+     */
     if (is_holding[BLOCK_BUTTON] and on_floor) {
+        /*
+         * Check if change happened
+         */
         if (change) {
                 temporary_state = FighterState::DEFENDING;
         }
@@ -640,6 +800,9 @@ void Flesh::check_defense(bool change) {
  */
 void Flesh::check_stunned(bool change) {
     speed.x = 0;
+    /*
+     * Check if change happened
+     */
     if (change) {
         temporary_state = FighterState::STUNNED;
     }
@@ -651,7 +814,13 @@ void Flesh::check_stunned(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_dead(bool change) {
+    /*
+     * Check if in use sprite is dying
+     */
     if (is("dying")) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::DYING;
         }
@@ -664,7 +833,13 @@ void Flesh::check_dead(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_crouch_atk(bool change) {
+    /*
+     * Check if user is pressing attack button
+     */
     if (pressed[ATTACK_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::CROUCH_ATK;
         }
@@ -677,12 +852,21 @@ void Flesh::check_crouch_atk(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_up(bool change) {
+    /*
+     * Check if user is pressing attack and up button
+     */
     if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
+        /*
+         * Check if combo happened
+         */
         if (combo) {
             return;
         }
         combo++;
         speed.y = -5;
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_UP;
         }
@@ -695,7 +879,13 @@ void Flesh::check_jump_atk_up(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_up(bool change) {
+    /*
+     * Check if user is pressing attack and up button
+     */
     if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
+        /*
+         * Check if change happened
+         */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_UP;
         }
