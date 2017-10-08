@@ -26,7 +26,7 @@ Rectangle::Rectangle() {}
  * @param w is the width of object
  * @param h is the height of object
  */
-Rectangle::Rectangle(float ax, float ay, float w, float h) 
+Rectangle::Rectangle(float ax, float ay, float w, float h)
     : x(ax), y(ay), width(w), height(h) {}
 
 /*

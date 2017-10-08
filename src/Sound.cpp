@@ -41,7 +41,7 @@ Sound::Sound(string cfile) {
  */
 void Sound::play(int times) {
     channel = Mix_PlayChannel(-1, sound.get(), times);
-    if(channel == -1) {
+    if (channel == -1) {
         printf("Play chunk: %s\n", Mix_GetError());
         exit(-1);
     }

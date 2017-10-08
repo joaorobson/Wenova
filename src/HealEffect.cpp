@@ -22,8 +22,8 @@
  * @param frames is the frames to show the heal.
  * @param chealing_factor is the chealing factor.
  */
-HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags, 
-                       int frames, float chealing_factor) 
+HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
+                       int frames, float chealing_factor)
     : Effect(cparent, csprite, ctags, frames) {
     healing_factor = chealing_factor;
 }
@@ -34,12 +34,12 @@ HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
  * @params delta is the variation of the heal.
  */
 void HealEffect::update(float delta) {
-    if(parent) {
+    if (parent) {
         box.x = parent->box.x;
         box.y = parent->box.y;
     }
     sprite.update(delta);
-    if(parent) {
+    if (parent) {
         parent->increment_life(healing_factor);
     }
 }
