@@ -18,41 +18,93 @@
 
 #define FIRST_TIME 1492356064
 
+#define DEFAULT_ANALOGIC_SENSIBILITY 20000
+#define DEFAULT_TRIGGERS_SENSIBILITY 3200
+
+#define BACKGROUND_WIDTH 1280
+#define BACKGROUND_HEIGHT 720
+
 InputManager *InputManager::input_manager;
 
 /**
- * Expliciting buttons constants for this file, simplifying use..
+ * Initializing static variables.
+ * For comments look header file.
  */
-const int InputManager::UP, InputManager::DOWN, InputManager::RIGHT,
-    InputManager::LEFT;
-const int InputManager::A, InputManager::B, InputManager::X, InputManager::Y;
-const int InputManager::LB, InputManager::RB, InputManager::START,
-    InputManager::SELECT;
-const int InputManager::LT, InputManager::RT;
-const int InputManager::L3, InputManager::R3;
-const int InputManager::K_L3, InputManager::K_R3;
+/**
+ * Joysitck keys.
+ */
+const int InputManager::UP;
+const int InputManager::RIGHT;
+const int InputManager::DOWN;
+const int InputManager::LEFT;
+const int InputManager::A;
+const int InputManager::B;
+const int InputManager::X;
+const int InputManager::Y;
+const int InputManager::LB;
+const int InputManager::RB;
+const int InputManager::LT;
+const int InputManager::RT;
+const int InputManager::L3;
+const int InputManager::R3;
 
-const int InputManager::K_UP, InputManager::K_RIGHT, InputManager::K_DOWN;
-const int InputManager::K_LEFT, InputManager::K_A, InputManager::K_B,
-    InputManager::K_X;
-const int InputManager::K_Y, InputManager::K_LB, InputManager::K_RB,
-    InputManager::K_LT;
-const int InputManager::K_RT, InputManager::K_SELECT, InputManager::K_START;
-const int InputManager::LEFT_MOUSE_BUTTON, InputManager::RIGHT_MOUSE_BUTTON;
-const int InputManager::ENTER_KEY, InputManager::K_RANDOM;
+/**
+ * Keys for battle.
+ */
+const int InputManager::K_UP;
+const int InputManager::K_RIGHT;
+const int InputManager::K_DOWN;
+const int InputManager::K_LEFT;
+const int InputManager::K_A;
+const int InputManager::K_B;
+const int InputManager::K_X;
+const int InputManager::K_Y;
+const int InputManager::K_LB;
+const int InputManager::K_RB;
+const int InputManager::K_LT;
+const int InputManager::K_RT;
+const int InputManager::K_SELECT;
+const int InputManager::K_START;
+const int InputManager::ENTER_KEY;
+const int InputManager::K_RANDOM;
+const int InputManager::RIGHT_MOUSE_BUTTON;
+const int InputManager::LEFT_MOUSE_BUTTON;
+const int InputManager::K_L3;
+const int InputManager::K_R3;
 
-const int InputManager::K_ARROW_UP, InputManager::K_ARROW_RIGHT,
-    InputManager::K_ARROW_DOWN;
-const int InputManager::K_ARROW_LEFT, InputManager::K_CTRL, InputManager::K_C,
-    InputManager::K_F;
-const int InputManager::K_P, InputManager::K_O, InputManager::K_ROT_LEFT;
-const int InputManager::K_ROT_RIGHT, InputManager::K_ROT_RESET,
-    InputManager::K_INC_W;
-const int InputManager::K_DEC_W, InputManager::K_DEL;
+/**
+ * Keys for menus.
+ */
+const int InputManager::K_MENU_A;
+const int InputManager::K_MENU_B;
+const int InputManager::K_MENU_Y;
+const int InputManager::K_MENU_LB;
+const int InputManager::SELECT;
+const int InputManager::START;
 
-const int InputManager::K_MENU_A, InputManager::K_MENU_B,
-    InputManager::K_MENU_Y, InputManager::K_MENU_LB;
-const int InputManager::MENU_MODE, InputManager::BATTLE_MODE;
+/**
+ * Keys for edit mode.
+ */
+const int InputManager::K_ARROW_UP;
+const int InputManager::K_ARROW_RIGHT;
+const int InputManager::K_ARROW_DOWN;
+const int InputManager::K_ARROW_LEFT;
+const int InputManager::K_CTRL;
+const int InputManager::K_C;
+const int InputManager::K_S;
+const int InputManager::K_F;
+const int InputManager::K_P;
+const int InputManager::K_O;
+const int InputManager::K_SHIFT;
+const int InputManager::K_ROT_LEFT;
+const int InputManager::K_ROT_RIGHT;
+const int InputManager::K_ROT_RESET;
+const int InputManager::K_INC_W;
+const int InputManager::K_DEC_W;
+const int InputManager::K_DEL;
+
+const int InputManager::MENU_MODE;
+const int InputManager::BATTLE_MODE;
 
 /**
  * Initializes variables.
@@ -61,15 +113,19 @@ InputManager::InputManager() {
     memset(mouse_buttons_states, false, sizeof mouse_buttons_states);
     memset(mouse_update, 0, sizeof mouse_update);
 
+    this->analogic_sensibility_value = DEFAULT_ANALOGIC_SENSIBILITY;
+    this->triggers_sensibility_value = DEFAULT_TRIGGERS_SENSIBILITY;
+
     keyboard_to_joystick_id = 0;
     map_keyboard_to_joystick(keyboard_to_joystick_id);
 
     /**
      * Start controllers with nullptr.
      */
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < N_CONTROLLERS; i++) {
         controllers[i] = nullptr;
     }
+
     has_quit_request = false;
     update_counter = 0;
     mouse_x_position = 0;
@@ -83,7 +139,7 @@ InputManager::~InputManager() {
     /**
      * Clear joystick data.
      */
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < N_CONTROLLERS; i++) {
         joysticks_buttons_states[i].clear();
         joystick_update[i].clear();
     }
@@ -103,12 +159,14 @@ void InputManager::update() {
     update_counter++;
 
     SDL_GetMouseState(&mouse_x_position, &mouse_y_position);
-    mouse_x_position = mouse_x_position * mouse_sensibility_value + mouse_delta_x;
-    mouse_y_position = mouse_y_position * mouse_sensibility_value + mouse_delta_y;
+
+    mouse_x_position = mouse_x_position * mouse_sensibility_value + offset_x;
+    mouse_y_position = mouse_y_position * mouse_sensibility_value + offset_y;
+
     mouse_x_position = std::max(0, mouse_x_position);
-    mouse_x_position = std::min(mouse_x_position, 1280);
+    mouse_x_position = std::min(mouse_x_position, BACKGROUND_WIDTH);
     mouse_y_position = std::max(0, mouse_y_position);
-    mouse_y_position = std::min(mouse_y_position, 720);
+    mouse_y_position = std::min(mouse_y_position, BACKGROUND_HEIGHT);
 
     /**
      * While proper event has not yet been found.
@@ -264,7 +322,8 @@ bool InputManager::is_key_down(int key) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_press(int button) {
-    return mouse_buttons_states[button] and mouse_update[button] == update_counter;
+    return mouse_buttons_states[button] and
+        mouse_update[button] == update_counter;
 }
 
 /**
@@ -274,7 +333,8 @@ bool InputManager::mouse_press(int button) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_release(int button) {
-    return not mouse_buttons_states[button] and mouse_update[button] == update_counter;
+    return not mouse_buttons_states[button] and
+        mouse_update[button] == update_counter;
 }
 
 /**
@@ -366,17 +426,20 @@ InputManager *InputManager::get_instance() {
 }
 
 /**
- * Configure mouse scale to calibrae sensibility.
- * Bigger the values, more sensible the mouse will be
+ * Configure mouse scale to calibrate sensibility.
+ * Bigger the values, more sensible the mouse will be. Util for when
+ * resizing the screen
  *
  * @param cmouse_sensibility_value Unit: px, [0,]
- * @param cmouse_delta_x Unit: px, [0,]
- * @param cmouse_delta_y Unit: px, [0,]
+ * @param coffset_x Unit: px, [0,]
+ * @param coffset_y Unit: px, [0,]
  */
-void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value, int cmouse_delta_x, int cmouse_delta_y) {
+void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
+                                               int coffset_x, int coffset_y) {
     mouse_sensibility_value = cmouse_sensibility_value;
-    mouse_delta_x = cmouse_delta_x;
-    mouse_delta_y = cmouse_delta_y;
+
+    offset_x = coffset_x;
+    offset_y = coffset_y;
 }
 
 /**
@@ -396,8 +459,8 @@ void InputManager::connect_joysticks() {
      * Max number of joysticks can be only four.
      */
     int max = SDL_NumJoysticks();
-    if (max > 4) {
-        max = 4;
+    if (max > N_CONTROLLERS) {
+        max = N_CONTROLLERS;
     }
     int n_controller = 0;
 
@@ -503,15 +566,16 @@ void InputManager::emulate_joystick(int key_id, bool state) {
     /**
      * Will update status for joystick based on profile.
      */
-    if (keyboard_to_joystick_id == 4) {
-        for (int i = 0; i < 4; i++) {
-            joysticks_buttons_states[i][keyboard_to_joystick[key_id] - 1] = state;
+    if (keyboard_to_joystick_id == N_CONTROLLERS) {
+        for (int i = 0; i < N_CONTROLLERS; i++) {
+            joysticks_buttons_states[i][keyboard_to_joystick[key_id] - 1] =
+                state;
             joystick_update[i][keyboard_to_joystick[key_id] - 1] =
                 update_counter;
         }
     } else if (keyboard_to_joystick_id >= 0) {
         joysticks_buttons_states[keyboard_to_joystick_id]
-                      [keyboard_to_joystick[key_id] - 1] = state;
+                                [keyboard_to_joystick[key_id] - 1] = state;
         joystick_update[keyboard_to_joystick_id]
                        [keyboard_to_joystick[key_id] - 1] = update_counter;
     }
@@ -524,15 +588,16 @@ void InputManager::reset_keyboard_to_joystick() {
     /**
      * Check limits.
      */
-    if (keyboard_to_joystick_id < 0 or keyboard_to_joystick_id > 4) {
+    if (keyboard_to_joystick_id < 0 or
+        keyboard_to_joystick_id > N_CONTROLLERS) {
         return;
     }
 
     /**
      * Update all joysticks state based on profile.
      */
-    if (keyboard_to_joystick_id == 4) {
-        for (int i = 0; i < 4; i++) {
+    if (keyboard_to_joystick_id == N_CONTROLLERS) {
+        for (int i = 0; i < N_CONTROLLERS; i++) {
             for (auto &c : joysticks_buttons_states[i]) {
                 c.second = false;
             }
