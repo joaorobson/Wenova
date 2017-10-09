@@ -12,12 +12,12 @@ int Floor::floor_id = 1;
 
 //TODO reavaliar se precisa ou não de Camera
 Floor::Floor(float x, float y, float width, float crotation, bool cplatform){
-	is_platform = cplatform;
+	is_crossingable = cplatform;
 	rotation = crotation * PI / 180.0;
 	box = Rectangle(x, y, width, HEIGHT);
 	id = floor_id++;
 	tags["floor"] = true;
-	if(is_platform) tags["platform"] = true;
+	if(is_crossingable) tags["platform"] = true;
 }
 
 Floor::~Floor(){
