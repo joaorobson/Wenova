@@ -1,21 +1,3 @@
-Warning: Tag `HTML_ALIGN_MEMBERS' at line 397 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `MAX_DOT_GRAPH_WIDTH' at line 678 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `MAX_DOT_GRAPH_HEIGHT' at line 686 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `CGI_NAME' at line 707 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `CGI_URL' at line 713 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `DOC_URL' at line 719 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `DOC_ABSPATH' at line 725 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `BIN_ABSPATH' at line 730 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: Tag `EXT_DOC_PATHS' at line 736 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
-To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 Searching for include files...
 Searching for files in directory /home/travis/build/joaorobson/Wenova/include
 Searching for example files...
