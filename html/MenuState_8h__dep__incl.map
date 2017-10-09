@@ -1,0 +1,10 @@
+<map id="MenuState.h" name="MenuState.h">
+<area shape="rect" id="node2" href="$BattleState_8cpp.html" title="BattleState.cpp" alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="142,80,313,107"/>
+<area shape="rect" id="node4" href="$EditState_8cpp.html" title="EditState.cpp" alt="" coords="339,80,440,107"/>
+<area shape="rect" id="node5" href="$JoystickConfigState_8cpp.html" title="This file renders images of options &#39;JOYSTICK&#39; and &#39;KEYBOARD&#39; of the menu &#39;Options&#39; and controls the ..." alt="" coords="464,80,628,107"/>
+<area shape="rect" id="node6" href="$Main_8cpp.html" title="Main.cpp" alt="" coords="653,80,727,107"/>
+<area shape="rect" id="node7" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="753,80,863,107"/>
+<area shape="rect" id="node8" href="$OptionsState_8cpp.html" title="This file builds all options and sub options of the menu &#39;Options&#39; of the game and control their beha..." alt="" coords="888,80,1011,107"/>
+<area shape="rect" id="node9" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="1035,80,1187,107"/>
+</map>

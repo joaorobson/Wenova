@@ -1,2 +1,21 @@
 <map id="CharacterSelectState.cpp" name="CharacterSelectState.cpp">
+<area shape="rect" id="node3" href="$BattleState_8h.html" title="BattleState.h" alt="" coords="509,80,608,107"/>
+<area shape="rect" id="node29" href="$CharacterSelectState_8h.html" title="Controls all process of players choosing characters and skins. " alt="" coords="1058,80,1216,107"/>
+<area shape="rect" id="node31" href="$Game_8h.html" title="Game.h" alt="" coords="1458,155,1525,181"/>
+<area shape="rect" id="node34" href="$MenuState_8h.html" title="MenuState.h" alt="" coords="276,155,372,181"/>
+<area shape="rect" id="node35" href="$StageSelectState_8h.html" title="This file contains the definitions of all methods and attributes of the class StageSelectState. " alt="" coords="914,155,1048,181"/>
+<area shape="rect" id="node4" href="$State_8h.html" title="State.h" alt="" coords="949,229,1013,256"/>
+<area shape="rect" id="node8" href="$Vector_8h.html" title="Vector.h" alt="" coords="260,453,330,480"/>
+<area shape="rect" id="node14" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="808,229,874,256"/>
+<area shape="rect" id="node17" href="$Text_8h.html" title="Text.h" alt="" coords="624,229,681,256"/>
+<area shape="rect" id="node19" href="$Timer_8h.html" title="Timer.h" alt="" coords="192,229,258,256"/>
+<area shape="rect" id="node20" href="$Music_8h.html" title="Music.h" alt="" coords="334,229,401,256"/>
+<area shape="rect" id="node21" href="$Sound_8h.html" title="Sound.h" alt="" coords="478,229,548,256"/>
+<area shape="rect" id="node22" href="$Fighter_8h.html" title="Fighter.h" alt="" coords="447,155,520,181"/>
+<area shape="rect" id="node27" href="$TimeCounter_8h.html" title="This file contains the definitions of all methods and attributes of the class TimeCounter. " alt="" coords="42,155,149,181"/>
+<area shape="rect" id="node28" href="$BattleEnd_8h.html" title="This file contains the definitions of the methods and attributes of the class BattleEnd. " alt="" coords="748,155,838,181"/>
+<area shape="rect" id="node5" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="510,304,617,331"/>
+<area shape="rect" id="node6" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="427,379,518,405"/>
+<area shape="rect" id="node23" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="1392,229,1502,256"/>
+<area shape="rect" id="node30" href="$FighterMenu_8h.html" title="This file contains the definitions of all methods and attributes of the class FighterMenu. " alt="" coords="1175,155,1280,181"/>
 </map>

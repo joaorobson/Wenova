@@ -1,0 +1,9 @@
+<map id="FighterStats" name="FighterStats">
+<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="311,408,406,435"/>
+<area shape="rect" id="node7" href="$classFighter.html" title="Fighter" alt="" coords="619,261,682,288"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="Rectangle" alt="" coords="51,437,133,464"/>
+<area shape="rect" id="node5" href="$classSprite.html" title="Sprite" alt="" coords="623,515,679,541"/>
+<area shape="rect" id="node8" href="$classVector.html" title="Vector" alt="" coords="329,57,389,84"/>
+<area shape="rect" id="node11" href="$classSound.html" title="Sound" alt="" coords="329,236,388,263"/>
+<area shape="rect" id="node14" href="$classTimer.html" title="Timer" alt="" coords="331,344,386,371"/>
+</map>

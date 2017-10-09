@@ -1,0 +1,7 @@
+<map id="TimeCounter" name="TimeCounter">
+<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="283,59,378,85"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="Rectangle" alt="" coords="57,84,138,111"/>
+<area shape="rect" id="node7" href="$classText.html" title="Text" alt="" coords="307,149,355,176"/>
+<area shape="rect" id="node5" href="$classSprite.html" title="Sprite" alt="" coords="303,200,359,227"/>
+<area shape="rect" id="node10" href="$classTimer.html" title="Timer" alt="" coords="303,251,358,277"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="FighterMenu" name="FighterMenu">
+<area shape="rect" id="node2" href="$classSprite.html" title="Sprite" alt="" coords="99,96,153,123"/>
+<area shape="rect" id="node5" href="$classText.html" title="Text" alt="" coords="301,96,349,123"/>
+<area shape="rect" id="node6" href="$classRectangle.html" title="Rectangle" alt="" coords="293,5,373,32"/>
+</map>

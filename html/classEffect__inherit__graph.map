@@ -1,0 +1,6 @@
+<map id="Effect" name="Effect">
+<area shape="rect" id="node3" href="$classFleshUltimateEffect.html" title="FleshUltimateEffect" alt="" coords="5,155,144,181"/>
+<area shape="rect" id="node4" href="$classHealEffect.html" title="HealEffect" alt="" coords="169,155,252,181"/>
+<area shape="rect" id="node5" href="$classUltimateEffect.html" title="UltimateEffect" alt="" coords="277,155,384,181"/>
+<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="163,5,257,32"/>
+</map>

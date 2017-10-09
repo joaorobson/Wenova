@@ -36,6 +36,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -70,47 +71,57 @@ $(document).ready(function(){initNavTree('Config_8cpp_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;Config.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Config.h</a>&quot;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> Config::width;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> Config::height;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> Config::fullscreen;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="classConfig.html#aa5faf33d87a76174ce860e44b537c8b1">Config::width</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="classConfig.html#a5dcfbb05343ed1091fa69155603fa56d">Config::height</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="classConfig.html#a129bfdcef07f144b225304120c0b9740">Config::fullscreen</a>;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> Config::init() {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::fstream config_file(CONFIGURATION_FILE_PATH);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    config_file &gt;&gt; width &gt;&gt; height &gt;&gt; fullscreen;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classConfig.html#a91bcb187ed95ec673137e413a4d77203">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classConfig.html#a91bcb187ed95ec673137e413a4d77203">Config::init</a>() {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::fstream config_file(<a class="code" href="Config_8h.html#a966421e8beed081c502732bce8066eb6">CONFIGURATION_FILE_PATH</a>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    config_file &gt;&gt; <a class="code" href="classConfig.html#aa5faf33d87a76174ce860e44b537c8b1">width</a> &gt;&gt; <a class="code" href="classConfig.html#a5dcfbb05343ed1091fa69155603fa56d">height</a> &gt;&gt; <a class="code" href="classConfig.html#a129bfdcef07f144b225304120c0b9740">fullscreen</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">int</span> Config::get_width() {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> width;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classConfig.html#a69a7c77ad2b65370e06a2eba75b57443">   32</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classConfig.html#a69a7c77ad2b65370e06a2eba75b57443">Config::get_width</a>() {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classConfig.html#aa5faf33d87a76174ce860e44b537c8b1">width</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">int</span> Config::get_height() {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> height;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classConfig.html#ac7abb5c675f2fee590fef0e4c6da76d9">   40</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classConfig.html#ac7abb5c675f2fee590fef0e4c6da76d9">Config::get_height</a>() {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classConfig.html#a5dcfbb05343ed1091fa69155603fa56d">height</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">int</span> Config::is_fullscreen() {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> fullscreen;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classConfig.html#a1e97f249492ee9980860a34db5b21c18">   49</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classConfig.html#a1e97f249492ee9980860a34db5b21c18">Config::is_fullscreen</a>() {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classConfig.html#a129bfdcef07f144b225304120c0b9740">fullscreen</a>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> Config::update_information(<span class="keywordtype">int</span> cwidth, <span class="keywordtype">int</span> cheight, <span class="keywordtype">int</span> cfullscreen) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    width = cwidth;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    height = cheight;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    fullscreen = cfullscreen;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classConfig.html#aae8446cd2c4a7d75707383fb498fa07f">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classConfig.html#aae8446cd2c4a7d75707383fb498fa07f">Config::update_information</a>(<span class="keywordtype">int</span> cwidth, <span class="keywordtype">int</span> cheight, <span class="keywordtype">int</span> cfullscreen) {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classConfig.html#aa5faf33d87a76174ce860e44b537c8b1">width</a> = cwidth;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classConfig.html#a5dcfbb05343ed1091fa69155603fa56d">height</a> = cheight;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classConfig.html#a129bfdcef07f144b225304120c0b9740">fullscreen</a> = cfullscreen;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    config_file &lt;&lt; width &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; height &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; fullscreen &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    std::ofstream config_file(<a class="code" href="Config_8h.html#a966421e8beed081c502732bce8066eb6">CONFIGURATION_FILE_PATH</a>, std::ios::trunc);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    config_file &lt;&lt; <a class="code" href="classConfig.html#aa5faf33d87a76174ce860e44b537c8b1">width</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="classConfig.html#a5dcfbb05343ed1091fa69155603fa56d">height</a> &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; <a class="code" href="classConfig.html#a129bfdcef07f144b225304120c0b9740">fullscreen</a> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    config_file.close();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="ttc" id="classConfig_html_a129bfdcef07f144b225304120c0b9740"><div class="ttname"><a href="classConfig.html#a129bfdcef07f144b225304120c0b9740">Config::fullscreen</a></div><div class="ttdeci">static int fullscreen</div><div class="ttdef"><b>Definition:</b> <a href="Config_8h_source.html#l00058">Config.h:58</a></div></div>
+<div class="ttc" id="classConfig_html_ac7abb5c675f2fee590fef0e4c6da76d9"><div class="ttname"><a href="classConfig.html#ac7abb5c675f2fee590fef0e4c6da76d9">Config::get_height</a></div><div class="ttdeci">static int get_height()</div><div class="ttdoc">Accessor to height private attribute. </div><div class="ttdef"><b>Definition:</b> <a href="Config_8cpp_source.html#l00040">Config.cpp:40</a></div></div>
+<div class="ttc" id="classConfig_html_aa5faf33d87a76174ce860e44b537c8b1"><div class="ttname"><a href="classConfig.html#aa5faf33d87a76174ce860e44b537c8b1">Config::width</a></div><div class="ttdeci">static int width</div><div class="ttdef"><b>Definition:</b> <a href="Config_8h_source.html#l00056">Config.h:56</a></div></div>
+<div class="ttc" id="Config_8h_html"><div class="ttname"><a href="Config_8h.html">Config.h</a></div><div class="ttdoc">Manages configuration about screen exhibition. </div></div>
+<div class="ttc" id="classConfig_html_a1e97f249492ee9980860a34db5b21c18"><div class="ttname"><a href="classConfig.html#a1e97f249492ee9980860a34db5b21c18">Config::is_fullscreen</a></div><div class="ttdeci">static int is_fullscreen()</div><div class="ttdoc">Get fullscreen current status. </div><div class="ttdef"><b>Definition:</b> <a href="Config_8cpp_source.html#l00049">Config.cpp:49</a></div></div>
+<div class="ttc" id="classConfig_html_a69a7c77ad2b65370e06a2eba75b57443"><div class="ttname"><a href="classConfig.html#a69a7c77ad2b65370e06a2eba75b57443">Config::get_width</a></div><div class="ttdeci">static int get_width()</div><div class="ttdoc">Accessor to width private attribute. </div><div class="ttdef"><b>Definition:</b> <a href="Config_8cpp_source.html#l00032">Config.cpp:32</a></div></div>
+<div class="ttc" id="classConfig_html_a91bcb187ed95ec673137e413a4d77203"><div class="ttname"><a href="classConfig.html#a91bcb187ed95ec673137e413a4d77203">Config::init</a></div><div class="ttdeci">static void init()</div><div class="ttdoc">Will write current screen configurations to res/config_file.dat. </div><div class="ttdef"><b>Definition:</b> <a href="Config_8cpp_source.html#l00022">Config.cpp:22</a></div></div>
+<div class="ttc" id="classConfig_html_aae8446cd2c4a7d75707383fb498fa07f"><div class="ttname"><a href="classConfig.html#aae8446cd2c4a7d75707383fb498fa07f">Config::update_information</a></div><div class="ttdeci">static void update_information(int cwidth, int cheight, int cfullscreen)</div><div class="ttdoc">Writes to file res/config_file.dat screen information. </div><div class="ttdef"><b>Definition:</b> <a href="Config_8cpp_source.html#l00060">Config.cpp:60</a></div></div>
+<div class="ttc" id="Config_8h_html_a966421e8beed081c502732bce8066eb6"><div class="ttname"><a href="Config_8h.html#a966421e8beed081c502732bce8066eb6">CONFIGURATION_FILE_PATH</a></div><div class="ttdeci">#define CONFIGURATION_FILE_PATH</div><div class="ttdef"><b>Definition:</b> <a href="Config_8h_source.html#l00017">Config.h:17</a></div></div>
+<div class="ttc" id="classConfig_html_a5dcfbb05343ed1091fa69155603fa56d"><div class="ttname"><a href="classConfig.html#a5dcfbb05343ed1091fa69155603fa56d">Config::height</a></div><div class="ttdeci">static int height</div><div class="ttdef"><b>Definition:</b> <a href="Config_8h_source.html#l00057">Config.h:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="Config_8cpp.html">Config.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 16:43:14 for Wenova by
+    <li class="footer">Generated on Mon Oct 9 2017 17:02:19 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,0 +1,6 @@
+<map id="BattleEnd" name="BattleEnd">
+<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="294,59,389,85"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="Rectangle" alt="" coords="57,84,138,111"/>
+<area shape="rect" id="node8" href="$classText.html" title="Text" alt="" coords="317,149,365,176"/>
+<area shape="rect" id="node5" href="$classSprite.html" title="Sprite" alt="" coords="313,200,369,227"/>
+</map>

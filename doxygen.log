@@ -8,6 +8,7 @@ Searching for dia files...
 Searching for files to exclude
 Searching for files to process...
 Searching for files in directory /home/travis/build/joaorobson/Wenova/src
+Searching for files in directory /home/travis/build/joaorobson/Wenova/include
 Reading and parsing tag files
 Parsing files
 Preprocessing /home/travis/build/joaorobson/Wenova/src/Animation.cpp...
@@ -60,417 +61,7 @@ Preprocessing /home/travis/build/joaorobson/Wenova/src/Music.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/Music.cpp...
 Preprocessing /home/travis/build/joaorobson/Wenova/src/OptionsState.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/OptionsState.cpp...
-Preprocessing /home/travis/build/joaorobson/Wenova/src/Rect/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:7: warning: the name `StageSelectState.cpp' supplied as the second argument in the \file statement is not an input file
-/home/travis/build/joaorobson/Wenova/src/Animation.cpp:6: warning: documented symbol `Animation::Animation' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Animation.cpp:14: warning: documented symbol `void Animation::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Animation.cpp:19: warning: documented symbol `void Animation::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Animation.cpp:25: warning: documented symbol `bool Animation::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Animation.cpp:29: warning: documented symbol `void Animation::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleEnd.cpp:25: warning: documented symbol `BattleEnd::BattleEnd' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleEnd.cpp:57: warning: documented symbol `void BattleEnd::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleEnd.cpp:101: warning: documented symbol `void BattleEnd::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleEnd.cpp:113: warning: documented symbol `bool BattleEnd::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleEnd.cpp:123: warning: documented symbol `bool BattleEnd::quit_requested' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleEnd.cpp:133: warning: documented symbol `void BattleEnd::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:22: warning: documented symbol `BattleState::BattleState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:76: warning: documented symbol `BattleState::~BattleState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:79: warning: documented symbol `void BattleState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:177: warning: documented symbol `void BattleState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:185: warning: documented symbol `void BattleState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:189: warning: documented symbol `void BattleState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:193: warning: documented symbol `void BattleState::read_level_design' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:34: warning: documented symbol `Blood::Blood' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:105: warning: documented symbol `void Blood::update_machine_state' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:459: warning: documented symbol `void Blood::check_jump' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:477: warning: documented symbol `void Blood::check_fall' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:494: warning: documented symbol `void Blood::check_left' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:513: warning: documented symbol `void Blood::check_right' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:531: warning: documented symbol `void Blood::check_idle' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:551: warning: documented symbol `void Blood::check_crouch' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:568: warning: documented symbol `void Blood::check_idle_atk_neutral_1' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:586: warning: documented symbol `void Blood::check_idle_atk_neutral_2' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:604: warning: documented symbol `void Blood::check_idle_atk_neutral_3' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:623: warning: documented symbol `void Blood::check_idle_atk_front' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:643: warning: documented symbol `void Blood::check_idle_atk_up' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:661: warning: documented symbol `void Blood::check_idle_atk_down' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:678: warning: documented symbol `void Blood::check_pass_through_platform' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:696: warning: documented symbol `void Blood::check_crouch_atk' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:713: warning: documented symbol `void Blood::check_jump_atk_down' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:729: warning: documented symbol `void Blood::check_jump_atk_neutral' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:748: warning: documented symbol `void Blood::check_jump_atk_up' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:770: warning: documented symbol `void Blood::check_defense' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:786: warning: documented symbol `void Blood::check_stunned' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:802: warning: documented symbol `void Blood::check_special_1_1' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:819: warning: documented symbol `void Blood::check_special_1_2' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:836: warning: documented symbol `void Blood::check_special_2' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:852: warning: documented symbol `void Blood::check_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:865: warning: documented symbol `void Blood::check_ultimate' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:4: warning: documented symbol `GameObject * Camera::focus' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:5: warning: documented symbol `Vector Camera::speed' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:6: warning: documented symbol `Vector Camera::pos' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:7: warning: documented symbol `float Camera::layer_speed' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:14: warning: documented symbol `void Camera::follow' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:18: warning: documented symbol `void Camera::unfollow' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Camera.cpp:22: warning: documented symbol `void Camera::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:116: warning: documented symbol `CharacterSelectState::CharacterSelectState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:197: warning: documented symbol `void CharacterSelectState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:380: warning: documented symbol `void CharacterSelectState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:466: warning: documented symbol `bool CharacterSelectState::all_players_selected' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:482: warning: documented symbol `pair< string, int > CharacterSelectState::get_chars_info' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:495: warning: documented symbol `vector< pair< string, string > > CharacterSelectState::export_players' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:512: warning: documented symbol `void CharacterSelectState::process_input' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:539: warning: documented symbol `pair< int, int > CharacterSelectState::get_slot' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:549: warning: documented symbol `void CharacterSelectState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:555: warning: documented symbol `void CharacterSelectState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:15: warning: documented symbol `int Config::width' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:16: warning: documented symbol `int Config::height' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:17: warning: documented symbol `int Config::fullscreen' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:22: warning: documented symbol `void Config::init' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:32: warning: documented symbol `int Config::get_width' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:40: warning: documented symbol `int Config::get_height' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:49: warning: documented symbol `int Config::is_fullscreen' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Config.cpp:60: warning: documented symbol `void Config::update_information' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:51: warning: documented symbol `EditableFloor::EditableFloor' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:74: warning: documented symbol `EditableFloor::EditableFloor' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:88: warning: documented symbol `EditableFloor::~EditableFloor' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:95: warning: documented symbol `void EditableFloor::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:219: warning: documented symbol `void EditableFloor::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:239: warning: documented symbol `bool EditableFloor::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:248: warning: documented symbol `void EditableFloor::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:255: warning: documented symbol `string EditableFloor::get_information' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:275: warning: documented symbol `void EditableFloor::set_selected' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:25: warning: documented symbol `EditState::EditState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:40: warning: documented symbol `void EditState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:112: warning: documented symbol `void EditState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:120: warning: documented symbol `void EditState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:124: warning: documented symbol `void EditState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:128: warning: documented symbol `void EditState::read_level_design' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/EditState.cpp:167: warning: documented symbol `void EditState::update_level_design' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Effect.cpp:3: warning: documented symbol `Effect::Effect' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Effect.cpp:10: warning: documented symbol `Effect::Effect' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Effect.cpp:15: warning: documented symbol `void Effect::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Effect.cpp:20: warning: documented symbol `void Effect::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:19: warning: documented symbol `Fighter::Fighter' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:53: warning: documented symbol `Fighter::~Fighter' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:56: warning: documented symbol `void Fighter::process_input' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:85: warning: documented symbol `void Fighter::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:111: warning: documented symbol `void Fighter::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:163: warning: documented symbol `void Fighter::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:171: warning: documented symbol `bool Fighter::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:177: warning: documented symbol `float Fighter::get_remaining_life' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:181: warning: documented symbol `float Fighter::get_special' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:186: warning: documented symbol `void Fighter::change_state' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:209: warning: documented symbol `void Fighter::test_limits' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:222: warning: documented symbol `Fighter::AttackDirection Fighter::get_attack_orientation' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:226: warning: documented symbol `void Fighter::reset_position' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:232: warning: documented symbol `bool Fighter::is_attacking' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:236: warning: documented symbol `float Fighter::get_attack_damage' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:240: warning: documented symbol `int Fighter::get_attack_mask' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:244: warning: documented symbol `int Fighter::get_id' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:248: warning: documented symbol `void Fighter::increment_life' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:260: warning: documented symbol `void Fighter::increment_special' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:266: warning: documented symbol `void Fighter::set_partner' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:270: warning: documented symbol `Fighter * Fighter::get_partner' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:274: warning: documented symbol `string Fighter::get_path' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:278: warning: documented symbol `void Fighter::play_sound' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:283: warning: documented symbol `int Fighter::get_max_life' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:287: warning: documented symbol `void Fighter::play_hit' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Fighter.cpp:299: warning: documented symbol `void Fighter::kill' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:6: warning: documented symbol `FighterMenu::FighterMenu' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:8: warning: documented symbol `FighterMenu::FighterMenu' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:33: warning: documented symbol `bool FighterMenu::is_enabled' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:37: warning: documented symbol `bool FighterMenu::is_skin_available' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:41: warning: documented symbol `void FighterMenu::lock_skin' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:45: warning: documented symbol `void FighterMenu::unlock_skin' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:49: warning: documented symbol `Text * FighterMenu::get_name_text' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:53: warning: documented symbol `string FighterMenu::get_name' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:57: warning: documented symbol `string FighterMenu::get_skin_name' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:62: warning: documented symbol `Sprite & FighterMenu::get_skin' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterMenu.cpp:66: warning: documented symbol `Sprite & FighterMenu::get_disabled' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:7: warning: documented symbol `FighterStats::FighterStats' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:52: warning: documented symbol `FighterStats::~FighterStats' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:56: warning: documented symbol `void FighterStats::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:81: warning: documented symbol `void FighterStats::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:111: warning: documented symbol `bool FighterStats::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:115: warning: documented symbol `void FighterStats::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:7: warning: documented symbol `Flesh::Flesh' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:61: warning: documented symbol `void Flesh::update_machine_state' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:322: warning: documented symbol `void Flesh::check_jump' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:330: warning: documented symbol `void Flesh::check_fall' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:336: warning: documented symbol `void Flesh::check_left' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:344: warning: documented symbol `void Flesh::check_right' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:352: warning: documented symbol `void Flesh::check_idle' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:358: warning: documented symbol `void Flesh::check_crouch' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:364: warning: documented symbol `void Flesh::check_idle_atk_neutral_1' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:370: warning: documented symbol `void Flesh::check_idle_atk_neutral_2' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:377: warning: documented symbol `void Flesh::check_idle_atk_neutral_3' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:384: warning: documented symbol `void Flesh::check_idle_atk_front' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:392: warning: documented symbol `void Flesh::check_jump_atk_down_fallloop' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:398: warning: documented symbol `void Flesh::check_jump_atk_down_dmg' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:404: warning: documented symbol `void Flesh::check_jump_atk_neutral' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:410: warning: documented symbol `void Flesh::check_idle_atk_down' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:416: warning: documented symbol `void Flesh::check_special_1' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:424: warning: documented symbol `void Flesh::check_special_2' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:430: warning: documented symbol `void Flesh::check_ultimate' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:437: warning: documented symbol `void Flesh::check_pass_through_platform' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:447: warning: documented symbol `void Flesh::check_defense' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:453: warning: documented symbol `void Flesh::check_stunned' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:458: warning: documented symbol `void Flesh::check_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:464: warning: documented symbol `void Flesh::check_crouch_atk' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:470: warning: documented symbol `void Flesh::check_jump_atk_up' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:479: warning: documented symbol `void Flesh::check_idle_atk_up' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:24: warning: documented symbol `FleshUltimateEffect::FleshUltimateEffect' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:46: warning: documented symbol `void FleshUltimateEffect::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:63: warning: documented symbol `void FleshUltimateEffect::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:73: warning: documented symbol `bool FleshUltimateEffect::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:11: warning: documented symbol `int Floor::floor_id' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:14: warning: documented symbol `Floor::Floor' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:23: warning: documented symbol `Floor::~Floor' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:26: warning: documented symbol `void Floor::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:30: warning: documented symbol `void Floor::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:33: warning: documented symbol `bool Floor::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:37: warning: documented symbol `void Floor::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Floor.cpp:40: warning: documented symbol `int Floor::get_id' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:8: warning: documented symbol `Game * Game::instance' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:10: warning: documented symbol `Game::Game' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:80: warning: documented symbol `Game::~Game' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:95: warning: documented symbol `Game & Game::get_instance' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:99: warning: documented symbol `SDL_Renderer * Game::get_renderer' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:103: warning: documented symbol `State & Game::get_current_state' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:107: warning: documented symbol `void Game::push' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:111: warning: documented symbol `void Game::run' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:135: warning: documented symbol `void Game::calculate_delta_time' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:143: warning: documented symbol `float Game::get_delta_time' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:147: warning: documented symbol `void Game::manage_stack' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:167: warning: documented symbol `void Game::update_resolution' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:194: warning: documented symbol `void Game::change_resolution' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Game.cpp:199: warning: documented symbol `void Game::set_fullscreen' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/HealEffect.cpp:3: warning: documented symbol `HealEffect::HealEffect' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/HealEffect.cpp:7: warning: documented symbol `void HealEffect::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/HealEffect.cpp:18: warning: documented symbol `bool HealEffect::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:27: warning: documented symbol `InputManager * InputManager::input_manager' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:36: warning: documented symbol `const int InputManager::UP' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:37: warning: documented symbol `const int InputManager::RIGHT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:38: warning: documented symbol `const int InputManager::DOWN' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:39: warning: documented symbol `const int InputManager::LEFT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:40: warning: documented symbol `const int InputManager::A' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:41: warning: documented symbol `const int InputManager::B' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:42: warning: documented symbol `const int InputManager::X' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:43: warning: documented symbol `const int InputManager::Y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:44: warning: documented symbol `const int InputManager::LB' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:45: warning: documented symbol `const int InputManager::RB' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:46: warning: documented symbol `const int InputManager::LT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:47: warning: documented symbol `const int InputManager::RT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:48: warning: documented symbol `const int InputManager::L3' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:49: warning: documented symbol `const int InputManager::R3' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:54: warning: documented symbol `const int InputManager::K_UP' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:55: warning: documented symbol `const int InputManager::K_RIGHT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:56: warning: documented symbol `const int InputManager::K_DOWN' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:57: warning: documented symbol `const int InputManager::K_LEFT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:58: warning: documented symbol `const int InputManager::K_A' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:59: warning: documented symbol `const int InputManager::K_B' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:60: warning: documented symbol `const int InputManager::K_X' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:61: warning: documented symbol `const int InputManager::K_Y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:62: warning: documented symbol `const int InputManager::K_LB' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:63: warning: documented symbol `const int InputManager::K_RB' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:64: warning: documented symbol `const int InputManager::K_LT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:65: warning: documented symbol `const int InputManager::K_RT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:66: warning: documented symbol `const int InputManager::K_SELECT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:67: warning: documented symbol `const int InputManager::K_START' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:68: warning: documented symbol `const int InputManager::ENTER_KEY' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:69: warning: documented symbol `const int InputManager::K_RANDOM' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:70: warning: documented symbol `const int InputManager::RIGHT_MOUSE_BUTTON' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:71: warning: documented symbol `const int InputManager::LEFT_MOUSE_BUTTON' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:72: warning: documented symbol `const int InputManager::K_L3' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:73: warning: documented symbol `const int InputManager::K_R3' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:78: warning: documented symbol `const int InputManager::K_MENU_A' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:79: warning: documented symbol `const int InputManager::K_MENU_B' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:80: warning: documented symbol `const int InputManager::K_MENU_Y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:81: warning: documented symbol `const int InputManager::K_MENU_LB' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:82: warning: documented symbol `const int InputManager::SELECT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:83: warning: documented symbol `const int InputManager::START' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:88: warning: documented symbol `const int InputManager::K_ARROW_UP' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:89: warning: documented symbol `const int InputManager::K_ARROW_RIGHT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:90: warning: documented symbol `const int InputManager::K_ARROW_DOWN' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:91: warning: documented symbol `const int InputManager::K_ARROW_LEFT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:92: warning: documented symbol `const int InputManager::K_CTRL' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:93: warning: documented symbol `const int InputManager::K_C' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:94: warning: documented symbol `const int InputManager::K_S' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:95: warning: documented symbol `const int InputManager::K_F' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:96: warning: documented symbol `const int InputManager::K_P' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:97: warning: documented symbol `const int InputManager::K_O' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:98: warning: documented symbol `const int InputManager::K_SHIFT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:99: warning: documented symbol `const int InputManager::K_ROT_LEFT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:100: warning: documented symbol `const int InputManager::K_ROT_RIGHT' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:101: warning: documented symbol `const int InputManager::K_ROT_RESET' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:102: warning: documented symbol `const int InputManager::K_INC_W' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:103: warning: documented symbol `const int InputManager::K_DEC_W' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:104: warning: documented symbol `const int InputManager::K_DEL' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:106: warning: documented symbol `const int InputManager::MENU_MODE' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:107: warning: documented symbol `const int InputManager::BATTLE_MODE' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:112: warning: documented symbol `InputManager::InputManager' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:138: warning: documented symbol `InputManager::~InputManager' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:154: warning: documented symbol `void InputManager::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:291: warning: documented symbol `bool InputManager::key_press' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:302: warning: documented symbol `bool InputManager::key_release' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:313: warning: documented symbol `bool InputManager::is_key_down' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:324: warning: documented symbol `bool InputManager::mouse_press' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:335: warning: documented symbol `bool InputManager::mouse_release' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:346: warning: documented symbol `bool InputManager::is_mouse_down' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:357: warning: documented symbol `bool InputManager::joystick_button_press' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:370: warning: documented symbol `bool InputManager::joystick_button_release' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:383: warning: documented symbol `bool InputManager::is_joystick_button_down' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:393: warning: documented symbol `int InputManager::get_mouse_x_position' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:402: warning: documented symbol `int InputManager::get_mouse_y_position' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:411: warning: documented symbol `bool InputManager::quit_requested' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:421: warning: documented symbol `InputManager * InputManager::get_instance' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:437: warning: documented symbol `void InputManager::set_mouse_sensibility_value' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:450: warning: documented symbol `void InputManager::set_analogic_sensibility_value' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:457: warning: documented symbol `void InputManager::connect_joysticks' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:505: warning: documented symbol `void InputManager::map_keyboard_to_joystick' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:533: warning: documented symbol `void InputManager::emulate_joystick' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/InputManager.cpp:587: warning: documented symbol `void InputManager::reset_keyboard_to_joystick' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:5: warning: documented symbol `JoystickButton::JoystickButton' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:18: warning: documented symbol `JoystickButton::~JoystickButton' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:20: warning: documented symbol `void JoystickButton::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:25: warning: documented symbol `void JoystickButton::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:33: warning: documented symbol `bool JoystickButton::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:37: warning: documented symbol `void JoystickButton::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickConfigState.cpp:52: warning: documented symbol `JoystickConfigState::JoystickConfigState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickConfigState.cpp:173: warning: documented symbol `void JoystickConfigState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickConfigState.cpp:239: warning: documented symbol `void JoystickConfigState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickConfigState.cpp:272: warning: documented symbol `void JoystickConfigState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/JoystickConfigState.cpp:278: warning: documented symbol `void JoystickConfigState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/MenuState.cpp:24: warning: documented symbol `MenuState::MenuState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/MenuState.cpp:56: warning: documented symbol `void MenuState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/MenuState.cpp:148: warning: documented symbol `void MenuState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/MenuState.cpp:166: warning: documented symbol `void MenuState::process_input' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/MenuState.cpp:188: warning: documented symbol `void MenuState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/MenuState.cpp:192: warning: documented symbol `void MenuState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Music.cpp:6: warning: documented symbol `Music::Music' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Music.cpp:10: warning: documented symbol `Music::Music' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Music.cpp:14: warning: documented symbol `void Music::play' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Music.cpp:22: warning: documented symbol `void Music::stop' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Music.cpp:30: warning: documented symbol `void Music::open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Music.cpp:34: warning: documented symbol `bool Music::is_open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:36: warning: documented symbol `OptionsState::OptionsState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:70: warning: documented symbol `void OptionsState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:247: warning: documented symbol `void OptionsState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:318: warning: documented symbol `void OptionsState::build_options' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:372: warning: documented symbol `int OptionsState::get_current_sub_option' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:403: warning: documented symbol `void OptionsState::process_input' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:430: warning: documented symbol `void OptionsState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/OptionsState.cpp:436: warning: documented symbol `void OptionsState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:3: warning: documented symbol `Rectangle::Rectangle' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:5: warning: documented symbol `Rectangle::Rectangle' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:7: warning: documented symbol `bool Rectangle::is_inside' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:14: warning: documented symbol `float Rectangle::get_x' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:18: warning: documented symbol `float Rectangle::get_y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:22: warning: documented symbol `void Rectangle::set_x' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:26: warning: documented symbol `void Rectangle::set_y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:30: warning: documented symbol `float Rectangle::get_draw_x' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:34: warning: documented symbol `float Rectangle::get_draw_y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:38: warning: documented symbol `float Rectangle::get_width' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:42: warning: documented symbol `float Rectangle::get_height' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:46: warning: documented symbol `void Rectangle::set_width' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:50: warning: documented symbol `void Rectangle::set_height' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:55: warning: documented symbol `Vector Rectangle::get_center' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:7: warning: documented symbol `unordered_map< string, shared_ptr< SDL_Texture > > Resources::image_table' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:8: warning: documented symbol `unordered_map< string, shared_ptr< Mix_Music > > Resources::music_table' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:9: warning: documented symbol `unordered_map< string, shared_ptr< Mix_Chunk > > Resources::sound_table' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:10: warning: documented symbol `unordered_map< string, shared_ptr< TTF_Font > > Resources::font_table' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:12: warning: documented symbol `shared_ptr< SDL_Texture > Resources::get_image' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:31: warning: documented symbol `void Resources::clear_images' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:39: warning: documented symbol `shared_ptr< Mix_Music > Resources::get_music' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:57: warning: documented symbol `void Resources::clear_music' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:65: warning: documented symbol `shared_ptr< Mix_Chunk > Resources::get_sound' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:83: warning: documented symbol `void Resources::clear_sound' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:91: warning: documented symbol `shared_ptr< TTF_Font > Resources::get_font' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Resources.cpp:111: warning: documented symbol `void Resources::clear_fonts' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:6: warning: documented symbol `Sound::Sound' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:11: warning: documented symbol `Sound::Sound' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:16: warning: documented symbol `void Sound::play' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:24: warning: documented symbol `void Sound::stop' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:28: warning: documented symbol `void Sound::open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:32: warning: documented symbol `bool Sound::is_open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sound.cpp:36: warning: documented symbol `string Sound::get_file' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:28: warning: documented symbol `Sprite::Sprite' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:47: warning: documented symbol `Sprite::Sprite' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:66: warning: documented symbol `Sprite::~Sprite' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:75: warning: documented symbol `int Sprite::get_width' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:85: warning: documented symbol `int Sprite::get_height' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:95: warning: documented symbol `bool Sprite::is_open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:105: warning: documented symbol `void Sprite::open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:136: warning: documented symbol `void Sprite::set_clip' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:149: warning: documented symbol `void Sprite::set_frame' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:164: warning: documented symbol `void Sprite::set_frame_count' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:175: warning: documented symbol `void Sprite::set_frame_time' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:186: warning: documented symbol `void Sprite::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:220: warning: documented symbol `void Sprite::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:250: warning: documented symbol `void Sprite::set_scale_x' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:261: warning: documented symbol `void Sprite::set_scale_y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:272: warning: documented symbol `void Sprite::set_scale' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:285: warning: documented symbol `void Sprite::set_scale' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:297: warning: documented symbol `void Sprite::update_scale_x' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:312: warning: documented symbol `void Sprite::restart_count' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:322: warning: documented symbol `bool Sprite::is_finished' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:331: warning: documented symbol `int Sprite::get_current_frame' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:30: warning: documented symbol `StageSelectState::StageSelectState' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:60: warning: documented symbol `void StageSelectState::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:113: warning: documented symbol `void StageSelectState::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:129: warning: documented symbol `void StageSelectState::update_stage_select' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:148: warning: documented symbol `void StageSelectState::process_input' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:171: warning: documented symbol `void StageSelectState::pause' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:177: warning: documented symbol `void StageSelectState::resume' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:5: warning: documented symbol `State::State' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:9: warning: documented symbol `State::~State' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:12: warning: documented symbol `void State::add_object' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:16: warning: documented symbol `bool State::pop_requested' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:20: warning: documented symbol `bool State::quit_requested' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:24: warning: documented symbol `void State::update_array' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:51: warning: documented symbol `void State::render_array' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/State.cpp:57: warning: documented symbol `void State::load_assets' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:26: warning: documented symbol `Text::Text' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:43: warning: documented symbol `Text::Text' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:61: warning: documented symbol `Text::~Text' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:74: warning: documented symbol `void Text::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:105: warning: documented symbol `void Text::set_pos' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:118: warning: documented symbol `void Text::set_text' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:130: warning: documented symbol `void Text::set_color' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:142: warning: documented symbol `void Text::set_style' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:154: warning: documented symbol `void Text::set_font_size' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:165: warning: documented symbol `float Text::get_x' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:175: warning: documented symbol `float Text::get_y' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:185: warning: documented symbol `float Text::get_width' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:195: warning: documented symbol `float Text::get_height' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:205: warning: documented symbol `string Text::get_text' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:214: warning: documented symbol `void Text::remake_texture' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:262: warning: documented symbol `void Text::open' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:20: warning: documented symbol `TimeCounter::TimeCounter' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:37: warning: documented symbol `TimeCounter::~TimeCounter' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:45: warning: documented symbol `void TimeCounter::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:62: warning: documented symbol `void TimeCounter::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:74: warning: documented symbol `string TimeCounter::get_time_string' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:84: warning: documented symbol `bool TimeCounter::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:94: warning: documented symbol `bool TimeCounter::is_over' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/TimeCounter.cpp:104: warning: documented symbol `void TimeCounter::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Timer.cpp:3: warning: documented symbol `Timer::Timer' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Timer.cpp:7: warning: documented symbol `void Timer::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Timer.cpp:11: warning: documented symbol `void Timer::restart' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Timer.cpp:15: warning: documented symbol `float Timer::get' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Timer.cpp:19: warning: documented symbol `void Timer::set' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:26: warning: documented symbol `UltimateEffect::UltimateEffect' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:49: warning: documented symbol `void UltimateEffect::update' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:67: warning: documented symbol `void UltimateEffect::render' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:76: warning: documented symbol `bool UltimateEffect::is_dead' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:92: warning: documented symbol `void UltimateEffect::notify_collision' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Vector.cpp:4: warning: documented symbol `Vector::Vector' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Vector.cpp:6: warning: documented symbol `void Vector::rotate' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Vector.cpp:11: warning: documented symbol `void Vector::transform' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Vector.cpp:16: warning: documented symbol `Vector Vector::operator+' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Vector.cpp:20: warning: documented symbol `Vector Vector::operator-' was not declared or defined.
-/home/travis/build/joaorobson/Wenova/src/Vector.cpp:24: warning: documented symbol `Vector Vector::operator*' was not declared or defined.
-angle.cpp...
+Preprocessing /home/travis/build/joaorobson/Wenova/src/Rectangle.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/Rectangle.cpp...
 Preprocessing /home/travis/build/joaorobson/Wenova/src/Resources.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/Resources.cpp...
@@ -492,6 +83,83 @@ Preprocessing /home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp...
 Preprocessing /home/travis/build/joaorobson/Wenova/src/Vector.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/Vector.cpp...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Animation.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Animation.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/BattleEnd.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/BattleEnd.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/BattleState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/BattleState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Blood.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Blood.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Camera.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Camera.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/CharacterSelectState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/CharacterSelectState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Collision.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Collision.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Config.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Config.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/EditableFloor.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/EditableFloor.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/EditState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/EditState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Effect.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Effect.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Fighter.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Fighter.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/FighterMenu.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/FighterMenu.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/FighterStats.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/FighterStats.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Flesh.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Flesh.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/FleshUltimateEffect.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/FleshUltimateEffect.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Floor.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Floor.h...
+Prepr/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:7: warning: the name `StageSelectState.cpp' supplied as the second argument in the \file statement is not an input file
+ocessing /home/travis/build/joaorobson/Wenova/include/Game.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Game.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/GameObject.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/GameObject.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/HealEffect.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/HealEffect.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/InputManager.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/InputManager.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/JoystickButton.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/JoystickButton.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/JoystickConfigState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/JoystickConfigState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/MenuState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/MenuState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Music.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Music.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/OptionsState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/OptionsState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Rectangle.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Rectangle.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Resources.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Resources.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Sound.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Sound.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Sprite.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Sprite.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/StageSelectState.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/StageSelectState.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/State.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/State.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/StateData.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/StateData.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Text.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Text.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/TimeCounter.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/TimeCounter.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Timer.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Timer.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/UltimateEffect.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/UltimateEffect.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Vector.h...
+Parsing file /home/travis/build/joaorobson/Wenova/include/Vector.h...
 Building group list...
 Building directory list...
 Building namespace list...
@@ -544,84 +212,256 @@ Generating style sheet...
 Generating example documentation...
 Generating file sources...
 Generating code for file Animation.cpp...
+Generating code for file Animation.h...
 Generating code for file BattleEnd.cpp...
+Generating code for file BattleEnd.h...
 Generating code for file BattleState.cpp...
+Generating code for file BattleState.h...
 Generating code for file Blood.cpp...
+Generating code for file Blood.h...
 Generating code for file Camera.cpp...
+Generating code for file Camera.h...
 Generating code for file CharacterSelectState.cpp...
+Generating code for file CharacterSelectState.h...
+Generating code for file Collision.h...
 Generating code for file Config.cpp...
+Generating code for file Config.h...
 Generating code for file EditableFloor.cpp...
+Generating code for file EditableFloor.h...
 Generating code for file EditState.cpp...
+Generating code for file EditState.h...
 Generating code for file Effect.cpp...
+Generating code for file Effect.h...
 Generating code for file Fighter.cpp...
+Generating code for file Fighter.h...
 Generating code for file FighterMenu.cpp...
+Generating code for file FighterMenu.h...
 Generating code for file FighterStats.cpp...
+Generating code for file FighterStats.h...
 Generating code for file Flesh.cpp...
+Generating code for file Flesh.h...
 Generating code for file FleshUltimateEffect.cpp...
+Generating code for file FleshUltimateEffect.h...
 Generating code for file Floor.cpp...
+Generating code for file Floor.h...
 Generating code for file Game.cpp...
+Generating code for file Game.h...
+Generating code for file GameObject.h...
 Generating code for file HealEffect.cpp...
+Generating code for file HealEffect.h...
 Generating code for file InputManager.cpp...
+Generating code for file InputManager.h...
 Generating code for file JoystickButton.cpp...
+Generating code for file JoystickButton.h...
 Generating code for file JoystickConfigState.cpp...
+Generating code for file JoystickConfigState.h...
 Generating code for file Main.cpp...
 Generating code for file MenuState.cpp...
+Generating code for file MenuState.h...
 Generating code for file Music.cpp...
+Generating code for file Music.h...
 Generating code for file OptionsState.cpp...
+Generating code for file OptionsState.h...
 Generating code for file Rectangle.cpp...
+Generating code for file Rectangle.h...
 Generating code for file Resources.cpp...
+Generating code for file Resources.h...
 Generating code for file Sound.cpp...
+Generating code for file Sound.h...
 Generating code for file Sprite.cpp...
+Generating code for file Sprite.h...
 Generating code for file StageSelectStage.cpp...
+Generating code for file StageSelectState.h...
 Generating code for file State.cpp...
+Generating code for file State.h...
+Generating code for file StateData.h...
 Generating code for file Text.cpp...
+Generating code for file Text.h...
 Generating code for file TimeCounter.cpp...
+Generating code for file TimeCounter.h...
 Generating code for file Timer.cpp...
+Generating code for file Timer.h...
 Generating code for file UltimateEffect.cpp...
+Generating code for file UltimateEffect.h...
 Generating code for file Vector.cpp...
+Generating code for file Vector.h...
 Generating file documentation...
 Generating docs for file Animation.cpp...
+Generating docs for file Animation.h...
 Generating docs for file BattleEnd.cpp...
+Generating docs for file BattleEnd.h...
 Generating docs for file BattleState.cpp...
+Generating docs for file BattleState.h...
 Generating docs for file Blood.cpp...
-Generating docs for file Camera.cpp...
+Generating docs for file Blood.h...
+Generating docs for fi/home/travis/build/joaorobson/Wenova/include/BattleEnd.h:71: warning: argument 'GameObject' of command @param is not found in the argument list of BattleEnd::notify_collision(GameObject &object)
+/home/travis/build/joaorobson/Wenova/include/BattleEnd.h:71: warning: The following parameters of BattleEnd::notify_collision(GameObject &object) are not documented:
+  parameter 'object'
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: argument 'x' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: argument 'y' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: argument 'cid' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: The following parameters of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr) are not documented:
+  parameter 'x_axis_position'
+  parameter 'y_axis_position'
+  parameter 'character_id'
+  parameter 'cpartner'
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: argument 'delta' of command @param is not found in the argument list of Blood::update_machine_state(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: The following parameters of Blood::update_machine_state(float delta_character_state) are not documented:
+  parameter 'delta_character_state'
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: argument 'state' of command @param is not found in the argument list of Blood::update_machine_state(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: The following parameters of Blood::update_machine_state(float delta_character_state) are not documented:
+  parameter 'delta_character_state'
+/home/travis/build/joaorobson/Wenova/include/EditableFloor.h:82: warning: argument 'unamed' of command @param is not found in the argument list of EditableFloor::notify_collision(GameObject &)
+/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:41: warning: argument 'delta' of command @param is not found in the argument list of FleshUltimateEffect::update(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:41: warning: The following parameters of FleshUltimateEffect::update(float delta_character_state) are not documented:
+  parameter 'delta_character_state'
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:100: warning: argument 'name' of command @param is not found in the argument list of Sprite::open(string file)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:100: warning: The following parameters of Sprite::open(string file) are not documented:
+  parameter 'file'
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'x' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'y' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'w' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'h' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: The following parameters of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height) are not documented:
+  parameter 'x_axis_coordinate'
+  parameter 'y_axis_coordinate'
+  parameter 'clip_width'
+  parameter 'clip_height'
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:277: warning: argument 'cscale_x' of command @param is not found in the argument list of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:277: warning: argument 'cscale_y' of command @param is not found in the argument list of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:277: warning: The following parameters of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis) are not documented:
+  parameter 'cscale_x_axis'
+  parameter 'cscale_y_axis'
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:180: warning: argument 'delta' of command @param is not found in the argument list of Sprite::update(float delta_time)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:180: warning: The following parameters of Sprite::update(float delta_time) are not documented:
+  parameter 'delta_time'
+le Camera.cpp...
+Generating docs for file Camera.h...
 Generating docs for file CharacterSelectState.cpp...
+Generating docs for file CharacterSelectState.h...
+Generating docs for file Collision.h...
 Generating docs for file Config.cpp...
+Generating docs for file Config.h...
 Generating docs for file EditableFloor.cpp...
+Generating docs for file EditableFloor.h...
 Generating docs for file EditState.cpp...
+Generating docs for file EditState.h...
 Generating docs for file Effect.cpp...
+Generating docs for file Effect.h...
 Generating docs for file Fighter.cpp...
+Generating docs for file Fighter.h...
 Generating docs for file FighterMenu.cpp...
+Generating docs for file FighterMenu.h...
 Generating docs for file FighterStats.cpp...
+Generating docs for file FighterStats.h...
 Generating docs for file Flesh.cpp...
+Generating docs for file Flesh.h...
 Generating docs for file FleshUltimateEffect.cpp...
+Generating docs for file FleshUltimateEffect.h...
 Generating docs for file Floor.cpp...
+Generating docs for file Floor.h...
 Generating docs for file Game.cpp...
+Generating docs for file Game.h...
+Generating docs for file GameObject.h...
 Generating docs for file HealEffect.cpp...
+Generating docs for file HealEffect.h...
 Generating docs for file InputManager.cpp...
+Generating docs for file InputManager.h...
 Generating docs for file JoystickButton.cpp...
+Generating docs for file JoystickButton.h...
 Generating docs for file JoystickConfigState.cpp...
+Generating docs for file JoystickConfigState.h...
 Generating docs for file Main.cpp...
 Generating docs for file MenuState.cpp...
+Generating docs for file MenuState.h...
 Generating docs for file Music.cpp...
+Generating docs for file Music.h...
 Generating docs for file OptionsState.cpp...
+Generating docs for file OptionsState.h...
 Generating docs for file Rectangle.cpp...
+Generating docs for file Rectangle.h...
 Generating docs for file Resources.cpp...
+Generating docs for file Resources.h...
 Generating docs for file Sound.cpp...
+Generating docs for file Sound.h...
 Generating docs for file Sprite.cpp...
+Generating docs for file Sprite.h...
 Generating docs for file StageSelectStage.cpp...
+Generating docs for file StageSelectState.h...
 Generating docs for file State.cpp...
+Generating docs for file State.h...
+Generating docs for file StateData.h...
 Generating docs for file Text.cpp...
+Generating docs for file Text.h...
 Generating docs for file TimeCounter.cpp...
+Generating docs for file TimeCounter.h...
 Generating docs for file Timer.cpp...
+Generating docs for file Timer.h...
 Generating docs for file UltimateEffect.cpp...
+Generating docs for file UltimateEffect.h...
 Generating docs for file Vector.cpp...
+Generating docs for file Vector.h...
 Generating page documentation...
 Generating group documentation...
 Generating class documentation...
+Generating docs for compound Animation...
+Generating docs for compound BattleEnd...
+Generating docs for compound BattleState...
+Generating docs for compound Blood...
+Generating docs for compound Camera...
+Generating docs for compound CharacterSelectState...
+Generating docs for compound Collision...
+Generating docs for compound Config...
+Generating docs for compound EditableFloor...
+Generating docs for compound EditState...
+Generating docs for compound Effect...
+Generating docs for compound Fighter...
+Generating docs for compound FighterMenu...
+Generating docs for compound FighterStats...
+Generating docs for compound Flesh...
+Generating docs for compound FleshUltimateEffect...
+Generating docs for compound Floor...
+Generating docs for compound Game...
+Generating docs for compound GameObject...
+Generating docs for compound HealEffect...
+Generating docs for compound InputManager...
+Generating docs for compound JoystickButton...
+Generating docs for compound JoystickConfigState...
+Generating docs for compound MenuState...
+Generating docs for compound Music...
+Generating docs for compound OptionsState...
+Generating docs for compound Rectangle...
+Generating docs for compound Resources...
+Generating docs for compound Sound...
+Generating docs for compound Sprite...
+Generating /home/travis/build/joaorobson/Wenova/src/Text.cpp:97: warning: argument 'x' of command @param is not found in the argument list of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false)
+/home/travis/build/joaorobson/Wenova/src/Text.cpp:97: warning: argument 'y' of command @param is not found in the argument list of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false)
+/home/travis/build/joaorobson/Wenova/src/Text.cpp:97: warning: The following parameters of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false) are not documented:
+  parameter 'x_axis_position'
+  parameter 'y_axis_position'
+/home/travis/build/joaorobson/Wenova/include/TimeCounter.h:71: warning: argument 'GameObject' of command @param is not found in the argument list of TimeCounter::notify_collision(GameObject &object)
+/home/travis/build/joaorobson/Wenova/include/TimeCounter.h:71: warning: The following parameters of TimeCounter::notify_collision(GameObject &object) are not documented:
+  parameter 'object'
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:15: warning: argument 'Fighter' of command @param is not found in the argument list of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1)
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:15: warning: argument 'ccolumns' of command @param is not found in the argument list of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1)
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:15: warning: The following parameters of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1) are not documented:
+  parameter 'cparent'
+  parameter 'ctags'
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:44: warning: argument 'delta' of command @param is not found in the argument list of UltimateEffect::update(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:44: warning: The following parameters of UltimateEffect::update(float delta_character_state) are not documented:
+  parameter 'delta_character_state'
+docs for compound StageSelectState...
+Generating docs for compound State...
+Generating docs for compound StateData...
+Generating docs for compound Text...
+Generating docs for compound TimeCounter...
+Generating docs for compound Timer...
+Generating docs for compound UltimateEffect...
+Generating docs for compound Vector...
 Generating namespace index...
 Generating graph info page...
 Generating directory documentation...
+Generating dependency graph for directory include
 Generating dependency graph for directory src
 Generating index page...
 Generating page index...
@@ -639,80 +479,296 @@ Generating example index...
 finalizing index lists...
 Running dot...
 Generating dot graphs using 3 parallel threads...
-Running dot for graph 1/38
-Running dot for graph 2/38
-Running dot for graph 3/38
-Running dot for graph 4/38
-Running dot for graph 5/38
-Running dot for graph 6/38
-Running dot for graph 7/38
-Running dot for graph 8/38
-Running dot for graph 9/38
-Running dot for graph 10/38
-Running dot for graph 11/38
-Running dot for graph 12/38
-Running dot for graph 13/38
-Running dot for graph 14/38
-Running dot for graph 15/38
-Running dot for graph 16/38
-Running dot for graph 17/38
-Running dot for graph 18/38
-Running dot for graph 19/38
-Running dot for graph 20/38
-Running dot for graph 21/38
-Running dot for graph 22/38
-Running dot for graph 23/38
-Running dot for graph 24/38
-Running dot for graph 25/38
-Running dot for graph 26/38
-Running dot for graph 27/38
-Running dot for graph 28/38
-Running dot for graph 29/38
-Running dot for graph 30/38
-Running dot for graph 31/38
-Running dot for graph 32/38
-Running dot for graph 33/38
-Running dot for graph 34/38
-Running dot for graph 35/38
-Running dot for graph 36/38
-Running dot for graph 37/38
-Running dot for graph 38/38
-Patching output file 1/37
-Patching output file 2/37
-Patching output file 3/37
-Patching output file 4/37
-Patching output file 5/37
-Patching output file 6/37
-Patching output file 7/37
-Patching output file 8/37
-Patching output file 9/37
-Patching output file 10/37
-Patching output file 11/37
-Patching output file 12/37
-Patching output file 13/37
-Patching output file 14/37
-Patching output file 15/37
-Patching output file 16/37
-Patching output file 17/37
-Patching output file 18/37
-Patching output file 19/37
-Patching output file 20/37
-Patching output file 21/37
-Patching output file 22/37
-Patching output file 23/37
-Patching output file 24/37
-Patching output file 25/37
-Patching output file 26/37
-Patching output file 27/37
-Patching output file 28/37
-Patching output file 29/37
-Patching output file 30/37
-Patching output file 31/37
-Patching output file 32/37
-Patching output file 33/37
-Patching output file 34/37
-Patching output file 35/37
-Patching output file 36/37
-Patching output file 37/37
-lookup cache used 172/65536 hits=538 misses=173
+Running dot for graph 1/183
+Running dot for graph 2/183
+Running dot for graph 3/183
+Running dot for graph 4/183
+Running dot for graph 5/183
+Running dot for graph 6/183
+Running dot for graph 7/183
+Running dot for graph 8/183
+Running dot for graph 9/183
+Running dot for graph 10/183
+Running dot for graph 11/183
+Running dot for graph 12/183
+Running dot for graph 13/183
+Running dot for graph 14/183
+Running dot for graph 15/183
+Running dot for graph 16/183
+Running dot for graph 17/183
+Running dot for graph 18/183
+Running dot for graph 19/183
+Running dot for graph 20/183
+Running dot for graph 21/183
+Running dot for graph 22/183
+Running dot for graph 23/183
+Running dot for graph 24/183
+Running dot for graph 25/183
+Running dot for graph 26/183
+Running dot for graph 27/183
+Running dot for graph 28/183
+Running dot for graph 29/183
+Running dot for graph 30/183
+Running dot for graph 31/183
+Running dot for graph 32/183
+Running dot for graph 33/183
+Running dot for graph 34/183
+Running dot for graph 35/183
+Running dot for graph 36/183
+Running dot for graph 37/183
+Running dot for graph 38/183
+Running dot for graph 39/183
+Running dot for graph 40/183
+Running dot for graph 41/183
+Running dot for graph 42/183
+Running dot for graph 43/183
+Running dot for graph 44/183
+Running dot for graph 45/183
+Running dot for graph 46/183
+Running dot for graph 47/183
+Running dot for graph 48/183
+Running dot for graph 49/183
+Running dot for graph 50/183
+Running dot for graph 51/183
+Running dot for graph 52/183
+Running dot for graph 53/183
+Running dot for graph 54/183
+Running dot for graph 55/183
+Running dot for graph 56/183
+Running dot for graph 57/183
+Running dot for graph 58/183
+Running dot for graph 59/183
+Running dot for graph 60/183
+Running dot for graph 61/183
+Running dot for graph 62/183
+Running dot for graph 63/183
+Running dot for graph 64/183
+Running dot for graph 65/183
+Running dot for graph 66/183
+Running dot for graph 67/183
+Running dot for graph 68/183
+Running dot for graph 69/183
+Running dot for graph 70/183
+Running dot for graph 71/183
+Running dot for graph 72/183
+Running dot for graph 73/183
+Running dot for graph 74/183
+Running dot for graph 75/183
+Running dot for graph 76/183
+Running dot for graph 77/183
+Running dot for graph 78/183
+Running dot for graph 79/183
+Running dot for graph 80/183
+Running dot for graph 81/183
+Running dot for graph 82/183
+Running dot for graph 83/183
+Running dot for graph 84/183
+Running dot for graph 85/183
+Running dot for graph 86/183
+Running dot for graph 87/183
+Running dot for graph 88/183
+Running dot for graph 89/183
+Running dot for graph 90/183
+Running dot for graph 91/183
+Running dot for graph 92/183
+Running dot for graph 93/183
+Running dot for graph 94/183
+Running dot for graph 95/183
+Running dot for graph 96/183
+Running dot for graph 97/183
+Running dot for graph 98/183
+Running dot for graph 99/183
+Running dot for graph 100/183
+Running dot for graph 101/183
+Running dot for graph 102/183
+Running dot for graph 103/183
+Running dot for graph 104/183
+Running dot for graph 105/183
+Running dot for graph 106/183
+Running dot for graph 107/183
+Running dot for graph 108/183
+Running dot for graph 109/183
+Running dot for graph 110/183
+Running dot for graph 111/183
+Running dot for graph 112/183
+Running dot for graph 113/183
+Running dot for graph 114/183
+Running dot for graph 115/183
+Running dot for graph 116/183
+Running dot for graph 117/183
+Running dot for graph 118/183
+Running dot for graph 119/183
+Running dot for graph 120/183
+Running dot for graph 121/183
+Running dot for graph 122/183
+Running dot for graph 123/183
+Running dot for graph 124/183
+Running dot for graph 125/183
+Running dot for graph 126/183
+Running dot for graph 127/183
+Running dot for graph 128/183
+Running dot for graph 129/183
+Running dot for graph 130/183
+Running dot for graph 131/183
+Running dot for graph 132/183
+Running dot for graph 133/183
+Running dot for graph 134/183
+Running dot for graph 135/183
+Running dot for graph 136/183
+Running dot for graph 137/183
+Running dot for graph 138/183
+Running dot for graph 139/183
+Running dot for graph 140/183
+Running dot for graph 141/183
+Running dot for graph 142/183
+Running dot for graph 143/183
+Running dot for graph 144/183
+Running dot for graph 145/183
+Running dot for graph 146/183
+Running dot for graph 147/183
+Running dot for graph 148/183
+Running dot for graph 149/183
+Running dot for graph 150/183
+Running dot for graph 151/183
+Running dot for graph 152/183
+Running dot for graph 153/183
+Running dot for graph 154/183
+Running dot for graph 155/183
+Running dot for graph 156/183
+Running dot for graph 157/183
+Running dot for graph 158/183
+Running dot for graph 159/183
+Running dot for graph 160/183
+Running dot for graph 161/183
+Running dot for graph 162/183
+Running dot for graph 163/183
+Running dot for graph 164/183
+Running dot for graph 165/183
+Running dot for graph 166/183
+Running dot for graph 167/183
+Running dot for graph 168/183
+Running dot for graph 169/183
+Running dot for graph 170/183
+Running dot for graph 171/183
+Running dot for graph 172/183
+Running dot for graph 173/183
+Running dot for graph 174/183
+Running dot for graph 175/183
+Running dot for graph 176/183
+Running dot for graph 177/183
+Running dot for graph 178/183
+Running dot for graph 179/183
+Running dot for graph 180/183
+Running dot for graph 181/183
+Running dot for graph 182/183
+Running dot for graph 183/183
+Patching output file 1/108
+Patching output file 2/108
+Patching output file 3/108
+Patching output file 4/108
+Patching output file 5/108
+Patching output file 6/108
+Patching output file 7/108
+Patching output file 8/108
+Patching output file 9/108
+Patching output file 10/108
+Patching output file 11/108
+Patching output file 12/108
+Patching output file 13/108
+Patching output file 14/108
+Patching output file 15/108
+Patching output file 16/108
+Patching output file 17/108
+Patching output file 18/108
+Patching output file 19/108
+Patching output file 20/108
+Patching output file 21/108
+Patching output file 22/108
+Patching output file 23/108
+Patching output file 24/108
+Patching output file 25/108
+Patching output file 26/108
+Patching output file 27/108
+Patching output file 28/108
+Patching output file 29/108
+Patching output file 30/108
+Patching output file 31/108
+Patching output file 32/108
+Patching output file 33/108
+Patching output file 34/108
+Patching output file 35/108
+Patching output file 36/108
+Patching output file 37/108
+Patching output file 38/108
+Patching output file 39/108
+Patching output file 40/108
+Patching output file 41/108
+Patching output file 42/108
+Patching output file 43/108
+Patching output file 44/108
+Patching output file 45/108
+Patching output file 46/108
+Patching output file 47/108
+Patching output file 48/108
+Patching output file 49/108
+Patching output file 50/108
+Patching output file 51/108
+Patching output file 52/108
+Patching output file 53/108
+Patching output file 54/108
+Patching output file 55/108
+Patching output file 56/108
+Patching output file 57/108
+Patching output file 58/108
+Patching output file 59/108
+Patching output file 60/108
+Patching output file 61/108
+Patching output file 62/108
+Patching output file 63/108
+Patching output file 64/108
+Patching output file 65/108
+Patching output file 66/108
+Patching output file 67/108
+Patching output file 68/108
+Patching output file 69/108
+Patching output file 70/108
+Patching output file 71/108
+Patching output file 72/108
+Patching output file 73/108
+Patching output file 74/108
+Patching output file 75/108
+Patching output file 76/108
+Patching output file 77/108
+Patching output file 78/108
+Patching output file 79/108
+Patching output file 80/108
+Patching output file 81/108
+Patching output file 82/108
+Patching output file 83/108
+Patching output file 84/108
+Patching output file 85/108
+Patching output file 86/108
+Patching output file 87/108
+Patching output file 88/108
+Patching output file 89/108
+Patching output file 90/108
+Patching output file 91/108
+Patching output file 92/108
+Patching output file 93/108
+Patching output file 94/108
+Patching output file 95/108
+Patching output file 96/108
+Patching output file 97/108
+Patching output file 98/108
+Patching output file 99/108
+Patching output file 100/108
+Patching output file 101/108
+Patching output file 102/108
+Patching output file 103/108
+Patching output file 104/108
+Patching output file 105/108
+Patching output file 106/108
+Patching output file 107/108
+Patching output file 108/108
+lookup cache used 2853/65536 hits=17235 misses=2930
 finished...

@@ -1,0 +1,10 @@
+<map id="UltimateEffect" name="UltimateEffect">
+<area shape="rect" id="node2" href="$classEffect.html" title="Effect" alt="" coords="777,400,834,427"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="GameObject" alt="" coords="311,371,406,397"/>
+<area shape="rect" id="node8" href="$classFighter.html" title="Fighter" alt="" coords="621,272,683,299"/>
+<area shape="rect" id="node5" href="$classRectangle.html" title="Rectangle" alt="" coords="51,477,133,504"/>
+<area shape="rect" id="node6" href="$classSprite.html" title="Sprite" alt="" coords="624,465,680,492"/>
+<area shape="rect" id="node9" href="$classVector.html" title="Vector" alt="" coords="329,187,389,213"/>
+<area shape="rect" id="node12" href="$classSound.html" title="Sound" alt="" coords="329,300,388,327"/>
+<area shape="rect" id="node15" href="$classTimer.html" title="Timer" alt="" coords="331,107,386,133"/>
+</map>

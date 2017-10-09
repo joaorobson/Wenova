@@ -1,0 +1,4 @@
+<map id="HealEffect" name="HealEffect">
+<area shape="rect" id="node2" href="$classEffect.html" title="Effect" alt="" coords="23,80,80,107"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="GameObject" alt="" coords="5,5,99,32"/>
+</map>

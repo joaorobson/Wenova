@@ -1,0 +1,5 @@
+<map id="StageSelectState" name="StageSelectState">
+<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="317,12,371,39"/>
+<area shape="rect" id="node4" href="$classSprite.html" title="Sprite" alt="" coords="316,76,372,103"/>
+<area shape="rect" id="node6" href="$classSound.html" title="Sound" alt="" coords="315,151,373,177"/>
+</map>

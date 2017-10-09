@@ -1,0 +1,8 @@
+<map id="Floor.h" name="Floor.h">
+<area shape="rect" id="node2" href="$BattleState_8cpp.html" title="BattleState.cpp" alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$EditableFloor_8h.html" title="Defines EditableFloor class. " alt="" coords="141,80,251,107"/>
+<area shape="rect" id="node6" href="$Fighter_8cpp.html" title="Fighter.cpp" alt="" coords="275,80,361,107"/>
+<area shape="rect" id="node7" href="$Floor_8cpp.html" title="Floor.cpp" alt="" coords="386,80,461,107"/>
+<area shape="rect" id="node4" href="$EditableFloor_8cpp.html" title="Implements class EditableFloor methods. " alt="" coords="67,155,189,181"/>
+<area shape="rect" id="node5" href="$EditState_8cpp.html" title="EditState.cpp" alt="" coords="213,155,315,181"/>
+</map>

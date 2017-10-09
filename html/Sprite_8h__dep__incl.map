@@ -1,0 +1,48 @@
+<map id="Sprite.h" name="Sprite.h">
+<area shape="rect" id="node2" href="$Animation_8h.html" title="Animation.h" alt="" coords="316,80,407,107"/>
+<area shape="rect" id="node4" href="$BattleEnd_8h.html" title="This file contains the definitions of the methods and attributes of the class BattleEnd. " alt="" coords="1397,80,1488,107"/>
+<area shape="rect" id="node6" href="$BattleState_8h.html" title="BattleState.h" alt="" coords="1497,155,1596,181"/>
+<area shape="rect" id="node10" href="$Fighter_8h.html" title="Fighter.h" alt="" coords="789,80,861,107"/>
+<area shape="rect" id="node11" href="$FighterStats_8h.html" title="FighterStats.h" alt="" coords="501,155,605,181"/>
+<area shape="rect" id="node18" href="$Effect_8h.html" title="Effect.h" alt="" coords="409,155,476,181"/>
+<area shape="rect" id="node26" href="$EditState_8h.html" title="EditState.h" alt="" coords="1258,155,1344,181"/>
+<area shape="rect" id="node29" href="$TimeCounter_8h.html" title="This file contains the definitions of all methods and attributes of the class TimeCounter. " alt="" coords="1585,80,1692,107"/>
+<area shape="rect" id="node31" href="$Floor_8h.html" title="Floor.h" alt="" coords="979,80,1041,107"/>
+<area shape="rect" id="node32" href="$EditableFloor_8h.html" title="Defines EditableFloor class. " alt="" coords="1073,155,1183,181"/>
+<area shape="rect" id="node35" href="$MenuState_8h.html" title="MenuState.h" alt="" coords="2252,155,2348,181"/>
+<area shape="rect" id="node39" href="$FighterMenu_8h.html" title="This file contains the definitions of all methods and attributes of the class FighterMenu. " alt="" coords="1787,80,1892,107"/>
+<area shape="rect" id="node40" href="$CharacterSelectState_8h.html" title="Controls all process of players choosing characters and skins. " alt="" coords="1767,155,1925,181"/>
+<area shape="rect" id="node42" href="$StageSelectState_8h.html" title="This file contains the definitions of all methods and attributes of the class StageSelectState. " alt="" coords="2093,155,2227,181"/>
+<area shape="rect" id="node43" href="$JoystickButton_8h.html" title="This file contains the definitions of all methods and attributes of the class JoystickButton which co..." alt="" coords="2681,155,2801,181"/>
+<area shape="rect" id="node45" href="$JoystickConfigState_8h.html" title="This file contains the definitions of the methods and attributes of the class JoystickConfigState. " alt="" coords="2506,155,2656,181"/>
+<area shape="rect" id="node46" href="$OptionsState_8h.html" title="This file contains the definitions of all methods and attributes of the class OptionsState. " alt="" coords="2372,155,2481,181"/>
+<area shape="rect" id="node47" href="$Sprite_8cpp.html" title="This file contains the definition of the Sprite class methods. " alt="" coords="2171,80,2252,107"/>
+<area shape="rect" id="node3" href="$Animation_8cpp.html" title="Animation.cpp" alt="" coords="279,155,384,181"/>
+<area shape="rect" id="node5" href="$BattleEnd_8cpp.html" title="This file renders images at the end of a battle indicating the team that won. " alt="" coords="1369,155,1473,181"/>
+<area shape="rect" id="node7" href="$BattleState_8cpp.html" title="BattleState.cpp" alt="" coords="879,229,989,256"/>
+<area shape="rect" id="node8" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="1931,229,2103,256"/>
+<area shape="rect" id="node9" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="2127,229,2237,256"/>
+<area shape="rect" id="node13" href="$Blood_8h.html" title="This file contains the declaration of the Blood class methods and attributes. " alt="" coords="629,155,696,181"/>
+<area shape="rect" id="node16" href="$Flesh_8h.html" title="Flesh.h" alt="" coords="721,155,785,181"/>
+<area shape="rect" id="node28" href="$Fighter_8cpp.html" title="Fighter.cpp" alt="" coords="810,155,896,181"/>
+<area shape="rect" id="node12" href="$FighterStats_8cpp.html" title="FighterStats.cpp" alt="" coords="546,229,664,256"/>
+<area shape="rect" id="node14" href="$Blood_8cpp.html" title="This file contains the definition of the Blood class methods. " alt="" coords="321,304,400,331"/>
+<area shape="rect" id="node15" href="$EditState_8cpp.html" title="EditState.cpp" alt="" coords="1045,229,1147,256"/>
+<area shape="rect" id="node17" href="$Flesh_8cpp.html" title="Flesh.cpp" alt="" coords="663,304,741,331"/>
+<area shape="rect" id="node19" href="$HealEffect_8h.html" title="HealEffect.h" alt="" coords="254,229,348,256"/>
+<area shape="rect" id="node21" href="$UltimateEffect_8h.html" title="This file contains the declaration of the UltimateEffect class methods and attributes. " alt="" coords="112,229,228,256"/>
+<area shape="rect" id="node23" href="$Effect_8cpp.html" title="Effect.cpp" alt="" coords="5,229,87,256"/>
+<area shape="rect" id="node24" href="$FleshUltimateEffect_8h.html" title="This file contains the declaration of the FleshUltimateEffect class methods and attributes. " alt="" coords="373,229,521,256"/>
+<area shape="rect" id="node20" href="$HealEffect_8cpp.html" title="HealEffect.cpp" alt="" coords="188,304,297,331"/>
+<area shape="rect" id="node22" href="$UltimateEffect_8cpp.html" title="This file contains the definition of the Sprite class methods. " alt="" coords="33,304,163,331"/>
+<area shape="rect" id="node25" href="$FleshUltimateEffect_8cpp.html" title="This file contains the definition of the FleshUltimateEffect class methods. " alt="" coords="425,304,588,331"/>
+<area shape="rect" id="node27" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="1755,229,1907,256"/>
+<area shape="rect" id="node30" href="$TimeCounter_8cpp.html" title="This file renders and updates a clock during a battle indicating the remaining time. " alt="" coords="1620,155,1743,181"/>
+<area shape="rect" id="node34" href="$Floor_8cpp.html" title="Floor.cpp" alt="" coords="973,155,1048,181"/>
+<area shape="rect" id="node33" href="$EditableFloor_8cpp.html" title="Implements class EditableFloor methods. " alt="" coords="1171,229,1293,256"/>
+<area shape="rect" id="node36" href="$JoystickConfigState_8cpp.html" title="This file renders images of options &#39;JOYSTICK&#39; and &#39;KEYBOARD&#39; of the menu &#39;Options&#39; and controls the ..." alt="" coords="2508,229,2672,256"/>
+<area shape="rect" id="node37" href="$Main_8cpp.html" title="Main.cpp" alt="" coords="2263,229,2336,256"/>
+<area shape="rect" id="node38" href="$OptionsState_8cpp.html" title="This file builds all options and sub options of the menu &#39;Options&#39; of the game and control their beha..." alt="" coords="2361,229,2484,256"/>
+<area shape="rect" id="node41" href="$FighterMenu_8cpp.html" title="FighterMenu.cpp" alt="" coords="1950,155,2068,181"/>
+<area shape="rect" id="node44" href="$JoystickButton_8cpp.html" title="JoystickButton.cpp" alt="" coords="2698,229,2832,256"/>
+</map>

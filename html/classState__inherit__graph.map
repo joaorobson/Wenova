@@ -1,0 +1,9 @@
+<map id="State" name="State">
+<area shape="rect" id="node2" href="$classBattleState.html" title="BattleState" alt="" coords="137,5,223,32"/>
+<area shape="rect" id="node3" href="$classCharacterSelectState.html" title="CharacterSelectState" alt="" coords="107,56,253,83"/>
+<area shape="rect" id="node4" href="$classEditState.html" title="EditState" alt="" coords="142,107,218,133"/>
+<area shape="rect" id="node5" href="$classJoystickConfigState.html" title="JoystickConfigState" alt="" coords="110,157,250,184"/>
+<area shape="rect" id="node6" href="$classMenuState.html" title="MenuState" alt="" coords="137,208,223,235"/>
+<area shape="rect" id="node7" href="$classOptionsState.html" title="OptionsState" alt="" coords="131,259,229,285"/>
+<area shape="rect" id="node8" href="$classStageSelectState.html" title="StageSelectState" alt="" coords="118,309,242,336"/>
+</map>

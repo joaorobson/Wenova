@@ -1,0 +1,14 @@
+<map id="BattleState" name="BattleState">
+<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="665,49,719,76"/>
+<area shape="rect" id="node4" href="$classMusic.html" title="Music" alt="" coords="663,136,721,163"/>
+<area shape="rect" id="node6" href="$classBattleEnd.html" title="BattleEnd" alt="" coords="653,355,731,381"/>
+<area shape="rect" id="node7" href="$classGameObject.html" title="GameObject" alt="" coords="321,375,415,401"/>
+<area shape="rect" id="node16" href="$classTimeCounter.html" title="TimeCounter" alt="" coords="643,251,741,277"/>
+<area shape="rect" id="node21" href="$classFighter.html" title="Fighter" alt="" coords="661,548,723,575"/>
+<area shape="rect" id="node9" href="$classRectangle.html" title="Rectangle" alt="" coords="57,299,138,325"/>
+<area shape="rect" id="node13" href="$classText.html" title="Text" alt="" coords="344,161,392,188"/>
+<area shape="rect" id="node10" href="$classSprite.html" title="Sprite" alt="" coords="340,212,396,239"/>
+<area shape="rect" id="node18" href="$classSound.html" title="Sound" alt="" coords="339,809,397,836"/>
+<area shape="rect" id="node17" href="$classTimer.html" title="Timer" alt="" coords="341,461,395,488"/>
+<area shape="rect" id="node22" href="$classVector.html" title="Vector" alt="" coords="338,620,398,647"/>
+</map>

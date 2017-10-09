@@ -36,6 +36,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -65,33 +66,48 @@ $(document).ready(function(){initNavTree('HealEffect_8cpp_source.html','');});
 <div class="title">HealEffect.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="HealEffect_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;HealEffect.h&quot;</span></div>
+<a href="HealEffect_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="HealEffect_8h.html">HealEffect.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;HealEffect::HealEffect(Fighter * cparent, <span class="keywordtype">string</span> csprite, <span class="keywordtype">string</span> ctags, <span class="keywordtype">int</span> frames, <span class="keywordtype">float</span> chealing_factor) : Effect(cparent, csprite, ctags, frames){</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    healing_factor = chealing_factor;</div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">    3</a></span>&#160;<a class="code" href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">HealEffect::HealEffect</a>(<a class="code" href="classFighter.html">Fighter</a> * cparent, <span class="keywordtype">string</span> csprite, <span class="keywordtype">string</span> ctags, <span class="keywordtype">int</span> frames, <span class="keywordtype">float</span> chealing_factor) : <a class="code" href="classEffect.html">Effect</a>(cparent, csprite, ctags, frames){</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <a class="code" href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">healing_factor</a> = chealing_factor;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;}</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keywordtype">void</span> HealEffect::update(<span class="keywordtype">float</span> delta){</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">if</span>(parent){</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        box.x = parent-&gt;box.x;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        box.y = parent-&gt;box.y;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">    7</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">HealEffect::update</a>(<span class="keywordtype">float</span> delta){</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classEffect.html#a321a7f6db6648805e035c31257d42553">parent</a>){</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classGameObject.html#a6eb4598f058d5082cf5f88c45c65a281">box</a>.<a class="code" href="classRectangle.html#a40917b61b33bf046d189be401c13cc7f">x</a> = <a class="code" href="classEffect.html#a321a7f6db6648805e035c31257d42553">parent</a>-&gt;<a class="code" href="classGameObject.html#a6eb4598f058d5082cf5f88c45c65a281">box</a>.<a class="code" href="classRectangle.html#a40917b61b33bf046d189be401c13cc7f">x</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="classGameObject.html#a6eb4598f058d5082cf5f88c45c65a281">box</a>.<a class="code" href="classRectangle.html#a86f71f891bada4e5e920a4a9b7c505a3">y</a> = <a class="code" href="classEffect.html#a321a7f6db6648805e035c31257d42553">parent</a>-&gt;<a class="code" href="classGameObject.html#a6eb4598f058d5082cf5f88c45c65a281">box</a>.<a class="code" href="classRectangle.html#a86f71f891bada4e5e920a4a9b7c505a3">y</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    }</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    sprite.update(delta);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span>(parent){</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        parent-&gt;increment_life(healing_factor);</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <a class="code" href="classEffect.html#ad015cc4996e8dcb346d84a36a56f9ce3">sprite</a>.<a class="code" href="classSprite.html#a083389b903f8378ea622ccf1c3270261">update</a>(delta);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classEffect.html#a321a7f6db6648805e035c31257d42553">parent</a>){</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classEffect.html#a321a7f6db6648805e035c31257d42553">parent</a>-&gt;<a class="code" href="classFighter.html#ae3d21dcdd4e6939229d601fcfd5cb6f7">increment_life</a>(<a class="code" href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">healing_factor</a>);</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">bool</span> HealEffect::is_dead(){</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> sprite.is_finished();</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">   18</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">HealEffect::is_dead</a>(){</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classEffect.html#ad015cc4996e8dcb346d84a36a56f9ce3">sprite</a>.<a class="code" href="classSprite.html#a6a69e1509e75a85e1a7e41aa97c6e8d2">is_finished</a>();</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="ttc" id="classGameObject_html_a6eb4598f058d5082cf5f88c45c65a281"><div class="ttname"><a href="classGameObject.html#a6eb4598f058d5082cf5f88c45c65a281">GameObject::box</a></div><div class="ttdeci">Rectangle box</div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8h_source.html#l00046">GameObject.h:46</a></div></div>
+<div class="ttc" id="classSprite_html_a083389b903f8378ea622ccf1c3270261"><div class="ttname"><a href="classSprite.html#a083389b903f8378ea622ccf1c3270261">Sprite::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdoc">Update method. </div><div class="ttdef"><b>Definition:</b> <a href="Sprite_8cpp_source.html#l00186">Sprite.cpp:186</a></div></div>
+<div class="ttc" id="classRectangle_html_a40917b61b33bf046d189be401c13cc7f"><div class="ttname"><a href="classRectangle.html#a40917b61b33bf046d189be401c13cc7f">Rectangle::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="Rectangle_8h_source.html#l00011">Rectangle.h:11</a></div></div>
+<div class="ttc" id="classFighter_html"><div class="ttname"><a href="classFighter.html">Fighter</a></div><div class="ttdef"><b>Definition:</b> <a href="Fighter_8h_source.html#l00015">Fighter.h:15</a></div></div>
+<div class="ttc" id="classHealEffect_html_ae486c25a9090db772554f831ccbb0a17"><div class="ttname"><a href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">HealEffect::healing_factor</a></div><div class="ttdeci">float healing_factor</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8h_source.html#l00008">HealEffect.h:8</a></div></div>
+<div class="ttc" id="classSprite_html_a6a69e1509e75a85e1a7e41aa97c6e8d2"><div class="ttname"><a href="classSprite.html#a6a69e1509e75a85e1a7e41aa97c6e8d2">Sprite::is_finished</a></div><div class="ttdeci">bool is_finished()</div><div class="ttdef"><b>Definition:</b> <a href="Sprite_8cpp_source.html#l00322">Sprite.cpp:322</a></div></div>
+<div class="ttc" id="classEffect_html_a321a7f6db6648805e035c31257d42553"><div class="ttname"><a href="classEffect.html#a321a7f6db6648805e035c31257d42553">Effect::parent</a></div><div class="ttdeci">Fighter * parent</div><div class="ttdef"><b>Definition:</b> <a href="Effect_8h_source.html#l00011">Effect.h:11</a></div></div>
+<div class="ttc" id="classFighter_html_ae3d21dcdd4e6939229d601fcfd5cb6f7"><div class="ttname"><a href="classFighter.html#ae3d21dcdd4e6939229d601fcfd5cb6f7">Fighter::increment_life</a></div><div class="ttdeci">void increment_life(float increment)</div><div class="ttdef"><b>Definition:</b> <a href="Fighter_8cpp_source.html#l00248">Fighter.cpp:248</a></div></div>
+<div class="ttc" id="classHealEffect_html_a34ae2d78976212c2c8400828fe12a99d"><div class="ttname"><a href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">HealEffect::is_dead</a></div><div class="ttdeci">bool is_dead()</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00018">HealEffect.cpp:18</a></div></div>
+<div class="ttc" id="classHealEffect_html_a988dbf54cf650996aae69439029c9679"><div class="ttname"><a href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">HealEffect::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00007">HealEffect.cpp:7</a></div></div>
+<div class="ttc" id="classHealEffect_html_aa405b156fc2cb87889e584447c1e327b"><div class="ttname"><a href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">HealEffect::HealEffect</a></div><div class="ttdeci">HealEffect(Fighter *cparent, string csprite, string ctags, int frames=1, float chealing_factor=0.0)</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00003">HealEffect.cpp:3</a></div></div>
+<div class="ttc" id="HealEffect_8h_html"><div class="ttname"><a href="HealEffect_8h.html">HealEffect.h</a></div></div>
+<div class="ttc" id="classEffect_html_ad015cc4996e8dcb346d84a36a56f9ce3"><div class="ttname"><a href="classEffect.html#ad015cc4996e8dcb346d84a36a56f9ce3">Effect::sprite</a></div><div class="ttdeci">Sprite sprite</div><div class="ttdef"><b>Definition:</b> <a href="Effect_8h_source.html#l00010">Effect.h:10</a></div></div>
+<div class="ttc" id="classEffect_html"><div class="ttname"><a href="classEffect.html">Effect</a></div><div class="ttdef"><b>Definition:</b> <a href="Effect_8h_source.html#l00008">Effect.h:8</a></div></div>
+<div class="ttc" id="classRectangle_html_a86f71f891bada4e5e920a4a9b7c505a3"><div class="ttname"><a href="classRectangle.html#a86f71f891bada4e5e920a4a9b7c505a3">Rectangle::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition:</b> <a href="Rectangle_8h_source.html#l00012">Rectangle.h:12</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="HealEffect_8cpp.html">HealEffect.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 16:43:14 for Wenova by
+    <li class="footer">Generated on Mon Oct 9 2017 17:02:19 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

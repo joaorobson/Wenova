@@ -1,0 +1,7 @@
+<map id="Fighter" name="Fighter">
+<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="109,113,203,140"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="Rectangle" alt="" coords="187,13,268,40"/>
+<area shape="rect" id="node5" href="$classVector.html" title="Vector" alt="" coords="227,113,287,140"/>
+<area shape="rect" id="node8" href="$classSound.html" title="Sound" alt="" coords="571,113,628,140"/>
+<area shape="rect" id="node11" href="$classTimer.html" title="Timer" alt="" coords="794,113,848,140"/>
+</map>

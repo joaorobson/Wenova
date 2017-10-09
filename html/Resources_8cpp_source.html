@@ -36,6 +36,7 @@
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
     </ul>
   </div>
@@ -65,21 +66,21 @@ $(document).ready(function(){initNavTree('Resources_8cpp_source.html','');});
 <div class="title">Resources.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Resources_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;Resources.h&quot;</span></div>
+<a href="Resources_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Resources_8h.html">Resources.h</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Game.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Game_8h.html">Game.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;unordered_map&lt;string, shared_ptr&lt;SDL_Texture&gt; &gt; Resources::image_table;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;unordered_map&lt;string, shared_ptr&lt;Mix_Music&gt; &gt;   Resources::music_table;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;unordered_map&lt;string, shared_ptr&lt;Mix_Chunk&gt; &gt;   Resources::sound_table;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;unordered_map&lt;string, shared_ptr&lt;TTF_Font&gt; &gt;    Resources::font_table;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;unordered_map&lt;string, shared_ptr&lt;SDL_Texture&gt; &gt; <a class="code" href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">Resources::image_table</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;unordered_map&lt;string, shared_ptr&lt;Mix_Music&gt; &gt;   <a class="code" href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">Resources::music_table</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;unordered_map&lt;string, shared_ptr&lt;Mix_Chunk&gt; &gt;   <a class="code" href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">Resources::sound_table</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;unordered_map&lt;string, shared_ptr&lt;TTF_Font&gt; &gt;    <a class="code" href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">Resources::font_table</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;shared_ptr&lt;SDL_Texture&gt;Resources::get_image(<span class="keywordtype">string</span> file) {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (image_table.find(file) == image_table.end()) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classResources.html#aaba6124e032a550a807365557bf546ce">   12</a></span>&#160;shared_ptr&lt;SDL_Texture&gt;<a class="code" href="classResources.html#aaba6124e032a550a807365557bf546ce">Resources::get_image</a>(<span class="keywordtype">string</span> file) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">image_table</a>.find(file) == <a class="code" href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">image_table</a>.end()) {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        SDL_Texture *tx =</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            IMG_LoadTexture(Game::get_instance().get_renderer(), file.c_str());</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            IMG_LoadTexture(<a class="code" href="classGame.html#a540dd8cd1cc25d3918d852f5dc490644">Game::get_instance</a>().get_renderer(), file.c_str());</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">if</span> (tx == <span class="keyword">nullptr</span>) {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            printf(<span class="stringliteral">&quot;%s: %s\n&quot;</span>, SDL_GetError(), file.c_str());</div>
@@ -89,22 +90,22 @@ $(document).ready(function(){initNavTree('Resources_8cpp_source.html','');});
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        shared_ptr&lt;SDL_Texture&gt; texture(tx, [] (SDL_Texture *txt)</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                                        { SDL_DestroyTexture(txt); });</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        image_table.emplace(file, texture);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">image_table</a>.emplace(file, texture);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> image_table[file];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">image_table</a>[file];</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> Resources::clear_images() {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> texture : image_table) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classResources.html#aab4007359f1d923dc519fb9a01921cd0">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classResources.html#aab4007359f1d923dc519fb9a01921cd0">Resources::clear_images</a>() {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> texture : <a class="code" href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">image_table</a>) {</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> (texture.second.unique()) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            image_table.erase(texture.first);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;shared_ptr&lt;Mix_Music&gt;Resources::get_music(<span class="keywordtype">string</span> file) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (music_table.find(file) == music_table.end()) {</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">   39</a></span>&#160;shared_ptr&lt;Mix_Music&gt;<a class="code" href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">Resources::get_music</a>(<span class="keywordtype">string</span> file) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">music_table</a>.find(file) == <a class="code" href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">music_table</a>.end()) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        Mix_Music *mx = Mix_LoadMUS(file.c_str());</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (mx == <span class="keyword">nullptr</span>) {</div>
@@ -115,22 +116,22 @@ $(document).ready(function(){initNavTree('Resources_8cpp_source.html','');});
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        shared_ptr&lt;Mix_Music&gt; music(mx, [] (Mix_Music *msc)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                    { Mix_FreeMusic(msc); });</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        music_table.emplace(file, music);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">music_table</a>.emplace(file, music);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> music_table[file];</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">music_table</a>[file];</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> Resources::clear_music() {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> music : music_table) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classResources.html#afc1ccd99c22521c8531c85794fea957e">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classResources.html#afc1ccd99c22521c8531c85794fea957e">Resources::clear_music</a>() {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> music : <a class="code" href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">music_table</a>) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">if</span> (music.second.unique()) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            music_table.erase(music.first);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;shared_ptr&lt;Mix_Chunk&gt;Resources::get_sound(<span class="keywordtype">string</span> file) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (sound_table.find(file) == sound_table.end()) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classResources.html#a1fedf608383a42a27617680248508ac6">   65</a></span>&#160;shared_ptr&lt;Mix_Chunk&gt;<a class="code" href="classResources.html#a1fedf608383a42a27617680248508ac6">Resources::get_sound</a>(<span class="keywordtype">string</span> file) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">sound_table</a>.find(file) == <a class="code" href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">sound_table</a>.end()) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        Mix_Chunk *ck = Mix_LoadWAV(file.c_str());</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (ck == <span class="keyword">nullptr</span>) {</div>
@@ -141,24 +142,24 @@ $(document).ready(function(){initNavTree('Resources_8cpp_source.html','');});
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        shared_ptr&lt;Mix_Chunk&gt; sound(ck, [] (Mix_Chunk *chk)</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                    { Mix_FreeChunk(chk); });</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        sound_table.emplace(file, sound);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">sound_table</a>.emplace(file, sound);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> sound_table[file];</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">sound_table</a>[file];</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> Resources::clear_sound() {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> sound : sound_table) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classResources.html#a9aa26b7909cf05e66623f8721f6df5e4">   83</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classResources.html#a9aa26b7909cf05e66623f8721f6df5e4">Resources::clear_sound</a>() {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> sound : <a class="code" href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">sound_table</a>) {</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (sound.second.unique()) {</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            sound_table.erase(sound.first);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;shared_ptr&lt;TTF_Font&gt;Resources::get_font(<span class="keywordtype">string</span> file, <span class="keywordtype">int</span> size) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classResources.html#a3b03c9af533df5b2045ba272a90eda83">   91</a></span>&#160;shared_ptr&lt;TTF_Font&gt;<a class="code" href="classResources.html#a3b03c9af533df5b2045ba272a90eda83">Resources::get_font</a>(<span class="keywordtype">string</span> file, <span class="keywordtype">int</span> size) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">string</span> tsize = std::to_string(size);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (font_table.find(file + tsize) == font_table.end()) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">font_table</a>.find(file + tsize) == <a class="code" href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">font_table</a>.end()) {</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        TTF_Font *ft = TTF_OpenFont(file.c_str(), size);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (ft == <span class="keyword">nullptr</span>) {</div>
@@ -169,26 +170,41 @@ $(document).ready(function(){initNavTree('Resources_8cpp_source.html','');});
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        shared_ptr&lt;TTF_Font&gt; font(ft, [] (TTF_Font *fnt)</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                  { TTF_CloseFont(fnt); });</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        font_table.emplace(file + tsize, font);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">font_table</a>.emplace(file + tsize, font);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> font_table[file + tsize];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">font_table</a>[file + tsize];</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> Resources::clear_fonts() {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> font : font_table) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classResources.html#aea9bff602c8873735fe92fd719cc1579">  111</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classResources.html#aea9bff602c8873735fe92fd719cc1579">Resources::clear_fonts</a>() {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> font : <a class="code" href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">font_table</a>) {</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> (font.second.unique()) {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            font_table.erase(font.first);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="ttc" id="classResources_html_ae95b7fa3e18daa8cb5de97823e361b1a"><div class="ttname"><a href="classResources.html#ae95b7fa3e18daa8cb5de97823e361b1a">Resources::music_table</a></div><div class="ttdeci">static unordered_map&lt; string, shared_ptr&lt; Mix_Music &gt; &gt; music_table</div><div class="ttdoc">Map of. </div><div class="ttdef"><b>Definition:</b> <a href="Resources_8h_source.html#l00033">Resources.h:33</a></div></div>
+<div class="ttc" id="classResources_html_a1fedf608383a42a27617680248508ac6"><div class="ttname"><a href="classResources.html#a1fedf608383a42a27617680248508ac6">Resources::get_sound</a></div><div class="ttdeci">static shared_ptr&lt; Mix_Chunk &gt; get_sound(string file)</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00065">Resources.cpp:65</a></div></div>
+<div class="ttc" id="classResources_html_a3375217d9d4e9a7d61964c5b9f4a711e"><div class="ttname"><a href="classResources.html#a3375217d9d4e9a7d61964c5b9f4a711e">Resources::image_table</a></div><div class="ttdeci">static unordered_map&lt; string, shared_ptr&lt; SDL_Texture &gt; &gt; image_table</div><div class="ttdoc">Map of. </div><div class="ttdef"><b>Definition:</b> <a href="Resources_8h_source.html#l00030">Resources.h:30</a></div></div>
+<div class="ttc" id="classResources_html_a30c0c3b445f7e7a6e1e32f52300e14d0"><div class="ttname"><a href="classResources.html#a30c0c3b445f7e7a6e1e32f52300e14d0">Resources::font_table</a></div><div class="ttdeci">static unordered_map&lt; string, shared_ptr&lt; TTF_Font &gt; &gt; font_table</div><div class="ttdoc">Map of. </div><div class="ttdef"><b>Definition:</b> <a href="Resources_8h_source.html#l00039">Resources.h:39</a></div></div>
+<div class="ttc" id="classResources_html_aab4007359f1d923dc519fb9a01921cd0"><div class="ttname"><a href="classResources.html#aab4007359f1d923dc519fb9a01921cd0">Resources::clear_images</a></div><div class="ttdeci">static void clear_images()</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00031">Resources.cpp:31</a></div></div>
+<div class="ttc" id="Game_8h_html"><div class="ttname"><a href="Game_8h.html">Game.h</a></div></div>
+<div class="ttc" id="Resources_8h_html"><div class="ttname"><a href="Resources_8h.html">Resources.h</a></div><div class="ttdoc">This file contains the definitions of all methods and attributes of the class Resources. </div></div>
+<div class="ttc" id="classResources_html_afc1ccd99c22521c8531c85794fea957e"><div class="ttname"><a href="classResources.html#afc1ccd99c22521c8531c85794fea957e">Resources::clear_music</a></div><div class="ttdeci">static void clear_music()</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00057">Resources.cpp:57</a></div></div>
+<div class="ttc" id="classGame_html_a540dd8cd1cc25d3918d852f5dc490644"><div class="ttname"><a href="classGame.html#a540dd8cd1cc25d3918d852f5dc490644">Game::get_instance</a></div><div class="ttdeci">static Game &amp; get_instance()</div><div class="ttdef"><b>Definition:</b> <a href="Game_8cpp_source.html#l00095">Game.cpp:95</a></div></div>
+<div class="ttc" id="classResources_html_aaba6124e032a550a807365557bf546ce"><div class="ttname"><a href="classResources.html#aaba6124e032a550a807365557bf546ce">Resources::get_image</a></div><div class="ttdeci">static shared_ptr&lt; SDL_Texture &gt; get_image(string file)</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00012">Resources.cpp:12</a></div></div>
+<div class="ttc" id="classResources_html_a9aa26b7909cf05e66623f8721f6df5e4"><div class="ttname"><a href="classResources.html#a9aa26b7909cf05e66623f8721f6df5e4">Resources::clear_sound</a></div><div class="ttdeci">static void clear_sound()</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00083">Resources.cpp:83</a></div></div>
+<div class="ttc" id="classResources_html_a3b03c9af533df5b2045ba272a90eda83"><div class="ttname"><a href="classResources.html#a3b03c9af533df5b2045ba272a90eda83">Resources::get_font</a></div><div class="ttdeci">static shared_ptr&lt; TTF_Font &gt; get_font(string file, int size)</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00091">Resources.cpp:91</a></div></div>
+<div class="ttc" id="classResources_html_aea9bff602c8873735fe92fd719cc1579"><div class="ttname"><a href="classResources.html#aea9bff602c8873735fe92fd719cc1579">Resources::clear_fonts</a></div><div class="ttdeci">static void clear_fonts()</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00111">Resources.cpp:111</a></div></div>
+<div class="ttc" id="classResources_html_a29cbd47244b28a5715b6457ebcdcc6df"><div class="ttname"><a href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">Resources::get_music</a></div><div class="ttdeci">static shared_ptr&lt; Mix_Music &gt; get_music(string file)</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00039">Resources.cpp:39</a></div></div>
+<div class="ttc" id="classResources_html_a2eaab5be05997c16c09f7908fb56ca5a"><div class="ttname"><a href="classResources.html#a2eaab5be05997c16c09f7908fb56ca5a">Resources::sound_table</a></div><div class="ttdeci">static unordered_map&lt; string, shared_ptr&lt; Mix_Chunk &gt; &gt; sound_table</div><div class="ttdoc">Map of. </div><div class="ttdef"><b>Definition:</b> <a href="Resources_8h_source.html#l00036">Resources.h:36</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="Resources_8cpp.html">Resources.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 16:43:14 for Wenova by
+    <li class="footer">Generated on Mon Oct 9 2017 17:02:19 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

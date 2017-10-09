@@ -1,6 +1,18 @@
 var NAVTREE =
 [
   [ "Wenova", "index.html", [
+    [ "Classes", null, [
+      [ "Class List", "annotated.html", "annotated" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
+      ] ]
+    ] ],
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
@@ -14,7 +26,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Animation_8cpp.html"
+"Animation_8cpp.html",
+"OptionsState_8cpp.html#ac444bfb0c84f3a3034a49fa835fb3507",
+"classFighter.html#a1d38a22eb2383417fc4aead153558b6ea4c6d6d1871f23ecb986fdb0780529c21",
+"classInputManager.html#a1c644674be0409342cabea8f0be1b8ba",
+"classSprite.html#a66810a5b9096e04235b784604741344c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

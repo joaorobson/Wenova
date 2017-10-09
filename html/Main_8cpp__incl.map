@@ -1,2 +1,13 @@
 <map id="Main.cpp" name="Main.cpp">
+<area shape="rect" id="node2" href="$Game_8h.html" title="Game.h" alt="" coords="182,80,249,107"/>
+<area shape="rect" id="node17" href="$MenuState_8h.html" title="MenuState.h" alt="" coords="601,80,697,107"/>
+<area shape="rect" id="node10" href="$State_8h.html" title="State.h" alt="" coords="386,155,450,181"/>
+<area shape="rect" id="node11" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="446,229,553,256"/>
+<area shape="rect" id="node12" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="642,304,733,331"/>
+<area shape="rect" id="node13" href="$Vector_8h.html" title="Vector.h" alt="" coords="658,379,728,405"/>
+<area shape="rect" id="node18" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="474,155,541,181"/>
+<area shape="rect" id="node20" href="$Text_8h.html" title="Text.h" alt="" coords="706,155,764,181"/>
+<area shape="rect" id="node21" href="$Timer_8h.html" title="Timer.h" alt="" coords="616,155,682,181"/>
+<area shape="rect" id="node22" href="$Sound_8h.html" title="Sound.h" alt="" coords="790,155,860,181"/>
+<area shape="rect" id="node24" href="$Music_8h.html" title="Music.h" alt="" coords="884,155,952,181"/>
 </map>

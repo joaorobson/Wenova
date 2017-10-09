@@ -1,0 +1,7 @@
+<map id="OptionsState" name="OptionsState">
+<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="356,13,409,40"/>
+<area shape="rect" id="node4" href="$classSprite.html" title="Sprite" alt="" coords="355,65,411,92"/>
+<area shape="rect" id="node7" href="$classSound.html" title="Sound" alt="" coords="353,169,412,196"/>
+<area shape="rect" id="node10" href="$classText.html" title="Text" alt="" coords="359,228,407,255"/>
+<area shape="rect" id="node11" href="$classRectangle.html" title="Rectangle" alt="" coords="57,260,138,287"/>
+</map>

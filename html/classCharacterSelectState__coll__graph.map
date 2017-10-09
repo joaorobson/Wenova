@@ -1,0 +1,8 @@
+<map id="CharacterSelectState" name="CharacterSelectState">
+<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="145,255,199,281"/>
+<area shape="rect" id="node4" href="$classFighterMenu.html" title="FighterMenu" alt="" coords="439,255,533,281"/>
+<area shape="rect" id="node5" href="$classSprite.html" title="Sprite" alt="" coords="251,104,305,131"/>
+<area shape="rect" id="node8" href="$classText.html" title="Text" alt="" coords="379,104,427,131"/>
+<area shape="rect" id="node12" href="$classSound.html" title="Sound" alt="" coords="648,104,705,131"/>
+<area shape="rect" id="node9" href="$classRectangle.html" title="Rectangle" alt="" coords="214,5,295,32"/>
+</map>

@@ -1,2 +1,11 @@
 <map id="Effect.cpp" name="Effect.cpp">
+<area shape="rect" id="node2" href="$Effect_8h.html" title="Effect.h" alt="" coords="663,80,731,107"/>
+<area shape="rect" id="node3" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="644,229,751,256"/>
+<area shape="rect" id="node10" href="$Fighter_8h.html" title="Fighter.h" alt="" coords="751,155,824,181"/>
+<area shape="rect" id="node15" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="307,229,373,256"/>
+<area shape="rect" id="node4" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="705,304,796,331"/>
+<area shape="rect" id="node6" href="$Vector_8h.html" title="Vector.h" alt="" coords="1027,379,1097,405"/>
+<area shape="rect" id="node11" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="944,229,1055,256"/>
+<area shape="rect" id="node19" href="$Sound_8h.html" title="Sound.h" alt="" coords="402,229,472,256"/>
+<area shape="rect" id="node21" href="$Timer_8h.html" title="Timer.h" alt="" coords="1305,229,1372,256"/>
 </map>
