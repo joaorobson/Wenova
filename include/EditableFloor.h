@@ -32,7 +32,7 @@ class EditableFloor : public Floor {
 
  public:
     /**
-     * Create box with default width of 100px.
+     * Create platform with default width of 100px.
      *
      * @param x Position in X axis. Unit: px, [0,screen_width]
      * @param y Position in Y axis. Unit: px, [0,screen_height]
@@ -42,7 +42,7 @@ class EditableFloor : public Floor {
     EditableFloor(float x, float y, float crotation, bool cplatform);
 
     /**
-     * Create box with specific width.
+     * Create platform with specific width.
      *
      * @param x Position in X axis. Unit: px, [0,screen_width]
      * @param y Position in Y axis. Unit: px, [0,screen_height]
@@ -59,19 +59,19 @@ class EditableFloor : public Floor {
     ~EditableFloor();
 
     /**
-     * Manages player interaction with the box.
+     * Manages player interaction with the platform.
      *
-     * @param delta Difference in position of the box.
+     * @param delta Difference in position of the platform.
      */
     void update(float delta);
 
     /**
-     * Render selected box considering if it is selected.
+     * Render selected platform considering if it is selected.
      */
     void render();
 
     /**
-     * True if box has been deleted.
+     * True if platform has been deleted.
      *
      * @returns [0,1]
      */
@@ -85,7 +85,7 @@ class EditableFloor : public Floor {
     void notify_collision(GameObject&);
 
     /**
-     * Get information about many aspects of an box.
+     * Get information about many aspects of an platform.
      *
      * @returns String in format: "x y width rotated level is_platform?"
      */
