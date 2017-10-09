@@ -14,6 +14,7 @@
 #include <string>
 
 #define RESOURCES_FOLDER std::string("res/")
+#define CONFIGURATION_FILE_PATH (RESOURCES_FOLDER + "config_file.dat")
 
 class Config {
  public:
