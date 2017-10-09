@@ -9,7 +9,7 @@ private:
 	int id;
 
 protected:
-	bool is_platform;
+	bool is_crossingable;
 
 public:
 	Floor(float x, float y, float width, float crotation, bool cplatform);
