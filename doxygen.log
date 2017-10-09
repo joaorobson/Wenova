@@ -16,10 +16,10 @@ Warning: Tag `BIN_ABSPATH' at line 730 of file /home/travis/build/joaorobson/Wen
 To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 Warning: Tag `EXT_DOC_PATHS' at line 736 of file /home/travis/build/joaorobson/Wenova/doxygen_config_file has become obsolete.
 To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-Warning: tag INCLUDE_PATH: include path `.include/*.h' does not exist
-Warning: tag INPUT: input source `$TRAVIS_BUILD_DIR/src/*' does not exist
-warning: source .include/*.h is not a readable file or directory... skipping.
-warning: source $TRAVIS_BUILD_DIR/src/* is not a readable file or directory... skipping.
+Warning: tag INCLUDE_PATH: include path `$TRAVIS_BUILD_DIR/include' does not exist
+Warning: tag INPUT: input source `$TRAVIS_BUILD_DIR/src' does not exist
+warning: source $TRAVIS_BUILD_DIR/include is not a readable file or directory... skipping.
+warning: source $TRAVIS_BUILD_DIR/src is not a readable file or directory... skipping.
 Searching for include files...
 Searching for example files...
 Searching for images...
