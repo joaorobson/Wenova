@@ -546,9 +546,11 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
 /**
  * Not implemented.
  */
-void CharacterSelectState::pause() {}
+void CharacterSelectState::pause() {
+}
 
 /**
  * Not implemented.
  */
-void CharacterSelectState::resume() {}
+void CharacterSelectState::resume() {
+}
