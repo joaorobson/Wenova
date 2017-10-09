@@ -1,4 +1,4 @@
 <map id="EditableFloor" name="EditableFloor">
-<area shape="rect" id="node2" href="$classFloor.html" title="Floor" alt="" coords="29,80,80,107"/>
-<area shape="rect" id="node3" href="$classGameObject.html" title="GameObject" alt="" coords="7,5,101,32"/>
+<area shape="rect" id="node2" href="$classFloor.html" title="{Floor\n|+ floor_id\l# is_crossingable\l&#45; id\l|+ Floor()\l+ ~Floor()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ get_id()\l}" alt="" coords="5,264,133,459"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="{GameObject\n|+ box\l+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="5,6,133,215"/>
 </map>

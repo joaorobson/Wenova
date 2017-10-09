@@ -1,4 +1,4 @@
 <map id="Floor" name="Floor">
-<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="109,112,203,139"/>
-<area shape="rect" id="node4" href="$classRectangle.html" title="Rectangle" alt="" coords="187,13,268,40"/>
+<area shape="rect" id="node2" href="$classGameObject.html" title="{GameObject\n|+ rotation\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="99,382,227,562"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="188,5,297,317"/>
 </map>

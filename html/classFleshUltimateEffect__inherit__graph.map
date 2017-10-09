@@ -1,4 +1,4 @@
 <map id="FleshUltimateEffect" name="FleshUltimateEffect">
-<area shape="rect" id="node2" href="$classEffect.html" title="Effect" alt="" coords="46,80,103,107"/>
-<area shape="rect" id="node3" href="$classGameObject.html" title="GameObject" alt="" coords="27,5,121,32"/>
+<area shape="rect" id="node2" href="$classEffect.html" title="{Effect\n|# sprite\l# parent\l|+ Effect()\l+ Effect()\l+ update()\l+ is_dead()\l+ render()\l+ notify_collision()\l}" alt="" coords="20,264,148,429"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="{GameObject\n|+ box\l+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="20,6,148,215"/>
 </map>

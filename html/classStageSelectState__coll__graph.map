@@ -1,5 +1,5 @@
 <map id="StageSelectState" name="StageSelectState">
-<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="317,12,371,39"/>
-<area shape="rect" id="node4" href="$classSprite.html" title="Sprite" alt="" coords="316,76,372,103"/>
-<area shape="rect" id="node6" href="$classSound.html" title="Sound" alt="" coords="315,151,373,177"/>
+<area shape="rect" id="node2" href="$classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="13,229,148,483"/>
+<area shape="rect" id="node4" href="$classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="183,163,321,549"/>
+<area shape="rect" id="node6" href="$classSound.html" title="{Sound\n|&#45; channel\l|+ Sound()\l+ Sound()\l+ play()\l+ stop()\l+ open()\l+ is_open()\l+ get_file()\l}" alt="" coords="411,273,497,439"/>
 </map>

@@ -1,7 +1,7 @@
 <map id="OptionsState" name="OptionsState">
-<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="356,13,409,40"/>
-<area shape="rect" id="node4" href="$classSprite.html" title="Sprite" alt="" coords="355,65,411,92"/>
-<area shape="rect" id="node7" href="$classSound.html" title="Sound" alt="" coords="353,169,412,196"/>
-<area shape="rect" id="node10" href="$classText.html" title="Text" alt="" coords="359,228,407,255"/>
-<area shape="rect" id="node11" href="$classRectangle.html" title="Rectangle" alt="" coords="57,260,138,287"/>
+<area shape="rect" id="node2" href="$classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="12,448,147,701"/>
+<area shape="rect" id="node4" href="$classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="183,382,321,767"/>
+<area shape="rect" id="node7" href="$classSound.html" title="{Sound\n|&#45; channel\l|+ Sound()\l+ Sound()\l+ play()\l+ stop()\l+ open()\l+ is_open()\l+ get_file()\l}" alt="" coords="466,492,552,657"/>
+<area shape="rect" id="node10" href="$classText.html" title="{Text\n|&#45; texture\l&#45; style\l&#45; font_size\l&#45; color\l&#45; clip_rect\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_pos()\l+ set_text()\l+ set_color()\l+ set_style()\l+ set_font_size()\l+ get_x()\land 6 more...\l}" alt="" coords="577,433,697,716"/>
+<area shape="rect" id="node11" href="$classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="645,5,755,317"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="Blood" name="Blood">
-<area shape="rect" id="node2" href="$classFighter.html" title="Fighter" alt="" coords="21,80,83,107"/>
-<area shape="rect" id="node3" href="$classGameObject.html" title="GameObject" alt="" coords="5,5,99,32"/>
+<area shape="rect" id="node2" href="$classFighter.html" title="{Fighter\n|+ MAX_LIFE\l+ MAX_SPECIAL\l# sprite\l# sound\l# hit_sounds\l# state\l# temporary_state\l# orientation\l# speed\l# acceleration\l# land_sound\l# ultimate_sound\land 24 more...\l|+ Fighter()\l+ ~Fighter()\l+ update()\l+ render()\l+ is_dead()\l+ get_remaining_life()\l+ get_special()\l+ notify_collision()\l+ kill()\l+ change_state()\land 12 more...\l# test_limits()\l# play_sound()\l# process_input()\l# check_jump()\l# check_fall()\l# check_left()\l# check_right()\l# check_crouch()\l# check_idle_atk_neutral_1()\l# check_idle_atk_neutral_2()\l# check_idle_atk_neutral_3()\l# check_stunned()\l# get_attack_orientation()\l# update_machine_state()\l}" alt="" coords="5,264,192,869"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="{GameObject\n|+ box\l+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="35,6,163,215"/>
 </map>

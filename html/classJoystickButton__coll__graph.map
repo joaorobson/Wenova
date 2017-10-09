@@ -1,5 +1,5 @@
 <map id="JoystickButton" name="JoystickButton">
-<area shape="rect" id="node2" href="$classGameObject.html" title="GameObject" alt="" coords="181,112,275,139"/>
-<area shape="rect" id="node4" href="$classRectangle.html" title="Rectangle" alt="" coords="187,13,268,40"/>
-<area shape="rect" id="node5" href="$classSprite.html" title="Sprite" alt="" coords="329,112,384,139"/>
+<area shape="rect" id="node2" href="$classGameObject.html" title="{GameObject\n|+ rotation\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="179,485,307,665"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="188,5,297,317"/>
+<area shape="rect" id="node5" href="$classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="337,382,476,767"/>
 </map>

@@ -1,3 +1,3 @@
 <map id="EditState" name="EditState">
-<area shape="rect" id="node2" href="$classState.html" title="State" alt="" coords="16,5,69,32"/>
+<area shape="rect" id="node2" href="$classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l# object_array\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="15,6,149,274"/>
 </map>
