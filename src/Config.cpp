@@ -20,7 +20,7 @@ int Config::fullscreen;
  * Will write current screen configurations to res/config_file.dat.  
  */
 void Config::init() {
-    std::fstream config_file(RESOURCES_FOLDER + "config_file.dat");
+    std::fstream config_file(CONFIGURATION_FILE_PATH);
     config_file >> width >> height >> fullscreen;
 }
 
@@ -61,7 +61,8 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
     width = cwidth;
     height = cheight;
     fullscreen = cfullscreen;
-    std::ofstream config_file(RESOURCES_FOLDER + "config_file.dat", std::ios::trunc);
+
+    std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);
     config_file << width << " " << height << " " << fullscreen << std::endl;
     config_file.close();
 }
