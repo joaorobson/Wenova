@@ -22,11 +22,48 @@
 #define TEXT_OFFSET 8
 #define TEXT_HEIGHT 30
 #define OPTION_OFFSET 70
+#define FONT_SIZE_OPTIONS 30
+#define FONT_SIZE_LABEL_OPTIONS 50
 
 #define DARK_GREY { 80, 80, 80, 1 }
 #define DARK_GREEN { 55, 74, 38, 1 }
 #define LIGHT_GREEN { 181, 201, 60, 1 }
 #define WHITE { 255, 255, 255, 255 }
+
+#define RESOLUTION_1_WIDTH 800
+#define RESOLUTION_1_HEIGHT 600
+
+#define RESOLUTION_2_WIDTH 1024
+#define RESOLUTION_2_HEIGHT 768
+
+#define RESOLUTION_3_WIDTH 1280
+#define RESOLUTION_3_HEIGHT 720
+
+#define RESOLUTION_4_WIDTH 1366
+#define RESOLUTION_4_HEIGHT 768
+
+#define RESOLUTION_5_WIDTH 1920
+#define RESOLUTION_5_HEIGHT 1080
+
+#define HORIZONTAL_POSITION_SCREEN_RES 100
+#define VERTICAL_POSITION_SCREEN_RES 200
+#define NOT_CENTER_HORIZONTALLY false
+#define NOT_CENTER_VERTICALLY false
+
+#define FONT_FILE "font/8-BIT WONDER.ttf"
+#define TEXT_800x600 "800 x 600"
+#define TEXT_1024x768 "1024 x 768"
+#define TEXT_1280x720 "1280 x 720"
+#define TEXT_1366x768 "1366 x 768"
+#define TEXT_1920x1080 "1920 x 1080"
+#define TEXT_FULLSCREEN_OFF "OFF"
+#define TEXT_FULLSCREEN_ON "ON"
+#define TEXT_OPTIONS "OPTIONS"
+#define SCREEN_RES_OPTION "SCREEN RESOLUTION"
+#define FULLSCREEN_OPTION "FULLSCREEN"
+#define JOYSTICK_OPTION "JOYSTICK"
+#define KEYBOARD_OPTION "KEYBOARD"
+#define BACK_OPTION "BACK"
 
 /**
  * Constructor.
@@ -40,8 +77,10 @@ OptionsState::OptionsState() {
     on_submenu = false;
 
     background = Sprite("menu/background.jpg");
-    title = new Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
-                     "OPTIONS",
+    title = new Text(FONT_FILE,
+                     FONT_SIZE_LABEL_OPTIONS,
+                     Text::TextStyle::SOLID,
+                     TEXT_OPTIONS,
                      WHITE,
                      FONT_X,
                      100);
@@ -176,11 +215,11 @@ void OptionsState::update(float) {
              */
             if (current_option == 0) {
                 vector<pair<int, int> > resolutions = {
-                    ii(800, 600),
-                    ii(1024, 768),
-                    ii(1280, 720),
-                    ii(1366, 768),
-                    ii(1920, 1080)
+                    ii(RESOLUTION_1_WIDTH, RESOLUTION_1_HEIGHT),
+                    ii(RESOLUTION_2_WIDTH, RESOLUTION_2_HEIGHT),
+                    ii(RESOLUTION_3_WIDTH, RESOLUTION_3_HEIGHT),
+                    ii(RESOLUTION_4_WIDTH, RESOLUTION_4_HEIGHT),
+                    ii(RESOLUTION_5_WIDTH, RESOLUTION_5_HEIGHT)
                 };
 
                 int id_resolution = current_sub_option[current_option];
@@ -216,7 +255,9 @@ void OptionsState::update(float) {
                                        prev_text_height : 200);
 
         cur_text->set_pos(text_position_axi_x,
-                          text_position_axi_y, false, false);
+                          text_position_axi_y,
+                          NOT_CENTER_HORIZONTALLY,
+                          NOT_CENTER_VERTICALLY);
 
         for (int j = 0;
              j < static_cast<int>(sub_options[cur_text->get_text()].size());
@@ -316,47 +357,74 @@ void OptionsState::render() {
  * 'Options' and update the attributes that represent these options.
  */
 void OptionsState::build_options() {
-    options.push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                               Text::TextStyle::SOLID, "SCREEN RESOLUTION",
+    options.push_back(new Text(FONT_FILE,
+                               FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID,
+                               SCREEN_RES_OPTION,
                                WHITE,
-                               100, 200));
-    options.back()->set_pos(100, 200, false, false);
-    options.push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                               Text::TextStyle::SOLID, "FULLSCREEN", WHITE));
-    options.push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                               Text::TextStyle::SOLID, "JOYSTICK", WHITE));
-    options.push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                               Text::TextStyle::SOLID, "KEYBOARD", WHITE));
-    options.push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                               Text::TextStyle::SOLID, "BACK", WHITE));
+                               HORIZONTAL_POSITION_SCREEN_RES,
+                               VERTICAL_POSITION_SCREEN_RES));
+    options.back()->set_pos(HORIZONTAL_POSITION_SCREEN_RES,
+                            VERTICAL_POSITION_SCREEN_RES,
+                            NOT_CENTER_HORIZONTALLY,
+                            NOT_CENTER_VERTICALLY);
+    options.push_back(new Text(FONT_FILE,
+                               FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID,
+                               FULLSCREEN_OPTION,
+                               WHITE));
+    options.push_back(new Text(FONT_FILE,
+                               FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID,
+                               JOYSTICK_OPTION,
+                               WHITE));
+    options.push_back(new Text(FONT_FILE,
+                               FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID,
+                               KEYBOARD_OPTION,
+                               WHITE));
+    options.push_back(new Text(FONT_FILE,
+                               FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID,
+                               BACK_OPTION,
+                               WHITE));
 
-    sub_options["SCREEN RESOLUTION"].push_back(new Text("font/8-BIT WONDER.ttf",
-                                                        30,
-                                                        Text::TextStyle::SOLID,
-                                                        "800 x 600", WHITE));
-    sub_options["SCREEN RESOLUTION"].push_back(new Text("font/8-BIT WONDER.ttf",
-                                                        30,
-                                                        Text::TextStyle::SOLID,
-                                                        "1024 x 768", WHITE));
-    sub_options["SCREEN RESOLUTION"].push_back(new Text("font/8-BIT WONDER.ttf",
-                                                        30,
-                                                        Text::TextStyle::SOLID,
-                                                        "1280 x 720", WHITE));
-    sub_options["SCREEN RESOLUTION"].push_back(new Text("font/8-BIT WONDER.ttf",
-                                                        30,
-                                                        Text::TextStyle::SOLID,
-                                                        "1366 x 768", WHITE));
-    sub_options["SCREEN RESOLUTION"].push_back(new Text("font/8-BIT WONDER.ttf",
-                                                        30,
-                                                        Text::TextStyle::SOLID,
-                                                        "1920 x 1080", WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_800x600,
+                                                      WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_1024x768,
+                                                      WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_1280x720,
+                                                      WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_1366x768,
+                                                      WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_1920x1080,
+                                                      WHITE));
 
-    sub_options["FULLSCREEN"].push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                                                 Text::TextStyle::SOLID, "OFF",
-                                                 WHITE));
-    sub_options["FULLSCREEN"].push_back(new Text("font/8-BIT WONDER.ttf", 30,
-                                                 Text::TextStyle::SOLID, "ON",
-                                                 WHITE));
+    sub_options[FULLSCREEN_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_FULLSCREEN_OFF,
+                                                      WHITE));
+    sub_options[FULLSCREEN_OPTION].push_back(new Text(FONT_FILE,
+                                                      FONT_SIZE_OPTIONS,
+                                                      Text::TextStyle::SOLID,
+                                                      TEXT_FULLSCREEN_ON,
+                                                      WHITE));
 }
 
 /**
@@ -383,7 +451,7 @@ int OptionsState::get_current_sub_option(int option) {
                             std::to_string(height);
         int sub_option = 0;
 
-        for (auto text : sub_options["SCREEN RESOLUTION"]) {
+        for (auto text : sub_options[SCREEN_RES_OPTION]) {
             if (text->get_text() == resolution) {
                 return sub_option;
             }
