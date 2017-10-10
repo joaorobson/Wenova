@@ -27,6 +27,14 @@
 
 /**
  * A constructor.
+ * Initialize the texture attribute to null.
+ */
+Text::Text() {
+  texture = nullptr;
+}
+
+/**
+ * A constructor.
  * Initialize the style, color, textuxe, font size and position of the text in 
  * the game.
  *
