@@ -1,4 +1,4 @@
-/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+/* Copyright (c) 2017 Wenova - Rise of Conuerors. All rights reserved.
  *
  * This work is licensed under the terms of the MIT license.
 
@@ -15,7 +15,50 @@
 #include "UltimateEffect.h"
 
 #define CROUCH_COOLDOWN 50.0
+#define BLOOD_SKIN_PATH "characters/blood/"
+#define SOUND_PATH "characters/blood/sound/"
+#define IDLE_IMAGE "idle.png"
+#define RUNNING_IMAGE "running.png"
+#define JUMPING_IMAGE "jumping.png"
+#define FALLING_IMAGE "falling.png"
+#define CROUCH_IMAGE "crouch.png"
+#define IDLE_ATK_NEUTRAL_1_IMAGE "idle_atk_neutral_1.png"
+#define IDLE_ATK_NEUTRAL_2_IMAGE "idle_atk_neutral_2.png"
+#define IDLE_ATK_NEUTRAL_3_IMAGE "idle_atk_neutral_3.png"
+#define IDLE_ATK_FRONT_IMAGE "idle_atk_front.png"
+#define IDLE_ATK_UP_IMAGE "idle_atk_up.png"
+#define IDLE_ATK_DOWN_IMAGE "idle_atk_down.png"
+#define CROUCH_ATK_IMAGE "crouch_atk.png"
+#define JUMP_ATK_DOWN_IMAGE "jump_atk_down.png"
+#define JUMP_ATK_NEUTRAL_IMAGE "jump_atk_neutral.png"
+#define JUMP_ATK_UP_IMAGE "jump_atk_up.png"
+#define DEFENDING_IMAGE "defending.png"
+#define STUNNED_IMAGE "stunned.png"
+#define SPECIAL_1_1_IMAGE "special_1_1.png"
+#define SPECIAL_1_2_IMAGE "SPECIAL_1_2.png"
+#define SPECIAL_2_IMAGE "special_2.png"
+#define DYING_IMAGE "dying.png"
+#define HEAL_EFFECT_IMAGE_PATH "characters/blood/heal_effect.png"
+#define ULTIMATE_EFFECT_IMAGE "ult_effect.png"
+#define AURA_IMAGE "aura.png"
 
+#define JUMP_SOUND "jump.ogg"
+#define ATTACK_1_SOUND "attack_1.ogg"
+#define ATTACK_2_SOUND "attack_2.ogg"
+#define SLASH_SOUND "slash.ogg" 
+#define IDLE_ATK_DOWN_SOUND "idle_atk_down.ogg" 
+#define SPECIAL_1_1_SOUND "special_1_1.ogg"
+#define SPECIAL_1_2_SOUND "special_1_2.ogg"
+#define HEAL_SOUND "heal.ogg"
+#define ULTIMATE_SOUND "ultimate.ogg"
+#define LAND_SOUND "land.ogg"
+#define HIT_SLASH_SOUND "hit_slash.ogg"
+#define HIT_1_SOUND "hit_1.ogg"
+#define HIT_2_SOUND "hit_2.ogg"
+#define HIT_3_SOUND "hit_3.ogg"
+
+#define DYING_TAG "dying"
+#define STOPPED 0
 #include <algorithm>
 
 using std::min;
@@ -38,54 +81,55 @@ Blood::Blood(string skin, float x_axis_position, float y_axis_position,
   /**
    * File path indicating the relative skin to each attack type.
    */
-  path = "characters/blood/" + skin + "/";
+  path = BLOOD_SKIN_PATH + skin + "/";
 
   /**
    * File path indicating the relative sound to each attack type.
    */
-  sound_path = "characters/blood/sound/";
-  sprite[IDLE] = Sprite(path + "idle.png", 12, 10);
-  sprite[RUNNING] = Sprite(path + "running.png", 8, 10);
-  sprite[JUMPING] = Sprite(path + "jumping.png", 6, 10);
-  sprite[FALLING] = Sprite(path + "falling.png", 2, 10);
-  sprite[CROUCH] = Sprite(path + "crouch.png", 3, 20);
-  sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + "idle_atk_neutral_1.png", 4, 10);
-  sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + "idle_atk_neutral_2.png", 4, 10);
-  sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + "idle_atk_neutral_3.png", 3, 10);
-  sprite[IDLE_ATK_FRONT] = Sprite(path + "idle_atk_front.png", 5, 10);
-  sprite[IDLE_ATK_UP] = Sprite(path + "idle_atk_up.png", 5, 10);
-  sprite[IDLE_ATK_DOWN] = Sprite(path + "idle_atk_down.png", 6, 10);
-  sprite[CROUCH_ATK] = Sprite(path + "crouch_atk.png", 3, 10);
-  sprite[JUMP_ATK_DOWN] = Sprite(path + "jump_atk_down.png", 4, 10);
-  sprite[JUMP_ATK_NEUTRAL] = Sprite(path + "jump_atk_neutral.png", 5, 10);
-  sprite[JUMP_ATK_UP] = Sprite(path + "jump_atk_up.png", 4, 10);
-  sprite[DEFENDING] = Sprite(path + "defending.png", 2, 10);
-  sprite[STUNNED] = Sprite(path + "stunned.png", 2, 10);
-  sprite[SPECIAL_1_1] = Sprite(path + "special_1_1.png", 7, 10);
-  sprite[SPECIAL_1_2] = Sprite(path + "special_1_2.png", 11, 10);
-  sprite[SPECIAL_2] = Sprite(path + "special_2.png", 8, 10);
-  sprite[DYING] = Sprite(path + "dying.png", 12, 10);
+  sound_path = SOUND_PATH;
+  sprite[IDLE] = Sprite(path + IDLE_IMAGE, 12, 10);
+  sprite[RUNNING] = Sprite(path + RUNNING_IMAGE, 8, 10);
+  sprite[JUMPING] = Sprite(path + JUMPING_IMAGE, 6, 10);
+  sprite[FALLING] = Sprite(path + FALLING_IMAGE, 2, 10);
+  sprite[CROUCH] = Sprite(path + CROUCH_IMAGE, 3, 20);
+  sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + IDLE_ATK_NEUTRAL_1_IMAGE, 4, 10);
+  sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + IDLE_ATK_NEUTRAL_2_IMAGE, 4, 10);
+  sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + IDLE_ATK_NEUTRAL_3_IMAGE, 3, 10);
+  sprite[IDLE_ATK_FRONT] = Sprite(path + IDLE_ATK_FRONT_IMAGE, 5, 10);
+  sprite[IDLE_ATK_UP] = Sprite(path + IDLE_ATK_UP_IMAGE, 5, 10);
+  sprite[IDLE_ATK_DOWN] = Sprite(path + IDLE_ATK_DOWN_IMAGE, 6, 10);
+  sprite[CROUCH_ATK] = Sprite(path + CROUCH_ATK_IMAGE, 3, 10);
+  sprite[JUMP_ATK_DOWN] = Sprite(path + JUMP_ATK_DOWN_IMAGE, 4, 10);
+  sprite[JUMP_ATK_NEUTRAL] = Sprite(path + JUMP_ATK_NEUTRAL_IMAGE, 5, 10);
+  sprite[JUMP_ATK_UP] = Sprite(path + JUMP_ATK_UP_IMAGE, 4, 10);
+  sprite[DEFENDING] = Sprite(path + DEFENDING_IMAGE, 2, 10);
+  sprite[STUNNED] = Sprite(path + STUNNED_IMAGE, 2, 10);
+  sprite[SPECIAL_1_1] = Sprite(path + SPECIAL_1_1_IMAGE, 7, 10);
+  sprite[SPECIAL_1_2] = Sprite(path + SPECIAL_1_2_IMAGE, 11, 10);
+  sprite[SPECIAL_2] = Sprite(path + SPECIAL_2_IMAGE, 8, 10);
+  sprite[DYING] = Sprite(path + DYING_IMAGE, 12, 10);
 
-  sound[JUMPING] = Sound(sound_path + "jump.ogg");
-  sound[IDLE_ATK_NEUTRAL_1] = Sound(sound_path + "attack_1.ogg");
-  sound[IDLE_ATK_NEUTRAL_2] = Sound(sound_path + "attack_2.ogg");
-  sound[IDLE_ATK_NEUTRAL_3] = Sound(sound_path + "slash.ogg");
-  sound[IDLE_ATK_FRONT] = Sound(sound_path + "attack_2.ogg");
-  sound[IDLE_ATK_DOWN] = Sound(sound_path + "idle_atk_down.ogg");
-  sound[IDLE_ATK_UP] = Sound(sound_path + "slash.ogg");
-  sound[JUMP_ATK_NEUTRAL] = Sound(sound_path + "slash.ogg");
-  sound[JUMP_ATK_UP] = Sound(sound_path + "slash.ogg");
-  sound[CROUCH_ATK] = Sound(sound_path + "slash.ogg");
-  sound[SPECIAL_1_1] = Sound(sound_path + "special_1_1.ogg");
-  sound[SPECIAL_1_2] = Sound(sound_path + "special_1_2.ogg");
-  sound[SPECIAL_2] = Sound(sound_path + "heal.ogg");
 
-  ultimate_sound = Sound(sound_path + "ultimate.ogg");
-  land_sound = Sound(sound_path + "land.ogg");
-  hit_sounds[0] = Sound(sound_path + "hit_slash.ogg");
-  hit_sounds[1] = Sound(sound_path + "hit_1.ogg");
-  hit_sounds[2] = Sound(sound_path + "hit_2.ogg");
-  hit_sounds[3] = Sound(sound_path + "hit_3.ogg");
+  sound[JUMPING] = Sound(sound_path + JUMP_SOUND);
+  sound[IDLE_ATK_NEUTRAL_1] = Sound(sound_path + ATTACK_1_SOUND);
+  sound[IDLE_ATK_NEUTRAL_2] = Sound(sound_path + ATTACK_2_SOUND);
+  sound[IDLE_ATK_NEUTRAL_3] = Sound(sound_path + SLASH_SOUND);
+  sound[IDLE_ATK_FRONT] = Sound(sound_path + ATTACK_2_SOUND);
+  sound[IDLE_ATK_DOWN] = Sound(sound_path + IDLE_ATK_DOWN_SOUND);
+  sound[IDLE_ATK_UP] = Sound(sound_path + SLASH_SOUND);
+  sound[JUMP_ATK_NEUTRAL] = Sound(sound_path + SLASH_SOUND);
+  sound[JUMP_ATK_UP] = Sound(sound_path + SLASH_SOUND);
+  sound[CROUCH_ATK] = Sound(sound_path + SLASH_SOUND);
+  sound[SPECIAL_1_1] = Sound(sound_path + SPECIAL_1_1_SOUND);
+  sound[SPECIAL_1_2] = Sound(sound_path + SPECIAL_1_2_SOUND);
+  sound[SPECIAL_2] = Sound(sound_path + HEAL_SOUND);
+
+  ultimate_sound = Sound(sound_path + ULTIMATE_SOUND);
+  land_sound = Sound(sound_path + LAND_SOUND);
+  hit_sounds[0] = Sound(sound_path + HIT_SLASH_SOUND);
+  hit_sounds[1] = Sound(sound_path + HIT_1_SOUND);
+  hit_sounds[2] = Sound(sound_path + HIT_2_SOUND);
+  hit_sounds[3] = Sound(sound_path + HIT_3_SOUND);
 
   crouching_size = Vector(84, 59);
   not_crouching_size = Vector(84, 84);
@@ -333,7 +377,7 @@ void Blood::update_machine_state(float delta_character_state) {
       if (sprite[state].is_finished()) {
         Game::get_instance().get_current_state().add_object(
             new HealEffect(partner,
-                           "characters/blood/heal_effect.png",
+                           HEAL_EFFECT_IMAGE_PATH,
                            "has_sprite",
                            9,
                            0.2));
@@ -475,7 +519,7 @@ void Blood::check_jump(bool change) {
  * temporary state.
  */
 void Blood::check_fall(bool change) {
-  if (speed.y > 0) {
+  if (speed.y > STOPPED) {
     if (change) {
       temporary_state = FighterState::FALLING;
     }
@@ -529,7 +573,7 @@ void Blood::check_right(bool change) {
  * temporary state.
  */
 void Blood::check_idle(bool change) {
-  if (speed.x == 0 and
+  if (speed.x == STOPPED and
      on_floor and not
      is_holding[DOWN_BUTTON] and not
      is_holding[BLOCK_BUTTON]) {
@@ -567,7 +611,7 @@ void Blood::check_crouch(bool change) {
  */
 void Blood::check_idle_atk_neutral_1(bool change) {
   if (pressed[ATTACK_BUTTON]) {
-    speed.y = 0;
+    speed.y = STOPPED;
     if (change) {
       temporary_state = FighterState::IDLE_ATK_NEUTRAL_1;
     }
@@ -784,7 +828,7 @@ void Blood::check_defense(bool change) {
  * temporary state.
  */
 void Blood::check_stunned(bool change) {
-  speed.x = 0;
+  speed.x = STOPPED;
   if (change) {
     temporary_state = FighterState::STUNNED;
   }
@@ -850,7 +894,7 @@ void Blood::check_special_2(bool change) {
  * temporary state.
  */
 void Blood::check_dead(bool change) {
-  if (is("dying")) {
+  if (is(DYING_TAG)) {
     if (change) {
       temporary_state = FighterState::DYING;
     }
@@ -859,7 +903,7 @@ void Blood::check_dead(bool change) {
 
 /**
  * Check ultimate attack.
- * Check if user pressed the ultimate button and if special level is equal to the
+ * Check if user pressed the ultimate button and if special level is eual to the
  * maximum special level. If so, activate the UltimateEffect images and sounds.
  */
 void Blood::check_ultimate() {
@@ -871,8 +915,8 @@ void Blood::check_ultimate() {
   if (pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
     Game::get_instance().get_current_state().add_object(
         new UltimateEffect(this,
-                           path + "ult_effect.png",
-                           path + "aura.png",
+                           path + ULTIMATE_EFFECT_IMAGE,
+                           path + AURA_IMAGE,
                            "has_sprite",
                            1));
     ultimate_sound.play();
