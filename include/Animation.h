@@ -1,25 +1,38 @@
-#ifndef ANIMATION_H
-#define ANIMATION_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Animation.h
+ * Brief Description.
+ */
+
+#ifndef INCLUDE_ANIMATION_H_
+#define INCLUDE_ANIMATION_H_
 
 #include "GameObject.h"
-#include "Timer.h"
 #include "Sprite.h"
+#include "Timer.h"
 
-class Animation : public GameObject{
-private:
-	Timer end_timer;
-	float time_limit;
-	bool one_time_only;
-	Sprite sprite;
+#include <string>
 
-public:
-	Animation(float x, float y, float crotation, string csprite, int frame_count, float frame_time, bool ends);
-	void update(float delta);
-	void render();
+class Animation : public GameObject {
+ private:
+    Timer end_timer;
+    float time_limit;
+    bool one_time_only;
+    Sprite sprite;
 
-	bool is_dead();
+ public:
+    Animation(float x, float y, float crotation, string csprite,
+              int frame_count, float frame_time, bool ends);
+    void update(float delta);
+    void render();
 
-	void notify_collision(GameObject & object);
+    bool is_dead();
+
+    void notify_collision(GameObject& object);
 };
 
-#endif
+#endif  // INCLUDE_ANIMATION_H_
