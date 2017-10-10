@@ -19,6 +19,12 @@
 #include <cmath>
 
 #define PI 3.14159265358979
+#define _180_DEGREES 180
+#define NO_TIME_ELAPSED 0
+#define X_AXIS_SCALE_MIN 0.05
+#define INITIAL_X_Y_AXES_SCALE 1    
+#define INITIAL_FRAME_COUNT_VALUE 1
+#define INITIAL_FRAME_TIME 1
 
 /**
 * A constructor.
@@ -27,10 +33,10 @@
 */
 Sprite::Sprite() {
   texture = nullptr;
-  scale_x_axis = scale_y_axis = 1;
-  frame_count = 1;
-  frame_time = 1;
-  current_frame = time_elapsed = 0;
+  scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
+  frame_count = INITIAL_FRAME_COUNT_VALUE;
+  frame_time = INITIAL_FRAME_TIME;
+  current_frame = time_elapsed = NO_TIME_ELAPSED;
 }
 
 /**
@@ -56,7 +62,7 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
   finished = false;
   open(RESOURCES_FOLDER + file);
 
-  scale_x_axis = scale_y_axis = 1;
+  scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
 }
 
 /**
@@ -191,7 +197,7 @@ void Sprite::update(float delta_time) {
    */
 
   if (time_elapsed >= frame_time) {
-    time_elapsed = 0;
+    time_elapsed = NO_TIME_ELAPSED;
 
     current_frame = current_frame + 1;
     /**
@@ -199,7 +205,7 @@ void Sprite::update(float delta_time) {
      */
     if (current_frame == frame_count) {
       finished = true;
-      current_frame = 0;
+      current_frame = NO_TIME_ELAPSED;
     }
     set_clip((current_frame % columns) * width,
              (current_frame / columns) * height,
@@ -223,7 +229,7 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
                               static_cast<int>(clip_rect.w * scale_x_axis),
                               static_cast<int>(clip_rect.h * scale_y_axis)};
 
-  angle *= (180 / PI);  /**< Conversion from degrees to radians. */
+  angle *= (_180_DEGREES / PI);  /**< Conversion from degrees to radians. */
   int render_copy = SDL_RenderCopyEx(Game::get_instance().get_renderer(),
                                      texture.get(),
                                      &clip_rect,
@@ -299,8 +305,8 @@ void Sprite::update_scale_x(float scale) {
   /**
    * Check if the x axis is very small. If so, the scale is set to 0.05.
    */
-  if (scale_x_axis < 0.05) {
-    scale_x_axis = 0.05;
+  if (scale_x_axis < X_AXIS_SCALE_MIN) {
+    scale_x_axis = X_AXIS_SCALE_MIN;
   }
 }
 
