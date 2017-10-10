@@ -19,6 +19,7 @@
 Sound::Sound() {
     file = "";
     sound = nullptr;
+	channel = 0;
 }
 
 /**
@@ -29,6 +30,7 @@ Sound::Sound() {
 Sound::Sound(string cfile) {
     file = cfile;
     this->open(cfile);
+	channel = 0;
 }
 
 /**

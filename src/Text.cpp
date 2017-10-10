@@ -25,6 +25,7 @@
  */
 Text::Text() {
     texture = nullptr;
+    font_size = 0;
 }
 
 /**

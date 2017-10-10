@@ -162,7 +162,8 @@ void MenuState::update(float delta) {
         }
 
         // positioning options after current option
-        for (int idx = current_option + 1; idx < options.size(); idx++) {
+        for (unsigned int idx = current_option + 1;
+             idx < options.size(); idx++) {
             Text* prev_option = options[idx - 1];
 
             int new_x =

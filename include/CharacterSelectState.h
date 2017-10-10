@@ -144,7 +144,7 @@ class CharacterSelectState : public State {
      *
      * @returns Name and number of frames in corresponding sprite
      */
-    pair<string, int> get_chars_info(int idx);
+    std::pair<string, int> get_chars_info(int idx);
 
     /**
      * Searchs for characters identifying which the player chose.
@@ -159,7 +159,7 @@ class CharacterSelectState : public State {
      * @returns Vector of pairs of strings containing information about
      * characters and skins choosen.
      */
-    vector<pair<string, string>> export_players();
+    vector<std::pair<string, std::string>> export_players();
 
     /**
      * Get slot of character on the board.
@@ -169,7 +169,7 @@ class CharacterSelectState : public State {
      *
      * @returns pair of ints which indicates the corresponding slot.
      */
-    pair<int, int> get_slot(int row, int col);
+    std::pair<int, int> get_slot(int row, int col);
 };
 
 #endif  // INCLUDE_CHARACTERSELECTSTATE_H_

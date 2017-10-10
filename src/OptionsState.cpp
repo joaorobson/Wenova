@@ -32,6 +32,8 @@
 #define WHITE \
     { 255, 255, 255, 255 }
 
+#define N_JOYSTICK_BUTTON 15
+
 /**
  * Constructor.
  * This constructor builds the options and sub options to initialize the
@@ -40,6 +42,9 @@
 OptionsState::OptionsState() {
     Mix_AllocateChannels(50);
 
+    for (int i = 0; i < N_JOYSTICK_BUTTON; i++) {
+        pressed[i] = false;
+    }
     current_option = 0;
     on_submenu = false;
 

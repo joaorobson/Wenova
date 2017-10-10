@@ -31,6 +31,11 @@ Sprite::Sprite() {
     frame_count = 1;
     frame_time = 1;
     current_frame = time_elapsed = 0;
+    width = 0;
+    height = 0;
+    rows = 0;
+    columns = 0;
+    finished = false;
 }
 
 /**
