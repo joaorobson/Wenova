@@ -19,6 +19,12 @@
 #define SHADED Text::TextStyle::SHADED
 #define BLENDED Text::TextStyle::BLENDED
 
+#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_X 0 
+#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y 0 
+#define CLIP_BORDERS_OFFSET 0.5
+#define NO_OFFSET 0
+#define BLACK_BACKGROUND_ON_SDL_RGBA_COLOR {0,0,0,255}
+
 /**
  * A constructor.
  * Initialize the texture attribute to null.
@@ -72,8 +78,8 @@ Text::~Text() {
  * @param camera_y is the scenario vertical position.
  */
 void Text::render(int camera_x, int camera_y) {
-  SDL_Rect src_rect = { 0,
-                        0,
+  SDL_Rect src_rect = { RECTANGLE_UPPER_LEFT_CORNER_POSITION_X,
+                        RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y,
                         static_cast<int>(box.get_width()),
                         static_cast<int>(box.get_height())
                       };
@@ -104,8 +110,10 @@ void Text::render(int camera_x, int camera_y) {
  */
 void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x, 
                    bool center_y) {
-  box.set_x(x_axis_position - (center_x ? clip_rect.w * 0.5 : 0));
-  box.set_y(y_axis_position - (center_y ? clip_rect.h * 0.5 : 0));
+  box.set_x(x_axis_position - (center_x ? clip_rect.w * CLIP_BORDERS_OFFSET : 
+                                          NO_OFFSET));
+  box.set_y(y_axis_position - (center_y ? clip_rect.h * CLIP_BORDERS_OFFSET : 
+                                          NO_OFFSET));
 }
 
 /**
@@ -223,7 +231,7 @@ void Text::remake_texture() {
       break;
     case SHADED:
       surface = TTF_RenderText_Shaded(font.get(), text.c_str(), color,
-                                  {0, 0, 0, 255});
+                                      BLACK_BACKGROUND_ON_SDL_RGBA_COLOR);
       break;
     case BLENDED:
       surface = TTF_RenderText_Blended(font.get(), text.c_str(), color);
@@ -260,5 +268,5 @@ void Text::remake_texture() {
  * @param size is the font size.
  */
 void Text::open(string file, int size) {
-  font = Resources::get_font(RES_FOLDER + file, size);
+  font = Resources::get_font(RESOURCES_FOLDER + file, size);
 }

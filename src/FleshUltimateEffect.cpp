@@ -10,6 +10,14 @@
  */
 
 #include "FleshUltimateEffect.h"
+#define IN_ULTIMATE_TAG "in_ultimate"
+#define DYING_TAG "dying"
+#define INCREMENT_IN_MAX_LIFE 1.5
+#define DECREASE_IN_MAX_LIFE 1.5
+#define DECREASE_IN_CHARACTER_STATE -0.4
+#define ATTACK_VERTICAL_POSITION_DECREASE 10
+#define HEIGHT_DIVISOR_VALUE 2
+#define NO_LIFE_STATE 0
 
 /**
  * The constructor.
@@ -32,9 +40,9 @@ FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
   * multiply his maximum life by 1.5.W
   */
   if (parent) {
-    parent->add_tags("in_ultimate");
+    parent->add_tags(IN_ULTIMATE_TAG);
   }
-  parent->MAX_LIFE *= 1.5;
+  parent->MAX_LIFE *= INCREMENT_IN_MAX_LIFE;
 }
 
 /**
@@ -50,8 +58,11 @@ void FleshUltimateEffect::update(float delta_character_state) {
    */
   if (parent) {
     box.x = parent->box.x;
-    box.y = parent->box.get_draw_y() - box.get_height() / 2 - 10;
-    parent->increment_special(-0.4 * delta_character_state);
+    box.y = parent->box.get_draw_y() - 
+            box.get_height() / HEIGHT_DIVISOR_VALUE - 
+                               ATTACK_VERTICAL_POSITION_DECREASE;
+    parent->increment_special(DECREASE_IN_CHARACTER_STATE * 
+                              delta_character_state);
   }
   sprite.update(delta_character_state);
 }
@@ -71,15 +82,15 @@ void FleshUltimateEffect::render() {
  * @return Return true if the character is dead and false if not.
  */
 bool FleshUltimateEffect::is_dead() {
-  bool dead = parent->get_special() <= 0 or parent->is("dying");
+  bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is(DYING_TAG);
   /**
    * Check if is the fighter is dead. If so, remove the parent's "in ultimate"
    * tag and divide the parent's maximum life by 1.5.
    */
   if (dead) {
-    parent->remove_tags("in_ultimate");
-    parent->MAX_LIFE /= 1.5;
-    parent->increment_life(0);
+    parent->remove_tags(IN_ULTIMATE_TAG);
+    parent->MAX_LIFE /= DECREASE_IN_MAX_LIFE;
+    parent->increment_life(NO_LIFE_STATE);
   }
   return dead;
 }
