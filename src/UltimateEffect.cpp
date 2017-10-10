@@ -87,7 +87,7 @@ bool UltimateEffect::is_dead() {
  * Notify collision between two fighters.
  * Check if the fighters have collided.
  */
-void UltimateEffect::notify_collision(GameObject &object) {
+void UltimateEffect::notify_collision(const GameObject &object) {
     int partner_id =
         (parent->get_partner() ? parent->get_partner()->get_id() : -100);
     if (not object.is("player")) {

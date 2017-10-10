@@ -39,7 +39,7 @@ class State {
     virtual void pause() = 0;
     virtual void resume() = 0;
 
-    virtual void add_object(GameObject* object);
+    virtual void add_object(const GameObject* object);
 
     virtual void load_assets();
 

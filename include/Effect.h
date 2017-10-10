@@ -29,7 +29,7 @@ class Effect : public GameObject {
     virtual void update(float delta) = 0;
     virtual bool is_dead() = 0;
     virtual void render();
-    void notify_collision(GameObject& object);
+    void notify_collision(const GameObject& object);
 };
 
 #endif  // INCLUDE_EFFECT_H_

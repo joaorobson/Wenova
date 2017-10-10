@@ -29,7 +29,7 @@ class UltimateEffect : public Effect {
     void update(float delta_character_state);
     void render();
     bool is_dead();
-    void notify_collision(GameObject &object);
+    void notify_collision(const GameObject &object);
 };
 
 #endif  // INCLUDE_ULTIMATEEFFECT_H_

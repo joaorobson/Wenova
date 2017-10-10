@@ -48,5 +48,5 @@ void Effect::render() {
  *
  * @param
  */
-void Effect::notify_collision(GameObject &) {
+void Effect::notify_collision(const GameObject &) {
 }

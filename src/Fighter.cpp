@@ -145,7 +145,7 @@ void Fighter::update(float delta) {
  *
  * @param object
  */
-void Fighter::notify_collision(GameObject &object) {
+void Fighter::notify_collision(const GameObject &object) {
     int partner_id = (partner ? partner->get_id() : INVALID_ID);
     int not_in_ultimate = (tags["in_ultimate"] ? 0 : 1);
 

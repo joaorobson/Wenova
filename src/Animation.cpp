@@ -66,6 +66,6 @@ bool Animation::is_dead() {
  *
  * @param
  */
-void Animation::notify_collision(GameObject &) {
+void Animation::notify_collision(const GameObject &) {
     // nothing to do
 }

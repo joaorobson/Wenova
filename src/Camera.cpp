@@ -11,7 +11,7 @@
 #include "Camera.h"
 #include "InputManager.h"
 
-GameObject* Camera::focus = nullptr;
+const GameObject* Camera::focus = nullptr;
 Vector Camera::speed;
 Vector Camera::pos[LAYERS];
 float Camera::layer_speed[LAYERS] = {4, 6, 16, 32};
@@ -26,7 +26,7 @@ float Camera::layer_speed[LAYERS] = {4, 6, 16, 32};
  *
  * @param new_focus
  */
-void Camera::follow(GameObject* new_focus) {
+void Camera::follow(const GameObject* new_focus) {
     focus = new_focus;
 }
 

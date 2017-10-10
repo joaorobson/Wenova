@@ -77,7 +77,7 @@ bool Floor::is_dead() {
  *
  * @param
  */
-void Floor::notify_collision(GameObject &) {
+void Floor::notify_collision(const GameObject &) {
 }
 
 /**

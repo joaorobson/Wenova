@@ -187,5 +187,5 @@ bool FighterStats::is_dead() {
  *
  * @param
  */
-void FighterStats::notify_collision(GameObject &) {
+void FighterStats::notify_collision(const GameObject &) {
 }

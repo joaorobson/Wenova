@@ -239,7 +239,7 @@ bool EditableFloor::is_dead() {
  *
  * @param unamed An game object.
  */
-void EditableFloor::notify_collision(GameObject &) {
+void EditableFloor::notify_collision(const GameObject &) {
 }
 
 /**

@@ -73,7 +73,7 @@ class BattleEnd : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject &object);
+    void notify_collision(const GameObject &object);
 
  private:
     vector<Sprite> sprite; /**< Vector of sprites with images to display the */

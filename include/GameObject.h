@@ -30,7 +30,7 @@ class GameObject {
 
     virtual void render() = 0;
     virtual bool is_dead() = 0;
-    virtual void notify_collision(GameObject& object) = 0;
+    virtual void notify_collision(const GameObject& object) = 0;
     virtual bool is(string type) {
         stringstream types(type);
         string tag;

@@ -130,5 +130,5 @@ bool BattleEnd::quit_requested() {
  *
  * @param GameObject a pointer to a GameObject.
  */
-void BattleEnd::notify_collision(GameObject &) {
+void BattleEnd::notify_collision(const GameObject &) {
 }

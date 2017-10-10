@@ -29,7 +29,7 @@ class Floor : public GameObject {
     void render();
     bool is_dead();
 
-    void notify_collision(GameObject& object);
+    void notify_collision(const GameObject& object);
 
     int get_id();
 

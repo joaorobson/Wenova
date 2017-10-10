@@ -19,8 +19,8 @@
 
 class Collision {
  public:
-    static inline bool is_colliding(Rectangle& a, Rectangle& b, float angleOfA,
-                                    float angleOfB) {
+    static inline bool is_colliding(const Rectangle& a, const Rectangle& b,
+                                    float angleOfA, float angleOfB) {
         Vector A[] = {Vector(a.get_draw_x(), a.get_draw_y() + a.get_height()),
                       Vector(a.get_draw_x() + a.get_width(),
                              a.get_draw_y() + a.get_height()),

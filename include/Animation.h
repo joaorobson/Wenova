@@ -32,7 +32,7 @@ class Animation : public GameObject {
 
     bool is_dead();
 
-    void notify_collision(GameObject& object);
+    void notify_collision(const GameObject& object);
 };
 
 #endif  // INCLUDE_ANIMATION_H_

@@ -65,5 +65,5 @@ bool JoystickButton::is_dead() {
  *
  * @param
  */
-void JoystickButton::notify_collision(GameObject &) {
+void JoystickButton::notify_collision(const GameObject &) {
 }

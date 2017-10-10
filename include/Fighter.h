@@ -134,7 +134,7 @@ class Fighter : public GameObject {
     float get_remaining_life();
     float get_special();
 
-    void notify_collision(GameObject& object);
+    void notify_collision(const GameObject& object);
     void kill();
 
     void change_state(FighterState cstate);

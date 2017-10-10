@@ -30,7 +30,7 @@ State::~State() {
  *
  * @param object
  */
-void State::add_object(GameObject* object) {
+void State::add_object(const GameObject* object) {
     object_array.emplace_back(object);
 }
 

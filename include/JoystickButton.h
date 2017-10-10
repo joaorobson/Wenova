@@ -39,7 +39,7 @@ class JoystickButton : public GameObject {
     void render();
     bool is_dead();
 
-    void notify_collision(GameObject& object);
+    void notify_collision(const GameObject& object);
 };
 
 #endif  // INCLUDE_JOYSTICKBUTTON_H_
