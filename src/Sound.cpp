@@ -63,7 +63,7 @@ void Sound::stop() {
  * @param cfile is where is the sound.
  */
 void Sound::open(string cfile) {
-    sound = Resources::get_sound(RES_FOLDER + cfile);
+    sound = Resources::get_sound(RESOURCES_FOLDER + cfile);
 }
 
 /*

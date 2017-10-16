@@ -68,7 +68,7 @@ void Music::stop() {
  * @param file is where is the music.
  */
 void Music::open(string file) {
-    music = Resources::get_music(RES_FOLDER + file);
+    music = Resources::get_music(RESOURCES_FOLDER + file);
 }
 
 /*

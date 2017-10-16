@@ -54,7 +54,7 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
   time_elapsed = 0;
   texture = nullptr;
   finished = false;
-  open(RES_FOLDER + file);
+  open(RESOURCES_FOLDER + file);
 
   scale_x_axis = scale_y_axis = 1;
 }
