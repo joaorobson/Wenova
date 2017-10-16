@@ -148,10 +148,12 @@ void OptionsState::update(float) {
         changed.play();
 
         if (not on_submenu) {
+            assert(current_option >= 0);
             if (current_option != 0) {
                 current_option--;
             }
         } else {
+            assert(current_sub_option[current_option] >= 0);
             if (current_sub_option[current_option] != 0) {
                 current_sub_option[current_option]--;
             }
@@ -167,12 +169,15 @@ void OptionsState::update(float) {
         changed.play();
 
         if (not on_submenu) {
+            assert(current_option <= static_cast<int>(options.size() - 1));
             if (current_option != static_cast<int>(options.size()) - 1) {
                 current_option++;
             }
         } else {
             string text = options[current_option]->get_text();
 
+            assert(current_sub_option[current_option] <=
+                   static_cast<int>(sub_options[text].size()) - 1);
             if (current_sub_option[current_option] !=
                 static_cast<int>(sub_options[text].size()) - 1) {
                 current_sub_option[current_option]++;
@@ -187,6 +192,9 @@ void OptionsState::update(float) {
      */
     if (pressed[START] or pressed[A]) {
         selected.play();
+
+        assert(current_option >= 0);
+        assert(current_option <= static_cast<int>(options.size()) - 1);
 
         if (not on_submenu) {
             if (current_option ==
@@ -438,6 +446,7 @@ void OptionsState::build_options() {
  * menu.
  */
 int OptionsState::get_current_sub_option(int option) {
+    assert(option >= 0);
     /**
      * Check if the selected option was screen resolution.
      * If so, it generates the screen resolution option at the submenu

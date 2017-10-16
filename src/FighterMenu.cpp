@@ -6,6 +6,7 @@
 FighterMenu::FighterMenu() {}
 
 FighterMenu::FighterMenu(string cname, int frames, bool cenabled) {
+    assert(cname.empty() != true);
     name = cname;
     name_text = new Text("font/8-BIT WONDER.ttf", 20, Text::TextStyle::SOLID,
                          name, YELLOW);

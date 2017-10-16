@@ -11,12 +11,13 @@
 #ifndef INCLUDE_TIMECOUNTER_H_
 #define INCLUDE_TIMECOUNTER_H_
 
-#include <string>
-
 #include "GameObject.h"
 #include "Sprite.h"
 #include "Timer.h"
 #include "Text.h"
+
+#include <assert.h>
+#include <string>
 
 using std::string;
 

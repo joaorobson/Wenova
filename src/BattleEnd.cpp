@@ -23,6 +23,8 @@ using std::to_string;
  * that won the battle.
  */
 BattleEnd::BattleEnd(int id_winner) {
+    assert(id_winner >= 1);
+    assert(id_winner <= 3);
     back_btn = Sprite("victory/buttons/back.png");
 
     back_txt = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,

@@ -12,6 +12,7 @@
 #define INCLUDE_JOYSTICKBUTTON_H_
 
 #include <string>
+#include <assert.h>
 
 #include "GameObject.h"
 #include "Sprite.h"

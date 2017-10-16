@@ -16,6 +16,8 @@
 #include "Sound.h"
 #include "InputManager.h"
 
+#include <assert.h>
+
 #define N_BACKGROUNDS 2
 #define FRAME_TIME 7.5
 

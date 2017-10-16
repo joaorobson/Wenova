@@ -47,10 +47,12 @@ void TimeCounter::update(float delta) {
     timer.update(delta);
     remaining_seconds -= delta * 0.01 / 3;
 
+    assert(remaining_seconds >= 0);
     // FIXME
     if (remaining_seconds < 0) {
         remaining_seconds = 0;
     }
+
     time_text->set_text(get_time_string());
 }
 

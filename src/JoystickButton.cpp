@@ -5,6 +5,9 @@
 JoystickButton::JoystickButton(int x, int y, string clabel, int cbutton_id,
                                int cjoystick_id,
                                string csprite) {
+    assert(clabel.empty() != true);
+    assert(csprite.empty() != true);
+
     sprite = Sprite("joysticks/" + csprite + ".png");
     pressed_sprite = Sprite("joysticks/pressed_" + csprite + ".png");
     box = Rectangle(x, y, sprite.get_width(), sprite.get_height());

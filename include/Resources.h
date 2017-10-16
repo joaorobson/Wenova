@@ -15,6 +15,7 @@
 #include <unordered_map>
 #include <memory>
 #include <string>
+#include <assert.h>
 
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"

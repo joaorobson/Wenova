@@ -300,6 +300,8 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
 void JoystickConfigState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
 
+    assert(delta >= 0);
+
     /**
      * Check if user has request to quit the menu "Options".
      */

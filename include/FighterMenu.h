@@ -14,6 +14,7 @@
 #include <utility>
 #include <string>
 #include <vector>
+#include <assert.h>
 
 #include "Sprite.h"
 #include "Text.h"

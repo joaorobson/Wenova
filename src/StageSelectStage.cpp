@@ -127,6 +127,8 @@ void StageSelectState::render() {
  * @param increment an integer value that updates the current stage.
  */
 void StageSelectState::update_stage_select(int increment) {
+    assert(stage_select >= 0);
+    assert(stage_select <= amount_stages - 1);
     stage_select += increment;
 
     if (stage_select < 0) {

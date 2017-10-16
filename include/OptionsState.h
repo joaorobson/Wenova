@@ -23,6 +23,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <assert.h>
 
 using std::pair;
 using std::map;
