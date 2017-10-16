@@ -16,12 +16,95 @@
 #include "StageSelectState.h"
 
 #define FRAME_TIME 7.5
-#define N_PLAYERS 4
-#define N_BACKGROUNDS 2
-#define N_SKINS 4
 #define FIRST_PLAYER 0
+#define ALLOCATED_CHANNELS 50 /**< Allocated channels for mixing. */
+
 #define N_COLS 2
 #define N_ROWS 4
+#define N_PLAYERS 4
+#define N_backgrounds_spritesS 2
+#define N_SKINS 4
+
+#define NAMES_TAGS_X_POSITIONS_1 91
+#define NAMES_TAGS_Y_POSITIONS_1 145
+
+#define NAMES_TAGS_X_POSITIONS_2 92
+#define NAMES_TAGS_Y_POSITIONS_2 494
+
+#define NAMES_TAGS_X_POSITIONS_3 956
+#define NAMES_TAGS_Y_POSITIONS_3 145
+
+#define NAMES_TAGS_X_POSITIONS_4 955
+#define NAMES_TAGS_Y_POSITIONS_4 494
+
+#define CHARACTERS_X_POSITIONS_1 125
+#define CHARACTERS_Y_POSITIONS_1 32
+
+#define CHARACTERS_X_POSITIONS_2 121
+#define CHARACTERS_Y_POSITIONS_2 379
+
+#define CHARACTERS_X_POSITIONS_3 943
+#define CHARACTERS_Y_POSITIONS_3 34
+
+#define CHARACTERS_X_POSITIONS_4 956
+#define CHARACTERS_Y_POSITIONS_4 381
+
+#define CHARACTERS_X_POSITIONS_DELTAS_1 173
+#define CHARACTERS_Y_POSITIONS_DELTAS_1 152
+
+#define CHARACTERS_X_POSITIONS_DELTAS_2 172
+#define CHARACTERS_Y_POSITIONS_DELTAS_2 154
+
+#define CHARACTERS_X_POSITIONS_DELTAS_3 102
+#define CHARACTERS_Y_POSITIONS_DELTAS_3 153
+
+#define CHARACTERS_X_POSITIONS_DELTAS_4 105
+#define CHARACTERS_Y_POSITIONS_DELTAS_4 153
+
+#define NUMBERS_X_POSITIONS_DELTAS_1 12
+#define NUMBERS_Y_POSITIONS_DELTAS_1 9
+
+#define NUMBERS_X_POSITIONS_DELTAS_2 93
+#define NUMBERS_Y_POSITIONS_DELTAS_2 9
+
+#define NUMBERS_X_POSITIONS_DELTAS_3 12
+#define NUMBERS_Y_POSITIONS_DELTAS_3 101
+
+#define NUMBERS_X_POSITIONS_DELTAS_4 93
+#define NUMBERS_Y_POSITIONS_DELTAS_4 101
+
+#define CHARACTER_SLOTS_PATH "character_select/character_slots.png"
+#define SELECTED_TAG_PATH "character_select/selected.png"
+#define READY_TO_FIGHT_PATH "character_select/ready_to_fight.png"
+#define PLANET_SPRITE_PATH "character_select/planet.png"
+
+#define ROWS_X_POSITIONS \
+    { 510, 645 }
+#define ROWS_Y_POSITIONS \
+    { 55, 197, 395, 536 }
+
+/**
+ * To allow iterations over many elements.
+ */
+#define BACKGROUND_SPRITES_PREFIX_PATH "character_select/background_"
+#define PLAYERS_NUMBERS_SPRITES_PREFIX_PATH "character_select/number_"
+#define NAMES_TAGS_SPRITES_PREFIX_PATH "character_select/name_tag_"
+#define CHARACTERS_FORMAT ".png"
+
+#define BLOCKED_SOUND_PATH "menu/sound/cancel.ogg"
+#define SELECT_SOUND_PATH "menu/sound/select.ogg"
+#define CHANGED_SOUND_PATH "menu/sound/cursor.ogg"
+
+#define PLANET_SPRITE_SCALE 1.5
+#define PLANET_SPRITE_AMOUNT 8
+
+#define CHARATERS_SPRITES_AMOUNT \
+    { 12, 8, 8, 7, 4, 4, 7, 5 }
+#define CHARACTERS_NAMES \
+    { "blood", "flesh", "hookline", "sinker", "trap", "trip", "dusk", "dawn" }
+
+#define BACKGROUNDS_SIZE_WIDTH 1280
+#define BACKGROUNDS_SIZE_HEIGHT 720
 
 /**
  * Load all artistic files and initializes board variables based
@@ -30,56 +113,76 @@
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
-    Mix_AllocateChannels(50);
+    Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
     memset(current_column, 0, sizeof current_column);
     memset(current_row, 0, sizeof current_row);
     memset(current_skin, 0, sizeof current_skin);
     memset(is_character_selected, false, sizeof is_character_selected);
 
-    character_slots = Sprite("character_select/character_slots.png");
-    selected_tag = Sprite("character_select/selected.png");
-    ready_to_fight = Sprite("character_select/ready_to_fight.png");
-    planet_logo = Sprite("character_select/planet.png", 8, FRAME_TIME);
-    planet_logo.set_scale(1.5);
+    characters_slots_sprites = Sprite(CHARACTER_SLOTS_PATH);
+    selected_tags_sprites = Sprite(SELECTED_TAG_PATH);
+    ready_to_fight_sprite = Sprite(READY_TO_FIGHT_PATH);
+    planet_sprite =
+        Sprite(PLANET_SPRITE_PATH, PLANET_SPRITE_AMOUNT, FRAME_TIME);
+    planet_sprite.set_scale(PLANET_SPRITE_SCALE);
 
     is_ready = false;
 
     selected_stage = cselected_stage;
-    blocked = Sound("menu/sound/cancel.ogg");
-    select_sound = Sound("menu/sound/select.ogg");
-    changed = Sound("menu/sound/cursor.ogg");
+    blocked_sound = Sound(BLOCKED_SOUND_PATH);
+    select_sound = Sound(SELECT_SOUND_PATH);
+    changed_sound = Sound(CHANGED_SOUND_PATH);
 
     /**
-     * Load backgrounds following standards for file name.
+     * Load backgrounds_spritess following standards for file name.
      */
-    for (int i = 0; i < N_BACKGROUNDS; i++) {
-        background[i] = Sprite("character_select/background_" +
-                               std::to_string(i + 1) + ".png");
+    for (int i = 0; i < N_backgrounds_spritesS; i++) {
+        backgrounds_sprites[i] = Sprite(BACKGROUND_SPRITES_PREFIX_PATH +
+                                        std::to_string(i + 1) + ".png");
     }
 
     /**
      * Load information for players based on standards for file name.
      */
     for (int i = 0; i < N_PLAYERS; i++) {
-        name_tag[i] = Sprite("character_select/name_tag_" +
-                             std::to_string(i + 1) + ".png");
-        player_number[i] =
-            Sprite("character_select/number_" + std::to_string(i + 1) + ".png");
+        names_tags_sprites[i] =
+            Sprite(NAMES_TAGS_SPRITES_PREFIX_PATH + std::to_string(i + 1) +
+                   CHARACTERS_FORMAT);
+
+        players_numbers_sprites[i] =
+            Sprite(PLAYERS_NUMBERS_SPRITES_PREFIX_PATH + std::to_string(i + 1) +
+                   CHARACTERS_FORMAT);
     }
 
     /**
      * Load information for characters based on standards for file name.
      */
     for (int i = 0; i < N_CHARS; i++) {
-        chars[i] =
-            FighterMenu(get_char_info(i).first, get_char_info(i).second, i < 2);
+        chars[i] = FighterMenu(get_chars_info(i).first,
+                               get_chars_info(i).second, i < 2);
     }
 
-    name_tag_positions = {ii(91, 145), ii(92, 494), ii(956, 145), ii(955, 494)};
-    sprite_position = {ii(125, 32), ii(121, 379), ii(943, 34), ii(956, 381)};
-    name_delta = {ii(173, 152), ii(172, 154), ii(102, 153), ii(105, 153)};
-    number_delta = {ii(12, 9), ii(93, 9), ii(12, 101), ii(93, 101)};
+    names_tags_positions = {
+        ii(NAMES_TAGS_X_POSITIONS_1, NAMES_TAGS_Y_POSITIONS_1),
+        ii(NAMES_TAGS_X_POSITIONS_2, NAMES_TAGS_Y_POSITIONS_2),
+        ii(NAMES_TAGS_X_POSITIONS_3, NAMES_TAGS_Y_POSITIONS_3),
+        ii(NAMES_TAGS_X_POSITIONS_4, NAMES_TAGS_Y_POSITIONS_4)};
+    characters_positions = {
+        ii(CHARACTERS_X_POSITIONS_1, CHARACTERS_Y_POSITIONS_1),
+        ii(CHARACTERS_X_POSITIONS_2, CHARACTERS_Y_POSITIONS_2),
+        ii(CHARACTERS_X_POSITIONS_3, CHARACTERS_Y_POSITIONS_3),
+        ii(CHARACTERS_X_POSITIONS_4, CHARACTERS_Y_POSITIONS_4)};
+    names_positions_deltas = {
+        ii(CHARACTERS_X_POSITIONS_DELTAS_1, CHARACTERS_Y_POSITIONS_DELTAS_1),
+        ii(CHARACTERS_X_POSITIONS_DELTAS_2, CHARACTERS_Y_POSITIONS_DELTAS_2),
+        ii(CHARACTERS_X_POSITIONS_DELTAS_3, CHARACTERS_Y_POSITIONS_DELTAS_3),
+        ii(CHARACTERS_X_POSITIONS_DELTAS_4, CHARACTERS_Y_POSITIONS_DELTAS_4)};
+    numbers_positions_deltas = {
+        ii(NUMBERS_X_POSITIONS_DELTAS_1, NUMBERS_Y_POSITIONS_DELTAS_1),
+        ii(NUMBERS_X_POSITIONS_DELTAS_2, NUMBERS_Y_POSITIONS_DELTAS_2),
+        ii(NUMBERS_X_POSITIONS_DELTAS_3, NUMBERS_Y_POSITIONS_DELTAS_3),
+        ii(NUMBERS_X_POSITIONS_DELTAS_4, NUMBERS_Y_POSITIONS_DELTAS_4)};
 
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
@@ -107,7 +210,8 @@ void CharacterSelectState::update(float delta) {
      * Process request for going next menu.
      */
     if (is_key_pressed[FIRST_PLAYER][SELECT] or
-        (not is_character_selected[FIRST_PLAYER] and is_key_pressed[FIRST_PLAYER][B])) {
+        (not is_character_selected[FIRST_PLAYER] and
+         is_key_pressed[FIRST_PLAYER][B])) {
         select_sound.play();
         m_quit_requested = true;
         Game::get_instance().push(new StageSelectState());
@@ -119,7 +223,8 @@ void CharacterSelectState::update(float delta) {
      */
     if (all_players_selected()) {
         is_ready = true;
-        if (is_key_pressed[FIRST_PLAYER][START] or is_key_pressed[FIRST_PLAYER][A]) {
+        if (is_key_pressed[FIRST_PLAYER][START] or
+            is_key_pressed[FIRST_PLAYER][A]) {
             select_sound.play();
             vector<pair<string, string> > p = export_players();
             m_quit_requested = true;
@@ -175,32 +280,32 @@ void CharacterSelectState::update(float delta) {
              * Change current selected character.
              */
             if (is_key_pressed[i][LEFT]) {
-                changed.play();
+                changed_sound.play();
                 if (current_column[i] != 0) {
                     current_column[i]--;
                 }
             }
             if (is_key_pressed[i][RIGHT]) {
-                changed.play();
+                changed_sound.play();
                 if (current_column[i] + 1 < N_COLS) {
                     current_column[i]++;
                 }
             }
             if (is_key_pressed[i][UP]) {
-                changed.play();
+                changed_sound.play();
                 if (current_row[i] != 0) {
                     current_row[i]--;
                 }
             }
             if (is_key_pressed[i][DOWN]) {
-                changed.play();
+                changed_sound.play();
                 if (current_row[i] + 1 < N_ROWS) {
                     current_row[i]++;
                 }
             }
 
             /**
-             * Reset skin if character changed.
+             * Reset skin if character changed_sound.
              */
             if (current_column[i] != old_col or current_row[i] != old_row) {
                 current_skin[i] = 0;
@@ -210,11 +315,11 @@ void CharacterSelectState::update(float delta) {
              * Change skin.
              */
             if (is_key_pressed[i][LT]) {
-                changed.play();
+                changed_sound.play();
                 current_skin[i] = (current_skin[i] - 1 + N_SKINS) % N_SKINS;
             }
             if (is_key_pressed[i][RT]) {
-                changed.play();
+                changed_sound.play();
                 current_skin[i] = (current_skin[i] + 1) % N_SKINS;
             }
 
@@ -225,18 +330,19 @@ void CharacterSelectState::update(float delta) {
                 int char_sel = current_row[i] * N_COLS + current_column[i];
 
                 /**
-                 * Check if character or skin are unblocked.
+                 * Check if character or skin are unblocked_sound.
                  */
                 if (chars[char_sel].is_enabled()) {
-                    if (not chars[char_sel].is_skin_available(current_skin[i])) {
-                        blocked.play();
+                    if (not chars[char_sel].is_skin_available(
+                            current_skin[i])) {
+                        blocked_sound.play();
                     } else {
                         select_sound.play();
                         chars[char_sel].lock_skin(current_skin[i]);
                         is_character_selected[i] = true;
                     }
                 } else {
-                    blocked.play();
+                    blocked_sound.play();
                 }
             }
         } else {
@@ -263,7 +369,7 @@ void CharacterSelectState::update(float delta) {
         }
     }
 
-    planet_logo.update(delta);
+    planet_sprite.update(delta);
 }
 
 /**
@@ -271,16 +377,37 @@ void CharacterSelectState::update(float delta) {
  * Render the board with characters options, including all effects.
  */
 void CharacterSelectState::render() {
-    background[0].render(0, 0);
-    planet_logo.render(640 - planet_logo.get_width() / 2, 360 - planet_logo.get_height() / 2);
-    background[1].render(0, 0);
-    character_slots.render(0, 0);
+    /**
+     * Put backgrounds_spritess, planet_sprite and characters_slots_sprites
+     * centralized.
+     */
+
+    /**
+     * Result should be 0 for backgrounds_spritess images.
+     */
+    backgrounds_sprites[0].render(
+        BACKGROUNDS_SIZE_WIDTH / 2 - backgrounds_sprites[0].get_width() / 2,
+        BACKGROUNDS_SIZE_HEIGHT / 2 - backgrounds_sprites[1].get_height() / 2);
+
+    planet_sprite.render(
+        BACKGROUNDS_SIZE_WIDTH / 2 - planet_sprite.get_width() / 2,
+        BACKGROUNDS_SIZE_HEIGHT / 2 - planet_sprite.get_height() / 2);
+
+    backgrounds_sprites[1].render(
+        BACKGROUNDS_SIZE_WIDTH / 2 - backgrounds_sprites[0].get_width() / 2,
+        BACKGROUNDS_SIZE_HEIGHT / 2 - backgrounds_sprites[1].get_height() / 2);
+
+    characters_slots_sprites.render(
+        BACKGROUNDS_SIZE_WIDTH / 2 - characters_slots_sprites.get_width() / 2,
+        BACKGROUNDS_SIZE_HEIGHT / 2 -
+            characters_slots_sprites.get_height() / 2);
 
     /**
      * Iterate over elements rendering things.
      */
     for (int i = 0; i < N_PLAYERS; i++) {
         SDL_RendererFlip flip = i >= 2 ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+
         int row_selected = current_row[i];
         int col_selected = current_column[i];
         int char_sel = row_selected * N_COLS + col_selected;
@@ -288,39 +415,45 @@ void CharacterSelectState::render() {
         FighterMenu char_selected = chars[char_sel];
 
         char_selected.get_skin(current_skin[i])
-            .render(sprite_position[i].first, sprite_position[i].second, 0, flip);
+            .render(characters_positions[i].first,
+                    characters_positions[i].second, 0, flip);
 
         /**
          * Render not available skins for not selected characters.
          */
         if (not char_selected.is_skin_available(current_skin[i]) and
             not is_character_selected[i]) {
-            char_selected.get_disabled().render(sprite_position[i].first,
-                                                sprite_position[i].second, 0, flip);
+            char_selected.get_disabled().render(characters_positions[i].first,
+                                                characters_positions[i].second,
+                                                0, flip);
         }
 
         char_selected.get_name_text()->set_pos(
-            name_tag_positions[i].first + name_delta[i].first,
-            name_tag_positions[i].second + name_delta[i].second, true, true);
+            names_tags_positions[i].first + names_positions_deltas[i].first,
+            names_tags_positions[i].second + names_positions_deltas[i].second,
+            true, true);
 
         ii slot = get_slot(row_selected, col_selected);
-        name_tag[i].render(name_tag_positions[i].first,
-                           name_tag_positions[i].second);
+        names_tags_sprites[i].render(names_tags_positions[i].first,
+                                     names_tags_positions[i].second);
+
         char_selected.get_name_text()->render();
-        player_number[i].render(slot.first + number_delta[i].first,
-                         slot.second + number_delta[i].second);
+        players_numbers_sprites[i].render(
+            slot.first + numbers_positions_deltas[i].first,
+            slot.second + numbers_positions_deltas[i].second);
 
         /**
          * Mark selected character with skin.
          */
         if (is_character_selected[i]) {
-            selected_tag.render(name_tag_positions[i].first,
-                                name_tag_positions[i].second, 0, flip);
+            selected_tags_sprites.render(names_tags_positions[i].first,
+                                         names_tags_positions[i].second, 0,
+                                         flip);
         }
     }
 
     if (is_ready) {
-        ready_to_fight.render(0, 0);
+        ready_to_fight_sprite.render(0, 0);
     }
 }
 
@@ -345,10 +478,9 @@ bool CharacterSelectState::all_players_selected() {
  *
  * @returns Name and number of frames in corresponding sprite
  */
-pair<string, int> CharacterSelectState::get_char_info(int idx) {
-    vector<string> names = {"blood", "flesh", "hookline", "sinker",
-                            "trap",  "trip",  "dusk",     "dawn"};
-    vector<int> frames = {12, 8, 8, 7, 4, 4, 7, 5};
+pair<string, int> CharacterSelectState::get_chars_info(int idx) {
+    vector<string> names = CHARACTERS_NAMES;
+    vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
     return std::make_pair(names[idx], frames[idx]);
 }
@@ -404,16 +536,20 @@ void CharacterSelectState::process_input() {
  * @returns pair of ints which indicates the corresponding slot.
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
-    vector<int> x = {510, 645}, y = {55, 197, 395, 536};
+    vector<int> x = ROWS_X_POSITIONS;
+    vector<int> y = ROWS_Y_POSITIONS;
+
     return ii(x[col], y[row]);
 }
 
 /**
  * Not implemented.
  */
-void CharacterSelectState::pause() {}
+void CharacterSelectState::pause() {
+}
 
 /**
  * Not implemented.
  */
-void CharacterSelectState::resume() {}
+void CharacterSelectState::resume() {
+}
