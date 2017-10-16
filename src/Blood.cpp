@@ -35,7 +35,7 @@
 #define DEFENDING_IMAGE "defending.png"
 #define STUNNED_IMAGE "stunned.png"
 #define SPECIAL_1_1_IMAGE "special_1_1.png"
-#define SPECIAL_1_2_IMAGE "SPECIAL_1_2.png"
+#define SPECIAL_1_2_IMAGE "special_1_2.png"
 #define SPECIAL_2_IMAGE "special_2.png"
 #define DYING_IMAGE "dying.png"
 #define HEAL_EFFECT_IMAGE_PATH "characters/blood/heal_effect.png"
