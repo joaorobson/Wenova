@@ -23,56 +23,56 @@
 #define N_COLS 2
 #define N_ROWS 4
 #define N_PLAYERS 4
-#define N_backgrounds_spritesS 2
+#define N_backgrounds_sprites 2
 #define N_SKINS 4
 
-#define NAMES_TAGS_X_POSITIONS_1 91
-#define NAMES_TAGS_Y_POSITIONS_1 145
+#define NAMES_TAGS_X_POSITIONS_1 91 /**< Unit: px*/
+#define NAMES_TAGS_Y_POSITIONS_1 145 /**< Unit: px*/
 
-#define NAMES_TAGS_X_POSITIONS_2 92
-#define NAMES_TAGS_Y_POSITIONS_2 494
+#define NAMES_TAGS_X_POSITIONS_2 92 /**< Unit: px*/
+#define NAMES_TAGS_Y_POSITIONS_2 494 /**< Unit: px*/
 
-#define NAMES_TAGS_X_POSITIONS_3 956
-#define NAMES_TAGS_Y_POSITIONS_3 145
+#define NAMES_TAGS_X_POSITIONS_3 956 /**< Unit: px*/
+#define NAMES_TAGS_Y_POSITIONS_3 145 /**< Unit: px*/
 
-#define NAMES_TAGS_X_POSITIONS_4 955
-#define NAMES_TAGS_Y_POSITIONS_4 494
+#define NAMES_TAGS_X_POSITIONS_4 955 /**< Unit: px*/
+#define NAMES_TAGS_Y_POSITIONS_4 494 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_1 125
-#define CHARACTERS_Y_POSITIONS_1 32
+#define CHARACTERS_X_POSITIONS_1 125 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_1 32 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_2 121
-#define CHARACTERS_Y_POSITIONS_2 379
+#define CHARACTERS_X_POSITIONS_2 121 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_2 379 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_3 943
-#define CHARACTERS_Y_POSITIONS_3 34
+#define CHARACTERS_X_POSITIONS_3 943 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_3 34 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_4 956
-#define CHARACTERS_Y_POSITIONS_4 381
+#define CHARACTERS_X_POSITIONS_4 956 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_4 381 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_DELTAS_1 173
-#define CHARACTERS_Y_POSITIONS_DELTAS_1 152
+#define CHARACTERS_X_POSITIONS_DELTAS_1 173 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_DELTAS_1 152 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_DELTAS_2 172
-#define CHARACTERS_Y_POSITIONS_DELTAS_2 154
+#define CHARACTERS_X_POSITIONS_DELTAS_2 172 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_DELTAS_2 154 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_DELTAS_3 102
-#define CHARACTERS_Y_POSITIONS_DELTAS_3 153
+#define CHARACTERS_X_POSITIONS_DELTAS_3 102 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_DELTAS_3 153 /**< Unit: px*/
 
-#define CHARACTERS_X_POSITIONS_DELTAS_4 105
-#define CHARACTERS_Y_POSITIONS_DELTAS_4 153
+#define CHARACTERS_X_POSITIONS_DELTAS_4 105 /**< Unit: px*/
+#define CHARACTERS_Y_POSITIONS_DELTAS_4 153 /**< Unit: px*/
 
-#define NUMBERS_X_POSITIONS_DELTAS_1 12
-#define NUMBERS_Y_POSITIONS_DELTAS_1 9
+#define NUMBERS_X_POSITIONS_DELTAS_1 12 /**< Unit: px*/
+#define NUMBERS_Y_POSITIONS_DELTAS_1 9 /**< Unit: px*/
 
-#define NUMBERS_X_POSITIONS_DELTAS_2 93
-#define NUMBERS_Y_POSITIONS_DELTAS_2 9
+#define NUMBERS_X_POSITIONS_DELTAS_2 93 /**< Unit: px*/
+#define NUMBERS_Y_POSITIONS_DELTAS_2 9 /**< Unit: px*/
 
-#define NUMBERS_X_POSITIONS_DELTAS_3 12
-#define NUMBERS_Y_POSITIONS_DELTAS_3 101
+#define NUMBERS_X_POSITIONS_DELTAS_3 12 /**< Unit: px*/
+#define NUMBERS_Y_POSITIONS_DELTAS_3 101 /**< Unit: px*/
 
-#define NUMBERS_X_POSITIONS_DELTAS_4 93
-#define NUMBERS_Y_POSITIONS_DELTAS_4 101
+#define NUMBERS_X_POSITIONS_DELTAS_4 93 /**< Unit: px*/
+#define NUMBERS_Y_POSITIONS_DELTAS_4 101 /**< Unit: px*/
 
 #define CHARACTER_SLOTS_PATH "character_select/character_slots.png"
 #define SELECTED_TAG_PATH "character_select/selected.png"
@@ -104,8 +104,8 @@
 #define CHARACTERS_NAMES \
     { "blood", "flesh", "hookline", "sinker", "trap", "trip", "dusk", "dawn" }
 
-#define BACKGROUNDS_SIZE_WIDTH 1280
-#define BACKGROUNDS_SIZE_HEIGHT 720
+#define BACKGROUNDS_SIZE_WIDTH 1280  /**< Unit: px*/
+#define BACKGROUNDS_SIZE_HEIGHT 720  /**< Unit: px*/
 
 /**
  * Load all artistic files and initializes board variables based
@@ -114,6 +114,65 @@
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
+
+    #ifndef NDEBUG
+        assert(NAMES_TAGS_X_POSITIONS_1 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NAMES_TAGS_Y_POSITIONS_1 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NAMES_TAGS_X_POSITIONS_2 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NAMES_TAGS_Y_POSITIONS_2 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NAMES_TAGS_X_POSITIONS_3 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NAMES_TAGS_Y_POSITIONS_3 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NAMES_TAGS_X_POSITIONS_4 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NAMES_TAGS_Y_POSITIONS_4 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_1 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_1 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_2 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_2 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_3 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_3 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_4 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_4 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(CHARACTERS_X_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_WIDTH);
+        assert(CHARACTERS_Y_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NUMBERS_X_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NUMBERS_Y_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NUMBERS_X_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NUMBERS_Y_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NUMBERS_X_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NUMBERS_Y_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_HEIGHT);
+
+        assert(NUMBERS_X_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_WIDTH);
+        assert(NUMBERS_Y_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_HEIGHT);
+
+        for(auto x: ROWS_X_POSITIONS){
+            assert(x < BACKGROUNDS_SIZE_WIDTH);
+        }
+
+        for(auto y: ROWS_Y_POSITIONS){
+            assert(y < BACKGROUNDS_SIZE_HEIGHT);
+        }
+    #endif
+
     Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
     memset(current_column, 0, sizeof current_column);
@@ -138,7 +197,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
     /**
      * Load backgrounds_spritess following standards for file name.
      */
-    for (int i = 0; i < N_backgrounds_spritesS; i++) {
+    for (int i = 0; i < N_backgrounds_sprites; i++) {
         backgrounds_sprites[i] = Sprite(BACKGROUND_SPRITES_PREFIX_PATH +
                                         std::to_string(i + 1) + ".png");
     }
@@ -497,6 +556,9 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
 
     for (int i = 0; i < N_PLAYERS; i++) {
         int char_sel = current_row[i] * N_COLS + current_column[i];
+
+        assert(char_sel < N_CHARS);
+
         players.push_back(
             std::make_pair(chars[char_sel].get_name(),
                            chars[char_sel].get_skin_name(current_skin[i])));
@@ -539,6 +601,9 @@ void CharacterSelectState::process_input() {
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
+
+    assert((size_t) col < x.size());
+    assert((size_t) row < y.size());
 
     return ii(x[col], y[row]);
 }
