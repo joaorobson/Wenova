@@ -104,8 +104,8 @@
 #define CHARACTERS_NAMES \
     { "blood", "flesh", "hookline", "sinker", "trap", "trip", "dusk", "dawn" }
 
-#define BACKGROUNDS_SIZE_WIDTH 1280  /**< Unit: px*/
-#define BACKGROUNDS_SIZE_HEIGHT 720  /**< Unit: px*/
+#define BACKGROUNDS_SIZE_WIDTH 1280 /**< Unit: px*/
+#define BACKGROUNDS_SIZE_HEIGHT 720 /**< Unit: px*/
 
 /**
  * Load all artistic files and initializes board variables based
@@ -114,190 +114,194 @@
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
-    LOG(INFO) << "Starting CharacterSelectState constructor with cselected_stage: " << cselected_stage;
+    LOG(INFO)
+        << "Starting CharacterSelectState constructor with cselected_stage: "
+        << cselected_stage;
 
-    if(NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_1 is bigger than screen";
     }
 
-    if(NAMES_TAGS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_1 is bigger than screen";
     }
 
-    if(NAMES_TAGS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_2 is bigger than screen";
     }
 
-    if(NAMES_TAGS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_2 is bigger than screen";
     }
 
-    if(NAMES_TAGS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_3 is bigger than screen";
     }
 
-    if(NAMES_TAGS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_3 is bigger than screen";
     }
 
-    if(NAMES_TAGS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_4 is bigger than screen";
     }
 
-    if(NAMES_TAGS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_4 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_1 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_1 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_2 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_2 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_3 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_3 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_4 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_4 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if(CHARACTERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    if(CHARACTERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    if(NUMBERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if(NUMBERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if(NUMBERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if(NUMBERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if(NUMBERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if(NUMBERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if(NUMBERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    if(NUMBERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    for (auto x: ROWS_X_POSITIONS) {
+    for (auto x : ROWS_X_POSITIONS) {
         if (x < BACKGROUNDS_SIZE_WIDTH) {
-            LOG(FATAL) << "ROWS_X_POSITIONS, element: " << x << "is bigger than screen";
+            LOG(FATAL) << "ROWS_X_POSITIONS, element: " << x
+                       << "is bigger than screen";
         }
     }
 
-    for (auto y: ROWS_Y_POSITIONS) {
+    for (auto y : ROWS_Y_POSITIONS) {
         if (x < BACKGROUNDS_SIZE_WIDTH) {
-            LOG(FATAL) << "ROWS_Y_POSITIONS, element: " << y << "is bigger than screen";
+            LOG(FATAL) << "ROWS_Y_POSITIONS, element: " << y
+                       << "is bigger than screen";
         }
     }
 
-    #ifndef NDEBUG
-        assert(NAMES_TAGS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NAMES_TAGS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NAMES_TAGS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NAMES_TAGS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(CHARACTERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NUMBERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NUMBERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NUMBERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-        assert(NUMBERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+#ifndef NDEBUG
+    assert(NAMES_TAGS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NAMES_TAGS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NAMES_TAGS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NAMES_TAGS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
 
-        for (auto x: ROWS_X_POSITIONS) {
-            assert(x <= BACKGROUNDS_SIZE_WIDTH);
-        }
+    for (auto x : ROWS_X_POSITIONS) {
+        assert(x <= BACKGROUNDS_SIZE_WIDTH);
+    }
 
-        for (auto y: ROWS_Y_POSITIONS) {
-            assert(y <= BACKGROUNDS_SIZE_HEIGHT);
-        }
-    #endif
+    for (auto y : ROWS_Y_POSITIONS) {
+        assert(y <= BACKGROUNDS_SIZE_HEIGHT);
+    }
+#endif
 
     Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
@@ -382,7 +386,8 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
  * @param delta Variation of how much the characters player travelled
  */
 void CharacterSelectState::update(float delta) {
-    LOG(INFO) << "Starting CharacterSelectState update method with delta: " << delta;
+    LOG(INFO) << "Starting CharacterSelectState update method with delta: "
+              << delta;
 
     process_input();
 
@@ -394,7 +399,8 @@ void CharacterSelectState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
 
-        LOG(INFO) << "Ending CharacterSelectState update due quit request method";
+        LOG(INFO)
+            << "Ending CharacterSelectState update due quit request method";
         return;
     }
 
@@ -408,7 +414,8 @@ void CharacterSelectState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new StageSelectState());
 
-        LOG(INFO) << "Ending CharacterSelectState update due quit request method";
+        LOG(INFO)
+            << "Ending CharacterSelectState update due quit request method";
         return;
     }
 
@@ -425,7 +432,8 @@ void CharacterSelectState::update(float delta) {
             Game::get_instance().push(
                 new BattleState(selected_stage, export_players()));
 
-            LOG(INFO) << "Ending CharacterSelectState update due quit request method";
+            LOG(INFO)
+                << "Ending CharacterSelectState update due quit request method";
             return;
         }
     }
@@ -670,14 +678,18 @@ bool CharacterSelectState::all_players_selected() {
     for (auto cur : is_character_selected) {
         if (not cur) {
             return_value = false;
-            LOG(INFO) << "Ending CharacterSelectState all_players_selected method returning value: " << return_value;
+            LOG(INFO) << "Ending CharacterSelectState all_players_selected "
+                         "method returning value: "
+                      << return_value;
 
             return return_value;
         }
     }
 
     return_value = true;
-    LOG(INFO) << "Ending CharacterSelectState all_players_selected method returning value: " << return_value;
+    LOG(INFO) << "Ending CharacterSelectState all_players_selected method "
+                 "returning value: "
+              << return_value;
 
     return return_value;
 }
@@ -690,13 +702,17 @@ bool CharacterSelectState::all_players_selected() {
  * @returns Name and number of frames in corresponding sprite
  */
 pair<string, int> CharacterSelectState::get_chars_info(int idx) {
-    LOG(INFO) << "Starting CharacterSelectState get_chars_info method with idx: " << idx;
+    LOG(INFO)
+        << "Starting CharacterSelectState get_chars_info method with idx: "
+        << idx;
 
     vector<string> names = CHARACTERS_NAMES;
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
     return_value = std::make_pair(names[idx], frames[idx]);
-    LOG(INFO) << "Ending CharacterSelectState get_chars_info method returning value: " << return_value;
+    LOG(INFO)
+        << "Ending CharacterSelectState get_chars_info method returning value: "
+        << return_value;
 
     return return_value;
 }
@@ -715,7 +731,7 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
     for (int i = 0; i < N_PLAYERS; i++) {
         int char_sel = current_row[i] * N_COLS + current_column[i];
 
-        if(char_sel >= N_CHARS) {
+        if (char_sel >= N_CHARS) {
             LOG(FATAL) << "char_sel is out of bound with value: " << char_sel;
         }
         assert(char_sel < N_CHARS);
@@ -726,7 +742,9 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
     }
 
     return_value = players;
-    LOG(INFO) << "Ending CharacterSelectState export_players method returning value: " << return_value;
+    LOG(INFO)
+        << "Ending CharacterSelectState export_players method returning value: "
+        << return_value;
 
     return return_value;
 }
@@ -767,23 +785,25 @@ void CharacterSelectState::process_input() {
  * @returns pair of ints which indicates the corresponding slot.
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
-    LOG(INFO) << "Starting CharacterSelectState get_slot method with row: " << row << "and col: " << col;
+    LOG(INFO) << "Starting CharacterSelectState get_slot method with row: "
+              << row << "and col: " << col;
 
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
-    if((size_t) col >= x.size()) {
+    if ((size_t) col >= x.size()) {
         LOG(FATAL) << "col is out of bound with value: " << col;
     }
     assert((size_t) col < x.size());
 
-    if((size_t) row >= y.size()) {
+    if ((size_t) row >= y.size()) {
         LOG(FATAL) << "char_sel is out of bound with value: " << char_sel;
     }
     assert((size_t) row < y.size());
 
     return_value = ii(x[col], y[row]);
-    LOG(INFO) << "Ending CharacterSelectState get_slot method returning value: " << return_value;
+    LOG(INFO) << "Ending CharacterSelectState get_slot method returning value: "
+              << return_value;
 
     return return_value;
 }
