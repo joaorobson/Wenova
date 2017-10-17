@@ -9,6 +9,7 @@
  * This file contains the definition of the Sprite class methods.
  */
 
+#include <assert.h>
 #include "UltimateEffect.h"
 #define IN_ULTIMATE_TAG "in_ultimate"
 #define PLAYER_TAG "player" 
@@ -87,6 +88,8 @@ void UltimateEffect::render() {
  * Check if the last state of Figher is dead.
  */
 bool UltimateEffect::is_dead() {
+  assert(NO_LIFE_STATE == 0);
+  assert(IN_ULTIMATE_TAG != "");
   bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is_dead();
   /**
    * Check if fighter is dead. If so, update his life tags.
@@ -103,6 +106,7 @@ bool UltimateEffect::is_dead() {
  * Check if the fighters have collided.
  */
 void UltimateEffect::notify_collision(GameObject & object) {
+  assert(PLAYER_TAG != "");
   int partner_id = (parent->get_partner() ? parent->get_partner()->get_id() :
                                             -100);
   if (not object.is(PLAYER_TAG)) {

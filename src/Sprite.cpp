@@ -10,6 +10,7 @@
 */
 
 #include <iostream>
+#include <assert.h>
 
 #include "Sprite.h"
 #include "Game.h"
@@ -32,6 +33,8 @@
 * current frame and the elapsed time to each one initial value.
 */
 Sprite::Sprite() {
+  assert(NO_TIME_ELAPSED == 0);
+  assert(INITIAL_X_Y_AXES_SCALE == 1);
   texture = nullptr;
   scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
   frame_count = INITIAL_FRAME_COUNT_VALUE;
@@ -190,6 +193,7 @@ void Sprite::set_frame_time(float cframe_time) {
 * according to this variation.
 */
 void Sprite::update(float delta_time) {
+  assert(NO_TIME_ELAPSED == 0);
   time_elapsed += delta_time;
   /**
    * Check if the elapsed time of a frame was enough. If so, the elapsed time
@@ -289,6 +293,9 @@ void Sprite::set_scale(float scale) {
 * scale_y variable.
 */
 void Sprite::set_scale(float cscale_x_axis, float cscale_y_axis) {
+  assert(cscale_x_axis >= 0);
+  assert(cscale_y_axis >= 0);
+
   scale_x_axis = cscale_x_axis;
   scale_y_axis = cscale_y_axis;
 }
@@ -301,6 +308,8 @@ void Sprite::set_scale(float cscale_x_axis, float cscale_y_axis) {
 * scale_x variable. If the value is very small (< 0.5), scale_x receive 0.5.
 */
 void Sprite::update_scale_x(float scale) {
+  assert(X_AXIS_SCALE_MIN == 0.05);
+  assert(scale >= 0);
   scale_x_axis += scale;
   /**
    * Check if the x axis is very small. If so, the scale is set to 0.05.
