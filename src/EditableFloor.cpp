@@ -75,6 +75,9 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
                              bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
 
+    assert(x <= BACKGROUND_WIDTH);
+    assert(y <= BACKGROUND_HEIGHT);
+
     standard_sprite.set_scale_x(width / standard_sprite.get_width());
     platform_sprite.set_scale_x(width / platform_sprite.get_width());
     selected_sprite.set_scale_x(width / selected_sprite.get_width());
