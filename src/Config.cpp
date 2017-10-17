@@ -20,10 +20,18 @@ int Config::fullscreen;
  * Will write current screen configurations to res/config_file.dat.  
  */
 void Config::init() {
+    LOG(INFO) << "Starting CharacterSelectState init";
+
     std::fstream config_file(CONFIGURATION_FILE_PATH);
+
+    if(not config_file.is_open()) {
+        LOG(FATAL) << "File couldn't be open";
+    }
     assert(config_file.is_open());
 
     config_file >> width >> height >> fullscreen;
+
+    LOG(INFO) << "Ending CharacterSelectState init";
 }
 
 /** 
@@ -32,7 +40,12 @@ void Config::init() {
  * @returns Game's windows width. Unit: px, [0,]
  */
 int Config::get_width() {
-    return width;
+    LOG(INFO) << "Starting CharacterSelectState get_width";
+
+    return_value = width;
+    LOG(INFO) << "Ending CharacterSelectState get_width returning value: " << return_value;
+
+    return return_value;
 }
 
 /** 
@@ -40,7 +53,12 @@ int Config::get_width() {
  * @returns  Game's windows height. Unit: px, [0,]
  */
 int Config::get_height() {
-    return height;
+    LOG(INFO) << "Starting CharacterSelectState get_height";
+
+    return_value = height;
+    LOG(INFO) << "Ending CharacterSelectState get_height returning value: " << return_value;
+
+    return return_value;
 }
 
 /** 
@@ -49,7 +67,12 @@ int Config::get_height() {
  * @returns 0 for no, 1 for yes [0,1]  
  */
 int Config::is_fullscreen() {
-    return fullscreen;
+    LOG(INFO) << "Starting CharacterSelectState is_fullscreen";
+
+    return_value = fullscreen;
+    LOG(INFO) << "Ending CharacterSelectState is_fullscreen returning value: " << return_value;
+
+    return return_value;
 }
 
 /** 
@@ -60,13 +83,21 @@ int Config::is_fullscreen() {
  * @param cfullscreen [0,1]
  */
 void Config::update_information(int cwidth, int cheight, int cfullscreen) {
+    LOG(INFO) << "Starting CharacterSelectState update_information, cwidth: " << cwidth << ", cheight: " << cheight << ", cfullscreen: " << cfullscreen;
+
     width = cwidth;
     height = cheight;
     fullscreen = cfullscreen;
 
     std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);
+
+    if(not config_file.is_open()) {
+        LOG(FATAL) << "File couldn't be open";
+    }
     assert(config_file.is_open());
 
     config_file << width << " " << height << " " << fullscreen << std::endl;
     config_file.close();
+
+    LOG(INFO) << "Ending CharacterSelectState update_information";
 }
