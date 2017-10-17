@@ -11,6 +11,7 @@
 #ifndef INCLUDE_CONFIG_H_
 #define INCLUDE_CONFIG_H_
 
+#include <assert.h>
 #include <string>
 
 #define RESOURCES_FOLDER std::string("res/")
