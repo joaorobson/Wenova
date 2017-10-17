@@ -54,12 +54,16 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
       platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
       selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
 
+    LOG(INFO) << "Starting CharacterSelectState constructor with x: " << ", y: " << ", crotation: " << crotation << ", cplatfrom: " << cplatform;
+
     box = Rectangle(x, y,
                          standard_sprite.get_width(),
                          standard_sprite.get_height());
 
     is_deleted = false;
     is_selected = false;
+
+    LOG(INFO) << "Ending CharacterSelectState constructor";
 }
 
 /**
@@ -73,9 +77,17 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
  */
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
                              bool cplatform)
+    LOG(INFO) << "Starting CharacterSelectState constructor with x: " << ", y: " << ", width" << width << ", crotation: " << crotation << ", cplatfrom: " << cplatform;
     : EditableFloor(x, y, crotation, cplatform) {
 
+    if (x > BACKGROUND_WIDTH) {
+        LOG(FATAL) << "platform is out of screen in axis x";
+    }
     assert(x <= BACKGROUND_WIDTH);
+
+    if (x > BACKGROUND_WIDTH) {
+        LOG(FATAL) << "platform is out of screen in axis y";
+    }
     assert(y <= BACKGROUND_HEIGHT);
 
     standard_sprite.set_scale_x(width / standard_sprite.get_width());
@@ -83,6 +95,8 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
     selected_sprite.set_scale_x(width / selected_sprite.get_width());
 
     box.width = standard_sprite.get_width();
+
+    LOG(INFO) << "Ending CharacterSelectState init";
 }
 
 /**
@@ -96,6 +110,8 @@ EditableFloor::~EditableFloor() {}
  * @param delta Difference in position of the box.
  */
 void EditableFloor::update(float delta) {
+    LOG(INFO) << "Starting CharacterSelectState update with delta: " << delta;
+
     InputManager *input_manager = InputManager::get_instance();
 
     if (input_manager->mouse_press(InputManager::LEFT_MOUSE_BUTTON)) {
@@ -214,12 +230,16 @@ void EditableFloor::update(float delta) {
             is_deleted = true;
         }
     }
+
+    LOG(INFO) << "Ending CharacterSelectState update";
 }
 
 /**
  * Render selected box considering if it is selected.
  */
 void EditableFloor::render() {
+    LOG(INFO) << "Starting CharacterSelectState render";
+
     if (is_selected) {
         selected_sprite.render(box.get_draw_x(), box.get_draw_y(),
                                rotation);
@@ -232,6 +252,8 @@ void EditableFloor::render() {
         standard_sprite.render(box.get_draw_x(), box.get_draw_y(),
                                rotation);
     }
+
+    LOG(INFO) << "Ending CharacterSelectState render";
 }
 
 /**
@@ -240,7 +262,12 @@ void EditableFloor::render() {
  * @returns [0,1]
  */
 bool EditableFloor::is_dead() {
-    return is_deleted;
+    LOG(INFO) << "Starting CharacterSelectState is_dead";
+
+    return_value = is_deleted;
+    LOG(INFO) << "Ending CharacterSelectState is_dead returning value: " << return_value;
+
+    return return_value;
 }
 
 /**
@@ -256,6 +283,8 @@ void EditableFloor::notify_collision(GameObject &) {}
  * @returns String in format: "x y width rotated level is_crossingable?"
  */
 string EditableFloor::get_information() {
+    LOG(INFO) << "Starting CharacterSelectState get_information";
+
     char info[INFO_SIZE];
     snprintf(info, sizeof(info), "%f %f %f %f %d", box.x, box.y,
              box.width, rotation * PI_DEGREES / PI,
@@ -267,7 +296,10 @@ string EditableFloor::get_information() {
         c += FILL_MISSING_PIXELS_INFORMATIOS;
     }
 
-    return s;
+    return_value = s;
+    LOG(INFO) << "Ending CharacterSelectState get_information returning value: " << return_value;
+
+    return return_value;
 }
 
 /**
@@ -276,5 +308,9 @@ string EditableFloor::get_information() {
  * @param cis_selected [0,1]
  */
 void EditableFloor::set_selected(bool cis_selected) {
+    LOG(INFO) << "Starting CharacterSelectState set_selected with cis_selected: " << cis_selected;
+
     is_selected = cis_selected;
+
+    LOG(INFO) << "Ending CharacterSelectState set_selected";
 }
