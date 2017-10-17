@@ -60,6 +60,7 @@
 #define DYING_TAG "dying"
 #define STOPPED 0
 #include <algorithm>
+#include <assert.h>
 
 using std::min;
 
@@ -147,6 +148,8 @@ Blood::Blood(string skin, float x_axis_position, float y_axis_position,
  * @param delta is the variation of character state.
  */
 void Blood::update_machine_state(float delta_character_state) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(state >= 0);
   /**
    * Fighter's state machine.
    * Switch around fighter states according to suffered attacks and update
@@ -501,6 +504,7 @@ void Blood::update_machine_state(float delta_character_state) {
  * temporary state.
  */
 void Blood::check_jump(bool change) {
+  assert(JUMP_BUTTON >= 0);
   if (pressed[JUMP_BUTTON]) {
     if (change) {
       temporary_state = FighterState::JUMPING;
@@ -519,6 +523,7 @@ void Blood::check_jump(bool change) {
  * temporary state.
  */
 void Blood::check_fall(bool change) {
+  assert(STOPPED == 0);
   if (speed.y > STOPPED) {
     if (change) {
       temporary_state = FighterState::FALLING;
@@ -536,6 +541,7 @@ void Blood::check_fall(bool change) {
  * temporary state.
  */
 void Blood::check_left(bool change) {
+  assert(LEFT_BUTTON >= 0);
   if (is_holding[LEFT_BUTTON]) {
     if (change) {
       temporary_state = FighterState::RUNNING;
@@ -555,6 +561,7 @@ void Blood::check_left(bool change) {
  * temporary state.
  */
 void Blood::check_right(bool change) {
+  assert(RIGHT_BUTTON >= 0);
   if (is_holding[RIGHT_BUTTON]) {
     if (change) {
       temporary_state = FighterState::RUNNING;
@@ -573,6 +580,9 @@ void Blood::check_right(bool change) {
  * temporary state.
  */
 void Blood::check_idle(bool change) {
+  assert(DOWN_BUTTON >= 0);
+  assert(BLOCK_BUTTON >= 0);
+  assert(STOPPED == 0);
   if (speed.x == STOPPED and
      on_floor and not
      is_holding[DOWN_BUTTON] and not
@@ -593,6 +603,7 @@ void Blood::check_idle(bool change) {
  * temporary state.
  */
 void Blood::check_crouch(bool change) {
+  assert(DOWN_BUTTON >= 0);
   if (is_holding[DOWN_BUTTON] and on_floor) {
        if (change) {
          temporary_state = FighterState::CROUCH;
@@ -610,6 +621,7 @@ void Blood::check_crouch(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_neutral_1(bool change) {
+  assert(ATTACK_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON]) {
     speed.y = STOPPED;
     if (change) {
@@ -665,6 +677,9 @@ void Blood::check_idle_atk_neutral_3(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_front(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(LEFT_BUTTON >= 0);
+  assert(RIGHT_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON] and
     (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) {
     if (change) {
@@ -685,6 +700,8 @@ void Blood::check_idle_atk_front(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_up(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(UP_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
     if (change) {
       temporary_state = FighterState::IDLE_ATK_UP;
@@ -703,6 +720,8 @@ void Blood::check_idle_atk_up(bool change) {
  * @param condition checks the attact state according to Fighter stats.
  */
 void Blood::check_idle_atk_down(bool change, bool condition) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(DOWN_BUTTON >= 0);
   if ((pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) or condition) {
     if (change) {
       temporary_state = FighterState::IDLE_ATK_DOWN;
@@ -720,6 +739,9 @@ void Blood::check_idle_atk_down(bool change, bool condition) {
  * temporary state.
  */
 void Blood::check_pass_through_platform(bool change) {
+  assert(DOWN_BUTTON >= 0);
+  assert(ATTACK_BUTTON >= 0);
+  assert(CROUCH_COOLDOWN == 50.0);
   if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
     if (crouch_timer.get() < CROUCH_COOLDOWN) {
       if (change) temporary_state = FighterState::FALLING;
@@ -738,6 +760,7 @@ void Blood::check_pass_through_platform(bool change) {
  * temporary state.
  */
 void Blood::check_crouch_atk(bool change) {
+  assert(ATTACK_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON]) {
     if (change) {
       temporary_state = FighterState::CROUCH_ATK;
@@ -755,6 +778,8 @@ void Blood::check_crouch_atk(bool change) {
  * temporary state.
  */
 void Blood::check_jump_atk_down(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(DOWN_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
     if (change) {
       temporary_state = FighterState::JUMP_ATK_DOWN;
@@ -771,6 +796,7 @@ void Blood::check_jump_atk_down(bool change) {
  * temporary state.
  */
 void Blood::check_jump_atk_neutral(bool change) {
+  assert(ATTACK_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON]) {
     if (change) {
       temporary_state = FighterState::JUMP_ATK_NEUTRAL;
@@ -790,6 +816,8 @@ void Blood::check_jump_atk_neutral(bool change) {
  * temporary state.
  */
 void Blood::check_jump_atk_up(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(UP_BUTTON >= 0);
   if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
     if (combo) {
       return;
@@ -812,6 +840,7 @@ void Blood::check_jump_atk_up(bool change) {
  * temporary state.
  */
 void Blood::check_defense(bool change) {
+  assert(BLOCK_BUTTON >= 0);
   if (is_holding[BLOCK_BUTTON] and on_floor) {
        if (change) {
          temporary_state = FighterState::DEFENDING;
@@ -828,6 +857,7 @@ void Blood::check_defense(bool change) {
  * temporary state.
  */
 void Blood::check_stunned(bool change) {
+  assert(STOPPED == 0);
   speed.x = STOPPED;
   if (change) {
     temporary_state = FighterState::STUNNED;
@@ -844,6 +874,7 @@ void Blood::check_stunned(bool change) {
  * temporary state.
  */
 void Blood::check_special_1_1(bool change) {
+  assert(SPECIAL1_BUTTON >= 0);
   if (pressed[SPECIAL1_BUTTON]) {
     if (change) {
       temporary_state = FighterState::SPECIAL_1_1;
@@ -878,6 +909,7 @@ void Blood::check_special_1_2(bool change) {
  * temporary state.
  */
 void Blood::check_special_2(bool change) {
+  assert(SPECIAL2_BUTTON >= 0);
   if (pressed[SPECIAL2_BUTTON] and partner) {
     if (change) {
       temporary_state = FighterState::SPECIAL_2;
@@ -894,6 +926,7 @@ void Blood::check_special_2(bool change) {
  * temporary state.
  */
 void Blood::check_dead(bool change) {
+  assert(DYING_TAG != "");
   if (is(DYING_TAG)) {
     if (change) {
       temporary_state = FighterState::DYING;
