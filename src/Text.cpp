@@ -10,7 +10,7 @@
  */
 
 #include "Text.h"
-
+#include <assert.h>
 #include "Game.h"
 #include "Resources.h"
 #include "Config.h"
@@ -45,9 +45,10 @@ Text::Text() {
  * @param ccolor is text color.
  * @param x_axis_position is the text horizontal position.
  * @param y_axis_position is the text vertical position.
- */
+ */ 
 Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
            SDL_Color ccolor, int x_axis_position, int y_axis_position) {
+
   font_size = cfont_size;  
   style = cstyle;
   text = ctext;
@@ -124,6 +125,7 @@ void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x,
  * texture.
  */
 void Text::set_text(string ctext) {
+  assert(ctext != "");
   text = ctext;
   remake_texture();
 }
@@ -148,6 +150,7 @@ void Text::set_color(SDL_Color ccolor) {
  * texture.
  */
 void Text::set_style(TextStyle cstyle) {
+  assert(cstyle != (TextStyle) NULL);
   style = cstyle;
   remake_texture();
 }
@@ -160,6 +163,7 @@ void Text::set_style(TextStyle cstyle) {
  * texture.
  */
 void Text::set_font_size(int cfont_size) {
+  assert(cfont_size > 0);
   font_size = cfont_size;
   remake_texture();
 }
@@ -268,5 +272,6 @@ void Text::remake_texture() {
  * @param size is the font size.
  */
 void Text::open(string file, int size) {
+  assert(file != "");
   font = Resources::get_font(RESOURCES_FOLDER + file, size);
 }

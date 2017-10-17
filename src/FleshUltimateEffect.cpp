@@ -10,6 +10,7 @@
  */
 
 #include "FleshUltimateEffect.h"
+#include <assert.h>
 #define IN_ULTIMATE_TAG "in_ultimate"
 #define DYING_TAG "dying"
 #define INCREMENT_IN_MAX_LIFE 1.5
@@ -83,6 +84,7 @@ void FleshUltimateEffect::render() {
  */
 bool FleshUltimateEffect::is_dead() {
   bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is(DYING_TAG);
+  assert(dead != (bool) NULL);
   /**
    * Check if is the fighter is dead. If so, remove the parent's "in ultimate"
    * tag and divide the parent's maximum life by 1.5.
