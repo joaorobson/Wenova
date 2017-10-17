@@ -14,7 +14,7 @@ CFLAGS = -pedantic -std=c++11 -MMD -g3 -g -fPIC\
 		 -Wsign-promo -Wstrict-null-sentinel -Wundef\
 		 -Wzero-as-null-pointer-constant -Wuseless-cast -Wnon-virtual-dtor
 INCLUDES = -I$(INC_DIR) `sdl2-config --cflags`
-LIBS = `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer -ldl
+LIBS = `sdl2-config --libs` easylogging/easylogging++.cc -lSDL2_image -lSDL2_ttf -lSDL2_mixer -ldl
 
 SRC = ${wildcard $(SRC_DIR)/*.cpp}
 OBJ = ${addprefix $(OBJ_DIR)/, ${notdir ${SRC:.cpp=.o}}}
