@@ -11,16 +11,19 @@
 #ifndef INCLUDE_CHARACTERSELECTSTATE_H_
 #define INCLUDE_CHARACTERSELECTSTATE_H_
 
+#include <assert.h>
+
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "FighterMenu.h"
 #include "InputManager.h"
 #include "Sound.h"
 #include "Sprite.h"
 #include "State.h"
+#include "easylogging++.h" // NOLINT
 
-#include <assert.h>
-#include <string>
-#include <utility>
-#include <vector>
 
 #define N_CHARS 8
 #define N_BACKGROUNDS_SPRITES 2

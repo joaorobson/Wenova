@@ -114,9 +114,8 @@
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
-    LOG(INFO)
-        << "Starting CharacterSelectState constructor with cselected_stage: "
-        << cselected_stage;
+    string log_message = "Starting CharacterSelectState constructor with cselected_stage: " + cselected_stage;
+    LOG(INFO) << log_message;
 
     if (NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_1 is bigger than screen";
@@ -248,15 +247,15 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
 
     for (auto x : ROWS_X_POSITIONS) {
         if (x < BACKGROUNDS_SIZE_WIDTH) {
-            LOG(FATAL) << "ROWS_X_POSITIONS, element: " << x
-                       << "is bigger than screen";
+            log_message = "ROWS_X_POSITIONS, element: " + std::to_string(x) + "is bigger than screen";
+            LOG(FATAL) << log_message;
         }
     }
 
     for (auto y : ROWS_Y_POSITIONS) {
-        if (x < BACKGROUNDS_SIZE_WIDTH) {
-            LOG(FATAL) << "ROWS_Y_POSITIONS, element: " << y
-                       << "is bigger than screen";
+        if (y < BACKGROUNDS_SIZE_HEIGHT) {
+            log_message = "ROWS_Y_POSITIONS, element: " + std::to_string(y) + "is bigger than screen";
+            LOG(FATAL) << log_message;
         }
     }
 
@@ -386,8 +385,8 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
  * @param delta Variation of how much the characters player travelled
  */
 void CharacterSelectState::update(float delta) {
-    LOG(INFO) << "Starting CharacterSelectState update method with delta: "
-              << delta;
+    string log_message = "Starting CharacterSelectState update method with delta: " + std::to_string(delta);
+    LOG(INFO) << log_message;
 
     process_input();
 
@@ -674,22 +673,24 @@ void CharacterSelectState::render() {
  */
 bool CharacterSelectState::all_players_selected() {
     LOG(INFO) << "Starting CharacterSelectState all_players_selected method";
+    string log_message = "";
 
+    bool return_value;
     for (auto cur : is_character_selected) {
         if (not cur) {
             return_value = false;
-            LOG(INFO) << "Ending CharacterSelectState all_players_selected "
-                         "method returning value: "
-                      << return_value;
+            log_message = "Ending CharacterSelectState all_players_selected method returning value: " + std::to_string(static_cast<int>(return_value));
+            LOG(INFO) << log_message;
 
             return return_value;
         }
     }
 
+
     return_value = true;
-    LOG(INFO) << "Ending CharacterSelectState all_players_selected method "
-                 "returning value: "
-              << return_value;
+
+    log_message = "Ending CharacterSelectState all_players_selected method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -702,17 +703,16 @@ bool CharacterSelectState::all_players_selected() {
  * @returns Name and number of frames in corresponding sprite
  */
 pair<string, int> CharacterSelectState::get_chars_info(int idx) {
-    LOG(INFO)
-        << "Starting CharacterSelectState get_chars_info method with idx: "
-        << idx;
+    string log_message = "Starting CharacterSelectState get_chars_info method with idx: " + std::to_string(idx);
+    LOG(INFO) << log_message;
 
     vector<string> names = CHARACTERS_NAMES;
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
-    return_value = std::make_pair(names[idx], frames[idx]);
-    LOG(INFO)
-        << "Ending CharacterSelectState get_chars_info method returning value: "
-        << return_value;
+    pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
+
+    log_message = "Ending CharacterSelectState get_chars_info method returning values: " + return_value.first + ", " + std::to_string(return_value.second);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -723,8 +723,9 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
  * @returns Vector of pairs of strings containing information about
  * characters and skins choosen.
  */
-vector<pair<string, string> > CharacterSelectState::export_players() {
+vector<pair<string, string>> CharacterSelectState::export_players() {
     LOG(INFO) << "Starting CharacterSelectState export_players method";
+    string log_message = "";
 
     vector<pair<string, string> > players;
 
@@ -732,7 +733,8 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
         int char_sel = current_row[i] * N_COLS + current_column[i];
 
         if (char_sel >= N_CHARS) {
-            LOG(FATAL) << "char_sel is out of bound with value: " << char_sel;
+            log_message = "char_sel is out of bound with value: " + char_sel;
+            LOG(FATAL) << log_message;
         }
         assert(char_sel < N_CHARS);
 
@@ -741,12 +743,22 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
                            chars[char_sel].get_skin_name(current_skin[i])));
     }
 
-    return_value = players;
-    LOG(INFO)
-        << "Ending CharacterSelectState export_players method returning value: "
-        << return_value;
 
-    return return_value;
+    int count = players.size();
+    log_message = "Ending CharacterSelectState export_players method returning values: ";
+
+    /*
+     * Format log_message like (name1, skin_name1), (name2, skin_name2), ...
+     */
+    for(auto data: players) {
+        string info_pair = '(' + data.first + ", " + data.second + ')';
+        log_message += count? info_pair : info_pair + ", ";
+        --count;
+    }
+
+    LOG(INFO) << log_message;
+
+    return players;
 }
 
 /**
@@ -785,25 +797,29 @@ void CharacterSelectState::process_input() {
  * @returns pair of ints which indicates the corresponding slot.
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
-    LOG(INFO) << "Starting CharacterSelectState get_slot method with row: "
-              << row << "and col: " << col;
+    string log_message = "Starting CharacterSelectState get_slot method with row: " + std::to_string(row) + "and col: " + std::to_string(col);
+    LOG(INFO) << log_message;
 
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
+    
     if ((size_t) col >= x.size()) {
-        LOG(FATAL) << "col is out of bound with value: " << col;
+        log_message = "col is out of bound with value: " + std::to_string(col);
+        LOG(FATAL) << log_message;
     }
     assert((size_t) col < x.size());
 
     if ((size_t) row >= y.size()) {
-        LOG(FATAL) << "char_sel is out of bound with value: " << char_sel;
+        log_message = "row is out of bound with value: " + std::to_string(row);
+        LOG(FATAL) << log_message;
     }
     assert((size_t) row < y.size());
 
-    return_value = ii(x[col], y[row]);
-    LOG(INFO) << "Ending CharacterSelectState get_slot method returning value: "
-              << return_value;
+    pair<int, int> return_value = ii(x[col], y[row]);
+
+    log_message = "Ending CharacterSelectState get_slot method returning values: " + std::to_string(return_value.first) + ", " + std::to_string(return_value.second);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
