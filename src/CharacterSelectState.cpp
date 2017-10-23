@@ -709,7 +709,15 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     vector<string> names = CHARACTERS_NAMES;
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
+    if (names.size() != frames.size()) {
+        LOG(FATAL) << "Names array size different of frames array size";
+    }
+
     pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
+
+    if (not names.size() or not frames.size()) {
+        LOG(FATAL) << "Names and frames arrays must have some element";
+    }
 
     log_message = "Ending CharacterSelectState get_chars_info method returning values: " + return_value.first + ", " + std::to_string(return_value.second);
     LOG(INFO) << log_message;
@@ -750,10 +758,14 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
     /*
      * Format log_message like (name1, skin_name1), (name2, skin_name2), ...
      */
-    for(auto data: players) {
+    for (auto data: players) {
         string info_pair = '(' + data.first + ", " + data.second + ')';
         log_message += count? info_pair : info_pair + ", ";
         --count;
+    }
+
+    if (not players.size()) {
+        LOG(FATAL) << "Players vector must return some element";
     }
 
     LOG(INFO) << log_message;
@@ -803,7 +815,7 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
-    
+
     if ((size_t) col >= x.size()) {
         log_message = "col is out of bound with value: " + std::to_string(col);
         LOG(FATAL) << log_message;
