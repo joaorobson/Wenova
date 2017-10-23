@@ -10,11 +10,15 @@ FighterMenu::FighterMenu(string cname, int frames, bool cenabled) {
     name = cname;
     name_text = new Text("font/8-BIT WONDER.ttf", 20, Text::TextStyle::SOLID,
                          name, YELLOW);
+    assert(name_text != NULL);
+
     enabled = cenabled;
     n_frames = frames;
 
     for (int i = 0; i < N_SKINS; i++) {
         if (enabled) {
+            assert(get_skin_name(i).empty() != true);
+
             skin[i] = Sprite("characters/" + name + "/" + get_skin_name(i) +
                              "/idle.png", n_frames, FRAME_TIME);
         } else {

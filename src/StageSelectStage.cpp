@@ -61,6 +61,7 @@ void StageSelectState::update(float delta) {
     process_input();
 
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
@@ -149,6 +150,7 @@ void StageSelectState::update_stage_select(int increment) {
  */
 void StageSelectState::process_input() {
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     // MENU BUTTONS HERE
     vector<pair<int, int> > joystick_buttons = {

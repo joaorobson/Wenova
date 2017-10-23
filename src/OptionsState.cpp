@@ -92,6 +92,8 @@ OptionsState::OptionsState() {
     build_options();
 
     for (unsigned i = 0; i < options.size(); i++) {
+        assert(get_current_sub_option(i) >= 0);
+
         current_sub_option.push_back(get_current_sub_option(i));
     }
 
@@ -110,6 +112,7 @@ void OptionsState::update(float) {
     process_input();
 
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     // Inputs
     if (input_manager->quit_requested()) {
@@ -129,6 +132,8 @@ void OptionsState::update(float) {
             on_submenu = false;
 
             for (unsigned i = 0; i < options.size(); i++) {
+                assert(get_current_sub_option(i) >= 0);
+
                 current_sub_option[i] = get_current_sub_option(i);
             }
         } else {
@@ -170,14 +175,17 @@ void OptionsState::update(float) {
 
         if (not on_submenu) {
             assert(current_option <= static_cast<int>(options.size() - 1));
+
             if (current_option != static_cast<int>(options.size()) - 1) {
                 current_option++;
             }
         } else {
             string text = options[current_option]->get_text();
+            assert(text.empty() != true);
 
             assert(current_sub_option[current_option] <=
                    static_cast<int>(sub_options[text].size()) - 1);
+
             if (current_sub_option[current_option] !=
                 static_cast<int>(sub_options[text].size()) - 1) {
                 current_sub_option[current_option]++;
@@ -253,8 +261,9 @@ void OptionsState::update(float) {
         int prev_text_size = 1;
 
         if (i) {
-            prev_text_size = std::max(static_cast<int>(sub_options[options[i - 1]->
-                                 get_text()].size()), 1);
+            prev_text_size = std::max(static_cast<int>
+                                         (sub_options[options[i - 1]->
+                                         get_text()].size()), 1);
         }
         int prev_text_height = (TEXT_HEIGHT + TEXT_OFFSET * 2) * prev_text_size;
 
@@ -455,7 +464,13 @@ int OptionsState::get_current_sub_option(int option) {
      */
     if (option == 0) {
         int width = Config::get_width();
+        assert(width >= RESOLUTION_1_WIDTH);
+        assert(width <= RESOLUTION_5_WIDTH);
+
         int height = Config::get_height();
+        assert(height >= RESOLUTION_1_HEIGHT);
+        assert(height <= RESOLUTION_5_HEIGHT);
+
         string resolution = std::to_string(width) + " x " +
                             std::to_string(height);
         int sub_option = 0;
@@ -479,6 +494,7 @@ int OptionsState::get_current_sub_option(int option) {
  */
 void OptionsState::process_input() {
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     vector<pair<int, int> > joystick_buttons = {
                     ii(A, InputManager::A),

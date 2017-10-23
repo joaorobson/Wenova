@@ -29,6 +29,8 @@ BattleEnd::BattleEnd(int id_winner) {
 
     back_txt = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
                         "BACK", WHITE);
+    assert(back_txt != NULL);
+
     back_txt->set_pos(1154, 650);
 
     back_selected = false;
@@ -71,6 +73,7 @@ void BattleEnd::update(float delta) {
     }
 
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     /**
      * Check if user has requested to quit the battle so it can restart

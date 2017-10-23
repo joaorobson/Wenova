@@ -22,6 +22,7 @@ TimeCounter::TimeCounter() {
 
     time_text = new Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
                          "99", { 255, 255, 255, 255 });
+    assert(time_text != NULL);
 
     background_clock = Sprite("hud/time_board.png");
     box = Rectangle(640, 664, background_clock.get_width(),
@@ -62,6 +63,9 @@ void TimeCounter::update(float delta) {
  * time of a battle.
  */
 void TimeCounter::render() {
+    assert(box.get_draw_x() > 0.0);
+    assert(box.get_draw_y() > 0.0);
+
     background_clock.render(box.get_draw_x(), box.get_draw_y());
     time_text->render();
 }

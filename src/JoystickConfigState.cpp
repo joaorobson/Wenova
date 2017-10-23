@@ -123,17 +123,20 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
     joystick_help = Sprite("joysticks/help/controls_help.png");
     test_btn = Sprite("joysticks/help/a.png");
     back_btn = Sprite("joysticks/help/b.png");
+
     test_txt = new Text(FONT_FILE,
                         FONT_SIZE,
                         Text::TextStyle::SOLID,
                         TEST_LABEL,
                         WHITE);
+    assert(test_txt != NULL);
 
     back_txt = new Text(FONT_FILE,
                         FONT_SIZE,
                         Text::TextStyle::SOLID,
                         BACK_LABEL,
                         WHITE);
+    assert(back_txt != NULL);
 
     press = new Text(FONT_FILE,
                      FONT_SIZE,
@@ -142,6 +145,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                      LIGHT_GREEN,
                      PRESS_HORIZONTAL_POSITION,
                      PRESS_VERTICAL_POSITION);
+    assert(press != NULL);
 
     select_text = new Text(FONT_FILE,
                            FONT_SIZE_START_SELECT,
@@ -150,6 +154,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                            BLUE,
                            SELECT_HORIZONTAL_POSITION,
                            SELECT_VERTICAL_POSITION);
+    assert(select_text != NULL);
 
     and_text = new Text(FONT_FILE,
                         FONT_SIZE,
@@ -158,6 +163,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                         LIGHT_GREEN,
                         AND_HORIZONTAL_POSITION,
                         AND_VERTICAL_POSITION);
+    assert(and_text != NULL);
 
     start_text = new Text(FONT_FILE,
                           FONT_SIZE_START_SELECT,
@@ -166,6 +172,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                           BLUE,
                           START_HORIZONTAL_POSITION,
                           START_VERTICAL_POSITION);
+    assert(start_text != NULL);
 
     to_go_back = new Text(FONT_FILE,
                           FONT_SIZE,
@@ -174,6 +181,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
                           LIGHT_GREEN,
                           TO_GO_BACK_HORIZONTAL_POSITION,
                           TO_GO_BACK_VERTICAL_POSITION);
+    assert(to_go_back != NULL);
 
     test_txt->set_pos(TEST_HORIZONTAL_POSITION, TEST_VERTICAL_POSITION);
     back_txt->set_pos(BACK_HORIZONTAL_POSITION, BACK_VERTICAL_POSITION);
@@ -299,6 +307,7 @@ JoystickConfigState::JoystickConfigState(int  joystick_id,
  */
 void JoystickConfigState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     assert(delta >= 0);
 
