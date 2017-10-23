@@ -45,6 +45,10 @@ int Config::get_width() {
     std::string log_message = "Ending CharacterSelectState get_width returning value: " + std::to_string(return_value);
     LOG(INFO) << log_message;
 
+    if (width <= 0) {
+        LOG(WARNING) << "Width is being returned with suspicious values";
+    }
+
     return return_value;
 }
 
@@ -59,6 +63,10 @@ int Config::get_height() {
 
     std::string log_message = "Ending CharacterSelectState get_height returning value: " + std::to_string(return_value);
     LOG(INFO) << log_message;
+
+    if (height <= 0) {
+        LOG(WARNING) << "Height is being returned with suspicious values";
+    }
 
     return return_value;
 }
