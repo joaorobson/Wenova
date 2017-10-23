@@ -17,6 +17,7 @@
 #include <unordered_map>
 #include <utility>
 
+#include "easylogging++.h" // NOLINT
 #include "SDL2/SDL.h"
 
 #define ii std::pair<int, int>

@@ -310,16 +310,18 @@ void InputManager::update() {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_press(int key) {
-    LOG(INFO) << "Starting InputManager key_press method key: " << key;
+    std::string log_message = "Starting InputManager key_press method key: " + std::to_string(key);
+    LOG(INFO) << log_message;
 
     if (key < 0) {
         LOG(FATAL) << "Key is less than zero";
     }
     assert(key >= 0);
 
-    return_value = keys_states[key] and keys_updates[key] == update_counter;
-    LOG(INFO) << "Ending InputManager key_press method returning value: "
-              << return_value;
+    bool return_value = keys_states[key] and keys_updates[key] == update_counter;
+
+    log_message = "Ending InputManager key_press method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -332,16 +334,18 @@ bool InputManager::key_press(int key) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_release(int key) {
-    LOG(INFO) << "Starting InputManager key_release method key: " << key;
+    std::string log_message = "Starting InputManager key_release method key: " + std::to_string(key);
+    LOG(INFO) << log_message;
 
     if (key < 0) {
         LOG(FATAL) << "Key is less than zero";
     }
     assert(key >= 0);
 
-    return_value = not keys_states[key] and keys_updates[key] == update_counter;
-    LOG(INFO) << "Ending InputManager key_release method returning value: "
-              << return_value;
+    bool return_value = not keys_states[key] and keys_updates[key] == update_counter;
+
+    log_message = "Ending InputManager key_release method returning value: " +  std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -354,16 +358,18 @@ bool InputManager::key_release(int key) {
  * @returns True if key is holded
  */
 bool InputManager::is_key_down(int key) {
-    LOG(INFO) << "Starting InputManager is_key_down method key: " << key;
+    std::string log_message = "Starting InputManager key_release method key: " + std::to_string(key);
+    LOG(INFO) << log_message;
 
     if (key < 0) {
         LOG(FATAL) << "Key is less than zero";
     }
     assert(key >= 0);
 
-    return_value = keys_states[key];
-    LOG(INFO) << "Ending InputManager is_key_down method returning value: "
-              << return_value;
+    bool return_value = keys_states[key];
+
+    log_message = "Ending InputManager is_key_down method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -376,7 +382,8 @@ bool InputManager::is_key_down(int key) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_press(int button) {
-    LOG(INFO) << "Starting InputManager mouse_press method, button: " << button;
+    std::string log_message = "Starting InputManager mouse_press method, button: " + std::to_string(button);;
+    LOG(INFO) << log_message;
 
     if (button < 0) {
         LOG(FATAL) << "button is less than zero";
@@ -388,11 +395,11 @@ bool InputManager::mouse_press(int button) {
     }
     assert(button < N_MOUSE_BUTTONS);
 
-    return_value =
+    bool return_value =
         mouse_buttons_states[button] and mouse_update[button] == update_counter;
 
-    LOG(INFO) << "Ending InputManager key_release method returning value: "
-              << return_value;
+    log_message = "Ending InputManager key_release method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -404,7 +411,8 @@ bool InputManager::mouse_press(int button) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_release(int button) {
-    LOG(INFO) << "Starting InputManager mouse_press method, button: " << button;
+    std::string log_message = "Starting InputManager mouse_release method, button: " + std::to_string(button);;
+    LOG(INFO) << log_message;
 
     if (button < 0) {
         LOG(FATAL) << "button is less than zero";
@@ -416,11 +424,11 @@ bool InputManager::mouse_release(int button) {
     }
     assert(button < N_MOUSE_BUTTONS);
 
-    return_value = not mouse_buttons_states[button] and
+    bool return_value = not mouse_buttons_states[button] and
         mouse_update[button] == update_counter;
 
-    LOG(INFO) << "Ending InputManager mouse_press method returning value: "
-              << return_value;
+    log_message =  "Ending InputManager mouse_release method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -432,8 +440,8 @@ bool InputManager::mouse_release(int button) {
  * @returns True if button is being pressed.
  */
 bool InputManager::is_mouse_down(int button) {
-    LOG(INFO) << "Starting InputManager is_mouse_down method, button: "
-              << button;
+    std::string log_message = "Starting InputManager is_mouse_down method, button: " + std::to_string(button);;
+    LOG(INFO) << log_message;
 
     if (button < 0) {
         LOG(FATAL) << "button is less than zero";
@@ -445,9 +453,10 @@ bool InputManager::is_mouse_down(int button) {
     }
     assert(button < N_MOUSE_BUTTONS);
 
-    return_value = mouse_buttons_states[button];
-    LOG(INFO) << "Ending InputManager is_mouse_down method returning value: "
-              << return_value;
+    bool return_value = mouse_buttons_states[button];
+
+    log_message = "Ending InputManager is_mouse_down method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -460,8 +469,10 @@ bool InputManager::is_mouse_down(int button) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_press(int button, int joystick) {
-    LOG(INFO) << "Starting InputManager joystick_button_press method, button: "
-              << button << ", joystick: " << joystick;
+    std::string log_message = "Starting InputManager joystick_button_press method, button: ";
+    log_message += std::to_string(button);
+    log_message += ", joystick: " + std::to_string(joystick);
+    LOG(INFO) << log_message;
 
     if (button < 0 or joystick < 0) {
         LOG(FATAL) << "button or joystick less than 0";
@@ -473,12 +484,11 @@ bool InputManager::joystick_button_press(int button, int joystick) {
     }
     assert(joystick < N_CONTROLLERS);
 
-    return_value = joysticks_buttons_states[joystick][button] and
+    bool return_value = joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 
-    LOG(INFO)
-        << "Ending InputManager joystick_button_press method returning value: "
-        << return_value;
+    log_message = "Ending InputManager joystick_button_press method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -492,9 +502,10 @@ bool InputManager::joystick_button_press(int button, int joystick) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_release(int button, int joystick) {
-    LOG(INFO)
-        << "Starting InputManager joystick_button_release method, button: "
-        << button << ", joystick: " << joystick;
+    std::string log_message = "Starting InputManager joystick_button_press method, button: ";
+    log_message += std::to_string(button);
+    log_message += ", joystick: " + std::to_string(joystick);
+    LOG(INFO) << log_message;
 
     if (button < 0 or joystick < 0) {
         LOG(FATAL) << "button or joystick less than 0";
@@ -506,12 +517,11 @@ bool InputManager::joystick_button_release(int button, int joystick) {
     }
     assert(joystick < N_CONTROLLERS);
 
-    return_value = not joysticks_buttons_states[joystick][button] and
+    bool return_value = not joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 
-    LOG(INFO)
-        << "Ending InputManager joystick_button_press method returning value: "
-        << return_value;
+    log_message = "Ending InputManager joystick_button_press method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -525,9 +535,10 @@ bool InputManager::joystick_button_release(int button, int joystick) {
  * @returns True if button is being held.
  */
 bool InputManager::is_joystick_button_down(int button, int joystick) {
-    LOG(INFO)
-        << "Starting InputManager is_joystick_button_down method, button: "
-        << button << ", joystick: " << joystick;
+    std::string log_message = "Starting InputManager joystick_button_press method, button: ";
+    log_message += std::to_string(button);
+    log_message += ", joystick: " + std::to_string(joystick);
+    LOG(INFO) << log_message;
 
     if (button < 0 or joystick < 0) {
         LOG(FATAL) << "button or joystick less than 0";
@@ -539,10 +550,10 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
     }
     assert(joystick < N_CONTROLLERS);
 
-    return_value = joysticks_buttons_states[joystick][button];
-    LOG(INFO)
-        << "Ending InputManager joystick_button_press method returning value: "
-        << return_value;
+    bool return_value = joysticks_buttons_states[joystick][button];
+
+    log_message = "Ending InputManager joystick_button_press method returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -556,10 +567,10 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
 int InputManager::get_mouse_x_position() {
     LOG(INFO) << "Starting InputManager get_mouse_x_position method";
 
-    return_value = mouse_x_position;
-    LOG(INFO)
-        << "Ending InputManager get_mouse_x_position method returning value: "
-        << return_value;
+    int return_value = mouse_x_position;
+
+    std::string log_message = "Ending InputManager get_mouse_x_position method returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -572,10 +583,10 @@ int InputManager::get_mouse_x_position() {
 int InputManager::get_mouse_y_position() {
     LOG(INFO) << "Starting InputManager get_mouse_y_position method";
 
-    return_value = mouse_y_position;
-    LOG(INFO)
-        << "Ending InputManager get_mouse_y_position method returning value: "
-        << return_value;
+    int return_value = mouse_y_position;
+
+    std::string log_message = "Ending InputManager get_mouse_y_position method returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -605,11 +616,8 @@ InputManager *InputManager::get_instance() {
         input_manager = new InputManager();
     }
 
-    return_value = input_manager;
-    LOG(INFO) << "Ending InputManager get_instance method returning value: "
-              << return_value;
-
-    return return_value;
+    LOG(INFO) << "Ending InputManager get_instance method";
+    return input_manager;
 }
 
 /**
@@ -623,10 +631,14 @@ InputManager *InputManager::get_instance() {
  */
 void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
                                                int coffset_x, int coffset_y) {
-    LOG(INFO) << "Starting InputManager set_mouse_sensibility_value method "
-                 "with value: "
-              << cmouse_sensibility_value,
-        ", coffset_x: " << coffset_x << ", coffset_y: " coffset_y;
+    char log_message_c[80];
+    snprintf(log_message_c, sizeof(log_message_c), "Starting InputManager set_mouse_sensibility_value method with value: %.2f", cmouse_sensibility_value);
+    std::string log_message(log_message_c);
+
+    log_message += ", coffset_x: " + std::to_string(coffset_x);
+    log_message += ", coffset_y: " + std::to_string(coffset_y);
+
+    LOG(INFO) << log_message;
 
     mouse_sensibility_value = cmouse_sensibility_value;
 
@@ -690,10 +702,10 @@ void InputManager::connect_joysticks() {
             SDL_Joystick *j = SDL_GameControllerGetJoystick(controllers[i]);
             int instance_id = SDL_JoystickInstanceID(j);
             printf("Controller %d (%d real) connected\n", i, instance_id);
+
             controllers_id[instance_id] = i;
             n_controller++;
         } else {
-            printf("WARNING: Joystick is not a game controller\n");
             LOG(WARNING) << "Joystick is not a game controller";
 
             SDL_JoystickOpen(i);
@@ -709,9 +721,8 @@ void InputManager::connect_joysticks() {
  * @param map_id Represents if command is for gameplay or menus handle
  */
 void InputManager::map_keyboard_to_joystick(int map_id) {
-    LOG(INFO)
-        << "Starting InputManager map_keyboard_to_joystick method with map_id: "
-        << map_id;
+    std::string log_message = "Starting InputManager map_keyboard_to_joystick method with map_id: " + std::to_string(map_id);
+    LOG(INFO) << log_message;
 
     keyboard_to_joystick = {
         {K_LEFT, LEFT + 1},     {K_RIGHT, RIGHT + 1}, {K_UP, UP + 1},
@@ -743,8 +754,10 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
  * @param state State of the key that is interacting with the game
  */
 void InputManager::emulate_joystick(int key_id, bool state) {
-    LOG(INFO) << "Starting InputManager emulate_joystick method with key_id: "
-              << key_id << ", state: " << state;
+    std::string log_message = "Starting InputManager emulate_joystick method with key_id: ";
+    log_message += std::to_string(key_id) + ", state: ";
+    log_message += std::to_string(static_cast<int>(state));
+    LOG(INFO) << log_message;
 
     if (state) {
         /**
