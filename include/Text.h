@@ -27,9 +27,9 @@ class Text{
   SDL_Rect clip_rect;  /**< Text frames positioning box. */
 
  public:
-  Text();
   Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
        SDL_Color ccolor, int x_axis_position = 0, int y_axis_position = 0);
+  Text();
   ~Text();
 
   void render(int camera_position_x_axis = 0, int camera_position_y_axis = 0);
@@ -38,13 +38,13 @@ class Text{
   void set_color(SDL_Color ccolor);
   void set_style(TextStyle cstyle);
   void set_font_size(int cfont_size);
+  void remake_texture();
+  void open(string font_name, int cfont_size);
   float get_x();
   float get_y();
   float get_width();
   float get_height();
   string get_text();
-  void remake_texture();
-  void open(string font_name, int cfont_size);
 };
 
 #endif  // INCLUDE_TEXT_H_

@@ -27,14 +27,6 @@
 
 /**
  * A constructor.
- * Initialize the texture attribute to null.
- */
-Text::Text() {
-  texture = nullptr;
-}
-
-/**
- * A constructor.
  * Initialize the style, color, textuxe, font size and position of the text in 
  * the game.
  *
@@ -60,6 +52,15 @@ Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
   remake_texture();
   set_pos(x_axis_position, y_axis_position, true, true);
 }
+
+/**
+ * A constructor.
+ * Initialize the texture attribute to null.
+ */
+Text::Text() {
+  texture = nullptr;
+}
+
 
 /**
  * The destructor.
@@ -169,56 +170,6 @@ void Text::set_font_size(int cfont_size) {
 }
 
 /**
- * Text box horizontal coordinate getter.
- * Returns the saved text box horizontal coordinate.
- *
- * @return the new text box horizontal coordinate.
- */
-float Text::get_x() {
-  return box.get_x();
-}
-
-/**
- * Text box vertical coordinate getter.
- * Returns the saved text box vertical coordinate.
- *
- * @return the new text box vertical coordinate.
- */
-float Text::get_y() {
-  return box.get_y();
-}
-
-/**
- * Text box width getter.
- * Returns the saved text box width.
- *
- * @return the new text box width.
- */
-float Text::get_width() {
-  return box.get_width();
-}
-
-/**
- * Text box height getter.
- * Returns the saved text box height.
- *
- * @return the new text box height.
- */
-float Text::get_height() {
-  return box.get_height();
-}
-
-/**
- * Text getter.
- * Returns the saved text.
- *
- * @return the new text.
- */
-string Text::get_text() {
-  return text;
-}
-
-/**
  * Change texture.
  * Remakes the texture of the game interface from styles options and sets the new
  * text box width and height.
@@ -275,3 +226,55 @@ void Text::open(string file, int size) {
   assert(file != "");
   font = Resources::get_font(RESOURCES_FOLDER + file, size);
 }
+
+/**
+ * Text box horizontal coordinate getter.
+ * Returns the saved text box horizontal coordinate.
+ *
+ * @return the new text box horizontal coordinate.
+ */
+float Text::get_x() {
+  return box.get_x();
+}
+
+/**
+ * Text box vertical coordinate getter.
+ * Returns the saved text box vertical coordinate.
+ *
+ * @return the new text box vertical coordinate.
+ */
+float Text::get_y() {
+  return box.get_y();
+}
+
+/**
+ * Text box width getter.
+ * Returns the saved text box width.
+ *
+ * @return the new text box width.
+ */
+float Text::get_width() {
+  return box.get_width();
+}
+
+/**
+ * Text box height getter.
+ * Returns the saved text box height.
+ *
+ * @return the new text box height.
+ */
+float Text::get_height() {
+  return box.get_height();
+}
+
+/**
+ * Text getter.
+ * Returns the saved text.
+ *
+ * @return the new text.
+ */
+string Text::get_text() {
+  return text;
+}
+
+
