@@ -12,11 +12,13 @@
 #ifndef INCLUDE_EDITABLEFLOOR_H_
 #define INCLUDE_EDITABLEFLOOR_H_
 
+#include <assert.h>
+
+#include <string>
+
 #include "Floor.h"
 #include "Sprite.h"
-
-#include <assert.h>
-#include <string>
+#include "easylogging++.h" // NOLINT
 
 class EditableFloor : public Floor {
  private:

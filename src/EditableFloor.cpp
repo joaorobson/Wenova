@@ -30,7 +30,7 @@
 #define BACKGROUND_HEIGHT 720
 
 #define INFO_SIZE 500
-#define FILL_MISSING_PIXELS_INFORMATIOS 15
+#define FILL_MISSING_PIXELS_INFORMATIONS 15
 
 #define ACCELERATION 1
 #define MAXIMUM_ACCELERATION 4
@@ -53,9 +53,13 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
       standard_sprite(Sprite(RIGID_PLATFORM_PATH)),
       platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
       selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
-    LOG(INFO) << "Starting CharacterSelectState constructor with x: "
-              << ", y: "
-              << ", crotation: " << crotation << ", cplatfrom: " << cplatform;
+
+    std::string log_message = "Starting CharacterSelectState constructor with x: ";
+    log_message += std::to_string(x) + ", y: " + std::to_string(y);
+    log_message += ", crotation: " + std::to_string(crotation);
+    log_message += ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
+
+    LOG(INFO) << log_message;
 
     box = Rectangle(x, y, standard_sprite.get_width(),
                     standard_sprite.get_height());
@@ -76,12 +80,16 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
  * @param cplatform [0,1]
  */
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
-                             bool cplatform) LOG(INFO)
-    << "Starting CharacterSelectState constructor with x: "
-    << ", y: "
-    << ", width" << width << ", crotation: " << crotation
-    << ", cplatfrom: " << cplatform;
+                             bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
+        
+        std::string log_message = "Starting CharacterSelectState constructor with x: ";
+        log_message += std::to_string(x) + ", y: " + std::to_string(y);
+        log_message += ", width:" + std::to_string(width);
+        log_message += ", crotation: " + std::to_string(crotation);
+        log_message += ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
+        LOG(INFO) << log_message;
+
         if (x > BACKGROUND_WIDTH) {
             LOG(FATAL) << "platform is out of screen in axis x";
         }
@@ -113,8 +121,11 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
      * @param delta Difference in position of the box.
      */
     void EditableFloor::update(float delta) {
-        LOG(INFO) << "Starting CharacterSelectState update with delta: "
-                  << delta;
+        char log_message_c[60]; 
+        sprintf(log_message_c, "Starting CharacterSelectState update with delta: %.2f", delta);
+
+        std::string log_message(log_message_c);
+        LOG(INFO) << log_message;
 
         InputManager *input_manager = InputManager::get_instance();
 
@@ -267,9 +278,10 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
     bool EditableFloor::is_dead() {
         LOG(INFO) << "Starting CharacterSelectState is_dead";
 
-        return_value = is_deleted;
-        LOG(INFO) << "Ending CharacterSelectState is_dead returning value: "
-                  << return_value;
+        bool return_value = is_deleted;
+
+        std::string log_message = "Ending CharacterSelectState is_dead returning value: " + std::to_string(static_cast<int>(return_value));
+        LOG(INFO) << log_message;
 
         return return_value;
     }
@@ -297,13 +309,13 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
         string s(info);
 
         for (auto &c : s) {
-            c += FILL_MISSING_PIXELS_INFORMATIOS;
+            c += FILL_MISSING_PIXELS_INFORMATIONS;
         }
 
-        return_value = s;
-        LOG(INFO)
-            << "Ending CharacterSelectState get_information returning value: "
-            << return_value;
+        string return_value = s;
+
+        std::string log_message = "Ending CharacterSelectState get_information returning value: " + return_value;
+        LOG(INFO) << log_message;
 
         return return_value;
     }
@@ -314,9 +326,8 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
      * @param cis_selected [0,1]
      */
     void EditableFloor::set_selected(bool cis_selected) {
-        LOG(INFO)
-            << "Starting CharacterSelectState set_selected with cis_selected: "
-            << cis_selected;
+        std::string log_message = "Starting CharacterSelectState set_selected with cis_selected: " + static_cast<int>(cis_selected);
+        LOG(INFO) << log_message;
 
         is_selected = cis_selected;
 
