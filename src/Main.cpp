@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "../easylogging/easylogging++.h"
+#include "easylogging++.h"
 
 INITIALIZE_EASYLOGGINGPP
 #include "MenuState.h"
