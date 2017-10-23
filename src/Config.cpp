@@ -10,8 +10,6 @@
 
 #include "Config.h"
 
-#include <fstream>
-
 int Config::width;
 int Config::height;
 int Config::fullscreen;
@@ -42,9 +40,10 @@ void Config::init() {
 int Config::get_width() {
     LOG(INFO) << "Starting CharacterSelectState get_width";
 
-    return_value = width;
-    LOG(INFO) << "Ending CharacterSelectState get_width returning value: "
-              << return_value;
+    int return_value = width;
+
+    std::string log_message = "Ending CharacterSelectState get_width returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -56,9 +55,10 @@ int Config::get_width() {
 int Config::get_height() {
     LOG(INFO) << "Starting CharacterSelectState get_height";
 
-    return_value = height;
-    LOG(INFO) << "Ending CharacterSelectState get_height returning value: "
-              << return_value;
+    int return_value = height;
+
+    std::string log_message = "Ending CharacterSelectState get_height returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -71,9 +71,10 @@ int Config::get_height() {
 int Config::is_fullscreen() {
     LOG(INFO) << "Starting CharacterSelectState is_fullscreen";
 
-    return_value = fullscreen;
-    LOG(INFO) << "Ending CharacterSelectState is_fullscreen returning value: "
-              << return_value;
+    int return_value = fullscreen;
+
+    std::string log_message = "Ending CharacterSelectState is_fullscreen returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
 
     return return_value;
 }
@@ -86,9 +87,11 @@ int Config::is_fullscreen() {
  * @param cfullscreen [0,1]
  */
 void Config::update_information(int cwidth, int cheight, int cfullscreen) {
-    LOG(INFO) << "Starting CharacterSelectState update_information, cwidth: "
-              << cwidth << ", cheight: " << cheight
-              << ", cfullscreen: " << cfullscreen;
+    std::string log_message = "Starting CharacterSelectState update_information, cwidth: ";
+    log_message += std::to_string(cwidth) += ", cheight: ";
+    log_message += std::to_string(cheight) + ", cfullscreen: " + std::to_string(cfullscreen);
+
+    LOG(INFO) << log_message;
 
     width = cwidth;
     height = cheight;

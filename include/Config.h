@@ -12,7 +12,11 @@
 #define INCLUDE_CONFIG_H_
 
 #include <assert.h>
+
 #include <string>
+#include <fstream>
+
+#include "easylogging++.h" // NOLINT
 
 #define RESOURCES_FOLDER std::string("res/")
 #define CONFIGURATION_FILE_PATH (RESOURCES_FOLDER + "config_file.dat")
