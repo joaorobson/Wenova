@@ -47,30 +47,7 @@ class CharacterSelectState : public State {
     Sound select_sound; /**< When really select characters. */
     Sound changed_sound; /**< When switching between characters. */
 
-    int current_row[N_PLAYERS];
-    int current_column[N_PLAYERS];
-    int current_skin[N_PLAYERS];
-
-    bool is_character_selected[N_PLAYERS];
-    bool is_ready; /**< Ready to start the match. */
-
-    string selected_stage;
-
-    enum Button {
-        A,
-        B,
-        Y,
-        LEFT,
-        RIGHT,
-        UP,
-        DOWN,
-        SELECT,
-        START,
-        LT,
-        RT
-    }; /**< Based on Xbox controller. */
-
-    bool is_key_pressed[N_PLAYERS][N_BUTTONS];
+    FighterMenu chars[N_CHARS]; /**< Board of fighters */
 
     /**
      * Vectors for elements Positions.
@@ -96,7 +73,30 @@ class CharacterSelectState : public State {
     vector<ii> names_positions_deltas; /**< Relative to names_tags_positions. */
     vector<ii> numbers_positions_deltas; /**< Relative to slots. */
 
-    FighterMenu chars[N_CHARS]; /**< Board of fighters */
+    string selected_stage;
+
+    enum Button {
+        A,
+        B,
+        Y,
+        LEFT,
+        RIGHT,
+        UP,
+        DOWN,
+        SELECT,
+        START,
+        LT,
+        RT
+    }; /**< Based on Xbox controller. */
+
+    int current_row[N_PLAYERS];
+    int current_column[N_PLAYERS];
+    int current_skin[N_PLAYERS];
+
+    bool is_character_selected[N_PLAYERS];
+    bool is_ready; /**< Ready to start the match. */
+
+    bool is_key_pressed[N_PLAYERS][N_BUTTONS];
 
  public:
     /**
@@ -106,6 +106,12 @@ class CharacterSelectState : public State {
      * @param cselected_stage Name of the stage that was selected.
      */
     explicit CharacterSelectState(string cselected_stage);
+
+    /**
+     * Process interaction of the player with joystick while
+     * choosing character.
+     */
+    void process_input();
 
     /**
      * Updates player selection while player move between characters.
@@ -121,25 +127,19 @@ class CharacterSelectState : public State {
     void render();
 
     /**
-     * Not implemented.
+     * Get information about players choice about characters and skins.
+     *
+     * @returns Vector of pairs of strings containing information about
+     * characters and skins choosen.
      */
-    void pause();
+    vector<pair<string, string>> export_players();
 
     /**
-     * Not implemented.
+     * Searchs for characters identifying which the player chose.
+     *
+     * @returns
      */
-    void resume();
-
-    /**
-     * Process interaction of the player with joystick while
-     * choosing character.
-     */
-    void process_input();
-
-    /**
-     * Not implemented.
-     */
-    bool character_enabled(int row, int col);
+    bool all_players_selected();
 
     /**
      * Get information about the character the player choose.
@@ -151,21 +151,6 @@ class CharacterSelectState : public State {
     pair<string, int> get_chars_info(int idx);
 
     /**
-     * Searchs for characters identifying which the player chose.
-     *
-     * @returns
-     */
-    bool all_players_selected();
-
-    /**
-     * Get information about players choice about characters and skins.
-     *
-     * @returns Vector of pairs of strings containing information about
-     * characters and skins choosen.
-     */
-    vector<pair<string, string>> export_players();
-
-    /**
      * Get slot of character on the board.
      *
      * @param row [510 or 645]
@@ -174,6 +159,21 @@ class CharacterSelectState : public State {
      * @returns pair of ints which indicates the corresponding slot.
      */
     pair<int, int> get_slot(int row, int col);
+
+    /**
+     * Not implemented.
+     */
+    void pause();
+
+    /**
+     * Not implemented.
+     */
+    void resume();
+
+    /**
+     * Not implemented.
+     */
+    bool character_enabled(int row, int col);
 };
 
 #endif  // INCLUDE_CHARACTERSELECTSTATE_H_

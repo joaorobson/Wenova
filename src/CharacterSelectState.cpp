@@ -16,15 +16,48 @@
 #include "MenuState.h"
 #include "StageSelectState.h"
 
-#define FRAME_TIME 7.5
-#define FIRST_PLAYER 0
-#define ALLOCATED_CHANNELS 50 /**< Allocated channels for mixing. */
+#define BACKGROUNDS_SIZE_WIDTH 1280 /**< Unit: px*/
+#define BACKGROUNDS_SIZE_HEIGHT 720 /**< Unit: px*/
 
 #define N_COLS 2
 #define N_ROWS 4
 #define N_PLAYERS 4
-#define N_backgrounds_sprites 2
 #define N_SKINS 4
+
+#define FRAME_TIME 7.5
+#define FIRST_PLAYER 0
+#define ALLOCATED_CHANNELS 50 /**< Allocated channels for mixing. */
+
+#define PLANET_SPRITE_SCALE 1.5
+#define PLANET_SPRITE_AMOUNT 8
+
+#define N_backgrounds_sprites 2
+#define CHARATERS_SPRITES_AMOUNT \
+    { 12, 8, 8, 7, 4, 4, 7, 5 }
+#define CHARACTERS_NAMES \
+    { "blood", "flesh", "hookline", "sinker", "trap", "trip", "dusk", "dawn" }
+
+/**
+ * To allow iterations over many elements.
+ */
+#define BACKGROUND_SPRITES_PREFIX_PATH "character_select/background_"
+#define PLAYERS_NUMBERS_SPRITES_PREFIX_PATH "character_select/number_"
+#define NAMES_TAGS_SPRITES_PREFIX_PATH "character_select/name_tag_"
+#define CHARACTERS_FORMAT ".png"
+
+#define BLOCKED_SOUND_PATH "menu/sound/cancel.ogg"
+#define SELECT_SOUND_PATH "menu/sound/select.ogg"
+#define CHANGED_SOUND_PATH "menu/sound/cursor.ogg"
+
+#define CHARACTER_SLOTS_PATH "character_select/character_slots.png"
+#define SELECTED_TAG_PATH "character_select/selected.png"
+#define READY_TO_FIGHT_PATH "character_select/ready_to_fight.png"
+#define PLANET_SPRITE_PATH "character_select/planet.png"
+
+#define ROWS_X_POSITIONS \
+    { 510, 645 }
+#define ROWS_Y_POSITIONS \
+    { 55, 197, 395, 536 }
 
 #define NAMES_TAGS_X_POSITIONS_1 91 /**< Unit: px*/
 #define NAMES_TAGS_Y_POSITIONS_1 145 /**< Unit: px*/
@@ -74,38 +107,6 @@
 #define NUMBERS_X_POSITIONS_DELTAS_4 93 /**< Unit: px*/
 #define NUMBERS_Y_POSITIONS_DELTAS_4 101 /**< Unit: px*/
 
-#define CHARACTER_SLOTS_PATH "character_select/character_slots.png"
-#define SELECTED_TAG_PATH "character_select/selected.png"
-#define READY_TO_FIGHT_PATH "character_select/ready_to_fight.png"
-#define PLANET_SPRITE_PATH "character_select/planet.png"
-
-#define ROWS_X_POSITIONS \
-    { 510, 645 }
-#define ROWS_Y_POSITIONS \
-    { 55, 197, 395, 536 }
-
-/**
- * To allow iterations over many elements.
- */
-#define BACKGROUND_SPRITES_PREFIX_PATH "character_select/background_"
-#define PLAYERS_NUMBERS_SPRITES_PREFIX_PATH "character_select/number_"
-#define NAMES_TAGS_SPRITES_PREFIX_PATH "character_select/name_tag_"
-#define CHARACTERS_FORMAT ".png"
-
-#define BLOCKED_SOUND_PATH "menu/sound/cancel.ogg"
-#define SELECT_SOUND_PATH "menu/sound/select.ogg"
-#define CHANGED_SOUND_PATH "menu/sound/cursor.ogg"
-
-#define PLANET_SPRITE_SCALE 1.5
-#define PLANET_SPRITE_AMOUNT 8
-
-#define CHARATERS_SPRITES_AMOUNT \
-    { 12, 8, 8, 7, 4, 4, 7, 5 }
-#define CHARACTERS_NAMES \
-    { "blood", "flesh", "hookline", "sinker", "trap", "trip", "dusk", "dawn" }
-
-#define BACKGROUNDS_SIZE_WIDTH 1280 /**< Unit: px*/
-#define BACKGROUNDS_SIZE_HEIGHT 720 /**< Unit: px*/
 
 /**
  * Load all artistic files and initializes board variables based
@@ -377,6 +378,33 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
         InputManager::MENU_MODE);
 
     LOG(INFO) << "Ending CharacterSelectState constructor";
+}
+
+/**
+ * Process interaction of the player with joystick while
+ * choosing character.
+ */
+void CharacterSelectState::process_input() {
+    LOG(INFO) << "Starting CharacterSelectState process_input method";
+
+    InputManager* input_manager = InputManager::get_instance();
+
+    vector<pair<int, int> > joystick_buttons = {
+        ii(A, InputManager::A),         ii(B, InputManager::B),
+        ii(Y, InputManager::Y),         ii(LEFT, InputManager::LEFT),
+        ii(RIGHT, InputManager::RIGHT), ii(UP, InputManager::UP),
+        ii(DOWN, InputManager::DOWN),   ii(SELECT, InputManager::SELECT),
+        ii(START, InputManager::START), ii(LT, InputManager::LT),
+        ii(RT, InputManager::RT)};
+
+    for (int id = 0; id < N_PLAYERS; id++) {
+        for (ii button : joystick_buttons) {
+            is_key_pressed[id][button.first] =
+                input_manager->joystick_button_press(button.second, id);
+        }
+    }
+
+    LOG(INFO) << "Ending CharacterSelectState process_input method";
 }
 
 /**
@@ -667,6 +695,54 @@ void CharacterSelectState::render() {
 }
 
 /**
+ * Get information about players choice about characters and skins.
+ *
+ * @returns Vector of pairs of strings containing information about
+ * characters and skins choosen.
+ */
+vector<pair<string, string>> CharacterSelectState::export_players() {
+    LOG(INFO) << "Starting CharacterSelectState export_players method";
+    string log_message = "";
+
+    vector<pair<string, string> > players;
+
+    for (int i = 0; i < N_PLAYERS; i++) {
+        int char_sel = current_row[i] * N_COLS + current_column[i];
+
+        if (char_sel >= N_CHARS) {
+            log_message = "char_sel is out of bound with value: " + char_sel;
+            LOG(FATAL) << log_message;
+        }
+        assert(char_sel < N_CHARS);
+
+        players.push_back(
+            std::make_pair(chars[char_sel].get_name(),
+                           chars[char_sel].get_skin_name(current_skin[i])));
+    }
+
+
+    int count = players.size();
+    log_message = "Ending CharacterSelectState export_players method returning values: ";
+
+    /*
+     * Format log_message like (name1, skin_name1), (name2, skin_name2), ...
+     */
+    for (auto data: players) {
+        string info_pair = '(' + data.first + ", " + data.second + ')';
+        log_message += count? info_pair : info_pair + ", ";
+        --count;
+    }
+
+    if (not players.size()) {
+        LOG(FATAL) << "Players vector must return some element";
+    }
+
+    LOG(INFO) << log_message;
+
+    return players;
+}
+
+/**
  * Check if all players selected their characters and skins.
  *
  * @returns
@@ -723,81 +799,6 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     LOG(INFO) << log_message;
 
     return return_value;
-}
-
-/**
- * Get information about players choice about characters and skins.
- *
- * @returns Vector of pairs of strings containing information about
- * characters and skins choosen.
- */
-vector<pair<string, string>> CharacterSelectState::export_players() {
-    LOG(INFO) << "Starting CharacterSelectState export_players method";
-    string log_message = "";
-
-    vector<pair<string, string> > players;
-
-    for (int i = 0; i < N_PLAYERS; i++) {
-        int char_sel = current_row[i] * N_COLS + current_column[i];
-
-        if (char_sel >= N_CHARS) {
-            log_message = "char_sel is out of bound with value: " + char_sel;
-            LOG(FATAL) << log_message;
-        }
-        assert(char_sel < N_CHARS);
-
-        players.push_back(
-            std::make_pair(chars[char_sel].get_name(),
-                           chars[char_sel].get_skin_name(current_skin[i])));
-    }
-
-
-    int count = players.size();
-    log_message = "Ending CharacterSelectState export_players method returning values: ";
-
-    /*
-     * Format log_message like (name1, skin_name1), (name2, skin_name2), ...
-     */
-    for (auto data: players) {
-        string info_pair = '(' + data.first + ", " + data.second + ')';
-        log_message += count? info_pair : info_pair + ", ";
-        --count;
-    }
-
-    if (not players.size()) {
-        LOG(FATAL) << "Players vector must return some element";
-    }
-
-    LOG(INFO) << log_message;
-
-    return players;
-}
-
-/**
- * Process interaction of the player with joystick while
- * choosing character.
- */
-void CharacterSelectState::process_input() {
-    LOG(INFO) << "Starting CharacterSelectState process_input method";
-
-    InputManager* input_manager = InputManager::get_instance();
-
-    vector<pair<int, int> > joystick_buttons = {
-        ii(A, InputManager::A),         ii(B, InputManager::B),
-        ii(Y, InputManager::Y),         ii(LEFT, InputManager::LEFT),
-        ii(RIGHT, InputManager::RIGHT), ii(UP, InputManager::UP),
-        ii(DOWN, InputManager::DOWN),   ii(SELECT, InputManager::SELECT),
-        ii(START, InputManager::START), ii(LT, InputManager::LT),
-        ii(RT, InputManager::RT)};
-
-    for (int id = 0; id < N_PLAYERS; id++) {
-        for (ii button : joystick_buttons) {
-            is_key_pressed[id][button.first] =
-                input_manager->joystick_button_press(button.second, id);
-        }
-    }
-
-    LOG(INFO) << "Ending CharacterSelectState process_input method";
 }
 
 /**
