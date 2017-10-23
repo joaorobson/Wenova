@@ -572,6 +572,10 @@ int InputManager::get_mouse_x_position() {
     std::string log_message = "Ending InputManager get_mouse_x_position method returning value: " + std::to_string(return_value);
     LOG(INFO) << log_message;
 
+    if (return_value > BACKGROUND_WIDTH or return_value < 0) {
+        LOG(FATAL) << "Mouse is out of screen!";
+    }
+
     return return_value;
 }
 
@@ -587,6 +591,10 @@ int InputManager::get_mouse_y_position() {
 
     std::string log_message = "Ending InputManager get_mouse_y_position method returning value: " + std::to_string(return_value);
     LOG(INFO) << log_message;
+
+    if (return_value > BACKGROUND_HEIGHT or return_value < 0) {
+        LOG(FATAL) << "Mouse is out of screen!";
+    }
 
     return return_value;
 }
