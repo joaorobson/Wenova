@@ -80,9 +80,8 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
  * @param cplatform [0,1]
  */
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
-                             bool cplatform)
-    : EditableFloor(x, y, crotation, cplatform) {
-        
+                         bool cplatform)
+: EditableFloor(x, y, crotation, cplatform) {
         std::string log_message = "Starting CharacterSelectState constructor with x: ";
         log_message += std::to_string(x) + ", y: " + std::to_string(y);
         log_message += ", width:" + std::to_string(width);
@@ -121,8 +120,8 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
      * @param delta Difference in position of the box.
      */
     void EditableFloor::update(float delta) {
-        char log_message_c[60]; 
-        sprintf(log_message_c, "Starting CharacterSelectState update with delta: %.2f", delta);
+        char log_message_c[60];
+        snprintf(log_message_c, sizeof(log_message_c), "Starting CharacterSelectState update with delta: %.2f", delta);
 
         std::string log_message(log_message_c);
         LOG(INFO) << log_message;
@@ -302,17 +301,27 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
     string EditableFloor::get_information() {
         LOG(INFO) << "Starting CharacterSelectState get_information";
 
-        char info[INFO_SIZE];
-        snprintf(info, sizeof(info), "%f %f %f %f %d", box.x, box.y, box.width,
+        char info_c[INFO_SIZE];
+        snprintf(info_c, sizeof(info_c), "%f %f %f %f %d", box.x, box.y, box.width,
                  rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
 
-        string s(info);
+        string info(info_c);
 
-        for (auto &c : s) {
+        for (auto &c : info) {
             c += FILL_MISSING_PIXELS_INFORMATIONS;
         }
 
-        string return_value = s;
+        string return_value = info;
+
+        /*
+         * Check if string reallyhas the elements.
+         * info == info_c for sure
+         */
+        float float1, float2, float3, float4;
+        int int1;
+        if (sscanf(info_c, "%f %f %f %f %d", &float1, &float2, &float3, &float4, &int1) < 5) {
+            LOG(WARNING) << "Info doesn't has all the information it should have";
+        }
 
         std::string log_message = "Ending CharacterSelectState get_information returning value: " + return_value;
         LOG(INFO) << log_message;
