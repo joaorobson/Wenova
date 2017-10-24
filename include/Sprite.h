@@ -38,33 +38,36 @@ class Sprite{
   bool finished;  /**< Check if the sprite use is no longer required. */
 
  public:
-  Sprite();
   Sprite(string file, int cframe_count = 1, float cframe_time = 1,
          int columns = 0, int cur_frame = 0);
+  Sprite();
   ~Sprite();
 
-  int get_width();
-  int get_height();
-  bool is_open();
 
   void open(string file);
+  void render(int x = 0, int y = 0, float angle = 0,
+              SDL_RendererFlip flip = SDL_FLIP_NONE);
   void set_clip(int x, int y, int w, int h);
   void set_frame(int frame);
   void set_frame_count(int cframe_count);
   void set_frame_time(float cframe_time);
 
   void update(float delta);
-  void render(int x = 0, int y = 0, float angle = 0,
-              SDL_RendererFlip flip = SDL_FLIP_NONE);
 
+  void restart_count(int cframe = 0);
+  bool is_finished();
+  int get_current_frame();
+  bool is_open();
+
+  int get_width();
+  int get_height();
   void set_scale_x(float scale);
   void set_scale_y(float scale);
   void set_scale(float scale);
   void set_scale(float cscale_x_axis, float cscale_y_axis);
   void update_scale_x(float scale);
-  void restart_count(int cframe = 0);
-  bool is_finished();
-  int get_current_frame();
+
+
 };
 
 #endif  // INCLUDE_SPRITE_H_

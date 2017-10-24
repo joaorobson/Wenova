@@ -29,21 +29,6 @@
 
 /**
 * A constructor.
-* Initialize the texture, scales of x and y, counting and time of frames and the
-* current frame and the elapsed time to each one initial value.
-*/
-Sprite::Sprite() {
-  assert(NO_TIME_ELAPSED == 0);
-  assert(INITIAL_X_Y_AXES_SCALE == 1);
-  texture = nullptr;
-  scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
-  frame_count = INITIAL_FRAME_COUNT_VALUE;
-  frame_time = INITIAL_FRAME_TIME;
-  current_frame = time_elapsed = NO_TIME_ELAPSED;
-}
-
-/**
-* A constructor.
 * Initialize the file where the images come from, counting and time of frames,
 * number of columns and the current frame.
 *
@@ -69,40 +54,26 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
 }
 
 /**
+* A constructor.
+* Initialize the texture, scales of x and y, counting and time of frames and the
+* current frame and the elapsed time to each one initial value.
+*/
+Sprite::Sprite() {
+  assert(NO_TIME_ELAPSED == 0);
+  assert(INITIAL_X_Y_AXES_SCALE == 1);
+  texture = nullptr;
+  scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
+  frame_count = INITIAL_FRAME_COUNT_VALUE;
+  frame_time = INITIAL_FRAME_TIME;
+  current_frame = time_elapsed = NO_TIME_ELAPSED;
+}
+
+
+/**
 * The destructor.
 * Free the memory allocated to store Sprite objects.
 */
 Sprite::~Sprite() {
-}
-
-/**
-* Sprite width getter.
-* Returns the saved sprite width on x scale units.
-*
-* @return the sprite width.
-*/
-int Sprite::get_width() {
-  return width * scale_x_axis;
-}
-
-/**
-* Sprite width getter.
-* Returns the saved sprite height on y scale units.
-*
-* @return the sprite height.
-*/
-int Sprite::get_height() {
-  return height * scale_y_axis;
-}
-
-/**
-* Check if Sprite is open.
-* Returns true if texture has some value (if is not null).
-*
-* @return true or false according to texture pointer value.
-*/
-bool Sprite::is_open() {
-  return texture != nullptr;
 }
 
 /**
@@ -131,6 +102,38 @@ void Sprite::open(string file) {
            (current_frame / columns) * height,
             width,
             height);
+}
+
+/**
+* Render method.
+* Render the sprites in the game.
+*
+* @param x is the scenario horizontal position.
+* @param y is the scenario vertical position.
+* @param angle is the sprite angle.
+* @param flip determines the flip movement.
+*/
+void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
+  SDL_Rect dstrect = SDL_Rect{x,
+                              y,
+                              static_cast<int>(clip_rect.w * scale_x_axis),
+                              static_cast<int>(clip_rect.h * scale_y_axis)};
+
+  angle *= (_180_DEGREES / PI);  /**< Conversion from degrees to radians. */
+  int render_copy = SDL_RenderCopyEx(Game::get_instance().get_renderer(),
+                                     texture.get(),
+                                     &clip_rect,
+                                     &dstrect,
+                                     angle,
+                                     nullptr,
+                                     flip);
+  /**
+   * Check if the texture portion copied was initialized correctly.
+   */
+  if (render_copy) {
+    printf("Render: %s\n", SDL_GetError());
+    exit(-1);
+  }
 }
 
 /**
@@ -218,36 +221,61 @@ void Sprite::update(float delta_time) {
   }
 }
 
-/**
-* Render method.
-* Render the sprites in the game.
+/* Restart frame counting.
+* Reinitialize the current frame and set his finished condition as false.
 *
-* @param x is the scenario horizontal position.
-* @param y is the scenario vertical position.
-* @param angle is the sprite angle.
-* @param flip determines the flip movement.
+* @param cframe is the new frame to be updated.
 */
-void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
-  SDL_Rect dstrect = SDL_Rect{x,
-                              y,
-                              static_cast<int>(clip_rect.w * scale_x_axis),
-                              static_cast<int>(clip_rect.h * scale_y_axis)};
+void Sprite::restart_count(int cframe) {
+  current_frame = cframe;
+  finished = false;
+}
 
-  angle *= (_180_DEGREES / PI);  /**< Conversion from degrees to radians. */
-  int render_copy = SDL_RenderCopyEx(Game::get_instance().get_renderer(),
-                                     texture.get(),
-                                     &clip_rect,
-                                     &dstrect,
-                                     angle,
-                                     nullptr,
-                                     flip);
-  /**
-   * Check if the texture portion copied was initialized correctly.
-   */
-  if (render_copy) {
-    printf("Render: %s\n", SDL_GetError());
-    exit(-1);
-  }
+/* Check if in use sprite is finished.
+* Returns true if the sprint use has ended.
+*
+* @return true or false according to the use state of the sprite.
+*/
+bool Sprite::is_finished() {
+  return finished;
+}
+
+/**
+* Check if Sprite is open.
+* Returns true if texture has some value (if is not null).
+*
+* @return true or false according to texture pointer value.
+*/
+bool Sprite::is_open() {
+  return texture != nullptr;
+}
+
+/* Sprite current frame getter.
+* Returns the saved current frame.
+*
+* @return the current frame.
+*/
+int Sprite::get_current_frame() {
+  return current_frame;
+}
+/**
+* Sprite width getter.
+* Returns the saved sprite width on x scale units.
+*
+* @return the sprite width.
+*/
+int Sprite::get_width() {
+  return width * scale_x_axis;
+}
+
+/**
+* Sprite width getter.
+* Returns the saved sprite height on y scale units.
+*
+* @return the sprite height.
+*/
+int Sprite::get_height() {
+  return height * scale_y_axis;
 }
 
 /**
@@ -319,30 +347,3 @@ void Sprite::update_scale_x(float scale) {
   }
 }
 
-/* Restart frame counting.
-* Reinitialize the current frame and set his finished condition as false.
-*
-* @param cframe is the new frame to be updated.
-*/
-void Sprite::restart_count(int cframe) {
-  current_frame = cframe;
-  finished = false;
-}
-
-/* Check if in use sprite is finished.
-* Returns true if the sprint use has ended.
-*
-* @return true or false according to the use state of the sprite.
-*/
-bool Sprite::is_finished() {
-  return finished;
-}
-
-/* Sprite current frame getter.
-* Returns the saved current frame.
-*
-* @return the current frame.
-*/
-int Sprite::get_current_frame() {
-  return current_frame;
-}
