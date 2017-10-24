@@ -883,11 +883,6 @@ void Blood::check_pass_through_platform(bool change) {
   }
 }
 
-
-
-
-
-
 /**
  * Check special attack type.
  * Check if user pressed the special button #1. If so, and if there is change in the

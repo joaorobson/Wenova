@@ -256,6 +256,7 @@ bool Sprite::is_open() {
 * @return the current frame.
 */
 int Sprite::get_current_frame() {
+  assert(current_frame >= 0);
   return current_frame;
 }
 /**
@@ -265,6 +266,7 @@ int Sprite::get_current_frame() {
 * @return the sprite width.
 */
 int Sprite::get_width() {
+  assert(width * scale_x_axis >= 0);
   return width * scale_x_axis;
 }
 
@@ -275,6 +277,7 @@ int Sprite::get_width() {
 * @return the sprite height.
 */
 int Sprite::get_height() {
+  assert(height * scale_y_axis >= 0);
   return height * scale_y_axis;
 }
 

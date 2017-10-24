@@ -234,6 +234,7 @@ void Text::open(string file, int size) {
  * @return the new text box horizontal coordinate.
  */
 float Text::get_x() {
+  assert(box.get_x() >= 0);
   return box.get_x();
 }
 
@@ -244,6 +245,7 @@ float Text::get_x() {
  * @return the new text box vertical coordinate.
  */
 float Text::get_y() {
+  assert(box.get_y() >= 0);
   return box.get_y();
 }
 
@@ -254,6 +256,7 @@ float Text::get_y() {
  * @return the new text box width.
  */
 float Text::get_width() {
+  assert(box.get_width() >= 0);
   return box.get_width();
 }
 
@@ -264,6 +267,7 @@ float Text::get_width() {
  * @return the new text box height.
  */
 float Text::get_height() {
+  assert(box.get_height() >= 0);
   return box.get_height();
 }
 
@@ -274,6 +278,7 @@ float Text::get_height() {
  * @return the new text.
  */
 string Text::get_text() {
+  assert(text != "");
   return text;
 }
 
