@@ -19,11 +19,11 @@
 // maybe
 // #include "Timer.h"
 
+#include <assert.h>
 #include <utility>
 #include <map>
 #include <string>
 #include <vector>
-#include <assert.h>
 
 using std::pair;
 using std::map;
@@ -35,28 +35,15 @@ class OptionsState : public State {
     Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
     Sound selected;  /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
-    int current_option;  /**< Number of current option of main Menu. */
-    bool on_submenu;  /**< Indicates if user is on submenu of menu "Options". */
     map<string, vector<Text *> > sub_options;  /**< Map of sub options of the */
                                                /**< menu "Options". */
     vector<Text *> options;  /**< Text of all options of the menu "Options". */
     vector<int> current_sub_option;  /**< Vector with current options */
                                      /**< of submenu. */
-
-    /**
-     * Get the option on a sub menu.
-     * This function identifies which sub menu and option the user selected.
-     *
-     * @param option an integer argument that represents the selected option of the
-     * main menu.
-     *
-     * @return an integer value that represents the current sub option of a sub
-     * menu.
-     */
-     int get_current_sub_option(int option);
-
     enum Button { A, B, UP, DOWN, SELECT, START };
     bool pressed[15];
+    int current_option;  /**< Number of current option of main Menu. */
+    bool on_submenu;  /**< Indicates if user is on submenu of menu "Options". */
 
  public:
    /**
@@ -105,6 +92,19 @@ class OptionsState : public State {
      * to constants of the InputManager class.
      */
     void process_input();
+
+ private:
+   /**
+    * Get the option on a sub menu.
+    * This function identifies which sub menu and option the user selected.
+    *
+    * @param option an integer argument that represents the selected option of the
+    * main menu.
+    *
+    * @return an integer value that represents the current sub option of a sub
+    * menu.
+    */
+    int get_current_sub_option(int option);
 };
 
 #endif  // INCLUDE_OPTIONSSTATE_H_

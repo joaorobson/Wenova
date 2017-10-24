@@ -11,13 +11,13 @@
 #ifndef INCLUDE_FIGHTERMENU_H_
 #define INCLUDE_FIGHTERMENU_H_
 
+#include "Sprite.h"
+#include "Text.h"
+
+#include <assert.h>
 #include <utility>
 #include <string>
 #include <vector>
-#include <assert.h>
-
-#include "Sprite.h"
-#include "Text.h"
 
 using std::string;
 using std::vector;

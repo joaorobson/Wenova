@@ -33,12 +33,6 @@ class StageSelectState : public State {
     Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
     Sound selected;  /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
-    int stage_select = 0;  /**< Int number thar represents the selected stage */
-                           /**< choosed by the user. */
-    bool go_to_edit;  /**< Bool value that indicates if user is on edit mode */
-                      /**< of a stage. */
-    int amount_stages;  /**< Int number of the amount of stages that user can */
-                   /**< select according if he's on edit mode or not. */
 
     enum Button {
           LEFT,  /**< enum value of the left button cursor. */
@@ -50,13 +44,12 @@ class StageSelectState : public State {
          };
     bool pressed[5];  /**< Bool vector that represents the pressed button */
                       /**< according to the enum Button. */
-
-    /**
-     * Process an input of the user.
-     * This function maps the buttons that are used on the menu that select a
-     * stage according to constants of the InputManager class.
-     */
-    void process_input();
+    int stage_select = 0;  /**< Int number thar represents the selected stage */
+                           /**< choosed by the user. */
+    bool go_to_edit;  /**< Bool value that indicates if user is on edit mode */
+                      /**< of a stage. */
+    int amount_stages;  /**< Int number of the amount of stages that user can */
+                        /**< select according if he's on edit mode or not. */
 
  public:
     /**
@@ -103,6 +96,14 @@ class StageSelectState : public State {
      * @param increment an integer value that updates the current stage.
      */
     void update_stage_select(int increment);
+
+ private:
+    /**
+     * Process an input of the user.
+     * This function maps the buttons that are used on the menu that select a
+     * stage according to constants of the InputManager class.
+     */
+    void process_input();
 };
 
 #endif  // INCLUDE_STAGESELECTSTATE_H_

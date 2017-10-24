@@ -71,17 +71,6 @@ void TimeCounter::render() {
 }
 
 /**
- * Function that returns remaining time.
- * This function returns a string representation of the remaining time
- * of a battle.
- *
- * @return is a string representing the remaining time.
- */
-string TimeCounter::get_time_string() {
-    return to_string(static_cast<int>(remaining_seconds));
-}
-
-/**
  * Function get state dead.
  * This function returns the state dead.
  *
@@ -99,6 +88,17 @@ bool TimeCounter::is_dead() {
  */
 bool TimeCounter::is_over() {
     return remaining_seconds <= 0;
+}
+
+/**
+ * Function that returns remaining time.
+ * This function returns a string representation of the remaining time
+ * of a battle.
+ *
+ * @return is a string representing the remaining time.
+ */
+string TimeCounter::get_time_string() {
+    return to_string(static_cast<int>(remaining_seconds));
 }
 
 /**

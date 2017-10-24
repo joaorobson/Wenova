@@ -3,6 +3,7 @@
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
+
 /**
  * @file TimeCounter.h
  * This file contains the definitions of all methods and attributes of the class
@@ -22,6 +23,17 @@
 using std::string;
 
 class TimeCounter : public GameObject {
+ public:
+    static const int total_time = 100; /**< Const int number with duration */
+                                      /**< of a battle. */
+ private:
+    Sprite background_clock; /**< Background image of the clock of a battle. */
+    Timer timer;            /**< Timer of a battle with countdown. */
+    Text *time_text;        /**< Text that shows the remaining time on */
+                            /**< screen during a battle. */
+    float remaining_seconds; /**< Float number with the remaining time in */
+                            /**< seconds. */
+
  public:
     /**
      * Constructor.
@@ -74,19 +86,9 @@ class TimeCounter : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject & object);
-
-    static const int total_time = 100;  /**< Const int number with duration */
-                                        /**< of a battle. */
+    void notify_collision(GameObject& object);
 
  private:
-    Sprite background_clock;  /**< Background image of the clock of a battle. */
-    Timer timer;  /**< Timer of a battle with countdown. */
-    Text *time_text;  /**< Text that shows the remaining time on screen */
-                      /**< during a battle. */
-    float remaining_seconds;  /**< Float number with the remaining time in */
-                              /**< seconds. */
-
     /**
      * Function that returns remaining time.
      * This function returns a string representation of the remaining time

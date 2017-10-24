@@ -11,11 +11,11 @@
 #ifndef INCLUDE_RESOURCES_H_
 #define INCLUDE_RESOURCES_H_
 
+#include <assert.h>
 #include <iostream>
 #include <unordered_map>
 #include <memory>
 #include <string>
-#include <assert.h>
 
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"

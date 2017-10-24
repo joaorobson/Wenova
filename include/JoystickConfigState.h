@@ -31,12 +31,12 @@ class JoystickConfigState : public State{
     Text *and_text;  /**< Text "AND" on test mode. */
     Text *start_text;  /**< Text "START" on test mode. */
     Text *to_go_back;  /**< Text "TO GO BACK" on test mode. */
-    bool on_test;  /**< Indicates if the user has entered at mode test on */
-                   /**< menu "Options" using joystick. */
-    bool is_keyboard;  /**< Indicates if user is using a keyboard. */
     Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
     Sound selected;  /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
+    bool on_test;  /**< Indicates if the user has entered at mode test on */
+                   /**< menu "Options" using joystick. */
+    bool is_keyboard;  /**< Indicates if user is using a keyboard. */
 
  public:
    /**

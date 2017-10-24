@@ -17,14 +17,28 @@
 #include "Sprite.h"
 #include "Text.h"
 
+#include <assert.h>
 #include <string>
 #include <vector>
-#include <assert.h>
 
 using std::string;
 using std::vector;
 
 class BattleEnd : public GameObject {
+ private:
+    Sprite back_btn;  /**< Image of button "B" to quit the battle. */
+    Text  *back_txt;  /**< Text "BACK" to indicates that button "B" quits */
+                   /**< the battle. */
+    vector<Sprite> sprite;  /**< Vector of sprites with images to display */
+                           /**< the winner team at the end of a battle. */
+
+    int current_sprite;  /**< Int number with the id of the current sprite */
+                        /**< of the vector of sprites. */
+    bool back_selected;  /**< Bool value that indicates if the user has */
+                        /**< pressed the return button. */
+    bool quitRequested;  /**< Bool value that indicates if user has */
+                        /**< requested to quit the battle. */
+
  public:
     /**
      * Constructor.
@@ -47,8 +61,8 @@ class BattleEnd : public GameObject {
 
     /**
      * Function that renders sprite and texts.
-     * This function renders sprite and texts at right position when a Battle is
-     * finished.
+     * This function renders sprite and texts at right position when a Battle
+     * is finished.
      */
     void render();
 
@@ -64,7 +78,8 @@ class BattleEnd : public GameObject {
      * Function get quit request.
      * This function returns true when a quit request is open by the user.
      *
-     * @return a boolean value that represents the the quit request of the user.
+     * @return a boolean value that represents the the quit request of the
+     * user.
      */
     bool quit_requested();
 
@@ -75,20 +90,6 @@ class BattleEnd : public GameObject {
      * @param GameObject a pointer to a GameObject.
      */
     void notify_collision(GameObject & object);
-
- private:
-    vector<Sprite> sprite;  /**< Vector of sprites with images to display the */
-                            /**< winner team at the end of a battle. */
-
-    int current_sprite;  /**< Int number with the id of the current sprite of */
-                         /**< the vector of sprites. */
-    bool back_selected;  /**< Bool value that indicates if the user has */
-                         /**< pressed the return button. */
-    bool quitRequested;  /**< Bool value that indicates if user has requested */
-                         /**< to quit the battle. */
-    Sprite back_btn;  /**< Image of button "B" to quit the battle. */
-    Text  *back_txt;  /**< Text "BACK" to indicates that button "B" quits the */
-                      /**< battle. */
 };
 
 #endif  // INCLUDE_BATTLEEND_H_
