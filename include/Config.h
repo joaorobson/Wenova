@@ -22,6 +22,11 @@
 #define CONFIGURATION_FILE_PATH (RESOURCES_FOLDER + "config_file.dat")
 
 class Config {
+ private:
+    static int width;
+    static int height;
+    static int fullscreen;
+
  public:
     /**
      * Will write current screen configurations to res/config_file.dat.
@@ -56,11 +61,6 @@ class Config {
      * @param cfullscreen [0,1]
      */
     static void update_information(int cwidth, int cheight, int cfullscreen);
-
- private:
-    static int width;
-    static int height;
-    static int fullscreen;
 };
 
 #endif  // INCLUDE_CONFIG_H_
