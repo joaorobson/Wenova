@@ -22,12 +22,11 @@
 
 class EditableFloor : public Floor {
  private:
-    enum FloorState { SELECTED, NOT_SELECTED };
-
     Sprite standard_sprite;
     Sprite platform_sprite;
     Sprite selected_sprite;
 
+    enum FloorState { SELECTED, NOT_SELECTED };  ///< Can't be after state
     FloorState state;
 
     bool is_deleted;
@@ -62,16 +61,30 @@ class EditableFloor : public Floor {
     ~EditableFloor();
 
     /**
-     * Manages player interaction with the platform.
+     * Get information about many aspects of an platform.
      *
-     * @param delta Difference in position of the platform.
+     * @returns String in format: "x y width rotated level is_platform?"
      */
-    void update(float delta);
+    string get_information();
+
+    /**
+     * Select elements which will be edited.
+     *
+     * @param cis_selected [0,1]
+     */
+    void set_selected(bool cis_selected);
 
     /**
      * Render selected platform considering if it is selected.
      */
     void render();
+
+    /**
+     * Manages player interaction with the platform.
+     *
+     * @param delta Difference in position of the platform.
+     */
+    void update(float delta);
 
     /**
      * True if platform has been deleted.
@@ -86,20 +99,6 @@ class EditableFloor : public Floor {
      * @param unamed An game object.
      */
     void notify_collision(GameObject&);
-
-    /**
-     * Get information about many aspects of an platform.
-     *
-     * @returns String in format: "x y width rotated level is_platform?"
-     */
-    string get_information();
-
-    /**
-     * Select elements which will be edited.
-     *
-     * @param cis_selected [0,1]
-     */
-    void set_selected(bool cis_selected);
 };
 
 #endif  // INCLUDE_EDITABLEFLOOR_H_
