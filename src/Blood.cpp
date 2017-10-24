@@ -532,6 +532,26 @@ void Blood::check_fall(bool change) {
 }
 
 /**
+ * Check movement in right direction method.
+ * Check if user is pressing the right button. If so, and if there is change in
+ * the Fighter state, change his temporary state to "Running" and orientation to
+ * "Right".
+ *
+ * @param change checks if the Fighter state has changed and if so, change his
+ * temporary state.
+ */
+void Blood::check_right(bool change) {
+  assert(RIGHT_BUTTON >= 0);
+  if (is_holding[RIGHT_BUTTON]) {
+    if (change) {
+      temporary_state = FighterState::RUNNING;
+    }
+    speed.x = 3;
+    orientation = Orientation::RIGHT;
+  }
+}
+
+/**
  * Check movement in left direction method.
  * Check if user is pressing the left button. If so, and if there is change in
  * the Fighter state,  change his temporary state to "Running" and orientation
@@ -551,24 +571,23 @@ void Blood::check_left(bool change) {
   }
 }
 
+
 /**
- * Check movement in right direction method.
- * Check if user is pressing the right button. If so, and if there is change in
- * the Fighter state, change his temporary state to "Running" and orientation to
- * "Right".
+ * Check defense.
+ * Check if user is pressing the block button and if Fighter is on the floor. If
+ * so, and if there is change in the Fighter state, change his temporary state to
+ * "Defending".
  *
  * @param change checks if the Fighter state has changed and if so, change his
  * temporary state.
  */
-void Blood::check_right(bool change) {
-  assert(RIGHT_BUTTON >= 0);
-  if (is_holding[RIGHT_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::RUNNING;
+void Blood::check_defense(bool change) {
+  assert(BLOCK_BUTTON >= 0);
+  if (is_holding[BLOCK_BUTTON] and on_floor) {
+       if (change) {
+         temporary_state = FighterState::DEFENDING;
+       }
     }
-    speed.x = 3;
-    orientation = Orientation::RIGHT;
-  }
 }
 
 /**
@@ -609,6 +628,101 @@ void Blood::check_crouch(bool change) {
          temporary_state = FighterState::CROUCH;
        }
     }
+}
+
+/**
+ * Check stunning.
+ * Check if speed on x axis is 0. If so, and if there is change in the
+ * Fighter state, change his temporary state to "Stunned".
+ *
+ * @param change checks if the Fighter state has changed and if so, change his
+ * temporary state.
+ */
+void Blood::check_stunned(bool change) {
+  assert(STOPPED == 0);
+  speed.x = STOPPED;
+  if (change) {
+    temporary_state = FighterState::STUNNED;
+  }
+}
+
+/**
+ * Check death.
+ * Check if Fighter state is "dying". If so, and if there is change in the
+ * Fighter state, change his temporary state to "Dying".
+ *
+ * @param change checks if the Fighter state has changed and if so,7 change his
+ * temporary state.
+ */
+void Blood::check_dead(bool change) {
+  assert(DYING_TAG != "");
+  if (is(DYING_TAG)) {
+    if (change) {
+      temporary_state = FighterState::DYING;
+    }
+  }
+}
+
+/**
+ * Check attack type.
+ * Check if user pressed the attack button and is holding the up button. If so,
+ * and if the combo is bigger than 0, there will be no attack.
+ * If not, the combo value increases, the speed on y axis decreases and, if there
+ * is change in the Fighter state, change his temporary state to
+ * "Jump attack up".
+ *
+ * @param change checks if the Fighter state has changed and if so, change his
+ * temporary state.
+ */
+void Blood::check_jump_atk_up(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(UP_BUTTON >= 0);
+  if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
+    if (combo) {
+      return;
+    }
+    combo++;
+    speed.y = -5;
+    if (change) {
+      temporary_state = FighterState::JUMP_ATK_UP;
+    }
+  }
+}
+
+/**
+ * Check attack type.
+ * Check if user pressed the attack button and is holding the down button. If so,
+ *  and if there is change in the Fighter state, change his temporary state to
+ * "Jump attack down".
+ *
+ * @param change checks if the Fighter state has changed and if so, change his
+ * temporary state.
+ */
+void Blood::check_jump_atk_down(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  assert(DOWN_BUTTON >= 0);
+  if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
+    if (change) {
+      temporary_state = FighterState::JUMP_ATK_DOWN;
+    }
+  }
+}
+
+/**
+ * Check attack type.
+ * Check if user pressed the attack button. If so, and if there is change in the
+ * Fighter state, change his temporary state to "Jump attack neutral".
+ *
+ * @param change checks if the Fighter state has changed and if so, change his
+ * temporary state.
+ */
+void Blood::check_jump_atk_neutral(bool change) {
+  assert(ATTACK_BUTTON >= 0);
+  if (pressed[ATTACK_BUTTON]) {
+    if (change) {
+      temporary_state = FighterState::JUMP_ATK_NEUTRAL;
+    }
+  }
 }
 
 /**
@@ -666,29 +780,6 @@ void Blood::check_idle_atk_neutral_3(bool change) {
   }
 }
 
-/**
- * Check attack type.
- * Check if user pressed the attack button and is holding the left or the right
- * button. If so, and if there is change in the Fighter state,  change his
- * temporary state to "Idle attack front".
- * After that, change the Fighter orientation based on the pressed button.
- *
- * @param change checks if the Fighter state has changed and if so, change his
- * temporary state.
- */
-void Blood::check_idle_atk_front(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(LEFT_BUTTON >= 0);
-  assert(RIGHT_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and
-    (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) {
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_FRONT;
-    }
-    orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT :
-                                            Orientation::RIGHT;
-  }
-}
 
 /**
  * Check attack type.
@@ -731,23 +822,25 @@ void Blood::check_idle_atk_down(bool change, bool condition) {
 
 /**
  * Check attack type.
- * Check if user pressed the attack button and is holding the up button. If so,
- * and if there is change in the Fighter state, change his temporary state to
- * "Idle attack up".
+ * Check if user pressed the attack button and is holding the left or the right
+ * button. If so, and if there is change in the Fighter state,  change his
+ * temporary state to "Idle attack front".
+ * After that, change the Fighter orientation based on the pressed button.
  *
  * @param change checks if the Fighter state has changed and if so, change his
  * temporary state.
  */
-void Blood::check_pass_through_platform(bool change) {
-  assert(DOWN_BUTTON >= 0);
+void Blood::check_idle_atk_front(bool change) {
   assert(ATTACK_BUTTON >= 0);
-  assert(CROUCH_COOLDOWN == 50.0);
-  if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
-    if (crouch_timer.get() < CROUCH_COOLDOWN) {
-      if (change) temporary_state = FighterState::FALLING;
-      pass_through_timer.restart();
+  assert(LEFT_BUTTON >= 0);
+  assert(RIGHT_BUTTON >= 0);
+  if (pressed[ATTACK_BUTTON] and
+    (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) {
+    if (change) {
+      temporary_state = FighterState::IDLE_ATK_FRONT;
     }
-    crouch_timer.restart();
+    orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT :
+                                            Orientation::RIGHT;
   }
 }
 
@@ -770,99 +863,29 @@ void Blood::check_crouch_atk(bool change) {
 
 /**
  * Check attack type.
- * Check if user pressed the attack button and is holding the down button. If so,
- *  and if there is change in the Fighter state, change his temporary state to
- * "Jump attack down".
- *
- * @param change checks if the Fighter state has changed and if so, change his
- * temporary state.
- */
-void Blood::check_jump_atk_down(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(DOWN_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::JUMP_ATK_DOWN;
-    }
-  }
-}
-
-/**
- * Check attack type.
- * Check if user pressed the attack button. If so, and if there is change in the
- * Fighter state, change his temporary state to "Jump attack neutral".
- *
- * @param change checks if the Fighter state has changed and if so, change his
- * temporary state.
- */
-void Blood::check_jump_atk_neutral(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::JUMP_ATK_NEUTRAL;
-    }
-  }
-}
-
-/**
- * Check attack type.
  * Check if user pressed the attack button and is holding the up button. If so,
- * and if the combo is bigger than 0, there will be no attack.
- * If not, the combo value increases, the speed on y axis decreases and, if there
- * is change in the Fighter state, change his temporary state to
- * "Jump attack up".
+ * and if there is change in the Fighter state, change his temporary state to
+ * "Idle attack up".
  *
  * @param change checks if the Fighter state has changed and if so, change his
  * temporary state.
  */
-void Blood::check_jump_atk_up(bool change) {
+void Blood::check_pass_through_platform(bool change) {
+  assert(DOWN_BUTTON >= 0);
   assert(ATTACK_BUTTON >= 0);
-  assert(UP_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
-    if (combo) {
-      return;
+  assert(CROUCH_COOLDOWN == 50.0);
+  if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
+    if (crouch_timer.get() < CROUCH_COOLDOWN) {
+      if (change) temporary_state = FighterState::FALLING;
+      pass_through_timer.restart();
     }
-    combo++;
-    speed.y = -5;
-    if (change) {
-      temporary_state = FighterState::JUMP_ATK_UP;
-    }
+    crouch_timer.restart();
   }
 }
 
-/**
- * Check defense.
- * Check if user is pressing the block button and if Fighter is on the floor. If
- * so, and if there is change in the Fighter state, change his temporary state to
- * "Defending".
- *
- * @param change checks if the Fighter state has changed and if so, change his
- * temporary state.
- */
-void Blood::check_defense(bool change) {
-  assert(BLOCK_BUTTON >= 0);
-  if (is_holding[BLOCK_BUTTON] and on_floor) {
-       if (change) {
-         temporary_state = FighterState::DEFENDING;
-       }
-    }
-}
 
-/**
- * Check stunning.
- * Check if speed on x axis is 0. If so, and if there is change in the
- * Fighter state, change his temporary state to "Stunned".
- *
- * @param change checks if the Fighter state has changed and if so, change his
- * temporary state.
- */
-void Blood::check_stunned(bool change) {
-  assert(STOPPED == 0);
-  speed.x = STOPPED;
-  if (change) {
-    temporary_state = FighterState::STUNNED;
-  }
-}
+
+
 
 
 /**
@@ -917,22 +940,6 @@ void Blood::check_special_2(bool change) {
   }
 }
 
-/**
- * Check death.
- * Check if Fighter state is "dying". If so, and if there is change in the
- * Fighter state, change his temporary state to "Dying".
- *
- * @param change checks if the Fighter state has changed and if so,7 change his
- * temporary state.
- */
-void Blood::check_dead(bool change) {
-  assert(DYING_TAG != "");
-  if (is(DYING_TAG)) {
-    if (change) {
-      temporary_state = FighterState::DYING;
-    }
-  }
-}
 
 /**
  * Check ultimate attack.
