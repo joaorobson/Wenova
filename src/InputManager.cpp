@@ -16,13 +16,13 @@
 #include <cstring>
 #include <ctime>
 
-#define FIRST_TIME 1492356064
+#define BACKGROUND_WIDTH 1280
+#define BACKGROUND_HEIGHT 720
 
 #define DEFAULT_ANALOGIC_SENSIBILITY 20000
 #define DEFAULT_TRIGGERS_SENSIBILITY 3200
 
-#define BACKGROUND_WIDTH 1280
-#define BACKGROUND_HEIGHT 720
+#define FIRST_TIME 1492356064
 
 InputManager *InputManager::input_manager;
 
@@ -154,6 +154,190 @@ InputManager::~InputManager() {
     keys_updates.clear();
 
     LOG(INFO) << "Ending InputManager destructor";
+}
+
+/**
+ * Get instance of InputManage.
+ * Creates if not exists
+ *
+ * @returns Instance of InputManager.
+ */
+InputManager *InputManager::get_instance() {
+    LOG(INFO) << "Starting InputManager get_instance method";
+
+    if (input_manager == nullptr) {
+        input_manager = new InputManager();
+    }
+
+    LOG(INFO) << "Ending InputManager get_instance method";
+    return input_manager;
+}
+
+/**
+ * Get mouse position in axis X.
+ *
+ * @returns number respresenting mouse position in axis X.
+ * [0,], Unit: px
+ */
+int InputManager::get_mouse_x_position() {
+    LOG(INFO) << "Starting InputManager get_mouse_x_position method";
+
+    int return_value = mouse_x_position;
+
+    std::string log_message = "Ending InputManager get_mouse_x_position method returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
+
+    if (return_value > BACKGROUND_WIDTH or return_value < 0) {
+        LOG(FATAL) << "Mouse is out of screen!";
+    }
+
+    return return_value;
+}
+
+/**
+ * Get mouse position in axis Y.
+ *
+ * @returns number respresenting mouse position in axis Y. [0,]
+ */
+int InputManager::get_mouse_y_position() {
+    LOG(INFO) << "Starting InputManager get_mouse_y_position method";
+
+    int return_value = mouse_y_position;
+
+    std::string log_message = "Ending InputManager get_mouse_y_position method returning value: " + std::to_string(return_value);
+    LOG(INFO) << log_message;
+
+    if (return_value > BACKGROUND_HEIGHT or return_value < 0) {
+        LOG(FATAL) << "Mouse is out of screen!";
+    }
+
+    return return_value;
+}
+
+/**
+ * Configure mouse scale to calibrate sensibility.
+ * Bigger the values, more sensible the mouse will be. Util for when
+ * resizing the screen
+ *
+ * @param cmouse_sensibility_value Unit: px, [0,]
+ * @param coffset_x Unit: px, [0,]
+ * @param coffset_y Unit: px, [0,]
+ */
+void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
+                                               int coffset_x, int coffset_y) {
+    char log_message_c[80];
+    snprintf(log_message_c, sizeof(log_message_c), "Starting InputManager set_mouse_sensibility_value method with value: %.2f", cmouse_sensibility_value);
+    std::string log_message(log_message_c);
+
+    log_message += ", coffset_x: " + std::to_string(coffset_x);
+    log_message += ", coffset_y: " + std::to_string(coffset_y);
+
+    LOG(INFO) << log_message;
+
+    mouse_sensibility_value = cmouse_sensibility_value;
+
+    offset_x = coffset_x;
+    offset_y = coffset_y;
+
+    LOG(INFO) << "Ending InputManager set_mouse_sensibility_value method";
+}
+
+/**
+ * Set value for joystick hand crank.
+ *
+ * @param value
+ */
+void InputManager::set_analogic_sensibility_value(int value) {
+    LOG(INFO) << "Starting InputManager set_analogic_sensibility_value method, "
+                 "with value: "
+              << value;
+
+    analogic_sensibility_value = value;
+
+    LOG(INFO) << "Ending InputManager set_mouse_sensibility_value method";
+}
+
+/**
+ * Manages connection of joysticks to the game.
+ */
+void InputManager::connect_joysticks() {
+    LOG(INFO) << "Starting InputManager connect_joysticks method";
+
+    /**
+     * Max number of joysticks can be only four.
+     */
+    int max = SDL_NumJoysticks();
+    if (max > N_CONTROLLERS) {
+        max = N_CONTROLLERS;
+    }
+    int n_controller = 0;
+
+    /**
+     * To reset connections.
+     */
+    for (int i = 0; i < max; i++) {
+        if (controllers[i] != nullptr) {
+            SDL_GameControllerClose(controllers[i]);
+            controllers[i] = nullptr;
+        }
+    }
+
+    /**
+     * Detect compability for joystick connected.
+     */
+    for (int i = 0; i < max; i++) {
+        char guid[64];
+        SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid,
+                                  sizeof(guid));
+
+        if (SDL_IsGameController(i)) {
+            controllers[i] = SDL_GameControllerOpen(i);
+
+            SDL_Joystick *j = SDL_GameControllerGetJoystick(controllers[i]);
+            int instance_id = SDL_JoystickInstanceID(j);
+            printf("Controller %d (%d real) connected\n", i, instance_id);
+
+            controllers_id[instance_id] = i;
+            n_controller++;
+        } else {
+            LOG(WARNING) << "Joystick is not a game controller";
+
+            SDL_JoystickOpen(i);
+        }
+    }
+
+    LOG(INFO) << "Ending InputManager connect_joysticks method";
+}
+
+/**
+ * Translate keyboard keys to the joystick buttons.
+ *
+ * @param map_id Represents if command is for gameplay or menus handle
+ */
+void InputManager::map_keyboard_to_joystick(int map_id) {
+    std::string log_message = "Starting InputManager map_keyboard_to_joystick method with map_id: " + std::to_string(map_id);
+    LOG(INFO) << log_message;
+
+    keyboard_to_joystick = {
+        {K_LEFT, LEFT + 1},     {K_RIGHT, RIGHT + 1}, {K_UP, UP + 1},
+        {K_DOWN, DOWN + 1},     {K_A, A + 1},         {K_B, B + 1},
+        {K_X, X + 1},           {K_Y, Y + 1},         {K_LB, LB + 1},
+        {K_RB, RB + 1},         {K_LT, LT + 1},       {K_RT, RT + 1},
+        {K_SELECT, SELECT + 1}, {K_START, START + 1}, {K_L3, L3 + 1},
+        {K_R3, R3 + 1}};
+
+    if (map_id == MENU_MODE) {
+        keyboard_to_joystick[K_A] = 0;
+        keyboard_to_joystick[K_B] = 0;
+        keyboard_to_joystick[K_Y] = 0;
+        keyboard_to_joystick[K_LB] = 0;
+        keyboard_to_joystick[K_MENU_A] = A + 1;
+        keyboard_to_joystick[K_MENU_B] = B + 1;
+        keyboard_to_joystick[K_MENU_Y] = Y + 1;
+        keyboard_to_joystick[K_MENU_LB] = LB + 1;
+    }
+
+    LOG(INFO) << "Ending InputManager map_keyboard_to_joystick method";
 }
 
 /**
@@ -302,6 +486,21 @@ void InputManager::update() {
     LOG(INFO) << "Ending InputManager update method";
 }
 
+/**
+ * Manages player's request for leaving the game.
+ *
+ * @returns True if there is a request [0,1]
+ */
+bool InputManager::quit_requested() {
+    LOG(INFO) << "Starting InputManager quit_requested method";
+
+    LOG(INFO) << "Ending InputManager quit_requested method";
+    return has_quit_request;
+}
+
+/**
+ * Manages transition of inputs from keyboard to joystick.
+ */
 /**
  * Manages player presses of the key (keyboard).
  *
@@ -559,202 +758,6 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
 }
 
 /**
- * Get mouse position in axis X.
- *
- * @returns number respresenting mouse position in axis X.
- * [0,], Unit: px
- */
-int InputManager::get_mouse_x_position() {
-    LOG(INFO) << "Starting InputManager get_mouse_x_position method";
-
-    int return_value = mouse_x_position;
-
-    std::string log_message = "Ending InputManager get_mouse_x_position method returning value: " + std::to_string(return_value);
-    LOG(INFO) << log_message;
-
-    if (return_value > BACKGROUND_WIDTH or return_value < 0) {
-        LOG(FATAL) << "Mouse is out of screen!";
-    }
-
-    return return_value;
-}
-
-/**
- * Get mouse position in axis Y.
- *
- * @returns number respresenting mouse position in axis Y. [0,]
- */
-int InputManager::get_mouse_y_position() {
-    LOG(INFO) << "Starting InputManager get_mouse_y_position method";
-
-    int return_value = mouse_y_position;
-
-    std::string log_message = "Ending InputManager get_mouse_y_position method returning value: " + std::to_string(return_value);
-    LOG(INFO) << log_message;
-
-    if (return_value > BACKGROUND_HEIGHT or return_value < 0) {
-        LOG(FATAL) << "Mouse is out of screen!";
-    }
-
-    return return_value;
-}
-
-/**
- * Manages player's request for leaving the game.
- *
- * @returns True if there is a request [0,1]
- */
-bool InputManager::quit_requested() {
-    LOG(INFO) << "Starting InputManager quit_requested method";
-
-    LOG(INFO) << "Ending InputManager quit_requested method";
-    return has_quit_request;
-}
-
-/**
- * Get instance of InputManage.
- * Creates if not exists
- *
- * @returns Instance of InputManager.
- */
-InputManager *InputManager::get_instance() {
-    LOG(INFO) << "Starting InputManager get_instance method";
-
-    if (input_manager == nullptr) {
-        input_manager = new InputManager();
-    }
-
-    LOG(INFO) << "Ending InputManager get_instance method";
-    return input_manager;
-}
-
-/**
- * Configure mouse scale to calibrate sensibility.
- * Bigger the values, more sensible the mouse will be. Util for when
- * resizing the screen
- *
- * @param cmouse_sensibility_value Unit: px, [0,]
- * @param coffset_x Unit: px, [0,]
- * @param coffset_y Unit: px, [0,]
- */
-void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
-                                               int coffset_x, int coffset_y) {
-    char log_message_c[80];
-    snprintf(log_message_c, sizeof(log_message_c), "Starting InputManager set_mouse_sensibility_value method with value: %.2f", cmouse_sensibility_value);
-    std::string log_message(log_message_c);
-
-    log_message += ", coffset_x: " + std::to_string(coffset_x);
-    log_message += ", coffset_y: " + std::to_string(coffset_y);
-
-    LOG(INFO) << log_message;
-
-    mouse_sensibility_value = cmouse_sensibility_value;
-
-    offset_x = coffset_x;
-    offset_y = coffset_y;
-
-    LOG(INFO) << "Ending InputManager set_mouse_sensibility_value method";
-}
-
-/**
- * Set value for joystick hand crank.
- *
- * @param value
- */
-void InputManager::set_analogic_sensibility_value(int value) {
-    LOG(INFO) << "Starting InputManager set_analogic_sensibility_value method, "
-                 "with value: "
-              << value;
-
-    analogic_sensibility_value = value;
-
-    LOG(INFO) << "Ending InputManager set_mouse_sensibility_value method";
-}
-
-/**
- * Manages connection of joysticks to the game.
- */
-void InputManager::connect_joysticks() {
-    LOG(INFO) << "Starting InputManager connect_joysticks method";
-
-    /**
-     * Max number of joysticks can be only four.
-     */
-    int max = SDL_NumJoysticks();
-    if (max > N_CONTROLLERS) {
-        max = N_CONTROLLERS;
-    }
-    int n_controller = 0;
-
-    /**
-     * To reset connections.
-     */
-    for (int i = 0; i < max; i++) {
-        if (controllers[i] != nullptr) {
-            SDL_GameControllerClose(controllers[i]);
-            controllers[i] = nullptr;
-        }
-    }
-
-    /**
-     * Detect compability for joystick connected.
-     */
-    for (int i = 0; i < max; i++) {
-        char guid[64];
-        SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid,
-                                  sizeof(guid));
-
-        if (SDL_IsGameController(i)) {
-            controllers[i] = SDL_GameControllerOpen(i);
-
-            SDL_Joystick *j = SDL_GameControllerGetJoystick(controllers[i]);
-            int instance_id = SDL_JoystickInstanceID(j);
-            printf("Controller %d (%d real) connected\n", i, instance_id);
-
-            controllers_id[instance_id] = i;
-            n_controller++;
-        } else {
-            LOG(WARNING) << "Joystick is not a game controller";
-
-            SDL_JoystickOpen(i);
-        }
-    }
-
-    LOG(INFO) << "Ending InputManager connect_joysticks method";
-}
-
-/**
- * Translate keyboard keys to the joystick buttons.
- *
- * @param map_id Represents if command is for gameplay or menus handle
- */
-void InputManager::map_keyboard_to_joystick(int map_id) {
-    std::string log_message = "Starting InputManager map_keyboard_to_joystick method with map_id: " + std::to_string(map_id);
-    LOG(INFO) << log_message;
-
-    keyboard_to_joystick = {
-        {K_LEFT, LEFT + 1},     {K_RIGHT, RIGHT + 1}, {K_UP, UP + 1},
-        {K_DOWN, DOWN + 1},     {K_A, A + 1},         {K_B, B + 1},
-        {K_X, X + 1},           {K_Y, Y + 1},         {K_LB, LB + 1},
-        {K_RB, RB + 1},         {K_LT, LT + 1},       {K_RT, RT + 1},
-        {K_SELECT, SELECT + 1}, {K_START, START + 1}, {K_L3, L3 + 1},
-        {K_R3, R3 + 1}};
-
-    if (map_id == MENU_MODE) {
-        keyboard_to_joystick[K_A] = 0;
-        keyboard_to_joystick[K_B] = 0;
-        keyboard_to_joystick[K_Y] = 0;
-        keyboard_to_joystick[K_LB] = 0;
-        keyboard_to_joystick[K_MENU_A] = A + 1;
-        keyboard_to_joystick[K_MENU_B] = B + 1;
-        keyboard_to_joystick[K_MENU_Y] = Y + 1;
-        keyboard_to_joystick[K_MENU_LB] = LB + 1;
-    }
-
-    LOG(INFO) << "Ending InputManager map_keyboard_to_joystick method";
-}
-
-/**
  * Manages joystick interaction with the game.
  * Map joystick keys to interect with the game through keyboard keys.
  *
@@ -819,9 +822,6 @@ void InputManager::emulate_joystick(int key_id, bool state) {
     LOG(INFO) << "Ending InputManager connect_joysticks method";
 }
 
-/**
- * Manages transition of inputs from keyboard to joystick.
- */
 void InputManager::reset_keyboard_to_joystick() {
     LOG(INFO) << "Starting InputManager reset_keyboard_to_joystick";
 
