@@ -11,7 +11,10 @@
 #include "Vector.h"
 #include <cmath>
 
-/*
+#define RATE_TO_ROTATE_CORDINATE_X = 200
+#define RATE_TO_ROTATE_CORDINATE_Y = 200
+
+/**
  * The constructor
  * Initialize the vector
  *
@@ -20,18 +23,18 @@
  */
 Vector::Vector(float mx, float my) : x(mx), y(my) {}
 
-/*
+/**
  * Rotate the vector
  *
  * @param origin is the origin of vector
  * @param angle is the angle you want to rotate
  */
 void Vector::rotate(Vector origin, float angle) {
-    x = origin.x + 200 * cos(angle);
-    y = origin.y + 200 * sin(angle);
+    x = origin.x + RATE_TO_ROTATE_CORDINATE_X * cos(angle);
+    y = origin.y + RATE_TO_ROTATE_CORDINATE_Y * sin(angle);
 }
 
-/*
+/**
  * Transform the Vector
  *
  * @param module is the module of vector
@@ -42,21 +45,21 @@ void Vector::transform(float module, float angle) {
     y = module * sin(angle);
 }
 
-/*
+/**
  * Define the operater "+"
  */
 Vector Vector::operator+(const Vector& rhs) const {
     return Vector(x + rhs.x, y + rhs.y);
 }
 
-/*
+/**
  * Define the operater "-"
  */
 Vector Vector::operator-(const Vector& rhs) const {
     return Vector(x - rhs.x, y - rhs.y);
 }
 
-/*
+/**
  * Define the operater "*"
  */
 Vector Vector::operator*(const float rhs) const {

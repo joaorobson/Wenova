@@ -10,7 +10,7 @@
 #include "Game.h"
 #include "MenuState.h"
 
-/*
+/**
  * Main.
  * Inicializes the game.
  */

@@ -28,29 +28,29 @@ HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
     healing_factor = chealing_factor;
 }
 
-/*
+/**
  * Update the Heal Effects
  * 
  * @params delta is the variation of the heal.
  */
 void HealEffect::update(float delta) {
-    /*
-     * Check if the parent
+    /**
+     * Check if the parent is true
      */
     if (parent) {
         box.x = parent->box.x;
         box.y = parent->box.y;
     }
     sprite.update(delta);
-    /*
-     * Check if the parent
+    /**
+     * Check if the parent is true
      */
     if (parent) {
         parent->increment_life(healing_factor);
     }
 }
 
-/*
+/**
  * Check if the Heal Effect is dead
  */
 bool HealEffect::is_dead() {

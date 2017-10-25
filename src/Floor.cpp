@@ -45,40 +45,40 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     }
 }
 
-/*
+/**
  * The destructor.
  * Destroy the floor.
  */
 Floor::~Floor() {}
 
-/*
+/**
  * Update the traits of floor
  */
 void Floor::update(float) {}
-    /*
-     * Comentário de printf para testes
+    /**
+     * Comment of printf for test
      * printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height, 
      *         rotation);
      */
 
-/*
+/**
  * Render the floor
  */
 void Floor::render() {}
 
-/*
+/**
  * Check if the floor is dead
  */
 bool Floor::is_dead() {
     return false;
 }
 
-/*
+/**
  * Notify a collision in the floor
  */
 void Floor::notify_collision(GameObject &) {}
 
-/*
+/**
  * Check the ID of floor
  *
  * @return the id of the floor
