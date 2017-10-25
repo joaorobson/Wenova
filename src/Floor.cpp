@@ -32,7 +32,7 @@ int Floor::floor_id = 1;
  * @param cplataform is the type of the plataform selected.
  */
 Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
-    is_platform = cplatform;
+    is_crossingable = cplatform;
     rotation = crotation * PI / 180.0;
     box = Rectangle(x, y, width, HEIGHT);
     id = floor_id++;
@@ -40,7 +40,7 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     /*
      * Check if exist floor on platform
      */
-    if (is_platform) {
+    if (is_crossingable) {
         tags["platform"] = true;
     }
 }

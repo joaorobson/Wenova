@@ -11,8 +11,8 @@
 #include "Vector.h"
 #include <cmath>
 
-#define RATE_TO_ROTATE_CORDINATE_X = 200
-#define RATE_TO_ROTATE_CORDINATE_Y = 200
+#define RATE_TO_ROTATE_CORDINATE_X 200
+#define RATE_TO_ROTATE_CORDINATE_Y 200
 
 /**
  * The constructor

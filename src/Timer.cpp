@@ -10,7 +10,7 @@
 
 #include "Timer.h"
 
-#define INITIAL_TIME = 0
+#define INITIAL_TIME 0
 
 /**
  * Initialize a timer
