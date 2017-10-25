@@ -14,6 +14,63 @@
 
 #define CROUCH_COOLDOWN 400.0
 
+#define INITIAL_COMBO = 0
+
+#define RATE_ADD_TO_JUMP_ATTACK_UP = 7
+#define RATE_ADD_TO_JUMP_ATTACK_NEUTRAL = 7
+
+#define RATE_ADD_TO_IDLE_ATTACK_UP = 3
+#define RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_1 = 3
+#define RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_2 = 1
+#define RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_3 = 1
+
+#define RATE_ADD_TO_IDLE_ATTACK_FRONT = 1
+
+#define RATE_ADD_TO_CROUCH_ATK = 3
+
+#define RATE_ADD_SPEED_JUMP_ATK_DOWN_FALLLOOP = 1
+#define RATE_ADD_SPEED_JUMP_ATK_DOWN_DMG = 1
+#define RATE_ADD_SPEED_ESPECIAL_1 = 4
+
+#define WALK_TO_LEFT = -1
+#define WALK_TO_RIGHT = 1
+
+#define ATTACK_DAMAGE_STUNNED = 0
+#define ATTACK_MASK_STUNNED = 0
+
+#define ATTACK_DAMAGE_IDLE = 0
+#define ATTACK_MASK_IDLE = 0
+
+#define ATTACK_DAMAGE_DEFENDING = 0
+#define ATTACK_MASK_DEFENDING = 0
+
+#define ATTACK_DAMAGE_DYING = 0
+#define REMAINING_LIFE_DYING = 0
+
+#define ATTACK_DAMAGE_JUMPING = 0
+#define ATTACK_DAMAGE_FALLING = 0
+#define ATTACK_DAMAGE_RUNNING = 0
+#define ATTACK_DAMAGE_CROUNCH = 0
+
+#define SPEED_Y_JUMP_ATTACK_UP = 0.1
+#define SPEED_Y_JUMP_BUTTON = -5
+
+#define SPEED_Y_IDLE_ATTACK_FRONT = 0
+
+#define SPEED_X_JUMP_ATTACK_DOWN_FALLOOP_ON_FLOOR = 0
+#define SPEED_X_JUMP_ATTACK_DOWN_DMG = 0
+
+#define SPEED_X_STUNNED = 0;
+
+#define BOX_Y_ESPECIAL_1 = 15
+
+#define MINIMUM_TO_ADD_ESPECIAL_2_ATTACK = 1
+#define MAXIMUM_TO_ADD_ESPECIAL_2_ATTACK = 1.0
+#define MAXIMUM_TO_ADD_ESPECIAL_2_SPEED = 1.0
+#define RATE_TO_REMAINING_LIFE_ESPECIAL_2 = 1.0
+#define RATE_TO_INITIAL_SPEED_ESPECIAL_2 = 0.5
+
+
 /**
  * The constructor.
  * Initialize the flesh
@@ -98,7 +155,8 @@ void Flesh::update_machine_state(float) {
      */
     switch (state) {
         case FighterState::JUMP_ATK_UP:
-            attack_damage = (7 * additional_attack_damage) *
+            attack_damage = (RATE_ADD_TO_JUMP_ATTACK_UP *
+                             additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             check_left(false);
@@ -107,14 +165,15 @@ void Flesh::update_machine_state(float) {
              * Check if in use sprite is finished
              */
             if (sprite[state].is_finished()) {
-                speed.y = 0.1;
+                speed.y = SPEED_Y_JUMP_ATTACK_UP;
                 check_fall();
                 check_idle();
             }
         break;
 
         case FighterState::IDLE_ATK_UP:
-            attack_damage = (3 * additional_attack_damage) *
+            attack_damage = (RATE_ADD_TO_IDLE_ATTACK_UP *
+                             additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             /*
@@ -128,7 +187,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_1:
-            attack_damage = (3 * additional_attack_damage) *
+            attack_damage = (RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_1 *
+                             additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             /*
@@ -145,7 +205,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_2:
-            attack_damage = (1 * additional_attack_damage) *
+            attack_damage = (RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_2 *
+                             additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
             /*
@@ -162,7 +223,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_3:
-            attack_damage = 1 * additional_attack_damage;
+            attack_damage = RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_3 *
+                            additional_attack_damage;
             attack_mask = get_attack_orientation();
             /*
              * Check if in use sprite is finished
@@ -175,7 +237,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_FRONT:
-            attack_damage = 1 * additional_attack_damage;
+            attack_damage = RATE_ADD_TO_IDLE_ATTACK_FRONT *
+                            additional_attack_damage;
             attack_mask = get_attack_orientation();
             /*
              * Check if in use sprite is finished
@@ -189,7 +252,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_NEUTRAL:
-            attack_damage = (7 * additional_attack_damage) *
+            attack_damage = (RATE_ADD_TO_JUMP_ATTACK_NEUTRAL *
+                             additional_attack_damage) *
                             (sprite[state].get_current_frame() < 1);
             attack_mask = get_attack_orientation();
             check_right(false);
@@ -213,7 +277,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::CROUCH_ATK:
-            attack_damage = (3 * additional_attack_damage) *
+            attack_damage = (RATE_ADD_TO_CROUCH_ATK *
+                             additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
             /*
@@ -227,9 +292,11 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN_FALLLOOP:
-            speed.x = (INITIAL_SPEED + 1 + additional_speed) *
-                      (orientation == LEFT ? -1 : 1);
-            speed.y = (INITIAL_SPEED + 1 + additional_speed);
+            speed.x = (INITIAL_SPEED + RATE_ADD_SPEED_JUMP_ATK_DOWN_FALLLOOP +
+                       additional_speed) * (orientation == LEFT ?
+                                            WALK_TO_LEFT : WALK_TO_RIGHT);
+            speed.y = (INITIAL_SPEED + RATE_ADD_SPEED_JUMP_ATK_DOWN_FALLLOOP +
+                       additional_speed);
             attack_damage = BASIC_ATTACK_DAMAGE + additional_attack_damage;
             attack_mask = get_attack_orientation();
 
@@ -238,7 +305,7 @@ void Flesh::update_machine_state(float) {
              * Check if in use sprite is on floor
              */
             if (on_floor) {
-                speed.x = 0;
+                speed.x = SPEED_X_JUMP_ATTACK_DOWN_FALLOOP_ON_FLOOR;
                 check_idle();
                 check_defense();
                 check_left();
@@ -248,14 +315,16 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN_DMG:
-            speed.x = (INITIAL_SPEED + 1 + additional_speed) *
-                      (orientation == LEFT ? -1 : 1);
-            speed.y = (INITIAL_SPEED + 1 + additional_speed);
+            speed.x = (INITIAL_SPEED + RATE_ADD_SPEED_JUMP_ATK_DOWN_DMG +
+                       additional_speed) * (orientation == LEFT ?
+                                            WALK_TO_LEFT : WALK_TO_RIGHT);
+            speed.y = (INITIAL_SPEED + RATE_ADD_SPEED_JUMP_ATK_DOWN_DMG +
+                       additional_speed);
             /*
              * Check if in use sprite is finished or on floor
              */
             if (sprite[state].is_finished() or on_floor) {
-                speed.x = 0;
+                speed.x = SPEED_X_JUMP_ATTACK_DOWN_DMG;
                 check_idle();
                 check_defense();
                 check_crouch();
@@ -278,8 +347,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::STUNNED:
-            attack_damage = 0;
-            attack_mask = 0;
+            attack_damage = ATTACK_DAMAGE_STUNNED;
+            attack_mask = ATTACK_MASK_STUNNED;
             check_special_2();
             /*
              * Check if in use sprite is finished
@@ -295,7 +364,8 @@ void Flesh::update_machine_state(float) {
 
         case FighterState::SPECIAL_1:
             attack_damage = SPECIAL_1_DAMAGE * additional_attack_damage;
-            speed.x = 4 * (orientation == LEFT ? -1 : 1);
+            speed.x = RATE_ADD_SPEED_ESPECIAL_1 * (orientation == LEFT ?
+                                                WALK_TO_LEFT : WALK_TO_RIGHT);
             attack_mask = get_attack_orientation();
             /*
              * Check if in use sprite is grabbing
@@ -309,8 +379,9 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE:
-            combo = 0;
-            attack_mask = attack_damage = 0;
+            combo = INITIAL_COMBO;
+            attack_damage = ATTACK_DAMAGE_IDLE;
+            attack_mask = ATTACK_MASK_IDLE;
             check_jump();
             check_left(on_floor);
             check_right(on_floor);
@@ -329,7 +400,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMPING:
-            attack_damage = 0;
+            attack_damage = ATTACK_DAMAGE_JUMPING;
             check_left(on_floor);
             check_right(on_floor);
             check_fall();
@@ -344,7 +415,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::FALLING:
-            attack_damage = 0;
+            attack_damage = ATTACK_DAMAGE_FALLING;
             check_idle();
             check_left(false);
             check_right(false);
@@ -358,8 +429,8 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::RUNNING:
-            attack_damage = 0;
-            combo = 0;
+            attack_damage = ATTACK_DAMAGE_RUNNING;
+            combo = INITIAL_COMBO;
             check_jump();
             check_left(false);
             check_right(false);
@@ -376,26 +447,26 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::CROUCH:
-            attack_damage = 0;
+            attack_damage = ATTACK_DAMAGE_CROUNCH;
             check_idle();
             check_crouch_atk();
             check_fall();
         break;
 
         case FighterState::DEFENDING:
-            attack_damage = 0;
-            attack_mask = 0;
+            attack_damage = ATTACK_DAMAGE_DEFENDING;
+            attack_mask = ATTACK_MASK_DEFENDING;
             check_idle();
             check_fall();
         break;
 
         case FighterState::DYING:
-            attack_damage = 0;
+            attack_damage = ATTACK_DAMAGE_DYING;
             /*
              * Check if in use sprite is finished
              */
             if (sprite[state].is_finished()) {
-                remaining_life = 0;
+                remaining_life = REMAINING_LIFE_DYING;
             }
         break;
 
@@ -426,7 +497,7 @@ void Flesh::check_jump(bool change) {
         if (change) {
             temporary_state = FighterState::JUMPING;
         }
-        speed.y = -5;
+        speed.y = SPEED_Y_JUMP_BUTTON;
         on_floor = false;
     }
 }
@@ -602,7 +673,7 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
      */
     if ((pressed[ATTACK_BUTTON] and (is_holding[LEFT_BUTTON] or
         is_holding[RIGHT_BUTTON])) or condition) {
-        speed.y = 0;
+        speed.y = SPEED_Y_IDLE_ATTACK_FRONT;
         /*
          * Check if change happened
          */
@@ -709,7 +780,7 @@ void Flesh::check_special_1(bool change) {
         if (speed.y == 0) {
             speed.y = -5;
         }
-        box.y -= 15;
+        box.y - = BOX_Y_ESPECIAL_1;
         /*
          * Check if change happened
          */
@@ -725,9 +796,13 @@ void Flesh::check_special_1(bool change) {
  * @param bool
  */
 void Flesh::check_special_2(bool) {
-    additional_attack_damage = 1 + (1.0 - (get_remaining_life()) / MAX_LIFE);
-    additional_speed = (1.0 - (1.0 * get_remaining_life()) / MAX_LIFE) *
-                        INITIAL_SPEED * 0.5;
+    additional_attack_damage = MINIMUM_TO_ADD_ESPECIAL_2_ATTACK +
+                               (MAXIMUM_TO_ADD_ESPECIAL_2_ATTACK -
+                                (get_remaining_life()) / MAX_LIFE);
+    additional_speed = (MAXIMUM_TO_ADD_ESPECIAL_2_SPEED -
+                       (RATE_TO_REMAINING_LIFE_ESPECIAL_2 *
+                        get_remaining_life()) / MAX_LIFE) * INITIAL_SPEED *
+                        RATE_TO_INITIAL_SPEED_ESPECIAL_2;
 }
 
 /*
@@ -799,7 +874,7 @@ void Flesh::check_defense(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_stunned(bool change) {
-    speed.x = 0;
+    speed.x = SPEED_X_STUNNED;
     /*
      * Check if change happened
      */
@@ -863,7 +938,7 @@ void Flesh::check_jump_atk_up(bool change) {
             return;
         }
         combo++;
-        speed.y = -5;
+        speed.y = SPEED_Y_JUMP_BUTTON;
         /*
          * Check if change happened
          */
