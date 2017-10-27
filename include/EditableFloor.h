@@ -59,19 +59,20 @@ class EditableFloor : public Floor {
     ~EditableFloor();
 
     /**
-     * Get information about many aspects of an platform.
-     *
-     * @returns String in format: "x y width rotated level is_platform?"
-     */
-    string get_information();
-
-    /**
      * Select elements which will be edited.
      *
      * @param cis_selected [0,1]
      */
     void set_selected(bool cis_selected);
 
+    /**
+     * Get information about many aspects of an platform.
+     *
+     * @returns String in format: "x y width rotated level is_platform?"
+     */
+    string get_information();
+
+ private:
     /**
      * Render selected platform considering if it is selected.
      */
