@@ -105,6 +105,7 @@ class CharacterSelectState : public State {
      */
     explicit CharacterSelectState(string cselected_stage);
 
+ private:
     /**
      * Process interaction of the player with joystick while
      * choosing character.
