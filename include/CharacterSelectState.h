@@ -11,8 +11,6 @@
 #ifndef INCLUDE_CHARACTERSELECTSTATE_H_
 #define INCLUDE_CHARACTERSELECTSTATE_H_
 
-#include <assert.h>
-
 #include <string>
 #include <utility>
 #include <vector>

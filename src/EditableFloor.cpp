@@ -8,6 +8,11 @@
  * Implements class EditableFloor methods.
  */
 
+/**
+ * Commented debugs should be used with extreme care because it causes
+ * extremelly lose of performance and giant log files.
+ */
+
 #include "EditableFloor.h"
 
 #include "Collision.h"
@@ -32,8 +37,8 @@
 #define SELECTED_CROSSINGABLE_PLATFORM_PATH \
     "edit_state/floor/selected_editable_floor.png"
 
-#define INFO_SIZE 500
-#define FILL_MISSING_PIXELS_INFORMATIONS 15
+#define DEBUG_SIZE 500
+#define FILL_MISSING_PIXELS_DEBUGRMATIONS 15
 
 #define LAYER 0
 #define FLOOR_INITIAL_WIDTH 100
@@ -54,12 +59,14 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
     platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
     selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
 
-        std::string log_message = "Starting CharacterSelectState constructor with x: ";
+        #ifndef NDEBUG
+        std::string log_message = "Starting EditableFloor constructor with x: ";
         log_message += std::to_string(x) + ", y: " + std::to_string(y);
         log_message += ", crotation: " + std::to_string(crotation);
         log_message += ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
 
-        LOG(INFO) << log_message;
+        LOG(DEBUG) << log_message;
+        #endif
 
         box = Rectangle(x, y, standard_sprite.get_width(),
                 standard_sprite.get_height());
@@ -67,7 +74,7 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
         is_deleted = false;
         is_selected = false;
 
-        LOG(INFO) << "Ending CharacterSelectState constructor";
+        LOG(DEBUG) << "Ending EditableFloor constructor";
     }
 
 /**
@@ -82,22 +89,22 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
         bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
-        std::string log_message = "Starting CharacterSelectState constructor with x: ";
+        #ifndef NDEBUG
+        std::string log_message = "Starting EditableFloor constructor with x: ";
         log_message += std::to_string(x) + ", y: " + std::to_string(y);
         log_message += ", width:" + std::to_string(width);
         log_message += ", crotation: " + std::to_string(crotation);
         log_message += ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
-        LOG(INFO) << log_message;
+        LOG(DEBUG) << log_message;
 
         if (x > BACKGROUND_WIDTH) {
             LOG(FATAL) << "platform is out of screen in axis x";
         }
-        assert(x <= BACKGROUND_WIDTH);
 
         if (x > BACKGROUND_WIDTH) {
             LOG(FATAL) << "platform is out of screen in axis y";
         }
-        assert(y <= BACKGROUND_HEIGHT);
+        #endif
 
         standard_sprite.set_scale_x(width / standard_sprite.get_width());
         platform_sprite.set_scale_x(width / platform_sprite.get_width());
@@ -105,7 +112,7 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
 
         box.width = standard_sprite.get_width();
 
-        LOG(INFO) << "Ending CharacterSelectState init";
+        LOG(DEBUG) << "Ending EditableFloor init";
     }
 
 /**
@@ -120,16 +127,16 @@ EditableFloor::~EditableFloor() {
  * @returns String in format: "x y width rotated level is_crossingable?"
  */
 string EditableFloor::get_information() {
-    LOG(INFO) << "Starting CharacterSelectState get_information";
+    LOG(DEBUG) << "Starting EditableFloor get_information";
 
-    char info_c[INFO_SIZE];
+    char info_c[DEBUG_SIZE];
     snprintf(info_c, sizeof(info_c), "%f %f %f %f %d", box.x, box.y, box.width,
             rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
 
     string info(info_c);
 
     for (auto &c : info) {
-        c += FILL_MISSING_PIXELS_INFORMATIONS;
+        c += FILL_MISSING_PIXELS_DEBUGRMATIONS;
     }
 
     string return_value = info;
@@ -144,8 +151,8 @@ string EditableFloor::get_information() {
         LOG(WARNING) << "Info doesn't has all the information it should have";
     }
 
-    std::string log_message = "Ending CharacterSelectState get_information returning value: " + return_value;
-    LOG(INFO) << log_message;
+    std::string log_message = "Ending EditableFloor get_information returning value: " + return_value;
+    LOG(DEBUG) << log_message;
 
     return return_value;
 }
@@ -156,19 +163,21 @@ string EditableFloor::get_information() {
  * @param cis_selected [0,1]
  */
 void EditableFloor::set_selected(bool cis_selected) {
-    std::string log_message = "Starting CharacterSelectState set_selected with cis_selected: " + static_cast<int>(cis_selected);
-    LOG(INFO) << log_message;
+    #ifndef NDEBUG
+    std::string log_message = "Starting EditableFloor set_selected with cis_selected: " + static_cast<int>(cis_selected);
+    LOG(DEBUG) << log_message;
+    #endif
 
     is_selected = cis_selected;
 
-    LOG(INFO) << "Ending CharacterSelectState set_selected";
+    LOG(DEBUG) << "Ending EditableFloor set_selected";
 }
 
 /**
  * Render selected box considering if it is selected.
  */
 void EditableFloor::render() {
-    LOG(INFO) << "Starting CharacterSelectState render";
+    // LOG(DEBUG) << "Starting EditableFloor render";
 
     if (is_selected) {
         selected_sprite.render(box.get_draw_x(), box.get_draw_y(),
@@ -183,7 +192,7 @@ void EditableFloor::render() {
                 rotation);
     }
 
-    LOG(INFO) << "Ending CharacterSelectState render";
+    // LOG(DEBUG) << "Ending EditableFloor render";
 }
 
 /**
@@ -192,11 +201,15 @@ void EditableFloor::render() {
  * @param delta Difference in position of the box.
  */
 void EditableFloor::update(float delta) {
+    /*
+    #ifndef NDEBUG
     char log_message_c[60];
-    snprintf(log_message_c, sizeof(log_message_c), "Starting CharacterSelectState update with delta: %.2f", delta);
+    snprintf(log_message_c, sizeof(log_message_c), "Starting EditableFloor update with delta: %.2f", delta);
 
     std::string log_message(log_message_c);
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
+    */
 
     InputManager *input_manager = InputManager::get_instance();
 
@@ -316,7 +329,7 @@ void EditableFloor::update(float delta) {
         }
     }
 
-    LOG(INFO) << "Ending CharacterSelectState update";
+    // LOG(DEBUG) << "Ending EditableFloor update";
 }
 
 /**
@@ -325,12 +338,16 @@ void EditableFloor::update(float delta) {
  * @returns [0,1]
  */
 bool EditableFloor::is_dead() {
-    LOG(INFO) << "Starting CharacterSelectState is_dead";
+    // LOG(DEBUG) << "Starting EditableFloor is_dead";
 
     bool return_value = is_deleted;
 
-    std::string log_message = "Ending CharacterSelectState is_dead returning value: " + std::to_string(static_cast<int>(return_value));
-    LOG(INFO) << log_message;
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Ending EditableFloor is_dead returning value: " + std::to_string(static_cast<int>(return_value));
+    LOG(DEBUG) << log_message;
+    #endif
+    */
 
     return return_value;
 }

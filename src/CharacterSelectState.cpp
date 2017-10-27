@@ -115,8 +115,9 @@
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
+    #ifndef NDEBUG
     string log_message = "Starting CharacterSelectState constructor with cselected_stage: " + cselected_stage;
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
 
     if (NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_1 is bigger than screen";
@@ -247,61 +248,19 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
     }
 
     for (auto x : ROWS_X_POSITIONS) {
-        if (x < BACKGROUNDS_SIZE_WIDTH) {
+        if (x > BACKGROUNDS_SIZE_WIDTH) {
             log_message = "ROWS_X_POSITIONS, element: " + std::to_string(x) + "is bigger than screen";
             LOG(FATAL) << log_message;
         }
     }
 
     for (auto y : ROWS_Y_POSITIONS) {
-        if (y < BACKGROUNDS_SIZE_HEIGHT) {
+        if (y > BACKGROUNDS_SIZE_HEIGHT) {
             log_message = "ROWS_Y_POSITIONS, element: " + std::to_string(y) + "is bigger than screen";
             LOG(FATAL) << log_message;
         }
     }
-
-#ifndef NDEBUG
-    assert(NAMES_TAGS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NAMES_TAGS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NAMES_TAGS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NAMES_TAGS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NAMES_TAGS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NAMES_TAGS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NAMES_TAGS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NAMES_TAGS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(CHARACTERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(CHARACTERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NUMBERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NUMBERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NUMBERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NUMBERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NUMBERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NUMBERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
-    assert(NUMBERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
-    assert(NUMBERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
-
-    for (auto x : ROWS_X_POSITIONS) {
-        assert(x <= BACKGROUNDS_SIZE_WIDTH);
-    }
-
-    for (auto y : ROWS_Y_POSITIONS) {
-        assert(y <= BACKGROUNDS_SIZE_HEIGHT);
-    }
-#endif
+    #endif
 
     Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
@@ -377,7 +336,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
 
-    LOG(INFO) << "Ending CharacterSelectState constructor";
+    LOG(DEBUG) << "Ending CharacterSelectState constructor";
 }
 
 /**
@@ -385,7 +344,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
  * choosing character.
  */
 void CharacterSelectState::process_input() {
-    LOG(INFO) << "Starting CharacterSelectState process_input method";
+    LOG(DEBUG) << "Starting CharacterSelectState process_input method";
 
     InputManager* input_manager = InputManager::get_instance();
 
@@ -404,7 +363,7 @@ void CharacterSelectState::process_input() {
         }
     }
 
-    LOG(INFO) << "Ending CharacterSelectState process_input method";
+    LOG(DEBUG) << "Ending CharacterSelectState process_input method";
 }
 
 /**
@@ -413,8 +372,10 @@ void CharacterSelectState::process_input() {
  * @param delta Variation of how much the characters player travelled
  */
 void CharacterSelectState::update(float delta) {
+    #ifndef NDEBUG
     string log_message = "Starting CharacterSelectState update method with delta: " + std::to_string(delta);
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     process_input();
 
@@ -426,7 +387,7 @@ void CharacterSelectState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
 
-        LOG(INFO)
+        LOG(DEBUG)
             << "Ending CharacterSelectState update due quit request method";
         return;
     }
@@ -441,7 +402,7 @@ void CharacterSelectState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new StageSelectState());
 
-        LOG(INFO)
+        LOG(DEBUG)
             << "Ending CharacterSelectState update due quit request method";
         return;
     }
@@ -459,7 +420,7 @@ void CharacterSelectState::update(float delta) {
             Game::get_instance().push(
                 new BattleState(selected_stage, export_players()));
 
-            LOG(INFO)
+            LOG(DEBUG)
                 << "Ending CharacterSelectState update due quit request method";
             return;
         }
@@ -602,7 +563,7 @@ void CharacterSelectState::update(float delta) {
 
     planet_sprite.update(delta);
 
-    LOG(INFO) << "Ending CharacterSelectState update method";
+    LOG(DEBUG) << "Ending CharacterSelectState update method";
 }
 
 /**
@@ -610,7 +571,7 @@ void CharacterSelectState::update(float delta) {
  * Render the board with characters options, including all effects.
  */
 void CharacterSelectState::render() {
-    LOG(INFO) << "Starting CharacterSelectState update method";
+    LOG(DEBUG) << "Starting CharacterSelectState update method";
 
     /**
      * Put backgrounds_spritess, planet_sprite and characters_slots_sprites
@@ -691,7 +652,7 @@ void CharacterSelectState::render() {
         ready_to_fight_sprite.render(0, 0);
     }
 
-    LOG(INFO) << "Ending CharacterSelectState update method";
+    LOG(DEBUG) << "Ending CharacterSelectState update method";
 }
 
 /**
@@ -701,19 +662,23 @@ void CharacterSelectState::render() {
  * characters and skins choosen.
  */
 vector<pair<string, string>> CharacterSelectState::export_players() {
-    LOG(INFO) << "Starting CharacterSelectState export_players method";
+    #ifndef NDEBUG
+    LOG(DEBUG) << "Starting CharacterSelectState export_players method";
     string log_message = "";
+    #endif
 
     vector<pair<string, string> > players;
 
     for (int i = 0; i < N_PLAYERS; i++) {
         int char_sel = current_row[i] * N_COLS + current_column[i];
 
+
+        #ifndef NDEBUG
         if (char_sel >= N_CHARS) {
             log_message = "char_sel is out of bound with value: " + char_sel;
             LOG(FATAL) << log_message;
         }
-        assert(char_sel < N_CHARS);
+        #endif
 
         players.push_back(
             std::make_pair(chars[char_sel].get_name(),
@@ -722,7 +687,9 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
 
 
     int count = players.size();
+    #ifndef NDEBUG
     log_message = "Ending CharacterSelectState export_players method returning values: ";
+    #endif
 
     /*
      * Format log_message like (name1, skin_name1), (name2, skin_name2), ...
@@ -733,11 +700,13 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
         --count;
     }
 
+    #ifndef NDEBUG
     if (not players.size()) {
         LOG(FATAL) << "Players vector must return some element";
     }
 
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     return players;
 }
@@ -748,25 +717,30 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
  * @returns
  */
 bool CharacterSelectState::all_players_selected() {
-    LOG(INFO) << "Starting CharacterSelectState all_players_selected method";
+    #ifndef NDEBUG
+    LOG(DEBUG) << "Starting CharacterSelectState all_players_selected method";
     string log_message = "";
+    #endif
 
     bool return_value;
     for (auto cur : is_character_selected) {
         if (not cur) {
             return_value = false;
+            #ifndef NDEBUG
             log_message = "Ending CharacterSelectState all_players_selected method returning value: " + std::to_string(static_cast<int>(return_value));
-            LOG(INFO) << log_message;
+            LOG(DEBUG) << log_message;
+            #endif
 
             return return_value;
         }
     }
 
-
     return_value = true;
 
+    #ifndef NDEBUG
     log_message = "Ending CharacterSelectState all_players_selected method returning value: " + std::to_string(static_cast<int>(return_value));
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     return return_value;
 }
@@ -779,24 +753,30 @@ bool CharacterSelectState::all_players_selected() {
  * @returns Name and number of frames in corresponding sprite
  */
 pair<string, int> CharacterSelectState::get_chars_info(int idx) {
+    #ifndef NDEBUG
     string log_message = "Starting CharacterSelectState get_chars_info method with idx: " + std::to_string(idx);
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     vector<string> names = CHARACTERS_NAMES;
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
+    #ifndef NDEBUG
     if (names.size() != frames.size()) {
         LOG(FATAL) << "Names array size different of frames array size";
     }
+    #endif
 
     pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
 
+    #ifndef NDEBUG
     if (not names.size() or not frames.size()) {
         LOG(FATAL) << "Names and frames arrays must have some element";
     }
 
     log_message = "Ending CharacterSelectState get_chars_info method returning values: " + return_value.first + ", " + std::to_string(return_value.second);
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     return return_value;
 }
@@ -810,29 +790,32 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
  * @returns pair of ints which indicates the corresponding slot.
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
+    #ifndef NDEBUG
     string log_message = "Starting CharacterSelectState get_slot method with row: " + std::to_string(row) + "and col: " + std::to_string(col);
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
-
+    #ifndef NDEBUG
     if ((size_t) col >= x.size()) {
         log_message = "col is out of bound with value: " + std::to_string(col);
         LOG(FATAL) << log_message;
     }
-    assert((size_t) col < x.size());
 
     if ((size_t) row >= y.size()) {
         log_message = "row is out of bound with value: " + std::to_string(row);
         LOG(FATAL) << log_message;
     }
-    assert((size_t) row < y.size());
+    #endif
 
     pair<int, int> return_value = ii(x[col], y[row]);
 
+    #ifndef NDEBUG
     log_message = "Ending CharacterSelectState get_slot method returning values: " + std::to_string(return_value.first) + ", " + std::to_string(return_value.second);
-    LOG(INFO) << log_message;
+    LOG(DEBUG) << log_message;
+    #endif
 
     return return_value;
 }

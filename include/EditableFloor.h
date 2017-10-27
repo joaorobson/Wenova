@@ -12,8 +12,6 @@
 #ifndef INCLUDE_EDITABLEFLOOR_H_
 #define INCLUDE_EDITABLEFLOOR_H_
 
-#include <assert.h>
-
 #include <string>
 
 #include "Floor.h"

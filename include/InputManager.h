@@ -11,7 +11,6 @@
 #ifndef INCLUDE_INPUTMANAGER_H_
 #define INCLUDE_INPUTMANAGER_H_
 
-#include <assert.h>
 #include <algorithm>
 #include <map>
 #include <unordered_map>
