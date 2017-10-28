@@ -20,8 +20,7 @@
 #include "Sound.h"
 #include "Sprite.h"
 #include "State.h"
-#include "easylogging++.h" // NOLINT
-
+#include "easylogging++.h"  // NOLINT
 
 #define N_CHARS 8
 #define N_BACKGROUNDS_SPRITES 2
@@ -42,7 +41,7 @@ class CharacterSelectState : public State {
     Sprite ready_to_fight_sprite; /**< When everything is ready. */
 
     Sound blocked_sound; /**< When try to select not allowed things. */
-    Sound select_sound; /**< When really select characters. */
+    Sound select_sound;  /**< When really select characters. */
     Sound changed_sound; /**< When switching between characters. */
 
     FighterMenu chars[N_CHARS]; /**< Board of fighters */
@@ -66,8 +65,8 @@ class CharacterSelectState : public State {
      * Range: [0, backgrounds_sprites_image_size - size_of_object].
      * (Range for fit on screen)
      */
-    vector<ii> names_tags_positions; /**< Relative to backgrounds_sprites. */
-    vector<ii> characters_positions; /**< Relative to backgrounds_sprites. */
+    vector<ii> names_tags_positions;   /**< Relative to backgrounds_sprites. */
+    vector<ii> characters_positions;   /**< Relative to backgrounds_sprites. */
     vector<ii> names_positions_deltas; /**< Relative to names_tags_positions. */
     vector<ii> numbers_positions_deltas; /**< Relative to slots. */
 
@@ -158,6 +157,64 @@ class CharacterSelectState : public State {
      * @returns pair of ints which indicates the corresponding slot.
      */
     pair<int, int> get_slot(int row, int col);
+
+    /**
+     * Verify if constants values are ok.
+     */
+    void check_constants();
+
+    /**
+     * Initializes attributes relateds to resources.
+     * Understand resources as what is inside of folder res
+     */
+    void load_resources();
+
+    /**
+     * Set initial values for elements.
+     * This method intend to only start the values for the elements of when
+     * choosing character, not render them
+     *
+     */
+    void initialize_elements_positions();
+
+    /**
+     * Handle interaction of the user with the menu.
+     */
+    void handle_menu_interaction();
+
+    /**
+     * Handle all options of leaving this menu.
+     * Can be forward or backward
+     */
+    void handle_exiting();
+
+    /**
+     * Will handle process of choosing random character and skin.
+     *
+     * @param player player which will random selected [0, N_PLAYERS - 1]
+     */
+    void handle_random_select(unsigned int player);
+
+    /**
+     * Will handle the player navigating through characters.
+     *
+     * @param player player which will random selected [0, N_PLAYERS - 1]
+     */
+    void handle_navigating(unsigned int player);
+
+    /**
+     * Will handle the act of get the character selected.
+     *
+     * @param player player which will random selected [0, N_PLAYERS - 1]
+     */
+    void handle_select(unsigned int player);
+
+    /**
+     * Play sprites for every animated object when choosing charater.
+     *
+     * @param delta_time Time spent on each frame
+     */
+    void play_sprites_animation(float delta_time);
 
     /**
      * Not implemented.
