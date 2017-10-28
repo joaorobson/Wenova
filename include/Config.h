@@ -13,10 +13,10 @@
 
 #include <assert.h>
 
-#include <string>
 #include <fstream>
+#include <string>
 
-#include "easylogging++.h" // NOLINT
+#include "easylogging++.h"  // NOLINT
 
 #define RESOURCES_FOLDER std::string("res/")
 #define CONFIGURATION_FILE_PATH (RESOURCES_FOLDER + "config_file.dat")

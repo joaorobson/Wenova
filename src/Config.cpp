@@ -18,19 +18,19 @@ int Config::fullscreen;
  * Will write current screen configurations to res/config_file.dat.
  */
 void Config::init() {
-    LOG(DEBUG) << "Starting CharacterSelectState init";
+    LOG(DEBUG) << "Starting Config init";
 
     std::fstream config_file(CONFIGURATION_FILE_PATH);
 
-    #ifndef NDEBUG
+#ifndef NDEBUG
     if (not config_file.is_open()) {
         LOG(FATAL) << "File couldn't be open";
     }
-    #endif
+#endif
 
     config_file >> width >> height >> fullscreen;
 
-    LOG(DEBUG) << "Ending CharacterSelectState init";
+    LOG(DEBUG) << "Ending Config init";
 }
 
 /**
@@ -39,18 +39,19 @@ void Config::init() {
  * @returns Game's windows width. Unit: px, [0,]
  */
 int Config::get_width() {
-    LOG(DEBUG) << "Starting CharacterSelectState get_width";
+    LOG(DEBUG) << "Starting Config get_width";
 
     int return_value = width;
 
-    #ifndef NDEBUG
-    std::string log_message = "Ending CharacterSelectState get_width returning value: " + std::to_string(return_value);
+#ifndef NDEBUG
+    std::string log_message = "Ending Config get_width returning value: " +
+        std::to_string(return_value);
     LOG(DEBUG) << log_message;
 
     if (width <= 0) {
         LOG(WARNING) << "Width is being returned with suspicious values";
     }
-    #endif
+#endif
 
     return return_value;
 }
@@ -60,18 +61,19 @@ int Config::get_width() {
  * @returns  Game's windows height. Unit: px, [0,]
  */
 int Config::get_height() {
-    LOG(DEBUG) << "Starting CharacterSelectState get_height";
+    LOG(DEBUG) << "Starting Config get_height";
 
     int return_value = height;
 
-    #ifndef NDEBUG
-    std::string log_message = "Ending CharacterSelectState get_height returning value: " + std::to_string(return_value);
+#ifndef NDEBUG
+    std::string log_message = "Ending Config get_height returning value: " +
+        std::to_string(return_value);
     LOG(DEBUG) << log_message;
 
     if (height <= 0) {
         LOG(WARNING) << "Height is being returned with suspicious values";
     }
-    #endif
+#endif
 
     return return_value;
 }
@@ -82,14 +84,15 @@ int Config::get_height() {
  * @returns 0 for no, 1 for yes [0,1]
  */
 int Config::is_fullscreen() {
-    LOG(DEBUG) << "Starting CharacterSelectState is_fullscreen";
+    LOG(DEBUG) << "Starting Config is_fullscreen";
 
     int return_value = fullscreen;
 
-    #ifndef NDEBUG
-    std::string log_message = "Ending CharacterSelectState is_fullscreen returning value: " + std::to_string(return_value);
+#ifndef NDEBUG
+    std::string log_message = "Ending Config is_fullscreen returning value: " +
+        std::to_string(return_value);
     LOG(DEBUG) << log_message;
-    #endif
+#endif
 
     return return_value;
 }
@@ -102,13 +105,14 @@ int Config::is_fullscreen() {
  * @param cfullscreen [0,1]
  */
 void Config::update_information(int cwidth, int cheight, int cfullscreen) {
-    #ifndef NDEBUG
-    std::string log_message = "Starting CharacterSelectState update_information, cwidth: ";
+#ifndef NDEBUG
+    std::string log_message = "Starting Config update_information, cwidth: ";
     log_message += std::to_string(cwidth) += ", cheight: ";
-    log_message += std::to_string(cheight) + ", cfullscreen: " + std::to_string(cfullscreen);
+    log_message += std::to_string(cheight) + ", cfullscreen: " +
+        std::to_string(cfullscreen);
 
     LOG(DEBUG) << log_message;
-    #endif
+#endif
 
     width = cwidth;
     height = cheight;
@@ -116,14 +120,14 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
 
     std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);
 
-    #ifndef NDEBUG
+#ifndef NDEBUG
     if (not config_file.is_open()) {
         LOG(FATAL) << "File couldn't be open";
     }
-    #endif
+#endif
 
     config_file << width << " " << height << " " << fullscreen << std::endl;
     config_file.close();
 
-    LOG(DEBUG) << "Ending CharacterSelectState update_information";
+    LOG(DEBUG) << "Ending Config update_information";
 }
