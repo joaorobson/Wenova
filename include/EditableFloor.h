@@ -16,7 +16,7 @@
 
 #include "Floor.h"
 #include "Sprite.h"
-#include "easylogging++.h" // NOLINT
+#include "easylogging++.h"  // NOLINT
 
 class EditableFloor : public Floor {
  private:
@@ -91,6 +91,45 @@ class EditableFloor : public Floor {
      * @returns [0,1]
      */
     bool is_dead();
+
+    /** 
+     * Will handle all interaction of the user with the platform.
+     * 
+     * @param delta_time time spent on each frame of sprites
+     */
+    void handle_platforms_interaction(float delta_time);
+
+    /** 
+     * Handle platform player interaction with the platforms.
+     * 
+     * @param moved will become true if platform move
+     * @param delta_space how much platform will move
+     */
+    void handle_box_moving(bool &moved, float delta_space);
+
+    /** 
+     * Will handle rotation for both sides and reset.
+     * 
+     * @param moved will become true if platform resize
+     * @param delta_space intensifies resizing speed
+     */
+    void handle_box_resizing(bool &moved, float delta_space);
+
+    /** 
+     * Will handle rotation for both sides and reset.
+     * 
+     * @param acceleration acceleration for rotating platform
+     * @param delta_space intensifies rotating speed
+     */
+    void handle_box_rotating(float acceleration, float delta_space);
+
+    /** 
+     * Wil handle if acceleration increase keeps ou reset
+     * 
+     * @param moved if platform was moved, it will change behavior
+     * @param acceleration acceleration that will be changed
+     */
+    void handle_acceleration_increasing(bool &moved, float &acceleration);
 
     /**
      * Not implemented.

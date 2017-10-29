@@ -55,27 +55,27 @@
  */
 EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
     : Floor(x, y, FLOOR_INITIAL_WIDTH, crotation, cplatform),
-    standard_sprite(Sprite(RIGID_PLATFORM_PATH)),
-    platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
-    selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
+      standard_sprite(Sprite(RIGID_PLATFORM_PATH)),
+      platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
+      selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
+#ifndef NDEBUG
+    std::string log_message = "Starting EditableFloor constructor with x: ";
+    log_message += std::to_string(x) + ", y: " + std::to_string(y);
+    log_message += ", crotation: " + std::to_string(crotation);
+    log_message +=
+        ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
 
-        #ifndef NDEBUG
-        std::string log_message = "Starting EditableFloor constructor with x: ";
-        log_message += std::to_string(x) + ", y: " + std::to_string(y);
-        log_message += ", crotation: " + std::to_string(crotation);
-        log_message += ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
+    LOG(DEBUG) << log_message;
+#endif
 
-        LOG(DEBUG) << log_message;
-        #endif
+    box = Rectangle(x, y, standard_sprite.get_width(),
+                    standard_sprite.get_height());
 
-        box = Rectangle(x, y, standard_sprite.get_width(),
-                standard_sprite.get_height());
+    is_deleted = false;
+    is_selected = false;
 
-        is_deleted = false;
-        is_selected = false;
-
-        LOG(DEBUG) << "Ending EditableFloor constructor";
-    }
+    LOG(DEBUG) << "Ending EditableFloor constructor";
+}
 
 /**
  * Create box with specific width.
@@ -87,33 +87,34 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
  * @param cplatform [0,1]
  */
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
-        bool cplatform)
+                             bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
-        #ifndef NDEBUG
-        std::string log_message = "Starting EditableFloor constructor with x: ";
-        log_message += std::to_string(x) + ", y: " + std::to_string(y);
-        log_message += ", width:" + std::to_string(width);
-        log_message += ", crotation: " + std::to_string(crotation);
-        log_message += ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
-        LOG(DEBUG) << log_message;
+#ifndef NDEBUG
+    std::string log_message = "Starting EditableFloor constructor with x: ";
+    log_message += std::to_string(x) + ", y: " + std::to_string(y);
+    log_message += ", width:" + std::to_string(width);
+    log_message += ", crotation: " + std::to_string(crotation);
+    log_message +=
+        ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
+    LOG(DEBUG) << log_message;
 
-        if (x > BACKGROUND_WIDTH) {
-            LOG(FATAL) << "platform is out of screen in axis x";
-        }
-
-        if (x > BACKGROUND_WIDTH) {
-            LOG(FATAL) << "platform is out of screen in axis y";
-        }
-        #endif
-
-        standard_sprite.set_scale_x(width / standard_sprite.get_width());
-        platform_sprite.set_scale_x(width / platform_sprite.get_width());
-        selected_sprite.set_scale_x(width / selected_sprite.get_width());
-
-        box.width = standard_sprite.get_width();
-
-        LOG(DEBUG) << "Ending EditableFloor init";
+    if (x > BACKGROUND_WIDTH) {
+        LOG(FATAL) << "platform is out of screen in axis x";
     }
+
+    if (x > BACKGROUND_WIDTH) {
+        LOG(FATAL) << "platform is out of screen in axis y";
+    }
+#endif
+
+    standard_sprite.set_scale_x(width / standard_sprite.get_width());
+    platform_sprite.set_scale_x(width / platform_sprite.get_width());
+    selected_sprite.set_scale_x(width / selected_sprite.get_width());
+
+    box.width = standard_sprite.get_width();
+
+    LOG(DEBUG) << "Ending EditableFloor init";
+}
 
 /**
  * Not implemented.
@@ -131,7 +132,7 @@ string EditableFloor::get_information() {
 
     char info_c[DEBUG_SIZE];
     snprintf(info_c, sizeof(info_c), "%f %f %f %f %d", box.x, box.y, box.width,
-            rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
+             rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
 
     string info(info_c);
 
@@ -147,11 +148,13 @@ string EditableFloor::get_information() {
      */
     float float1, float2, float3, float4;
     int int1;
-    if (sscanf(info_c, "%f %f %f %f %d", &float1, &float2, &float3, &float4, &int1) < 5) {
+    if (sscanf(info_c, "%f %f %f %f %d", &float1, &float2, &float3, &float4,
+               &int1) < 5) {
         LOG(WARNING) << "Info doesn't has all the information it should have";
     }
 
-    std::string log_message = "Ending EditableFloor get_information returning value: " + return_value;
+    std::string log_message =
+        "Ending EditableFloor get_information returning value: " + return_value;
     LOG(DEBUG) << log_message;
 
     return return_value;
@@ -163,10 +166,12 @@ string EditableFloor::get_information() {
  * @param cis_selected [0,1]
  */
 void EditableFloor::set_selected(bool cis_selected) {
-    #ifndef NDEBUG
-    std::string log_message = "Starting EditableFloor set_selected with cis_selected: " + static_cast<int>(cis_selected);
+#ifndef NDEBUG
+    std::string log_message =
+        "Starting EditableFloor set_selected with cis_selected: " +
+        static_cast<int>(cis_selected);
     LOG(DEBUG) << log_message;
-    #endif
+#endif
 
     is_selected = cis_selected;
 
@@ -180,16 +185,13 @@ void EditableFloor::render() {
     // LOG(DEBUG) << "Starting EditableFloor render";
 
     if (is_selected) {
-        selected_sprite.render(box.get_draw_x(), box.get_draw_y(),
-                rotation);
+        selected_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     }
 
     if (is_crossingable) {
-        platform_sprite.render(box.get_draw_x(), box.get_draw_y(),
-                rotation);
+        platform_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     } else {
-        standard_sprite.render(box.get_draw_x(), box.get_draw_y(),
-                rotation);
+        standard_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     }
 
     // LOG(DEBUG) << "Ending EditableFloor render";
@@ -198,136 +200,21 @@ void EditableFloor::render() {
 /**
  * Manages player interaction with the box.
  *
- * @param delta Difference in position of the box.
+ * @param delta_time Difference in position of the box.
  */
-void EditableFloor::update(float delta) {
+void EditableFloor::update(float delta_time) {
     /*
     #ifndef NDEBUG
     char log_message_c[60];
-    snprintf(log_message_c, sizeof(log_message_c), "Starting EditableFloor update with delta: %.2f", delta);
+    snprintf(log_message_c, sizeof(log_message_c), "Starting EditableFloor
+    update with delta_time: %.2f", delta_time);
 
     std::string log_message(log_message_c);
     LOG(DEBUG) << log_message;
     #endif
     */
 
-    InputManager *input_manager = InputManager::get_instance();
-
-    if (input_manager->mouse_press(InputManager::LEFT_MOUSE_BUTTON)) {
-        int x = input_manager->get_mouse_x_position();
-        int y = input_manager->get_mouse_y_position();
-
-        Rectangle mouse = Rectangle(x, y, 1, 1);
-        is_selected = Collision::is_colliding(box, mouse, rotation, 0);
-    }
-
-    if (is_selected) {
-        static float acceleration = ACCELERATION;
-        float value = MOVE_SPEED * delta * acceleration;
-        bool moved = false;
-
-        /**
-         * Move box.
-         */
-        if (input_manager->is_key_down(InputManager::K_ARROW_RIGHT)) {
-            box.x += value;
-            moved = true;
-        }
-        if (input_manager->is_key_down(InputManager::K_ARROW_LEFT)) {
-            box.x -= value;
-            moved = true;
-        }
-        if (input_manager->is_key_down(InputManager::K_ARROW_UP)) {
-            box.y -= value;
-            moved = true;
-        }
-        if (input_manager->is_key_down(InputManager::K_ARROW_DOWN)) {
-            box.y += value;
-            moved = true;
-        }
-
-        /**
-         * Limit box sizes.
-         */
-        if (box.x < 0) {
-            box.x = 0;
-        }
-        if (box.x > BACKGROUND_WIDTH) {
-            box.x = BACKGROUND_WIDTH;
-        }
-        if (box.y < 0) {
-            box.y = 0;
-        }
-        if (box.y > BACKGROUND_HEIGHT) {
-            box.y = BACKGROUND_HEIGHT;
-        }
-
-        /**
-         * Rotate box  to left.
-         */
-        if (input_manager->is_key_down(InputManager::K_ROT_LEFT)) {
-            rotation += ROTATING_SPEED * value / acceleration;
-        }
-
-        /**
-         * Rotate box  to right.
-         */
-        if (input_manager->is_key_down(InputManager::K_ROT_RIGHT)) {
-            rotation -= ROTATING_SPEED * value / acceleration;
-        }
-
-        /**
-         * Reset rotation.
-         */
-        if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
-            rotation = 0;
-        }
-
-        /**
-         * Toggle Floor.
-         */
-        if (input_manager->key_press(InputManager::K_C)) {
-            is_crossingable = not is_crossingable;
-        }
-
-        /**
-         * Increase floor width.
-         */
-        if (input_manager->is_key_down(InputManager::K_INC_W)) {
-            standard_sprite.update_scale_x(RESIZING_SPEED * value);
-            platform_sprite.update_scale_x(RESIZING_SPEED * value);
-            selected_sprite.update_scale_x(RESIZING_SPEED * value);
-
-            box.width = standard_sprite.get_width();
-            moved = true;
-        }
-
-        /**
-         * Decrease floor width.
-         */
-        if (input_manager->is_key_down(InputManager::K_DEC_W)) {
-            standard_sprite.update_scale_x(-RESIZING_SPEED * value);
-            platform_sprite.update_scale_x(-RESIZING_SPEED * value);
-            selected_sprite.update_scale_x(-RESIZING_SPEED * value);
-
-            box.width = standard_sprite.get_width();
-            moved = true;
-        }
-
-        if (moved) {
-            acceleration = fmin(acceleration + ACCELERATION_INCREASE_STEP,
-                    MAXIMUM_ACCELERATION);
-        } else {
-            acceleration = ACCELERATION;
-        }
-
-        /**
-         * Delete floor.
-         */
-        if (input_manager->is_key_down(InputManager::K_DEL)) {
-            is_deleted = true;
-        }
-    }
+    handle_platforms_interaction(delta_time);
 
     // LOG(DEBUG) << "Ending EditableFloor update";
 }
@@ -344,12 +231,178 @@ bool EditableFloor::is_dead() {
 
     /*
     #ifndef NDEBUG
-    std::string log_message = "Ending EditableFloor is_dead returning value: " + std::to_string(static_cast<int>(return_value));
+    std::string log_message = "Ending EditableFloor is_dead returning value: " +
+    std::to_string(static_cast<int>(return_value));
     LOG(DEBUG) << log_message;
     #endif
     */
 
     return return_value;
+}
+
+/** 
+ * Will handle all interaction of the user with the platform.
+ * 
+ * @param delta_time time spent on each frame of sprites
+ */
+void EditableFloor::handle_platforms_interaction(float delta_time){
+    InputManager *input_manager = InputManager::get_instance();
+
+    if (input_manager->mouse_press(InputManager::LEFT_MOUSE_BUTTON)) {
+        int x = input_manager->get_mouse_x_position();
+        int y = input_manager->get_mouse_y_position();
+
+        Rectangle mouse = Rectangle(x, y, 1, 1);
+        is_selected = Collision::is_colliding(box, mouse, rotation, 0);
+    }
+
+    if (is_selected) {
+        static float acceleration = ACCELERATION;
+        float delta_space = MOVE_SPEED * delta_time * acceleration;
+        bool moved = false;
+
+        handle_box_moving(moved, delta_space);
+        handle_box_resizing(moved, delta_time);
+        handle_box_rotating(acceleration, delta_space);
+        handle_acceleration_increasing(moved, acceleration);
+
+        /**
+         * Toggle Floor.
+         */
+        if (input_manager->key_press(InputManager::K_C)) {
+            is_crossingable = not is_crossingable;
+        }
+
+        /**
+         * Delete floor.
+         */
+        if (input_manager->is_key_down(InputManager::K_DEL)) {
+            is_deleted = true;
+        }
+    }
+}
+
+/** 
+ * Handle platform player interaction with the platforms.
+ * 
+ * @param moved will become true if platform move
+ * @param delta_space how much platform will move
+ */
+void EditableFloor::handle_box_moving(bool &moved, float delta_space){
+    InputManager *input_manager = InputManager::get_instance();
+
+    if (input_manager->is_key_down(InputManager::K_ARROW_RIGHT)) {
+        box.x += delta_space;
+        moved = true;
+    }
+    if (input_manager->is_key_down(InputManager::K_ARROW_LEFT)) {
+        box.x -= delta_space;
+        moved = true;
+    }
+    if (input_manager->is_key_down(InputManager::K_ARROW_UP)) {
+        box.y -= delta_space;
+        moved = true;
+    }
+    if (input_manager->is_key_down(InputManager::K_ARROW_DOWN)) {
+        box.y += delta_space;
+        moved = true;
+    }
+}
+
+/** 
+ * Handle platform player interaction with the platforms.
+ * 
+ * @param moved will become true if platform move
+ * @param delta_space how much platform will move
+ */
+void EditableFloor::handle_box_resizing(bool &moved, float delta_space){
+    /**
+     * Limit box sizes.
+     */
+    if (box.x < 0) {
+        box.x = 0;
+    }
+    if (box.x > BACKGROUND_WIDTH) {
+        box.x = BACKGROUND_WIDTH;
+    }
+    if (box.y < 0) {
+        box.y = 0;
+    }
+    if (box.y > BACKGROUND_HEIGHT) {
+        box.y = BACKGROUND_HEIGHT;
+    }
+
+    InputManager *input_manager = InputManager::get_instance();
+
+    /**
+     * Increase floor width.
+     */
+    if (input_manager->is_key_down(InputManager::K_INC_W)) {
+        standard_sprite.update_scale_x(RESIZING_SPEED * delta_space);
+        platform_sprite.update_scale_x(RESIZING_SPEED * delta_space);
+        selected_sprite.update_scale_x(RESIZING_SPEED * delta_space);
+
+        box.width = standard_sprite.get_width();
+        moved = true;
+    }
+
+    /**
+     * Decrease floor width.
+     */
+    if (input_manager->is_key_down(InputManager::K_DEC_W)) {
+        standard_sprite.update_scale_x(-RESIZING_SPEED * delta_space);
+        platform_sprite.update_scale_x(-RESIZING_SPEED * delta_space);
+        selected_sprite.update_scale_x(-RESIZING_SPEED * delta_space);
+
+        box.width = standard_sprite.get_width();
+        moved = true;
+    }
+}
+
+/** 
+ * Will handle rotation for both sides and reset.
+ * 
+ * @param acceleration acceleration for rotating platform
+ * @param delta_space intensifies rotating speed
+ */
+void EditableFloor::handle_box_rotating(float acceleration, float delta_space){
+    InputManager *input_manager = InputManager::get_instance();
+
+    /**
+     * Rotate box to left.
+     */
+    if (input_manager->is_key_down(InputManager::K_ROT_LEFT)) {
+        rotation += ROTATING_SPEED * delta_space / acceleration;
+    }
+
+    /**
+     * Rotate box to right.
+     */
+    if (input_manager->is_key_down(InputManager::K_ROT_RIGHT)) {
+        rotation -= ROTATING_SPEED * delta_space / acceleration;
+    }
+
+    /**
+     * Reset rotation.
+     */
+    if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
+        rotation = 0;
+    }
+}
+
+/** 
+ * Wil handle if acceleration increase keeps ou reset
+ * 
+ * @param moved if platform was moved, it will change behavior
+ * @param acceleration acceleration that will be changed
+ */
+void EditableFloor::handle_acceleration_increasing(bool &moved, float &acceleration){
+    if (moved) {
+        acceleration = fmin(acceleration + ACCELERATION_INCREASE_STEP,
+                MAXIMUM_ACCELERATION);
+    } else {
+        acceleration = ACCELERATION;
+    }
 }
 
 /**
