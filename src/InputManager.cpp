@@ -807,6 +807,9 @@ void InputManager::emulate_joystick(int key_id, bool state) {
     // LOG(DEBUG) << "Ending InputManager connect_joysticks method";
 }
 
+/**
+ * Manages transition of inputs from keyboard to joystick.
+ */
 void InputManager::reset_keyboard_to_joystick() {
     // LOG(DEBUG) << "Starting InputManager reset_keyboard_to_joystick";
 
@@ -852,6 +855,8 @@ void InputManager::reset_keyboard_to_joystick() {
  * Handle updates specific for mouse.
  */
 void InputManager::handle_mouse_update() {
+    LOG(DEBUG) << "Starting InputManager handle_events method";
+
     SDL_GetMouseState(&mouse_x_position, &mouse_y_position);
 
     /*
@@ -873,12 +878,16 @@ void InputManager::handle_mouse_update() {
     mouse_x_position = std::min(mouse_x_position, BACKGROUND_WIDTH);
     mouse_y_position = std::max(0, mouse_y_position);
     mouse_y_position = std::min(mouse_y_position, BACKGROUND_HEIGHT);
+
+    LOG(DEBUG) << "Ending InputManager handle_events method";
 }
 
 /**
  * Handle events from inputs.
  */
 void InputManager::handle_events() {
+    LOG(DEBUG) << "Starting InputManager handle_events method";
+
     SDL_Event event;
 
     /**
@@ -992,4 +1001,5 @@ void InputManager::handle_events() {
                 break;
         }
     }
+    LOG(DEBUG) << "Ending InputManager handle_events method";
 }

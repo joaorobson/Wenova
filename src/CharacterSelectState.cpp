@@ -461,6 +461,8 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
  * Understand resources as what is inside of folder res
  */
 void CharacterSelectState::load_resources() {
+    LOG(DEBUG) << "Starting CharacterSelectState load_resources method";
+
     characters_slots_sprites = Sprite(CHARACTER_SLOTS_PATH);
     selected_tags_sprites = Sprite(SELECTED_TAG_PATH);
     ready_to_fight_sprite = Sprite(READY_TO_FIGHT_PATH);
@@ -500,6 +502,8 @@ void CharacterSelectState::load_resources() {
         chars[i] = FighterMenu(get_chars_info(i).first,
                                get_chars_info(i).second, i < 2);
     }
+
+    LOG(DEBUG) << "Ending CharacterSelectState load_resources method";
 }
 
 /**
@@ -509,6 +513,9 @@ void CharacterSelectState::load_resources() {
  *
  */
 void CharacterSelectState::initialize_elements_positions() {
+    LOG(DEBUG)
+        << "Starting CharacterSelectState initialize_elements_positions method";
+
     names_tags_positions = {
         ii(NAMES_TAGS_X_POSITIONS_1, NAMES_TAGS_Y_POSITIONS_1),
         ii(NAMES_TAGS_X_POSITIONS_2, NAMES_TAGS_Y_POSITIONS_2),
@@ -529,12 +536,17 @@ void CharacterSelectState::initialize_elements_positions() {
         ii(NUMBERS_X_POSITIONS_DELTAS_2, NUMBERS_Y_POSITIONS_DELTAS_2),
         ii(NUMBERS_X_POSITIONS_DELTAS_3, NUMBERS_Y_POSITIONS_DELTAS_3),
         ii(NUMBERS_X_POSITIONS_DELTAS_4, NUMBERS_Y_POSITIONS_DELTAS_4)};
+
+    LOG(DEBUG)
+        << "Ending CharacterSelectState initialize_elements_positions method";
 }
 
 /**
  * Verify if constants values are ok.
  */
 void CharacterSelectState::check_constants() {
+    LOG(DEBUG) << "Starting CharacterSelectState check_constants method";
+
 #ifndef NDEBUG
     if (NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_1 is bigger than screen";
@@ -681,6 +693,8 @@ void CharacterSelectState::check_constants() {
         }
     }
 #endif
+
+    LOG(DEBUG) << "Ending CharacterSelectState check_constants method";
 }
 
 /**
@@ -688,6 +702,8 @@ void CharacterSelectState::check_constants() {
  * Can be forward or backward
  */
 void CharacterSelectState::handle_exiting() {
+    LOG(DEBUG) << "Starting CharacterSelectState handle_exiting method";
+
     process_input();
     InputManager* input_manager = InputManager::get_instance();
 
@@ -735,9 +751,12 @@ void CharacterSelectState::handle_exiting() {
             return;
         }
     }
+    LOG(DEBUG) << "Ending CharacterSelectState handle_exiting method";
 }
 
 void CharacterSelectState::handle_menu_interaction() {
+    LOG(DEBUG) << "Starting CharacterSelectState handle_exiting method";
+
     for (int player = 0; player < N_PLAYERS; player++) {
         if (not is_character_selected[player]) {
             handle_random_select(player);
@@ -757,6 +776,7 @@ void CharacterSelectState::handle_menu_interaction() {
             }
         }
     }
+    LOG(DEBUG) << "Ending CharacterSelectState handle_menu_interaction method";
 }
 
 /**
@@ -765,6 +785,8 @@ void CharacterSelectState::handle_menu_interaction() {
  * @param player player which will random selected [0, N_PLAYERS - 1]
  */
 void CharacterSelectState::handle_random_select(unsigned int player) {
+    LOG(DEBUG) << "Starting CharacterSelectState handle_random_select method";
+
     if (is_key_pressed[player][Y]) {
         select_sound.play();
         int rand_col = 0, rand_row = 0, rand_skin = 0, char_sel = 0;
@@ -795,6 +817,7 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
         current_row[player] = rand_row;
         current_skin[player] = rand_skin;
     }
+    LOG(DEBUG) << "Ending CharacterSelectState handle_random_select method";
 }
 
 /**
@@ -803,6 +826,12 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
  * @param player player which will random selected [0, N_PLAYERS - 1]
  */
 void CharacterSelectState::handle_navigating(unsigned int player) {
+    string log_message =
+        "Starting CharacterSelectState handle_navigating method, player "
+        "value: " +
+        player;
+    LOG(DEBUG) << log_message;
+
     /**
      * To know if should reset skin to default
      */
@@ -855,9 +884,15 @@ void CharacterSelectState::handle_navigating(unsigned int player) {
         changed_sound.play();
         current_skin[player] = (current_skin[player] + 1) % N_SKINS;
     }
+    LOG(DEBUG) << "Ending CharacterSelectState handle_navigating method";
 }
 
 void CharacterSelectState::handle_select(unsigned int player) {
+    string log_message =
+        "Starting CharacterSelectState handle_select method, player value: " +
+        player;
+    LOG(DEBUG) << log_message;
+
     /**
      * Select character and lock skin.
      */
@@ -879,6 +914,8 @@ void CharacterSelectState::handle_select(unsigned int player) {
             blocked_sound.play();
         }
     }
+
+    LOG(DEBUG) << "Ending CharacterSelectState handle_select method";
 }
 
 /**
@@ -887,6 +924,12 @@ void CharacterSelectState::handle_select(unsigned int player) {
  * @param delta_time Time spent on each frame
  */
 void CharacterSelectState::play_sprites_animation(float delta_time) {
+    string log_message =
+        "Starting CharacterSelectState play_sprites_animation method, "
+        "delta_time value: " + std::to_string(delta_time);
+
+    LOG(DEBUG) << log_message;
+
     for (int i = 0; i < N_CHARS; i++) {
         chars[i].get_disabled().update(delta_time);
 
@@ -896,6 +939,8 @@ void CharacterSelectState::play_sprites_animation(float delta_time) {
     }
 
     planet_sprite.update(delta_time);
+
+    LOG(DEBUG) << "Ending CharacterSelectState play_sprites_animation method";
 }
 
 /**

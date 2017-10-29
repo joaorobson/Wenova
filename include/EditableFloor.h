@@ -92,51 +92,52 @@ class EditableFloor : public Floor {
      */
     bool is_dead();
 
-    /** 
+    /**
      * Will handle all interaction of the user with the platform.
-     * 
+     *
      * @param delta_time time spent on each frame of sprites
      */
     void handle_platforms_interaction(float delta_time);
 
-    /** 
+    /**
      * Handle platform player interaction with the platforms.
-     * 
+     *
      * @param moved will become true if platform move
      * @param delta_space how much platform will move
      */
-    void handle_box_moving(bool &moved, float delta_space);
+    void handle_box_moving(bool &moved, float delta_space); // NOLINT
 
-    /** 
+    /**
      * Will handle rotation for both sides and reset.
-     * 
+     *
      * @param moved will become true if platform resize
      * @param delta_space intensifies resizing speed
      */
-    void handle_box_resizing(bool &moved, float delta_space);
+    void handle_box_resizing(bool &moved, float delta_space); // NOLINT
 
-    /** 
+    /**
      * Will handle rotation for both sides and reset.
-     * 
+     *
      * @param acceleration acceleration for rotating platform
      * @param delta_space intensifies rotating speed
      */
     void handle_box_rotating(float acceleration, float delta_space);
 
-    /** 
-     * Wil handle if acceleration increase keeps ou reset
-     * 
+    /**
+     * Will handle if acceleration increase keeps ou reset
+     *
      * @param moved if platform was moved, it will change behavior
      * @param acceleration acceleration that will be changed
      */
-    void handle_acceleration_increasing(bool &moved, float &acceleration);
+    void handle_acceleration_increasing(bool &moved,
+                                        float &acceleration); //NOLINT
 
     /**
      * Not implemented.
      *
      * @param unamed An game object.
      */
-    void notify_collision(GameObject&);
+    void notify_collision(GameObject &);
 };
 
 #endif  // INCLUDE_EDITABLEFLOOR_H_

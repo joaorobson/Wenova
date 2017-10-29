@@ -240,12 +240,15 @@ bool EditableFloor::is_dead() {
     return return_value;
 }
 
-/** 
+/**
  * Will handle all interaction of the user with the platform.
- * 
+ *
  * @param delta_time time spent on each frame of sprites
  */
-void EditableFloor::handle_platforms_interaction(float delta_time){
+void EditableFloor::handle_platforms_interaction(float delta_time) {
+    // LOG(DEBUG) << "Starting EditableFloor handle_platforms_interaction
+    // method";
+
     InputManager *input_manager = InputManager::get_instance();
 
     if (input_manager->mouse_press(InputManager::LEFT_MOUSE_BUTTON)) {
@@ -280,15 +283,18 @@ void EditableFloor::handle_platforms_interaction(float delta_time){
             is_deleted = true;
         }
     }
+    // LOG(DEBUG) << "Ending EditableFloor handle_platforms_interaction method";
 }
 
-/** 
+/**
  * Handle platform player interaction with the platforms.
- * 
+ *
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_moving(bool &moved, float delta_space){
+void EditableFloor::handle_box_moving(bool &moved, float delta_space) { // NOLINT
+    // LOG(DEBUG) << "Starting EditableFloor handle_box_moving method";
+
     InputManager *input_manager = InputManager::get_instance();
 
     if (input_manager->is_key_down(InputManager::K_ARROW_RIGHT)) {
@@ -307,15 +313,19 @@ void EditableFloor::handle_box_moving(bool &moved, float delta_space){
         box.y += delta_space;
         moved = true;
     }
+
+    // LOG(DEBUG) << "Ending EditableFloor handle_box_moving method";
 }
 
-/** 
+/**
  * Handle platform player interaction with the platforms.
- * 
+ *
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_resizing(bool &moved, float delta_space){
+void EditableFloor::handle_box_resizing(bool &moved, float delta_space) { // NOLINT
+    // LOG(DEBUG) << "Starting EditableFloor handle_box_resizing method";
+
     /**
      * Limit box sizes.
      */
@@ -357,15 +367,18 @@ void EditableFloor::handle_box_resizing(bool &moved, float delta_space){
         box.width = standard_sprite.get_width();
         moved = true;
     }
+    // LOG(DEBUG) << "Ending EditableFloor handle_box_resizing method";
 }
 
-/** 
+/**
  * Will handle rotation for both sides and reset.
- * 
+ *
  * @param acceleration acceleration for rotating platform
  * @param delta_space intensifies rotating speed
  */
-void EditableFloor::handle_box_rotating(float acceleration, float delta_space){
+void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
+    // LOG(DEBUG) << "Starting EditableFloor handle_box_rotating method";
+
     InputManager *input_manager = InputManager::get_instance();
 
     /**
@@ -388,21 +401,30 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space){
     if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
         rotation = 0;
     }
+
+    // LOG(DEBUG) << "Ending EditableFloor handle_box_rotating method";
 }
 
-/** 
- * Wil handle if acceleration increase keeps ou reset
- * 
+/**
+ * Will handle if acceleration increase keeps ou reset
+ *
  * @param moved if platform was moved, it will change behavior
  * @param acceleration acceleration that will be changed
  */
-void EditableFloor::handle_acceleration_increasing(bool &moved, float &acceleration){
+void EditableFloor::handle_acceleration_increasing(bool &moved,
+                                                   float &acceleration) { // NOLINT
+    // LOG(DEBUG) << "Starting EditableFloor handle_acceleration_increasing
+    // method";
+
     if (moved) {
         acceleration = fmin(acceleration + ACCELERATION_INCREASE_STEP,
-                MAXIMUM_ACCELERATION);
+                            MAXIMUM_ACCELERATION);
     } else {
         acceleration = ACCELERATION;
     }
+
+    // LOG(DEBUG) << "Ending EditableFloor handle_acceleration_increasing
+    // method";
 }
 
 /**
