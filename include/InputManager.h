@@ -16,8 +16,8 @@
 #include <unordered_map>
 #include <utility>
 
-#include "easylogging++.h" // NOLINT
 #include "SDL2/SDL.h"
+#include "easylogging++.h"  // NOLINT
 
 #define ii std::pair<int, int>
 
@@ -45,66 +45,66 @@ class InputManager {
     static const int LT = 0x20; /**< Same as , (comma) */
     static const int SELECT = SDL_CONTROLLER_BUTTON_BACK; /**< Same as esc. */
     static const int START = SDL_CONTROLLER_BUTTON_START; /**< Same as enter. */
-    static const int L3 = SDL_CONTROLLER_BUTTON_LEFTSTICK; /**< Same as LT. */
+    static const int L3 = SDL_CONTROLLER_BUTTON_LEFTSTICK;  /**< Same as LT. */
     static const int R3 = SDL_CONTROLLER_BUTTON_RIGHTSTICK; /**< Same as RB. */
 
     /**
      * Keys for battle.
      */
-    static const int K_UP = SDLK_w; /**< Nothing. */
-    static const int K_RIGHT = SDLK_d; /**< Move right. */
-    static const int K_DOWN = SDLK_s; /**< Crouch. */
-    static const int K_LEFT = SDLK_a; /**< Move left. */
-    static const int K_A = SDLK_SPACE; /**< Jump. */
-    static const int K_B = SDLK_k; /**< Skill 1 */
-    static const int K_X = SDLK_h; /**< Attack. */
-    static const int K_Y = SDLK_r; /**< Ultimate. */
-    static const int K_LB = SDLK_j; /**< Defense. */
-    static const int K_RB = SDLK_l; /**< Skill 2 */
-    static const int K_LT = SDLK_COMMA; /**< Change skin left. */
-    static const int K_RT = SDLK_PERIOD; /**< Change skin right. */
-    static const int K_SELECT = SDLK_ESCAPE; /**< Cancel / back. */
-    static const int K_START = SDLK_RETURN; /**< Confirm / start. */
+    static const int K_UP = SDLK_w;           /**< Nothing. */
+    static const int K_RIGHT = SDLK_d;        /**< Move right. */
+    static const int K_DOWN = SDLK_s;         /**< Crouch. */
+    static const int K_LEFT = SDLK_a;         /**< Move left. */
+    static const int K_A = SDLK_SPACE;        /**< Jump. */
+    static const int K_B = SDLK_k;            /**< Skill 1 */
+    static const int K_X = SDLK_h;            /**< Attack. */
+    static const int K_Y = SDLK_r;            /**< Ultimate. */
+    static const int K_LB = SDLK_j;           /**< Defense. */
+    static const int K_RB = SDLK_l;           /**< Skill 2 */
+    static const int K_LT = SDLK_COMMA;       /**< Change skin left. */
+    static const int K_RT = SDLK_PERIOD;      /**< Change skin right. */
+    static const int K_SELECT = SDLK_ESCAPE;  /**< Cancel / back. */
+    static const int K_START = SDLK_RETURN;   /**< Confirm / start. */
     static const int ENTER_KEY = SDLK_RETURN; /**< Confirm / start. */
-    static const int K_RANDOM = SDLK_u; /**< Random. */
+    static const int K_RANDOM = SDLK_u;       /**< Random. */
 
     /**
      * Keys for menus.
      */
-    static const int K_MENU_A = SDLK_h; /**< Confirm. */
-    static const int K_MENU_B = SDLK_j; /**< Go back. */
-    static const int K_MENU_Y = SDLK_u; /**< Random. */
+    static const int K_MENU_A = SDLK_h;  /**< Confirm. */
+    static const int K_MENU_B = SDLK_j;  /**< Go back. */
+    static const int K_MENU_Y = SDLK_u;  /**< Random. */
     static const int K_MENU_LB = SDLK_y; /**< Nothing. */
-    static const int K_L3 = SDLK_COMMA; /**< Change skin left. */
+    static const int K_L3 = SDLK_COMMA;  /**< Change skin left. */
     static const int K_R3 = SDLK_PERIOD; /**< Change skin right. */
 
     /**
      * Keys for edit mode.
      */
-    static const int K_ARROW_UP = SDLK_UP; /**< Move platform up. */
+    static const int K_ARROW_UP = SDLK_UP;       /**< Move platform up. */
     static const int K_ARROW_RIGHT = SDLK_RIGHT; /**< Move platform right. */
-    static const int K_ARROW_DOWN = SDLK_DOWN; /**< Move platform down. */
-    static const int K_ARROW_LEFT = SDLK_LEFT; /**< Move platofrm left. */
-    static const int K_CTRL = SDLK_LCTRL; /**< Nothing. */
-    static const int K_C = SDLK_c; /**< Make platform rigid / crossingable.  */
+    static const int K_ARROW_DOWN = SDLK_DOWN;   /**< Move platform down. */
+    static const int K_ARROW_LEFT = SDLK_LEFT;   /**< Move platofrm left. */
+    static const int K_CTRL = SDLK_LCTRL;        /**< Nothing. */
+    static const int K_C = SDLK_c;  /**< Make platform rigid / crossingable.  */
     static const int K_S = SDLK_s;  ///< Cross the platform
     ///< allowed if pressed twice.
-    static const int K_F = SDLK_f; /**< Put rigid platform. */
-    static const int K_P = SDLK_p; /**< Put crossingable platform. */
-    static const int K_O = SDLK_o; /**< Nothing. */
+    static const int K_F = SDLK_f;          /**< Put rigid platform. */
+    static const int K_P = SDLK_p;          /**< Put crossingable platform. */
+    static const int K_O = SDLK_o;          /**< Nothing. */
     static const int K_SHIFT = SDLK_LSHIFT; /**< Change character. */
-    static const int K_ROT_LEFT = SDLK_z; /**< Rotate left. */
-    static const int K_ROT_RIGHT = SDLK_x; /**< Rotate right. */
-    static const int K_ROT_RESET = SDLK_r; /**< Remove rotating. */
+    static const int K_ROT_LEFT = SDLK_z;   /**< Rotate left. */
+    static const int K_ROT_RIGHT = SDLK_x;  /**< Rotate right. */
+    static const int K_ROT_RESET = SDLK_r;  /**< Remove rotating. */
     static const int K_INC_W = SDLK_PERIOD; /**< Increase platform size. */
-    static const int K_DEC_W = SDLK_COMMA; /**< Decrease platform size. */
-    static const int K_DEL = SDLK_DELETE; /**< Delete platform. */
+    static const int K_DEC_W = SDLK_COMMA;  /**< Decrease platform size. */
+    static const int K_DEL = SDLK_DELETE;   /**< Delete platform. */
     static const int RIGHT_MOUSE_BUTTON = SDL_BUTTON_RIGHT;  ///< Bring char
     ///< to cursor.
     static const int LEFT_MOUSE_BUTTON =
         SDL_BUTTON_LEFT; /**< Select platform. */
 
-    static const int MENU_MODE = 0; /**< Set the commands to menu. */
+    static const int MENU_MODE = 0;   /**< Set the commands to menu. */
     static const int BATTLE_MODE = 1; /**< Set the commands to battle. */
 
  private:
@@ -147,10 +147,10 @@ class InputManager {
     ///< keyboard_for_joystick.
     ///< Ex: (Menu handler or gameplay).
 
-    float mouse_sensibility_value; /**< Refer to mouse sensibility. */
-    int analogic_sensibility_value; /**< Refer to joystick lever sensibility.*/
+    float mouse_sensibility_value;   /**< Refer to mouse sensibility. */
+    int analogic_sensibility_value;  /**< Refer to joystick lever sensibility.*/
     int triggers_sensibility_value;  ///< Refer to joystick RT and LT
-    ///< (triggers) lever sensibility. */
+                                     ///< (triggers) lever sensibility. */
 
  public:
     /**
@@ -323,6 +323,16 @@ class InputManager {
      * Manages transition of inputs from keyboard to joystick.
      */
     void reset_keyboard_to_joystick();
+
+    /**
+     * Handle updates specific for mouse.
+     */
+    void handle_mouse_update();
+
+    /**
+     * Handle events from inputs.
+     */
+    void handle_events();
 };
 
 #endif  // INCLUDE_INPUTMANAGER_H_

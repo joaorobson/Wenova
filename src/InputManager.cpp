@@ -108,6 +108,9 @@ const int InputManager::K_INC_W;
 const int InputManager::K_DEC_W;
 const int InputManager::K_DEL;
 
+/**
+ * Modes.
+ */
 const int InputManager::MENU_MODE;
 const int InputManager::BATTLE_MODE;
 
@@ -191,7 +194,8 @@ int InputManager::get_mouse_x_position() {
 
     /*
     #ifndef NDEBUG
-    std::string log_message = "Ending InputManager get_mouse_x_position method returning value: " + std::to_string(return_value);
+    std::string log_message = "Ending InputManager get_mouse_x_position method
+    returning value: " + std::to_string(return_value);
     // LOG(DEBUG) << log_message;
 
     if (return_value > BACKGROUND_WIDTH or return_value < 0) {
@@ -215,7 +219,8 @@ int InputManager::get_mouse_y_position() {
 
     /*
     #ifndef NDEBUG
-    std::string log_message = "Ending InputManager get_mouse_y_position method returning value: " + std::to_string(return_value);
+    std::string log_message = "Ending InputManager get_mouse_y_position method
+    returning value: " + std::to_string(return_value);
     // LOG(DEBUG) << log_message;
 
     if (return_value > BACKGROUND_HEIGHT or return_value < 0) {
@@ -241,7 +246,9 @@ void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
     /*
     #ifndef NDEBUG
     char log_message_c[80];
-    snprintf(log_message_c, sizeof(log_message_c), "Starting InputManager set_mouse_sensibility_value method with value: %.2f", cmouse_sensibility_value);
+    snprintf(log_message_c, sizeof(log_message_c), "Starting InputManager
+    set_mouse_sensibility_value method with value: %.2f",
+    cmouse_sensibility_value);
     std::string log_message(log_message_c);
 
     log_message += ", coffset_x: " + std::to_string(coffset_x);
@@ -267,7 +274,8 @@ void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
 void InputManager::set_analogic_sensibility_value(int value) {
     /*
     #ifndef NDEBUG
-    string log_message = "Starting InputManager set_analogic_sensibility_value method, with value: " + value;
+    string log_message = "Starting InputManager set_analogic_sensibility_value
+    method, with value: " + value;
     // LOG(DEBUG) << log_message;
     #endif
     */
@@ -337,7 +345,8 @@ void InputManager::connect_joysticks() {
 void InputManager::map_keyboard_to_joystick(int map_id) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager map_keyboard_to_joystick method with map_id: " + std::to_string(map_id);
+    std::string log_message = "Starting InputManager map_keyboard_to_joystick
+    method with map_id: " + std::to_string(map_id);
     // LOG(DEBUG) << log_message;
     #endif
     */
@@ -370,12 +379,479 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
 void InputManager::update() {
     // LOG(DEBUG) << "Starting InputManager update method";
 
-    SDL_Event event;
-
-    has_quit_request = false;
+    handle_mouse_update();
 
     update_counter++;
+    has_quit_request = false;
 
+    handle_events();
+
+    // LOG(DEBUG) << "Ending InputManager update method";
+}
+
+/**
+ * Manages player's request for leaving the game.
+ *
+ * @returns True if there is a request [0,1]
+ */
+bool InputManager::quit_requested() {
+    // LOG(DEBUG) << "Starting InputManager quit_requested method";
+
+    // LOG(DEBUG) << "Ending InputManager quit_requested method";
+    return has_quit_request;
+}
+
+/**
+ * Manages transition of inputs from keyboard to joystick.
+ */
+/**
+ * Manages player presses of the key (keyboard).
+ *
+ * @param key [0, 14 (number of keys used in the game)]
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
+bool InputManager::key_press(int key) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager key_press method key: " +
+    std::to_string(key);
+    // LOG(DEBUG) << log_message;
+
+    if (key < 0) {
+        LOG(FATAL) << "Key is less than zero";
+    }
+    #endif
+    */
+
+    bool return_value =
+        keys_states[key] and keys_updates[key] == update_counter;
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager key_press method returning value: " +
+    std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Manages player release of the key (keyboard).
+ *
+ * @param key [0, 14 (number of keys used in the game)]
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
+bool InputManager::key_release(int key) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager key_release method key: " +
+    std::to_string(key);
+    // LOG(DEBUG) << log_message;
+
+    if (key < 0) {
+        LOG(FATAL) << "Key is less than zero";
+    }
+    #endif
+    */
+
+    bool return_value =
+        not keys_states[key] and keys_updates[key] == update_counter;
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager key_release method returning value: " +
+    std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Watch holding of the player on the key (keyboard).
+ *
+ * @param key [0, 14 (number of keys used in the game)]
+ *
+ * @returns True if key is holded
+ */
+bool InputManager::is_key_down(int key) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager key_release method key: " +
+    std::to_string(key);
+    // LOG(DEBUG) << log_message;
+
+    if (key < 0) {
+        LOG(FATAL) << "Key is less than zero";
+    }
+    #endif
+    */
+
+    bool return_value = keys_states[key];
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager is_key_down method returning value: " +
+    std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Manages player press of a mouse button.
+ *
+ * @param button which button was pressed [0, 5]
+ *
+ * @returns True if everything went ok.
+ */
+bool InputManager::mouse_press(int button) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager mouse_press method, button:
+    " + std::to_string(button);;
+    // LOG(DEBUG) << log_message;
+
+    if (button < 0) {
+        LOG(FATAL) << "button is less than zero";
+    }
+
+    if (button >= N_MOUSE_BUTTONS) {
+        LOG(FATAL) << "button bigger than available";
+    }
+    #endif
+    */
+
+    bool return_value =
+        mouse_buttons_states[button] and mouse_update[button] == update_counter;
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager key_release method returning value: " +
+    std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Manages player release of a mouse button.
+ * @param button which button was pressed [0, 2]
+ *
+ * @returns True if everything went ok.
+ */
+bool InputManager::mouse_release(int button) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager mouse_release method,
+    button: " + std::to_string(button);;
+    // LOG(DEBUG) << log_message;
+
+    if (button < 0) {
+        LOG(FATAL) << "button is less than zero";
+    }
+
+    if (button >= N_MOUSE_BUTTONS) {
+        LOG(FATAL) << "button bigger than available";
+    }
+    #endif
+    */
+
+    bool return_value = not mouse_buttons_states[button] and
+        mouse_update[button] == update_counter;
+
+    /*
+    #ifndef NDEBUG
+    log_message =  "Ending InputManager mouse_release method returning value: "
+    + std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Watch holding of the player on the button (mouse).
+ * @param button
+ *
+ * @returns True if button is being pressed.
+ */
+bool InputManager::is_mouse_down(int button) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager is_mouse_down method,
+    button: " + std::to_string(button);;
+    // LOG(DEBUG) << log_message;
+
+    if (button < 0) {
+        LOG(FATAL) << "button is less than zero";
+    }
+
+    if (button >= N_MOUSE_BUTTONS) {
+        LOG(FATAL) << "button bigger than available";
+    }
+    #endif
+    */
+
+    bool return_value = mouse_buttons_states[button];
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager is_mouse_down method returning value: " +
+    std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Manages player presses of the button (joystick).
+ * @param button Which button is being pressed.
+ * @param joystick Which joystick pressed the button.
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
+bool InputManager::joystick_button_press(int button, int joystick) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager joystick_button_press
+    method, button: ";
+    log_message += std::to_string(button);
+    log_message += ", joystick: " + std::to_string(joystick);
+    // LOG(DEBUG) << log_message;
+
+    if (button < 0 or joystick < 0) {
+        LOG(FATAL) << "button or joystick less than 0";
+    }
+
+    if (joystick >= N_CONTROLLERS) {
+        LOG(FATAL) << "joystick bigger than available";
+    }
+    #endif
+    */
+
+    bool return_value = joysticks_buttons_states[joystick][button] and
+        joystick_update[joystick][button] == update_counter;
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager joystick_button_press method returning
+    value: " + std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Manages player release of the button (joystick).
+ *
+ * @param button Which button is being released.
+ * @param joystick Which joystick is releasing the button.
+ *
+ * @returns True if everithing went ok. [0,1]
+ */
+bool InputManager::joystick_button_release(int button, int joystick) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager joystick_button_press
+    method, button: ";
+    log_message += std::to_string(button);
+    log_message += ", joystick: " + std::to_string(joystick);
+    // LOG(DEBUG) << log_message;
+
+    if (button < 0 or joystick < 0) {
+        LOG(FATAL) << "button or joystick less than 0";
+    }
+
+    if (joystick >= N_CONTROLLERS) {
+        LOG(FATAL) << "joystick bigger than available";
+    }
+    #endif
+    */
+
+    bool return_value = not joysticks_buttons_states[joystick][button] and
+        joystick_update[joystick][button] == update_counter;
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager joystick_button_press method returning
+    value: " + std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Watch holding of the player on the key (keyboard).
+ *
+ * @param button Which button is holding the button.
+ * @param joystick Which joystick is holding the button.
+ *
+ * @returns True if button is being held.
+ */
+bool InputManager::is_joystick_button_down(int button, int joystick) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager joystick_button_press
+    method, button: ";
+    log_message += std::to_string(button);
+    log_message += ", joystick: " + std::to_string(joystick);
+    // LOG(DEBUG) << log_message;
+
+    if (button < 0 or joystick < 0) {
+        LOG(FATAL) << "button or joystick less than 0";
+    }
+
+    if (joystick >= N_CONTROLLERS) {
+        LOG(FATAL) << "joystick bigger than available";
+    }
+    #endif
+    */
+
+    bool return_value = joysticks_buttons_states[joystick][button];
+
+    /*
+    #ifndef NDEBUG
+    log_message = "Ending InputManager joystick_button_press method returning
+    value: " + std::to_string(static_cast<int>(return_value));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    return return_value;
+}
+
+/**
+ * Manages joystick interaction with the game.
+ * Map joystick keys to interect with the game through keyboard keys.
+ *
+ * @param key_id Id of the key is that is interacting with the game
+ * @param state State of the key that is interacting with the game
+ */
+void InputManager::emulate_joystick(int key_id, bool state) {
+    /*
+    #ifndef NDEBUG
+    std::string log_message = "Starting InputManager emulate_joystick method
+    with key_id: ";
+    log_message += std::to_string(key_id) + ", state: ";
+    log_message += std::to_string(static_cast<int>(state));
+    // LOG(DEBUG) << log_message;
+    #endif
+    */
+
+    if (state) {
+        /**
+         * Map each key for corresponding.
+         */
+        switch (key_id) {
+            case SDLK_0:
+                reset_keyboard_to_joystick();
+                keyboard_to_joystick_id = -1;
+                break;
+            case SDLK_1:
+                reset_keyboard_to_joystick();
+                keyboard_to_joystick_id = 0;
+                break;
+            case SDLK_2:
+                reset_keyboard_to_joystick();
+                keyboard_to_joystick_id = 1;
+                break;
+            case SDLK_3:
+                reset_keyboard_to_joystick();
+                keyboard_to_joystick_id = 2;
+                break;
+            case SDLK_4:
+                reset_keyboard_to_joystick();
+                keyboard_to_joystick_id = 3;
+                break;
+            case SDLK_5:
+                reset_keyboard_to_joystick();
+                keyboard_to_joystick_id = 4;
+                break;
+        }
+    }
+
+    /**
+     * Will update status for joystick based on profile.
+     */
+    if (keyboard_to_joystick_id == N_CONTROLLERS) {
+        for (int i = 0; i < N_CONTROLLERS; i++) {
+            joysticks_buttons_states[i][keyboard_to_joystick[key_id] - 1] =
+                state;
+            joystick_update[i][keyboard_to_joystick[key_id] - 1] =
+                update_counter;
+        }
+    } else if (keyboard_to_joystick_id >= 0) {
+        joysticks_buttons_states[keyboard_to_joystick_id]
+                                [keyboard_to_joystick[key_id] - 1] = state;
+        joystick_update[keyboard_to_joystick_id]
+                       [keyboard_to_joystick[key_id] - 1] = update_counter;
+    }
+
+    // LOG(DEBUG) << "Ending InputManager connect_joysticks method";
+}
+
+void InputManager::reset_keyboard_to_joystick() {
+    // LOG(DEBUG) << "Starting InputManager reset_keyboard_to_joystick";
+
+    /**
+     * Check limits.
+     */
+    if (keyboard_to_joystick_id < 0 or
+        keyboard_to_joystick_id > N_CONTROLLERS) {
+        /*
+        #ifndef NDEBUG
+        string log_message = "keyboard_to_joystick_id out of bound with value: "
+        + keyboard_to_joystick_id;
+        LOG(FATAL) << log_message;
+        #endif
+        */
+
+        return;
+    }
+
+    /**
+     * Update all joysticks state based on profile.
+     */
+    if (keyboard_to_joystick_id == N_CONTROLLERS) {
+        for (int i = 0; i < N_CONTROLLERS; i++) {
+            for (auto &c : joysticks_buttons_states[i]) {
+                c.second = false;
+            }
+        }
+    }
+
+    /**
+     * Guess is not necessary.
+     * Else?
+     */
+    for (auto &c : joysticks_buttons_states[keyboard_to_joystick_id]) {
+        c.second = false;
+    }
+
+    // LOG(DEBUG) << "Ending InputManager reset_keyboard_to_joystick method";
+}
+
+/**
+ * Handle updates specific for mouse.
+ */
+void InputManager::handle_mouse_update() {
     SDL_GetMouseState(&mouse_x_position, &mouse_y_position);
 
     /*
@@ -397,13 +873,20 @@ void InputManager::update() {
     mouse_x_position = std::min(mouse_x_position, BACKGROUND_WIDTH);
     mouse_y_position = std::max(0, mouse_y_position);
     mouse_y_position = std::min(mouse_y_position, BACKGROUND_HEIGHT);
+}
+
+/**
+ * Handle events from inputs.
+ */
+void InputManager::handle_events() {
+    SDL_Event event;
 
     /**
      * While proper event has not yet been found.
      * Maybe can be removed if removed breaks for cases. Not sure.
      */
     while (SDL_PollEvent(&event)) {
-        int key_id; /**< key is used for keyboard */
+        int key_id;    /**< key is used for keyboard */
         int button_id; /**< button is used for mouse and joystick */
         int joystick_id = controllers_id[event.cdevice.which];
 
@@ -509,443 +992,4 @@ void InputManager::update() {
                 break;
         }
     }
-    // LOG(DEBUG) << "Ending InputManager update method";
-}
-
-/**
- * Manages player's request for leaving the game.
- *
- * @returns True if there is a request [0,1]
- */
-bool InputManager::quit_requested() {
-    // LOG(DEBUG) << "Starting InputManager quit_requested method";
-
-    // LOG(DEBUG) << "Ending InputManager quit_requested method";
-    return has_quit_request;
-}
-
-/**
- * Manages transition of inputs from keyboard to joystick.
- */
-/**
- * Manages player presses of the key (keyboard).
- *
- * @param key [0, 14 (number of keys used in the game)]
- *
- * @returns True if everithing went ok. [0,1]
- */
-bool InputManager::key_press(int key) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager key_press method key: " + std::to_string(key);
-    // LOG(DEBUG) << log_message;
-
-    if (key < 0) {
-        LOG(FATAL) << "Key is less than zero";
-    }
-    #endif
-    */
-
-    bool return_value = keys_states[key] and keys_updates[key] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager key_press method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Manages player release of the key (keyboard).
- *
- * @param key [0, 14 (number of keys used in the game)]
- *
- * @returns True if everithing went ok. [0,1]
- */
-bool InputManager::key_release(int key) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager key_release method key: " + std::to_string(key);
-    // LOG(DEBUG) << log_message;
-
-    if (key < 0) {
-        LOG(FATAL) << "Key is less than zero";
-    }
-    #endif
-    */
-
-    bool return_value = not keys_states[key] and keys_updates[key] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager key_release method returning value: " +  std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Watch holding of the player on the key (keyboard).
- *
- * @param key [0, 14 (number of keys used in the game)]
- *
- * @returns True if key is holded
- */
-bool InputManager::is_key_down(int key) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager key_release method key: " + std::to_string(key);
-    // LOG(DEBUG) << log_message;
-
-    if (key < 0) {
-        LOG(FATAL) << "Key is less than zero";
-    }
-    #endif
-    */
-
-    bool return_value = keys_states[key];
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager is_key_down method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Manages player press of a mouse button.
- *
- * @param button which button was pressed [0, 5]
- *
- * @returns True if everything went ok.
- */
-bool InputManager::mouse_press(int button) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager mouse_press method, button: " + std::to_string(button);;
-    // LOG(DEBUG) << log_message;
-
-    if (button < 0) {
-        LOG(FATAL) << "button is less than zero";
-    }
-
-    if (button >= N_MOUSE_BUTTONS) {
-        LOG(FATAL) << "button bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value =
-        mouse_buttons_states[button] and mouse_update[button] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager key_release method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Manages player release of a mouse button.
- * @param button which button was pressed [0, 2]
- *
- * @returns True if everything went ok.
- */
-bool InputManager::mouse_release(int button) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager mouse_release method, button: " + std::to_string(button);;
-    // LOG(DEBUG) << log_message;
-
-    if (button < 0) {
-        LOG(FATAL) << "button is less than zero";
-    }
-
-    if (button >= N_MOUSE_BUTTONS) {
-        LOG(FATAL) << "button bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = not mouse_buttons_states[button] and
-        mouse_update[button] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    log_message =  "Ending InputManager mouse_release method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Watch holding of the player on the button (mouse).
- * @param button
- *
- * @returns True if button is being pressed.
- */
-bool InputManager::is_mouse_down(int button) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager is_mouse_down method, button: " + std::to_string(button);;
-    // LOG(DEBUG) << log_message;
-
-    if (button < 0) {
-        LOG(FATAL) << "button is less than zero";
-    }
-
-    if (button >= N_MOUSE_BUTTONS) {
-        LOG(FATAL) << "button bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = mouse_buttons_states[button];
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager is_mouse_down method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Manages player presses of the button (joystick).
- * @param button Which button is being pressed.
- * @param joystick Which joystick pressed the button.
- *
- * @returns True if everithing went ok. [0,1]
- */
-bool InputManager::joystick_button_press(int button, int joystick) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager joystick_button_press method, button: ";
-    log_message += std::to_string(button);
-    log_message += ", joystick: " + std::to_string(joystick);
-    // LOG(DEBUG) << log_message;
-
-    if (button < 0 or joystick < 0) {
-        LOG(FATAL) << "button or joystick less than 0";
-    }
-
-    if (joystick >= N_CONTROLLERS) {
-        LOG(FATAL) << "joystick bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = joysticks_buttons_states[joystick][button] and
-        joystick_update[joystick][button] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager joystick_button_press method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Manages player release of the button (joystick).
- *
- * @param button Which button is being released.
- * @param joystick Which joystick is releasing the button.
- *
- * @returns True if everithing went ok. [0,1]
- */
-bool InputManager::joystick_button_release(int button, int joystick) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager joystick_button_press method, button: ";
-    log_message += std::to_string(button);
-    log_message += ", joystick: " + std::to_string(joystick);
-    // LOG(DEBUG) << log_message;
-
-    if (button < 0 or joystick < 0) {
-        LOG(FATAL) << "button or joystick less than 0";
-    }
-
-    if (joystick >= N_CONTROLLERS) {
-        LOG(FATAL) << "joystick bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = not joysticks_buttons_states[joystick][button] and
-        joystick_update[joystick][button] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager joystick_button_press method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Watch holding of the player on the key (keyboard).
- *
- * @param button Which button is holding the button.
- * @param joystick Which joystick is holding the button.
- *
- * @returns True if button is being held.
- */
-bool InputManager::is_joystick_button_down(int button, int joystick) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager joystick_button_press method, button: ";
-    log_message += std::to_string(button);
-    log_message += ", joystick: " + std::to_string(joystick);
-    // LOG(DEBUG) << log_message;
-
-    if (button < 0 or joystick < 0) {
-        LOG(FATAL) << "button or joystick less than 0";
-    }
-
-    if (joystick >= N_CONTROLLERS) {
-        LOG(FATAL) << "joystick bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = joysticks_buttons_states[joystick][button];
-
-    /*
-    #ifndef NDEBUG
-    log_message = "Ending InputManager joystick_button_press method returning value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
-
-/**
- * Manages joystick interaction with the game.
- * Map joystick keys to interect with the game through keyboard keys.
- *
- * @param key_id Id of the key is that is interacting with the game
- * @param state State of the key that is interacting with the game
- */
-void InputManager::emulate_joystick(int key_id, bool state) {
-    /*
-    #ifndef NDEBUG
-    std::string log_message = "Starting InputManager emulate_joystick method with key_id: ";
-    log_message += std::to_string(key_id) + ", state: ";
-    log_message += std::to_string(static_cast<int>(state));
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    if (state) {
-        /**
-         * Map each key for corresponding.
-         */
-        switch (key_id) {
-            case SDLK_0:
-                reset_keyboard_to_joystick();
-                keyboard_to_joystick_id = -1;
-                break;
-            case SDLK_1:
-                reset_keyboard_to_joystick();
-                keyboard_to_joystick_id = 0;
-                break;
-            case SDLK_2:
-                reset_keyboard_to_joystick();
-                keyboard_to_joystick_id = 1;
-                break;
-            case SDLK_3:
-                reset_keyboard_to_joystick();
-                keyboard_to_joystick_id = 2;
-                break;
-            case SDLK_4:
-                reset_keyboard_to_joystick();
-                keyboard_to_joystick_id = 3;
-                break;
-            case SDLK_5:
-                reset_keyboard_to_joystick();
-                keyboard_to_joystick_id = 4;
-                break;
-        }
-    }
-
-    /**
-     * Will update status for joystick based on profile.
-     */
-    if (keyboard_to_joystick_id == N_CONTROLLERS) {
-        for (int i = 0; i < N_CONTROLLERS; i++) {
-            joysticks_buttons_states[i][keyboard_to_joystick[key_id] - 1] =
-                state;
-            joystick_update[i][keyboard_to_joystick[key_id] - 1] =
-                update_counter;
-        }
-    } else if (keyboard_to_joystick_id >= 0) {
-        joysticks_buttons_states[keyboard_to_joystick_id]
-                                [keyboard_to_joystick[key_id] - 1] = state;
-        joystick_update[keyboard_to_joystick_id]
-                       [keyboard_to_joystick[key_id] - 1] = update_counter;
-    }
-
-    // LOG(DEBUG) << "Ending InputManager connect_joysticks method";
-}
-
-void InputManager::reset_keyboard_to_joystick() {
-    // LOG(DEBUG) << "Starting InputManager reset_keyboard_to_joystick";
-
-    /**
-     * Check limits.
-     */
-    if (keyboard_to_joystick_id < 0 or
-        keyboard_to_joystick_id > N_CONTROLLERS) {
-
-        /*
-        #ifndef NDEBUG
-        string log_message = "keyboard_to_joystick_id out of bound with value: " + keyboard_to_joystick_id;
-        LOG(FATAL) << log_message;
-        #endif
-        */
-
-        return;
-    }
-
-    /**
-     * Update all joysticks state based on profile.
-     */
-    if (keyboard_to_joystick_id == N_CONTROLLERS) {
-        for (int i = 0; i < N_CONTROLLERS; i++) {
-            for (auto &c : joysticks_buttons_states[i]) {
-                c.second = false;
-            }
-        }
-    }
-
-    /**
-     * Guess is not necessary.
-     * Else?
-     */
-    for (auto &c : joysticks_buttons_states[keyboard_to_joystick_id]) {
-        c.second = false;
-    }
-
-    // LOG(DEBUG) << "Ending InputManager reset_keyboard_to_joystick method";
 }
