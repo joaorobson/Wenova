@@ -12,6 +12,8 @@
 #include "Game.h"
 #include "FleshUltimateEffect.h"
 
+#include <assert.h>
+
 #define CROUCH_COOLDOWN 400.0
 
 #define INITIAL_COMBO  0
@@ -69,6 +71,9 @@
 #define MAXIMUM_TO_ADD_ESPECIAL_2_SPEED 1.0
 #define RATE_TO_REMAINING_LIFE_ESPECIAL_2 1.0
 #define RATE_TO_INITIAL_SPEED_ESPECIAL_2 0.5
+
+#define STOPPED 0
+#define DYING_TAG "dying"
 
 
 /**
@@ -487,6 +492,7 @@ void Flesh::update_machine_state(float) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump(bool change) {
+    assert(JUMP_BUTTON >= 0);
     /**
      * Check if the user is pressing the jump button
      */
@@ -508,10 +514,11 @@ void Flesh::check_jump(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_fall(bool change) {
+    assert(STOPPED == 0);
     /**
      * Check if in use sprite is falling
      */
-    if (speed.y > 0) {
+    if (speed.y > STOPPED) {
         /**
          * Check if change happened
          */
@@ -527,6 +534,7 @@ void Flesh::check_fall(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_left(bool change) {
+    assert(LEFT_BUTTON >= 0);
     /**
      * Check if user is pressing the left button
      */
@@ -548,6 +556,7 @@ void Flesh::check_left(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_right(bool change) {
+    assert(RIGHT_BUTTON >= 0);
     /**
      * Check if user is pressing the right button
      */
@@ -569,6 +578,9 @@ void Flesh::check_right(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle(bool change, bool condition) {
+    assert(DOWN_BUTTON >= 0);
+    assert(BLOCK_BUTTON >= 0);
+    assert(STOPPED == 0);
     /**
      * Check if the character isn't doing anything
      */
@@ -589,6 +601,7 @@ void Flesh::check_idle(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_crouch(bool change) {
+    assert(DOWN_BUTTON >= 0);
     /**
      * Check if user is pressing down button when his character is on floor
      */
@@ -608,6 +621,7 @@ void Flesh::check_crouch(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_1(bool change) {
+    assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without pressing down button
      */
@@ -668,6 +682,9 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
  * @param condition check if the character is in condition
  */
 void Flesh::check_idle_atk_front(bool change, bool condition) {
+    assert(ATTACK_BUTTON >= 0);
+    assert(LEFT_BUTTON >= 0);
+    assert(RIGHT_BUTTON >= 0);
     /**
      * Check if user is pressing attack button and left or right button
      */
@@ -696,6 +713,8 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_fallloop(bool change) {
+    assert(ATTACK_BUTTON >= 0);
+    assert(DOWN_BUTTON >= 0);
     /**
      * Check if user is pressing attack and down button
      */
@@ -734,6 +753,7 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_neutral(bool change) {
+    assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without down or up button
      */
@@ -754,6 +774,8 @@ void Flesh::check_jump_atk_neutral(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_down(bool change) {
+    assert(ATTACK_BUTTON >= 0);
+    assert(DOWN_BUTTON >= 0);
     /**
      * Check if user is pressing attack and down button
      */
@@ -773,6 +795,7 @@ void Flesh::check_idle_atk_down(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_special_1(bool change) {
+    assert(SPECIAL1_BUTTON >= 0);
     /**
      * Check if user is pressing special button
      */
@@ -796,6 +819,7 @@ void Flesh::check_special_1(bool change) {
  * @param bool
  */
 void Flesh::check_special_2(bool) {
+    assert(SPECIAL2_BUTTON >= 0);
     additional_attack_damage = MINIMUM_TO_ADD_ESPECIAL_2_ATTACK +
                                (MAXIMUM_TO_ADD_ESPECIAL_2_ATTACK -
                                 (get_remaining_life()) / MAX_LIFE);
@@ -829,6 +853,9 @@ void Flesh::check_ultimate(bool) {
  * @param change check if the state os character changed
  */
 void Flesh::check_pass_through_platform(bool change) {
+    assert(DOWN_BUTTON >= 0);
+    assert(ATTACK_BUTTON >= 0);
+    assert(CROUCH_COOLDOWN == 400.0);
     /**
      * Check if user is pressing down button without attack button
      */
@@ -855,6 +882,7 @@ void Flesh::check_pass_through_platform(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_defense(bool change) {
+    assert(BLOCK_BUTTON >= 0);
     /**
      * Check if user is pressing block button with his character on floor
      */
@@ -874,6 +902,7 @@ void Flesh::check_defense(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_stunned(bool change) {
+    assert(STOPPED == 0);
     speed.x = SPEED_X_STUNNED;
     /**
      * Check if change happened
@@ -892,7 +921,7 @@ void Flesh::check_dead(bool change) {
     /**
      * Check if in use sprite is dying
      */
-    if (is("dying")) {
+    if (is(DYING_TAG)) {
         /**
          * Check if change happened
          */
@@ -908,6 +937,7 @@ void Flesh::check_dead(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_crouch_atk(bool change) {
+    assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button
      */
@@ -927,6 +957,7 @@ void Flesh::check_crouch_atk(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_up(bool change) {
+    assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack and up button
      */
@@ -954,6 +985,8 @@ void Flesh::check_jump_atk_up(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_up(bool change) {
+    assert(ATTACK_BUTTON >= 0);
+    assert(UP_BUTTON >= 0);
     /**
      * Check if user is pressing attack and up button
      */

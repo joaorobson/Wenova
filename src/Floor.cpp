@@ -16,6 +16,9 @@
 #define PI 3.14159265358979
 #define HEIGHT 20
 
+#define FLOOR "floor"
+#define PLATFORM "platform"
+
 int Floor::floor_id = 1;
 
 /**
@@ -36,12 +39,12 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     rotation = crotation * PI / 180.0;
     box = Rectangle(x, y, width, HEIGHT);
     id = floor_id++;
-    tags["floor"] = true;
+    tags[FLOOR] = true;
     /*
      * Check if exist floor on platform
      */
     if (is_crossingable) {
-        tags["platform"] = true;
+        tags[PLATFORM] = true;
     }
 }
 

@@ -10,6 +10,8 @@
 
 #include "Timer.h"
 
+#include <assert.h>
+
 #define INITIAL_TIME 0
 
 /**
@@ -25,6 +27,7 @@ Timer::Timer() {
  * @param delta is the variation of the time 
  */
 void Timer::update(float delta) {
+	assert(delta >=0);
     time += delta;
 }
 
