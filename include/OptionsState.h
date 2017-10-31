@@ -54,6 +54,18 @@ class OptionsState : public State {
     OptionsState();
 
     /**
+     * Pause function.
+     * Nothing to do.
+     */
+    void pause();
+    /**
+     * Resume function.
+     * Nothing to do.
+     */
+    void resume();
+
+ private:
+    /**
      * Update function.
      * This function identifies the pressed button and updates the values of the
      * selected option.
@@ -61,6 +73,7 @@ class OptionsState : public State {
      * @param delta a float variation to update menu state.
      */
     void update(float delta);
+
     /**
      * Render function.
      * This function renders all text of the menu 'Options' and changes its color
@@ -76,35 +89,23 @@ class OptionsState : public State {
     void build_options();
 
     /**
-     * Pause function.
-     * Nothing to do.
-     */
-    void pause();
-    /**
-     * Resume function.
-     * Nothing to do.
-     */
-    void resume();
-
-    /**
      * Process an input of the user.
      * This function maps the buttons that are used on the menu 'Option' according
      * to constants of the InputManager class.
      */
     void process_input();
 
- private:
-   /**
-    * Get the option on a sub menu.
-    * This function identifies which sub menu and option the user selected.
-    *
-    * @param option an integer argument that represents the selected option of the
-    * main menu.
-    *
-    * @return an integer value that represents the current sub option of a sub
-    * menu.
-    */
-    int get_current_sub_option(int option);
+    /**
+     * Get the option on a sub menu.
+     * This function identifies which sub menu and option the user selected.
+     *
+     * @param option an integer argument that represents the selected option of the
+     * main menu.
+     *
+     * @return an integer value that represents the current sub option of a sub
+     * menu.
+     */
+     int get_current_sub_option(int option);
 };
 
 #endif  // INCLUDE_OPTIONSSTATE_H_

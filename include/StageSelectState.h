@@ -63,6 +63,26 @@ class StageSelectState : public State {
     explicit StageSelectState(bool cgo_to_edit = false);
 
     /**
+     * Pause function.
+     * Nothing to do.
+     */
+    void pause();
+
+    /**
+     * Resume function.
+     * Nothing to do.
+     */
+    void resume();
+
+ private:
+    /**
+     * Process an input of the user.
+     * This function maps the buttons that are used on the menu that select a
+     * stage according to constants of the InputManager class.
+     */
+    void process_input();
+
+    /**
      * Update function.
      * This function identifies the pressed button and updates the values of the
      * selected option.
@@ -78,32 +98,12 @@ class StageSelectState : public State {
     void render();
 
     /**
-     * Pause function.
-     * Nothing to do.
-     */
-    void pause();
-
-    /**
-     * Resume function.
-     * Nothing to do.
-     */
-    void resume();
-
-    /**
      * Update selected stage function.
      * This function increments the integer id value of the selected stage.
      *
      * @param increment an integer value that updates the current stage.
      */
     void update_stage_select(int increment);
-
- private:
-    /**
-     * Process an input of the user.
-     * This function maps the buttons that are used on the menu that select a
-     * stage according to constants of the InputManager class.
-     */
-    void process_input();
 };
 
 #endif  // INCLUDE_STAGESELECTSTATE_H_

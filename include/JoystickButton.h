@@ -39,11 +39,12 @@ class JoystickButton : public GameObject {
 
     ~JoystickButton();
 
+    void notify_collision(GameObject& object);
+
+ private:
     void update(float delta);
     void render();
     bool is_dead();
-
-    void notify_collision(GameObject& object);
 };
 
 #endif  // INCLUDE_JOYSTICKBUTTON_H_

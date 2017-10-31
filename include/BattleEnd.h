@@ -51,6 +51,24 @@ class BattleEnd : public GameObject {
     explicit BattleEnd(int id_winner);
 
     /**
+     * Function get quit request.
+     * This function returns true when a quit request is open by the user.
+     *
+     * @return a boolean value that represents the the quit request of the
+     * user.
+     */
+    bool quit_requested();
+
+    /**
+     * Function notify collision.
+     * Nothing to do.
+     *
+     * @param GameObject a pointer to a GameObject.
+     */
+    void notify_collision(GameObject & object);
+
+ private:
+    /**
      * Function that updates sprite of the end of a Battle.
      * This function makes sprites variate accoding to the input user state.
      *
@@ -73,23 +91,6 @@ class BattleEnd : public GameObject {
      * @return a boolean default value.
      */
     bool is_dead();
-
-    /**
-     * Function get quit request.
-     * This function returns true when a quit request is open by the user.
-     *
-     * @return a boolean value that represents the the quit request of the
-     * user.
-     */
-    bool quit_requested();
-
-    /**
-     * Function notify collision.
-     * Nothing to do.
-     *
-     * @param GameObject a pointer to a GameObject.
-     */
-    void notify_collision(GameObject & object);
 };
 
 #endif  // INCLUDE_BATTLEEND_H_

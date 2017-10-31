@@ -17,7 +17,7 @@
 #include "Timer.h"
 #include "Sound.h"
 
-class JoystickConfigState : public State{
+class JoystickConfigState : public State {
  private:
     Sprite background;  /**< Background image of menu "Options". */
     Sprite joystick_help;  /**< Image joystick help of menu "Options". */
@@ -52,6 +52,19 @@ class JoystickConfigState : public State{
     explicit JoystickConfigState(int joystick_id, bool ckeyboard = false);
 
     /**
+     * Pause function.
+     * Nothing to do.
+     */
+    void pause();
+
+    /**
+     * Resume function.
+     * Nothing to do.
+     */
+    void resume();
+
+ private:
+    /**
      * Function that updates sprites on joystick test mode.
      * This function makes sprites change color accoding to the button pressed by
      * the user on the joystick test mode located at the menu
@@ -60,6 +73,7 @@ class JoystickConfigState : public State{
      * @param delta a float variation to update joystick state.
      */
     void update(float delta);
+
     /**
      * Function that renders keyboard or joystick help images.
      * This function renders keyboard or joystick help images if user select one of
@@ -67,17 +81,6 @@ class JoystickConfigState : public State{
      * Besides that, it will render buttons on the joystick test mode.
      */
     void render();
-
-    /**
-     * Pause function.
-     * Nothing to do.
-     */
-    void pause();
-    /**
-     * Resume function.
-     * Nothing to do.
-     */
-    void resume();
 };
 
 #endif  // INCLUDE_JOYSTICKCONFIGSTATE_H_

@@ -49,30 +49,6 @@ class TimeCounter : public GameObject {
     ~TimeCounter();
 
     /**
-     * Function that updates the time showed.
-     * This function makes sprites variate and texts accoding to the remaining
-     * time.
-     *
-     * @param delta a float variation to update the remaining time of a battle.
-     */
-    void update(float delta);
-
-    /**
-     * Function that renders a the time.
-     * This function renders the text that represents the remaining
-     * time of a battle.
-     */
-    void render();
-
-    /**
-     * Function get state dead.
-     * This function returns the state dead.
-     *
-     * @return a boolean default value.
-     */
-    bool is_dead();
-
-    /**
      * Function get end of battle.
      * This function indicates if a battle has finished or not.
      *
@@ -97,6 +73,30 @@ class TimeCounter : public GameObject {
      * @return is a string representing the remaining time.
      */
     string get_time_string();
+
+    /**
+     * Function that updates the time showed.
+     * This function makes sprites variate and texts accoding to the remaining
+     * time.
+     *
+     * @param delta a float variation to update the remaining time of a battle.
+     */
+    void update(float delta);
+
+    /**
+     * Function that renders a the time.
+     * This function renders the text that represents the remaining
+     * time of a battle.
+     */
+    void render();
+
+    /**
+     * Function get state dead.
+     * This function returns the state dead.
+     *
+     * @return a boolean default value.
+     */
+    bool is_dead();
 };
 
 #endif  // INCLUDE_TIMECOUNTER_H_
