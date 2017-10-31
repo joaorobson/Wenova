@@ -655,7 +655,7 @@ void Blood::check_stunned(bool change) {
  * temporary state.
  */
 void Blood::check_dead(bool change) {
-  assert(DYING_TAG != "");
+  assert(strcmp(DYING_TAG, "") != 0);
   if (is(DYING_TAG)) {
     if (change) {
       temporary_state = FighterState::DYING;
