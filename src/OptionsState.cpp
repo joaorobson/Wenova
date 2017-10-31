@@ -311,60 +311,73 @@ void OptionsState::render() {
      * Iterates every option of the menu "Options" of a main menu.
      */
     for (int i = 0; i < static_cast<int>(options.size()); i++) {
-        /**
-         * Check if selected option indicates that user is on a submenu.
-         * Set color of current selected option to DARK_GREY.
-         */
-        if (on_submenu and (i != static_cast<int>(options.size()) - 1) and
-            (i != current_option)) {
-            options[i]->set_color(DARK_GREY);
-        } else {
-            /**
-             * Check which option of a main was selected.
-             * Set it's text color to LIGHT_GREEN.
-             */
-            if (current_option == i) {
-                options[i]->set_color(LIGHT_GREEN);
-            } else {
-                options[i]->set_color(WHITE);
-            }
-        }
+        render_submenu_option(i);
 
         options[i]->render();
-
         string text = options[i]->get_text();
+        render_main_menu_option(i, text);
+    }
+}
 
+/**
+ *
+ */
+void OptionsState::render_submenu_option(int index) {
+  /**
+   * Check if selected option indicates that user is on a submenu.
+   * Set color of current selected option to DARK_GREY.
+   */
+  if (on_submenu and (index != static_cast<int>(options.size()) - 1) and
+      (index != current_option)) {
+      options[index]->set_color(DARK_GREY);
+  } else {
+      /**
+       * Check which option of a main was selected.
+       * Set it's text color to LIGHT_GREEN.
+       */
+      if (current_option == index) {
+          options[index]->set_color(LIGHT_GREEN);
+      } else {
+          options[index]->set_color(WHITE);
+      }
+  }
+}
+
+/**
+ *
+ */
+void OptionsState::render_main_menu_option(int index, string text_option) {
+    /**
+     * Iterates every option of the menu "Options" of a submenu.
+     */
+    for (int j = 0; j < static_cast<int>(sub_options[text_option].size());
+         j++) {
         /**
-         * Iterates every option of the menu "Options" of a submenu.
+         * Check if selected option indicates that user is on a submenu.
          */
-        for (int j = 0; j < static_cast<int>(sub_options[text].size()); j++) {
+        if (on_submenu and(current_option == index)) {
             /**
-             * Check if selected option indicates that user is on a submenu.
+             * Check which option of the submenu was selected.
+             * Set it's text color to LIGHT_GREEN.
              */
-            if (on_submenu and(current_option == i)) {
-                /**
-                 * Check which option of the submenu was selected.
-                 * Set it's text color to LIGHT_GREEN.
-                 */
-                if (current_sub_option[i] == j) {
-                    sub_options[text][j]->set_color(LIGHT_GREEN);
-                } else {
-                    sub_options[text][j]->set_color(WHITE);
-                }
+            if (current_sub_option[index] == j) {
+                sub_options[text_option][j]->set_color(LIGHT_GREEN);
             } else {
-                /**
-                 * Check which option of the submenu was selected.
-                 * Set it's text color to DARK_GREEN.
-                 */
-                if (current_sub_option[i] == j) {
-                    sub_options[text][j]->set_color(DARK_GREEN);
-                } else {
-                    sub_options[text][j]->set_color(DARK_GREY);
-                }
+                sub_options[text_option][j]->set_color(WHITE);
             }
-
-            sub_options[text][j]->render();
+        } else {
+            /**
+             * Check which option of the submenu was selected.
+             * Set it's text color to DARK_GREEN.
+             */
+            if (current_sub_option[index] == j) {
+                sub_options[text_option][j]->set_color(DARK_GREEN);
+            } else {
+                sub_options[text_option][j]->set_color(DARK_GREY);
+            }
         }
+
+        sub_options[text_option][j]->render();
     }
 }
 

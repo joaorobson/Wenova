@@ -95,6 +95,10 @@ class OptionsState : public State {
      */
     void process_input();
 
+    void render_submenu_option(int index);
+
+    void render_main_menu_option(int index, string text_option);
+
     /**
      * Get the option on a sub menu.
      * This function identifies which sub menu and option the user selected.
