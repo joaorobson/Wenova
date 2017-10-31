@@ -20,9 +20,9 @@ class FleshUltimateEffect : public Effect{
  public:
   FleshUltimateEffect(Fighter * cparent, string csprite, string ctags,
                         int frames = 1);
- private:
   void update(float delta_character_state);
   void render();
+ private:
   bool is_dead();
 };
 

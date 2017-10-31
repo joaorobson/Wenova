@@ -43,29 +43,26 @@ class Sprite{
   Sprite();
   ~Sprite();
 
-
-  void open(string file);
   void render(int x = 0, int y = 0, float angle = 0,
               SDL_RendererFlip flip = SDL_FLIP_NONE);
   void set_clip(int x, int y, int w, int h);
+  void update(float delta);
+  int get_current_frame();
+  bool is_finished();
+  void restart_count(int cframe = 0);
+  int get_height();
+  int get_width();
+  void set_scale(float scale);
+  void set_scale_x(float scale);
+  void update_scale_x(float scale);
+ private:
+  void open(string file);
   void set_frame(int frame);
   void set_frame_count(int cframe_count);
   void set_frame_time(float cframe_time);
-
-  void update(float delta);
-
-  void restart_count(int cframe = 0);
-  bool is_finished();
-  int get_current_frame();
   bool is_open();
-
-  int get_width();
-  int get_height();
-  void set_scale_x(float scale);
   void set_scale_y(float scale);
-  void set_scale(float scale);
   void set_scale(float cscale_x_axis, float cscale_y_axis);
-  void update_scale_x(float scale);
 
 
 };
