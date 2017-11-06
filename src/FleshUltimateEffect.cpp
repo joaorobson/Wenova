@@ -42,6 +42,8 @@ FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
   */
   if (parent) {
     parent->add_tags(IN_ULTIMATE_TAG);
+  } else {
+    /* Nothing to do. */
   }
   parent->MAX_LIFE *= INCREMENT_IN_MAX_LIFE;
 }
@@ -64,6 +66,8 @@ void FleshUltimateEffect::update(float delta_character_state) {
                                ATTACK_VERTICAL_POSITION_DECREASE;
     parent->increment_special(DECREASE_IN_CHARACTER_STATE * 
                               delta_character_state);
+  } else {
+    /* Nothing to do. */
   }
   sprite.update(delta_character_state);
 }
@@ -94,6 +98,9 @@ bool FleshUltimateEffect::is_dead() {
     parent->remove_tags(IN_ULTIMATE_TAG);
     parent->MAX_LIFE /= DECREASE_IN_MAX_LIFE;
     parent->increment_life(NO_LIFE_STATE);
+  } else {
+    /* Nothing to do. */
   }
+
   return dead;
 }

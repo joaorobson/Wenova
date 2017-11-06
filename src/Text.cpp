@@ -25,13 +25,6 @@
 #define NO_OFFSET 0
 #define BLACK_BACKGROUND_ON_SDL_RGBA_COLOR {0,0,0,255}
 
-/**
- * A constructor.
- * Initialize the texture attribute to null.
- */
-Text::Text() {
-  texture = nullptr;
-}
 
 /**
  * A constructor.
@@ -77,7 +70,9 @@ Text::Text() {
 Text::~Text() {
   if (texture != nullptr) {
     SDL_DestroyTexture(texture);
-  }
+  } else { 
+    /* Nothing to do. */    
+  } 
 }
 
 /**
@@ -106,7 +101,9 @@ void Text::render(int camera_x, int camera_y) {
   if (render_copy) {
     printf("Render text: %s\n", SDL_GetError());
     exit(-1);
-  }
+  } else { 
+    /* Nothing to do. */    
+  } 
 }
 
 /**
@@ -185,7 +182,9 @@ void Text::set_font_size(int cfont_size) {
 void Text::remake_texture() {
   if (texture != nullptr) {
     SDL_DestroyTexture(texture);
-  }
+  } else { 
+    /* Nothing to do. */    
+  } 
 
   SDL_Surface * surface;
   switch (style) {
@@ -204,7 +203,9 @@ void Text::remake_texture() {
   if (surface == nullptr) {
     printf("%s\n", SDL_GetError());
     exit(-3);
-  }
+  } else { 
+    /* Nothing to do. */    
+  } 
 
   texture = SDL_CreateTextureFromSurface(Game::get_instance().get_renderer(),
                                          surface);
@@ -215,6 +216,8 @@ void Text::remake_texture() {
   if (query_texture) {
     printf("Remake texture: %s\n", SDL_GetError());
     exit(-1);
+  } else {
+    /* Nothing to do. */
   }
 
   box.set_width(w);
