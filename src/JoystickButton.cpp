@@ -38,6 +38,8 @@ void JoystickButton::render() {
 
     if (pressed) {
         pressed_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
+    } else {
+        /* Nothing to do. */
     }
 }
 

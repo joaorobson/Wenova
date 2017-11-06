@@ -19,12 +19,16 @@ shared_ptr<SDL_Texture>Resources::get_image(string file) {
         if (tx == nullptr) {
             printf("%s: %s\n", SDL_GetError(), file.c_str());
             exit(-1);
+        } else {
+            /* Nothing to do. */
         }
 
         shared_ptr<SDL_Texture> texture(tx, [] (SDL_Texture *txt)
                                         { SDL_DestroyTexture(txt); });
 
         image_table.emplace(file, texture);
+    } else {
+        /* Nothing to do. */
     }
 
     return image_table[file];
@@ -34,6 +38,8 @@ void Resources::clear_images() {
     for (auto texture : image_table) {
         if (texture.second.unique()) {
             image_table.erase(texture.first);
+        } else {
+            /* Nothing to do. */
         }
     }
 }
@@ -47,12 +53,16 @@ shared_ptr<Mix_Music>Resources::get_music(string file) {
         if (mx == nullptr) {
             printf("%s: %s\n", Mix_GetError(), file.c_str());
             exit(-1);
+        } else {
+            /* Nothing to do. */
         }
 
         shared_ptr<Mix_Music> music(mx, [] (Mix_Music *msc)
                                     { Mix_FreeMusic(msc); });
 
         music_table.emplace(file, music);
+    } else {
+        /* Nothing to do. */
     }
 
     return music_table[file];
@@ -62,6 +72,8 @@ void Resources::clear_music() {
     for (auto music : music_table) {
         if (music.second.unique()) {
             music_table.erase(music.first);
+        } else {
+            /* Nothing to do. */
         }
     }
 }
@@ -75,12 +87,16 @@ shared_ptr<Mix_Chunk>Resources::get_sound(string file) {
         if (ck == nullptr) {
             printf("%s: %s\n", Mix_GetError(), file.c_str());
             exit(-1);
+        } else {
+            /* Nothing to do. */
         }
 
         shared_ptr<Mix_Chunk> sound(ck, [] (Mix_Chunk *chk)
                                     { Mix_FreeChunk(chk); });
 
         sound_table.emplace(file, sound);
+    } else {
+        /* Nothing to do. */
     }
 
     return sound_table[file];
@@ -90,6 +106,8 @@ void Resources::clear_sound() {
     for (auto sound : sound_table) {
         if (sound.second.unique()) {
             sound_table.erase(sound.first);
+        } else {
+            /* Nothing to do. */
         }
     }
 }
@@ -105,12 +123,16 @@ shared_ptr<TTF_Font>Resources::get_font(string file, int size) {
         if (ft == nullptr) {
             printf("%s: %s\n", SDL_GetError(), file.c_str());
             exit(-1);
+        } else {
+            /* Nothing to do. */
         }
 
         shared_ptr<TTF_Font> font(ft, [] (TTF_Font *fnt)
                                   { TTF_CloseFont(fnt); });
 
         font_table.emplace(file + tsize, font);
+    } else {
+        /* Nothing to do. */
     }
 
     return font_table[file + tsize];
@@ -120,6 +142,8 @@ void Resources::clear_fonts() {
     for (auto font : font_table) {
         if (font.second.unique()) {
             font_table.erase(font.first);
+        } else {
+            /* Nothing to do. */
         }
     }
 }

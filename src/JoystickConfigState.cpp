@@ -317,12 +317,36 @@ void JoystickConfigState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
+    } else {
+        /* Nothing to do. */
     }
 
     /**
      * Check if user request to enter in joystick test mode.
      */
-    if (on_test) {
+    if (not on_test) {
+      /**
+       * Check if user request to quit the joystick help screen.
+       */
+      if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
+          input_manager->joystick_button_press(InputManager::B, 0)) {
+          selected.play();
+          m_quit_requested = true;
+          Game::get_instance().push(new OptionsState());
+          return;
+      } else {
+          /**
+           * Check if user request to enter the joystick test mode.
+           */
+          if (input_manager->joystick_button_press(InputManager::A, 0) and
+              not is_keyboard) {
+              selected.play();
+              on_test = true;
+          } else {
+              /* Nothing to do. */
+          }
+      }
+    } else {
         /**
          * Check if user request to quit the joystick test screen.
          */
@@ -333,36 +357,19 @@ void JoystickConfigState::update(float delta) {
             on_test = false;
             InputManager::get_instance()->map_keyboard_to_joystick(
                 InputManager::MENU_MODE);
+        } else {
+            /**
+             * Workaround to uncheck A button pressed in joystick test screen.
+             */
+            if (input_manager->joystick_button_release(InputManager::A, 0)) {
+                InputManager::get_instance()->map_keyboard_to_joystick(
+                    InputManager::BATTLE_MODE);
+            } else {
+                /* Nothing to do. */
+            }
         }
 
-        /**
-         * Workaround to uncheck A button pressed in joystick test screen.
-         */
-        if (input_manager->joystick_button_release(InputManager::A, 0)) {
-            InputManager::get_instance()->map_keyboard_to_joystick(
-                InputManager::BATTLE_MODE);
-        }
-    } else {
-        /**
-         * Check if user request to quit the joystick help screen.
-         */
-        if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
-            input_manager->joystick_button_press(InputManager::B, 0)) {
-            selected.play();
-            m_quit_requested = true;
-            Game::get_instance().push(new OptionsState());
-            return;
-        }
 
-        /**
-         * Check if user request to enter the joystick test mode.
-         */
-        if (input_manager->joystick_button_press(InputManager::A, 0) and
-            not is_keyboard
-            ) {
-            selected.play();
-            on_test = true;
-        }
     }
 
     update_array(delta);

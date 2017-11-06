@@ -66,6 +66,8 @@ void StageSelectState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
+    } else {
+        /* Nothing to do. */
     }
 
     if (pressed[B] or pressed[SELECT]) {
@@ -73,14 +75,20 @@ void StageSelectState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new MenuState(true));
         return;
+    } else {
+        /* Nothing to do. */
     }
 
     if (pressed[LEFT]) {
         update_stage_select(-1);
+    } else {
+        /* Nothing to do. */
     }
 
     if (pressed[RIGHT]) {
         update_stage_select(1);
+    } else {
+        /* Nothing to do. */
     }
 
     if (pressed[A] or pressed[START]) {
@@ -92,6 +100,8 @@ void StageSelectState::update(float delta) {
             unsigned int thread = 0;
             stage_select = rand_r(&thread) % (amount_stages -
                                               (go_to_edit ? 0 : 1));
+        } else {
+            /* Nothing to do. */
         }
 
         if (go_to_edit) {
@@ -102,6 +112,8 @@ void StageSelectState::update(float delta) {
                                                                     stage_select
                                                                     + 1)));
         }
+    } else {
+        /* Nothing to do. */
     }
 
     planet.update(delta);

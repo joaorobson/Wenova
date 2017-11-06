@@ -70,6 +70,8 @@ void BattleEnd::update(float delta) {
         } else if (not back_selected and(current_sprite < N_SPRITES)) {
             current_sprite++;
         }
+    } else {
+        /* Nothing to do. */
     }
 
     InputManager *input_manager = InputManager::get_instance();
@@ -86,6 +88,8 @@ void BattleEnd::update(float delta) {
             sprite[i].restart_count();
         }
         back_selected = true;
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -95,6 +99,8 @@ void BattleEnd::update(float delta) {
         (current_sprite == 1)) {
         quitRequested = true;
         return;
+    } else {
+        /* Nothing to do. */
     }
 }
 

@@ -115,54 +115,11 @@ void OptionsState::update(float) {
     assert(input_manager != nullptr);
 
     // Inputs
-    if (input_manager->quit_requested()) {
+    if (not input_manager->quit_requested()) {
+        /* Nothing to do. */
+    } else {
         m_quit_requested = true;
         return;
-    }
-
-    /**
-     * Check if the pressed button was SELECT (Keyboard) or B (Joystick).
-     * When user press one of these buttons and is on a submenu of the menu
-     * "Options" he return to the main menu of it's submenu.
-     */
-    if (pressed[SELECT] or pressed[B]) {
-        if (on_submenu) {
-            // FIXME insert back sound
-            selected.play();
-            on_submenu = false;
-
-            for (unsigned i = 0; i < options.size(); i++) {
-                assert(get_current_sub_option(i) >= 0);
-
-                current_sub_option[i] = get_current_sub_option(i);
-            }
-        } else {
-            selected.play();
-            m_quit_requested = true;
-            Game::get_instance().push(new MenuState(true));
-            return;
-        }
-    }
-
-    /**
-     * Check if the pressed button was the cursor UP.
-     * When user press that button, the selected item goes to another one above
-     * it if the current item is not the first.
-     */
-    if (pressed[UP]) {
-        changed.play();
-
-        if (not on_submenu) {
-            assert(current_option >= 0);
-            if (current_option != 0) {
-                current_option--;
-            }
-        } else {
-            assert(current_sub_option[current_option] >= 0);
-            if (current_sub_option[current_option] != 0) {
-                current_sub_option[current_option]--;
-            }
-        }
     }
 
     /**
@@ -178,6 +135,8 @@ void OptionsState::update(float) {
 
             if (current_option != static_cast<int>(options.size()) - 1) {
                 current_option++;
+            } else {
+                /* Nothing to do. */
             }
         } else {
             string text = options[current_option]->get_text();
@@ -189,8 +148,12 @@ void OptionsState::update(float) {
             if (current_sub_option[current_option] !=
                 static_cast<int>(sub_options[text].size()) - 1) {
                 current_sub_option[current_option]++;
+            } else {
+                /* Nothing to do. */
             }
         }
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -247,8 +210,65 @@ void OptionsState::update(float) {
                 bool fullscreen =
                     (current_sub_option[current_option] == 0 ? false : true);
                 Game::get_instance().set_fullscreen(fullscreen);
+            } else {
+                /* Nothing to do. */
             }
         }
+    } else {
+        /* Nothing to do. */
+    }
+
+    /**
+     * Check if the pressed button was SELECT (Keyboard) or B (Joystick).
+     * When user press one of these buttons and is on a submenu of the menu
+     * "Options" he return to the main menu of it's submenu.
+     */
+    if (pressed[SELECT] or pressed[B]) {
+        if (on_submenu) {
+            // FIXME insert back sound
+            selected.play();
+            on_submenu = false;
+
+            for (unsigned i = 0; i < options.size(); i++) {
+                assert(get_current_sub_option(i) >= 0);
+
+                current_sub_option[i] = get_current_sub_option(i);
+            }
+        } else {
+            selected.play();
+            m_quit_requested = true;
+            Game::get_instance().push(new MenuState(true));
+            return;
+        }
+    } else {
+        /* Nothing to do. */
+    }
+
+    /**
+     * Check if the pressed button was the cursor UP.
+     * When user press that button, the selected item goes to another one above
+     * it if the current item is not the first.
+     */
+    if (pressed[UP]) {
+        changed.play();
+
+        if (not on_submenu) {
+            assert(current_option >= 0);
+            if (current_option != 0) {
+                current_option--;
+            } else {
+                /* Nothing to do. */
+            }
+        } else {
+            assert(current_sub_option[current_option] >= 0);
+            if (current_sub_option[current_option] != 0) {
+                current_sub_option[current_option]--;
+            } else {
+                /* Nothing to do. */
+            }
+        }
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -264,6 +284,8 @@ void OptionsState::update(float) {
             prev_text_size = std::max(static_cast<int>
                                          (sub_options[options[i - 1]->
                                          get_text()].size()), 1);
+        } else {
+            /* Nothing to do. */
         }
         int prev_text_height = (TEXT_HEIGHT + TEXT_OFFSET * 2) * prev_text_size;
 
@@ -286,6 +308,8 @@ void OptionsState::update(float) {
                 text_position_axi_y = prev_option->get_y() +
                                       prev_option->get_height() +
                                       TEXT_OFFSET;
+            } else {
+                /* Nothing to do. */
             }
 
             Text *option = sub_options[cur_text->get_text()][j];
@@ -491,8 +515,9 @@ int OptionsState::get_current_sub_option(int option) {
         for (auto text : sub_options[SCREEN_RES_OPTION]) {
             if (text->get_text() == resolution) {
                 return sub_option;
+            } else {
+                sub_option++;
             }
-            sub_option++;
         }
         return 0;
     } else {  // Fullscreen

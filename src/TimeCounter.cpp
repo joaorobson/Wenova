@@ -52,6 +52,8 @@ void TimeCounter::update(float delta) {
     // FIXME
     if (remaining_seconds < 0) {
         remaining_seconds = 0;
+    } else {
+        /* Nothing to do. */
     }
 
     time_text->set_text(get_time_string());
