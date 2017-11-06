@@ -48,6 +48,8 @@ UltimateEffect::UltimateEffect(Fighter * cparent,
    */
   if (parent) {
     parent->add_tags(IN_ULTIMATE_TAG);
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -69,6 +71,8 @@ void UltimateEffect::update(float delta_character_state) {
     box.y = parent->box.y;
     parent->increment_special(-0.4 * delta_character_state);
     parent->increment_life(healing_factor);
+  } else {
+    /* Nothing to do. */
   }
   sprite.update(delta_character_state);
   aura.update(delta_character_state);
@@ -97,6 +101,8 @@ bool UltimateEffect::is_dead() {
    */
   if (dead) {
     parent->remove_tags(IN_ULTIMATE_TAG);
+  } else {
+    /* Nothing to do. */
   }
   return dead;
 }
@@ -109,11 +115,15 @@ void UltimateEffect::notify_collision(GameObject & object) {
   assert(strcmp(PLAYER_TAG, "") != 0);
   int partner_id = (parent->get_partner() ? parent->get_partner()->get_id() :
                                             -100);
-  if (not object.is(PLAYER_TAG)) {
-    return;
+  if (object.is(PLAYER_TAG)) {
+    Fighter & fighter = (Fighter &) object;
+    if (fighter.get_id() == partner_id) {
+      parent->get_partner()->increment_life(healing_factor);
+    } else {
+      /* Nothing to do. */
+    }
+  } else {
+    /* Nothing to do. */
   }
-  Fighter & fighter = (Fighter &) object;
-  if (fighter.get_id() == partner_id) {
-    parent->get_partner()->increment_life(healing_factor);
-  }
+   
 }

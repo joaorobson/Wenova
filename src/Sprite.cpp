@@ -96,6 +96,8 @@ void Sprite::open(string file) {
   if (query_texture) {
     printf("Open: %s\n", SDL_GetError());
     exit(-1);
+  } else {
+    /* Nothing to do. */
   }
 
   set_clip((current_frame % columns) * width,
@@ -133,6 +135,8 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
   if (render_copy) {
     printf("Render: %s\n", SDL_GetError());
     exit(-1);
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -213,11 +217,15 @@ void Sprite::update(float delta_time) {
     if (current_frame == frame_count) {
       finished = true;
       current_frame = NO_TIME_ELAPSED;
+    } else {
+      /* Nothing to do. */
     }
     set_clip((current_frame % columns) * width,
              (current_frame / columns) * height,
               width,
               height);
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -347,6 +355,8 @@ void Sprite::update_scale_x(float scale) {
    */
   if (scale_x_axis < X_AXIS_SCALE_MIN) {
     scale_x_axis = X_AXIS_SCALE_MIN;
+  } else {
+    /* Nothing to do. */
   }
 }
 
