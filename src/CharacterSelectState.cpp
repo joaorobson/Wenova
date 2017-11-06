@@ -240,8 +240,10 @@ void CharacterSelectState::render() {
         /**
          * Render not available skins for not selected characters.
          */
-        if (not char_selected.is_skin_available(current_skin[i]) and
-            not is_character_selected[i]) {
+        if (char_selected.is_skin_available(current_skin[i]) or
+            is_character_selected[i]) {
+            /* Nothing to do. */
+        } else {
             char_selected.get_disabled().render(characters_positions[i].first,
                                                 characters_positions[i].second,
                                                 0, flip);
@@ -268,11 +270,15 @@ void CharacterSelectState::render() {
             selected_tags_sprites.render(names_tags_positions[i].first,
                                          names_tags_positions[i].second, 0,
                                          flip);
+        } else {
+            /* Nothing to do. */
         }
     }
 
     if (is_ready) {
         ready_to_fight_sprite.render(0, 0);
+    } else {
+        /* Nothing to do. */
     }
 
     LOG(DEBUG) << "Ending CharacterSelectState update method";
@@ -296,7 +302,9 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
         int char_sel = current_row[i] * N_COLS + current_column[i];
 
 #ifndef NDEBUG
-        if (char_sel >= N_CHARS) {
+        if (char_sel < N_CHARS) {
+            /* Nothing to do. */
+        } else {
             log_message = "char_sel is out of bound with value: " + char_sel;
             LOG(FATAL) << log_message;
         }
@@ -321,7 +329,9 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
         --count;
     }
 
-    if (not players.size()) {
+    if (players.size()) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "Players vector must return some element";
     }
 
@@ -344,7 +354,9 @@ bool CharacterSelectState::all_players_selected() {
 
     bool return_value;
     for (auto cur : is_character_selected) {
-        if (not cur) {
+        if (cur) {
+            return_value = true;
+        } else {
             return_value = false;
 
 #ifndef NDEBUG
@@ -355,11 +367,9 @@ bool CharacterSelectState::all_players_selected() {
             LOG(DEBUG) << log_message;
 #endif
 
-            return return_value;
+            break;
         }
     }
-
-    return_value = true;
 
 #ifndef NDEBUG
     log_message =
@@ -391,7 +401,9 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
 #ifndef NDEBUG
-    if (names.size() != frames.size()) {
+    if (names.size() == frames.size()) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "Names array size different of frames array size";
     }
 #endif
@@ -399,7 +411,8 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
 
 #ifndef NDEBUG
-    if (not names.size() or not frames.size()) {
+    if (names.size() and frames.size()) {
+    } else {
         LOG(FATAL) << "Names and frames arrays must have some element";
     }
 
@@ -432,12 +445,16 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     vector<int> y = ROWS_Y_POSITIONS;
 
 #ifndef NDEBUG
-    if ((size_t) col >= x.size()) {
+    if ((size_t) col < x.size()) {
+        /* Nothing to do. */
+    } else {
         log_message = "col is out of bound with value: " + std::to_string(col);
         LOG(FATAL) << log_message;
     }
 
-    if ((size_t) row >= y.size()) {
+    if ((size_t) row < y.size()) {
+        /* Nothing to do. */
+    } else {
         log_message = "row is out of bound with value: " + std::to_string(row);
         LOG(FATAL) << log_message;
     }
@@ -548,137 +565,203 @@ void CharacterSelectState::check_constants() {
     LOG(DEBUG) << "Starting CharacterSelectState check_constants method";
 
 #ifndef NDEBUG
-    if (NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_1 is bigger than screen";
     }
 
-    if (NAMES_TAGS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_1 is bigger than screen";
     }
 
-    if (NAMES_TAGS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_2 is bigger than screen";
     }
 
-    if (NAMES_TAGS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_2 is bigger than screen";
     }
 
-    if (NAMES_TAGS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_3 is bigger than screen";
     }
 
-    if (NAMES_TAGS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_3 is bigger than screen";
     }
 
-    if (NAMES_TAGS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NAMES_TAGS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_4 is bigger than screen";
     }
 
-    if (NAMES_TAGS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NAMES_TAGS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_4 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_1 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_1 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_2 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_2 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_3 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_3 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_4 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_4 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if (CHARACTERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (CHARACTERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    if (CHARACTERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (CHARACTERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    if (NUMBERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if (NUMBERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_1 is bigger than screen";
     }
 
-    if (NUMBERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if (NUMBERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_2 is bigger than screen";
     }
 
-    if (NUMBERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if (NUMBERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_3 is bigger than screen";
     }
 
-    if (NUMBERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
+    if (NUMBERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    if (NUMBERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+    if (NUMBERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
     string log_message = "";
     for (auto x : ROWS_X_POSITIONS) {
-        if (x > BACKGROUNDS_SIZE_WIDTH) {
+        if (x <= BACKGROUNDS_SIZE_WIDTH) {
+            /* Nothing to do. */
+        } else {
             log_message = "ROWS_X_POSITIONS, element: " + std::to_string(x) +
                 "is bigger than screen";
             LOG(FATAL) << log_message;
@@ -686,7 +769,9 @@ void CharacterSelectState::check_constants() {
     }
 
     for (auto y : ROWS_Y_POSITIONS) {
-        if (y > BACKGROUNDS_SIZE_HEIGHT) {
+        if (y <= BACKGROUNDS_SIZE_HEIGHT) {
+            /* Nothing to do. */
+        } else {
             log_message = "ROWS_Y_POSITIONS, element: " + std::to_string(y) +
                 "is bigger than screen";
             LOG(FATAL) << log_message;
@@ -707,36 +792,8 @@ void CharacterSelectState::handle_exiting() {
     process_input();
     InputManager* input_manager = InputManager::get_instance();
 
-    /**
-     * Process request for leaving the game.
-     */
-    if (input_manager->quit_requested()) {
-        m_quit_requested = true;
-
-        LOG(DEBUG)
-            << "Ending CharacterSelectState update due quit request method";
-        return;
-    }
-
-    /**
-     * Process request for going previous menu (SelectStage).
-     */
-    if (is_key_pressed[FIRST_PLAYER][SELECT] or
-        (not is_character_selected[FIRST_PLAYER] and
-         is_key_pressed[FIRST_PLAYER][B])) {
-        select_sound.play();
-        m_quit_requested = true;
-        Game::get_instance().push(new StageSelectState());
-
-        LOG(DEBUG)
-            << "Ending CharacterSelectState update due quit request method";
-        return;
-    }
-
-    /**
-     * Only enable start when all players have selected a character.
-     */
-    if (all_players_selected()) {
+    if (all_players_selected()) {  ///< Only enable start when all
+                                   ///< players have selected a character.
         is_ready = true;
         if (is_key_pressed[FIRST_PLAYER][START] or
             is_key_pressed[FIRST_PLAYER][A]) {
@@ -748,8 +805,27 @@ void CharacterSelectState::handle_exiting() {
 
             LOG(DEBUG)
                 << "Ending CharacterSelectState update due quit request method";
-            return;
+        } else {
+            /* Nothing to do.*/
         }
+
+    } else if (is_key_pressed[FIRST_PLAYER][SELECT] or
+               (not is_character_selected[FIRST_PLAYER] and
+                is_key_pressed[FIRST_PLAYER]
+                              [B])) {  ///< Process request for going
+                                       ///< previous menu (SelectStage).
+        select_sound.play();
+        m_quit_requested = true;
+        Game::get_instance().push(new StageSelectState());
+
+        LOG(DEBUG)
+            << "Ending CharacterSelectState update due quit request method";
+    } else if (input_manager->quit_requested()) {  ///< Process request
+                                                   ///< for leaving the game.
+        m_quit_requested = true;
+
+        LOG(DEBUG)
+            << "Ending CharacterSelectState update due quit request method";
     }
     LOG(DEBUG) << "Ending CharacterSelectState handle_exiting method";
 }
@@ -758,24 +834,23 @@ void CharacterSelectState::handle_menu_interaction() {
     LOG(DEBUG) << "Starting CharacterSelectState handle_exiting method";
 
     for (int player = 0; player < N_PLAYERS; player++) {
-        if (not is_character_selected[player]) {
+        /**
+         * If char is selected you can only deselect.
+         */
+        if (is_character_selected[player] and is_key_pressed[player][B]) {
+            int char_sel =
+                current_row[player] * N_COLS + current_column[player];
+            chars[char_sel].unlock_skin(current_skin[player]);
+
+            is_character_selected[player] = false;
+            is_ready = false;
+        } else {
             handle_random_select(player);
             handle_navigating(player);
             handle_select(player);
-        } else {
-            /**
-             * Unselect character.
-             */
-            if (is_key_pressed[player][B]) {
-                int char_sel =
-                    current_row[player] * N_COLS + current_column[player];
-                chars[char_sel].unlock_skin(current_skin[player]);
-
-                is_character_selected[player] = false;
-                is_ready = false;
-            }
         }
     }
+
     LOG(DEBUG) << "Ending CharacterSelectState handle_menu_interaction method";
 }
 
@@ -816,7 +891,10 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
         current_column[player] = rand_col;
         current_row[player] = rand_row;
         current_skin[player] = rand_skin;
+    } else {
+        /* Nothing to do. */
     }
+
     LOG(DEBUG) << "Ending CharacterSelectState handle_random_select method";
 }
 
@@ -833,37 +911,51 @@ void CharacterSelectState::handle_navigating(unsigned int player) {
     LOG(DEBUG) << log_message;
 
     /**
-     * To know if should reset skin to default
+     * To know if should reset skin to default.
      */
     int old_col = current_column[player];
     int old_row = current_row[player];
 
     /**
-     * Navigate through characters
+     * Navigate in X axis.
      */
     if (is_key_pressed[player][LEFT]) {
         changed_sound.play();
         if (current_column[player] != 0) {
             current_column[player]--;
+        } else {
+            /* Nothing to do. */
         }
-    }
-    if (is_key_pressed[player][RIGHT]) {
+    } else if (is_key_pressed[player][RIGHT]) {
         changed_sound.play();
         if (current_column[player] + 1 < N_COLS) {
             current_column[player]++;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
+
+    /**
+     * Navigate in Y axis.
+     */
     if (is_key_pressed[player][UP]) {
         changed_sound.play();
         if (current_row[player] != 0) {
             current_row[player]--;
+        } else {
+            /* Nothing to do. */
         }
-    }
-    if (is_key_pressed[player][DOWN]) {
+    } else if (is_key_pressed[player][DOWN]) {
         changed_sound.play();
         if (current_row[player] + 1 < N_ROWS) {
             current_row[player]++;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -871,6 +963,8 @@ void CharacterSelectState::handle_navigating(unsigned int player) {
      */
     if (current_column[player] != old_col or current_row[player] != old_row) {
         current_skin[player] = 0;
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -879,11 +973,13 @@ void CharacterSelectState::handle_navigating(unsigned int player) {
     if (is_key_pressed[player][LT]) {
         changed_sound.play();
         current_skin[player] = (current_skin[player] - 1 + N_SKINS) % N_SKINS;
-    }
-    if (is_key_pressed[player][RT]) {
+    } else if (is_key_pressed[player][RT]) {
         changed_sound.play();
         current_skin[player] = (current_skin[player] + 1) % N_SKINS;
+    } else {
+        /* Nothing to do. */
     }
+
     LOG(DEBUG) << "Ending CharacterSelectState handle_navigating method";
 }
 
@@ -902,14 +998,11 @@ void CharacterSelectState::handle_select(unsigned int player) {
         /**
          * Check if character and skin are unblocked.
          */
-        if (chars[char_sel].is_enabled()) {
-            if (not chars[char_sel].is_skin_available(current_skin[player])) {
-                blocked_sound.play();
-            } else {
-                select_sound.play();
-                chars[char_sel].lock_skin(current_skin[player]);
-                is_character_selected[player] = true;
-            }
+        if (chars[char_sel].is_enabled() and
+            chars[char_sel].is_skin_available(current_skin[player])) {
+            select_sound.play();
+            chars[char_sel].lock_skin(current_skin[player]);
+            is_character_selected[player] = true;
         } else {
             blocked_sound.play();
         }
@@ -926,7 +1019,8 @@ void CharacterSelectState::handle_select(unsigned int player) {
 void CharacterSelectState::play_sprites_animation(float delta_time) {
     string log_message =
         "Starting CharacterSelectState play_sprites_animation method, "
-        "delta_time value: " + std::to_string(delta_time);
+        "delta_time value: " +
+        std::to_string(delta_time);
 
     LOG(DEBUG) << log_message;
 
