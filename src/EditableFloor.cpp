@@ -98,11 +98,15 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
         ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
     LOG(DEBUG) << log_message;
 
-    if (x > BACKGROUND_WIDTH) {
+    if (x <= BACKGROUND_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "platform is out of screen in axis x";
     }
 
-    if (x > BACKGROUND_WIDTH) {
+    if (x <= BACKGROUND_WIDTH) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "platform is out of screen in axis y";
     }
 #endif
@@ -149,7 +153,9 @@ string EditableFloor::get_information() {
     float float1, float2, float3, float4;
     int int1;
     if (sscanf(info_c, "%f %f %f %f %d", &float1, &float2, &float3, &float4,
-               &int1) < 5) {
+               &int1) == 5) {
+        /* Nothing to do. */
+    } else {
         LOG(WARNING) << "Info doesn't has all the information it should have";
     }
 
@@ -186,6 +192,8 @@ void EditableFloor::render() {
 
     if (is_selected) {
         selected_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
+    } else {
+        /* Nothing to do. */
     }
 
     if (is_crossingable) {
@@ -257,6 +265,8 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
 
         Rectangle mouse = Rectangle(x, y, 1, 1);
         is_selected = Collision::is_colliding(box, mouse, rotation, 0);
+    } else {
+        /* Nothing to do. */
     }
 
     if (is_selected) {
@@ -274,6 +284,8 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
          */
         if (input_manager->key_press(InputManager::K_C)) {
             is_crossingable = not is_crossingable;
+        } else {
+            /* Nothing to do. */
         }
 
         /**
@@ -281,8 +293,13 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
          */
         if (input_manager->is_key_down(InputManager::K_DEL)) {
             is_deleted = true;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
+
     // LOG(DEBUG) << "Ending EditableFloor handle_platforms_interaction method";
 }
 
@@ -292,7 +309,8 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_moving(bool &moved, float delta_space) { // NOLINT
+void EditableFloor::handle_box_moving(bool &moved,
+                                      float delta_space) {  // NOLINT
     // LOG(DEBUG) << "Starting EditableFloor handle_box_moving method";
 
     InputManager *input_manager = InputManager::get_instance();
@@ -300,18 +318,21 @@ void EditableFloor::handle_box_moving(bool &moved, float delta_space) { // NOLIN
     if (input_manager->is_key_down(InputManager::K_ARROW_RIGHT)) {
         box.x += delta_space;
         moved = true;
-    }
-    if (input_manager->is_key_down(InputManager::K_ARROW_LEFT)) {
+    } else if (input_manager->is_key_down(InputManager::K_ARROW_LEFT)) {
         box.x -= delta_space;
         moved = true;
+    } else {
+        /* Nothing to do. */
     }
+
     if (input_manager->is_key_down(InputManager::K_ARROW_UP)) {
         box.y -= delta_space;
         moved = true;
-    }
-    if (input_manager->is_key_down(InputManager::K_ARROW_DOWN)) {
+    } else if (input_manager->is_key_down(InputManager::K_ARROW_DOWN)) {
         box.y += delta_space;
         moved = true;
+    } else {
+        /* Nothing to do. */
     }
 
     // LOG(DEBUG) << "Ending EditableFloor handle_box_moving method";
@@ -323,7 +344,8 @@ void EditableFloor::handle_box_moving(bool &moved, float delta_space) { // NOLIN
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_resizing(bool &moved, float delta_space) { // NOLINT
+void EditableFloor::handle_box_resizing(bool &moved,
+                                        float delta_space) {  // NOLINT
     // LOG(DEBUG) << "Starting EditableFloor handle_box_resizing method";
 
     /**
@@ -331,15 +353,14 @@ void EditableFloor::handle_box_resizing(bool &moved, float delta_space) { // NOL
      */
     if (box.x < 0) {
         box.x = 0;
-    }
-    if (box.x > BACKGROUND_WIDTH) {
+    } else if (box.x > BACKGROUND_WIDTH) {
         box.x = BACKGROUND_WIDTH;
-    }
-    if (box.y < 0) {
+    } else if (box.y < 0) {
         box.y = 0;
-    }
-    if (box.y > BACKGROUND_HEIGHT) {
+    } else if (box.y > BACKGROUND_HEIGHT) {
         box.y = BACKGROUND_HEIGHT;
+    } else {
+        /* Nothing to do. */
     }
 
     InputManager *input_manager = InputManager::get_instance();
@@ -354,6 +375,8 @@ void EditableFloor::handle_box_resizing(bool &moved, float delta_space) { // NOL
 
         box.width = standard_sprite.get_width();
         moved = true;
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -366,7 +389,10 @@ void EditableFloor::handle_box_resizing(bool &moved, float delta_space) { // NOL
 
         box.width = standard_sprite.get_width();
         moved = true;
+    } else {
+        /* Nothing to do. */
     }
+
     // LOG(DEBUG) << "Ending EditableFloor handle_box_resizing method";
 }
 
@@ -382,24 +408,16 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
     InputManager *input_manager = InputManager::get_instance();
 
     /**
-     * Rotate box to left.
+     * Rotate box to corresponding direction or reset it.
      */
     if (input_manager->is_key_down(InputManager::K_ROT_LEFT)) {
         rotation += ROTATING_SPEED * delta_space / acceleration;
-    }
-
-    /**
-     * Rotate box to right.
-     */
-    if (input_manager->is_key_down(InputManager::K_ROT_RIGHT)) {
+    } else if (input_manager->is_key_down(InputManager::K_ROT_RIGHT)) {
         rotation -= ROTATING_SPEED * delta_space / acceleration;
-    }
-
-    /**
-     * Reset rotation.
-     */
-    if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
+    } else if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
         rotation = 0;
+    } else {
+        /* Nothing to do. */
     }
 
     // LOG(DEBUG) << "Ending EditableFloor handle_box_rotating method";
@@ -411,8 +429,9 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
  * @param moved if platform was moved, it will change behavior
  * @param acceleration acceleration that will be changed
  */
-void EditableFloor::handle_acceleration_increasing(bool &moved,
-                                                   float &acceleration) { // NOLINT
+void EditableFloor::handle_acceleration_increasing(
+    bool &moved,
+    float &acceleration) {  // NOLINT
     // LOG(DEBUG) << "Starting EditableFloor handle_acceleration_increasing
     // method";
 
