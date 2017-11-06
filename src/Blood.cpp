@@ -376,7 +376,12 @@ void Blood::update_machine_state(float delta_character_state) {
 
     case FighterState::SPECIAL_1_2:
       attack_damage = 0.5;
-      if (grab) increment_life(attack_damage);
+      if (grab) {
+        increment_life(attack_damage);
+      } else {
+        /* Nothing to do. */
+      }
+
       attack_mask = get_attack_orientation();
       
       /**
@@ -508,6 +513,8 @@ void Blood::update_machine_state(float delta_character_state) {
     case FighterState::DYING:
       if (sprite[state].is_finished()) {
         remaining_life = 0;
+      } else {
+        /* Nothing to do. */
       }
     break;
 
