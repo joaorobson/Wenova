@@ -175,6 +175,8 @@ InputManager *InputManager::get_instance() {
 
     if (input_manager == nullptr) {
         input_manager = new InputManager();
+    } else {
+        /* Nothing to do. */
     }
 
     // LOG(DEBUG) << "Ending InputManager get_instance method";
@@ -198,7 +200,9 @@ int InputManager::get_mouse_x_position() {
     returning value: " + std::to_string(return_value);
     // LOG(DEBUG) << log_message;
 
-    if (return_value > BACKGROUND_WIDTH or return_value < 0) {
+    if (not (return_value > BACKGROUND_WIDTH and return_value < 0)) {
+         // Nothing to do.
+    } else {
         LOG(FATAL) << "Mouse is out of screen!";
     }
     #endif
@@ -223,7 +227,9 @@ int InputManager::get_mouse_y_position() {
     returning value: " + std::to_string(return_value);
     // LOG(DEBUG) << log_message;
 
-    if (return_value > BACKGROUND_HEIGHT or return_value < 0) {
+    if (not (return_value > BACKGROUND_HEIGHT and return_value < 0)) {
+        // Nothing to do.
+    } else {
         LOG(FATAL) << "Mouse is out of screen!";
     }
     #endif
@@ -295,16 +301,19 @@ void InputManager::connect_joysticks() {
      * Max number of joysticks can be only four.
      */
     int max = SDL_NumJoysticks();
-    if (max > N_CONTROLLERS) {
+    if (max <= N_CONTROLLERS) {
+        /* Nothing to do. */
+    } else {
         max = N_CONTROLLERS;
     }
-    int n_controller = 0;
 
     /**
      * To reset connections.
      */
     for (int i = 0; i < max; i++) {
-        if (controllers[i] != nullptr) {
+        if (controllers[i] == nullptr) {
+            /* Nothing to do. */
+        } else {
             SDL_GameControllerClose(controllers[i]);
             controllers[i] = nullptr;
         }
@@ -313,6 +322,7 @@ void InputManager::connect_joysticks() {
     /**
      * Detect compability for joystick connected.
      */
+    int n_controller = 0;
     for (int i = 0; i < max; i++) {
         char guid[64];
         SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid,
@@ -368,6 +378,8 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
         keyboard_to_joystick[K_MENU_B] = B + 1;
         keyboard_to_joystick[K_MENU_Y] = Y + 1;
         keyboard_to_joystick[K_MENU_LB] = LB + 1;
+    } else {
+        /* Nothing to do. */
     }
 
     // LOG(DEBUG) << "Ending InputManager map_keyboard_to_joystick method";
@@ -418,8 +430,10 @@ bool InputManager::key_press(int key) {
     std::to_string(key);
     // LOG(DEBUG) << log_message;
 
-    if (key < 0) {
+    if (key >= 0) {
         LOG(FATAL) << "Key is less than zero";
+    } else {
+        // Nothing to do.
     }
     #endif
     */
@@ -452,8 +466,10 @@ bool InputManager::key_release(int key) {
     std::to_string(key);
     // LOG(DEBUG) << log_message;
 
-    if (key < 0) {
+    if (key >= 0) {
         LOG(FATAL) << "Key is less than zero";
+    } else {
+        // Nothing to do.
     }
     #endif
     */
@@ -519,11 +535,11 @@ bool InputManager::mouse_press(int button) {
     " + std::to_string(button);;
     // LOG(DEBUG) << log_message;
 
-    if (button < 0) {
+    if (button >= 0 or button < N_MOUSE_BUTTONS) {
+        // Nothing to do.
+    } else if (button < 0){
         LOG(FATAL) << "button is less than zero";
-    }
-
-    if (button >= N_MOUSE_BUTTONS) {
+    } else {
         LOG(FATAL) << "button bigger than available";
     }
     #endif
@@ -556,11 +572,11 @@ bool InputManager::mouse_release(int button) {
     button: " + std::to_string(button);;
     // LOG(DEBUG) << log_message;
 
-    if (button < 0) {
+    if (button >= 0 or button < N_MOUSE_BUTTONS) {
+        // Nothing to do.
+    } else if (button < 0){
         LOG(FATAL) << "button is less than zero";
-    }
-
-    if (button >= N_MOUSE_BUTTONS) {
+    } else {
         LOG(FATAL) << "button bigger than available";
     }
     #endif
@@ -593,11 +609,11 @@ bool InputManager::is_mouse_down(int button) {
     button: " + std::to_string(button);;
     // LOG(DEBUG) << log_message;
 
-    if (button < 0) {
+    if (button >= 0 or button < N_MOUSE_BUTTONS) {
+        // Nothing to do.
+    } else if (button < 0){
         LOG(FATAL) << "button is less than zero";
-    }
-
-    if (button >= N_MOUSE_BUTTONS) {
+    } else {
         LOG(FATAL) << "button bigger than available";
     }
     #endif
@@ -632,13 +648,14 @@ bool InputManager::joystick_button_press(int button, int joystick) {
     log_message += ", joystick: " + std::to_string(joystick);
     // LOG(DEBUG) << log_message;
 
-    if (button < 0 or joystick < 0) {
+    if (button >= 0 or joystick >= 0) {
+        // Nothing to do.
+    } else if (button < 0 or joystick < 0) {
         LOG(FATAL) << "button or joystick less than 0";
-    }
-
-    if (joystick >= N_CONTROLLERS) {
+    } else {
         LOG(FATAL) << "joystick bigger than available";
     }
+
     #endif
     */
 
@@ -673,11 +690,11 @@ bool InputManager::joystick_button_release(int button, int joystick) {
     log_message += ", joystick: " + std::to_string(joystick);
     // LOG(DEBUG) << log_message;
 
-    if (button < 0 or joystick < 0) {
+    if (button >= 0 or joystick >= 0) {
+        // Nothing to do.
+    } else if (button < 0 or joystick < 0) {
         LOG(FATAL) << "button or joystick less than 0";
-    }
-
-    if (joystick >= N_CONTROLLERS) {
+    } else {
         LOG(FATAL) << "joystick bigger than available";
     }
     #endif
@@ -714,11 +731,11 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
     log_message += ", joystick: " + std::to_string(joystick);
     // LOG(DEBUG) << log_message;
 
-    if (button < 0 or joystick < 0) {
+    if (button >= 0 or joystick >= 0) {
+        // Nothing to do.
+    } else if (button < 0 or joystick < 0) {
         LOG(FATAL) << "button or joystick less than 0";
-    }
-
-    if (joystick >= N_CONTROLLERS) {
+    } else {
         LOG(FATAL) << "joystick bigger than available";
     }
     #endif
@@ -802,6 +819,8 @@ void InputManager::emulate_joystick(int key_id, bool state) {
                                 [keyboard_to_joystick[key_id] - 1] = state;
         joystick_update[keyboard_to_joystick_id]
                        [keyboard_to_joystick[key_id] - 1] = update_counter;
+    } else {
+        /* Nothing to do. */
     }
 
     // LOG(DEBUG) << "Ending InputManager connect_joysticks method";
@@ -814,38 +833,31 @@ void InputManager::reset_keyboard_to_joystick() {
     // LOG(DEBUG) << "Starting InputManager reset_keyboard_to_joystick";
 
     /**
-     * Check limits.
+     * Check if it's on range.
      */
-    if (keyboard_to_joystick_id < 0 or
-        keyboard_to_joystick_id > N_CONTROLLERS) {
-        /*
-        #ifndef NDEBUG
-        string log_message = "keyboard_to_joystick_id out of bound with value: "
-        + keyboard_to_joystick_id;
-        LOG(FATAL) << log_message;
-        #endif
-        */
-
-        return;
-    }
-
-    /**
-     * Update all joysticks state based on profile.
-     */
-    if (keyboard_to_joystick_id == N_CONTROLLERS) {
-        for (int i = 0; i < N_CONTROLLERS; i++) {
+    if (not keyboard_to_joystick_id < 0 and
+        not keyboard_to_joystick_id > N_CONTROLLERS) {
+        /**
+         * Update State for all if true, else
+         * just to on index keyboard_to_joystick_id.
+         */
+        int i = (keyboard_to_joystick_id == N_CONTROLLERS)
+            ? 0
+            : keyboard_to_joystick_id;
+        for (i = i; i <= keyboard_to_joystick_id; i++) {
             for (auto &c : joysticks_buttons_states[i]) {
                 c.second = false;
             }
         }
-    }
 
-    /**
-     * Guess is not necessary.
-     * Else?
-     */
-    for (auto &c : joysticks_buttons_states[keyboard_to_joystick_id]) {
-        c.second = false;
+    } else {
+        /*
+       #ifndef NDEBUG
+       string log_message = "keyboard_to_joystick_id out of bound with value: "
+       + keyboard_to_joystick_id;
+       LOG(FATAL) << log_message;
+       #endif
+       */
     }
 
     // LOG(DEBUG) << "Ending InputManager reset_keyboard_to_joystick method";
@@ -908,12 +920,13 @@ void InputManager::handle_events() {
         switch (event.type) {
             case SDL_KEYDOWN:
                 if (event.key.repeat) {
-                    break;
+                    /* Nothing to do. */
+                } else {
+                    key_id = event.key.keysym.sym;
+                    keys_states[key_id] = true;
+                    keys_updates[key_id] = update_counter;
+                    emulate_joystick(key_id, true);
                 }
-                key_id = event.key.keysym.sym;
-                keys_states[key_id] = true;
-                keys_updates[key_id] = update_counter;
-                emulate_joystick(key_id, true);
                 break;
 
             case SDL_KEYUP:
