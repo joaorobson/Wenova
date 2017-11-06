@@ -124,10 +124,19 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
     is_ready = false;
     selected_stage = cselected_stage;
 
-    memset(current_column, 0, sizeof current_column);
-    memset(current_row, 0, sizeof current_row);
-    memset(current_skin, 0, sizeof current_skin);
-    memset(is_character_selected, false, sizeof is_character_selected);
+    void* ptr_collumn = memset(current_column, 0, sizeof current_column);
+    void* ptr_row = memset(current_row, 0, sizeof current_row);
+    void* ptr_skin = memset(current_skin, 0, sizeof current_skin);
+    void* ptr_character =
+        memset(is_character_selected, false, sizeof is_character_selected);
+
+    /**
+     * Check if memsets succeeds.
+     */
+    if (ptr_collumn != current_column or ptr_row != &current_row or
+        ptr_skin != current_skin or ptr_character != is_character_selected) {
+        LOG(FATAL) << "Memset failed on initializing some vectors";
+    }
 
     Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
@@ -175,10 +184,17 @@ void CharacterSelectState::process_input() {
  */
 void CharacterSelectState::update(float delta_time) {
 #ifndef NDEBUG
-    string log_message =
-        "Starting CharacterSelectState update method with delta_time: " +
-        std::to_string(delta_time);
-    LOG(DEBUG) << log_message;
+    try {
+        string log_message =
+            "Starting CharacterSelectState update method with delta_time: " +
+            std::to_string(delta_time);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
+
 #endif
 
     handle_exiting();
@@ -202,7 +218,7 @@ void CharacterSelectState::render() {
      */
 
     /**
-     * Result should be 0 for backgrounds_spritess images.
+     * Result should be 0 for backgrounds_sprites images.
      */
     backgrounds_sprites[0].render(
         BACKGROUNDS_SIZE_WIDTH / 2 - backgrounds_sprites[0].get_width() / 2,
@@ -310,9 +326,15 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
         }
 #endif
 
-        players.push_back(
-            std::make_pair(chars[char_sel].get_name(),
-                           chars[char_sel].get_skin_name(current_skin[i])));
+        try {
+            players.push_back(
+                std::make_pair(chars[char_sel].get_name(),
+                               chars[char_sel].get_skin_name(current_skin[i])));
+        } catch (std::bad_alloc& error) {
+            string str_error(error.what());
+            log_message = "Couldn't convert to string: " + str_error + '\n';
+            LOG(FATAL) << log_message;
+        }
     }
 
 #ifndef NDEBUG
@@ -360,22 +382,35 @@ bool CharacterSelectState::all_players_selected() {
             return_value = false;
 
 #ifndef NDEBUG
-            log_message =
-                "Ending CharacterSelectState all_players_selected method "
-                "returning value: " +
-                std::to_string(static_cast<int>(return_value));
-            LOG(DEBUG) << log_message;
+            try {
+                log_message =
+                    "Ending CharacterSelectState all_players_selected method "
+                    "returning value: " +
+                    std::to_string(static_cast<int>(return_value));
+            } catch (std::bad_alloc& error) {
+                string str_error(error.what());
+                log_message = "Couldn't convert to string: " + str_error + '\n';
+                LOG(FATAL) << log_message;
+            }
 #endif
 
+            LOG(DEBUG) << log_message;
             break;
         }
     }
 
 #ifndef NDEBUG
-    log_message =
-        "Ending CharacterSelectState all_players_selected method returning "
-        "value: " +
-        std::to_string(static_cast<int>(return_value));
+    try {
+        log_message =
+            "Ending CharacterSelectState all_players_selected method returning "
+            "value: " +
+            std::to_string(static_cast<int>(return_value));
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
+
     LOG(DEBUG) << log_message;
 #endif
 
@@ -391,9 +426,17 @@ bool CharacterSelectState::all_players_selected() {
  */
 pair<string, int> CharacterSelectState::get_chars_info(int idx) {
 #ifndef NDEBUG
-    string log_message =
-        "Starting CharacterSelectState get_chars_info method with idx: " +
-        std::to_string(idx);
+    string log_message = "";
+    try {
+        log_message =
+            "Starting CharacterSelectState get_chars_info method with idx: " +
+            std::to_string(idx);
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
+
     LOG(DEBUG) << log_message;
 #endif
 
@@ -412,13 +455,22 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
 
 #ifndef NDEBUG
     if (names.size() and frames.size()) {
+        /* Nothing to do. */
     } else {
         LOG(FATAL) << "Names and frames arrays must have some element";
     }
 
-    log_message =
-        "Ending CharacterSelectState get_chars_info method returning values: " +
-        return_value.first + ", " + std::to_string(return_value.second);
+    try {
+        log_message =
+            "Ending CharacterSelectState get_chars_info method returning "
+            "values: " +
+            return_value.first + ", " + std::to_string(return_value.second);
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
+
     LOG(DEBUG) << log_message;
 #endif
 
@@ -435,27 +487,42 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
 #ifndef NDEBUG
-    string log_message =
-        "Starting CharacterSelectState get_slot method with row: " +
-        std::to_string(row) + "and col: " + std::to_string(col);
-    LOG(DEBUG) << log_message;
+    string log_message = "";
+    try {
+        log_message =
+            "Starting CharacterSelectState get_slot method with row: " +
+            std::to_string(row) + "and col: " + std::to_string(col);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
 #ifndef NDEBUG
-    if ((size_t) col < x.size()) {
-        /* Nothing to do. */
-    } else {
-        log_message = "col is out of bound with value: " + std::to_string(col);
-        LOG(FATAL) << log_message;
-    }
+    try {
+        if ((size_t) col < x.size()) {
+            /* Nothing to do. */
+        } else {
+            log_message =
+                "col is out of bound with value: " + std::to_string(col);
+            LOG(FATAL) << log_message;
+        }
 
-    if ((size_t) row < y.size()) {
-        /* Nothing to do. */
-    } else {
-        log_message = "row is out of bound with value: " + std::to_string(row);
+        if ((size_t) row < y.size()) {
+            /* Nothing to do. */
+        } else {
+            log_message =
+                "row is out of bound with value: " + std::to_string(row);
+            LOG(FATAL) << log_message;
+        }
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        log_message = "Couldn't convert to string: " + str_error + '\n';
         LOG(FATAL) << log_message;
     }
 #endif
@@ -463,11 +530,17 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     pair<int, int> return_value = ii(x[col], y[row]);
 
 #ifndef NDEBUG
-    log_message =
-        "Ending CharacterSelectState get_slot method returning values: " +
-        std::to_string(return_value.first) + ", " +
-        std::to_string(return_value.second);
-    LOG(DEBUG) << log_message;
+    try {
+        log_message =
+            "Ending CharacterSelectState get_slot method returning values: " +
+            std::to_string(return_value.first) + ", " +
+            std::to_string(return_value.second);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     return return_value;
@@ -494,22 +567,28 @@ void CharacterSelectState::load_resources() {
     /**
      * Load backgrounds_sprites following standards for file name.
      */
-    for (int i = 0; i < N_backgrounds_sprites; i++) {
-        backgrounds_sprites[i] = Sprite(BACKGROUND_SPRITES_PREFIX_PATH +
-                                        std::to_string(i + 1) + ".png");
-    }
+    try {
+        for (int i = 0; i < N_backgrounds_sprites; i++) {
+            backgrounds_sprites[i] = Sprite(BACKGROUND_SPRITES_PREFIX_PATH +
+                                            std::to_string(i + 1) + ".png");
+        }
 
-    /**
-     * Load information for players based on standards for file name.
-     */
-    for (int i = 0; i < N_PLAYERS; i++) {
-        names_tags_sprites[i] =
-            Sprite(NAMES_TAGS_SPRITES_PREFIX_PATH + std::to_string(i + 1) +
-                   CHARACTERS_FORMAT);
+        /**
+         * Load information for players based on standards for file name.
+         */
+        for (int i = 0; i < N_PLAYERS; i++) {
+            names_tags_sprites[i] =
+                Sprite(NAMES_TAGS_SPRITES_PREFIX_PATH + std::to_string(i + 1) +
+                       CHARACTERS_FORMAT);
 
-        players_numbers_sprites[i] =
-            Sprite(PLAYERS_NUMBERS_SPRITES_PREFIX_PATH + std::to_string(i + 1) +
-                   CHARACTERS_FORMAT);
+            players_numbers_sprites[i] =
+                Sprite(PLAYERS_NUMBERS_SPRITES_PREFIX_PATH +
+                       std::to_string(i + 1) + CHARACTERS_FORMAT);
+        }
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
     }
 
     /**
@@ -757,25 +836,31 @@ void CharacterSelectState::check_constants() {
         LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
     }
 
-    string log_message = "";
-    for (auto x : ROWS_X_POSITIONS) {
-        if (x <= BACKGROUNDS_SIZE_WIDTH) {
-            /* Nothing to do. */
-        } else {
-            log_message = "ROWS_X_POSITIONS, element: " + std::to_string(x) +
-                "is bigger than screen";
-            LOG(FATAL) << log_message;
+    try {
+        string log_message = "";
+        for (auto x : ROWS_X_POSITIONS) {
+            if (x <= BACKGROUNDS_SIZE_WIDTH) {
+                /* Nothing to do. */
+            } else {
+                log_message = "ROWS_X_POSITIONS, element: " +
+                    std::to_string(x) + "is bigger than screen";
+                LOG(FATAL) << log_message;
+            }
         }
-    }
 
-    for (auto y : ROWS_Y_POSITIONS) {
-        if (y <= BACKGROUNDS_SIZE_HEIGHT) {
-            /* Nothing to do. */
-        } else {
-            log_message = "ROWS_Y_POSITIONS, element: " + std::to_string(y) +
-                "is bigger than screen";
-            LOG(FATAL) << log_message;
+        for (auto y : ROWS_Y_POSITIONS) {
+            if (y <= BACKGROUNDS_SIZE_HEIGHT) {
+                /* Nothing to do. */
+            } else {
+                log_message = "ROWS_Y_POSITIONS, element: " +
+                    std::to_string(y) + "is bigger than screen";
+                LOG(FATAL) << log_message;
+            }
         }
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
     }
 #endif
 
@@ -793,13 +878,15 @@ void CharacterSelectState::handle_exiting() {
     InputManager* input_manager = InputManager::get_instance();
 
     if (all_players_selected()) {  ///< Only enable start when all
-                                   ///< players have selected a character.
+        ///< players have selected a character.
         is_ready = true;
         if (is_key_pressed[FIRST_PLAYER][START] or
             is_key_pressed[FIRST_PLAYER][A]) {
             select_sound.play();
+
             vector<pair<string, string>> p = export_players();
             m_quit_requested = true;
+
             Game::get_instance().push(
                 new BattleState(selected_stage, export_players()));
 
@@ -808,12 +895,11 @@ void CharacterSelectState::handle_exiting() {
         } else {
             /* Nothing to do.*/
         }
-
     } else if (is_key_pressed[FIRST_PLAYER][SELECT] or
                (not is_character_selected[FIRST_PLAYER] and
                 is_key_pressed[FIRST_PLAYER]
                               [B])) {  ///< Process request for going
-                                       ///< previous menu (SelectStage).
+        ///< previous menu (SelectStage).
         select_sound.play();
         m_quit_requested = true;
         Game::get_instance().push(new StageSelectState());
@@ -821,11 +907,13 @@ void CharacterSelectState::handle_exiting() {
         LOG(DEBUG)
             << "Ending CharacterSelectState update due quit request method";
     } else if (input_manager->quit_requested()) {  ///< Process request
-                                                   ///< for leaving the game.
+        ///< for leaving the game.
         m_quit_requested = true;
 
         LOG(DEBUG)
             << "Ending CharacterSelectState update due quit request method";
+    } else {
+        /* Nothing to do. */
     }
     LOG(DEBUG) << "Ending CharacterSelectState handle_exiting method";
 }
@@ -873,10 +961,19 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
             unsigned int seed1 = clock();
             unsigned int seed2 = clock();
 
-            rand_col = rand_r(&seed1) % N_COLS;
-            rand_row = rand_r(&seed2) % N_ROWS;
+            if (static_cast<int>(seed1) != -1 and
+                static_cast<int>(seed2) != -1) {
+                rand_col = rand_r(&seed1) % N_COLS;
+                rand_row = rand_r(&seed2) % N_ROWS;
 
-            char_sel = rand_row * N_COLS + rand_col;
+                char_sel = rand_row * N_COLS + rand_col;
+            } else {
+                LOG(ERROR) << "Couldn't get processor time to generate "
+                              "random";
+
+                rand_col = 0;
+                rand_row = 0;
+            }
         } while (not chars[char_sel].is_enabled());
 
         /**
@@ -884,8 +981,11 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
          */
         do {
             unsigned int seed = clock();
-
-            rand_skin = rand_r(&seed) % N_SKINS;
+            if (static_cast<int>(seed) != -1) {
+                rand_skin = rand_r(&seed) % N_SKINS;
+            } else {
+                rand_skin = 0;
+            }
         } while (not chars[char_sel].is_skin_available(rand_skin));
 
         current_column[player] = rand_col;
@@ -904,11 +1004,17 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
  * @param player player which will random selected [0, N_PLAYERS - 1]
  */
 void CharacterSelectState::handle_navigating(unsigned int player) {
-    string log_message =
-        "Starting CharacterSelectState handle_navigating method, player "
-        "value: " +
-        player;
-    LOG(DEBUG) << log_message;
+    try {
+        string log_message =
+            "Starting CharacterSelectState handle_navigating method, player "
+            "value: " +
+            std::to_string(player);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     /**
      * To know if should reset skin to default.
@@ -1017,12 +1123,17 @@ void CharacterSelectState::handle_select(unsigned int player) {
  * @param delta_time Time spent on each frame
  */
 void CharacterSelectState::play_sprites_animation(float delta_time) {
-    string log_message =
-        "Starting CharacterSelectState play_sprites_animation method, "
-        "delta_time value: " +
-        std::to_string(delta_time);
-
-    LOG(DEBUG) << log_message;
+    try {
+        string log_message =
+            "Starting CharacterSelectState play_sprites_animation method, "
+            "delta_time value: " +
+            std::to_string(delta_time);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     for (int i = 0; i < N_CHARS; i++) {
         chars[i].get_disabled().update(delta_time);
