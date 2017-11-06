@@ -23,7 +23,9 @@ void Config::init() {
     std::fstream config_file(CONFIGURATION_FILE_PATH);
 
 #ifndef NDEBUG
-    if (not config_file.is_open()) {
+    if (config_file.is_open()) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "File couldn't be open";
     }
 #endif
@@ -48,7 +50,9 @@ int Config::get_width() {
         std::to_string(return_value);
     LOG(DEBUG) << log_message;
 
-    if (width <= 0) {
+    if (width > 0) {
+        /* Nothing to do. */
+    } else {
         LOG(WARNING) << "Width is being returned with suspicious values";
     }
 #endif
@@ -70,7 +74,9 @@ int Config::get_height() {
         std::to_string(return_value);
     LOG(DEBUG) << log_message;
 
-    if (height <= 0) {
+    if (height > 0) {
+        /* Nothing to do. */
+    } else {
         LOG(WARNING) << "Height is being returned with suspicious values";
     }
 #endif
@@ -121,7 +127,9 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
     std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);
 
 #ifndef NDEBUG
-    if (not config_file.is_open()) {
+    if (config_file.is_open()) {
+        /* Nothing to do. */
+    } else {
         LOG(FATAL) << "File couldn't be open";
     }
 #endif
