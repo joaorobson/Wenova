@@ -174,6 +174,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_idle_atk_neutral_2();
       } else if (pressed[ATTACK_BUTTON]) {
         combo++;
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -194,6 +196,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_idle_atk_neutral_3();
       } else if (pressed[ATTACK_BUTTON]) {
         combo++;
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -209,6 +213,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_idle();
         check_defense();
         check_crouch();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -224,6 +230,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_idle();
         check_defense();
         check_crouch();
+      } else {
+        /* Nothing to do. */
       }
     break;
     case FighterState::CROUCH_ATK:  // 1
@@ -238,6 +246,8 @@ void Blood::update_machine_state(float delta_character_state) {
       check_idle();
       check_defense();
       check_crouch();
+    } else {
+      /* Nothing to do. */
     }
 
     case FighterState::IDLE_ATK_NEUTRAL_3:  // 1
@@ -253,6 +263,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_idle();
         check_defense();
         check_crouch();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -268,6 +280,8 @@ void Blood::update_machine_state(float delta_character_state) {
       if (on_floor) {
         n_sprite_start = 2;
         check_idle_atk_down(true, true);
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -284,6 +298,8 @@ void Blood::update_machine_state(float delta_character_state) {
        */
       if (sprite[state].is_finished()) {
         check_fall();
+      } else {
+        /* Nothing to do. */
       }
       /**
        * Check if character is on the floor and set true in the respective
@@ -295,6 +311,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_defense();
         check_crouch();
         check_left();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -314,6 +332,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_crouch();
         check_defense();
         check_idle();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -331,6 +351,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_crouch();
         check_idle();
         check_dead();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -366,6 +388,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_defense();
         check_crouch();
         check_idle();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -387,6 +411,8 @@ void Blood::update_machine_state(float delta_character_state) {
         check_idle();
         check_defense();
         check_crouch();
+      } else {
+        /* Nothing to do. */
       }
     break;
 
@@ -508,9 +534,13 @@ void Blood::check_jump(bool change) {
   if (pressed[JUMP_BUTTON]) {
     if (change) {
       temporary_state = FighterState::JUMPING;
+    } else {
+      /* Nothing to do. */
     }
     speed.y = -5;
     on_floor = false;
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -527,7 +557,11 @@ void Blood::check_fall(bool change) {
   if (speed.y > STOPPED) {
     if (change) {
       temporary_state = FighterState::FALLING;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -545,9 +579,13 @@ void Blood::check_right(bool change) {
   if (is_holding[RIGHT_BUTTON]) {
     if (change) {
       temporary_state = FighterState::RUNNING;
+    } else {
+      /* Nothing to do. */
     }
     speed.x = 3;
     orientation = Orientation::RIGHT;
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -565,9 +603,13 @@ void Blood::check_left(bool change) {
   if (is_holding[LEFT_BUTTON]) {
     if (change) {
       temporary_state = FighterState::RUNNING;
+    } else {
+      /* Nothing to do. */
     }
     speed.x = -3;
     orientation = Orientation::LEFT;
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -584,10 +626,14 @@ void Blood::check_left(bool change) {
 void Blood::check_defense(bool change) {
   assert(BLOCK_BUTTON >= 0);
   if (is_holding[BLOCK_BUTTON] and on_floor) {
-       if (change) {
-         temporary_state = FighterState::DEFENDING;
-       }
+    if (change) {
+      temporary_state = FighterState::DEFENDING;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
+  }
 }
 
 /**
@@ -608,7 +654,11 @@ void Blood::check_idle(bool change) {
      is_holding[BLOCK_BUTTON]) {
     if (change) {
       temporary_state = FighterState::IDLE;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -624,10 +674,14 @@ void Blood::check_idle(bool change) {
 void Blood::check_crouch(bool change) {
   assert(DOWN_BUTTON >= 0);
   if (is_holding[DOWN_BUTTON] and on_floor) {
-       if (change) {
-         temporary_state = FighterState::CROUCH;
-       }
+    if (change) {
+      temporary_state = FighterState::CROUCH;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
+  }
 }
 
 /**
@@ -643,6 +697,8 @@ void Blood::check_stunned(bool change) {
   speed.x = STOPPED;
   if (change) {
     temporary_state = FighterState::STUNNED;
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -659,7 +715,11 @@ void Blood::check_dead(bool change) {
   if (is(DYING_TAG)) {
     if (change) {
       temporary_state = FighterState::DYING;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -680,12 +740,18 @@ void Blood::check_jump_atk_up(bool change) {
   if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
     if (combo) {
       return;
+    } else {
+      /* Nothing to do. */
     }
     combo++;
     speed.y = -5;
     if (change) {
       temporary_state = FighterState::JUMP_ATK_UP;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -704,7 +770,11 @@ void Blood::check_jump_atk_down(bool change) {
   if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
     if (change) {
       temporary_state = FighterState::JUMP_ATK_DOWN;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -721,7 +791,11 @@ void Blood::check_jump_atk_neutral(bool change) {
   if (pressed[ATTACK_BUTTON]) {
     if (change) {
       temporary_state = FighterState::JUMP_ATK_NEUTRAL;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -740,7 +814,11 @@ void Blood::check_idle_atk_neutral_1(bool change) {
     speed.y = STOPPED;
     if (change) {
       temporary_state = FighterState::IDLE_ATK_NEUTRAL_1;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -758,6 +836,8 @@ void Blood::check_idle_atk_neutral_2(bool change) {
     combo--;
     if (change) {
       temporary_state = FighterState::IDLE_ATK_NEUTRAL_2;
+    } else {
+      /* Nothing to do. */
     }
   }
 }
@@ -776,7 +856,11 @@ void Blood::check_idle_atk_neutral_3(bool change) {
     combo--;
     if (change) {
       temporary_state = FighterState::IDLE_ATK_NEUTRAL_3;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -796,7 +880,11 @@ void Blood::check_idle_atk_up(bool change) {
   if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
     if (change) {
       temporary_state = FighterState::IDLE_ATK_UP;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -816,7 +904,11 @@ void Blood::check_idle_atk_down(bool change, bool condition) {
   if ((pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) or condition) {
     if (change) {
       temporary_state = FighterState::IDLE_ATK_DOWN;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -838,9 +930,13 @@ void Blood::check_idle_atk_front(bool change) {
     (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) {
     if (change) {
       temporary_state = FighterState::IDLE_ATK_FRONT;
+    } else {
+      /* Nothing to do. */
     }
     orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT :
                                             Orientation::RIGHT;
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -857,7 +953,11 @@ void Blood::check_crouch_atk(bool change) {
   if (pressed[ATTACK_BUTTON]) {
     if (change) {
       temporary_state = FighterState::CROUCH_ATK;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -876,10 +976,18 @@ void Blood::check_pass_through_platform(bool change) {
   assert(CROUCH_COOLDOWN == 50.0);
   if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
     if (crouch_timer.get() < CROUCH_COOLDOWN) {
-      if (change) temporary_state = FighterState::FALLING;
+      if (change) {
+        temporary_state = FighterState::FALLING;
+      } else {
+        /* Nothing to do. */
+      }
       pass_through_timer.restart();
+    } else {
+      /* Nothing to do. */
     }
     crouch_timer.restart();
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -896,7 +1004,11 @@ void Blood::check_special_1_1(bool change) {
   if (pressed[SPECIAL1_BUTTON]) {
     if (change) {
       temporary_state = FighterState::SPECIAL_1_1;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -913,6 +1025,8 @@ void Blood::check_special_1_2(bool change) {
   attack_damage = 0.5;
   if (change) {
     temporary_state = FighterState::SPECIAL_1_2;
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -931,7 +1045,11 @@ void Blood::check_special_2(bool change) {
   if (pressed[SPECIAL2_BUTTON] and partner) {
     if (change) {
       temporary_state = FighterState::SPECIAL_2;
+    } else {
+      /* Nothing to do. */
     }
+  } else {
+    /* Nothing to do. */
   }
 }
 
@@ -955,5 +1073,7 @@ void Blood::check_ultimate() {
                            "has_sprite",
                            1));
     ultimate_sound.play();
+  } else {
+    /* Nothing to do. */
   }
 }
