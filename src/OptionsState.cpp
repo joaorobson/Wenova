@@ -123,9 +123,10 @@ void OptionsState::update(float) {
     }
 
     /**
-     * Check if the pressed button was the cursor DOWN.
-     * When user press that button, the selected item goes to another one below
-     * it if the current item is not the last.
+     * Check if the pressed button was the cursor DOWN or UP.
+     * When user press the button DOWN, the selected item goes to another one
+     * below it if the current item is not the last, Otherwise it goes
+     * to another one above it if the current item is not the last.
      */
     if (pressed[DOWN]) {
         changed.play();
@@ -152,14 +153,34 @@ void OptionsState::update(float) {
                 /* Nothing to do. */
             }
         }
+    } else if (pressed[UP]) {
+        changed.play();
+
+        if (not on_submenu) {
+            assert(current_option >= 0);
+            if (current_option != 0) {
+                current_option--;
+            } else {
+                /* Nothing to do. */
+            }
+        } else {
+            assert(current_sub_option[current_option] >= 0);
+            if (current_sub_option[current_option] != 0) {
+                current_sub_option[current_option]--;
+            } else {
+                /* Nothing to do. */
+            }
+        }
     } else {
         /* Nothing to do. */
     }
 
     /**
-     * Check if the pressed button was START (Keyboard) or A (Joystick).
+     * Check if the pressed button was START (Keyboard) or A (Joystick) or
+     * SELECT (Keyboard) or B (Joystick).
      * When user press one of these buttons and isn't on a submenu of the menu
-     * "Options" he enters to the submenu selected.
+     * "Options" he enters to the submenu selected (START and A) or return
+     * to the main menu of its submenu (SELECT and B).
      */
     if (pressed[START] or pressed[A]) {
         selected.play();
@@ -214,16 +235,7 @@ void OptionsState::update(float) {
                 /* Nothing to do. */
             }
         }
-    } else {
-        /* Nothing to do. */
-    }
-
-    /**
-     * Check if the pressed button was SELECT (Keyboard) or B (Joystick).
-     * When user press one of these buttons and is on a submenu of the menu
-     * "Options" he return to the main menu of it's submenu.
-     */
-    if (pressed[SELECT] or pressed[B]) {
+    } else if (pressed[SELECT] or pressed[B]) {
         if (on_submenu) {
             // FIXME insert back sound
             selected.play();
@@ -239,33 +251,6 @@ void OptionsState::update(float) {
             m_quit_requested = true;
             Game::get_instance().push(new MenuState(true));
             return;
-        }
-    } else {
-        /* Nothing to do. */
-    }
-
-    /**
-     * Check if the pressed button was the cursor UP.
-     * When user press that button, the selected item goes to another one above
-     * it if the current item is not the first.
-     */
-    if (pressed[UP]) {
-        changed.play();
-
-        if (not on_submenu) {
-            assert(current_option >= 0);
-            if (current_option != 0) {
-                current_option--;
-            } else {
-                /* Nothing to do. */
-            }
-        } else {
-            assert(current_sub_option[current_option] >= 0);
-            if (current_sub_option[current_option] != 0) {
-                current_sub_option[current_option]--;
-            } else {
-                /* Nothing to do. */
-            }
         }
     } else {
         /* Nothing to do. */
@@ -496,7 +481,7 @@ int OptionsState::get_current_sub_option(int option) {
     /**
      * Check if the selected option was screen resolution.
      * If so, it generates the screen resolution option at the submenu
-     * "SCREEN RESOLUTION". Otherwise, it indicates tha selecte is at fullscreen
+     * "SCREEN RESOLUTION". Otherwise, it indicates that selecte is at fullscreen
      * option.
      */
     if (option == 0) {

@@ -75,23 +75,7 @@ void StageSelectState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new MenuState(true));
         return;
-    } else {
-        /* Nothing to do. */
-    }
-
-    if (pressed[LEFT]) {
-        update_stage_select(-1);
-    } else {
-        /* Nothing to do. */
-    }
-
-    if (pressed[RIGHT]) {
-        update_stage_select(1);
-    } else {
-        /* Nothing to do. */
-    }
-
-    if (pressed[A] or pressed[START]) {
+    } else if (pressed[A] or pressed[START]) {
         selected.play();
         m_quit_requested = true;
 
@@ -112,6 +96,14 @@ void StageSelectState::update(float delta) {
                                                                     stage_select
                                                                     + 1)));
         }
+    } else {
+        /* Nothing to do. */
+    }
+
+    if (pressed[LEFT]) {
+        update_stage_select(-1);
+    } else if (pressed[RIGHT]) {
+        update_stage_select(1);
     } else {
         /* Nothing to do. */
     }
