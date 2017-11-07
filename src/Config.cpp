@@ -46,9 +46,16 @@ int Config::get_width() {
     int return_value = width;
 
 #ifndef NDEBUG
-    std::string log_message = "Ending Config get_width returning value: " +
-        std::to_string(return_value);
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Ending Config get_width returning value: " +
+            std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (width > 0) {
         /* Nothing to do. */
@@ -70,9 +77,16 @@ int Config::get_height() {
     int return_value = height;
 
 #ifndef NDEBUG
-    std::string log_message = "Ending Config get_height returning value: " +
-        std::to_string(return_value);
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Ending Config get_height returning value: " +
+            std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (height > 0) {
         /* Nothing to do. */
@@ -95,9 +109,17 @@ int Config::is_fullscreen() {
     int return_value = fullscreen;
 
 #ifndef NDEBUG
-    std::string log_message = "Ending Config is_fullscreen returning value: " +
-        std::to_string(return_value);
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message =
+            "Ending Config is_fullscreen returning value: " +
+            std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     return return_value;
@@ -112,12 +134,19 @@ int Config::is_fullscreen() {
  */
 void Config::update_information(int cwidth, int cheight, int cfullscreen) {
 #ifndef NDEBUG
-    std::string log_message = "Starting Config update_information, cwidth: ";
-    log_message += std::to_string(cwidth) += ", cheight: ";
-    log_message += std::to_string(cheight) + ", cfullscreen: " +
-        std::to_string(cfullscreen);
-
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message =
+            "Starting Config update_information, cwidth: ";
+        log_message += std::to_string(cwidth) += ", cheight: ";
+        log_message += std::to_string(cheight) + ", cfullscreen: " +
+            std::to_string(cfullscreen);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     width = cwidth;
@@ -136,6 +165,12 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
 
     config_file << width << " " << height << " " << fullscreen << std::endl;
     config_file.close();
+
+    if (not config_file.fail()) {
+        /* Nothing to do. */
+    } else {
+        LOG(ERROR) << "Was not possible to close the file.";
+    }
 
     LOG(DEBUG) << "Ending Config update_information";
 }
