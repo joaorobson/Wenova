@@ -59,13 +59,19 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
       platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
       selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
 #ifndef NDEBUG
-    std::string log_message = "Starting EditableFloor constructor with x: ";
-    log_message += std::to_string(x) + ", y: " + std::to_string(y);
-    log_message += ", crotation: " + std::to_string(crotation);
-    log_message +=
-        ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
+    try {
+        std::string log_message = "Starting EditableFloor constructor with x: ";
+        log_message += std::to_string(x) + ", y: " + std::to_string(y);
+        log_message += ", crotation: " + std::to_string(crotation);
+        log_message +=
+            ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
 
-    LOG(DEBUG) << log_message;
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc &error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     box = Rectangle(x, y, standard_sprite.get_width(),
@@ -90,13 +96,19 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
                              bool cplatform)
     : EditableFloor(x, y, crotation, cplatform) {
 #ifndef NDEBUG
-    std::string log_message = "Starting EditableFloor constructor with x: ";
-    log_message += std::to_string(x) + ", y: " + std::to_string(y);
-    log_message += ", width:" + std::to_string(width);
-    log_message += ", crotation: " + std::to_string(crotation);
-    log_message +=
-        ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting EditableFloor constructor with x: ";
+        log_message += std::to_string(x) + ", y: " + std::to_string(y);
+        log_message += ", width:" + std::to_string(width);
+        log_message += ", crotation: " + std::to_string(crotation);
+        log_message +=
+            ", cplatfrom: " + std::to_string(static_cast<int>(cplatform));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc &error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (x <= BACKGROUND_WIDTH) {
         /* Nothing to do. */
@@ -135,8 +147,15 @@ string EditableFloor::get_information() {
     LOG(DEBUG) << "Starting EditableFloor get_information";
 
     char info_c[DEBUG_SIZE];
-    snprintf(info_c, sizeof(info_c), "%f %f %f %f %d", box.x, box.y, box.width,
-             rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
+    int snprint_return = snprintf(
+        info_c, sizeof(info_c), "%f %f %f %f %d", box.x, box.y, box.width,
+        rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
+
+    if (snprint_return == 5) {
+        /* Nothing to do. */
+    } else {
+        LOG(ERROR) << "Could not get the complete information";
+    }
 
     string info(info_c);
 
@@ -309,8 +328,7 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_moving(bool &moved,
-                                      float delta_space) {  // NOLINT
+void EditableFloor::handle_box_moving(bool &moved, float delta_space) {
     // LOG(DEBUG) << "Starting EditableFloor handle_box_moving method";
 
     InputManager *input_manager = InputManager::get_instance();
@@ -344,8 +362,7 @@ void EditableFloor::handle_box_moving(bool &moved,
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_resizing(bool &moved,
-                                        float delta_space) {  // NOLINT
+void EditableFloor::handle_box_resizing(bool &moved, float delta_space) {
     // LOG(DEBUG) << "Starting EditableFloor handle_box_resizing method";
 
     /**
@@ -366,7 +383,7 @@ void EditableFloor::handle_box_resizing(bool &moved,
     InputManager *input_manager = InputManager::get_instance();
 
     /**
-     * Increase floor width.
+     * Resizing platform.
      */
     if (input_manager->is_key_down(InputManager::K_INC_W)) {
         standard_sprite.update_scale_x(RESIZING_SPEED * delta_space);
@@ -375,14 +392,7 @@ void EditableFloor::handle_box_resizing(bool &moved,
 
         box.width = standard_sprite.get_width();
         moved = true;
-    } else {
-        /* Nothing to do. */
-    }
-
-    /**
-     * Decrease floor width.
-     */
-    if (input_manager->is_key_down(InputManager::K_DEC_W)) {
+    } else if (input_manager->is_key_down(InputManager::K_DEC_W)) {
         standard_sprite.update_scale_x(-RESIZING_SPEED * delta_space);
         platform_sprite.update_scale_x(-RESIZING_SPEED * delta_space);
         selected_sprite.update_scale_x(-RESIZING_SPEED * delta_space);
@@ -429,9 +439,8 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
  * @param moved if platform was moved, it will change behavior
  * @param acceleration acceleration that will be changed
  */
-void EditableFloor::handle_acceleration_increasing(
-    bool &moved,
-    float &acceleration) {  // NOLINT
+void EditableFloor::handle_acceleration_increasing(bool &moved,
+                                                   float &acceleration) {
     // LOG(DEBUG) << "Starting EditableFloor handle_acceleration_increasing
     // method";
 
