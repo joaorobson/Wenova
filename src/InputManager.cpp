@@ -120,8 +120,18 @@ const int InputManager::BATTLE_MODE;
 InputManager::InputManager() {
     // LOG(DEBUG) << "Starting InputManager constructor";
 
-    memset(mouse_buttons_states, false, sizeof mouse_buttons_states);
-    memset(mouse_update, 0, sizeof mouse_update);
+    void *ptr_states =
+        memset(mouse_buttons_states, false, sizeof mouse_buttons_states);
+    void *ptr_updates = memset(mouse_update, 0, sizeof mouse_update);
+
+    /**
+     * Check if memsets succeeds.
+     */
+    if (ptr_states == &mouse_buttons_states and ptr_updates == &mouse_update) {
+        /* Nothing to do. */
+    } else {
+        LOG(FATAL) << "Memset failed on initializing some vectors";
+    }
 
     this->analogic_sensibility_value = DEFAULT_ANALOGIC_SENSIBILITY;
     this->triggers_sensibility_value = DEFAULT_TRIGGERS_SENSIBILITY;
@@ -196,10 +206,16 @@ int InputManager::get_mouse_x_position() {
 
     /*
     #ifndef NDEBUG
-    std::string log_message = "Ending InputManager get_mouse_x_position method
-    returning value: " + std::to_string(return_value);
-    // LOG(DEBUG) << log_message;
-
+    try {
+        std::string log_message = "Ending InputManager get_mouse_x_position
+    method
+        returning value: " + std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     if (not (return_value > BACKGROUND_WIDTH and return_value < 0)) {
          // Nothing to do.
     } else {
@@ -223,9 +239,16 @@ int InputManager::get_mouse_y_position() {
 
     /*
     #ifndef NDEBUG
-    std::string log_message = "Ending InputManager get_mouse_y_position method
-    returning value: " + std::to_string(return_value);
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Ending InputManager get_mouse_y_position
+    method
+        returning value: " + std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (not (return_value > BACKGROUND_HEIGHT and return_value < 0)) {
         // Nothing to do.
@@ -257,8 +280,14 @@ void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
     cmouse_sensibility_value);
     std::string log_message(log_message_c);
 
-    log_message += ", coffset_x: " + std::to_string(coffset_x);
-    log_message += ", coffset_y: " + std::to_string(coffset_y);
+    try {
+        log_message += ", coffset_x: " + std::to_string(coffset_x);
+        log_message += ", coffset_y: " + std::to_string(coffset_y);
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     // LOG(DEBUG) << log_message;
     #endif
@@ -303,8 +332,13 @@ void InputManager::connect_joysticks() {
     int max = SDL_NumJoysticks();
     if (max <= N_CONTROLLERS) {
         /* Nothing to do. */
-    } else {
+    } else if (max > 0) {
         max = N_CONTROLLERS;
+    } else {
+        string str_error(SDL_GetError());
+        string log_message =
+            "Couldn't get number of joysticks connected: " + str_error;
+        LOG(ERROR) << log_message;
     }
 
     /**
@@ -314,7 +348,6 @@ void InputManager::connect_joysticks() {
         if (controllers[i] == nullptr) {
             /* Nothing to do. */
         } else {
-            SDL_GameControllerClose(controllers[i]);
             controllers[i] = nullptr;
         }
     }
@@ -324,9 +357,19 @@ void InputManager::connect_joysticks() {
      */
     int n_controller = 0;
     for (int i = 0; i < max; i++) {
-        char guid[64];
+        char guid[64] = "";
         SDL_JoystickGetGUIDString(SDL_JoystickGetDeviceGUID(i), guid,
                                   sizeof(guid));
+
+        /**
+         * Check if succeed.
+         */
+        string guid_cpp(guid);
+        if (guid_cpp != "") {
+            /* Nothing to do */
+        } else {
+            LOG(ERROR) << "Problems getting strings of joysticks";
+        }
 
         if (SDL_IsGameController(i)) {
             controllers[i] = SDL_GameControllerOpen(i);
@@ -340,7 +383,27 @@ void InputManager::connect_joysticks() {
         } else {
             LOG(WARNING) << "Joystick is not a game controller";
 
-            SDL_JoystickOpen(i);
+            try {
+                if (SDL_JoystickOpen(i)) {
+                    /* Nothing to do */
+                } else {
+                    try {
+                        string log_message =
+                            "Couldn't open joystick: " + std::to_string(i);
+                        LOG(ERROR) << log_message;
+                    } catch (std::bad_alloc &error) {
+                        string str_error(error.what());
+                        string log_message =
+                            "Couldn't convert to string: " + str_error + '\n';
+                        LOG(FATAL) << log_message;
+                    }
+                }
+            } catch (std::bad_alloc &error) {
+                string str_error(error.what());
+                string log_message =
+                    "Couldn't convert to string: " + str_error + '\n';
+                LOG(FATAL) << log_message;
+            }
         }
     }
 
@@ -355,8 +418,15 @@ void InputManager::connect_joysticks() {
 void InputManager::map_keyboard_to_joystick(int map_id) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager map_keyboard_to_joystick
-    method with map_id: " + std::to_string(map_id);
+    try {
+        std::string log_message = "Starting InputManager
+    map_keyboard_to_joystick
+        method with map_id: " + std::to_string(map_id);
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     // LOG(DEBUG) << log_message;
     #endif
     */
@@ -426,9 +496,16 @@ bool InputManager::quit_requested() {
 bool InputManager::key_press(int key) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager key_press method key: " +
-    std::to_string(key);
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager key_press method key: "
+    +
+        std::to_string(key);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (key >= 0) {
         LOG(FATAL) << "Key is less than zero";
@@ -443,8 +520,14 @@ bool InputManager::key_press(int key) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager key_press method returning value: " +
-    std::to_string(static_cast<int>(return_value));
+    try {
+        log_message = "Ending InputManager key_press method returning value: " +
+        std::to_string(static_cast<int>(return_value));
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     // LOG(DEBUG) << log_message;
     #endif
     */
@@ -462,8 +545,15 @@ bool InputManager::key_press(int key) {
 bool InputManager::key_release(int key) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager key_release method key: " +
-    std::to_string(key);
+    try {
+        std::string log_message = "Starting InputManager key_release method key:
+    " +
+        std::to_string(key);
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     // LOG(DEBUG) << log_message;
 
     if (key >= 0) {
@@ -479,8 +569,15 @@ bool InputManager::key_release(int key) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager key_release method returning value: " +
-    std::to_string(static_cast<int>(return_value));
+    try {
+        log_message = "Ending InputManager key_release method returning value: "
+    +
+        std::to_string(static_cast<int>(return_value));
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     // LOG(DEBUG) << log_message;
     #endif
     */
@@ -498,9 +595,16 @@ bool InputManager::key_release(int key) {
 bool InputManager::is_key_down(int key) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager key_release method key: " +
-    std::to_string(key);
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager key_release method key:
+    " +
+        std::to_string(key);
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
+    LOG(DEBUG) << log_message;
 
     if (key < 0) {
         LOG(FATAL) << "Key is less than zero";
@@ -512,9 +616,16 @@ bool InputManager::is_key_down(int key) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager is_key_down method returning value: " +
-    std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message = "Ending InputManager is_key_down method returning value: "
+    +
+        std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -531,9 +642,16 @@ bool InputManager::is_key_down(int key) {
 bool InputManager::mouse_press(int button) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager mouse_press method, button:
-    " + std::to_string(button);;
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager mouse_press method,
+    button:
+        " + std::to_string(button);;
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (button >= 0 or button < N_MOUSE_BUTTONS) {
         // Nothing to do.
@@ -550,9 +668,16 @@ bool InputManager::mouse_press(int button) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager key_release method returning value: " +
-    std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message = "Ending InputManager key_release method returning value: "
+    +
+        std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -568,9 +693,15 @@ bool InputManager::mouse_press(int button) {
 bool InputManager::mouse_release(int button) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager mouse_release method,
-    button: " + std::to_string(button);;
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager mouse_release method,
+        button: " + std::to_string(button);;
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (button >= 0 or button < N_MOUSE_BUTTONS) {
         // Nothing to do.
@@ -587,9 +718,16 @@ bool InputManager::mouse_release(int button) {
 
     /*
     #ifndef NDEBUG
-    log_message =  "Ending InputManager mouse_release method returning value: "
-    + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message =  "Ending InputManager mouse_release method returning
+    value: "
+        + std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -605,9 +743,15 @@ bool InputManager::mouse_release(int button) {
 bool InputManager::is_mouse_down(int button) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager is_mouse_down method,
-    button: " + std::to_string(button);;
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager is_mouse_down method,
+        button: " + std::to_string(button);;
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (button >= 0 or button < N_MOUSE_BUTTONS) {
         // Nothing to do.
@@ -623,9 +767,16 @@ bool InputManager::is_mouse_down(int button) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager is_mouse_down method returning value: " +
-    std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message = "Ending InputManager is_mouse_down method returning value:
+    " +
+        std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -642,11 +793,17 @@ bool InputManager::is_mouse_down(int button) {
 bool InputManager::joystick_button_press(int button, int joystick) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager joystick_button_press
-    method, button: ";
-    log_message += std::to_string(button);
-    log_message += ", joystick: " + std::to_string(joystick);
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager joystick_button_press
+        method, button: ";
+        log_message += std::to_string(button);
+        log_message += ", joystick: " + std::to_string(joystick);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (button >= 0 or joystick >= 0) {
         // Nothing to do.
@@ -664,9 +821,16 @@ bool InputManager::joystick_button_press(int button, int joystick) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager joystick_button_press method returning
-    value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message = "Ending InputManager joystick_button_press method
+    returning
+        value: " + std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -684,11 +848,17 @@ bool InputManager::joystick_button_press(int button, int joystick) {
 bool InputManager::joystick_button_release(int button, int joystick) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager joystick_button_press
-    method, button: ";
-    log_message += std::to_string(button);
-    log_message += ", joystick: " + std::to_string(joystick);
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager joystick_button_press
+        method, button: ";
+        log_message += std::to_string(button);
+        log_message += ", joystick: " + std::to_string(joystick);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (button >= 0 or joystick >= 0) {
         // Nothing to do.
@@ -705,9 +875,16 @@ bool InputManager::joystick_button_release(int button, int joystick) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager joystick_button_press method returning
-    value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message = "Ending InputManager joystick_button_press method
+    returning
+        value: " + std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -725,11 +902,17 @@ bool InputManager::joystick_button_release(int button, int joystick) {
 bool InputManager::is_joystick_button_down(int button, int joystick) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager joystick_button_press
-    method, button: ";
-    log_message += std::to_string(button);
-    log_message += ", joystick: " + std::to_string(joystick);
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager joystick_button_press
+        method, button: ";
+        log_message += std::to_string(button);
+        log_message += ", joystick: " + std::to_string(joystick);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
     if (button >= 0 or joystick >= 0) {
         // Nothing to do.
@@ -745,9 +928,16 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
 
     /*
     #ifndef NDEBUG
-    log_message = "Ending InputManager joystick_button_press method returning
-    value: " + std::to_string(static_cast<int>(return_value));
-    // LOG(DEBUG) << log_message;
+    try {
+        log_message = "Ending InputManager joystick_button_press method
+    returning
+        value: " + std::to_string(static_cast<int>(return_value));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -764,11 +954,17 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
 void InputManager::emulate_joystick(int key_id, bool state) {
     /*
     #ifndef NDEBUG
-    std::string log_message = "Starting InputManager emulate_joystick method
-    with key_id: ";
-    log_message += std::to_string(key_id) + ", state: ";
-    log_message += std::to_string(static_cast<int>(state));
-    // LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Starting InputManager emulate_joystick method
+        with key_id: ";
+        log_message += std::to_string(key_id) + ", state: ";
+        log_message += std::to_string(static_cast<int>(state));
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        string str_error(error.what());
+        string log_message = "Couldn't convert to string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
     #endif
     */
 
@@ -838,7 +1034,7 @@ void InputManager::reset_keyboard_to_joystick() {
     if (not keyboard_to_joystick_id < 0 and
         not keyboard_to_joystick_id > N_CONTROLLERS) {
         /**
-         * Update State for all if true, else
+         * Updates State for all if true, else
          * just to on index keyboard_to_joystick_id.
          */
         int i = (keyboard_to_joystick_id == N_CONTROLLERS)
