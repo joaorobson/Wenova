@@ -71,7 +71,7 @@ Text::~Text() {
   if (texture != nullptr) {
     SDL_DestroyTexture(texture);
   } else { 
-    /* Nothing to do. */    
+    LOG(FATAL) << "texture has null value";
   } 
 }
 
@@ -183,7 +183,7 @@ void Text::remake_texture() {
   if (texture != nullptr) {
     SDL_DestroyTexture(texture);
   } else { 
-    /* Nothing to do. */    
+    LOG(FATAL) << "texture has null value";
   } 
 
   SDL_Surface * surface;

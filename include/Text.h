@@ -7,6 +7,7 @@
 
 #include <memory>
 #include <string>
+#include "easylogging++.h"  // NOLINT
 
 using std::string;
 using std::shared_ptr;
