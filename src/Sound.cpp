@@ -12,12 +12,15 @@
 #include "Resources.h"
 #include "Config.h"
 
+#include "easylogging++.h"
+
 /**
  * The constructor.
  * Initialize the sound null
  * container coordinates of the Sound class.
  */
 Sound::Sound() {
+    LOG(DEBUG) << "Sound constructor null activated";
     file = "";
     sound = nullptr;
 }
@@ -30,6 +33,7 @@ Sound::Sound() {
  * @param cfile is the file where is the sound
  */
 Sound::Sound(string cfile) {
+    LOG(DEBUG) << "Sound full constructor activated";
     file = cfile;
     this->open(cfile);
 }
@@ -40,6 +44,7 @@ Sound::Sound(string cfile) {
  * @param times is the times to play the sound
  */
 void Sound::play(int times) {
+    LOG(DEBUG) << "Sound plays";
     channel = Mix_PlayChannel(-1, sound.get(), times);
     /**
      * Check if sound played
@@ -54,6 +59,7 @@ void Sound::play(int times) {
  * Stop the sound
  */
 void Sound::stop() {
+    LOG(DEBUG) << "Sound stopes";
     Mix_HaltChannel(channel);
 }
 

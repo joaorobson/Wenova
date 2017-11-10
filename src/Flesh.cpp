@@ -13,6 +13,7 @@
 #include "FleshUltimateEffect.h"
 
 #include <assert.h>
+#include "easylogging++.h"
 
 #define CROUCH_COOLDOWN 400.0
 
@@ -160,6 +161,7 @@ void Flesh::update_machine_state(float) {
      */
     switch (state) {
         case FighterState::JUMP_ATK_UP:
+            LOG(DEBUG) << "Character on jump attack up";
             attack_damage = (RATE_ADD_TO_JUMP_ATTACK_UP *
                              additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
@@ -177,6 +179,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_UP:
+            LOG(DEBUG) << "Character on idle attack up";
             attack_damage = (RATE_ADD_TO_IDLE_ATTACK_UP *
                              additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
@@ -192,6 +195,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_1:
+            LOG(DEBUG) << "Character on idle attack neutral 1";
             attack_damage = (RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_1 *
                              additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
@@ -210,6 +214,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_2:
+            LOG(DEBUG) << "Character on idle attack neutral 2";
             attack_damage = (RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_2 *
                              additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
@@ -228,6 +233,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_NEUTRAL_3:
+            LOG(DEBUG) << "Character on idle attack neutral 3";
             attack_damage = RATE_ADD_TO_IDLE_ATTACK_NEUTRAL_3 *
                             additional_attack_damage;
             attack_mask = get_attack_orientation();
@@ -242,6 +248,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_FRONT:
+            LOG(DEBUG) << "Character on idle attack front";
             attack_damage = RATE_ADD_TO_IDLE_ATTACK_FRONT *
                             additional_attack_damage;
             attack_mask = get_attack_orientation();
@@ -257,6 +264,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_NEUTRAL:
+            LOG(DEBUG) << "Character on jump attack neutral";
             attack_damage = (RATE_ADD_TO_JUMP_ATTACK_NEUTRAL *
                              additional_attack_damage) *
                             (sprite[state].get_current_frame() < 1);
@@ -282,6 +290,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::CROUCH_ATK:
+            LOG(DEBUG) << "Character on crouch attack";
             attack_damage = (RATE_ADD_TO_CROUCH_ATK *
                              additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
@@ -297,6 +306,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN_FALLLOOP:
+            LOG(DEBUG) << "Character on jump attack down fallloop";
             speed.x = (INITIAL_SPEED + RATE_ADD_SPEED_JUMP_ATK_DOWN_FALLLOOP +
                        additional_speed) * (orientation == LEFT ?
                                             WALK_TO_LEFT : WALK_TO_RIGHT);
@@ -320,6 +330,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN_DMG:
+            LOG(DEBUG) << "Character on jump attack down dmg";
             speed.x = (INITIAL_SPEED + RATE_ADD_SPEED_JUMP_ATK_DOWN_DMG +
                        additional_speed) * (orientation == LEFT ?
                                             WALK_TO_LEFT : WALK_TO_RIGHT);
@@ -338,6 +349,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE_ATK_DOWN:
+            LOG(DEBUG) << "Character on idle attack down";
             attack_damage = (BASIC_ATTACK_DAMAGE * additional_attack_damage) *
                             (sprite[state].get_current_frame() == 1);
             attack_mask = get_attack_orientation();
@@ -352,6 +364,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::STUNNED:
+            LOG(DEBUG) << "Character stunned";
             attack_damage = ATTACK_DAMAGE_STUNNED;
             attack_mask = ATTACK_MASK_STUNNED;
             check_special_2();
@@ -368,6 +381,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::SPECIAL_1:
+            LOG(DEBUG) << "Character on especial 1";
             attack_damage = SPECIAL_1_DAMAGE * additional_attack_damage;
             speed.x = RATE_ADD_SPEED_ESPECIAL_1 * (orientation == LEFT ?
                                                 WALK_TO_LEFT : WALK_TO_RIGHT);
@@ -384,6 +398,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::IDLE:
+            LOG(DEBUG) << "Character on idle";
             combo = INITIAL_COMBO;
             attack_damage = ATTACK_DAMAGE_IDLE;
             attack_mask = ATTACK_MASK_IDLE;
@@ -405,6 +420,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMPING:
+            LOG(DEBUG) << "Character is jumping";
             attack_damage = ATTACK_DAMAGE_JUMPING;
             check_left(on_floor);
             check_right(on_floor);
@@ -420,6 +436,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::FALLING:
+            LOG(DEBUG) << "Character is falling";
             attack_damage = ATTACK_DAMAGE_FALLING;
             check_idle();
             check_left(false);
@@ -434,6 +451,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::RUNNING:
+            LOG(DEBUG) << "Character is running";
             attack_damage = ATTACK_DAMAGE_RUNNING;
             combo = INITIAL_COMBO;
             check_jump();
@@ -452,6 +470,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::CROUCH:
+            LOG(DEBUG) << "Character on crouch";
             attack_damage = ATTACK_DAMAGE_CROUNCH;
             check_idle();
             check_crouch_atk();
@@ -459,6 +478,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::DEFENDING:
+            LOG(DEBUG) << "Character is defending";
             attack_damage = ATTACK_DAMAGE_DEFENDING;
             attack_mask = ATTACK_MASK_DEFENDING;
             check_idle();
@@ -466,6 +486,7 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::DYING:
+            LOG(DEBUG) << "Character is dying";
             attack_damage = ATTACK_DAMAGE_DYING;
             /**
              * Check if in use sprite is finished
@@ -476,10 +497,15 @@ void Flesh::update_machine_state(float) {
         break;
 
         case FighterState::JUMP_ATK_DOWN:
+            LOG(DEBUG) << "Character on jump attack down";
         case FighterState::SPECIAL_1_1:
+            LOG(DEBUG) << "Character on special 1.1";
         case FighterState::SPECIAL_1_2:
+            LOG(DEBUG) << "Character on special 1.2";
         case FighterState::SPECIAL_2:
+            LOG(DEBUG) << "Character on special 2";
         case FighterState::LAST:
+            LOG(DEBUG) << "Last state of character";
             printf("Invalid flesh %d %d state\n", id, state);
             exit(-1);
         break;

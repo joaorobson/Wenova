@@ -12,12 +12,15 @@
 #include "Resources.h"
 #include "Config.h"
 
+#include "easylogging++.h"
+
 /**
  * The constructor.
  * Initialize the music null
  * container coordinates of the Music class.
  */
 Music::Music() {
+    LOG(DEBUG) << "Music constructor null activated";
     music = nullptr;
 }
 
@@ -29,6 +32,7 @@ Music::Music() {
  * @param file is the file where is the music.
  */
 Music::Music(string file) {
+    LOG(DEBUG) << "Music full constructor activated";
     this->open(file);
 }
 
@@ -38,6 +42,7 @@ Music::Music(string file) {
  * @param times is the times to play the music
  */
 void Music::play(int times) {
+    LOG(DEBUG) << "Music plays";
     int mix_play_music = Mix_PlayMusic(music.get(), times);
     /**
      * Check if the music played
@@ -52,6 +57,7 @@ void Music::play(int times) {
  * Stop the music
  */
 void Music::stop() {
+    LOG(DEBUG) << "Music stopes";
     int mix_fade_out_music = Mix_FadeOutMusic(0);
     /**
      * Check if the music stoped

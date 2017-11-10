@@ -11,6 +11,7 @@
 #include "Timer.h"
 
 #include <assert.h>
+#include "easylogging++.h"
 
 #define INITIAL_TIME 0
 
@@ -18,6 +19,7 @@
  * Initialize a timer
  */
 Timer::Timer() {
+    LOG(DEBUG) << "Timer initialized";
     time = 0;
 }
 
@@ -35,6 +37,7 @@ void Timer::update(float delta) {
  * Restart the timer
  */
 void Timer::restart() {
+    LOG(DEBUG) << "Timer is restarting";
     time = INITIAL_TIME;
 }
 

@@ -11,6 +11,8 @@
 #include "Vector.h"
 #include <cmath>
 
+#include "easylogging++.h"
+
 #define RATE_TO_ROTATE_CORDINATE_X 200
 #define RATE_TO_ROTATE_CORDINATE_Y 200
 
@@ -30,6 +32,7 @@ Vector::Vector(float mx, float my) : x(mx), y(my) {}
  * @param angle is the angle you want to rotate
  */
 void Vector::rotate(Vector origin, float angle) {
+    LOG(DEBUG) << "Vector full constructor activated";
     x = origin.x + RATE_TO_ROTATE_CORDINATE_X * cos(angle);
     y = origin.y + RATE_TO_ROTATE_CORDINATE_Y * sin(angle);
 }
@@ -41,6 +44,7 @@ void Vector::rotate(Vector origin, float angle) {
  * @param angle is the angle you want to put
  */
 void Vector::transform(float module, float angle) {
+    LOG(DEBUG) << "Vector is transforming";
     x = module * cos(angle);
     y = module * sin(angle);
 }

@@ -15,11 +15,11 @@ INITIALIZE_EASYLOGGINGPP
 
 /**
  * Main.
- * Inicializes the game.
+ * Initializes the game.
  */
 int main(int, char **) {
     Game game("Wenova - Rise of Conquerors");
-     LOG(INFO) << "My first info log using default logger";
+    LOG(INFO) << "Game initialized";
 
     State * state =  new MenuState(false);
     game.push(state);

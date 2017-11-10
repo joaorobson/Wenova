@@ -10,6 +10,8 @@
 
 #include "HealEffect.h"
 
+#include "easylogging++.h"
+
 /**
  * The constructor.
  * Initialize the heal effect
@@ -25,6 +27,7 @@
 HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
                        int frames, float chealing_factor)
     : Effect(cparent, csprite, ctags, frames) {
+    LOG(DEBUG) << "HealEffect constructor activated";
     healing_factor = chealing_factor;
 }
 
@@ -34,6 +37,7 @@ HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
  * @params delta is the variation of the heal.
  */
 void HealEffect::update(float delta) {
+    LOG(DEBUG) << "HealEffect is updating";
     /**
      * Check if the parent is true
      */

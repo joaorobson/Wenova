@@ -12,6 +12,8 @@
 #include "InputManager.h"
 #include "Camera.h"
 
+#include "easylogging++.h"
+
 #define LAYER 0
 #define PI 3.14159265358979
 #define HEIGHT 20
@@ -35,6 +37,7 @@ int Floor::floor_id = 1;
  * @param cplataform is the type of the plataform selected.
  */
 Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
+    LOG(DEBUG) << "Floor constructor activated";
     is_crossingable = cplatform;
     rotation = crotation * PI / 180.0;
     box = Rectangle(x, y, width, HEIGHT);
