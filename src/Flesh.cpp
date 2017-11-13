@@ -690,7 +690,7 @@ void Flesh::check_crouch(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_1(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in idle neutral 1 mode";
+    LOG(DEBUG) << "Checking if character is attacking in idle neutral 1";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without pressing down button
@@ -711,7 +711,7 @@ void Flesh::check_idle_atk_neutral_1(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_2(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in idle neutral 2 mode";
+    LOG(DEBUG) << "Checking if character is attacking in idle neutral 2";
     /**
      * Check if combo happened
      */
@@ -732,7 +732,7 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_3(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in idle neutral 3 mode";
+    LOG(DEBUG) << "Checking if character is attacking in idle neutral 3";
     /**
      * Check if combo happened
      */
@@ -754,7 +754,7 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
  * @param condition check if the character is in condition
  */
 void Flesh::check_idle_atk_front(bool change, bool condition) {
-    LOG(DEBUG) << "Checking if character is attacking in idle front mode";
+    LOG(DEBUG) << "Checking if character is attacking in idle front";
     assert(ATTACK_BUTTON >= 0);
     assert(LEFT_BUTTON >= 0);
     assert(RIGHT_BUTTON >= 0);
@@ -786,7 +786,7 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_fallloop(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in jump down fallloop mode";
+    LOG(DEBUG) << "Checking if character is attacking in jump down fallloop";
     assert(ATTACK_BUTTON >= 0);
     assert(DOWN_BUTTON >= 0);
     /**
@@ -808,7 +808,7 @@ void Flesh::check_jump_atk_down_fallloop(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_dmg(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in jump down dmg mode";
+    LOG(DEBUG) << "Checking if character is attacking in jump down dmg";
     /**
      * Check if grab happened
      */
@@ -828,7 +828,7 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_neutral(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in jump neutral mode";
+    LOG(DEBUG) << "Checking if character is attacking in jump neutral";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without down or up button
@@ -850,7 +850,7 @@ void Flesh::check_jump_atk_neutral(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_down(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in idle down mode";
+    LOG(DEBUG) << "Checking if character is attacking in idle down";
     assert(ATTACK_BUTTON >= 0);
     assert(DOWN_BUTTON >= 0);
     /**
@@ -963,7 +963,7 @@ void Flesh::check_pass_through_platform(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_defense(bool change) {
-    LOG(DEBUG) << "Checking if character is in defense mode";
+    LOG(DEBUG) << "Checking if character is in defense";
     assert(BLOCK_BUTTON >= 0);
     /**
      * Check if user is pressing block button with his character on floor
@@ -1042,7 +1042,7 @@ void Flesh::check_crouch_atk(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_up(bool change) {
-    LOG(DEBUG) << "Checking if character is attacking in jump up mode";
+    LOG(DEBUG) << "Checking if character is attacking in jump up";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack and up button
