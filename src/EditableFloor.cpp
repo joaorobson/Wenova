@@ -151,22 +151,21 @@ string EditableFloor::get_information() {
         info_c, sizeof(info_c), "%f %f %f %f %d", box.x, box.y, box.width,
         rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
 
+    string info(info_c);
+    string return_value = info;
+
     if (snprint_return == 5) {
         /* Nothing to do. */
     } else {
         LOG(ERROR) << "Could not get the complete information";
     }
 
-    string info(info_c);
-
     for (auto &c : info) {
         c += FILL_MISSING_PIXELS_DEBUGRMATIONS;
     }
 
-    string return_value = info;
-
     /*
-     * Check if string reallyhas the elements.
+     * Check if string really has the elements.
      * info == info_c for sure
      */
     float float1, float2, float3, float4;
@@ -416,14 +415,15 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
     // LOG(DEBUG) << "Starting EditableFloor handle_box_rotating method";
 
     InputManager *input_manager = InputManager::get_instance();
+    float rate = ROTATING_SPEED * delta_space / acceleration;
 
     /**
      * Rotate box to corresponding direction or reset it.
      */
     if (input_manager->is_key_down(InputManager::K_ROT_LEFT)) {
-        rotation += ROTATING_SPEED * delta_space / acceleration;
+        rotation += rate;
     } else if (input_manager->is_key_down(InputManager::K_ROT_RIGHT)) {
-        rotation -= ROTATING_SPEED * delta_space / acceleration;
+        rotation -= rate;
     } else if (input_manager->is_key_down(InputManager::K_ROT_RESET)) {
         rotation = 0;
     } else {
@@ -445,8 +445,8 @@ void EditableFloor::handle_acceleration_increasing(bool &moved,
     // method";
 
     if (moved) {
-        acceleration = fmin(acceleration + ACCELERATION_INCREASE_STEP,
-                            MAXIMUM_ACCELERATION);
+        float new_acceleration = acceleration + ACCELERATION_INCREASE_STEP;
+        acceleration = fmin(new_acceleration, MAXIMUM_ACCELERATION);
     } else {
         acceleration = ACCELERATION;
     }
