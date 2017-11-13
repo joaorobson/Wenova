@@ -128,28 +128,26 @@ InputManager::InputManager() {
      * Check if memsets succeeds.
      */
     if (ptr_states == &mouse_buttons_states and ptr_updates == &mouse_update) {
-        /* Nothing to do. */
+        this->analogic_sensibility_value = DEFAULT_ANALOGIC_SENSIBILITY;
+        this->triggers_sensibility_value = DEFAULT_TRIGGERS_SENSIBILITY;
+
+        keyboard_to_joystick_id = 0;
+        map_keyboard_to_joystick(keyboard_to_joystick_id);
+
+        /**
+         * Start controllers with nullptr.
+         */
+        for (int i = 0; i < N_CONTROLLERS; i++) {
+            controllers[i] = nullptr;
+        }
+
+        has_quit_request = false;
+        update_counter = 0;
+        mouse_x_position = 0;
+        mouse_y_position = 0;
     } else {
         LOG(FATAL) << "Memset failed on initializing some vectors";
     }
-
-    this->analogic_sensibility_value = DEFAULT_ANALOGIC_SENSIBILITY;
-    this->triggers_sensibility_value = DEFAULT_TRIGGERS_SENSIBILITY;
-
-    keyboard_to_joystick_id = 0;
-    map_keyboard_to_joystick(keyboard_to_joystick_id);
-
-    /**
-     * Start controllers with nullptr.
-     */
-    for (int i = 0; i < N_CONTROLLERS; i++) {
-        controllers[i] = nullptr;
-    }
-
-    has_quit_request = false;
-    update_counter = 0;
-    mouse_x_position = 0;
-    mouse_y_position = 0;
 
     // LOG(DEBUG) << "Ending InputManager constructor";
 }
@@ -167,6 +165,7 @@ InputManager::~InputManager() {
         joysticks_buttons_states[i].clear();
         joystick_update[i].clear();
     }
+
     keyboard_to_joystick.clear();
     keys_states.clear();
     keys_updates.clear();
@@ -326,20 +325,8 @@ void InputManager::set_analogic_sensibility_value(int value) {
 void InputManager::connect_joysticks() {
     // LOG(DEBUG) << "Starting InputManager connect_joysticks method";
 
-    /**
-     * Max number of joysticks can be only four.
-     */
     int max = SDL_NumJoysticks();
-    if (max <= N_CONTROLLERS) {
-        /* Nothing to do. */
-    } else if (max > 0) {
-        max = N_CONTROLLERS;
-    } else {
-        string str_error(SDL_GetError());
-        string log_message =
-            "Couldn't get number of joysticks connected: " + str_error;
-        LOG(ERROR) << log_message;
-    }
+    max = std::max(max, N_CONTROLLERS);
 
     /**
      * To reset connections.
@@ -367,43 +354,35 @@ void InputManager::connect_joysticks() {
         string guid_cpp(guid);
         if (guid_cpp != "") {
             /* Nothing to do */
-        } else {
-            LOG(ERROR) << "Problems getting strings of joysticks";
-        }
+            if (SDL_IsGameController(i)) {
+                controllers[i] = SDL_GameControllerOpen(i);
 
-        if (SDL_IsGameController(i)) {
-            controllers[i] = SDL_GameControllerOpen(i);
+                SDL_Joystick *j = SDL_GameControllerGetJoystick(controllers[i]);
+                int instance_id = SDL_JoystickInstanceID(j);
+                printf("Controller %d (%d real) connected\n", i, instance_id);
 
-            SDL_Joystick *j = SDL_GameControllerGetJoystick(controllers[i]);
-            int instance_id = SDL_JoystickInstanceID(j);
-            printf("Controller %d (%d real) connected\n", i, instance_id);
+                controllers_id[instance_id] = i;
+                n_controller++;
+            } else {
+                LOG(WARNING) << "Joystick is not a game controller";
 
-            controllers_id[instance_id] = i;
-            n_controller++;
-        } else {
-            LOG(WARNING) << "Joystick is not a game controller";
-
-            try {
-                if (SDL_JoystickOpen(i)) {
-                    /* Nothing to do */
-                } else {
-                    try {
+                try {
+                    if (SDL_JoystickOpen(i)) {
+                        /* Nothing to do */
+                    } else {
                         string log_message =
                             "Couldn't open joystick: " + std::to_string(i);
                         LOG(ERROR) << log_message;
-                    } catch (std::bad_alloc &error) {
-                        string str_error(error.what());
-                        string log_message =
-                            "Couldn't convert to string: " + str_error + '\n';
-                        LOG(FATAL) << log_message;
                     }
+                } catch (std::bad_alloc &error) {
+                    string str_error(error.what());
+                    string log_message =
+                        "Couldn't convert to string: " + str_error + '\n';
+                    LOG(FATAL) << log_message;
                 }
-            } catch (std::bad_alloc &error) {
-                string str_error(error.what());
-                string log_message =
-                    "Couldn't convert to string: " + str_error + '\n';
-                LOG(FATAL) << log_message;
             }
+        } else {
+            LOG(ERROR) << "Problems getting strings of joysticks";
         }
     }
 
@@ -1004,17 +983,17 @@ void InputManager::emulate_joystick(int key_id, bool state) {
      * Will update status for joystick based on profile.
      */
     if (keyboard_to_joystick_id == N_CONTROLLERS) {
+        int last_state_id = keyboard_to_joystick[key_id] - 1;
+
         for (int i = 0; i < N_CONTROLLERS; i++) {
-            joysticks_buttons_states[i][keyboard_to_joystick[key_id] - 1] =
-                state;
-            joystick_update[i][keyboard_to_joystick[key_id] - 1] =
-                update_counter;
+            joysticks_buttons_states[i][last_state_id] = state;
+            joystick_update[i][last_state_id] = update_counter;
         }
     } else if (keyboard_to_joystick_id >= 0) {
-        joysticks_buttons_states[keyboard_to_joystick_id]
-                                [keyboard_to_joystick[key_id] - 1] = state;
-        joystick_update[keyboard_to_joystick_id]
-                       [keyboard_to_joystick[key_id] - 1] = update_counter;
+        int last_state_id = keyboard_to_joystick[key_id] - 1;
+
+        joysticks_buttons_states[keyboard_to_joystick_id][last_state_id] = state;
+        joystick_update[keyboard_to_joystick_id][last_state_id] = update_counter;
     } else {
         /* Nothing to do. */
     }
@@ -1035,7 +1014,7 @@ void InputManager::reset_keyboard_to_joystick() {
         not keyboard_to_joystick_id > N_CONTROLLERS) {
         /**
          * Updates State for all if true, else
-         * just to on index keyboard_to_joystick_id.
+         * just on index keyboard_to_joystick_id.
          */
         int i = (keyboard_to_joystick_id == N_CONTROLLERS)
             ? 0
@@ -1084,6 +1063,7 @@ void InputManager::handle_mouse_update() {
 
     mouse_x_position = std::max(0, mouse_x_position);
     mouse_x_position = std::min(mouse_x_position, BACKGROUND_WIDTH);
+
     mouse_y_position = std::max(0, mouse_y_position);
     mouse_y_position = std::min(mouse_y_position, BACKGROUND_HEIGHT);
 
