@@ -10,6 +10,9 @@
  */
 #include "TimeCounter.h"
 
+#define INFERIOR_LIMIT_TIME 0
+#define UPPER_LIMIT_TIME 99
+
 using std::to_string;
 
 /**
@@ -100,7 +103,12 @@ bool TimeCounter::is_over() {
  * @return is a string representing the remaining time.
  */
 string TimeCounter::get_time_string() {
-    return to_string(static_cast<int>(remaining_seconds));
+    if (remaining_seconds >= INFERIOR_LIMIT_TIME and
+        remaining_seconds <= UPPER_LIMIT_TIME) {
+        return to_string(static_cast<int>(remaining_seconds));
+    } else {
+        return to_string(UPPER_LIMIT_TIME);
+    }
 }
 
 /**
