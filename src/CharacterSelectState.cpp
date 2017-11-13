@@ -130,24 +130,30 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
     void* ptr_character =
         memset(is_character_selected, false, sizeof is_character_selected);
 
-    /**
-     * Check if memsets succeeds.
-     */
-    if (ptr_collumn != current_column or ptr_row != &current_row or
-        ptr_skin != current_skin or ptr_character != is_character_selected) {
-        LOG(FATAL) << "Memset failed on initializing some vectors";
+    if (ptr_collumn == current_column or ptr_row == &current_row or
+        ptr_skin == current_skin or ptr_character == is_character_selected) {
+        Mix_AllocateChannels(ALLOCATED_CHANNELS);
+
+        check_constants();
+        load_resources();
+        initialize_elements_positions();
+
+        InputManager::get_instance()->map_keyboard_to_joystick(
+            InputManager::MENU_MODE);
+
+        LOG(DEBUG) << "Ending CharacterSelectState constructor";
+    } else {
+#ifndef NDEBUG
+        /**
+         * Check if memsets succeeds.
+         */
+        if (ptr_collumn != current_column or ptr_row != &current_row or
+            ptr_skin != current_skin or
+            ptr_character != is_character_selected) {
+            LOG(FATAL) << "Memset failed on initializing some vectors";
+        }
+#endif
     }
-
-    Mix_AllocateChannels(ALLOCATED_CHANNELS);
-
-    check_constants();
-    load_resources();
-    initialize_elements_positions();
-
-    InputManager::get_instance()->map_keyboard_to_joystick(
-        InputManager::MENU_MODE);
-
-    LOG(DEBUG) << "Ending CharacterSelectState constructor";
 }
 
 /**
@@ -317,23 +323,21 @@ vector<pair<string, string>> CharacterSelectState::export_players() {
     for (int i = 0; i < N_PLAYERS; i++) {
         int char_sel = current_row[i] * N_COLS + current_column[i];
 
-#ifndef NDEBUG
         if (char_sel < N_CHARS) {
-            /* Nothing to do. */
+            try {
+                players.push_back(std::make_pair(
+                    chars[char_sel].get_name(),
+                    chars[char_sel].get_skin_name(current_skin[i])));
+            } catch (std::bad_alloc& error) {
+                string str_error(error.what());
+                log_message = "Couldn't convert to string: " + str_error + '\n';
+                LOG(FATAL) << log_message;
+            }
         } else {
+#ifndef NDEBUG
             log_message = "char_sel is out of bound with value: " + char_sel;
             LOG(FATAL) << log_message;
-        }
 #endif
-
-        try {
-            players.push_back(
-                std::make_pair(chars[char_sel].get_name(),
-                               chars[char_sel].get_skin_name(current_skin[i])));
-        } catch (std::bad_alloc& error) {
-            string str_error(error.what());
-            log_message = "Couldn't convert to string: " + str_error + '\n';
-            LOG(FATAL) << log_message;
         }
     }
 
@@ -380,21 +384,6 @@ bool CharacterSelectState::all_players_selected() {
             return_value = true;
         } else {
             return_value = false;
-
-#ifndef NDEBUG
-            try {
-                log_message =
-                    "Ending CharacterSelectState all_players_selected method "
-                    "returning value: " +
-                    std::to_string(static_cast<int>(return_value));
-            } catch (std::bad_alloc& error) {
-                string str_error(error.what());
-                log_message = "Couldn't convert to string: " + str_error + '\n';
-                LOG(FATAL) << log_message;
-            }
-#endif
-
-            LOG(DEBUG) << log_message;
             break;
         }
     }
@@ -443,17 +432,15 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     vector<string> names = CHARACTERS_NAMES;
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
+    pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
+
 #ifndef NDEBUG
     if (names.size() == frames.size()) {
         /* Nothing to do. */
     } else {
         LOG(FATAL) << "Names array size different of frames array size";
     }
-#endif
 
-    pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
-
-#ifndef NDEBUG
     if (names.size() and frames.size()) {
         /* Nothing to do. */
     } else {
@@ -503,6 +490,8 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
+    pair<int, int> return_value = ii(x[col], y[row]);
+
 #ifndef NDEBUG
     try {
         if ((size_t) col < x.size()) {
@@ -520,17 +509,7 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
                 "row is out of bound with value: " + std::to_string(row);
             LOG(FATAL) << log_message;
         }
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-#endif
 
-    pair<int, int> return_value = ii(x[col], y[row]);
-
-#ifndef NDEBUG
-    try {
         log_message =
             "Ending CharacterSelectState get_slot method returning values: " +
             std::to_string(return_value.first) + ", " +
@@ -1004,6 +983,7 @@ void CharacterSelectState::handle_random_select(unsigned int player) {
  * @param player player which will random selected [0, N_PLAYERS - 1]
  */
 void CharacterSelectState::handle_navigating(unsigned int player) {
+#ifndef NDEBUG
     try {
         string log_message =
             "Starting CharacterSelectState handle_navigating method, player "
@@ -1015,6 +995,7 @@ void CharacterSelectState::handle_navigating(unsigned int player) {
         string log_message = "Couldn't convert to string: " + str_error + '\n';
         LOG(FATAL) << log_message;
     }
+#endif
 
     /**
      * To know if should reset skin to default.
@@ -1090,24 +1071,27 @@ void CharacterSelectState::handle_navigating(unsigned int player) {
 }
 
 void CharacterSelectState::handle_select(unsigned int player) {
+#ifndef NDEBUG
     string log_message =
         "Starting CharacterSelectState handle_select method, player value: " +
         player;
     LOG(DEBUG) << log_message;
+#endif
 
     /**
      * Select character and lock skin.
      */
     if (is_key_pressed[player][A]) {
-        int char_sel = current_row[player] * N_COLS + current_column[player];
+        int char_sel_id = current_row[player] * N_COLS + current_column[player];
+        FighterMenu char_sel = chars[char_sel_id];
 
         /**
          * Check if character and skin are unblocked.
          */
-        if (chars[char_sel].is_enabled() and
-            chars[char_sel].is_skin_available(current_skin[player])) {
+        if (char_sel.is_enabled() and
+            char_sel.is_skin_available(current_skin[player])) {
             select_sound.play();
-            chars[char_sel].lock_skin(current_skin[player]);
+            char_sel.lock_skin(current_skin[player]);
             is_character_selected[player] = true;
         } else {
             blocked_sound.play();
@@ -1123,6 +1107,7 @@ void CharacterSelectState::handle_select(unsigned int player) {
  * @param delta_time Time spent on each frame
  */
 void CharacterSelectState::play_sprites_animation(float delta_time) {
+#ifndef NDEBUG
     try {
         string log_message =
             "Starting CharacterSelectState play_sprites_animation method, "
@@ -1134,9 +1119,11 @@ void CharacterSelectState::play_sprites_animation(float delta_time) {
         string log_message = "Couldn't convert to string: " + str_error + '\n';
         LOG(FATAL) << log_message;
     }
+#endif
 
     for (int i = 0; i < N_CHARS; i++) {
-        chars[i].get_disabled().update(delta_time);
+        Sprite disabled_char = chars[i].get_disabled();
+        disabled_char.update(delta_time);
 
         for (int j = 0; j < N_SKINS; j++) {
             chars[i].get_skin(j).update(delta_time);
