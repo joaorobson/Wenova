@@ -22,15 +22,11 @@ void Config::init() {
 
     std::fstream config_file(CONFIGURATION_FILE_PATH);
 
-#ifndef NDEBUG
     if (config_file.is_open()) {
-        /* Nothing to do. */
+        config_file >> width >> height >> fullscreen;
     } else {
-        LOG(FATAL) << "File couldn't be open";
+        LOG(ERROR) << "File couldn't be open";
     }
-#endif
-
-    config_file >> width >> height >> fullscreen;
 
     LOG(DEBUG) << "Ending Config init";
 }
@@ -155,16 +151,12 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
 
     std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);
 
-#ifndef NDEBUG
     if (config_file.is_open()) {
-        /* Nothing to do. */
+        config_file << width << " " << height << " " << fullscreen << std::endl;
+        config_file.close();
     } else {
-        LOG(FATAL) << "File couldn't be open";
+        LOG(ERROR) << "File couldn't be open";
     }
-#endif
-
-    config_file << width << " " << height << " " << fullscreen << std::endl;
-    config_file.close();
 
     if (not config_file.fail()) {
         /* Nothing to do. */
