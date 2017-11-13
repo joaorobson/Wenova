@@ -74,8 +74,45 @@
 #define RATE_TO_INITIAL_SPEED_ESPECIAL_2 0.5
 
 #define STOPPED 0
-#define DYING_TAG "dying"
 
+#define DYING_TAG "dying"
+#define FLESH_TAG "flesh"
+
+#define CHARACTER_FLESH "characters/flesh/"
+#define CHARACTER_FLESH_SOUND "characters/flesh/sound/"
+
+#define IMAGE_IDLE "idle.png"
+#define IMAGE_RUNNING "running.png"
+#define IMAGE_JUMPING "jumping.png"
+#define IMAGE_FALLING "falling.png"
+#define IMAGE_CROUNCH "crouch.png"
+#define IMAGE_IDLE_ATK_NEUTRAL_1 "idle_atk_neutral_1.png"
+#define IMAGE_IDLE_ATK_NEUTRAL_2 "idle_atk_neutral_2.png"
+#define IMAGE_IDLE_ATK_NEUTRAL_3 "idle_atk_neutral_3.png"
+#define IMAGE_IDLE_ATK_UP "idle_atk_up.png"
+#define IMAGE_IDLE_ATK_FRONT "idle_atk_front.png"
+#define IMAGE_JUMP_ATK_DOWN_FALLLOOP "jump_atk_down_fallloop.png"
+#define IMAGE_JUMP_ATK_DOWN_DMG "jump_atk_down_dmg.png"
+#define IMAGE_JUMP_ATK_UP "jump_atk_up.png"
+#define IMAGE_JUMP_ATK_NEUTRAL "jump_atk_neutral.png"
+#define IMAGE_IDLE_ATK_DOWN "idle_atk_down.png"
+#define IMAGE_CROUNCH_ATK "crouch_atk.png"
+#define IMAGE_SPECIAL_1 "special_1.png"
+#define IMAGE_STUNNED "stunned.png"
+#define IMAGE_DYING "dying.png"
+#define IMAGE_DEFENSE "defense.png"
+
+#define SOUND_JUMPING "jump.ogg"
+#define SOUND_ATTACK_1 "attack_1.ogg"
+#define SOUND_ATTACK_2 "attack_2.ogg"
+#define SOUND_ATTACK_3 "attack_3.ogg"
+#define SOUND_SLASH "slash.ogg"
+#define SOUND_ULTIMATE "ultimate.ogg"
+#define SOUND_LAND "land.ogg"
+#define SOUND_HIT_SLASH "hit_slash.ogg"
+#define SOUND_HIT_1 "hit_1.ogg"
+#define SOUND_HIT_2 "hit_2.ogg"
+#define SOUND_HIT_3 "hit_3.ogg"
 
 /**
  * The constructor.
@@ -91,57 +128,57 @@
  */
 Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner)
     : Fighter(cid, x, cpartner) {
-    path = "characters/flesh/" + skin + "/";
-    sound_path = "characters/flesh/sound/";
+    path = CHARACTER_FLESH + skin + "/";
+    sound_path = CHARACTER_FLESH_SOUND;
 
-    sprite[IDLE] = Sprite(path + "idle.png", 8, 10);
-    sprite[RUNNING] = Sprite(path + "running.png", 8, 10);
-    sprite[JUMPING] = Sprite(path + "jumping.png", 6, 10);
-    sprite[FALLING] = Sprite(path + "falling.png", 7, 10);
-    sprite[CROUCH] = Sprite(path + "crouch.png", 6, 20);
-    sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + "idle_atk_neutral_1.png", 4,
+    sprite[IDLE] = Sprite(path + IMAGE_IDLE, 8, 10);
+    sprite[RUNNING] = Sprite(path + IMAGE_RUNNING, 8, 10);
+    sprite[JUMPING] = Sprite(path + IMAGE_JUMPING, 6, 10);
+    sprite[FALLING] = Sprite(path + IMAGE_FALLING, 7, 10);
+    sprite[CROUCH] = Sprite(path + IMAGE_CROUNCH, 6, 20);
+    sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + IMAGE_IDLE_ATK_NEUTRAL_1, 4,
                                         10);
-    sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + "idle_atk_neutral_2.png", 3,
+    sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + IMAGE_IDLE_ATK_NEUTRAL_2, 3,
                                         10);
-    sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + "idle_atk_neutral_3.png", 5,
+    sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + IMAGE_IDLE_ATK_NEUTRAL_3, 5,
                                         10);
-    sprite[IDLE_ATK_UP] = Sprite(path + "idle_atk_up.png", 4, 10);
-    sprite[IDLE_ATK_FRONT] = Sprite(path + "idle_atk_front.png", 4, 10);
+    sprite[IDLE_ATK_UP] = Sprite(path + IMAGE_IDLE_ATK_UP, 4, 10);
+    sprite[IDLE_ATK_FRONT] = Sprite(path + IMAGE_IDLE_ATK_FRONT, 4, 10);
     sprite[JUMP_ATK_DOWN_FALLLOOP] = Sprite(path +
-           "jump_atk_down_fallloop.png", 3, 10);
-    sprite[JUMP_ATK_DOWN_DMG] = Sprite(path + "jump_atk_down_dmg.png", 3, 10);
-    sprite[JUMP_ATK_UP] = Sprite(path + "jump_atk_up.png", 4, 10);
-    sprite[JUMP_ATK_NEUTRAL] = Sprite(path + "jump_atk_neutral.png", 4, 10);
-    sprite[IDLE_ATK_DOWN] = Sprite(path + "idle_atk_down.png", 4, 10);
-    sprite[CROUCH_ATK] = Sprite(path + "crouch_atk.png", 4, 10);
-    sprite[SPECIAL_1] = Sprite(path + "special_1.png", 3, 30);
-    sprite[STUNNED] = Sprite(path + "stunned.png", 2, 10);
-    sprite[DYING] = Sprite(path + "dying.png", 10, 10);
-    sprite[DEFENDING] = Sprite(path + "defense.png", 2, 10);
+           IMAGE_JUMP_ATK_DOWN_FALLLOOP, 3, 10);
+    sprite[JUMP_ATK_DOWN_DMG] = Sprite(path + IMAGE_JUMP_ATK_DOWN_DMG, 3, 10);
+    sprite[JUMP_ATK_UP] = Sprite(path + IMAGE_JUMP_ATK_UP, 4, 10);
+    sprite[JUMP_ATK_NEUTRAL] = Sprite(path + IMAGE_JUMP_ATK_NEUTRAL, 4, 10);
+    sprite[IDLE_ATK_DOWN] = Sprite(path + IMAGE_IDLE_ATK_DOWN, 4, 10);
+    sprite[CROUCH_ATK] = Sprite(path + IMAGE_CROUNCH_ATK, 4, 10);
+    sprite[SPECIAL_1] = Sprite(path + IMAGE_SPECIAL_1, 3, 30);
+    sprite[STUNNED] = Sprite(path + IMAGE_STUNNED, 2, 10);
+    sprite[DYING] = Sprite(path + IMAGE_DYING, 10, 10);
+    sprite[DEFENDING] = Sprite(path + IMAGE_DEFENSE, 2, 10);
 
-    sound[JUMPING] = Sound(sound_path + "jump.ogg");
-    sound[IDLE_ATK_NEUTRAL_1] = Sound(sound_path + "attack_1.ogg");
-    sound[IDLE_ATK_NEUTRAL_2] = Sound(sound_path + "attack_2.ogg");
-    sound[IDLE_ATK_NEUTRAL_3] = Sound(sound_path + "attack_3.ogg");
-    sound[IDLE_ATK_UP] = Sound(sound_path + "slash.ogg");
-    sound[IDLE_ATK_FRONT] = Sound(sound_path + "slash.ogg");
-    sound[IDLE_ATK_DOWN] = Sound(sound_path + "attack_1.ogg");
-    sound[JUMP_ATK_UP] = Sound(sound_path + "attack_1.ogg");
-    sound[JUMP_ATK_DOWN_DMG] = Sound(sound_path + "slash.ogg");
-    sound[JUMP_ATK_NEUTRAL] = Sound(sound_path + "attack_2.ogg");
-    sound[CROUCH_ATK] = Sound(sound_path + "attack_2.ogg");
+    sound[JUMPING] = Sound(sound_path + SOUND_JUMPING);
+    sound[IDLE_ATK_NEUTRAL_1] = Sound(sound_path + SOUND_ATTACK_1);
+    sound[IDLE_ATK_NEUTRAL_2] = Sound(sound_path + SOUND_ATTACK_2);
+    sound[IDLE_ATK_NEUTRAL_3] = Sound(sound_path + SOUND_ATTACK_3);
+    sound[IDLE_ATK_UP] = Sound(sound_path + SOUND_SLASH);
+    sound[IDLE_ATK_FRONT] = Sound(sound_path + SOUND_SLASH);
+    sound[IDLE_ATK_DOWN] = Sound(sound_path + SOUND_ATTACK_1);
+    sound[JUMP_ATK_UP] = Sound(sound_path + SOUND_ATTACK_1);
+    sound[JUMP_ATK_DOWN_DMG] = Sound(sound_path + SOUND_SLASH);
+    sound[JUMP_ATK_NEUTRAL] = Sound(sound_path + SOUND_ATTACK_2);
+    sound[CROUCH_ATK] = Sound(sound_path + SOUND_ATTACK_2);
 
-    ultimate_sound = Sound(sound_path + "ultimate.ogg");
-    land_sound = Sound(sound_path + "land.ogg");
-    hit_sounds[0] = Sound(sound_path + "hit_slash.ogg");
-    hit_sounds[1] = Sound(sound_path + "hit_1.ogg");
-    hit_sounds[2] = Sound(sound_path + "hit_2.ogg");
-    hit_sounds[3] = Sound(sound_path + "hit_3.ogg");
+    ultimate_sound = Sound(sound_path + SOUND_ULTIMATE);
+    land_sound = Sound(sound_path + SOUND_LAND);
+    hit_sounds[0] = Sound(sound_path + SOUND_HIT_SLASH);
+    hit_sounds[1] = Sound(sound_path + SOUND_HIT_1);
+    hit_sounds[2] = Sound(sound_path + SOUND_HIT_2);
+    hit_sounds[3] = Sound(sound_path + SOUND_HIT_3);
 
     crouching_size = Vector(84, 59);
     not_crouching_size = Vector(84, 84);
 
-    tags["flesh"] = true;
+    tags[FLESH_TAG] = true;
     tags[skin] = true;
     box = Rectangle(x, y, 84, 84);
     additional_attack_damage = 1;
@@ -518,6 +555,7 @@ void Flesh::update_machine_state(float) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump(bool change) {
+    LOG(DEBUG) << "Checking if character is jumping";
     assert(JUMP_BUTTON >= 0);
     /**
      * Check if the user is pressing the jump button
@@ -540,6 +578,7 @@ void Flesh::check_jump(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_fall(bool change) {
+    LOG(DEBUG) << "Checking if character is falling";
     assert(STOPPED == 0);
     /**
      * Check if in use sprite is falling
@@ -560,6 +599,7 @@ void Flesh::check_fall(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_left(bool change) {
+    LOG(DEBUG) << "Checking if character is walking to left";
     assert(LEFT_BUTTON >= 0);
     /**
      * Check if user is pressing the left button
@@ -582,6 +622,7 @@ void Flesh::check_left(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_right(bool change) {
+    LOG(DEBUG) << "Checking if character is walking to right";
     assert(RIGHT_BUTTON >= 0);
     /**
      * Check if user is pressing the right button
@@ -604,6 +645,7 @@ void Flesh::check_right(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle(bool change, bool condition) {
+    LOG(DEBUG) << "Checking if character is idle";
     assert(DOWN_BUTTON >= 0);
     assert(BLOCK_BUTTON >= 0);
     assert(STOPPED == 0);
@@ -627,6 +669,7 @@ void Flesh::check_idle(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_crouch(bool change) {
+    LOG(DEBUG) << "Checking if character is crounching";
     assert(DOWN_BUTTON >= 0);
     /**
      * Check if user is pressing down button when his character is on floor
@@ -647,6 +690,7 @@ void Flesh::check_crouch(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_1(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in idle neutral 1 mode";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without pressing down button
@@ -667,6 +711,7 @@ void Flesh::check_idle_atk_neutral_1(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_2(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in idle neutral 2 mode";
     /**
      * Check if combo happened
      */
@@ -687,6 +732,7 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_neutral_3(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in idle neutral 3 mode";
     /**
      * Check if combo happened
      */
@@ -708,6 +754,7 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
  * @param condition check if the character is in condition
  */
 void Flesh::check_idle_atk_front(bool change, bool condition) {
+    LOG(DEBUG) << "Checking if character is attacking in idle front mode";
     assert(ATTACK_BUTTON >= 0);
     assert(LEFT_BUTTON >= 0);
     assert(RIGHT_BUTTON >= 0);
@@ -739,6 +786,7 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_fallloop(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in jump down fallloop mode";
     assert(ATTACK_BUTTON >= 0);
     assert(DOWN_BUTTON >= 0);
     /**
@@ -760,6 +808,7 @@ void Flesh::check_jump_atk_down_fallloop(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_down_dmg(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in jump down dmg mode";
     /**
      * Check if grab happened
      */
@@ -779,6 +828,7 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_neutral(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in jump neutral mode";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without down or up button
@@ -800,6 +850,7 @@ void Flesh::check_jump_atk_neutral(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_down(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in idle down mode";
     assert(ATTACK_BUTTON >= 0);
     assert(DOWN_BUTTON >= 0);
     /**
@@ -821,6 +872,7 @@ void Flesh::check_idle_atk_down(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_special_1(bool change) {
+    LOG(DEBUG) << "Checking if character is activate special 1";
     assert(SPECIAL1_BUTTON >= 0);
     /**
      * Check if user is pressing special button
@@ -845,6 +897,7 @@ void Flesh::check_special_1(bool change) {
  * @param bool
  */
 void Flesh::check_special_2(bool) {
+    LOG(DEBUG) << "Checking if character is activate special 2";
     assert(SPECIAL2_BUTTON >= 0);
     additional_attack_damage = MINIMUM_TO_ADD_ESPECIAL_2_ATTACK +
                                (MAXIMUM_TO_ADD_ESPECIAL_2_ATTACK -
@@ -861,6 +914,7 @@ void Flesh::check_special_2(bool) {
  * @param bool
  */
 void Flesh::check_ultimate(bool) {
+    LOG(DEBUG) << "Checking if character is activate ultimate";
     /**
      * Check if user is pressing ultimate button with his atribute special on
      * maximun
@@ -879,6 +933,7 @@ void Flesh::check_ultimate(bool) {
  * @param change check if the state os character changed
  */
 void Flesh::check_pass_through_platform(bool change) {
+    LOG(DEBUG) << "Checking if character is passing through platform";
     assert(DOWN_BUTTON >= 0);
     assert(ATTACK_BUTTON >= 0);
     assert(CROUCH_COOLDOWN == 400.0);
@@ -908,6 +963,7 @@ void Flesh::check_pass_through_platform(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_defense(bool change) {
+    LOG(DEBUG) << "Checking if character is in defense mode";
     assert(BLOCK_BUTTON >= 0);
     /**
      * Check if user is pressing block button with his character on floor
@@ -928,6 +984,7 @@ void Flesh::check_defense(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_stunned(bool change) {
+    LOG(DEBUG) << "Checking if character is stunned";
     assert(STOPPED == 0);
     speed.x = SPEED_X_STUNNED;
     /**
@@ -944,6 +1001,7 @@ void Flesh::check_stunned(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_dead(bool change) {
+    LOG(DEBUG) << "Checking if character is dead";
     /**
      * Check if in use sprite is dying
      */
@@ -963,6 +1021,7 @@ void Flesh::check_dead(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_crouch_atk(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in crouch";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack button
@@ -983,6 +1042,7 @@ void Flesh::check_crouch_atk(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_jump_atk_up(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in jump up mode";
     assert(ATTACK_BUTTON >= 0);
     /**
      * Check if user is pressing attack and up button
@@ -1011,6 +1071,7 @@ void Flesh::check_jump_atk_up(bool change) {
  * @param change check if the state os character changed
  */
 void Flesh::check_idle_atk_up(bool change) {
+    LOG(DEBUG) << "Checking if character is attacking in idle up";
     assert(ATTACK_BUTTON >= 0);
     assert(UP_BUTTON >= 0);
     /**

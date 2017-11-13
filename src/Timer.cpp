@@ -29,6 +29,7 @@ Timer::Timer() {
  * @param delta is the variation of the time 
  */
 void Timer::update(float delta) {
+	LOG(DEBUG) << "Timer uptaded";
 	assert(delta >=0);
     time += delta;
 }
