@@ -110,6 +110,8 @@ const int InputManager::BATTLE_MODE;
  * Initializes variables.
  */
 InputManager::InputManager() {
+    LOG(INFO) << "Starting InputManager constructor";
+
     memset(mouse_buttons_states, false, sizeof mouse_buttons_states);
     memset(mouse_update, 0, sizeof mouse_update);
 
@@ -130,12 +132,16 @@ InputManager::InputManager() {
     update_counter = 0;
     mouse_x_position = 0;
     mouse_y_position = 0;
+
+    LOG(INFO) << "Ending InputManager constructor";
 }
 
 /**
  * Clear states about joystick and keyboard.
  */
 InputManager::~InputManager() {
+    LOG(INFO) << "Starting InputManager constructor";
+
     /**
      * Clear joystick data.
      */
@@ -146,12 +152,16 @@ InputManager::~InputManager() {
     keyboard_to_joystick.clear();
     keys_states.clear();
     keys_updates.clear();
+
+    LOG(INFO) << "Ending InputManager destructor";
 }
 
 /**
  * Integrates engine's resources with project variables.
  */
 void InputManager::update() {
+    LOG(INFO) << "Starting InputManager update method";
+
     SDL_Event event;
 
     has_quit_request = false;
@@ -160,7 +170,15 @@ void InputManager::update() {
 
     SDL_GetMouseState(&mouse_x_position, &mouse_y_position);
 
+    if (mouse_x_position > BACKGROUND_WIDTH) {
+        LOG(FATAL) << "mouse_x_position out of screen";
+    }
     assert(mouse_x_position <= BACKGROUND_WIDTH);
+
+    if (mouse_y_position > BACKGROUND_HEIGHT) {
+        LOG(FATAL) << "mouse_y_position out of screen";
+    }
+
     assert(mouse_y_position <= BACKGROUND_HEIGHT);
 
     mouse_x_position = mouse_x_position * mouse_sensibility_value + offset_x;
@@ -282,6 +300,7 @@ void InputManager::update() {
                 break;
         }
     }
+    LOG(INFO) << "Ending InputManager update method";
 }
 
 /**
@@ -292,9 +311,18 @@ void InputManager::update() {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_press(int key) {
+    LOG(INFO) << "Starting InputManager key_press method key: " << key;
+
+    if (key < 0) {
+        LOG(FATAL) << "Key is less than zero";
+    }
     assert(key >= 0);
 
-    return keys_states[key] and keys_updates[key] == update_counter;
+    return_value = keys_states[key] and keys_updates[key] == update_counter;
+    LOG(INFO) << "Ending InputManager key_press method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -305,9 +333,18 @@ bool InputManager::key_press(int key) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_release(int key) {
+    LOG(INFO) << "Starting InputManager key_release method key: " << key;
+
+    if (key < 0) {
+        LOG(FATAL) << "Key is less than zero";
+    }
     assert(key >= 0);
 
-    return not keys_states[key] and keys_updates[key] == update_counter;
+    return_value = not keys_states[key] and keys_updates[key] == update_counter;
+    LOG(INFO) << "Ending InputManager key_release method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -318,9 +355,18 @@ bool InputManager::key_release(int key) {
  * @returns True if key is holded
  */
 bool InputManager::is_key_down(int key) {
+    LOG(INFO) << "Starting InputManager is_key_down method key: " << key;
+
+    if (key < 0) {
+        LOG(FATAL) << "Key is less than zero";
+    }
     assert(key >= 0);
 
-    return keys_states[key];
+    return_value = keys_states[key];
+    LOG(INFO) << "Ending InputManager is_key_down method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -331,11 +377,25 @@ bool InputManager::is_key_down(int key) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_press(int button) {
+    LOG(INFO) << "Starting InputManager mouse_press method, button: " << button;
+
+    if (button < 0) {
+        LOG(FATAL) << "button is less than zero";
+    }
     assert(button >= 0);
+
+    if (button >= N_MOUSE_BUTTONS) {
+        LOG(FATAL) << "button bigger than available";
+    }
     assert(button < N_MOUSE_BUTTONS);
 
-    return mouse_buttons_states[button] and
-        mouse_update[button] == update_counter;
+    return_value =
+        mouse_buttons_states[button] and mouse_update[button] == update_counter;
+
+    LOG(INFO) << "Ending InputManager key_release method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -345,11 +405,25 @@ bool InputManager::mouse_press(int button) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_release(int button) {
+    LOG(INFO) << "Starting InputManager mouse_press method, button: " << button;
+
+    if (button < 0) {
+        LOG(FATAL) << "button is less than zero";
+    }
     assert(button >= 0);
+
+    if (button >= N_MOUSE_BUTTONS) {
+        LOG(FATAL) << "button bigger than available";
+    }
     assert(button < N_MOUSE_BUTTONS);
 
-    return not mouse_buttons_states[button] and
+    return_value = not mouse_buttons_states[button] and
         mouse_update[button] == update_counter;
+
+    LOG(INFO) << "Ending InputManager mouse_press method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -359,10 +433,24 @@ bool InputManager::mouse_release(int button) {
  * @returns True if button is being pressed.
  */
 bool InputManager::is_mouse_down(int button) {
+    LOG(INFO) << "Starting InputManager is_mouse_down method, button: "
+              << button;
+
+    if (button < 0) {
+        LOG(FATAL) << "button is less than zero";
+    }
     assert(button >= 0);
+
+    if (button >= N_MOUSE_BUTTONS) {
+        LOG(FATAL) << "button bigger than available";
+    }
     assert(button < N_MOUSE_BUTTONS);
 
-    return mouse_buttons_states[button];
+    return_value = mouse_buttons_states[button];
+    LOG(INFO) << "Ending InputManager is_mouse_down method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -373,11 +461,27 @@ bool InputManager::is_mouse_down(int button) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_press(int button, int joystick) {
+    LOG(INFO) << "Starting InputManager joystick_button_press method, button: "
+              << button << ", joystick: " << joystick;
+
+    if (button < 0 or joystick < 0) {
+        LOG(FATAL) << "button or joystick less than 0";
+    }
     assert(button >= 0 and joystick >= 0);
+
+    if (joystick >= N_CONTROLLERS) {
+        LOG(FATAL) << "joystick bigger than available";
+    }
     assert(joystick < N_CONTROLLERS);
 
-    return joysticks_buttons_states[joystick][button] and
+    return_value = joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
+
+    LOG(INFO)
+        << "Ending InputManager joystick_button_press method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -389,11 +493,28 @@ bool InputManager::joystick_button_press(int button, int joystick) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_release(int button, int joystick) {
+    LOG(INFO)
+        << "Starting InputManager joystick_button_release method, button: "
+        << button << ", joystick: " << joystick;
+
+    if (button < 0 or joystick < 0) {
+        LOG(FATAL) << "button or joystick less than 0";
+    }
     assert(button >= 0 and joystick >= 0);
+
+    if (joystick >= N_CONTROLLERS) {
+        LOG(FATAL) << "joystick bigger than available";
+    }
     assert(joystick < N_CONTROLLERS);
 
-    return not joysticks_buttons_states[joystick][button] and
+    return_value = not joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
+
+    LOG(INFO)
+        << "Ending InputManager joystick_button_press method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -405,10 +526,26 @@ bool InputManager::joystick_button_release(int button, int joystick) {
  * @returns True if button is being held.
  */
 bool InputManager::is_joystick_button_down(int button, int joystick) {
+    LOG(INFO)
+        << "Starting InputManager is_joystick_button_down method, button: "
+        << button << ", joystick: " << joystick;
+
+    if (button < 0 or joystick < 0) {
+        LOG(FATAL) << "button or joystick less than 0";
+    }
     assert(button >= 0 and joystick >= 0);
+
+    if (joystick >= N_CONTROLLERS) {
+        LOG(FATAL) << "joystick bigger than available";
+    }
     assert(joystick < N_CONTROLLERS);
 
-    return joysticks_buttons_states[joystick][button];
+    return_value = joysticks_buttons_states[joystick][button];
+    LOG(INFO)
+        << "Ending InputManager joystick_button_press method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -418,7 +555,14 @@ bool InputManager::is_joystick_button_down(int button, int joystick) {
  * [0,], Unit: px
  */
 int InputManager::get_mouse_x_position() {
-    return mouse_x_position;
+    LOG(INFO) << "Starting InputManager get_mouse_x_position method";
+
+    return_value = mouse_x_position;
+    LOG(INFO)
+        << "Ending InputManager get_mouse_x_position method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -427,7 +571,14 @@ int InputManager::get_mouse_x_position() {
  * @returns number respresenting mouse position in axis Y. [0,]
  */
 int InputManager::get_mouse_y_position() {
-    return mouse_y_position;
+    LOG(INFO) << "Starting InputManager get_mouse_y_position method";
+
+    return_value = mouse_y_position;
+    LOG(INFO)
+        << "Ending InputManager get_mouse_y_position method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -436,6 +587,9 @@ int InputManager::get_mouse_y_position() {
  * @returns True if there is a request [0,1]
  */
 bool InputManager::quit_requested() {
+    LOG(INFO) << "Starting InputManager quit_requested method";
+
+    LOG(INFO) << "Ending InputManager quit_requested method";
     return has_quit_request;
 }
 
@@ -446,10 +600,17 @@ bool InputManager::quit_requested() {
  * @returns Instance of InputManager.
  */
 InputManager *InputManager::get_instance() {
+    LOG(INFO) << "Starting InputManager get_instance method";
+
     if (input_manager == nullptr) {
         input_manager = new InputManager();
     }
-    return input_manager;
+
+    return_value = input_manager;
+    LOG(INFO) << "Ending InputManager get_instance method returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -463,10 +624,17 @@ InputManager *InputManager::get_instance() {
  */
 void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
                                                int coffset_x, int coffset_y) {
+    LOG(INFO) << "Starting InputManager set_mouse_sensibility_value method "
+                 "with value: "
+              << cmouse_sensibility_value,
+        ", coffset_x: " << coffset_x << ", coffset_y: " coffset_y;
+
     mouse_sensibility_value = cmouse_sensibility_value;
 
     offset_x = coffset_x;
     offset_y = coffset_y;
+
+    LOG(INFO) << "Ending InputManager set_mouse_sensibility_value method";
 }
 
 /**
@@ -475,13 +643,21 @@ void InputManager::set_mouse_sensibility_value(float cmouse_sensibility_value,
  * @param value
  */
 void InputManager::set_analogic_sensibility_value(int value) {
+    LOG(INFO) << "Starting InputManager set_analogic_sensibility_value method, "
+                 "with value: "
+              << value;
+
     analogic_sensibility_value = value;
+
+    LOG(INFO) << "Ending InputManager set_mouse_sensibility_value method";
 }
 
 /**
  * Manages connection of joysticks to the game.
  */
 void InputManager::connect_joysticks() {
+    LOG(INFO) << "Starting InputManager connect_joysticks method";
+
     /**
      * Max number of joysticks can be only four.
      */
@@ -519,9 +695,13 @@ void InputManager::connect_joysticks() {
             n_controller++;
         } else {
             printf("WARNING: Joystick is not a game controller\n");
+            LOG(WARNING) << "Joystick is not a game controller";
+
             SDL_JoystickOpen(i);
         }
     }
+
+    LOG(INFO) << "Ending InputManager connect_joysticks method";
 }
 
 /**
@@ -530,6 +710,10 @@ void InputManager::connect_joysticks() {
  * @param map_id Represents if command is for gameplay or menus handle
  */
 void InputManager::map_keyboard_to_joystick(int map_id) {
+    LOG(INFO)
+        << "Starting InputManager map_keyboard_to_joystick method with map_id: "
+        << map_id;
+
     keyboard_to_joystick = {
         {K_LEFT, LEFT + 1},     {K_RIGHT, RIGHT + 1}, {K_UP, UP + 1},
         {K_DOWN, DOWN + 1},     {K_A, A + 1},         {K_B, B + 1},
@@ -548,6 +732,8 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
         keyboard_to_joystick[K_MENU_Y] = Y + 1;
         keyboard_to_joystick[K_MENU_LB] = LB + 1;
     }
+
+    LOG(INFO) << "Ending InputManager map_keyboard_to_joystick method";
 }
 
 /**
@@ -558,6 +744,9 @@ void InputManager::map_keyboard_to_joystick(int map_id) {
  * @param state State of the key that is interacting with the game
  */
 void InputManager::emulate_joystick(int key_id, bool state) {
+    LOG(INFO) << "Starting InputManager emulate_joystick method with key_id: "
+              << key_id << ", state: " << state;
+
     if (state) {
         /**
          * Map each key for corresponding.
@@ -606,17 +795,23 @@ void InputManager::emulate_joystick(int key_id, bool state) {
         joystick_update[keyboard_to_joystick_id]
                        [keyboard_to_joystick[key_id] - 1] = update_counter;
     }
+
+    LOG(INFO) << "Ending InputManager connect_joysticks method";
 }
 
 /**
  * Manages transition of inputs from keyboard to joystick.
  */
 void InputManager::reset_keyboard_to_joystick() {
+    LOG(INFO) << "Starting InputManager reset_keyboard_to_joystick";
+
     /**
      * Check limits.
      */
     if (keyboard_to_joystick_id < 0 or
         keyboard_to_joystick_id > N_CONTROLLERS) {
+        LOG(FATAL) << "keyboard_to_joystick_id out of bound with value: "
+                   << keyboard_to_joystick_id;
         return;
     }
 
@@ -638,4 +833,6 @@ void InputManager::reset_keyboard_to_joystick() {
     for (auto &c : joysticks_buttons_states[keyboard_to_joystick_id]) {
         c.second = false;
     }
+
+    LOG(INFO) << "Ending InputManager reset_keyboard_to_joystick method";
 }

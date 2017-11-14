@@ -11,6 +11,7 @@
 #ifndef INCLUDE_INPUTMANAGER_H_
 #define INCLUDE_INPUTMANAGER_H_
 
+#include <assert.h>
 #include <algorithm>
 #include <map>
 #include <unordered_map>
@@ -50,7 +51,7 @@ class InputManager {
 
     bool has_quit_request;
     int update_counter;  ///< Will be incrementes when updating input state,
-                         ///< refer to key presses.
+    ///< refer to key presses.
 
     int mouse_x_position; /**< Unit: px */
     int mouse_y_position; /**< Unit: px */
@@ -63,13 +64,13 @@ class InputManager {
     int offset_y; /**< Unit: px, [0, 720] */
 
     int keyboard_to_joystick_id;  ///< Which profile will be used for mapping
-                                  ///< keyboard_for_joystick.
-                                  ///< Ex: (Menu handler or gameplay).
+    ///< keyboard_for_joystick.
+    ///< Ex: (Menu handler or gameplay).
 
     float mouse_sensibility_value;   /**< Refer to mouse sensibility. */
     int analogic_sensibility_value;  /**< Refer to joystick lever sensibility.*/
     int triggers_sensibility_value;  ///< Refer to joystick RT and LT
-                                     ///< (triggers) lever sensibility. */
+    ///< (triggers) lever sensibility. */
 
     /**
      * Manages joystick interaction with the game.
@@ -315,7 +316,7 @@ class InputManager {
     static const int K_DEC_W = SDLK_COMMA;  /**< Decrease platform size. */
     static const int K_DEL = SDLK_DELETE;   /**< Delete platform. */
     static const int RIGHT_MOUSE_BUTTON = SDL_BUTTON_RIGHT;  ///< Bring char
-                                                             ///< to cursor.
+    ///< to cursor.
     static const int LEFT_MOUSE_BUTTON =
         SDL_BUTTON_LEFT; /**< Select platform. */
 

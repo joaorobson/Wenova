@@ -104,8 +104,8 @@
 #define CHARACTERS_NAMES \
     { "blood", "flesh", "hookline", "sinker", "trap", "trip", "dusk", "dawn" }
 
-#define BACKGROUNDS_SIZE_WIDTH 1280  /**< Unit: px*/
-#define BACKGROUNDS_SIZE_HEIGHT 720  /**< Unit: px*/
+#define BACKGROUNDS_SIZE_WIDTH 1280 /**< Unit: px*/
+#define BACKGROUNDS_SIZE_HEIGHT 720 /**< Unit: px*/
 
 /**
  * Load all artistic files and initializes board variables based
@@ -114,65 +114,195 @@
  * @param cselected_stage Name of the stage that was selected.
  */
 CharacterSelectState::CharacterSelectState(string cselected_stage) {
+    LOG(INFO)
+        << "Starting CharacterSelectState constructor with cselected_stage: "
+        << cselected_stage;
 
-    #ifndef NDEBUG
-        assert(NAMES_TAGS_X_POSITIONS_1 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_1 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_1 is bigger than screen";
+    }
 
-        assert(NAMES_TAGS_X_POSITIONS_2 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_2 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_1 is bigger than screen";
+    }
 
-        assert(NAMES_TAGS_X_POSITIONS_3 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_3 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_2 is bigger than screen";
+    }
 
-        assert(NAMES_TAGS_X_POSITIONS_4 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NAMES_TAGS_Y_POSITIONS_4 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_2 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_1 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_1 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_3 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_2 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_2 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_3 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_3 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_3 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NAMES_TAGS_X_POSITIONS_4 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_4 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_4 < BACKGROUNDS_SIZE_HEIGHT);
+    if (NAMES_TAGS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NAMES_TAGS_Y_POSITIONS_4 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_X_POSITIONS_1 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_1 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_Y_POSITIONS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_1 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_X_POSITIONS_2 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_2 is bigger than screen";
+    }
 
-        assert(CHARACTERS_X_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_WIDTH);
-        assert(CHARACTERS_Y_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_Y_POSITIONS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_2 is bigger than screen";
+    }
 
-        assert(NUMBERS_X_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_1 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_X_POSITIONS_3 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_3 is bigger than screen";
+    }
 
-        assert(NUMBERS_X_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_2 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_Y_POSITIONS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_3 is bigger than screen";
+    }
 
-        assert(NUMBERS_X_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_3 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_X_POSITIONS_4 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_4 is bigger than screen";
+    }
 
-        assert(NUMBERS_X_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_WIDTH);
-        assert(NUMBERS_Y_POSITIONS_DELTAS_4 < BACKGROUNDS_SIZE_HEIGHT);
+    if (CHARACTERS_Y_POSITIONS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_4 is bigger than screen";
+    }
 
-        for(auto x: ROWS_X_POSITIONS){
-            assert(x < BACKGROUNDS_SIZE_WIDTH);
+    if (CHARACTERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_1 is bigger than screen";
+    }
+
+    if (CHARACTERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_1 is bigger than screen";
+    }
+
+    if (CHARACTERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_2 is bigger than screen";
+    }
+
+    if (CHARACTERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_2 is bigger than screen";
+    }
+
+    if (CHARACTERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_3 is bigger than screen";
+    }
+
+    if (CHARACTERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_3 is bigger than screen";
+    }
+
+    if (CHARACTERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "CHARACTERS_X_POSITIONS_DELTAS_4 is bigger than screen";
+    }
+
+    if (CHARACTERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "CHARACTERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
+    }
+
+    if (NUMBERS_X_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_1 is bigger than screen";
+    }
+
+    if (NUMBERS_Y_POSITIONS_DELTAS_1 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_1 is bigger than screen";
+    }
+
+    if (NUMBERS_X_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_2 is bigger than screen";
+    }
+
+    if (NUMBERS_Y_POSITIONS_DELTAS_2 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_2 is bigger than screen";
+    }
+
+    if (NUMBERS_X_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_3 is bigger than screen";
+    }
+
+    if (NUMBERS_Y_POSITIONS_DELTAS_3 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_3 is bigger than screen";
+    }
+
+    if (NUMBERS_X_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_WIDTH) {
+        LOG(FATAL) << "NUMBERS_X_POSITIONS_DELTAS_4 is bigger than screen";
+    }
+
+    if (NUMBERS_Y_POSITIONS_DELTAS_4 > BACKGROUNDS_SIZE_HEIGHT) {
+        LOG(FATAL) << "NUMBERS_Y_POSITIONS_DELTAS_4 is bigger than screen";
+    }
+
+    for (auto x : ROWS_X_POSITIONS) {
+        if (x < BACKGROUNDS_SIZE_WIDTH) {
+            LOG(FATAL) << "ROWS_X_POSITIONS, element: " << x
+                       << "is bigger than screen";
         }
+    }
 
-        for(auto y: ROWS_Y_POSITIONS){
-            assert(y < BACKGROUNDS_SIZE_HEIGHT);
+    for (auto y : ROWS_Y_POSITIONS) {
+        if (x < BACKGROUNDS_SIZE_WIDTH) {
+            LOG(FATAL) << "ROWS_Y_POSITIONS, element: " << y
+                       << "is bigger than screen";
         }
-    #endif
+    }
 
+#ifndef NDEBUG
+    assert(NAMES_TAGS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NAMES_TAGS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NAMES_TAGS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NAMES_TAGS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NAMES_TAGS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(CHARACTERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(CHARACTERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_1 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_2 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_3 <= BACKGROUNDS_SIZE_HEIGHT);
+    assert(NUMBERS_X_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_WIDTH);
+    assert(NUMBERS_Y_POSITIONS_DELTAS_4 <= BACKGROUNDS_SIZE_HEIGHT);
+
+    for (auto x : ROWS_X_POSITIONS) {
+        assert(x <= BACKGROUNDS_SIZE_WIDTH);
+    }
+
+    for (auto y : ROWS_Y_POSITIONS) {
+        assert(y <= BACKGROUNDS_SIZE_HEIGHT);
+    }
+#endif
+  
     Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
     memset(current_column, 0, sizeof current_column);
@@ -246,6 +376,8 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
 
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
+
+    LOG(INFO) << "Ending CharacterSelectState constructor";
 }
 
 /**
@@ -254,6 +386,9 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
  * @param delta Variation of how much the characters player travelled
  */
 void CharacterSelectState::update(float delta) {
+    LOG(INFO) << "Starting CharacterSelectState update method with delta: "
+              << delta;
+
     process_input();
 
     InputManager* input_manager = InputManager::get_instance();
@@ -263,6 +398,9 @@ void CharacterSelectState::update(float delta) {
      */
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
+
+        LOG(INFO)
+            << "Ending CharacterSelectState update due quit request method";
         return;
     }
 
@@ -275,6 +413,9 @@ void CharacterSelectState::update(float delta) {
         select_sound.play();
         m_quit_requested = true;
         Game::get_instance().push(new StageSelectState());
+
+        LOG(INFO)
+            << "Ending CharacterSelectState update due quit request method";
         return;
     }
 
@@ -290,6 +431,9 @@ void CharacterSelectState::update(float delta) {
             m_quit_requested = true;
             Game::get_instance().push(
                 new BattleState(selected_stage, export_players()));
+
+            LOG(INFO)
+                << "Ending CharacterSelectState update due quit request method";
             return;
         }
     }
@@ -430,6 +574,8 @@ void CharacterSelectState::update(float delta) {
     }
 
     planet_sprite.update(delta);
+
+    LOG(INFO) << "Ending CharacterSelectState update method";
 }
 
 /**
@@ -437,6 +583,8 @@ void CharacterSelectState::update(float delta) {
  * Render the board with characters options, including all effects.
  */
 void CharacterSelectState::render() {
+    LOG(INFO) << "Starting CharacterSelectState update method";
+
     /**
      * Put backgrounds_spritess, planet_sprite and characters_slots_sprites
      * centralized.
@@ -515,6 +663,8 @@ void CharacterSelectState::render() {
     if (is_ready) {
         ready_to_fight_sprite.render(0, 0);
     }
+
+    LOG(INFO) << "Ending CharacterSelectState update method";
 }
 
 /**
@@ -523,12 +673,25 @@ void CharacterSelectState::render() {
  * @returns
  */
 bool CharacterSelectState::all_players_selected() {
+    LOG(INFO) << "Starting CharacterSelectState all_players_selected method";
+
     for (auto cur : is_character_selected) {
         if (not cur) {
-            return false;
+            return_value = false;
+            LOG(INFO) << "Ending CharacterSelectState all_players_selected "
+                         "method returning value: "
+                      << return_value;
+
+            return return_value;
         }
     }
-    return true;
+
+    return_value = true;
+    LOG(INFO) << "Ending CharacterSelectState all_players_selected method "
+                 "returning value: "
+              << return_value;
+
+    return return_value;
 }
 
 /**
@@ -539,10 +702,19 @@ bool CharacterSelectState::all_players_selected() {
  * @returns Name and number of frames in corresponding sprite
  */
 pair<string, int> CharacterSelectState::get_chars_info(int idx) {
+    LOG(INFO)
+        << "Starting CharacterSelectState get_chars_info method with idx: "
+        << idx;
+
     vector<string> names = CHARACTERS_NAMES;
     vector<int> frames = CHARATERS_SPRITES_AMOUNT;
 
-    return std::make_pair(names[idx], frames[idx]);
+    return_value = std::make_pair(names[idx], frames[idx]);
+    LOG(INFO)
+        << "Ending CharacterSelectState get_chars_info method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -552,11 +724,16 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
  * characters and skins choosen.
  */
 vector<pair<string, string> > CharacterSelectState::export_players() {
+    LOG(INFO) << "Starting CharacterSelectState export_players method";
+
     vector<pair<string, string> > players;
 
     for (int i = 0; i < N_PLAYERS; i++) {
         int char_sel = current_row[i] * N_COLS + current_column[i];
 
+        if (char_sel >= N_CHARS) {
+            LOG(FATAL) << "char_sel is out of bound with value: " << char_sel;
+        }
         assert(char_sel < N_CHARS);
 
         players.push_back(
@@ -564,7 +741,12 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
                            chars[char_sel].get_skin_name(current_skin[i])));
     }
 
-    return players;
+    return_value = players;
+    LOG(INFO)
+        << "Ending CharacterSelectState export_players method returning value: "
+        << return_value;
+
+    return return_value;
 }
 
 /**
@@ -572,6 +754,8 @@ vector<pair<string, string> > CharacterSelectState::export_players() {
  * choosing character.
  */
 void CharacterSelectState::process_input() {
+    LOG(INFO) << "Starting CharacterSelectState process_input method";
+
     InputManager* input_manager = InputManager::get_instance();
 
     vector<pair<int, int> > joystick_buttons = {
@@ -588,6 +772,8 @@ void CharacterSelectState::process_input() {
                 input_manager->joystick_button_press(button.second, id);
         }
     }
+
+    LOG(INFO) << "Ending CharacterSelectState process_input method";
 }
 
 /**
@@ -599,13 +785,28 @@ void CharacterSelectState::process_input() {
  * @returns pair of ints which indicates the corresponding slot.
  */
 pair<int, int> CharacterSelectState::get_slot(int row, int col) {
+    LOG(INFO) << "Starting CharacterSelectState get_slot method with row: "
+              << row << "and col: " << col;
+
     vector<int> x = ROWS_X_POSITIONS;
     vector<int> y = ROWS_Y_POSITIONS;
 
+    if ((size_t) col >= x.size()) {
+        LOG(FATAL) << "col is out of bound with value: " << col;
+    }
     assert((size_t) col < x.size());
+
+    if ((size_t) row >= y.size()) {
+        LOG(FATAL) << "char_sel is out of bound with value: " << char_sel;
+    }
     assert((size_t) row < y.size());
 
-    return ii(x[col], y[row]);
+    return_value = ii(x[col], y[row]);
+    LOG(INFO) << "Ending CharacterSelectState get_slot method returning value: "
+              << return_value;
+
+    return return_value;
+
 }
 
 /**
