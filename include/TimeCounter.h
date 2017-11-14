@@ -15,8 +15,8 @@
 
 #include "GameObject.h"
 #include "Sprite.h"
-#include "Timer.h"
 #include "Text.h"
+#include "Timer.h"
 
 using std::string;
 
@@ -73,18 +73,18 @@ class TimeCounter : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject & object);
+    void notify_collision(const GameObject &object);
 
-    static const int total_time = 100;  /**< Const int number with duration */
-                                        /**< of a battle. */
+    static const int total_time = 100; /**< Const int number with duration */
+                                       /**< of a battle. */
 
  private:
-    Sprite background_clock;  /**< Background image of the clock of a battle. */
-    Timer timer;  /**< Timer of a battle with countdown. */
-    Text *time_text;  /**< Text that shows the remaining time on screen */
-                      /**< during a battle. */
-    float remaining_seconds;  /**< Float number with the remaining time in */
-                              /**< seconds. */
+    Sprite background_clock; /**< Background image of the clock of a battle. */
+    Timer timer;             /**< Timer of a battle with countdown. */
+    Text *time_text; /**< Text that shows the remaining time on screen */
+                     /**< during a battle. */
+    float remaining_seconds; /**< Float number with the remaining time in */
+                             /**< seconds. */
 
     /**
      * Function that returns remaining time.

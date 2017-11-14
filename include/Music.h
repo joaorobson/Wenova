@@ -1,5 +1,15 @@
-#ifndef MUSIC_H
-#define MUSIC_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Music.h
+ * Brief Description.
+ */
+
+#ifndef INCLUDE_MUSIC_H_
+#define INCLUDE_MUSIC_H_
 
 #include "SDL_mixer.h"
 
@@ -9,19 +19,18 @@
 using std::string;
 using std::shared_ptr;
 
-class Music{
-private:
-	shared_ptr<Mix_Music> music;
+class Music {
+ private:
+    shared_ptr<Mix_Music> music;
 
-public:
-	Music();
-	Music(string file);
+ public:
+    Music();
+    explicit Music(string file);
 
-	void play(int times = -1);
-	void stop();
-	void open(string file);
-	bool is_open();
-
+    void play(int times = -1);
+    void stop();
+    void open(string file);
+    bool is_open();
 };
 
-#endif
+#endif  // INCLUDE_MUSIC_H_

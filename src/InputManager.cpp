@@ -173,7 +173,7 @@ void InputManager::update() {
      * Maybe can be removed if removed breaks for cases. Not sure.
      */
     while (SDL_PollEvent(&event)) {
-        int key_id; /**< key is used for keyboard */
+        int key_id;    /**< key is used for keyboard */
         int button_id; /**< button is used for mouse and joystick */
         int joystick_id = controllers_id[event.cdevice.which];
 
