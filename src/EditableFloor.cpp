@@ -53,10 +53,8 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
       standard_sprite(Sprite(RIGID_PLATFORM_PATH)),
       platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
       selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
-
-    box = Rectangle(x, y,
-                         standard_sprite.get_width(),
-                         standard_sprite.get_height());
+    box = Rectangle(x, y, standard_sprite.get_width(),
+                    standard_sprite.get_height());
 
     is_deleted = false;
     is_selected = false;
@@ -88,7 +86,8 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
 /**
  * Not implemented.
  */
-EditableFloor::~EditableFloor() {}
+EditableFloor::~EditableFloor() {
+}
 
 /**
  * Manages player interaction with the box.
@@ -200,9 +199,8 @@ void EditableFloor::update(float delta) {
         }
 
         if (moved) {
-            acceleration =
-                fmin(acceleration + ACCELERATION_INCREASE_STEP,
-                     MAXIMUM_ACCELERATION);
+            acceleration = fmin(acceleration + ACCELERATION_INCREASE_STEP,
+                                MAXIMUM_ACCELERATION);
         } else {
             acceleration = ACCELERATION;
         }
@@ -221,16 +219,13 @@ void EditableFloor::update(float delta) {
  */
 void EditableFloor::render() {
     if (is_selected) {
-        selected_sprite.render(box.get_draw_x(), box.get_draw_y(),
-                               rotation);
+        selected_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     }
 
     if (is_crossingable) {
-        platform_sprite.render(box.get_draw_x(), box.get_draw_y(),
-                               rotation);
+        platform_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     } else {
-        standard_sprite.render(box.get_draw_x(), box.get_draw_y(),
-                               rotation);
+        standard_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
     }
 }
 
@@ -248,7 +243,8 @@ bool EditableFloor::is_dead() {
  *
  * @param unamed An game object.
  */
-void EditableFloor::notify_collision(GameObject &) {}
+void EditableFloor::notify_collision(const GameObject &) {
+}
 
 /**
  * Get information about many aspects of an box.
@@ -257,9 +253,8 @@ void EditableFloor::notify_collision(GameObject &) {}
  */
 string EditableFloor::get_information() {
     char info[INFO_SIZE];
-    snprintf(info, sizeof(info), "%f %f %f %f %d", box.x, box.y,
-             box.width, rotation * PI_DEGREES / PI,
-             static_cast<int>(is_crossingable));
+    snprintf(info, sizeof(info), "%f %f %f %f %d", box.x, box.y, box.width,
+             rotation * PI_DEGREES / PI, static_cast<int>(is_crossingable));
 
     string s(info);
 

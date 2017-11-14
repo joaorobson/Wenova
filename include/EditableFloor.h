@@ -83,7 +83,7 @@ class EditableFloor : public Floor {
      *
      * @param unamed An game object.
      */
-    void notify_collision(GameObject&);
+    void notify_collision(const GameObject&);
 
     /**
      * Get information about many aspects of an platform.
