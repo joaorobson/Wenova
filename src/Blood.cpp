@@ -744,12 +744,7 @@ void Blood::check_dead(bool change) {
 void Blood::check_jump_atk_up(bool change) {
   assert(ATTACK_BUTTON >= 0);
   assert(UP_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
-    if (combo) {
-      return;
-    } else {
-      /* Nothing to do. */
-    }
+  if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON] and not combo) {
     combo++;
     speed.y = -5;
     if (change) {
@@ -841,6 +836,11 @@ void Blood::check_idle_atk_neutral_1(bool change) {
 void Blood::check_idle_atk_neutral_2(bool change) {
   if (combo) {
     combo--;
+    if (combo < 0){
+      combo = 0;
+    } else {
+      /* Nothing to do. */
+    }
     if (change) {
       temporary_state = FighterState::IDLE_ATK_NEUTRAL_2;
     } else {
@@ -861,6 +861,9 @@ void Blood::check_idle_atk_neutral_2(bool change) {
 void Blood::check_idle_atk_neutral_3(bool change) {
   if (combo) {
     combo--;
+    if (combo < 0){
+      combo = 0;
+    }
     if (change) {
       temporary_state = FighterState::IDLE_ATK_NEUTRAL_3;
     } else {

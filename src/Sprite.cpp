@@ -297,6 +297,7 @@ int Sprite::get_height() {
 * scale_x.
 */
 void Sprite::set_scale_x(float scale) {
+  assert(scale >= 0);
   scale_x_axis = scale;
 }
 
@@ -308,6 +309,7 @@ void Sprite::set_scale_x(float scale) {
 * scale_y.
 */
 void Sprite::set_scale_y(float scale) {
+  assert(scale >= 0);
   scale_y_axis = scale;
 }
 
@@ -319,6 +321,7 @@ void Sprite::set_scale_y(float scale) {
 * scale_y and scale_x variables.
 */
 void Sprite::set_scale(float scale) {
+  assert(scale >= 0);
   scale_x_axis = scale_y_axis = scale;
 }
 
