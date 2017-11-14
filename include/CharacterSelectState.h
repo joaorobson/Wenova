@@ -40,7 +40,7 @@ class CharacterSelectState : public State {
     Sprite ready_to_fight_sprite; /**< When everything is ready. */
 
     Sound blocked_sound; /**< When try to select not allowed things. */
-    Sound select_sound; /**< When really select characters. */
+    Sound select_sound;  /**< When really select characters. */
     Sound changed_sound; /**< When switching between characters. */
 
     int current_row[N_PLAYERS];
@@ -87,8 +87,8 @@ class CharacterSelectState : public State {
      * Range: [0, backgrounds_sprites_image_size - size_of_object].
      * (Range for fit on screen)
      */
-    vector<ii> names_tags_positions; /**< Relative to backgrounds_sprites. */
-    vector<ii> characters_positions; /**< Relative to backgrounds_sprites. */
+    vector<ii> names_tags_positions;   /**< Relative to backgrounds_sprites. */
+    vector<ii> characters_positions;   /**< Relative to backgrounds_sprites. */
     vector<ii> names_positions_deltas; /**< Relative to names_tags_positions. */
     vector<ii> numbers_positions_deltas; /**< Relative to slots. */
 
@@ -144,7 +144,7 @@ class CharacterSelectState : public State {
      *
      * @returns Name and number of frames in corresponding sprite
      */
-    pair<string, int> get_chars_info(int idx);
+    std::pair<string, int> get_chars_info(int idx);
 
     /**
      * Searchs for characters identifying which the player chose.
@@ -159,7 +159,7 @@ class CharacterSelectState : public State {
      * @returns Vector of pairs of strings containing information about
      * characters and skins choosen.
      */
-    vector<pair<string, string>> export_players();
+    vector<std::pair<string, std::string>> export_players();
 
     /**
      * Get slot of character on the board.
@@ -169,7 +169,7 @@ class CharacterSelectState : public State {
      *
      * @returns pair of ints which indicates the corresponding slot.
      */
-    pair<int, int> get_slot(int row, int col);
+    std::pair<int, int> get_slot(int row, int col);
 };
 
 #endif  // INCLUDE_CHARACTERSELECTSTATE_H_
