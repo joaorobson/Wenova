@@ -992,8 +992,10 @@ void InputManager::emulate_joystick(int key_id, bool state) {
     } else if (keyboard_to_joystick_id >= 0) {
         int last_state_id = keyboard_to_joystick[key_id] - 1;
 
-        joysticks_buttons_states[keyboard_to_joystick_id][last_state_id] = state;
-        joystick_update[keyboard_to_joystick_id][last_state_id] = update_counter;
+        joysticks_buttons_states[keyboard_to_joystick_id][last_state_id] =
+            state;
+        joystick_update[keyboard_to_joystick_id][last_state_id] =
+            update_counter;
     } else {
         /* Nothing to do. */
     }

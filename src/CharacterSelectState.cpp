@@ -122,7 +122,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
 #endif
 
     is_ready = false;
-    selected_stage = cselected_stage;
+    set_selected_stage(cselected_stage);
 
     void* ptr_collumn = memset(current_column, 0, sizeof current_column);
     void* ptr_row = memset(current_row, 0, sizeof current_row);
@@ -219,7 +219,8 @@ void CharacterSelectState::render() {
     LOG(DEBUG) << "Starting CharacterSelectState update method";
 
     /**
-     * Put backgrounds_sprites, planet_sprite and characters_slots_sprites
+     * Put backgrounds_sprites, get_planet_sprite() and
+     * get_characters_slots_sprites()
      * centralized.
      */
 
@@ -230,18 +231,19 @@ void CharacterSelectState::render() {
         BACKGROUNDS_SIZE_WIDTH / 2 - backgrounds_sprites[0].get_width() / 2,
         BACKGROUNDS_SIZE_HEIGHT / 2 - backgrounds_sprites[1].get_height() / 2);
 
-    planet_sprite.render(
-        BACKGROUNDS_SIZE_WIDTH / 2 - planet_sprite.get_width() / 2,
-        BACKGROUNDS_SIZE_HEIGHT / 2 - planet_sprite.get_height() / 2);
+    get_planet_sprite().render(
+        BACKGROUNDS_SIZE_WIDTH / 2 - get_planet_sprite().get_width() / 2,
+        BACKGROUNDS_SIZE_HEIGHT / 2 - get_planet_sprite().get_height() / 2);
 
     backgrounds_sprites[1].render(
         BACKGROUNDS_SIZE_WIDTH / 2 - backgrounds_sprites[0].get_width() / 2,
         BACKGROUNDS_SIZE_HEIGHT / 2 - backgrounds_sprites[1].get_height() / 2);
 
-    characters_slots_sprites.render(
-        BACKGROUNDS_SIZE_WIDTH / 2 - characters_slots_sprites.get_width() / 2,
+    get_characters_slots_sprites().render(
+        BACKGROUNDS_SIZE_WIDTH / 2 -
+            get_characters_slots_sprites().get_width() / 2,
         BACKGROUNDS_SIZE_HEIGHT / 2 -
-            characters_slots_sprites.get_height() / 2);
+            get_characters_slots_sprites().get_height() / 2);
 
     /**
      * Iterate over elements rendering things.
@@ -289,9 +291,9 @@ void CharacterSelectState::render() {
          * Mark selected character with skin.
          */
         if (is_character_selected[i]) {
-            selected_tags_sprites.render(names_tags_positions[i].first,
-                                         names_tags_positions[i].second, 0,
-                                         flip);
+            get_selected_tags_sprites().render(names_tags_positions[i].first,
+                                               names_tags_positions[i].second,
+                                               0, flip);
         } else {
             /* Nothing to do. */
         }
@@ -532,16 +534,17 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
 void CharacterSelectState::load_resources() {
     LOG(DEBUG) << "Starting CharacterSelectState load_resources method";
 
-    characters_slots_sprites = Sprite(CHARACTER_SLOTS_PATH);
-    selected_tags_sprites = Sprite(SELECTED_TAG_PATH);
-    ready_to_fight_sprite = Sprite(READY_TO_FIGHT_PATH);
-    planet_sprite =
-        Sprite(PLANET_SPRITE_PATH, PLANET_SPRITE_AMOUNT, FRAME_TIME);
-    planet_sprite.set_scale(PLANET_SPRITE_SCALE);
+    set_characters_slots_sprites(Sprite(CHARACTER_SLOTS_PATH));
+    set_selected_tags_sprites(Sprite(SELECTED_TAG_PATH));
+    set_ready_to_fight_sprite(Sprite(READY_TO_FIGHT_PATH));
+    set_planet_sprite(
+        Sprite(PLANET_SPRITE_PATH, PLANET_SPRITE_AMOUNT, FRAME_TIME));
 
-    blocked_sound = Sound(BLOCKED_SOUND_PATH);
-    select_sound = Sound(SELECT_SOUND_PATH);
-    changed_sound = Sound(CHANGED_SOUND_PATH);
+    get_planet_sprite().set_scale(PLANET_SPRITE_SCALE);
+
+    set_blocked_sound(Sound(BLOCKED_SOUND_PATH));
+    set_select_sound(Sound(SELECT_SOUND_PATH));
+    set_changed_sound(Sound(CHANGED_SOUND_PATH));
 
     /**
      * Load backgrounds_sprites following standards for file name.
@@ -1122,15 +1125,15 @@ void CharacterSelectState::play_sprites_animation(float delta_time) {
 #endif
 
     for (int i = 0; i < N_CHARS; i++) {
-        Sprite disabled_char = chars[i].get_disabled();
-        disabled_char.update(delta_time);
+        chars[i].get_disabled().update(delta_time);  ///< If split on more
+                                                     ///< lines break code
 
         for (int j = 0; j < N_SKINS; j++) {
-            chars[i].get_skin(j).update(delta_time);
-        }
+            chars[i].get_skin(j).update(delta_time);  ///< If split on more
+        }                                             ///< lines break code
     }
 
-    planet_sprite.update(delta_time);
+    get_planet_sprite().update(delta_time);
 
     LOG(DEBUG) << "Ending CharacterSelectState play_sprites_animation method";
 }
