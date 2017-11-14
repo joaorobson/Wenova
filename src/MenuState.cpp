@@ -71,7 +71,7 @@ MenuState::MenuState(bool main_menu) {
                                Text::TextStyle::SOLID, "EXIT", WHITE, FONT_X,
                                FONT_Y));
 
-    InputManager::get_instance()->set_analogic_value(32000);
+    InputManager::get_instance()->set_analogic_sensibility_value(32000);
     InputManager::get_instance()->
 															map_keyboard_to_joystick(InputManager::MENU_MODE);
 

@@ -49,7 +49,7 @@ EditState::EditState(string cstage) : stage(cstage) {
     sound.play(-1);
 
     read_level_design();
-    InputManager::get_instance()->set_analogic_value(20000);
+    InputManager::get_instance()->set_analogic_sensibility_value(20000);
     InputManager::get_instance()->
     map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
@@ -90,8 +90,8 @@ void EditState::update(float delta) {
      * If mouse_press is true the position of the fighter is reseted.
      */
     if (input_manager->mouse_press(InputManager::RIGHT_MOUSE_BUTTON)) {
-        int x = input_manager->get_mouse_x();
-        int y = input_manager->get_mouse_y();
+        int x = input_manager->get_mouse_x_position();
+        int y = input_manager->get_mouse_y_position();
         test_fighter->reset_position(x, y);
     }
 
@@ -100,8 +100,8 @@ void EditState::update(float delta) {
      */
     if (input_manager->key_press(InputManager::K_F) or
         input_manager->key_press(InputManager::K_P)) {
-        int  x           = input_manager->get_mouse_x();
-        int  y           = input_manager->get_mouse_y();
+        int  x           = input_manager->get_mouse_x_position();
+        int  y           = input_manager->get_mouse_y_position();
         bool is_platform = input_manager->key_press(InputManager::K_P);
 
         /**
@@ -195,7 +195,7 @@ void EditState::resume() {}
 void EditState::read_level_design() {
     float x, y, width, crotation;
     int   platform;
-    ifstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat");
+    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
 
     /**
      * If the condition is false a message is displayed.
@@ -250,19 +250,19 @@ void EditState::read_level_design() {
  * of a new file.
  */
 void EditState::update_level_design() {
-    ifstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat",
+    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat",
                           std::ios::binary);
     ofstream old_level_design(
-        RES_FOLDER + "stage_" + stage + "/level_design.dat.old",
+        RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old",
         std::ios::trunc | std::ios::binary);
 
     old_level_design << level_design.rdbuf();
     level_design.close();
     old_level_design.close();
 
-    ofstream new_level_design(RES_FOLDER + "stage_" + stage +
+    ofstream new_level_design(RESOURCES_FOLDER + "stage_" + stage +
                               "/level_design.dat", std::ios::trunc);
-    ifstream backup(RES_FOLDER + "stage_" + stage + "/level_design.dat.old",
+    ifstream backup(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old",
                     std::ios::binary);
     string s;
 

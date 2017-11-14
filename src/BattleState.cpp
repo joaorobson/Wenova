@@ -84,6 +84,8 @@ BattleState::BattleState(string stage,
         } else if (char_name == "flesh") {
             players[i] = new Flesh(skin_name, char_positions[i].first,
                                    char_positions[i].second, i);
+        } else {
+            /*Nothing to do*/
         }
     }
 
@@ -112,7 +114,7 @@ BattleState::BattleState(string stage,
     time_counter = new TimeCounter();
     add_object(time_counter);
 
-    InputManager::get_instance()->set_analogic_value(20000);
+    InputManager::get_instance()->set_analogic_sensibility_value(20000);
     InputManager::get_instance()->
                             map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
@@ -320,7 +322,7 @@ void BattleState::resume() {}
 void BattleState::read_level_design(string stage) {
     float x, y, width, crotation;
     int platform;
-    fstream level_design(RES_FOLDER + "stage_" + stage + "/level_design.dat");
+    fstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
     /**
      * If the condition is false, a message is displayed.
      */
