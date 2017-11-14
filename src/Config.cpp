@@ -27,6 +27,7 @@ void Config::init() {
     if (not config_file.is_open()) {
         LOG(FATAL) << "File couldn't be open";
     }
+
     assert(config_file.is_open());
 
     config_file >> width >> height >> fullscreen;
@@ -99,6 +100,7 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
     if (not config_file.is_open()) {
         LOG(FATAL) << "File couldn't be open";
     }
+
     assert(config_file.is_open());
 
     config_file << width << " " << height << " " << fullscreen << std::endl;

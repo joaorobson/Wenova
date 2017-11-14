@@ -13,17 +13,17 @@
 #ifndef INCLUDE_FLESHULTIMATEEFFECT_H_
 #define INCLUDE_FLESHULTIMATEEFFECT_H_
 
-#include "Effect.h"
 #include <string>
+#include "Effect.h"
 
-class FleshUltimateEffect : public Effect{
+class FleshUltimateEffect : public Effect {
  public:
-  FleshUltimateEffect(Fighter * cparent, string csprite, string ctags,
+    FleshUltimateEffect(Fighter* cparent, string csprite, string ctags,
                         int frames = 1);
 
-  void update(float delta_character_state);
-  void render();
-  bool is_dead();
+    void update(float delta_character_state);
+    void render();
+    bool is_dead();
 };
 
 #endif  // INCLUDE_FLESHULTIMATEEFFECT_H_

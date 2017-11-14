@@ -53,7 +53,8 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
       standard_sprite(Sprite(RIGID_PLATFORM_PATH)),
       platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
       selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
-    LOG(INFO) << "Starting CharacterSelectState constructor with x: "
+
+        LOG(INFO) << "Starting CharacterSelectState constructor with x: "
               << ", y: "
               << ", crotation: " << crotation << ", cplatfrom: " << cplatform;
 
@@ -251,6 +252,7 @@ EditableFloor::EditableFloor(float x, float y, float width, float crotation,
         if (is_crossingable) {
             platform_sprite.render(box.get_draw_x(), box.get_draw_y(),
                                    rotation);
+
         } else {
             standard_sprite.render(box.get_draw_x(), box.get_draw_y(),
                                    rotation);

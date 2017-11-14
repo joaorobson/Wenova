@@ -302,7 +302,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
         assert(y <= BACKGROUNDS_SIZE_HEIGHT);
     }
 #endif
-
+  
     Mix_AllocateChannels(ALLOCATED_CHANNELS);
 
     memset(current_column, 0, sizeof current_column);
@@ -806,6 +806,7 @@ pair<int, int> CharacterSelectState::get_slot(int row, int col) {
               << return_value;
 
     return return_value;
+
 }
 
 /**
