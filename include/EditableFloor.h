@@ -15,6 +15,7 @@
 #include "Floor.h"
 #include "Sprite.h"
 
+#include <assert.h>
 #include <string>
 
 class EditableFloor : public Floor {

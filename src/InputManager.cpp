@@ -160,6 +160,9 @@ void InputManager::update() {
 
     SDL_GetMouseState(&mouse_x_position, &mouse_y_position);
 
+    assert(mouse_x_position <= BACKGROUND_WIDTH);
+    assert(mouse_y_position <= BACKGROUND_HEIGHT);
+
     mouse_x_position = mouse_x_position * mouse_sensibility_value + offset_x;
     mouse_y_position = mouse_y_position * mouse_sensibility_value + offset_y;
 
@@ -289,6 +292,8 @@ void InputManager::update() {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_press(int key) {
+    assert(key >= 0);
+
     return keys_states[key] and keys_updates[key] == update_counter;
 }
 
@@ -300,6 +305,8 @@ bool InputManager::key_press(int key) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::key_release(int key) {
+    assert(key >= 0);
+
     return not keys_states[key] and keys_updates[key] == update_counter;
 }
 
@@ -311,6 +318,8 @@ bool InputManager::key_release(int key) {
  * @returns True if key is holded
  */
 bool InputManager::is_key_down(int key) {
+    assert(key >= 0);
+
     return keys_states[key];
 }
 
@@ -322,6 +331,9 @@ bool InputManager::is_key_down(int key) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_press(int button) {
+    assert(button >= 0);
+    assert(button < N_MOUSE_BUTTONS);
+
     return mouse_buttons_states[button] and
         mouse_update[button] == update_counter;
 }
@@ -333,6 +345,9 @@ bool InputManager::mouse_press(int button) {
  * @returns True if everything went ok.
  */
 bool InputManager::mouse_release(int button) {
+    assert(button >= 0);
+    assert(button < N_MOUSE_BUTTONS);
+
     return not mouse_buttons_states[button] and
         mouse_update[button] == update_counter;
 }
@@ -344,6 +359,9 @@ bool InputManager::mouse_release(int button) {
  * @returns True if button is being pressed.
  */
 bool InputManager::is_mouse_down(int button) {
+    assert(button >= 0);
+    assert(button < N_MOUSE_BUTTONS);
+
     return mouse_buttons_states[button];
 }
 
@@ -355,6 +373,9 @@ bool InputManager::is_mouse_down(int button) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_press(int button, int joystick) {
+    assert(button >= 0 and joystick >= 0);
+    assert(joystick < N_CONTROLLERS);
+
     return joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 }
@@ -368,6 +389,9 @@ bool InputManager::joystick_button_press(int button, int joystick) {
  * @returns True if everithing went ok. [0,1]
  */
 bool InputManager::joystick_button_release(int button, int joystick) {
+    assert(button >= 0 and joystick >= 0);
+    assert(joystick < N_CONTROLLERS);
+
     return not joysticks_buttons_states[joystick][button] and
         joystick_update[joystick][button] == update_counter;
 }
@@ -381,6 +405,9 @@ bool InputManager::joystick_button_release(int button, int joystick) {
  * @returns True if button is being held.
  */
 bool InputManager::is_joystick_button_down(int button, int joystick) {
+    assert(button >= 0 and joystick >= 0);
+    assert(joystick < N_CONTROLLERS);
+
     return joysticks_buttons_states[joystick][button];
 }
 

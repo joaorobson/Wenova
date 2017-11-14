@@ -20,6 +20,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <assert.h>
 
 #define N_CHARS 8
 #define N_BACKGROUNDS_SPRITES 2

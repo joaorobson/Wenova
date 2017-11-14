@@ -15,6 +15,7 @@
 #include <map>
 #include <unordered_map>
 #include <utility>
+#include <assert.h>
 
 #include "SDL2/SDL.h"
 
