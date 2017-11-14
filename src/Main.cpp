@@ -9,7 +9,11 @@
  */
 
 #include "Game.h"
+#include "easylogging++.h"
+
+INITIALIZE_EASYLOGGINGPP
 #include "MenuState.h"
+
 
 int main(int, char **) {
     Game game("Wenova - Rise of Conquerors");
