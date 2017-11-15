@@ -11,8 +11,8 @@
 #ifndef INCLUDE_FIGHTERMENU_H_
 #define INCLUDE_FIGHTERMENU_H_
 
-#include <utility>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "Sprite.h"
@@ -26,21 +26,19 @@ using std::vector;
 
 class FighterMenu {
  private:
-    Sprite skin[N_SKINS];  /**< Vector of the fighter's skins. */
-    Sprite disabled;  /**< Image of fighter when it has been already */
-                      /**< selected. */
-    Text *name_text;  /**< Text with fighter's name. */
-    string name;  /**< String of the fighter's name. */
-    int n_frames;  /**< Int with the number of frames of a fighter's skin. */
-    bool enabled;  /**< Bool value that indicates if fighter is available. */
-    bool skin_available[N_SKINS];  /**< Bool vector that indicates fighter's */
-                                   /**< skin available. */
+    Sprite skin[N_SKINS]; /**< Vector of the fighter's skins. */
+    Sprite disabled;      /**< Image of fighter when it has been already */
+                          /**< selected. */
+    Text* name_text;      /**< Text with fighter's name. */
+    string name;          /**< String of the fighter's name. */
+    int n_frames; /**< Int with the number of frames of a fighter's skin. */
+    bool enabled; /**< Bool value that indicates if fighter is available. */
+    bool skin_available[N_SKINS]; /**< Bool vector that indicates fighter's */
+                                  /**< skin available. */
 
  public:
     FighterMenu();
-    FighterMenu(string name,
-                int frames,
-                bool enabled = true);
+    FighterMenu(string name, int frames, bool enabled = true);
 
     bool is_enabled();
     bool is_skin_available(int idx);

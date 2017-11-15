@@ -292,7 +292,8 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_moving(bool &moved, float delta_space) { // NOLINT
+void EditableFloor::handle_box_moving(bool &moved,
+                                      float delta_space) {  // NOLINT
     // LOG(DEBUG) << "Starting EditableFloor handle_box_moving method";
 
     InputManager *input_manager = InputManager::get_instance();
@@ -323,7 +324,8 @@ void EditableFloor::handle_box_moving(bool &moved, float delta_space) { // NOLIN
  * @param moved will become true if platform move
  * @param delta_space how much platform will move
  */
-void EditableFloor::handle_box_resizing(bool &moved, float delta_space) { // NOLINT
+void EditableFloor::handle_box_resizing(bool &moved,
+                                        float delta_space) {  // NOLINT
     // LOG(DEBUG) << "Starting EditableFloor handle_box_resizing method";
 
     /**
@@ -411,8 +413,9 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
  * @param moved if platform was moved, it will change behavior
  * @param acceleration acceleration that will be changed
  */
-void EditableFloor::handle_acceleration_increasing(bool &moved,
-                                                   float &acceleration) { // NOLINT
+void EditableFloor::handle_acceleration_increasing(
+    bool &moved,
+    float &acceleration) {  // NOLINT
     // LOG(DEBUG) << "Starting EditableFloor handle_acceleration_increasing
     // method";
 
@@ -432,5 +435,5 @@ void EditableFloor::handle_acceleration_increasing(bool &moved,
  *
  * @param unamed An game object.
  */
-void EditableFloor::notify_collision(GameObject &) {
+void EditableFloor::notify_collision(const GameObject &) {
 }

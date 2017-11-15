@@ -105,7 +105,7 @@ class EditableFloor : public Floor {
      * @param moved will become true if platform move
      * @param delta_space how much platform will move
      */
-    void handle_box_moving(bool &moved, float delta_space); // NOLINT
+    void handle_box_moving(bool &moved, float delta_space);  // NOLINT
 
     /**
      * Will handle rotation for both sides and reset.
@@ -113,7 +113,7 @@ class EditableFloor : public Floor {
      * @param moved will become true if platform resize
      * @param delta_space intensifies resizing speed
      */
-    void handle_box_resizing(bool &moved, float delta_space); // NOLINT
+    void handle_box_resizing(bool &moved, float delta_space);  // NOLINT
 
     /**
      * Will handle rotation for both sides and reset.
@@ -129,15 +129,15 @@ class EditableFloor : public Floor {
      * @param moved if platform was moved, it will change behavior
      * @param acceleration acceleration that will be changed
      */
-    void handle_acceleration_increasing(bool &moved,
-                                        float &acceleration); //NOLINT
+    void handle_acceleration_increasing(bool &moved,           // NOLINT
+                                        float &acceleration);  // NOLINT
 
     /**
      * Not implemented.
      *
      * @param unamed An game object.
      */
-    void notify_collision(GameObject &);
+    void notify_collision(const GameObject &);
 };
 
 #endif  // INCLUDE_EDITABLEFLOOR_H_
