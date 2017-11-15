@@ -396,7 +396,8 @@ std::pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     }
 #endif
 
-    std::pair<string, int> return_value = std::make_pair(names[idx], frames[idx]);
+    std::pair<string, int> return_value =
+        std::make_pair(names[idx], frames[idx]);
 
 #ifndef NDEBUG
     if (not names.size() or not frames.size()) {
