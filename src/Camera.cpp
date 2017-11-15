@@ -22,20 +22,24 @@ float Camera::layer_speed[LAYERS] = {4, 6, 16, 32};
 // FIXME layer virar variável
 
 /**
- * Brief Description.
+ * Not used method.
  *
  * @param new_focus
  */
+/*
 void Camera::follow(const GameObject* new_focus) {
     focus = new_focus;
 }
+*/
 
 /**
- * Brief Description.
+ * Not used method.
  */
+/*
 void Camera::unfollow() {
     focus = nullptr;
 }
+*/
 
 /**
  * Brief Description.

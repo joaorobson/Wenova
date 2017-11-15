@@ -17,17 +17,16 @@ using std::to_string;
  * This constructor builds sprites and texts to indicate the remaining time
  * in a battle.
  */
-TimeCounter::TimeCounter() {
+TimeCounter::TimeCounter()
+        : background_clock(Sprite("hud/time_board.png"))
+        , time_text(Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
+                         "99", {255, 255, 255, 255})) {
     remaining_seconds = total_time;
 
-    time_text = new Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
-                         "99", {255, 255, 255, 255});
-
-    background_clock = Sprite("hud/time_board.png");
     box = Rectangle(640, 664, background_clock.get_width(),
                     background_clock.get_height());
 
-    time_text->set_pos(640, 664, true, true);
+    time_text.set_pos(640, 664, true, true);
 }
 
 /**
@@ -44,7 +43,7 @@ TimeCounter::~TimeCounter() {
  * @param delta a float variation to update the remaining time of a battle.
  */
 void TimeCounter::update(float delta) {
-    time_text->set_pos(640, 664, true, true);
+    time_text.set_pos(640, 664, true, true);
     timer.update(delta);
     remaining_seconds -= delta * 0.01 / 3;
 
@@ -52,7 +51,7 @@ void TimeCounter::update(float delta) {
     if (remaining_seconds < 0) {
         remaining_seconds = 0;
     }
-    time_text->set_text(get_time_string());
+    time_text.set_text(get_time_string());
 }
 
 /**
@@ -62,7 +61,7 @@ void TimeCounter::update(float delta) {
  */
 void TimeCounter::render() {
     background_clock.render(box.get_draw_x(), box.get_draw_y());
-    time_text->render();
+    time_text.render();
 }
 
 /**

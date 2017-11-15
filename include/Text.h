@@ -29,12 +29,13 @@ class Text {
     shared_ptr<TTF_Font> font; /**< Text font type. */
     SDL_Texture* texture;      /**< Exhibited text texture. */
 
-    string text;        /**< Words from the text. */
-    TextStyle style;    /**< Exhibited text style. */
-    int font_size;      /**< Size of the exhibited text. */
-    SDL_Color color;    /**< Color of the exhibited text. */
     Rectangle box;      /**< /Text box. */
+    SDL_Color color;    /**< Color of the exhibited text. */
     SDL_Rect clip_rect; /**< Text frames positioning box. */
+    TextStyle style;    /**< Exhibited text style. */
+
+    int font_size; /**< Size of the exhibited text. */
+    string text;   /**< Words from the text. */
 
  public:
     Text();
@@ -46,7 +47,13 @@ class Text {
     void set_pos(int x, int y, bool center_x = false, bool center_y = false);
     void set_text(string ctext);
     void set_color(SDL_Color ccolor);
+    /**
+     * Not used method.
+     */
     void set_style(TextStyle cstyle);
+    /**
+     * Not used method.
+     */
     void set_font_size(int cfont_size);
     float get_x();
     float get_y();

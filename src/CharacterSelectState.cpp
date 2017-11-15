@@ -137,6 +137,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
         check_constants();
         load_resources();
         initialize_elements_positions();
+        process_input();
 
         InputManager::get_instance()->map_keyboard_to_joystick(
             InputManager::MENU_MODE);
@@ -446,7 +447,6 @@ std::pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     if (names.size() and frames.size()) {
         /* Nothing to do. */
     } else {
-
         LOG(FATAL) << "Names and frames arrays must have some element";
     }
 

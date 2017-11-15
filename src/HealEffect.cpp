@@ -12,7 +12,7 @@
 
 HealEffect::HealEffect(Fighter* cparent, string csprite, string ctags,
                        int frames, float chealing_factor)
-    : Effect(cparent, csprite, ctags, frames) {
+        : Effect(cparent, csprite, ctags, frames) {
     healing_factor = chealing_factor;
 }
 

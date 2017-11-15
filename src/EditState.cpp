@@ -37,7 +37,8 @@ using std::to_string;
  *
  * @param cstage
  */
-EditState::EditState(string cstage) : stage(cstage) {
+EditState::EditState(string cstage)
+        : stage(cstage) {
     test_fighter = new Blood("test", WIDTH / 2, HEIGHT / 2 - 200, 0);
     add_object(test_fighter);
 

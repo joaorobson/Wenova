@@ -23,10 +23,11 @@
 class MenuState : public State {
  private:
     Sprite background, green_ship, red_ship, title, planet;
-    Text* start_option;
-    Sound blocked, selected, changed;
     Music music;
+    Sound blocked, selected, changed;
+    Text* start_option;
     Timer text_timer;
+
     int current_option;
     bool start_pressed, show_text;
     vector<Text*> options;

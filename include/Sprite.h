@@ -49,8 +49,17 @@ class Sprite {
 
     void open(string file);
     void set_clip(int x, int y, int w, int h);
+    /**
+     * Not used method.
+     */
     void set_frame(int frame);
+    /**
+     * Not used method.
+     */
     void set_frame_count(int cframe_count);
+    /**
+     * Not used method.
+     */
     void set_frame_time(float cframe_time);
 
     void update(float delta);
@@ -58,6 +67,9 @@ class Sprite {
                 SDL_RendererFlip flip = SDL_FLIP_NONE);
 
     void set_scale_x(float scale);
+    /**
+     * Not used method.
+     */
     void set_scale_y(float scale);
     void set_scale(float scale);
     void set_scale(float cscale_x_axis, float cscale_y_axis);

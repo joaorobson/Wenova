@@ -46,6 +46,7 @@ class StageSelectState : public State {
         START, /**< enum value of the button "START". */
         SELECT /**< enum value of the button "SELECT". */
     };
+
     bool pressed[5]; /**< Bool vector that represents the pressed button */
                      /**< according to the enum Button. */
 

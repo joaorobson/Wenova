@@ -35,13 +35,15 @@ void State::add_object(GameObject* object) {
 }
 
 /**
- * Brief Description.
+ * Not used method.
  *
  * @returns
  */
+/*
 bool State::pop_requested() {
     return m_pop_requested;
 }
+*/
 
 /**
  * Brief Description.

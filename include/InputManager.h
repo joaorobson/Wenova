@@ -240,6 +240,7 @@ class InputManager {
 
     /**
      * Manages player release of the key (keyboard).
+     * Not used method.
      *
      * @param key [0, 14 (number of keys used in the game)]
      *
@@ -267,6 +268,8 @@ class InputManager {
 
     /**
      * Manages player release of a mouse button.
+     * Not used method.
+     *
      * @param button which button was pressed [0, 2]
      *
      * @returns True if everything went ok.
@@ -275,6 +278,8 @@ class InputManager {
 
     /**
      * Watch holding of the player on the button (mouse).
+     * Not used method.
+     *
      * @param button
      *
      * @returns True if button is being pressed.

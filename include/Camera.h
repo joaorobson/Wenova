@@ -25,7 +25,13 @@ class Camera {
     static float layer_speed[LAYERS];
     static Vector speed;
 
+    /**
+     * Not used method.
+     */
     static void follow(const GameObject* new_focus);
+    /**
+     * Not used method.
+     */
     static void unfollow();
     static void update(float delta);
 };

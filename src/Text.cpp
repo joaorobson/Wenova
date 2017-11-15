@@ -23,9 +23,10 @@
  * A constructor.
  * Initialize the texture attribute to null.
  */
-Text::Text() {
-    texture = nullptr;
-    font_size = 0;
+Text::Text()
+        : texture(nullptr)
+        , style(SOLID)
+        , font_size(0) {
 }
 
 /**
@@ -131,26 +132,32 @@ void Text::set_color(SDL_Color ccolor) {
 /**
  * style setter.
  * Sets the style to a new style.
+ * Not used method.
  *
  * @param cstyle stores the style that will be saved and updated in the
  * texture.
  */
+/*
 void Text::set_style(TextStyle cstyle) {
     style = cstyle;
     remake_texture();
 }
+*/
 
 /**
  * cfont_size setter.
  * Sets the style to a new style.
+ * Not used method yet.
  *
  * @param cfont_size stores the font size that will be saved and updated in the
  * texture.
  */
+/*
 void Text::set_font_size(int cfont_size) {
     font_size = cfont_size;
     remake_texture();
 }
+*/
 
 /**
  * Text box horizontal coordinate getter.

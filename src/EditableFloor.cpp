@@ -54,10 +54,10 @@
  * @param cplatform [0,1]
  */
 EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
-    : Floor(x, y, FLOOR_INITIAL_WIDTH, crotation, cplatform),
-      standard_sprite(Sprite(RIGID_PLATFORM_PATH)),
-      platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH)),
-      selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
+        : Floor(x, y, FLOOR_INITIAL_WIDTH, crotation, cplatform)
+        , standard_sprite(Sprite(RIGID_PLATFORM_PATH))
+        , platform_sprite(Sprite(CROSSINGABLE_PLATFORM_PATH))
+        , selected_sprite(Sprite(SELECTED_CROSSINGABLE_PLATFORM_PATH)) {
 #ifndef NDEBUG
     try {
         std::string log_message = "Starting EditableFloor constructor with x: ";
@@ -94,7 +94,7 @@ EditableFloor::EditableFloor(float x, float y, float crotation, bool cplatform)
  */
 EditableFloor::EditableFloor(float x, float y, float width, float crotation,
                              bool cplatform)
-    : EditableFloor(x, y, crotation, cplatform) {
+        : EditableFloor(x, y, crotation, cplatform) {
 #ifndef NDEBUG
     try {
         std::string log_message = "Starting EditableFloor constructor with x: ";
@@ -162,19 +162,6 @@ string EditableFloor::get_information() {
 
     for (auto &c : info) {
         c += FILL_MISSING_PIXELS_DEBUGRMATIONS;
-    }
-
-    /*
-     * Check if string really has the elements.
-     * info == info_c for sure
-     */
-    float float1, float2, float3, float4;
-    int int1;
-    if (sscanf(info_c, "%f %f %f %f %d", &float1, &float2, &float3, &float4,
-               &int1) == 5) {
-        /* Nothing to do. */
-    } else {
-        LOG(WARNING) << "Info doesn't has all the information it should have";
     }
 
     std::string log_message =
@@ -328,7 +315,6 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
  * @param delta_space how much platform will move
  */
 void EditableFloor::handle_box_moving(bool &moved, float delta_space) {
-
     // LOG(DEBUG) << "Starting EditableFloor handle_box_moving method";
 
     InputManager *input_manager = InputManager::get_instance();
@@ -363,7 +349,6 @@ void EditableFloor::handle_box_moving(bool &moved, float delta_space) {
  * @param delta_space how much platform will move
  */
 void EditableFloor::handle_box_resizing(bool &moved, float delta_space) {
-
     // LOG(DEBUG) << "Starting EditableFloor handle_box_resizing method";
 
     /**
@@ -443,7 +428,6 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
  */
 void EditableFloor::handle_acceleration_increasing(bool &moved,
                                                    float &acceleration) {
-
     // LOG(DEBUG) << "Starting EditableFloor handle_acceleration_increasing
     // method";
 

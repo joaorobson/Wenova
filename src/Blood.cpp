@@ -33,7 +33,7 @@ using std::min;
  */
 Blood::Blood(string skin, float x_axis_position, float y_axis_position,
              int character_id, Fighter* cpartner)
-    : Fighter(character_id, x_axis_position, cpartner) {
+        : Fighter(character_id, x_axis_position, cpartner) {
     /**
      * File path indicating the relative skin to each attack type.
      */

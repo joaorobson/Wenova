@@ -39,6 +39,8 @@ class FighterStats : public GameObject {
     Sprite life[3];
     Sprite special[3];
     Sprite player_image;
+    Fighter *fighter;
+
     double percent_to_draw_life;
     double percent_to_draw_special;
     int index_fighter;
@@ -46,7 +48,6 @@ class FighterStats : public GameObject {
     int condition;
     bool is_ultimate_diff;
     double x, y;
-    Fighter *fighter;
 };
 
 #endif  // INCLUDE_FIGHTERSTATS_H_

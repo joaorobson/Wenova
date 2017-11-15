@@ -17,7 +17,9 @@
  * @param mx
  * @param my
  */
-Vector::Vector(float mx, float my) : x(mx), y(my) {
+Vector::Vector(float mx, float my)
+        : x(mx)
+        , y(my) {
 }
 
 /**
@@ -32,15 +34,17 @@ void Vector::rotate(Vector origin, float angle) {
 }
 
 /**
- * Brief Description.
+ * Not used method.
  *
  * @param module
  * @param angle
  */
+/*
 void Vector::transform(float module, float angle) {
     x = module * cos(angle);
     y = module * sin(angle);
 }
+*/
 
 /**
  * Brief Description.
