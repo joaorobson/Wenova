@@ -21,7 +21,7 @@ TimeCounter::TimeCounter() {
     remaining_seconds = total_time;
 
     time_text = new Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
-                         "99", { 255, 255, 255, 255 });
+                         "99", {255, 255, 255, 255});
 
     background_clock = Sprite("hud/time_board.png");
     box = Rectangle(640, 664, background_clock.get_width(),
@@ -34,7 +34,8 @@ TimeCounter::TimeCounter() {
  * Destructor.
  * Nothing to do.
  */
-TimeCounter::~TimeCounter() {}
+TimeCounter::~TimeCounter() {
+}
 
 /**
  * Function that updates the time showed.
@@ -101,4 +102,5 @@ bool TimeCounter::is_over() {
  *
  * @param GameObject a pointer to a GameObject.
  */
-void TimeCounter::notify_collision(GameObject&) {}
+void TimeCounter::notify_collision(const GameObject&) {
+}
