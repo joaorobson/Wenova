@@ -24,6 +24,10 @@ class Rectangle {
 
     Rectangle();
     Rectangle(float x, float y, float width, float height);
+
+    /**
+     * Not used method.
+     */
     bool is_inside(float mx, float my);
     float get_x() const;
     float get_y() const;

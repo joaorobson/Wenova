@@ -24,7 +24,7 @@
  * @param cpartner
  */
 Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner)
-    : Fighter(cid, x, cpartner) {
+        : Fighter(cid, x, cpartner) {
     path = "characters/flesh/" + skin + "/";
     sound_path = "characters/flesh/sound/";
 

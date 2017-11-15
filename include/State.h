@@ -43,6 +43,9 @@ class State {
 
     virtual void load_assets();
 
+    /**
+     * Not used method.
+     */
     bool pop_requested();
     bool quit_requested();
 };

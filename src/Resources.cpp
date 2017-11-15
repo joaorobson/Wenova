@@ -118,8 +118,9 @@ shared_ptr<Mix_Chunk> Resources::get_sound(string file) {
 }
 
 /**
- * Brief Description.
+ * Not used method.
  */
+/*
 void Resources::clear_sound() {
     for (auto sound : sound_table) {
         if (sound.second.unique()) {
@@ -127,6 +128,7 @@ void Resources::clear_sound() {
         }
     }
 }
+*/
 
 /**
  * Brief Description.

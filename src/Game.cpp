@@ -192,13 +192,15 @@ void Game::calculate_delta_time() {
 }
 
 /**
- * Brief Description.
+ * Not used method.
  *
  * @returns
  */
+/*
 float Game::get_delta_time() {
     return delta;
 }
+*/
 
 /**
  * Brief Description.

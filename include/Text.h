@@ -47,7 +47,13 @@ class Text {
     void set_pos(int x, int y, bool center_x = false, bool center_y = false);
     void set_text(string ctext);
     void set_color(SDL_Color ccolor);
+    /**
+     * Not used method.
+     */
     void set_style(TextStyle cstyle);
+    /**
+     * Not used method.
+     */
     void set_font_size(int cfont_size);
     float get_x();
     float get_y();

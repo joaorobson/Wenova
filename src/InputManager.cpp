@@ -523,53 +523,58 @@ bool InputManager::key_press(int key) {
 
 /**
  * Manages player release of the key (keyboard).
+ * Not used method yet
  *
  * @param key [0, 14 (number of keys used in the game)]
  *
  * @returns True if everithing went ok. [0,1]
  */
-bool InputManager::key_release(int key) {
-    /*
-    #ifndef NDEBUG
-    try {
-        std::string log_message = "Starting InputManager key_release method key:
-    " +
-        std::to_string(key);
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        string log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-    // LOG(DEBUG) << log_message;
-
-    if (key >= 0) {
-        LOG(FATAL) << "Key is less than zero";
-    } else {
-        // Nothing to do.
-    }
-    #endif
-    */
-
-    bool return_value =
-        not keys_states[key] and keys_updates[key] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    try {
-        log_message = "Ending InputManager key_release method returning value: "
-    +
-        std::to_string(static_cast<int>(return_value));
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        string log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-    // LOG(DEBUG) << log_message;
-    #endif
-    */
-
-    return return_value;
-}
+// bool InputManager::key_release(int key) {
+//     /*
+//     #ifndef NDEBUG
+//     try {
+//         std::string log_message = "Starting InputManager key_release method
+//         key:
+//     " +
+//         std::to_string(key);
+//     } catch (std::bad_alloc& error) {
+//         string str_error(error.what());
+//         string log_message = "Couldn't convert to string: " + str_error +
+//         '\n';
+//         LOG(FATAL) << log_message;
+//     }
+//     // LOG(DEBUG) << log_message;
+//
+//     if (key >= 0) {
+//         LOG(FATAL) << "Key is less than zero";
+//     } else {
+//         // Nothing to do.
+//     }
+//     #endif
+//     */
+//
+//     bool return_value =
+//         not keys_states[key] and keys_updates[key] == update_counter;
+//
+//     /*
+//     #ifndef NDEBUG
+//     try {
+//         log_message = "Ending InputManager key_release method returning
+//         value: "
+//     +
+//         std::to_string(static_cast<int>(return_value));
+//     } catch (std::bad_alloc& error) {
+//         string str_error(error.what());
+//         string log_message = "Couldn't convert to string: " + str_error +
+//         '\n';
+//         LOG(FATAL) << log_message;
+//     }
+//     // LOG(DEBUG) << log_message;
+//     #endif
+//     */
+//
+//     return return_value;
+// }
 
 /**
  * Watch holding of the player on the key (keyboard).
@@ -672,102 +677,111 @@ bool InputManager::mouse_press(int button) {
 
 /**
  * Manages player release of a mouse button.
+ * Not used method yet.
  * @param button which button was pressed [0, 2]
  *
  * @returns True if everything went ok.
  */
-bool InputManager::mouse_release(int button) {
-    /*
-    #ifndef NDEBUG
-    try {
-        std::string log_message = "Starting InputManager mouse_release method,
-        button: " + std::to_string(button);;
-        LOG(DEBUG) << log_message;
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        string log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-
-    if (button >= 0 or button < N_MOUSE_BUTTONS) {
-        // Nothing to do.
-    } else if (button < 0){
-        LOG(FATAL) << "button is less than zero";
-    } else {
-        LOG(FATAL) << "button bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = not mouse_buttons_states[button] and
-        mouse_update[button] == update_counter;
-
-    /*
-    #ifndef NDEBUG
-    try {
-        log_message =  "Ending InputManager mouse_release method returning
-    value: "
-        + std::to_string(static_cast<int>(return_value));
-        LOG(DEBUG) << log_message;
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        string log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-    #endif
-    */
-
-    return return_value;
-}
+// bool InputManager::mouse_release(int button) {
+//     /*
+//     #ifndef NDEBUG
+//     try {
+//         std::string log_message = "Starting InputManager mouse_release
+//         method,
+//         button: " + std::to_string(button);;
+//         LOG(DEBUG) << log_message;
+//     } catch (std::bad_alloc& error) {
+//         string str_error(error.what());
+//         string log_message = "Couldn't convert to string: " + str_error +
+//         '\n';
+//         LOG(FATAL) << log_message;
+//     }
+//
+//     if (button >= 0 or button < N_MOUSE_BUTTONS) {
+//         // Nothing to do.
+//     } else if (button < 0){
+//         LOG(FATAL) << "button is less than zero";
+//     } else {
+//         LOG(FATAL) << "button bigger than available";
+//     }
+//     #endif
+//     */
+//
+//     bool return_value = not mouse_buttons_states[button] and
+//         mouse_update[button] == update_counter;
+//
+//     /*
+//     #ifndef NDEBUG
+//     try {
+//         log_message =  "Ending InputManager mouse_release method returning
+//     value: "
+//         + std::to_string(static_cast<int>(return_value));
+//         LOG(DEBUG) << log_message;
+//     } catch (std::bad_alloc& error) {
+//         string str_error(error.what());
+//         string log_message = "Couldn't convert to string: " + str_error +
+//         '\n';
+//         LOG(FATAL) << log_message;
+//     }
+//     #endif
+//     */
+//
+//     return return_value;
+// }
 
 /**
  * Watch holding of the player on the button (mouse).
+ * Not used method yet
  * @param button
  *
  * @returns True if button is being pressed.
  */
-bool InputManager::is_mouse_down(int button) {
-    /*
-    #ifndef NDEBUG
-    try {
-        std::string log_message = "Starting InputManager is_mouse_down method,
-        button: " + std::to_string(button);;
-        LOG(DEBUG) << log_message;
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        string log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-
-    if (button >= 0 or button < N_MOUSE_BUTTONS) {
-        // Nothing to do.
-    } else if (button < 0){
-        LOG(FATAL) << "button is less than zero";
-    } else {
-        LOG(FATAL) << "button bigger than available";
-    }
-    #endif
-    */
-
-    bool return_value = mouse_buttons_states[button];
-
-    /*
-    #ifndef NDEBUG
-    try {
-        log_message = "Ending InputManager is_mouse_down method returning value:
-    " +
-        std::to_string(static_cast<int>(return_value));
-        LOG(DEBUG) << log_message;
-    } catch (std::bad_alloc& error) {
-        string str_error(error.what());
-        string log_message = "Couldn't convert to string: " + str_error + '\n';
-        LOG(FATAL) << log_message;
-    }
-    #endif
-    */
-
-    return return_value;
-}
+// bool InputManager::is_mouse_down(int button) {
+//     /*
+//     #ifndef NDEBUG
+//     try {
+//         std::string log_message = "Starting InputManager is_mouse_down
+//         method,
+//         button: " + std::to_string(button);;
+//         LOG(DEBUG) << log_message;
+//     } catch (std::bad_alloc& error) {
+//         string str_error(error.what());
+//         string log_message = "Couldn't convert to string: " + str_error +
+//         '\n';
+//         LOG(FATAL) << log_message;
+//     }
+//
+//     if (button >= 0 or button < N_MOUSE_BUTTONS) {
+//         // Nothing to do.
+//     } else if (button < 0){
+//         LOG(FATAL) << "button is less than zero";
+//     } else {
+//         LOG(FATAL) << "button bigger than available";
+//     }
+//     #endif
+//     */
+//
+//     bool return_value = mouse_buttons_states[button];
+//
+//     /*
+//     #ifndef NDEBUG
+//     try {
+//         log_message = "Ending InputManager is_mouse_down method returning
+//         value:
+//     " +
+//         std::to_string(static_cast<int>(return_value));
+//         LOG(DEBUG) << log_message;
+//     } catch (std::bad_alloc& error) {
+//         string str_error(error.what());
+//         string log_message = "Couldn't convert to string: " + str_error +
+//         '\n';
+//         LOG(FATAL) << log_message;
+//     }
+//     #endif
+//     */
+//
+//     return return_value;
+// }
 
 /**
  * Manages player presses of the button (joystick).
@@ -1019,8 +1033,8 @@ void InputManager::reset_keyboard_to_joystick() {
     /**
      * Check if it's on range.
      */
-    if (not keyboard_to_joystick_id < 0 and
-        not keyboard_to_joystick_id > N_CONTROLLERS) {
+    if (not(keyboard_to_joystick_id < 0) and
+        not(keyboard_to_joystick_id > N_CONTROLLERS)) {
         /**
          * Updates State for all if true, else
          * just on index keyboard_to_joystick_id.
@@ -1028,7 +1042,7 @@ void InputManager::reset_keyboard_to_joystick() {
         int i = (keyboard_to_joystick_id == N_CONTROLLERS)
             ? 0
             : keyboard_to_joystick_id;
-        for (i = i; i <= keyboard_to_joystick_id; i++) {
+        for (; i <= keyboard_to_joystick_id; i++) {
             for (auto &c : joysticks_buttons_states[i]) {
                 c.second = false;
             }

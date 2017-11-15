@@ -23,7 +23,7 @@
  */
 FleshUltimateEffect::FleshUltimateEffect(Fighter* cparent, string csprite,
                                          string ctags, int frames)
-    : Effect(cparent, csprite, ctags, frames) {
+        : Effect(cparent, csprite, ctags, frames) {
     /**
      * Check if is the parent fighter. If so, adds the "in ultimate" tag and
      * multiply his maximum life by 1.5.W

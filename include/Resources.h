@@ -47,6 +47,10 @@ class Resources {
     static void clear_music();
 
     static shared_ptr<Mix_Chunk> get_sound(string file);
+
+    /**
+     * Not used method.
+     */
     static void clear_sound();
 
     static shared_ptr<TTF_Font> get_font(string file, int size);

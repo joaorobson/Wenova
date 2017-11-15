@@ -24,14 +24,16 @@ using std::to_string;
  * that won the battle.
  */
 BattleEnd::BattleEnd(int id_winner)
-    : sprite(vector<Sprite>(N_SPRITES + 2)),
-      back_btn(Sprite("victory/buttons/back.png")),
-      back_txt(new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                        "BACK", WHITE)),
-      current_sprite(1), back_selected(false), quitRequested(false) {
+        : sprite(vector<Sprite>(N_SPRITES + 2))
+        , back_btn(Sprite("victory/buttons/back.png"))
+        , back_txt(Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
+                        "BACK", WHITE))
+        , current_sprite(1)
+        , back_selected(false)
+        , quitRequested(false) {
     string path = "victory/" + to_string(id_winner) + "/";
 
-    back_txt->set_pos(1154, 650);
+    back_txt.set_pos(1154, 650);
 
     /**
      * Iterates over the 8 images of victory to create an array of sprites.
@@ -94,7 +96,7 @@ void BattleEnd::update(float delta) {
 void BattleEnd::render() {
     sprite[current_sprite].render();
     back_btn.render(1094, 642);
-    back_txt->render();
+    back_txt.render();
 }
 
 /**

@@ -10,16 +10,16 @@
 #include "Game.h"
 #include "MenuState.h"
 
-#include "easylogging++.h" // NOLINT
+#include "easylogging++.h"  // NOLINT
 INITIALIZE_EASYLOGGINGPP
 
 int main(int, char **) {
-	Game game("Wenova - Rise of Conquerors");
+    Game game("Wenova - Rise of Conquerors");
 
-	State * state =  new MenuState(false);
-	game.push(state);
+    State *state = new MenuState(false);
+    game.push(state);
 
-	game.run();
+    game.run();
 
-	return 0;
+    return 0;
 }

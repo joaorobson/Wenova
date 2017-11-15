@@ -35,7 +35,6 @@ FighterStats::FighterStats(Fighter *p_fighter, int p_index_fighter, int p_side,
         , is_ultimate_diff(fighter->is("flesh"))
         , x(p_x)
         , y(p_y) {
-
     bg[0] = Sprite("hud/life" + to_string(index_fighter) + "_frame.png");
     bg[1] = bg[2] =
         Sprite("hud/life" + to_string(index_fighter) + "_frame.png");

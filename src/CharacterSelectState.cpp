@@ -447,7 +447,6 @@ std::pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     if (names.size() and frames.size()) {
         /* Nothing to do. */
     } else {
-
         LOG(FATAL) << "Names and frames arrays must have some element";
     }
 

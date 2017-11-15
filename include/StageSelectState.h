@@ -8,8 +8,8 @@
  * This file contains the definitions of all methods and attributes of the class
  * StageSelectState.
  */
-#ifndef INCLUDE_STATESELECTSTAGE_H_
-#define INCLUDE_STATESELECTSTAGE_H_
+#ifndef INCLUDE_STAGESELECTSTATE_H_
+#define INCLUDE_STAGESELECTSTATE_H_
 
 #include "InputManager.h"
 #include "Sound.h"
@@ -104,4 +104,4 @@ class StageSelectState : public State {
     void update_stage_select(int increment);
 };
 
-#endif  // INCLUDE_STATESELECTSTAGE_H_
+#endif  // INCLUDE_STAGESELECTSTATE_H_
