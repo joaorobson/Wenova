@@ -27,8 +27,11 @@ class UltimateEffect : public Effect {
                    int frames = 1);
 
     void update(float delta_character_state);
+
     void render();
+
     bool is_dead();
+
     void notify_collision(const GameObject &object);
 };
 

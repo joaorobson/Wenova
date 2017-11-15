@@ -152,26 +152,29 @@ void Fighter::notify_collision(const GameObject &object) {
     // FIXME tá feio
     float floor_y = object.box.y +
         (box.x - object.box.x) * tan(object.rotation) - object.box.height * 0.5;
+
     if (object.is("floor") and speed.y >= 0 and
         abs(floor_y - (box.y + box.height * 0.5)) < 10) {
         if (pass_through_timer.get() < 30 and object.is("platform"))
             return;
 
-        int floor_id = ((Floor &) object).get_id();
+        int floor_id = ((const Floor &) object).get_id();
         speed.y = 0;
+
         float new_y = object.box.y +
             (box.x - object.box.x) * tan(object.rotation) -
             (box.height + object.box.height) * 0.5;
+
         if (last_collided_floor != floor_id)
             box.y = min(box.y, new_y);
         else
             box.y = new_y;
 
         on_floor = true;
-        last_collided_floor = ((Floor &) object).get_id();
+        last_collided_floor = ((const Floor &) object).get_id();
     } else if (object.is("player") and not is("dying") and
                not(object.is("dying"))) {
-        Fighter &fighter = (Fighter &) object;
+        Fighter const &fighter = (const Fighter &) object;
 
         if (fighter.is_attacking() and fighter.get_id() != partner_id) {
             int left = AttackDirection::ATK_LEFT * (fighter.box.x > box.x);
@@ -179,6 +182,7 @@ void Fighter::notify_collision(const GameObject &object) {
             int up = AttackDirection::ATK_UP * (fighter.box.y > box.y);
             int down = AttackDirection::ATK_DOWN * (fighter.box.y <= box.y);
             int position_mask = left | right | up | down;
+
             if (position_mask & fighter.get_attack_mask()) {
                 float damage = fighter.get_attack_damage() *
                     ((state == FighterState::DEFENDING) ? 0.5 : 1);
@@ -196,6 +200,7 @@ void Fighter::notify_collision(const GameObject &object) {
             int up = AttackDirection::ATK_UP * (fighter.box.y <= box.y);
             int down = AttackDirection::ATK_DOWN * (fighter.box.y > box.y);
             int position_mask = left | right | up | down;
+
             if (position_mask & get_attack_mask()) {
                 grab = true;
                 play_hit();
@@ -332,7 +337,7 @@ void Fighter::reset_position(float x, float y) {
  *
  * @returns
  */
-bool Fighter::is_attacking() {
+bool Fighter::is_attacking() const {
     return attack_damage > 0;
 }
 
@@ -341,7 +346,7 @@ bool Fighter::is_attacking() {
  *
  * @returns
  */
-float Fighter::get_attack_damage() {
+float Fighter::get_attack_damage() const {
     return attack_damage;
 }
 
@@ -350,7 +355,7 @@ float Fighter::get_attack_damage() {
  *
  * @returns
  */
-int Fighter::get_attack_mask() {
+int Fighter::get_attack_mask() const {
     return attack_mask;
 }
 
@@ -359,7 +364,7 @@ int Fighter::get_attack_mask() {
  *
  * @returns
  */
-int Fighter::get_id() {
+int Fighter::get_id() const {
     return id;
 }
 

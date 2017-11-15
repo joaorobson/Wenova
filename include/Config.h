@@ -12,12 +12,21 @@
 #define INCLUDE_CONFIG_H_
 
 #include <assert.h>
+
+#include <fstream>
 #include <string>
+
+#include "easylogging++.h"  // NOLINT
 
 #define RESOURCES_FOLDER std::string("res/")
 #define CONFIGURATION_FILE_PATH (RESOURCES_FOLDER + "config_file.dat")
 
 class Config {
+ private:
+    static int width;
+    static int height;
+    static int fullscreen;
+
  public:
     /**
      * Will write current screen configurations to res/config_file.dat.
@@ -52,11 +61,6 @@ class Config {
      * @param cfullscreen [0,1]
      */
     static void update_information(int cwidth, int cheight, int cfullscreen);
-
- private:
-    static int width;
-    static int height;
-    static int fullscreen;
 };
 
 #endif  // INCLUDE_CONFIG_H_

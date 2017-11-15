@@ -141,10 +141,10 @@ class Fighter : public GameObject {
     void reset_position(float x, float y);
     void play_hit();
 
-    bool is_attacking();
-    float get_attack_damage();
-    int get_attack_mask();
-    int get_id();
+    bool is_attacking() const;
+    float get_attack_damage() const;
+    int get_attack_mask() const;
+    int get_id() const;
     int get_max_life();
     void increment_life(float increment);
     void increment_special(float increment);

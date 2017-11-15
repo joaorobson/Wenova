@@ -85,6 +85,6 @@ void Floor::notify_collision(const GameObject &) {
  *
  * @returns
  */
-int Floor::get_id() {
+int Floor::get_id() const {
     return id;
 }

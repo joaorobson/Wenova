@@ -12,20 +12,19 @@
 #ifndef INCLUDE_EDITABLEFLOOR_H_
 #define INCLUDE_EDITABLEFLOOR_H_
 
+#include <string>
+
 #include "Floor.h"
 #include "Sprite.h"
-
-#include <assert.h>
-#include <string>
+#include "easylogging++.h"  // NOLINT
 
 class EditableFloor : public Floor {
  private:
-    enum FloorState { SELECTED, NOT_SELECTED };
-
     Sprite standard_sprite;
     Sprite platform_sprite;
     Sprite selected_sprite;
 
+    enum FloorState { SELECTED, NOT_SELECTED };  ///< Can't be after state
     FloorState state;
 
     bool is_deleted;
@@ -60,16 +59,31 @@ class EditableFloor : public Floor {
     ~EditableFloor();
 
     /**
+     * Select elements which will be edited.
+     *
+     * @param cis_selected [0,1]
+     */
+    void set_selected(bool cis_selected);
+
+    /**
+     * Get information about many aspects of an platform.
+     *
+     * @returns String in format: "x y width rotated level is_platform?"
+     */
+    string get_information();
+
+ private:
+    /**
+     * Render selected platform considering if it is selected.
+     */
+    void render();
+
+    /**
      * Manages player interaction with the platform.
      *
      * @param delta Difference in position of the platform.
      */
     void update(float delta);
-
-    /**
-     * Render selected platform considering if it is selected.
-     */
-    void render();
 
     /**
      * True if platform has been deleted.
@@ -79,25 +93,51 @@ class EditableFloor : public Floor {
     bool is_dead();
 
     /**
+     * Will handle all interaction of the user with the platform.
+     *
+     * @param delta_time time spent on each frame of sprites
+     */
+    void handle_platforms_interaction(float delta_time);
+
+    /**
+     * Handle platform player interaction with the platforms.
+     *
+     * @param moved will become true if platform move
+     * @param delta_space how much platform will move
+     */
+    void handle_box_moving(bool &moved, float delta_space);  // NOLINT
+
+    /**
+     * Will handle rotation for both sides and reset.
+     *
+     * @param moved will become true if platform resize
+     * @param delta_space intensifies resizing speed
+     */
+    void handle_box_resizing(bool &moved, float delta_space);  // NOLINT
+
+    /**
+     * Will handle rotation for both sides and reset.
+     *
+     * @param acceleration acceleration for rotating platform
+     * @param delta_space intensifies rotating speed
+     */
+    void handle_box_rotating(float acceleration, float delta_space);
+
+    /**
+     * Will handle if acceleration increase keeps ou reset
+     *
+     * @param moved if platform was moved, it will change behavior
+     * @param acceleration acceleration that will be changed
+     */
+    void handle_acceleration_increasing(bool &moved,           // NOLINT
+                                        float &acceleration);  // NOLINT
+
+    /**
      * Not implemented.
      *
      * @param unamed An game object.
      */
-    void notify_collision(const GameObject&);
-
-    /**
-     * Get information about many aspects of an platform.
-     *
-     * @returns String in format: "x y width rotated level is_platform?"
-     */
-    string get_information();
-
-    /**
-     * Select elements which will be edited.
-     *
-     * @param cis_selected [0,1]
-     */
-    void set_selected(bool cis_selected);
+    void notify_collision(const GameObject &);
 };
 
 #endif  // INCLUDE_EDITABLEFLOOR_H_

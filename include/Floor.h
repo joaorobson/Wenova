@@ -31,7 +31,7 @@ class Floor : public GameObject {
 
     void notify_collision(const GameObject& object);
 
-    int get_id();
+    int get_id() const;
 
     static int floor_id;
 };
