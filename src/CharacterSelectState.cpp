@@ -165,7 +165,7 @@ void CharacterSelectState::process_input() {
 
     InputManager* input_manager = InputManager::get_instance();
 
-    vector<pair<int, int>> joystick_buttons = {
+    vector<std::pair<int, int>> joystick_buttons = {
         ii(A, InputManager::A),         ii(B, InputManager::B),
         ii(Y, InputManager::Y),         ii(LEFT, InputManager::LEFT),
         ii(RIGHT, InputManager::RIGHT), ii(UP, InputManager::UP),
@@ -314,13 +314,13 @@ void CharacterSelectState::render() {
  * @returns Vector of pairs of strings containing information about
  * characters and skins choosen.
  */
-vector<pair<string, string>> CharacterSelectState::export_players() {
+vector<std::pair<string, string>> CharacterSelectState::export_players() {
 #ifndef NDEBUG
     LOG(DEBUG) << "Starting CharacterSelectState export_players method";
     string log_message = "";
 #endif
 
-    vector<pair<string, string>> players;
+    vector<std::pair<string, string>> players;
 
     for (int i = 0; i < N_PLAYERS; i++) {
         int char_sel = current_row[i] * N_COLS + current_column[i];
@@ -415,7 +415,7 @@ bool CharacterSelectState::all_players_selected() {
  *
  * @returns Name and number of frames in corresponding sprite
  */
-pair<string, int> CharacterSelectState::get_chars_info(int idx) {
+std::pair<string, int> CharacterSelectState::get_chars_info(int idx) {
 #ifndef NDEBUG
     string log_message = "";
     try {
@@ -446,6 +446,7 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
     if (names.size() and frames.size()) {
         /* Nothing to do. */
     } else {
+
         LOG(FATAL) << "Names and frames arrays must have some element";
     }
 
@@ -472,9 +473,9 @@ pair<string, int> CharacterSelectState::get_chars_info(int idx) {
  * @param row [510 or 645]
  * @param col [55 or 197 or 395 or 536]
  *
- * @returns pair of ints which indicates the corresponding slot.
+ * @returns std::pair of ints which indicates the corresponding slot.
  */
-pair<int, int> CharacterSelectState::get_slot(int row, int col) {
+std::pair<int, int> CharacterSelectState::get_slot(int row, int col) {
 #ifndef NDEBUG
     string log_message = "";
     try {

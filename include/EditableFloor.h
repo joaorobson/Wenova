@@ -137,7 +137,7 @@ class EditableFloor : public Floor {
      *
      * @param unamed An game object.
      */
-    void notify_collision(GameObject &);
+    void notify_collision(const GameObject &);
 };
 
 #endif  // INCLUDE_EDITABLEFLOOR_H_

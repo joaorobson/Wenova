@@ -328,6 +328,7 @@ void EditableFloor::handle_platforms_interaction(float delta_time) {
  * @param delta_space how much platform will move
  */
 void EditableFloor::handle_box_moving(bool &moved, float delta_space) {
+
     // LOG(DEBUG) << "Starting EditableFloor handle_box_moving method";
 
     InputManager *input_manager = InputManager::get_instance();
@@ -362,6 +363,7 @@ void EditableFloor::handle_box_moving(bool &moved, float delta_space) {
  * @param delta_space how much platform will move
  */
 void EditableFloor::handle_box_resizing(bool &moved, float delta_space) {
+
     // LOG(DEBUG) << "Starting EditableFloor handle_box_resizing method";
 
     /**
@@ -441,6 +443,7 @@ void EditableFloor::handle_box_rotating(float acceleration, float delta_space) {
  */
 void EditableFloor::handle_acceleration_increasing(bool &moved,
                                                    float &acceleration) {
+
     // LOG(DEBUG) << "Starting EditableFloor handle_acceleration_increasing
     // method";
 
@@ -460,5 +463,5 @@ void EditableFloor::handle_acceleration_increasing(bool &moved,
  *
  * @param unamed An game object.
  */
-void EditableFloor::notify_collision(GameObject &) {
+void EditableFloor::notify_collision(const GameObject &) {
 }

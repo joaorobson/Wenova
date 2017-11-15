@@ -12,7 +12,8 @@
 
 using std::to_string;
 
-#define WHITE { 255, 255, 255, 255 }
+#define WHITE \
+    { 255, 255, 255, 255 }
 
 /**
  * Constructor.
@@ -61,9 +62,9 @@ void BattleEnd::update(float delta) {
      * Check if has rendered all 8 sprites on the vector "sprite".
      */
     if (sprite[current_sprite].is_finished()) {
-        if (back_selected and(current_sprite > 1)) {
+        if (back_selected and (current_sprite > 1)) {
             current_sprite--;
-        } else if (not back_selected and(current_sprite < N_SPRITES)) {
+        } else if (not back_selected and (current_sprite < N_SPRITES)) {
             current_sprite++;
         }
     }
@@ -75,8 +76,7 @@ void BattleEnd::update(float delta) {
      * the sprite count to current_sprite recieve 1.
      */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
-        input_manager->joystick_button_press(InputManager::B, 0)
-        ) {
+        input_manager->joystick_button_press(InputManager::B, 0)) {
         for (int i = 1; i <= N_SPRITES; i++) {
             sprite[i].restart_count();
         }
@@ -130,4 +130,5 @@ bool BattleEnd::quit_requested() {
  *
  * @param GameObject a pointer to a GameObject.
  */
-void BattleEnd::notify_collision(GameObject&) {}
+void BattleEnd::notify_collision(const GameObject &) {
+}

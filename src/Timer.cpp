@@ -1,21 +1,52 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Timer.cpp
+ * Brief Description.
+ */
+
 #include "Timer.h"
 
-Timer::Timer(){
-	time = 0;
+/**
+ * Brief Description.
+ */
+Timer::Timer() {
+    time = 0;
 }
 
-void Timer::update(float delta){
-	time += delta;
+/**
+ * Brief Description.
+ *
+ * @param delta
+ */
+void Timer::update(float delta) {
+    time += delta;
 }
 
-void Timer::restart(){
-	time = 0;
+/**
+ * Brief Description.
+ */
+void Timer::restart() {
+    time = 0;
 }
 
-float Timer::get(){
-	return time;
+/**
+ * Brief Description.
+ *
+ * @returns
+ */
+float Timer::get() {
+    return time;
 }
 
-void Timer::set(float ctime){
-	time = ctime;
+/**
+ * Brief Description.
+ *
+ * @param ctime
+ */
+void Timer::set(float ctime) {
+    time = ctime;
 }

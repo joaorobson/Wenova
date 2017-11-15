@@ -9,11 +9,11 @@
  */
 #include "StageSelectState.h"
 
-#include "MenuState.h"
-#include "EditState.h"
-#include "CharacterSelectState.h"
-#include "Game.h"
 #include <string>
+#include "CharacterSelectState.h"
+#include "EditState.h"
+#include "Game.h"
+#include "MenuState.h"
 
 #include <cstdlib>
 
@@ -38,8 +38,8 @@ StageSelectState::StageSelectState(bool cgo_to_edit) {
     changed = Sound("menu/sound/cursor.ogg");
 
     for (int i = 0; i < N_BACKGROUNDS; i++) {
-        background[i] = Sprite("stage_select/background_" +
-                               to_string(i) + ".png");
+        background[i] =
+            Sprite("stage_select/background_" + to_string(i) + ".png");
     }
 
     for (int i = 0; i < amount_stages; i++) {
@@ -89,17 +89,16 @@ void StageSelectState::update(float delta) {
         if (stage_select == 2) {
             srand(clock());
             unsigned int thread = 0;
-            stage_select = rand_r(&thread) % (amount_stages -
-                                              (go_to_edit ? 0 : 1));
+            stage_select =
+                rand_r(&thread) % (amount_stages - (go_to_edit ? 0 : 1));
         }
 
         if (go_to_edit) {
-            Game::get_instance().push(new EditState(to_string(stage_select +
-                                                              1)));
+            Game::get_instance().push(
+                new EditState(to_string(stage_select + 1)));
         } else {
-            Game::get_instance().push(new CharacterSelectState(to_string(
-                                                                    stage_select
-                                                                    + 1)));
+            Game::get_instance().push(
+                new CharacterSelectState(to_string(stage_select + 1)));
         }
     }
 
@@ -150,17 +149,13 @@ void StageSelectState::process_input() {
 
     // MENU BUTTONS HERE
     vector<pair<int, int> > joystick_buttons = {
-        ii(LEFT, InputManager::LEFT),
-        ii(RIGHT, InputManager::RIGHT),
-        ii(A, InputManager::A),
-        ii(B, InputManager::B),
-        ii(START, InputManager::START),
-        ii(SELECT, InputManager::SELECT)
-    };
+        ii(LEFT, InputManager::LEFT),   ii(RIGHT, InputManager::RIGHT),
+        ii(A, InputManager::A),         ii(B, InputManager::B),
+        ii(START, InputManager::START), ii(SELECT, InputManager::SELECT)};
 
     for (ii button : joystick_buttons) {
-        pressed[button.first] = input_manager->joystick_button_press(
-            button.second, 0);
+        pressed[button.first] =
+            input_manager->joystick_button_press(button.second, 0);
     }
 }
 
@@ -168,10 +163,12 @@ void StageSelectState::process_input() {
  * Pause function.
  * Nothing to do.
  */
-void StageSelectState::pause() {}
+void StageSelectState::pause() {
+}
 
 /**
  * Resume function.
  * Nothing to do.
  */
-void StageSelectState::resume() {}
+void StageSelectState::resume() {
+}
