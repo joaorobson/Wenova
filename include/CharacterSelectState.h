@@ -34,14 +34,17 @@ class CharacterSelectState : public State {
     ///< background.
     Sprite planet_sprite;
     Sprite characters_slots_sprites; /**< Images for character thumbnails. */
+
     Sprite players_numbers_sprites[N_PLAYERS];  ///< Numbers which jump
     ///< for slots.
     Sprite names_tags_sprites[N_PLAYERS];
+
     Sprite selected_tags_sprites; /**< Highlight selected characters. */
     Sprite ready_to_fight_sprite; /**< When everything is ready. */
 
     Sound blocked_sound; /**< When try to select not allowed things. */
     Sound select_sound;  /**< When really select characters. */
+
     Sound changed_sound; /**< When switching between characters. */
 
     FighterMenu chars[N_CHARS]; /**< Board of fighters */
@@ -105,6 +108,100 @@ class CharacterSelectState : public State {
     explicit CharacterSelectState(string cselected_stage);
 
  private:
+    /**
+     * Accessor methods.
+     * Not vectors included because it would cause complexity to increase
+     * a lot and program is already stable.
+     */
+    Sprite get_characters_slots_sprites() {
+        if (characters_slots_sprites.get_width()) {
+            /* Nothing to do. */
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+
+        return characters_slots_sprites;
+    }
+    void set_characters_slots_sprites(Sprite ccharacters_slots_sprites) {
+        if (ccharacters_slots_sprites.get_width()) {
+            characters_slots_sprites = ccharacters_slots_sprites;
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+    }
+
+    Sprite get_planet_sprite() {
+        if (planet_sprite.get_width()) {
+            /* Nothing to do. */
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+        return planet_sprite;
+    }
+    void set_planet_sprite(Sprite cplanet_sprite) {
+        if (cplanet_sprite.get_width()) {
+            planet_sprite = cplanet_sprite;
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+    }
+
+    Sprite get_selected_tags_sprites() {
+        if (selected_tags_sprites.get_width()) {
+            /* Nothing to do. */
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+        return selected_tags_sprites;
+    }
+    void set_selected_tags_sprites(Sprite cselected_tags_sprites) {
+        if (cselected_tags_sprites.get_width()) {
+            selected_tags_sprites = cselected_tags_sprites;
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+    }
+
+    void set_ready_to_fight_sprite(Sprite cready_to_fight_sprite) {
+        if (cready_to_fight_sprite.get_width()) {
+            ready_to_fight_sprite = cready_to_fight_sprite;
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+    }
+
+    void set_blocked_sound(Sound cblocked_sound) {
+        if (cblocked_sound.get_file() != "") {
+            blocked_sound = cblocked_sound;
+        } else {
+            LOG(FATAL) << "Invalid Sound";
+        }
+    }
+
+    void set_select_sound(Sound cselect_sound) {
+        if (cselect_sound.get_file() != "") {
+            select_sound = cselect_sound;
+        } else {
+            LOG(FATAL) << "Invalid Sound";
+        }
+    }
+
+    void set_changed_sound(Sound cchanged_sound) {
+        if (cchanged_sound.get_file() != "") {
+            changed_sound = cchanged_sound;
+        } else {
+            LOG(FATAL) << "Invalid Sound";
+        }
+    }
+
+    void set_selected_stage(string cselected_stage) {
+        if (cselected_stage != "") {
+            selected_stage = cselected_stage;
+        } else {
+            LOG(FATAL) << "Invalid Sprite";
+        }
+    }
+
     /**
      * Process interaction of the player with joystick while
      * choosing character.

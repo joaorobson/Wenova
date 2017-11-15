@@ -22,13 +22,11 @@ void Config::init() {
 
     std::fstream config_file(CONFIGURATION_FILE_PATH);
 
-#ifndef NDEBUG
-    if (not config_file.is_open()) {
-        LOG(FATAL) << "File couldn't be open";
+    if (config_file.is_open()) {
+        config_file >> width >> height >> fullscreen;
+    } else {
+        LOG(ERROR) << "File couldn't be open";
     }
-#endif
-
-    config_file >> width >> height >> fullscreen;
 
     LOG(DEBUG) << "Ending Config init";
 }
@@ -44,11 +42,20 @@ int Config::get_width() {
     int return_value = width;
 
 #ifndef NDEBUG
-    std::string log_message = "Ending Config get_width returning value: " +
-        std::to_string(return_value);
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Ending Config get_width returning value: " +
+            std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
-    if (width <= 0) {
+    if (width > 0) {
+        /* Nothing to do. */
+    } else {
         LOG(WARNING) << "Width is being returned with suspicious values";
     }
 #endif
@@ -66,11 +73,20 @@ int Config::get_height() {
     int return_value = height;
 
 #ifndef NDEBUG
-    std::string log_message = "Ending Config get_height returning value: " +
-        std::to_string(return_value);
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message = "Ending Config get_height returning value: " +
+            std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 
-    if (height <= 0) {
+    if (height > 0) {
+        /* Nothing to do. */
+    } else {
         LOG(WARNING) << "Height is being returned with suspicious values";
     }
 #endif
@@ -89,9 +105,17 @@ int Config::is_fullscreen() {
     int return_value = fullscreen;
 
 #ifndef NDEBUG
-    std::string log_message = "Ending Config is_fullscreen returning value: " +
-        std::to_string(return_value);
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message =
+            "Ending Config is_fullscreen returning value: " +
+            std::to_string(return_value);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     return return_value;
@@ -106,12 +130,19 @@ int Config::is_fullscreen() {
  */
 void Config::update_information(int cwidth, int cheight, int cfullscreen) {
 #ifndef NDEBUG
-    std::string log_message = "Starting Config update_information, cwidth: ";
-    log_message += std::to_string(cwidth) += ", cheight: ";
-    log_message += std::to_string(cheight) + ", cfullscreen: " +
-        std::to_string(cfullscreen);
-
-    LOG(DEBUG) << log_message;
+    try {
+        std::string log_message =
+            "Starting Config update_information, cwidth: ";
+        log_message += std::to_string(cwidth) += ", cheight: ";
+        log_message += std::to_string(cheight) + ", cfullscreen: " +
+            std::to_string(cfullscreen);
+        LOG(DEBUG) << log_message;
+    } catch (std::bad_alloc& error) {
+        std::string str_error(error.what());
+        std::string log_message =
+            "Couldn't convert tostd::string: " + str_error + '\n';
+        LOG(FATAL) << log_message;
+    }
 #endif
 
     width = cwidth;
@@ -120,14 +151,18 @@ void Config::update_information(int cwidth, int cheight, int cfullscreen) {
 
     std::ofstream config_file(CONFIGURATION_FILE_PATH, std::ios::trunc);
 
-#ifndef NDEBUG
-    if (not config_file.is_open()) {
-        LOG(FATAL) << "File couldn't be open";
+    if (config_file.is_open()) {
+        config_file << width << " " << height << " " << fullscreen << std::endl;
+        config_file.close();
+    } else {
+        LOG(ERROR) << "File couldn't be open";
     }
-#endif
 
-    config_file << width << " " << height << " " << fullscreen << std::endl;
-    config_file.close();
+    if (not config_file.fail()) {
+        /* Nothing to do. */
+    } else {
+        LOG(ERROR) << "Was not possible to close the file.";
+    }
 
     LOG(DEBUG) << "Ending Config update_information";
 }
