@@ -25,7 +25,6 @@ class EditableFloor : public Floor {
     Sprite selected_sprite;
 
     enum FloorState { SELECTED, NOT_SELECTED };  ///< Can't be after state
-    FloorState state;
 
     bool is_deleted;
     bool is_selected;

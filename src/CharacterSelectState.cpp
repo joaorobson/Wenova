@@ -137,6 +137,7 @@ CharacterSelectState::CharacterSelectState(string cselected_stage) {
         check_constants();
         load_resources();
         initialize_elements_positions();
+        process_input();
 
         InputManager::get_instance()->map_keyboard_to_joystick(
             InputManager::MENU_MODE);

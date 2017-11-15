@@ -25,15 +25,16 @@ using std::to_string;
  * @param p_y
  */
 FighterStats::FighterStats(Fighter *p_fighter, int p_index_fighter, int p_side,
-                           double p_x, double p_y) {
-    fighter = p_fighter;
-    side = p_side;
-    x = p_x;
-    y = p_y;
-    percent_to_draw_life = 1.0;
-    index_fighter = p_index_fighter;
-
-    is_ultimate_diff = fighter->is("flesh");
+                           double p_x, double p_y)
+        : fighter(p_fighter)
+        , percent_to_draw_life(1.0)
+        , percent_to_draw_special(percent_to_draw_life)
+        , index_fighter(p_index_fighter)
+        , side(p_side)
+        , condition(0)
+        , is_ultimate_diff(fighter->is("flesh"))
+        , x(p_x)
+        , y(p_y) {
 
     bg[0] = Sprite("hud/life" + to_string(index_fighter) + "_frame.png");
     bg[1] = bg[2] =

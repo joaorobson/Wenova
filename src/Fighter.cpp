@@ -33,37 +33,41 @@ using std::vector;
  * @param x
  * @param cpartner
  */
-Fighter::Fighter(int cid, float x, Fighter *cpartner) {
-    partner = cpartner;
-
+Fighter::Fighter(int cid, float x, Fighter *cpartner)
+        : state(FighterState::IDLE)
+        , temporary_state(state)
+        , partner(cpartner)
+        , orientation((x > 640 ? LEFT : RIGHT))
+        , acceleration(Vector(0, 0.1))
+        , speed(Vector(0, 0))
+        , attack_mask(0)
+        , combo(0)
+        , id(cid)
+        , last_collided_floor(0)
+        , n_sprite_start(0)
+        , attack_damage(0)
+        , max_speed(9)
+        , vertical_speed(rotation = 0)
+        , on_floor(false)
+        , grab(false)
+        , special(0)
+        , ultimate_ready(false)
+        , played(false) {
+    /**
+     * Can't be on initialization list because fighter state ahst to be
+     * set first.
+     */
     MAX_LIFE = 2000;
-
-    state = FighterState::IDLE;
-    id = cid;
     remaining_life = MAX_LIFE;
 
-    special = 0;
-    attack_damage = 0;
-    vertical_speed = rotation = 0;
-    speed = Vector(0, 0);
-    acceleration = Vector(0, 0.1);
-    max_speed = 9;
-    attack_mask = 0;
     sprite = vector<Sprite>(LAST);
     sound = vector<Sound>(LAST);
-    temporary_state = state;
     pass_through_timer.set(100);
-    played = false;
 
-    orientation = (x > 640 ? LEFT : RIGHT);
+    memset(&pressed, 0, sizeof(pressed));
+    memset(&is_holding, 0, sizeof(is_holding));
+    memset(&released, 0, sizeof(released));
 
-    on_floor = false;
-    last_collided_floor = 0;
-    grab = false;
-
-    ultimate_ready = false;
-
-    n_sprite_start = 0;
     tags["player"] = true;
 }
 

@@ -8,8 +8,8 @@
  * This file contains the definitions of all methods and attributes of the class
  * StageSelectState.
  */
-#ifndef INCLUDE_STAGESELECTSTATE_H_
-#define INCLUDE_STAGESELECTSTATE_H_
+#ifndef INCLUDE_STATESELECTSTAGE_H_
+#define INCLUDE_STATESELECTSTAGE_H_
 
 #include "InputManager.h"
 #include "Sound.h"
@@ -46,6 +46,7 @@ class StageSelectState : public State {
         START, /**< enum value of the button "START". */
         SELECT /**< enum value of the button "SELECT". */
     };
+
     bool pressed[5]; /**< Bool vector that represents the pressed button */
                      /**< according to the enum Button. */
 
@@ -103,4 +104,4 @@ class StageSelectState : public State {
     void update_stage_select(int increment);
 };
 
-#endif  // INCLUDE_STAGESELECTSTATE_H_
+#endif  // INCLUDE_STATESELECTSTAGE_H_

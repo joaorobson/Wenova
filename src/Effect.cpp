@@ -18,9 +18,9 @@
  * @param ctags
  * @param frames
  */
-Effect::Effect(Fighter *cparent, string csprite, string ctags, int frames) {
-    parent = cparent;
-    sprite = Sprite(csprite, frames, 10);
+Effect::Effect(Fighter *cparent, string csprite, string ctags, int frames)
+        : sprite(Sprite(csprite, frames, 10))
+        , parent(cparent) {
     box = Rectangle(0, 0, sprite.get_width(), sprite.get_height());
     add_tags(ctags);
 }

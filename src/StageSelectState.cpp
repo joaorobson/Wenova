@@ -27,15 +27,14 @@ using std::to_string;
  * @param cgo_to_edit a boolean argument that represents if user selected
  * edit mode on the menu.
  */
-StageSelectState::StageSelectState(bool cgo_to_edit) {
-    planet = Sprite("stage_select/planet.png", 8, FRAME_TIME);
-    planet.set_scale(1.5);
+StageSelectState::StageSelectState(bool cgo_to_edit)
+        : planet(Sprite("stage_select/planet.png", 8, FRAME_TIME))
+        , blocked(Sound("menu/sound/cancel.ogg"))
+        , selected(Sound("menu/sound/select.ogg"))
+        , changed(Sound("menu/sound/cursor.ogg")) {
     go_to_edit = cgo_to_edit;
     amount_stages = 2 + (go_to_edit ? 0 : 1);
-
-    blocked = Sound("menu/sound/cancel.ogg");
-    selected = Sound("menu/sound/select.ogg");
-    changed = Sound("menu/sound/cursor.ogg");
+    planet.set_scale(1.5);
 
     for (int i = 0; i < N_BACKGROUNDS; i++) {
         background[i] =
@@ -45,6 +44,8 @@ StageSelectState::StageSelectState(bool cgo_to_edit) {
     for (int i = 0; i < amount_stages; i++) {
         stage[i] = Sprite("stage_select/stage_" + to_string(i + 1) + ".png");
     }
+
+    memset(&pressed, 0, sizeof(pressed));
 
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);

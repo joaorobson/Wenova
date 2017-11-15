@@ -13,15 +13,15 @@
 #include "InputManager.h"
 
 JoystickButton::JoystickButton(int x, int y, string clabel, int cbutton_id,
-                               int cjoystick_id, string csprite) {
-    sprite = Sprite("joysticks/" + csprite + ".png");
-    pressed_sprite = Sprite("joysticks/pressed_" + csprite + ".png");
+                               int cjoystick_id, string csprite)
+        : sprite(Sprite("joysticks/" + csprite + ".png"))
+        , pressed_sprite(Sprite("joysticks/pressed_" + csprite + ".png"))
+        , button_id(cbutton_id)
+        , joystick_id(cjoystick_id)
+        , label(clabel)
+        , pressed(false) {
     box = Rectangle(x, y, sprite.get_width(), sprite.get_height());
-    button_id = cbutton_id;
-    joystick_id = cjoystick_id;
     rotation = 0;
-    label = clabel;
-    pressed = false;
 }
 
 /**

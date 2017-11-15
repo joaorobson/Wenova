@@ -38,18 +38,20 @@
  *
  * @param main_menu
  */
-MenuState::MenuState(bool main_menu) {
+MenuState::MenuState(bool main_menu)
+        : background(Sprite("menu/background.jpg"))
+        , green_ship(Sprite("menu/green_ship.png", 8, FRAME_TIME, 0, 2))
+        , red_ship(Sprite("menu/red_ship.png", 8, FRAME_TIME))
+        , title(Sprite("menu/title.png", 5, FRAME_TIME))
+        , planet(Sprite("menu/planet.png", 8, FRAME_TIME))
+        , music(Music("menu/wenova.ogg"))
+        , blocked(Sound("menu/sound/cancel.ogg"))
+        , selected(Sound("menu/sound/select.ogg"))
+        , changed(Sound("menu/sound/cursor.ogg"))
+        , current_option(0)
+        , start_pressed(main_menu)
+        , show_text(true) {
     Mix_AllocateChannels(50);
-
-    current_option = 0;
-    start_pressed = main_menu;
-    show_text = true;
-
-    background = Sprite("menu/background.jpg");
-    title = Sprite("menu/title.png", 5, FRAME_TIME);
-    planet = Sprite("menu/planet.png", 8, FRAME_TIME);
-    green_ship = Sprite("menu/green_ship.png", 8, FRAME_TIME, 0, 2);
-    red_ship = Sprite("menu/red_ship.png", 8, FRAME_TIME);
 
     start_option = new Text("font/8-BIT WONDER.ttf", 30, Text::TextStyle::SOLID,
                             "PRESS START", LIGHT_GREEN, FONT_X, FONT_Y);
@@ -71,13 +73,12 @@ MenuState::MenuState(bool main_menu) {
     InputManager::get_instance()->map_keyboard_to_joystick(
         InputManager::MENU_MODE);
 
-    blocked = Sound("menu/sound/cancel.ogg");
-    selected = Sound("menu/sound/select.ogg");
-    changed = Sound("menu/sound/cursor.ogg");
+    memset(&pressed, 0, sizeof(pressed));
+    memset(&is_holding, 0, sizeof(is_holding));
 
-    music = Music("menu/wenova.ogg");
-    if (!Mix_PlayingMusic())
+    if (!Mix_PlayingMusic()) {
         music.play();
+    }
 }
 
 /**
@@ -162,8 +163,8 @@ void MenuState::update(float delta) {
         }
 
         // positioning options after current option
-        for (unsigned int idx = current_option + 1;
-             idx < options.size(); idx++) {
+        for (unsigned int idx = current_option + 1; idx < options.size();
+             idx++) {
             Text* prev_option = options[idx - 1];
 
             int new_x =

@@ -52,6 +52,7 @@ class Fighter : public GameObject {
         DYING,
         LAST
     };
+
     enum Button {
         JUMP_BUTTON,
         UP_BUTTON,
@@ -71,36 +72,39 @@ class Fighter : public GameObject {
         ATK_UP = 4,
         ATK_RIGHT = 8
     };
-    vector<Sprite> sprite;
-    vector<Sound> sound;
-    Sound hit_sounds[4];
+
     FighterState state, temporary_state;
-    Orientation orientation;
-    Vector speed;
-    Vector acceleration;
-    Sound land_sound, ultimate_sound;
-    Vector crouching_size, not_crouching_size;
-    float vertical_speed;
-    bool on_floor, grab;
-    int last_collided_floor;
-    float max_speed;
-    float remaining_life;
-    int id;
-    int combo;
-    int n_sprite_start;
-    float attack_damage;
-    int attack_mask;
     Fighter* partner;
-
-    void test_limits();
-    void play_sound();
-
-    float special;
+    Orientation orientation;
+    Sound hit_sounds[4];
+    Sound land_sound, ultimate_sound;
     Timer crouch_timer;
     Timer pass_through_timer;
+    Vector acceleration;
+    Vector crouching_size, not_crouching_size;
+    Vector speed;
 
-    bool pressed[20];
+    vector<Sound> sound;
+    vector<Sprite> sprite;
+
+    int attack_mask;
+    int combo;
+    int id;
+    int last_collided_floor;
+    int n_sprite_start;
+    float attack_damage;
+    float max_speed;
+    float remaining_life;
+    float vertical_speed;
+    bool on_floor, grab;
+
+    void play_sound();
+    void test_limits();
+
+    float special;
+
     bool is_holding[20];
+    bool pressed[20];
     bool released[20];
 
     bool ultimate_ready, played;
@@ -152,7 +156,7 @@ class Fighter : public GameObject {
     Fighter* get_partner();
     string get_path();
 
-    double MAX_LIFE = 2000;
+    double MAX_LIFE;
     static const int MAX_SPECIAL = 250;
 };
 

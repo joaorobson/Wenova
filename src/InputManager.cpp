@@ -117,7 +117,14 @@ const int InputManager::BATTLE_MODE;
 /**
  * Initializes variables.
  */
-InputManager::InputManager() {
+InputManager::InputManager()
+        : has_quit_request(false)
+        , update_counter(0)
+        , mouse_x_position(0)
+        , mouse_y_position(0)
+        , offset_x(0)
+        , offset_y(0)
+        , mouse_sensibility_value(1) {
     // LOG(DEBUG) << "Starting InputManager constructor";
 
     void *ptr_states =

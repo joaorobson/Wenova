@@ -23,9 +23,10 @@
  * A constructor.
  * Initialize the texture attribute to null.
  */
-Text::Text() {
-    texture = nullptr;
-    font_size = 0;
+Text::Text()
+        : texture(nullptr)
+        , style(SOLID)
+        , font_size(0) {
 }
 
 /**

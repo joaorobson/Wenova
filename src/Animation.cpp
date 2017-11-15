@@ -25,12 +25,11 @@
  * @param ends
  */
 Animation::Animation(float x, float y, float crotation, string csprite,
-                     int frame_count, float frame_time, bool ends) {
-    sprite = Sprite(csprite, frame_count, frame_time);
+                     int frame_count, float frame_time, bool ends)
+    : sprite(Sprite(csprite, frame_count, frame_time)),
+      time_limit(frame_count * frame_time), one_time_only(ends) {
     rotation = crotation;
     box = Rectangle(x, y, sprite.get_width(), sprite.get_height());
-    one_time_only = ends;
-    time_limit = frame_count * frame_time;
 }
 
 /**

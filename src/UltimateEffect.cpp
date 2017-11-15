@@ -25,10 +25,12 @@
  */
 UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura,
                                string ctags, int frames)
-    : Effect(cparent, csprite, ctags, frames) {
-    aura = Sprite(caura, 14, 10, 4); /**< Initialize the fighter aura iamge. */
-    sprite_box = box;
+        : Effect(cparent, csprite, ctags, frames)
+        , aura(Sprite(caura, 14, 10, 4))
+        , sprite_box(box)
+        , healing_factor(1) {
     box = Rectangle(0, 0, aura.get_width(), aura.get_height());
+
     /**
      * Check if is the parent fighter. If so, adds the "in ultimate" tag.
      */
