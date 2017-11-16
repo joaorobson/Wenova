@@ -45,8 +45,8 @@
 #define JUMP_SOUND "jump.ogg"
 #define ATTACK_1_SOUND "attack_1.ogg"
 #define ATTACK_2_SOUND "attack_2.ogg"
-#define SLASH_SOUND "slash.ogg" 
-#define IDLE_ATK_DOWN_SOUND "idle_atk_down.ogg" 
+#define SLASH_SOUND "slash.ogg"
+#define IDLE_ATK_DOWN_SOUND "idle_atk_down.ogg"
 #define SPECIAL_1_1_SOUND "special_1_1.ogg"
 #define SPECIAL_1_2_SOUND "special_1_2.ogg"
 #define HEAL_SOUND "heal.ogg"
@@ -77,67 +77,67 @@ using std::min;
  */
 Blood::Blood(string skin, float x_axis_position, float y_axis_position,
              int character_id, Fighter * cpartner) : Fighter(character_id,
-                                                            x_axis_position, 
-                                                            cpartner) {
-  /**
-   * File path indicating the relative skin to each attack type.
-   */
-  path = BLOOD_SKIN_PATH + skin + "/";
+                                                         x_axis_position,
+                                                         cpartner) {
+    /**
+     * File path indicating the relative skin to each attack type.
+     */
+    path = BLOOD_SKIN_PATH + skin + "/";
 
-  /**
-   * File path indicating the relative sound to each attack type.
-   */
-  sound_path = SOUND_PATH;
-  sprite[IDLE] = Sprite(path + IDLE_IMAGE, 12, 10);
-  sprite[RUNNING] = Sprite(path + RUNNING_IMAGE, 8, 10);
-  sprite[JUMPING] = Sprite(path + JUMPING_IMAGE, 6, 10);
-  sprite[FALLING] = Sprite(path + FALLING_IMAGE, 2, 10);
-  sprite[CROUCH] = Sprite(path + CROUCH_IMAGE, 3, 20);
-  sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + IDLE_ATK_NEUTRAL_1_IMAGE, 4, 10);
-  sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + IDLE_ATK_NEUTRAL_2_IMAGE, 4, 10);
-  sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + IDLE_ATK_NEUTRAL_3_IMAGE, 3, 10);
-  sprite[IDLE_ATK_FRONT] = Sprite(path + IDLE_ATK_FRONT_IMAGE, 5, 10);
-  sprite[IDLE_ATK_UP] = Sprite(path + IDLE_ATK_UP_IMAGE, 5, 10);
-  sprite[IDLE_ATK_DOWN] = Sprite(path + IDLE_ATK_DOWN_IMAGE, 6, 10);
-  sprite[CROUCH_ATK] = Sprite(path + CROUCH_ATK_IMAGE, 3, 10);
-  sprite[JUMP_ATK_DOWN] = Sprite(path + JUMP_ATK_DOWN_IMAGE, 4, 10);
-  sprite[JUMP_ATK_NEUTRAL] = Sprite(path + JUMP_ATK_NEUTRAL_IMAGE, 5, 10);
-  sprite[JUMP_ATK_UP] = Sprite(path + JUMP_ATK_UP_IMAGE, 4, 10);
-  sprite[DEFENDING] = Sprite(path + DEFENDING_IMAGE, 2, 10);
-  sprite[STUNNED] = Sprite(path + STUNNED_IMAGE, 2, 10);
-  sprite[SPECIAL_1_1] = Sprite(path + SPECIAL_1_1_IMAGE, 7, 10);
-  sprite[SPECIAL_1_2] = Sprite(path + SPECIAL_1_2_IMAGE, 11, 10);
-  sprite[SPECIAL_2] = Sprite(path + SPECIAL_2_IMAGE, 8, 10);
-  sprite[DYING] = Sprite(path + DYING_IMAGE, 12, 10);
+    /**
+     * File path indicating the relative sound to each attack type.
+     */
+    sound_path = SOUND_PATH;
+    sprite[IDLE] = Sprite(path + IDLE_IMAGE, 12, 10);
+    sprite[RUNNING] = Sprite(path + RUNNING_IMAGE, 8, 10);
+    sprite[JUMPING] = Sprite(path + JUMPING_IMAGE, 6, 10);
+    sprite[FALLING] = Sprite(path + FALLING_IMAGE, 2, 10);
+    sprite[CROUCH] = Sprite(path + CROUCH_IMAGE, 3, 20);
+    sprite[IDLE_ATK_NEUTRAL_1] = Sprite(path + IDLE_ATK_NEUTRAL_1_IMAGE, 4, 10);
+    sprite[IDLE_ATK_NEUTRAL_2] = Sprite(path + IDLE_ATK_NEUTRAL_2_IMAGE, 4, 10);
+    sprite[IDLE_ATK_NEUTRAL_3] = Sprite(path + IDLE_ATK_NEUTRAL_3_IMAGE, 3, 10);
+    sprite[IDLE_ATK_FRONT] = Sprite(path + IDLE_ATK_FRONT_IMAGE, 5, 10);
+    sprite[IDLE_ATK_UP] = Sprite(path + IDLE_ATK_UP_IMAGE, 5, 10);
+    sprite[IDLE_ATK_DOWN] = Sprite(path + IDLE_ATK_DOWN_IMAGE, 6, 10);
+    sprite[CROUCH_ATK] = Sprite(path + CROUCH_ATK_IMAGE, 3, 10);
+    sprite[JUMP_ATK_DOWN] = Sprite(path + JUMP_ATK_DOWN_IMAGE, 4, 10);
+    sprite[JUMP_ATK_NEUTRAL] = Sprite(path + JUMP_ATK_NEUTRAL_IMAGE, 5, 10);
+    sprite[JUMP_ATK_UP] = Sprite(path + JUMP_ATK_UP_IMAGE, 4, 10);
+    sprite[DEFENDING] = Sprite(path + DEFENDING_IMAGE, 2, 10);
+    sprite[STUNNED] = Sprite(path + STUNNED_IMAGE, 2, 10);
+    sprite[SPECIAL_1_1] = Sprite(path + SPECIAL_1_1_IMAGE, 7, 10);
+    sprite[SPECIAL_1_2] = Sprite(path + SPECIAL_1_2_IMAGE, 11, 10);
+    sprite[SPECIAL_2] = Sprite(path + SPECIAL_2_IMAGE, 8, 10);
+    sprite[DYING] = Sprite(path + DYING_IMAGE, 12, 10);
 
 
-  sound[JUMPING] = Sound(sound_path + JUMP_SOUND);
-  sound[IDLE_ATK_NEUTRAL_1] = Sound(sound_path + ATTACK_1_SOUND);
-  sound[IDLE_ATK_NEUTRAL_2] = Sound(sound_path + ATTACK_2_SOUND);
-  sound[IDLE_ATK_NEUTRAL_3] = Sound(sound_path + SLASH_SOUND);
-  sound[IDLE_ATK_FRONT] = Sound(sound_path + ATTACK_2_SOUND);
-  sound[IDLE_ATK_DOWN] = Sound(sound_path + IDLE_ATK_DOWN_SOUND);
-  sound[IDLE_ATK_UP] = Sound(sound_path + SLASH_SOUND);
-  sound[JUMP_ATK_NEUTRAL] = Sound(sound_path + SLASH_SOUND);
-  sound[JUMP_ATK_UP] = Sound(sound_path + SLASH_SOUND);
-  sound[CROUCH_ATK] = Sound(sound_path + SLASH_SOUND);
-  sound[SPECIAL_1_1] = Sound(sound_path + SPECIAL_1_1_SOUND);
-  sound[SPECIAL_1_2] = Sound(sound_path + SPECIAL_1_2_SOUND);
-  sound[SPECIAL_2] = Sound(sound_path + HEAL_SOUND);
+    sound[JUMPING] = Sound(sound_path + JUMP_SOUND);
+    sound[IDLE_ATK_NEUTRAL_1] = Sound(sound_path + ATTACK_1_SOUND);
+    sound[IDLE_ATK_NEUTRAL_2] = Sound(sound_path + ATTACK_2_SOUND);
+    sound[IDLE_ATK_NEUTRAL_3] = Sound(sound_path + SLASH_SOUND);
+    sound[IDLE_ATK_FRONT] = Sound(sound_path + ATTACK_2_SOUND);
+    sound[IDLE_ATK_DOWN] = Sound(sound_path + IDLE_ATK_DOWN_SOUND);
+    sound[IDLE_ATK_UP] = Sound(sound_path + SLASH_SOUND);
+    sound[JUMP_ATK_NEUTRAL] = Sound(sound_path + SLASH_SOUND);
+    sound[JUMP_ATK_UP] = Sound(sound_path + SLASH_SOUND);
+    sound[CROUCH_ATK] = Sound(sound_path + SLASH_SOUND);
+    sound[SPECIAL_1_1] = Sound(sound_path + SPECIAL_1_1_SOUND);
+    sound[SPECIAL_1_2] = Sound(sound_path + SPECIAL_1_2_SOUND);
+    sound[SPECIAL_2] = Sound(sound_path + HEAL_SOUND);
 
-  ultimate_sound = Sound(sound_path + ULTIMATE_SOUND);
-  land_sound = Sound(sound_path + LAND_SOUND);
-  hit_sounds[0] = Sound(sound_path + HIT_SLASH_SOUND);
-  hit_sounds[1] = Sound(sound_path + HIT_1_SOUND);
-  hit_sounds[2] = Sound(sound_path + HIT_2_SOUND);
-  hit_sounds[3] = Sound(sound_path + HIT_3_SOUND);
+    ultimate_sound = Sound(sound_path + ULTIMATE_SOUND);
+    land_sound = Sound(sound_path + LAND_SOUND);
+    hit_sounds[0] = Sound(sound_path + HIT_SLASH_SOUND);
+    hit_sounds[1] = Sound(sound_path + HIT_1_SOUND);
+    hit_sounds[2] = Sound(sound_path + HIT_2_SOUND);
+    hit_sounds[3] = Sound(sound_path + HIT_3_SOUND);
 
-  crouching_size = Vector(84, 59);
-  not_crouching_size = Vector(84, 84);
+    crouching_size = Vector(84, 59);
+    not_crouching_size = Vector(84, 84);
 
-  tags["blood"] = true;
-  tags[skin] = true;
-  box = Rectangle(x_axis_position, y_axis_position, 84, 84);
+    tags["blood"] = true;
+    tags[skin] = true;
+    box = Rectangle(x_axis_position, y_axis_position, 84, 84);
 }
 
 /**
@@ -148,384 +148,384 @@ Blood::Blood(string skin, float x_axis_position, float y_axis_position,
  * @param delta is the variation of character state.
  */
 void Blood::update_machine_state(float delta_character_state) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(state >= 0);
-  /**
-   * Fighter's state machine.
-   * Switch around fighter states according to suffered attacks and update
-   * attack damage.
-   *
-   * @param state is the character state.
-   */
-  switch (state) {
+    assert(ATTACK_BUTTON >= 0);
+    assert(state >= 0);
+    /**
+     * Fighter's state machine.
+     * Switch around fighter states according to suffered attacks and update
+     * attack damage.
+     *
+     * @param state is the character state.
+     */
+    switch (state) {
     case FighterState::IDLE_ATK_NEUTRAL_1:
-      attack_damage = 3 * (sprite[state].get_current_frame() == 1);
-      attack_mask = get_attack_orientation();
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       * Instead of that, if the attack button is pressed, the comobo attack
-       * level is incremented.
-       */
-      if (sprite[state].is_finished()) {
-        check_idle();
-        check_defense();
-        check_crouch();
-        check_idle_atk_neutral_2();
-      } else if (pressed[ATTACK_BUTTON]) {
-        combo++;
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        attack_damage = 3 * (sprite[state].get_current_frame() == 1);
+        attack_mask = get_attack_orientation();
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         * Instead of that, if the attack button is pressed, the comobo attack
+         * level is incremented.
+         */
+        if (sprite[state].is_finished()) {
+            check_idle();
+            check_defense();
+            check_crouch();
+            check_idle_atk_neutral_2();
+        } else if (pressed[ATTACK_BUTTON]) {
+            combo++;
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::IDLE_ATK_NEUTRAL_2:
-      attack_damage = 5 * (sprite[state].get_current_frame() == 1);
-      attack_mask = get_attack_orientation();
+        attack_damage = 5 * (sprite[state].get_current_frame() == 1);
+        attack_mask = get_attack_orientation();
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       * Instead of that, if the attack button is pressed, the comobo attack
-       * level is incremented.
-       */
-      if (sprite[state].is_finished()) {
-        check_idle();
-        check_defense();
-        check_crouch();
-        check_idle_atk_neutral_3();
-      } else if (pressed[ATTACK_BUTTON]) {
-        combo++;
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         * Instead of that, if the attack button is pressed, the comobo attack
+         * level is incremented.
+         */
+        if (sprite[state].is_finished()) {
+            check_idle();
+            check_defense();
+            check_crouch();
+            check_idle_atk_neutral_3();
+        } else if (pressed[ATTACK_BUTTON]) {
+            combo++;
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
-    case FighterState::IDLE_ATK_FRONT:  // 2
-      attack_damage = 10 * (sprite[state].get_current_frame() == 2);
-      attack_mask = get_attack_orientation();
+    case FighterState::IDLE_ATK_FRONT: // 2
+        attack_damage = 10 * (sprite[state].get_current_frame() == 2);
+        attack_mask = get_attack_orientation();
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       */
-      if (sprite[state].is_finished()) {
-        check_idle();
-        check_defense();
-        check_crouch();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished()) {
+            check_idle();
+            check_defense();
+            check_crouch();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
-    case FighterState::IDLE_ATK_DOWN:  // 3
-      attack_damage = 10 * (sprite[state].get_current_frame() == 3);
-      attack_mask = AttackDirection::ATK_DOWN;
+    case FighterState::IDLE_ATK_DOWN: // 3
+        attack_damage = 10 * (sprite[state].get_current_frame() == 3);
+        attack_mask = AttackDirection::ATK_DOWN;
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       */
-      if (sprite[state].is_finished()) {
-        check_idle();
-        check_defense();
-        check_crouch();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
-    case FighterState::CROUCH_ATK:  // 1
-    attack_damage = 3 * (sprite[state].get_current_frame() == 1);
-    attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished()) {
+            check_idle();
+            check_defense();
+            check_crouch();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
+    case FighterState::CROUCH_ATK: // 1
+        attack_damage = 3 * (sprite[state].get_current_frame() == 1);
+        attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
 
-    /**
-     * Check if sprite use is finished and allow character actions according
-     * to finished state.
-     */
-    if (sprite[state].is_finished()) {
-      check_idle();
-      check_defense();
-      check_crouch();
-    } else {
-      /* Nothing to do. */
-    }
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished()) {
+            check_idle();
+            check_defense();
+            check_crouch();
+        } else {
+            /* Nothing to do. */
+        }
 
-    case FighterState::IDLE_ATK_NEUTRAL_3:  // 1
-    case FighterState::IDLE_ATK_UP:  // 1
-      attack_damage = 3 * (sprite[state].get_current_frame() == 1);
-      attack_mask = get_attack_orientation();
+    case FighterState::IDLE_ATK_NEUTRAL_3: // 1
+    case FighterState::IDLE_ATK_UP: // 1
+        attack_damage = 3 * (sprite[state].get_current_frame() == 1);
+        attack_mask = get_attack_orientation();
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       */
-      if (sprite[state].is_finished()) {
-        check_idle();
-        check_defense();
-        check_crouch();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished()) {
+            check_idle();
+            check_defense();
+            check_crouch();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::JUMP_ATK_DOWN:
-      attack_damage = 2;
-      attack_mask = AttackDirection::ATK_DOWN;
-      check_left(false);
-      check_right(false);
+        attack_damage = 2;
+        attack_mask = AttackDirection::ATK_DOWN;
+        check_left(false);
+        check_right(false);
 
-      /**
-       * Check if character is on the floor. If so, allow "Idle attack down".
-       */
-      if (on_floor) {
-        n_sprite_start = 2;
-        check_idle_atk_down(true, true);
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if character is on the floor. If so, allow "Idle attack down".
+         */
+        if (on_floor) {
+            n_sprite_start = 2;
+            check_idle_atk_down(true, true);
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::JUMP_ATK_NEUTRAL:
-      attack_damage = 7 * (sprite[state].get_current_frame() < 1);
-      attack_mask = get_attack_orientation();
-      check_right(false);
-      check_left(false);
+        attack_damage = 7 * (sprite[state].get_current_frame() < 1);
+        attack_mask = get_attack_orientation();
+        check_right(false);
+        check_left(false);
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished
-       * state.
-       */
-      if (sprite[state].is_finished()) {
-        check_fall();
-      } else {
-        /* Nothing to do. */
-      }
-      /**
-       * Check if character is on the floor and set true in the respective
-       * allowed actions.
-       */
-      if (on_floor) {
-        check_idle();
-        check_right();
-        check_defense();
-        check_crouch();
-        check_left();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished
+         * state.
+         */
+        if (sprite[state].is_finished()) {
+            check_fall();
+        } else {
+            /* Nothing to do. */
+        }
+        /**
+         * Check if character is on the floor and set true in the respective
+         * allowed actions.
+         */
+        if (on_floor) {
+            check_idle();
+            check_right();
+            check_defense();
+            check_crouch();
+            check_left();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::JUMP_ATK_UP:
-      attack_damage = 7 * (sprite[state].get_current_frame() == 1);
-      attack_mask = AttackDirection::ATK_UP;
-      check_left(false);
-      check_right(false);
+        attack_damage = 7 * (sprite[state].get_current_frame() == 1);
+        attack_mask = AttackDirection::ATK_UP;
+        check_left(false);
+        check_right(false);
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       */
-      if (sprite[state].is_finished()) {
-        speed.y = 0.1;
-        check_fall();
-        check_crouch();
-        check_defense();
-        check_idle();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished()) {
+            speed.y = 0.1;
+            check_fall();
+            check_crouch();
+            check_defense();
+            check_idle();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::STUNNED:
-      attack_damage = 0;
-      attack_mask = 0;
+        attack_damage = 0;
+        attack_mask = 0;
 
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       */
-      if (sprite[state].is_finished()) {
-        check_fall();
-        check_defense();
-        check_crouch();
-        check_idle();
-        check_dead();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished()) {
+            check_fall();
+            check_defense();
+            check_crouch();
+            check_idle();
+            check_dead();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::SPECIAL_1_1:
-      attack_damage = 0.1 * (sprite[state].get_current_frame() > 3);
-      if (grab) {
-        increment_life(attack_damage);
-      }
-      attack_mask = get_attack_orientation();
-      if (sprite[state].is_finished()) {
+        attack_damage = 0.1 * (sprite[state].get_current_frame() > 3);
         if (grab) {
-          check_special_1_2();
-        } else {
-          check_fall();
-          check_defense();
-          check_crouch();
-          check_idle();
+            increment_life(attack_damage);
         }
-      }
-    break;
+        attack_mask = get_attack_orientation();
+        if (sprite[state].is_finished()) {
+            if (grab) {
+                check_special_1_2();
+            } else {
+                check_fall();
+                check_defense();
+                check_crouch();
+                check_idle();
+            }
+        }
+        break;
 
     case FighterState::SPECIAL_1_2:
-      attack_damage = 0.5;
-      if (grab) {
-        increment_life(attack_damage);
-      } else {
-        /* Nothing to do. */
-      }
+        attack_damage = 0.5;
+        if (grab) {
+            increment_life(attack_damage);
+        } else {
+            /* Nothing to do. */
+        }
 
-      attack_mask = get_attack_orientation();
-      
-      /**
-       * Check if sprite use is finished and allow character actions according
-       * to finished state.
-       */
-      if (sprite[state].is_finished() or not grab) {
-        check_fall();
-        check_defense();
-        check_crouch();
-        check_idle();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        attack_mask = get_attack_orientation();
+
+        /**
+         * Check if sprite use is finished and allow character actions according
+         * to finished state.
+         */
+        if (sprite[state].is_finished() or not grab) {
+            check_fall();
+            check_defense();
+            check_crouch();
+            check_idle();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::SPECIAL_2:
 
-      increment_special(0.2 * delta_character_state);
-      increment_life(-0.2 * delta_character_state);
-      /**
-       * Check if sprite use is finished according to exhibited state.
-       * If so, character is healed.
-       */
-      if (sprite[state].is_finished()) {
-        Game::get_instance().get_current_state().add_object(
-            new HealEffect(partner,
-                           HEAL_EFFECT_IMAGE_PATH,
-                           "has_sprite",
-                           9,
-                           0.2));
+        increment_special(0.2 * delta_character_state);
+        increment_life(-0.2 * delta_character_state);
+        /**
+         * Check if sprite use is finished according to exhibited state.
+         * If so, character is healed.
+         */
+        if (sprite[state].is_finished()) {
+            Game::get_instance().get_current_state().add_object(
+                    new HealEffect(partner,
+                                   HEAL_EFFECT_IMAGE_PATH,
+                                   "has_sprite",
+                                   9,
+                                   0.2));
+            check_idle();
+            check_defense();
+            check_crouch();
+        } else {
+            /* Nothing to do. */
+        }
+        break;
+
+    case FighterState::IDLE:
+        attack_damage = 0;
+        attack_mask = 0;
+        combo = 0;
+        check_jump();
+        check_left(on_floor);
+        check_right(on_floor);
+        check_crouch();
+        check_defense();
+        check_idle_atk_neutral_1();
+        check_idle_atk_front();
+        check_idle_atk_up();
+        check_idle_atk_down();
+        check_special_1_1();
+        check_special_2();
+        check_ultimate();
+        check_pass_through_platform();
+        check_fall();
+        check_dead();
+        break;
+
+    case FighterState::JUMPING:
+        attack_damage = 0;
+        attack_mask = 0;
+        check_left(on_floor);
+        check_right(on_floor);
+        check_fall();
         check_idle();
         check_defense();
         check_crouch();
-      } else {
-        /* Nothing to do. */
-      }
-    break;
-
-    case FighterState::IDLE:
-      attack_damage = 0;
-      attack_mask = 0;
-      combo = 0;
-      check_jump();
-      check_left(on_floor);
-      check_right(on_floor);
-      check_crouch();
-      check_defense();
-      check_idle_atk_neutral_1();
-      check_idle_atk_front();
-      check_idle_atk_up();
-      check_idle_atk_down();
-      check_special_1_1();
-      check_special_2();
-      check_ultimate();
-      check_pass_through_platform();
-      check_fall();
-      check_dead();
-    break;
-
-    case FighterState::JUMPING:
-      attack_damage = 0;
-      attack_mask = 0;
-      check_left(on_floor);
-      check_right(on_floor);
-      check_fall();
-      check_idle();
-      check_defense();
-      check_crouch();
-      check_jump_atk_neutral();
-      check_jump_atk_up();
-      check_jump_atk_down();
-      check_ultimate();
-    break;
+        check_jump_atk_neutral();
+        check_jump_atk_up();
+        check_jump_atk_down();
+        check_ultimate();
+        break;
 
     case FighterState::FALLING:
-      attack_damage = 0;
-      attack_mask = 0;
-      check_idle();
-      check_left(on_floor);
-      check_right(on_floor);
-      check_fall();
-      check_defense();
-      check_crouch();
-      check_jump_atk_neutral();
-      check_jump_atk_up();
-      check_jump_atk_down();
-      check_ultimate();
-    break;
+        attack_damage = 0;
+        attack_mask = 0;
+        check_idle();
+        check_left(on_floor);
+        check_right(on_floor);
+        check_fall();
+        check_defense();
+        check_crouch();
+        check_jump_atk_neutral();
+        check_jump_atk_up();
+        check_jump_atk_down();
+        check_ultimate();
+        break;
 
 
     case FighterState::RUNNING:
-      attack_damage = 0;
-      attack_mask = 0;
-      combo = 0;
-      check_jump();
-      check_left(false);
-      check_right(false);
-      check_idle();
-      check_crouch();
-      check_defense();
-      check_idle_atk_neutral_1();
-      check_idle_atk_front();
-      check_special_1_1();
-      check_special_2();
-      check_idle_atk_up();
-      check_idle_atk_down();
-      check_ultimate();
-      check_pass_through_platform();
-      check_fall();
-    break;
+        attack_damage = 0;
+        attack_mask = 0;
+        combo = 0;
+        check_jump();
+        check_left(false);
+        check_right(false);
+        check_idle();
+        check_crouch();
+        check_defense();
+        check_idle_atk_neutral_1();
+        check_idle_atk_front();
+        check_special_1_1();
+        check_special_2();
+        check_idle_atk_up();
+        check_idle_atk_down();
+        check_ultimate();
+        check_pass_through_platform();
+        check_fall();
+        break;
 
     case FighterState::DEFENDING:
-      attack_damage = 0;
-      attack_mask = 0;
-      check_idle();
-      check_fall();
-    break;
+        attack_damage = 0;
+        attack_mask = 0;
+        check_idle();
+        check_fall();
+        break;
 
     case FighterState::CROUCH:
-      attack_damage = 0;
-      attack_mask = 0;
-      check_idle();
-      check_crouch_atk();
-      check_defense();
-      check_fall();
-    break;
+        attack_damage = 0;
+        attack_mask = 0;
+        check_idle();
+        check_crouch_atk();
+        check_defense();
+        check_fall();
+        break;
 
     case FighterState::DYING:
-      if (sprite[state].is_finished()) {
-        remaining_life = 0;
-      } else {
-        /* Nothing to do. */
-      }
-    break;
+        if (sprite[state].is_finished()) {
+            remaining_life = 0;
+        } else {
+            /* Nothing to do. */
+        }
+        break;
 
     case FighterState::JUMP_ATK_DOWN_FALLLOOP:
     case FighterState::JUMP_ATK_DOWN_DMG:
     case FighterState::SPECIAL_1:
     case FighterState::LAST:
-      printf("Invalid blood %d %d state\n", id, state);
-      exit(-1);
-    break;
-  }
+        printf("Invalid blood %d %d state\n", id, state);
+        exit(-1);
+        break;
+    }
 }
 
 /**
@@ -537,18 +537,18 @@ void Blood::update_machine_state(float delta_character_state) {
  * temporary state.
  */
 void Blood::check_jump(bool change) {
-  assert(JUMP_BUTTON >= 0);
-  if (pressed[JUMP_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::JUMPING;
+    assert(JUMP_BUTTON >= 0);
+    if (pressed[JUMP_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::JUMPING;
+        } else {
+            /* Nothing to do. */
+        }
+        speed.y = -5;
+        on_floor = false;
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-    speed.y = -5;
-    on_floor = false;
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -560,16 +560,16 @@ void Blood::check_jump(bool change) {
  * temporary state.
  */
 void Blood::check_fall(bool change) {
-  assert(STOPPED == 0);
-  if (speed.y > STOPPED) {
-    if (change) {
-      temporary_state = FighterState::FALLING;
+    assert(STOPPED == 0);
+    if (speed.y > STOPPED) {
+        if (change) {
+            temporary_state = FighterState::FALLING;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -582,18 +582,18 @@ void Blood::check_fall(bool change) {
  * temporary state.
  */
 void Blood::check_right(bool change) {
-  assert(RIGHT_BUTTON >= 0);
-  if (is_holding[RIGHT_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::RUNNING;
+    assert(RIGHT_BUTTON >= 0);
+    if (is_holding[RIGHT_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::RUNNING;
+        } else {
+            /* Nothing to do. */
+        }
+        speed.x = 3;
+        orientation = Orientation::RIGHT;
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-    speed.x = 3;
-    orientation = Orientation::RIGHT;
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -606,18 +606,18 @@ void Blood::check_right(bool change) {
  * temporary state.
  */
 void Blood::check_left(bool change) {
-  assert(LEFT_BUTTON >= 0);
-  if (is_holding[LEFT_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::RUNNING;
+    assert(LEFT_BUTTON >= 0);
+    if (is_holding[LEFT_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::RUNNING;
+        } else {
+            /* Nothing to do. */
+        }
+        speed.x = -3;
+        orientation = Orientation::LEFT;
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-    speed.x = -3;
-    orientation = Orientation::LEFT;
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 
@@ -631,16 +631,16 @@ void Blood::check_left(bool change) {
  * temporary state.
  */
 void Blood::check_defense(bool change) {
-  assert(BLOCK_BUTTON >= 0);
-  if (is_holding[BLOCK_BUTTON] and on_floor) {
-    if (change) {
-      temporary_state = FighterState::DEFENDING;
+    assert(BLOCK_BUTTON >= 0);
+    if (is_holding[BLOCK_BUTTON] and on_floor) {
+        if (change) {
+            temporary_state = FighterState::DEFENDING;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -652,21 +652,21 @@ void Blood::check_defense(bool change) {
  * temporary state.
  */
 void Blood::check_idle(bool change) {
-  assert(DOWN_BUTTON >= 0);
-  assert(BLOCK_BUTTON >= 0);
-  assert(STOPPED == 0);
-  if (speed.x == STOPPED and
-     on_floor and not
-     is_holding[DOWN_BUTTON] and not
-     is_holding[BLOCK_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::IDLE;
+    assert(DOWN_BUTTON >= 0);
+    assert(BLOCK_BUTTON >= 0);
+    assert(STOPPED == 0);
+    if (speed.x == STOPPED and
+        on_floor and not
+        is_holding[DOWN_BUTTON] and not
+        is_holding[BLOCK_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::IDLE;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -679,16 +679,16 @@ void Blood::check_idle(bool change) {
  * temporary state.
  */
 void Blood::check_crouch(bool change) {
-  assert(DOWN_BUTTON >= 0);
-  if (is_holding[DOWN_BUTTON] and on_floor) {
-    if (change) {
-      temporary_state = FighterState::CROUCH;
+    assert(DOWN_BUTTON >= 0);
+    if (is_holding[DOWN_BUTTON] and on_floor) {
+        if (change) {
+            temporary_state = FighterState::CROUCH;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -700,13 +700,13 @@ void Blood::check_crouch(bool change) {
  * temporary state.
  */
 void Blood::check_stunned(bool change) {
-  assert(STOPPED == 0);
-  speed.x = STOPPED;
-  if (change) {
-    temporary_state = FighterState::STUNNED;
-  } else {
-    /* Nothing to do. */
-  }
+    assert(STOPPED == 0);
+    speed.x = STOPPED;
+    if (change) {
+        temporary_state = FighterState::STUNNED;
+    } else {
+        /* Nothing to do. */
+    }
 }
 
 /**
@@ -718,16 +718,16 @@ void Blood::check_stunned(bool change) {
  * temporary state.
  */
 void Blood::check_dead(bool change) {
-  assert(strcmp(DYING_TAG, "") != 0);
-  if (is(DYING_TAG)) {
-    if (change) {
-      temporary_state = FighterState::DYING;
+    assert(strcmp(DYING_TAG, "") != 0);
+    if (is(DYING_TAG)) {
+        if (change) {
+            temporary_state = FighterState::DYING;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -742,19 +742,19 @@ void Blood::check_dead(bool change) {
  * temporary state.
  */
 void Blood::check_jump_atk_up(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(UP_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON] and not combo) {
-    combo++;
-    speed.y = -5;
-    if (change) {
-      temporary_state = FighterState::JUMP_ATK_UP;
+    assert(ATTACK_BUTTON >= 0);
+    assert(UP_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON] and not combo) {
+        combo++;
+        speed.y = -5;
+        if (change) {
+            temporary_state = FighterState::JUMP_ATK_UP;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -767,17 +767,17 @@ void Blood::check_jump_atk_up(bool change) {
  * temporary state.
  */
 void Blood::check_jump_atk_down(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(DOWN_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::JUMP_ATK_DOWN;
+    assert(ATTACK_BUTTON >= 0);
+    assert(DOWN_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::JUMP_ATK_DOWN;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -789,16 +789,16 @@ void Blood::check_jump_atk_down(bool change) {
  * temporary state.
  */
 void Blood::check_jump_atk_neutral(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::JUMP_ATK_NEUTRAL;
+    assert(ATTACK_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::JUMP_ATK_NEUTRAL;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -811,17 +811,17 @@ void Blood::check_jump_atk_neutral(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_neutral_1(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON]) {
-    speed.y = STOPPED;
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_NEUTRAL_1;
+    assert(ATTACK_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON]) {
+        speed.y = STOPPED;
+        if (change) {
+            temporary_state = FighterState::IDLE_ATK_NEUTRAL_1;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -834,19 +834,19 @@ void Blood::check_idle_atk_neutral_1(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_neutral_2(bool change) {
-  if (combo) {
-    combo--;
-    if (combo < 0){
-      combo = 0;
-    } else {
-      /* Nothing to do. */
+    if (combo) {
+        combo--;
+        if (combo < 0) {
+            combo = 0;
+        } else {
+            /* Nothing to do. */
+        }
+        if (change) {
+            temporary_state = FighterState::IDLE_ATK_NEUTRAL_2;
+        } else {
+            /* Nothing to do. */
+        }
     }
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_NEUTRAL_2;
-    } else {
-      /* Nothing to do. */
-    }
-  }
 }
 
 /**
@@ -859,19 +859,19 @@ void Blood::check_idle_atk_neutral_2(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_neutral_3(bool change) {
-  if (combo) {
-    combo--;
-    if (combo < 0){
-      combo = 0;
-    }
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_NEUTRAL_3;
+    if (combo) {
+        combo--;
+        if (combo < 0) {
+            combo = 0;
+        }
+        if (change) {
+            temporary_state = FighterState::IDLE_ATK_NEUTRAL_3;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 
@@ -885,17 +885,17 @@ void Blood::check_idle_atk_neutral_3(bool change) {
  * temporary state.
  */
 void Blood::check_idle_atk_up(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(UP_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_UP;
+    assert(ATTACK_BUTTON >= 0);
+    assert(UP_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON] and is_holding[UP_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::IDLE_ATK_UP;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -909,17 +909,17 @@ void Blood::check_idle_atk_up(bool change) {
  * @param condition checks the attact state according to Fighter stats.
  */
 void Blood::check_idle_atk_down(bool change, bool condition) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(DOWN_BUTTON >= 0);
-  if ((pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) or condition) {
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_DOWN;
+    assert(ATTACK_BUTTON >= 0);
+    assert(DOWN_BUTTON >= 0);
+    if ((pressed[ATTACK_BUTTON] and is_holding[DOWN_BUTTON]) or condition) {
+        if (change) {
+            temporary_state = FighterState::IDLE_ATK_DOWN;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -933,21 +933,21 @@ void Blood::check_idle_atk_down(bool change, bool condition) {
  * temporary state.
  */
 void Blood::check_idle_atk_front(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  assert(LEFT_BUTTON >= 0);
-  assert(RIGHT_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON] and
-    (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) {
-    if (change) {
-      temporary_state = FighterState::IDLE_ATK_FRONT;
+    assert(ATTACK_BUTTON >= 0);
+    assert(LEFT_BUTTON >= 0);
+    assert(RIGHT_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON] and
+                (is_holding[LEFT_BUTTON] or is_holding[RIGHT_BUTTON])) {
+        if (change) {
+            temporary_state = FighterState::IDLE_ATK_FRONT;
+        } else {
+            /* Nothing to do. */
+        }
+        orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT :
+                      Orientation::RIGHT;
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-    orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT :
-                                            Orientation::RIGHT;
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -959,16 +959,16 @@ void Blood::check_idle_atk_front(bool change) {
  * temporary state.
  */
 void Blood::check_crouch_atk(bool change) {
-  assert(ATTACK_BUTTON >= 0);
-  if (pressed[ATTACK_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::CROUCH_ATK;
+    assert(ATTACK_BUTTON >= 0);
+    if (pressed[ATTACK_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::CROUCH_ATK;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -981,24 +981,24 @@ void Blood::check_crouch_atk(bool change) {
  * temporary state.
  */
 void Blood::check_pass_through_platform(bool change) {
-  assert(DOWN_BUTTON >= 0);
-  assert(ATTACK_BUTTON >= 0);
-  assert(CROUCH_COOLDOWN == 50.0);
-  if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
-    if (crouch_timer.get() < CROUCH_COOLDOWN) {
-      if (change) {
-        temporary_state = FighterState::FALLING;
-      } else {
-        /* Nothing to do. */
-      }
-      pass_through_timer.restart();
+    assert(DOWN_BUTTON >= 0);
+    assert(ATTACK_BUTTON >= 0);
+    assert(CROUCH_COOLDOWN == 50.0);
+    if (pressed[DOWN_BUTTON] and not is_holding[ATTACK_BUTTON]) {
+        if (crouch_timer.get() < CROUCH_COOLDOWN) {
+            if (change) {
+                temporary_state = FighterState::FALLING;
+            } else {
+                /* Nothing to do. */
+            }
+            pass_through_timer.restart();
+        } else {
+            /* Nothing to do. */
+        }
+        crouch_timer.restart();
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-    crouch_timer.restart();
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 /**
@@ -1010,16 +1010,16 @@ void Blood::check_pass_through_platform(bool change) {
  * temporary state.
  */
 void Blood::check_special_1_1(bool change) {
-  assert(SPECIAL1_BUTTON >= 0);
-  if (pressed[SPECIAL1_BUTTON]) {
-    if (change) {
-      temporary_state = FighterState::SPECIAL_1_1;
+    assert(SPECIAL1_BUTTON >= 0);
+    if (pressed[SPECIAL1_BUTTON]) {
+        if (change) {
+            temporary_state = FighterState::SPECIAL_1_1;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 
@@ -1032,12 +1032,12 @@ void Blood::check_special_1_1(bool change) {
  * temporary state.
  */
 void Blood::check_special_1_2(bool change) {
-  attack_damage = 0.5;
-  if (change) {
-    temporary_state = FighterState::SPECIAL_1_2;
-  } else {
-    /* Nothing to do. */
-  }
+    attack_damage = 0.5;
+    if (change) {
+        temporary_state = FighterState::SPECIAL_1_2;
+    } else {
+        /* Nothing to do. */
+    }
 }
 
 
@@ -1051,16 +1051,16 @@ void Blood::check_special_1_2(bool change) {
  * temporary state.
  */
 void Blood::check_special_2(bool change) {
-  assert(SPECIAL2_BUTTON >= 0);
-  if (pressed[SPECIAL2_BUTTON] and partner) {
-    if (change) {
-      temporary_state = FighterState::SPECIAL_2;
+    assert(SPECIAL2_BUTTON >= 0);
+    if (pressed[SPECIAL2_BUTTON] and partner) {
+        if (change) {
+            temporary_state = FighterState::SPECIAL_2;
+        } else {
+            /* Nothing to do. */
+        }
     } else {
-      /* Nothing to do. */
+        /* Nothing to do. */
     }
-  } else {
-    /* Nothing to do. */
-  }
 }
 
 
@@ -1071,19 +1071,19 @@ void Blood::check_special_2(bool change) {
  */
 void Blood::check_ultimate() {
 
-  /**
-   * Check if the Ultimate button is pressed and the special accumulated level is the maximum.
-   * If so, the fighter uses the UltimateEffect.
-   */
-  if (pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
-    Game::get_instance().get_current_state().add_object(
-        new UltimateEffect(this,
-                           path + ULTIMATE_EFFECT_IMAGE,
-                           path + AURA_IMAGE,
-                           "has_sprite",
-                           1));
-    ultimate_sound.play();
-  } else {
-    /* Nothing to do. */
-  }
+    /**
+     * Check if the Ultimate button is pressed and the special accumulated level is the maximum.
+     * If so, the fighter uses the UltimateEffect.
+     */
+    if (pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {
+        Game::get_instance().get_current_state().add_object(
+                new UltimateEffect(this,
+                                   path + ULTIMATE_EFFECT_IMAGE,
+                                   path + AURA_IMAGE,
+                                   "has_sprite",
+                                   1));
+        ultimate_sound.play();
+    } else {
+        /* Nothing to do. */
+    }
 }
