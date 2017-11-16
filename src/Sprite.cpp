@@ -9,15 +9,15 @@
  * This file contains the definition of the Sprite class methods.
  */
 
+#include <iostream>
 #include <assert.h>
 
-#include "Config.h"
+#include "Sprite.h"
 #include "Game.h"
 #include "Resources.h"
-#include "Sprite.h"
+#include "Config.h"
 
 #include <cmath>
-#include <iostream>
 
 #define PI 3.14159265358979
 #define _180_DEGREES 180
@@ -50,7 +50,7 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
     finished = false;
     open(RESOURCES_FOLDER + file);
 
-    scale_x_axis = scale_y_axis = 1;
+    scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
 }
 
 /**
@@ -158,12 +158,10 @@ void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate,
 /**
  * Frame setter.
  * Sets a new frame.
- * Not used method.
  *
  * @param frame stores the value of the new frame that will be saved and updated
  * as a current frame.
  */
-/*
 void Sprite::set_frame(int frame) {
     current_frame = frame;
     set_clip((current_frame % columns) * width,
@@ -171,7 +169,6 @@ void Sprite::set_frame(int frame) {
              width,
              height);
 }
-*/
 
 /**
  * Frame counting setter.
@@ -180,26 +177,20 @@ void Sprite::set_frame(int frame) {
  * @param cframe_count stores the value that will be saved and updated the time
  * of the counter.
  */
-/*
 void Sprite::set_frame_count(int cframe_count) {
     frame_count = cframe_count;
 }
-*/
 
 /**
  * Frame time setter.
  * Sets the current time of a frame.
- * Not used method.
  *
- * @param cframe_time stores the value that will be saved and updated the time
- * of
+ * @param cframe_time stores the value that will be saved and updated the time of
  * the old frame.
  */
-/*
 void Sprite::set_frame_time(float cframe_time) {
     frame_time = cframe_time;
 }
-*/
 
 /**
  * Update method.
@@ -276,7 +267,6 @@ int Sprite::get_current_frame() {
     assert(current_frame >= 0);
     return current_frame;
 }
-
 /**
  * Sprite width getter.
  * Returns the saved sprite width on x scale units.
@@ -289,7 +279,7 @@ int Sprite::get_width() {
 }
 
 /**
- * Sprite height getter.
+ * Sprite width getter.
  * Returns the saved sprite height on y scale units.
  *
  * @return the sprite height.

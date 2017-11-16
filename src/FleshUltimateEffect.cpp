@@ -38,7 +38,7 @@ FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
            ctags, frames) {
     /**
      * Check if is the parent fighter. If so, adds the "in ultimate" tag and
-     * multiply his maximum life by 1.5.
+     * multiply his maximum life by 1.5.W
      */
     if (parent) {
         parent->add_tags(IN_ULTIMATE_TAG);
@@ -90,6 +90,7 @@ bool FleshUltimateEffect::is_dead() {
     bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is(DYING_TAG);
     assert(dead != static_cast<bool> NULL);
     /**
+     *
      * Check if is the fighter is dead. If so, remove the parent's "in ultimate"
      * tag and divide the parent's maximum life by 1.5.
      */
@@ -100,5 +101,6 @@ bool FleshUltimateEffect::is_dead() {
     } else {
         /* Nothing to do. */
     }
+
     return dead;
 }
