@@ -10,12 +10,12 @@
  */
 #include "SDL_mixer.h"
 
-#include "JoystickConfigState.h"
+#include "Game.h"
 #include "InputManager.h"
+#include "JoystickButton.h"
+#include "JoystickConfigState.h"
 #include "MenuState.h"
 #include "OptionsState.h"
-#include "JoystickButton.h"
-#include "Game.h"
 
 #define MIDDLE_X 250
 #define BOTTOM_Y 275
@@ -36,9 +36,12 @@
 #define TRIGGERS_Y_DISTANCE 40
 #define DISTANCE_START 40
 
-#define WHITE { 255, 255, 255, 255 }
-#define LIGHT_GREEN { 181, 201, 60, 1 }
-#define BLUE { 0, 108, 166, 1 }
+#define WHITE \
+    { 255, 255, 255, 255 }
+#define LIGHT_GREEN \
+    { 181, 201, 60, 1 }
+#define BLUE \
+    { 0, 108, 166, 1 }
 
 #define N_JOYSTICK 4
 
@@ -112,8 +115,7 @@
  * @param ckeyboard a boolean argument that indicates if a keyboard is
  * connected.
  */
-JoystickConfigState::JoystickConfigState(int  joystick_id,
-                                         bool ckeyboard) {
+JoystickConfigState::JoystickConfigState(int joystick_id, bool ckeyboard) {
     Mix_AllocateChannels(50);
 
     is_keyboard = ckeyboard;
@@ -351,8 +353,7 @@ void JoystickConfigState::update(float delta) {
          * Check if user request to quit the joystick test screen.
          */
         if (input_manager->is_joystick_button_down(InputManager::SELECT, 0) and
-            input_manager->is_joystick_button_down(InputManager::START, 0)
-            ) {
+            input_manager->is_joystick_button_down(InputManager::START, 0)) {
             selected.play();
             on_test = false;
             InputManager::get_instance()->map_keyboard_to_joystick(
@@ -368,8 +369,6 @@ void JoystickConfigState::update(float delta) {
                 /* Nothing to do. */
             }
         }
-
-
     }
 
     update_array(delta);
@@ -414,10 +413,12 @@ void JoystickConfigState::render() {
  * Pause function.
  * Nothing to do.
  */
-void JoystickConfigState::pause() {}
+void JoystickConfigState::pause() {
+}
 
 /**
  * Resume function.
  * Nothing to do.
  */
-void JoystickConfigState::resume() {}
+void JoystickConfigState::resume() {
+}

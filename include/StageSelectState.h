@@ -11,10 +11,10 @@
 #ifndef INCLUDE_STAGESELECTSTATE_H_
 #define INCLUDE_STAGESELECTSTATE_H_
 
-#include "State.h"
-#include "Sprite.h"
-#include "Sound.h"
 #include "InputManager.h"
+#include "Sound.h"
+#include "Sprite.h"
+#include "State.h"
 
 #include <assert.h>
 
@@ -23,14 +23,14 @@
 
 class StageSelectState : public State {
  private:
-    Sprite background[N_BACKGROUNDS];  /**< Vector of sprites with the images */
-                                       /**< to render the background at the */
-                                       /**< menu "SELECT STAGE" and "EDIT". */
-    Sprite planet;  /**< Image with the 8 frames of the planet on the */
-                    /**< background of the menu "SELECT STAGE" and "EDIT". */
-    Sprite stage[3];  /**< Vector with images of the 3 stages available */
-                      /**< at the menu "SELECT STAGE" and "EDIT". */
-    Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
+    Sprite background[N_BACKGROUNDS]; /**< Vector of sprites with the images */
+                                      /**< to render the background at the */
+                                      /**< menu "SELECT STAGE" and "EDIT". */
+    Sprite planet;   /**< Image with the 8 frames of the planet on the */
+                     /**< background of the menu "SELECT STAGE" and "EDIT". */
+    Sprite stage[3]; /**< Vector with images of the 3 stages available */
+                     /**< at the menu "SELECT STAGE" and "EDIT". */
+    Sound blocked;   /**< Cancel sound activated after cancel button pressed. */
     Sound selected;  /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
 

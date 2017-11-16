@@ -13,8 +13,8 @@
 
 #define N_SPRITES 8
 
-#include "State.h"
 #include "Sprite.h"
+#include "State.h"
 #include "Text.h"
 
 #include <assert.h>
@@ -65,7 +65,7 @@ class BattleEnd : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject & object);
+    void notify_collision(const GameObject & object);
 
  private:
     /**

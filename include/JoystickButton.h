@@ -30,16 +30,12 @@ class JoystickButton : public GameObject {
     // TODO text com label escrito
 
  public:
-    JoystickButton(int x,
-                   int y,
-                   string clabel,
-                   int cbutton,
-                   int cjoystick_id,
+    JoystickButton(int x, int y, string clabel, int cbutton, int cjoystick_id,
                    string csprite);
 
     ~JoystickButton();
 
-    void notify_collision(GameObject& object);
+    void notify_collision(const GameObject& object);
 
  private:
     void update(float delta);

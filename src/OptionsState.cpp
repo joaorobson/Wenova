@@ -10,12 +10,12 @@
  */
 #include "SDL_mixer.h"
 
-#include "OptionsState.h"
-#include "MenuState.h"
-#include "InputManager.h"
-#include "Game.h"
 #include "Config.h"
+#include "Game.h"
+#include "InputManager.h"
 #include "JoystickConfigState.h"
+#include "MenuState.h"
+#include "OptionsState.h"
 
 #define FONT_X 640
 #define FONT_Y 680
@@ -25,10 +25,16 @@
 #define FONT_SIZE_OPTIONS 30
 #define FONT_SIZE_LABEL_OPTIONS 50
 
-#define DARK_GREY { 80, 80, 80, 1 }
-#define DARK_GREEN { 55, 74, 38, 1 }
-#define LIGHT_GREEN { 181, 201, 60, 1 }
-#define WHITE { 255, 255, 255, 255 }
+#define DARK_GREY \
+    { 80, 80, 80, 1 }
+#define DARK_GREEN \
+    { 55, 74, 38, 1 }
+#define LIGHT_GREEN \
+    { 181, 201, 60, 1 }
+#define WHITE \
+    { 255, 255, 255, 255 }
+
+#define N_JOYSTICK_BUTTON 15
 
 #define RESOLUTION_1_WIDTH 800
 #define RESOLUTION_1_HEIGHT 600
@@ -73,6 +79,9 @@
 OptionsState::OptionsState() {
     Mix_AllocateChannels(50);
 
+    for (int i = 0; i < N_JOYSTICK_BUTTON; i++) {
+        pressed[i] = false;
+    }
     current_option = 0;
     on_submenu = false;
 
@@ -204,8 +213,8 @@ void OptionsState::update(float) {
                 return;
             } else {
                 on_submenu = true;
-                current_sub_option[current_option] = get_current_sub_option(
-                    current_option);
+                current_sub_option[current_option] =
+                    get_current_sub_option(current_option);
             }
         } else {
             /**
@@ -275,8 +284,8 @@ void OptionsState::update(float) {
         int prev_text_height = (TEXT_HEIGHT + TEXT_OFFSET * 2) * prev_text_size;
 
         int text_position_axi_x = 250;
-        int text_position_axi_y = (i ? options[i - 1]->get_y() +
-                                       prev_text_height : 200);
+        int text_position_axi_y =
+            (i ? options[i - 1]->get_y() + prev_text_height : 200);
 
         cur_text->set_pos(text_position_axi_x,
                           text_position_axi_y,
@@ -520,22 +529,17 @@ void OptionsState::process_input() {
     assert(input_manager != nullptr);
 
     vector<pair<int, int> > joystick_buttons = {
-                    ii(A, InputManager::A),
-                    ii(B, InputManager::B),
-                    ii(UP, InputManager::UP),
-                    ii(DOWN, InputManager::DOWN),
-                    ii(SELECT, InputManager::SELECT),
-                    ii(START, InputManager::START)
-    };
+        ii(A, InputManager::A),           ii(B, InputManager::B),
+        ii(UP, InputManager::UP),         ii(DOWN, InputManager::DOWN),
+        ii(SELECT, InputManager::SELECT), ii(START, InputManager::START)};
 
     /**
      * Iterate on every key of the vector "joystick_buttons" and call it's
      * manager input.
      */
     for (ii button : joystick_buttons) {
-        pressed[button.first] = input_manager->joystick_button_press(
-            button.second,
-            0);
+        pressed[button.first] =
+            input_manager->joystick_button_press(button.second, 0);
     }
 }
 
@@ -543,10 +547,12 @@ void OptionsState::process_input() {
  * Pause function.
  * Nothing to do.
  */
-void OptionsState::pause() {}
+void OptionsState::pause() {
+}
 
 /**
  * Resume function.
  * Nothing to do.
  */
-void OptionsState::resume() {}
+void OptionsState::resume() {
+}

@@ -1,107 +1,163 @@
-#ifndef FIGHTER_H
-#define FIGHTER_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Fighter.h
+ * Brief Description.
+ */
 
-#include "InputManager.h"
+#ifndef INCLUDE_FIGHTER_H_
+#define INCLUDE_FIGHTER_H_
+
 #include "GameObject.h"
-#include "Sprite.h"
+#include "InputManager.h"
 #include "Sound.h"
-#include "Vector.h"
+#include "Sprite.h"
 #include "Timer.h"
+#include "Vector.h"
 
+#include <string>
 #include <vector>
 
 using std::vector;
 
-class Fighter : public GameObject{
-protected:
-	enum FighterState {IDLE, RUNNING, JUMPING, FALLING, CROUCH, IDLE_ATK_NEUTRAL_1, IDLE_ATK_NEUTRAL_2, IDLE_ATK_NEUTRAL_3, IDLE_ATK_FRONT, IDLE_ATK_UP, IDLE_ATK_DOWN, CROUCH_ATK, JUMP_ATK_UP, JUMP_ATK_NEUTRAL, JUMP_ATK_DOWN, JUMP_ATK_DOWN_FALLLOOP, JUMP_ATK_DOWN_DMG, DEFENDING, STUNNED, SPECIAL_1, SPECIAL_1_1, SPECIAL_1_2, SPECIAL_2, DYING, LAST};
-	enum Button {JUMP_BUTTON, UP_BUTTON, DOWN_BUTTON, LEFT_BUTTON, RIGHT_BUTTON, ATTACK_BUTTON, SPECIAL1_BUTTON, SPECIAL2_BUTTON, BLOCK_BUTTON, ULTIMATE_BUTTON};
-	enum Orientation {LEFT, RIGHT};
-	enum AttackDirection{ATK_DOWN = 1, ATK_LEFT = 2, ATK_UP = 4, ATK_RIGHT = 8};
-	vector<Sprite> sprite;
-	vector<Sound> sound;
-	Sound hit_sounds[4];
-	FighterState state, temporary_state;
-	Orientation orientation;
-	Vector speed;
-	Vector acceleration;
-	Sound land_sound, ultimate_sound;
-	Vector crouching_size, not_crouching_size;
-	float vertical_speed;
-	bool on_floor, grab;
-	int last_collided_floor;
-	float max_speed;
-	float remaining_life;
-	int id;
-	int combo;
-	int n_sprite_start;
-	float attack_damage;
-	int attack_mask;
-	Fighter * partner;
+class Fighter : public GameObject {
+ protected:
+    enum FighterState {
+        IDLE,
+        RUNNING,
+        JUMPING,
+        FALLING,
+        CROUCH,
+        IDLE_ATK_NEUTRAL_1,
+        IDLE_ATK_NEUTRAL_2,
+        IDLE_ATK_NEUTRAL_3,
+        IDLE_ATK_FRONT,
+        IDLE_ATK_UP,
+        IDLE_ATK_DOWN,
+        CROUCH_ATK,
+        JUMP_ATK_UP,
+        JUMP_ATK_NEUTRAL,
+        JUMP_ATK_DOWN,
+        JUMP_ATK_DOWN_FALLLOOP,
+        JUMP_ATK_DOWN_DMG,
+        DEFENDING,
+        STUNNED,
+        SPECIAL_1,
+        SPECIAL_1_1,
+        SPECIAL_1_2,
+        SPECIAL_2,
+        DYING,
+        LAST
+    };
 
-	void test_limits();
-	void play_sound();
+    enum Button {
+        JUMP_BUTTON,
+        UP_BUTTON,
+        DOWN_BUTTON,
+        LEFT_BUTTON,
+        RIGHT_BUTTON,
+        ATTACK_BUTTON,
+        SPECIAL1_BUTTON,
+        SPECIAL2_BUTTON,
+        BLOCK_BUTTON,
+        ULTIMATE_BUTTON
+    };
+    enum Orientation { LEFT, RIGHT };
+    enum AttackDirection {
+        ATK_DOWN = 1,
+        ATK_LEFT = 2,
+        ATK_UP = 4,
+        ATK_RIGHT = 8
+    };
 
-	float special;
-	Timer crouch_timer;
-	Timer pass_through_timer;
+    FighterState state, temporary_state;
+    Fighter* partner;
+    Orientation orientation;
+    Sound hit_sounds[4];
+    Sound land_sound, ultimate_sound;
+    Timer crouch_timer;
+    Timer pass_through_timer;
+    Vector acceleration;
+    Vector crouching_size, not_crouching_size;
+    Vector speed;
 
-	bool pressed[20];
-	bool is_holding[20];
-	bool released[20];
+    vector<Sound> sound;
+    vector<Sprite> sprite;
 
-	bool ultimate_ready, played;
+    int attack_mask;
+    int combo;
+    int id;
+    int last_collided_floor;
+    int n_sprite_start;
+    float attack_damage;
+    float max_speed;
+    float remaining_life;
+    float vertical_speed;
+    bool on_floor, grab;
 
-	string path, sound_path;
+    void play_sound();
+    void test_limits();
 
-	void process_input();
+    float special;
 
-	virtual void check_jump(bool change = true) = 0;
-	virtual void check_fall(bool change = true) = 0;
-	virtual void check_left(bool change = true) = 0;
-	virtual void check_right(bool change = true) = 0;
-	virtual void check_crouch(bool change = true) = 0;
-	virtual void check_idle_atk_neutral_1(bool change = true) = 0;
-	virtual void check_idle_atk_neutral_2(bool change = true) = 0;
-	virtual void check_idle_atk_neutral_3(bool change = true) = 0;
-	virtual void check_stunned(bool change = true) = 0;
+    bool is_holding[20];
+    bool pressed[20];
+    bool released[20];
 
-	AttackDirection get_attack_orientation();
+    bool ultimate_ready, played;
 
-	virtual void update_machine_state(float delta) = 0;
+    string path, sound_path;
 
-public:
-	Fighter(int cid, float x, Fighter * cpartner = nullptr);
-	~Fighter();
+    void process_input();
 
-	void update(float delta);
-	void render();
-	bool is_dead();
+    virtual void check_jump(bool change = true) = 0;
+    virtual void check_fall(bool change = true) = 0;
+    virtual void check_left(bool change = true) = 0;
+    virtual void check_right(bool change = true) = 0;
+    virtual void check_crouch(bool change = true) = 0;
+    virtual void check_idle_atk_neutral_1(bool change = true) = 0;
+    virtual void check_idle_atk_neutral_2(bool change = true) = 0;
+    virtual void check_idle_atk_neutral_3(bool change = true) = 0;
+    virtual void check_stunned(bool change = true) = 0;
 
-	float get_remaining_life();
-	float get_special();
+    AttackDirection get_attack_orientation();
 
+    virtual void update_machine_state(float delta) = 0;
 
-	void notify_collision(GameObject & object);
-	void kill();
+ public:
+    Fighter(int cid, float x, Fighter* cpartner = nullptr);
+    ~Fighter();
 
-	void change_state(FighterState cstate);
-	void reset_position(float x, float y);
-	void play_hit();
+    void update(float delta);
+    void render();
+    bool is_dead();
 
-	bool is_attacking();
-	float get_attack_damage();
-	int get_attack_mask();
-	int get_id();
-	int get_max_life();
-	void increment_life(float increment);
-	void increment_special(float increment);
-	void set_partner(Fighter * cpartner);
-	Fighter * get_partner();
-	string get_path();
+    float get_remaining_life();
+    float get_special();
 
-	double MAX_LIFE = 2000;
-	static const int MAX_SPECIAL = 250;
+    void notify_collision(const GameObject& object);
+    void kill();
+
+    void change_state(FighterState cstate);
+    void reset_position(float x, float y);
+    void play_hit();
+
+    bool is_attacking() const;
+    float get_attack_damage() const;
+    int get_attack_mask() const;
+    int get_id() const;
+    int get_max_life();
+    void increment_life(float increment);
+    void increment_special(float increment);
+    void set_partner(Fighter* cpartner);
+    Fighter* get_partner();
+    string get_path();
+
+    double MAX_LIFE;
+    static const int MAX_SPECIAL = 250;
 };
 
-#endif
+#endif  // INCLUDE_FIGHTER_H_

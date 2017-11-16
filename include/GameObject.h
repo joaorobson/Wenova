@@ -1,52 +1,69 @@
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file GameObject.h
+ * Brief Description.
+ */
 
-#include "Rectangle.h"
+#ifndef INCLUDE_GAMEOBJECT_H_
+#define INCLUDE_GAMEOBJECT_H_
+
 #include <iostream>
 #include <sstream>
+#include <string>
 #include <unordered_map>
 
-using std::string;
-using std::stringstream;
-using std::unordered_map;
+#include "Rectangle.h"
 
-class GameObject{
-public:
-	virtual ~GameObject(){};
-	virtual void update(float delta) = 0;
+class GameObject {
+ public:
+    Rectangle box;
+    float rotation = 0;
 
-	virtual void render() = 0;
-	virtual bool is_dead() = 0;
-	virtual void notify_collision(GameObject & object) = 0;
-	virtual bool is(string type) {
-		stringstream types(type);
-		string tag;
-		while(types >> tag) {
-			if(not tags[tag]) return false;
-		}
-		return true;
-	}
+    mutable std::unordered_map<std::string, bool> tags;
 
-	virtual void add_tags(string ctags) {
-		stringstream types(ctags);
-		string tag;
-		while(types >> tag) {
-			tags[tag] = true;
-		}
-	}
+ public:
+    virtual ~GameObject() {
+    }
+    virtual void update(float delta) = 0;
 
-	virtual void remove_tags(string ctags) {
-		stringstream types(ctags);
-		string tag;
-		while(types >> tag) {
-			tags[tag] = false;
-		}
-	}
+    virtual void render() = 0;
 
-	Rectangle box;
-	float rotation = 0;
+    virtual bool is_dead() = 0;
 
-	unordered_map<string, bool> tags;
+    virtual void notify_collision(const GameObject& object) = 0;
+
+    virtual bool is(const std::string& type) const {
+        std::stringstream types(type);
+        std::string tag;
+
+        while (types >> tag) {
+            if (not tags[tag])
+                return false;
+        }
+        return true;
+    }
+
+    virtual void add_tags(std::string ctags) {
+        std::stringstream types(ctags);
+        std::string tag;
+
+        while (types >> tag) {
+            tags[tag] = true;
+        }
+    }
+
+    virtual void remove_tags(std::string ctags) {
+        std::stringstream types(ctags);
+        std::string tag;
+
+        while (types >> tag) {
+            tags[tag] = false;
+        }
+    }
 };
 
-#endif
+#endif  // INCLUDE_GAMEOBJECT_H_
