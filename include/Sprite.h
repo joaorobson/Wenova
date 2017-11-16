@@ -21,21 +21,21 @@
 using std::string;
 using std::shared_ptr;
 
-class Sprite{
+class Sprite {
  private:
-  shared_ptr<SDL_Texture> texture = nullptr;  /**< Sprite texture. */
-  int width;  /**< Sprite width. Unit: px. */
-  int height;  /**< Sprite height. Unit: px. */
-  int current_frame;  /**< Current frame exhibited from all sprites frames. */
-  float time_elapsed;  /**< Counted time over Sprite exhibition. */
-  float frame_time;  /**< Time of a frame ocurrence. */
-  int frame_count;  /**< Number of the frame. */
-  int rows;  /**< Number of rows filled by a sprite. */
-  int columns;  /**< Number of columns filled by a sprite. */
-  SDL_Rect clip_rect;  /**< Sprites frames positioning box. */
-  float scale_x_axis;  /**< Horizontal scale. */
-  float scale_y_axis;  /**< Vertical scale. */
-  bool finished;  /**< Check if the sprite use is no longer required. */
+    shared_ptr<SDL_Texture> texture = nullptr; /**< Sprite texture. */
+    int width;                                 /**< Sprite width. Unit: px. */
+    int height;                                /**< Sprite height. Unit: px. */
+    int current_frame;  /**< Current frame exhibited from all sprites frames. */
+    float time_elapsed; /**< Counted time over Sprite exhibition. */
+    float frame_time;   /**< Time of a frame ocurrence. */
+    int frame_count;    /**< Number of the frame. */
+    int rows;           /**< Number of rows filled by a sprite. */
+    int columns;        /**< Number of columns filled by a sprite. */
+    SDL_Rect clip_rect; /**< Sprites frames positioning box. */
+    float scale_x_axis; /**< Horizontal scale. */
+    float scale_y_axis; /**< Vertical scale. */
+    bool finished;      /**< Check if the sprite use is no longer required. */
 
  public:
   Sprite(string file, int cframe_count = 1, float cframe_time = 1,
@@ -63,7 +63,6 @@ class Sprite{
   bool is_open();
   void set_scale_y(float scale);
   void set_scale(float cscale_x_axis, float cscale_y_axis);
-
 
 };
 

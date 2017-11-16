@@ -11,10 +11,10 @@
 
 #include <assert.h>
 
-#include "Sprite.h"
+#include "Config.h"
 #include "Game.h"
 #include "Resources.h"
-#include "Config.h"
+#include "Sprite.h"
 
 #include <cmath>
 #include <iostream>
@@ -50,7 +50,7 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
     finished = false;
     open(RESOURCES_FOLDER + file);
 
-    scale_x_axis = scale_y_axis = INITIAL_X_Y_AXES_SCALE;
+    scale_x_axis = scale_y_axis = 1;
 }
 
 /**
@@ -158,10 +158,12 @@ void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate,
 /**
  * Frame setter.
  * Sets a new frame.
+ * Not used method.
  *
  * @param frame stores the value of the new frame that will be saved and updated
  * as a current frame.
  */
+/*
 void Sprite::set_frame(int frame) {
     current_frame = frame;
     set_clip((current_frame % columns) * width,
@@ -169,6 +171,7 @@ void Sprite::set_frame(int frame) {
              width,
              height);
 }
+*/
 
 /**
  * Frame counting setter.
@@ -177,20 +180,26 @@ void Sprite::set_frame(int frame) {
  * @param cframe_count stores the value that will be saved and updated the time
  * of the counter.
  */
+/*
 void Sprite::set_frame_count(int cframe_count) {
     frame_count = cframe_count;
 }
+*/
 
 /**
  * Frame time setter.
  * Sets the current time of a frame.
+ * Not used method.
  *
- * @param cframe_time stores the value that will be saved and updated the time of
+ * @param cframe_time stores the value that will be saved and updated the time
+ * of
  * the old frame.
  */
+/*
 void Sprite::set_frame_time(float cframe_time) {
     frame_time = cframe_time;
 }
+*/
 
 /**
  * Update method.
@@ -267,6 +276,7 @@ int Sprite::get_current_frame() {
     assert(current_frame >= 0);
     return current_frame;
 }
+
 /**
  * Sprite width getter.
  * Returns the saved sprite width on x scale units.
@@ -279,7 +289,7 @@ int Sprite::get_width() {
 }
 
 /**
- * Sprite width getter.
+ * Sprite height getter.
  * Returns the saved sprite height on y scale units.
  *
  * @return the sprite height.

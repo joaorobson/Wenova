@@ -530,7 +530,8 @@ void Blood::update_machine_state(float delta_character_state) {
 
 /**
  * Check jump action method.
- * Check if pressed button is referent to the jump action. If so, and if there is
+ * Check if pressed button is referent to the jump action. If so, and if there
+ * is
  * change in the Fighter state, change his temporary state to "Jumping".
  *
  * @param change checks if the Fighter state has changed and if so, change his
@@ -734,8 +735,8 @@ void Blood::check_dead(bool change) {
  * Check attack type.
  * Check if user pressed the attack button and is holding the up button. If so,
  * and if the combo is bigger than 0, there will be no attack.
- * If not, the combo value increases, the speed on y axis decreases and, if there
- * is change in the Fighter state, change his temporary state to
+ * If not, the combo value increases, the speed on y axis decreases and, if 
+ * there is change in the Fighter state, change his temporary state to
  * "Jump attack up".
  *
  * @param change checks if the Fighter state has changed and if so, change his
@@ -1003,7 +1004,8 @@ void Blood::check_pass_through_platform(bool change) {
 
 /**
  * Check special attack type.
- * Check if user pressed the special button #1. If so, and if there is change in the
+ * Check if user pressed the special button #1. If so, and if there is change in
+ * the
  * Fighter state, change his temporary state to "Special 1.1".
  *
  * @param change checks if the Fighter state has changed and if so, change his
@@ -1022,7 +1024,6 @@ void Blood::check_special_1_1(bool change) {
     }
 }
 
-
 /**
  * Check special attack type.
  * Check if the attack damage if one half. If so, and if there is change in the
@@ -1039,7 +1040,6 @@ void Blood::check_special_1_2(bool change) {
         /* Nothing to do. */
     }
 }
-
 
 /**
  * Check special attack type.

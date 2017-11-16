@@ -12,8 +12,8 @@
 #ifndef INCLUDE_BLOOD_H_
 #define INCLUDE_BLOOD_H_
 
-#include "Fighter.h"
 #include <string>
+#include "Fighter.h"
 
 class Blood : public Fighter {
  public:

@@ -1,3 +1,13 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Text.h
+ * Brief Description.
+ */
+
 #ifndef INCLUDE_TEXT_H_
 #define INCLUDE_TEXT_H_
 
@@ -12,20 +22,21 @@
 using std::string;
 using std::shared_ptr;
 
-class Text{
+class Text {
  public:
-  enum TextStyle {SOLID, SHADED, BLENDED};
+    enum TextStyle { SOLID, SHADED, BLENDED };
 
  private:
-  shared_ptr<TTF_Font> font;  /**< Text font type. */
-  SDL_Texture * texture;  /**< Exhibited text texture. */
+    shared_ptr<TTF_Font> font; /**< Text font type. */
+    SDL_Texture* texture;      /**< Exhibited text texture. */
 
-  string text;  /**< Words from the text. */
-  TextStyle style;  /**< Exhibited text style. */
-  int font_size;  /**< Size of the exhibited text. */
-  SDL_Color color;  /**< Color of the exhibited text. */
-  Rectangle box;  /**< /Text box. */
-  SDL_Rect clip_rect;  /**< Text frames positioning box. */
+    Rectangle box;      /**< /Text box. */
+    SDL_Color color;    /**< Color of the exhibited text. */
+    SDL_Rect clip_rect; /**< Text frames positioning box. */
+    TextStyle style;    /**< Exhibited text style. */
+
+    int font_size; /**< Size of the exhibited text. */
+    string text;   /**< Words from the text. */
 
   void set_style(TextStyle cstyle);
   void set_font_size(int cfont_size);

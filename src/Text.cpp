@@ -11,9 +11,10 @@
 
 #include "Text.h"
 #include <assert.h>
+
+#include "Config.h"
 #include "Game.h"
 #include "Resources.h"
-#include "Config.h"
 
 #define SOLID Text::TextStyle::SOLID
 #define SHADED Text::TextStyle::SHADED
@@ -25,10 +26,9 @@
 #define NO_OFFSET 0
 #define BLACK_BACKGROUND_ON_SDL_RGBA_COLOR {0,0,0,255}
 
-
 /**
  * A constructor.
- * Initialize the style, color, textuxe, font size and position of the text in 
+ * Initialize the style, color, textuxe, font size and position of the text in
  * the game.
  *
  * @param cfont_file is the font file where the respective font is.
@@ -95,7 +95,6 @@ void Text::render(int camera_x, int camera_y) {
                          static_cast<int>(box.get_height())
                        };
 
-
   int render_copy = SDL_RenderCopy(Game::get_instance().get_renderer(),
                                    texture, &src_rect, &dest_rect);
   if (render_copy) {
@@ -115,7 +114,7 @@ void Text::render(int camera_x, int camera_y) {
  * @param center_x checks if the text is centered horizontally;
  * @param center_y checks if the text is centered vertically.
  */
-void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x, 
+void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x,
                    bool center_y) {
   box.set_x(x_axis_position - (center_x ? clip_rect.w * CLIP_BORDERS_OFFSET : 
                                           NO_OFFSET));
@@ -144,39 +143,46 @@ void Text::set_text(string ctext) {
  * texture.
  */
 void Text::set_color(SDL_Color ccolor) {
-  color = ccolor;
-  remake_texture();
+    color = ccolor;
+    remake_texture();
 }
 
 /**
  * style setter.
  * Sets the style to a new style.
+ * Not used method.
  *
  * @param cstyle stores the style that will be saved and updated in the
  * texture.
  */
+/*
 void Text::set_style(TextStyle cstyle) {
   assert(cstyle != (TextStyle) NULL);
   style = cstyle;
   remake_texture();
 }
+*/
 
 /**
  * cfont_size setter.
  * Sets the style to a new style.
+ * Not used method yet.
  *
  * @param cfont_size stores the font size that will be saved and updated in the
  * texture.
  */
+/*
 void Text::set_font_size(int cfont_size) {
   assert(cfont_size > 0);
   font_size = cfont_size;
   remake_texture();
 }
+*/
 
 /**
  * Change texture.
- * Remakes the texture of the game interface from styles options and sets the new
+ * Remakes the texture of the game interface from styles options and sets the
+ * new
  * text box width and height.
  */
 void Text::remake_texture() {
@@ -207,9 +213,9 @@ void Text::remake_texture() {
     /* Nothing to do. */    
   } 
 
-  texture = SDL_CreateTextureFromSurface(Game::get_instance().get_renderer(),
-                                         surface);
-  SDL_FreeSurface(surface);
+    texture = SDL_CreateTextureFromSurface(Game::get_instance().get_renderer(),
+                                           surface);
+    SDL_FreeSurface(surface);
 
   int w, h;
   int query_texture = SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
@@ -220,10 +226,10 @@ void Text::remake_texture() {
     /* Nothing to do. */
   }
 
-  box.set_width(w);
-  box.set_height(h);
-  clip_rect.w = w;
-  clip_rect.h = h;
+    box.set_width(w);
+    box.set_height(h);
+    clip_rect.w = w;
+    clip_rect.h = h;
 }
 
 /**
