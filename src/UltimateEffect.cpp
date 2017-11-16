@@ -93,7 +93,7 @@ void UltimateEffect::render() {
  */
 bool UltimateEffect::is_dead() {
     assert(NO_LIFE_STATE == 0);
-    assert(strcmp(IN_ULTIMATE_TAG,"") != 0);
+    assert(strcmp(IN_ULTIMATE_TAG, "") != 0);
     bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is_dead();
     /**
      * Check if fighter is dead. If so, update his life tags.
@@ -125,5 +125,4 @@ void UltimateEffect::notify_collision(GameObject & object) {
     } else {
         /* Nothing to do. */
     }
-
 }

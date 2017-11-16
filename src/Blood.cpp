@@ -59,8 +59,8 @@
 
 #define DYING_TAG "dying"
 #define STOPPED 0
-#include <algorithm>
 #include <assert.h>
+#include <algorithm>
 
 using std::min;
 
@@ -201,7 +201,7 @@ void Blood::update_machine_state(float delta_character_state) {
         }
         break;
 
-    case FighterState::IDLE_ATK_FRONT: // 2
+    case FighterState::IDLE_ATK_FRONT:  // 2
         attack_damage = 10 * (sprite[state].get_current_frame() == 2);
         attack_mask = get_attack_orientation();
 
@@ -218,7 +218,7 @@ void Blood::update_machine_state(float delta_character_state) {
         }
         break;
 
-    case FighterState::IDLE_ATK_DOWN: // 3
+    case FighterState::IDLE_ATK_DOWN:  // 3
         attack_damage = 10 * (sprite[state].get_current_frame() == 3);
         attack_mask = AttackDirection::ATK_DOWN;
 
@@ -234,7 +234,7 @@ void Blood::update_machine_state(float delta_character_state) {
             /* Nothing to do. */
         }
         break;
-    case FighterState::CROUCH_ATK: // 1
+    case FighterState::CROUCH_ATK:  // 1
         attack_damage = 3 * (sprite[state].get_current_frame() == 1);
         attack_mask = get_attack_orientation() | AttackDirection::ATK_DOWN;
 
@@ -250,8 +250,8 @@ void Blood::update_machine_state(float delta_character_state) {
             /* Nothing to do. */
         }
 
-    case FighterState::IDLE_ATK_NEUTRAL_3: // 1
-    case FighterState::IDLE_ATK_UP: // 1
+    case FighterState::IDLE_ATK_NEUTRAL_3:  // 1
+    case FighterState::IDLE_ATK_UP:  // 1
         attack_damage = 3 * (sprite[state].get_current_frame() == 1);
         attack_mask = get_attack_orientation();
 
@@ -1070,9 +1070,9 @@ void Blood::check_special_2(bool change) {
  * maximum special level. If so, activate the UltimateEffect images and sounds.
  */
 void Blood::check_ultimate() {
-
     /**
-     * Check if the Ultimate button is pressed and the special accumulated level is the maximum.
+     * Check if the Ultimate button is pressed and the special accumulated 
+     * level is the maximum.
      * If so, the fighter uses the UltimateEffect.
      */
     if (pressed[ULTIMATE_BUTTON] and special == MAX_SPECIAL) {

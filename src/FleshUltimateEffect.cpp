@@ -88,7 +88,7 @@ void FleshUltimateEffect::render() {
  */
 bool FleshUltimateEffect::is_dead() {
     bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is(DYING_TAG);
-    assert(dead != (bool) NULL);
+    assert(dead != static_cast<bool> NULL);
     /**
      *
      * Check if is the fighter is dead. If so, remove the parent's "in ultimate"

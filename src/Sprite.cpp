@@ -9,7 +9,6 @@
  * This file contains the definition of the Sprite class methods.
  */
 
-#include <iostream>
 #include <assert.h>
 
 #include "Sprite.h"
@@ -18,6 +17,7 @@
 #include "Config.h"
 
 #include <cmath>
+#include <iostream>
 
 #define PI 3.14159265358979
 #define _180_DEGREES 180
