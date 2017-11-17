@@ -16,11 +16,20 @@ JoystickButton::JoystickButton(int x, int y, string clabel, int cbutton_id,
                                int cjoystick_id, string csprite)
         : sprite(Sprite("joysticks/" + csprite + ".png"))
         , pressed_sprite(Sprite("joysticks/pressed_" + csprite + ".png"))
+        , label(clabel)
         , button_id(cbutton_id)
         , joystick_id(cjoystick_id)
-        , label(clabel)
         , pressed(false) {
-    box = Rectangle(x, y, sprite.get_width(), sprite.get_height());
+    assert(clabel.empty() != true);
+    assert(csprite.empty() != true);
+
+    int sprite_width = sprite.get_width();
+    int sprite_height = sprite.get_height();
+
+    assert(sprite_width > 0);
+    assert(sprite_height > 0);
+    box = Rectangle(x, y, sprite_width, sprite_height);
+
     rotation = 0;
 }
 
@@ -37,6 +46,8 @@ JoystickButton::~JoystickButton() {
  */
 void JoystickButton::update(float) {
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
+
     pressed = input_manager->is_joystick_button_down(button_id, joystick_id);
 }
 
@@ -44,10 +55,14 @@ void JoystickButton::update(float) {
  * Brief Description.
  */
 void JoystickButton::render() {
+    assert(box.get_draw_x() > 0.0);
+    assert(box.get_draw_y() > 0.0);
     sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
 
     if (pressed) {
         pressed_sprite.render(box.get_draw_x(), box.get_draw_y(), rotation);
+    } else {
+        /* Nothing to do. */
     }
 }
 

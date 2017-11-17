@@ -62,10 +62,13 @@ void StageSelectState::update(float delta) {
     process_input();
 
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
+    } else {
+        /* Nothing to do. */
     }
 
     if (pressed[B] or pressed[SELECT]) {
@@ -73,17 +76,7 @@ void StageSelectState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new MenuState(true));
         return;
-    }
-
-    if (pressed[LEFT]) {
-        update_stage_select(-1);
-    }
-
-    if (pressed[RIGHT]) {
-        update_stage_select(1);
-    }
-
-    if (pressed[A] or pressed[START]) {
+    } else if (pressed[A] or pressed[START]) {
         selected.play();
         m_quit_requested = true;
 
@@ -92,6 +85,8 @@ void StageSelectState::update(float delta) {
             unsigned int thread = 0;
             stage_select =
                 rand_r(&thread) % (amount_stages - (go_to_edit ? 0 : 1));
+        } else {
+            /* Nothing to do. */
         }
 
         if (go_to_edit) {
@@ -101,6 +96,16 @@ void StageSelectState::update(float delta) {
             Game::get_instance().push(
                 new CharacterSelectState(to_string(stage_select + 1)));
         }
+    } else {
+        /* Nothing to do. */
+    }
+
+    if (pressed[LEFT]) {
+        update_stage_select(-1);
+    } else if (pressed[RIGHT]) {
+        update_stage_select(1);
+    } else {
+        /* Nothing to do. */
     }
 
     planet.update(delta);
@@ -127,6 +132,8 @@ void StageSelectState::render() {
  * @param increment an integer value that updates the current stage.
  */
 void StageSelectState::update_stage_select(int increment) {
+    assert(stage_select >= 0);
+    assert(stage_select <= amount_stages - 1);
     stage_select += increment;
 
     if (stage_select < 0) {
@@ -147,6 +154,7 @@ void StageSelectState::update_stage_select(int increment) {
  */
 void StageSelectState::process_input() {
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     // MENU BUTTONS HERE
     vector<pair<int, int> > joystick_buttons = {

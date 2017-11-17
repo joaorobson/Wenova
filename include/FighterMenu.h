@@ -11,6 +11,7 @@
 #ifndef INCLUDE_FIGHTERMENU_H_
 #define INCLUDE_FIGHTERMENU_H_
 
+#include <assert.h>
 #include <string>
 #include <utility>
 #include <vector>
