@@ -16,31 +16,32 @@
 #include <utility>
 
 #define N_PLAYERS 4
+#define N_VALUE 5
 
 using std::vector;
 using std::pair;
 
 class BattleState : public State{
-private:
-	vector<pair<Sprite, Vector> > backgrounds;
-	Fighter* players[N_PLAYERS];
-	Music music;
-	Sound sound;
-	void read_level_design(string stage);
-	bool game_over;
-	int alive[5];
-	TimeCounter *time_counter;
-	BattleEnd *battleEnd;
-
 public:
-	BattleState(string stage, vector< pair<string, string> > players_info);
-	~BattleState();
+	  BattleState(string stage, vector< pair<string, string> > players_info);
+	  ~BattleState();
 
-	void update(float delta);
-	void render();
+	  void update(float delta);
+	  void render();
 
-	void pause();
-	void resume();
+	  void pause();
+	  void resume();
 };
+
+private:
+	  vector<pair<Sprite, Vector> > backgrounds;
+	  Fighter* players[N_PLAYERS];
+	  Music music;
+	  Sound sound;
+	  TimeCounter *time_counter;
+	  BattleEnd *battleEnd;
+		void read_level_design(string stage);
+	  bool game_over;
+	  int alive[N_VALUE];
 
 #endif
