@@ -115,6 +115,7 @@ MenuState::MenuState(bool main_menu) {
  * @param cid is a number of the type integer.
  */
 void MenuState::update(float delta) {
+    assert(delta >= 0);
     title.update(delta);
     planet.update(delta);
     green_ship.update(delta);
@@ -176,6 +177,7 @@ void MenuState::update(float delta) {
         if (not start_pressed) {
             start_pressed  = true;
             current_option = N_ZERO;
+            assert(current_option == 0);
         } else {
             m_quit_requested = true;
 

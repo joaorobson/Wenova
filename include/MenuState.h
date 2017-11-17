@@ -7,6 +7,7 @@
 #include "Timer.h"
 #include "Sound.h"
 #include "Music.h"
+#include <assert.h>
 
 #define N_VALUE 15
 
@@ -21,7 +22,6 @@ public:
 	  void resume();
 
 	  void process_input();
-};
 
 private:
 	  Sprite background, green_ship, red_ship, title, planet;
@@ -34,5 +34,7 @@ private:
 	  bool pressed[N_VALUE], is_holding[N_VALUE];
 		bool start_pressed, show_text;
 		int current_option;
+};
+
 
 #endif

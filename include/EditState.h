@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <utility>
+#include <assert.h>
 
 using std::vector;
 using std::pair;
@@ -25,7 +26,6 @@ public:
 
 	  void pause();
 	  void resume();
-};
 
 private:
 	  vector<pair<Sprite, Vector> > backgrounds;
@@ -36,5 +36,6 @@ private:
 
 	  void read_level_design();
 	  void update_level_design();
+};
 
 #endif

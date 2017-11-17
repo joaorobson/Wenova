@@ -11,6 +11,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <assert.h>
 
 #include "InputManager.h"
 #include "Game.h"
@@ -62,11 +63,17 @@ using std::to_string;
  */
 BattleState::BattleState(string stage,
                           vector< pair<string, string> > players_info) {
+
+    assert(stage.empty() != true);
+    assert(players_info.empty() != true);
+
     game_over = false;
     memset(alive, 1, sizeof alive);
 
     music = Music("stage_" + stage + "/music.ogg");
     sound = Sound("stage_" + stage + "/sound.ogg");
+
+
 
     read_level_design(stage);
 
@@ -109,9 +116,15 @@ BattleState::BattleState(string stage,
         if (char_name == "blood") {
             players[i] = new Blood(skin_name, char_positions[i].first,
                                    char_positions[i].second, i);
+
+            assert(skin_name.empty() != true);
+
         } else if (char_name == "flesh") {
             players[i] = new Flesh(skin_name, char_positions[i].first,
                                    char_positions[i].second, i);
+
+            assert(skin_name.empty() != true);
+
         } else {
             /*Nothing to do*/
         }
@@ -375,6 +388,7 @@ void BattleState::resume() {}
  *@param stage is name and is used to select a specific stage.
  */
 void BattleState::read_level_design(string stage) {
+    assert(stage.empty() != true);
     float x, y, width, crotation;
     int platform;
     fstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");

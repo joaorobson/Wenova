@@ -39,6 +39,7 @@ using std::to_string;
  * @param cstage is a name.
  */
 EditState::EditState(string cstage) : stage(cstage) {
+    assert(cstage.empty() != true);
     test_fighter = new Blood("test", WIDTH / 2, HEIGHT / 2 - 200, 0);
     add_object(test_fighter);
 
@@ -63,6 +64,7 @@ EditState::EditState(string cstage) : stage(cstage) {
  * @param delta is a number of the type float used to update the background.
  */
 void EditState::update(float delta) {
+    assert(delta >= 0);
     InputManager *input_manager = InputManager::get_instance();
 
     /**
