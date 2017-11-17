@@ -3,7 +3,6 @@
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
-
 /**
  * @file EditState.cpp
  * This file contains the definition of the EditState.h class methods.
@@ -120,7 +119,8 @@ void EditState::update(float delta) {
          */
         for (auto& go : object_array) {
             if (go->is("floor")) {
-                ((EditableFloor *)go.get())->set_selected(false);
+                (reinterpret_cast<EditableFloor *>(go.get())->
+                                                          set_selected(false));
             }
         }
 
@@ -261,7 +261,8 @@ void EditState::read_level_design() {
         editable_floors_line >> x >> y >> width >> crotation >> platform;
 
         // printf("Battle: %.f %.f %.f %.f\n", x, y, width, crotation);
-        add_object(new EditableFloor(x, y, width, crotation, (bool)platform));
+        add_object(new EditableFloor(x, y, width, crotation,
+                                     static_cast<bool>(platform)));
     }
     level_design.close();
 }
@@ -303,8 +304,8 @@ void EditState::update_level_design() {
      */
     for (auto& go : object_array) {
         if (go->is("floor")) {
-            new_level_design << ((EditableFloor *)go.get())->
-                                  get_information() << std::endl;
+            new_level_design << (reinterpret_cast<EditableFloor *>(go.get())->
+                                  get_information()) << std::endl;
         } else {
             /*Nothing to do*/
         }

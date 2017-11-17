@@ -9,9 +9,10 @@
  */
 #include "BattleState.h"
 
+#include <assert.h>
 #include <fstream>
 #include <sstream>
-#include <assert.h>
+
 
 #include "InputManager.h"
 #include "Game.h"
@@ -97,12 +98,12 @@ BattleState::BattleState(string stage,
                            ii(CHAR_POS11, CHAR_POS12),
                            ii(CHAR_POS13, CHAR_POS14),
                            ii(CHAR_POS15, CHAR_POS16)};
-    };
+    }
 
     /**
      * Runs each iteration from 0 to the size of players_info -1.
      */
-    for (int i = 0; i < (int)players_info.size(); i++) {
+    for (int i = 0; i < static_cast<int>(players_info.size()); i++) {
         string char_name = players_info[i].first;
         string skin_name = players_info[i].second;
 
@@ -173,6 +174,7 @@ BattleState::~BattleState() {}
  */
 void BattleState::update(float delta) {
     InputManager * input_manager = InputManager::get_instance();
+    assert(delta >= 0);
 
     /**
      * If quit_requested = true, then m_quit_requested = true.
@@ -388,7 +390,8 @@ void BattleState::read_level_design(string stage) {
 
     float x, y, width, crotation;
     int platform;
-    fstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
+    fstream level_design(RESOURCES_FOLDER + "stage_" + stage +
+                         "/level_design.dat");
 
     /**
      * If the condition is false, a message is displayed.
@@ -420,7 +423,9 @@ void BattleState::read_level_design(string stage) {
 
         stringstream backgrounds_line(s);
         backgrounds_line >> x >> y >> n_sprites >> speed >> n_columns;
-        //printf("Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed, n_columns);
+        /**printf("Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed,
+         *        n_columns);
+         */
         Sprite background_sprite("stage_" + stage + "/background_" +
                                 to_string(i) + ".png",
                                 n_sprites, speed, n_columns);
@@ -437,8 +442,9 @@ void BattleState::read_level_design(string stage) {
         stringstream floors_line(s);
         floors_line >> x >> y >> width >> crotation >> platform;
 
-        //printf("Battle: %.f %.f %.f %.f\n", x, y, width, crotation);
-        add_object(new Floor(x, y, width, crotation, (bool) platform));
+        // printf("Battle: %.f %.f %.f %.f\n", x, y, width, crotation);
+        add_object(new Floor(x, y, width, crotation,
+                   static_cast<bool>(platform)));
      }
 
     level_design.close();

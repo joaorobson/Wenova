@@ -1,0 +1,35 @@
+CCCC_Module@BattleState@@
+CCCC_Module@char@builtin@
+CCCC_ModExt@char@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@double@builtin@
+CCCC_ModExt@double@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@float@builtin@
+CCCC_ModExt@float@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@int@builtin@
+CCCC_ModExt@int@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@long@builtin@
+CCCC_ModExt@long@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Module@string@@
+CCCC_Module@vector@@
+CCCC_Module@void@builtin@
+CCCC_ModExt@void@builtin@<nofile>@0@builtin definition@d?????@@0@d@
+CCCC_Member@BattleState@BattleState@@(string,vector)@
+CCCC_MemExt@BattleState@BattleState@@(string,vector)@src/BattleState.cpp@65@definition@F????@LOC:61 COM:27 MVG:6@?@d@
+CCCC_Member@BattleState@pause@@()@
+CCCC_MemExt@BattleState@pause@@()@src/BattleState.cpp@374@definition@F????@LOC:1 COM:4 MVG:0@?@d@
+CCCC_Member@BattleState@read_level_design@@(string)@
+CCCC_MemExt@BattleState@read_level_design@@(string)@src/BattleState.cpp@388@definition@F????@LOC:41 COM:17 MVG:6@?@d@
+CCCC_Member@BattleState@render@@()@
+CCCC_MemExt@BattleState@render@@()@src/BattleState.cpp@360@definition@F????@LOC:6 COM:7 MVG:1@?@d@
+CCCC_Member@BattleState@resume@@()@
+CCCC_MemExt@BattleState@resume@@()@src/BattleState.cpp@380@definition@F????@LOC:1 COM:4 MVG:0@?@d@
+CCCC_Member@BattleState@update@@(float)@
+CCCC_MemExt@BattleState@update@@(float)@src/BattleState.cpp@175@definition@F????@LOC:101 COM:76 MVG:26@?@d@
+CCCC_Member@BattleState@~BattleState@@()@
+CCCC_MemExt@BattleState@~BattleState@@()@src/BattleState.cpp@166@definition@F????@LOC:1 COM:4 MVG:0@?@d@
+CCCC_UseRel@string@BattleState@
+CCCC_UseExt@string@BattleState@src/BattleState.cpp@65@pass by value@?????@*@?@P@
+CCCC_UseExt@string@BattleState@src/BattleState.cpp@388@pass by value@F????@*@?@P@
+CCCC_UseRel@vector@BattleState@
+CCCC_UseExt@vector@BattleState@src/BattleState.cpp@66@pass by value@?????@*@?@P@
+CCCC_RejExt@src/BattleState.cpp@1@<file scope items>@F????@LOC:3 COM:9 MVG:0@?@r@

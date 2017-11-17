@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Detailed report on module BattleState-->
+<CCCC_Project>
+<module_summary>
+<lines_of_code value="212" level="0" />
+<lines_of_code_per_member_function value="******" level="0" />
+<McCabes_cyclomatic_complexity value="39" level="0" />
+<McCabes_cyclomatic_complexity_per_member_function value="******" level="2" />
+<lines_of_code value="139" level="0" />
+<lines_of_code_per_member_function value="********" level="2" />
+<lines_of_code_per_line_of_comment value="1.525" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.281" level="0" />
+<weighted_methods_per_class_unity value="7" level="0" />
+<weighted_methods_per_class_visibility value="0" level="0" />
+<depth_of_inheritance_tree value="0" level="0" />
+<number_of_children value="0" level="0" />
+<coupling_between_objects value="2" level="0" />
+<IF4 value="0" level="0" />
+<IF4_per_member_function value="********" level="0" />
+<IF4_visible value="0" level="0" />
+<IF4_visible_per_member_function value="********" level="0" />
+<IF4_concrete value="0" level="0" />
+<IF4_concrete_per_member_function value="********" level="0" />
+</module_summary>
+<module_detail>
+</module_detail>
+<procedural_detail>
+<member_function>
+<name>BattleState(string,vector)</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="65" />
+</extent>
+<lines_of_code value="61" level="1" />
+<McCabes_cyclomatic_complexity value="6" level="0" />
+<lines_of_comment value="27" level="0" />
+<lines_of_code_per_line_of_comment value="2.259" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.222" level="0" />
+</member_function>
+<member_function>
+<name>pause()</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="374" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>read_level_design(string)</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="388" />
+</extent>
+<lines_of_code value="41" level="1" />
+<McCabes_cyclomatic_complexity value="6" level="0" />
+<lines_of_comment value="17" level="0" />
+<lines_of_code_per_line_of_comment value="2.412" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.353" level="0" />
+</member_function>
+<member_function>
+<name>render()</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="360" />
+</extent>
+<lines_of_code value="6" level="0" />
+<McCabes_cyclomatic_complexity value="1" level="0" />
+<lines_of_comment value="7" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>resume()</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="380" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+<member_function>
+<name>update(float)</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="175" />
+</extent>
+<lines_of_code value="101" level="2" />
+<McCabes_cyclomatic_complexity value="26" level="1" />
+<lines_of_comment value="76" level="0" />
+<lines_of_code_per_line_of_comment value="1.329" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="0.342" level="0" />
+</member_function>
+<member_function>
+<name>~BattleState()</name>
+<extent>
+<description>definition</description>
+<source_reference file="src/BattleState.cpp" line="166" />
+</extent>
+<lines_of_code value="1" level="0" />
+<McCabes_cyclomatic_complexity value="0" level="0" />
+<lines_of_comment value="4" level="0" />
+<lines_of_code_per_line_of_comment value="------" level="0" />
+<McCabes_cyclomatic_complexity_per_line_of_comment value="------" level="0" />
+</member_function>
+</procedural_detail>
+<structural_detail>
+<module>
+<name>BattleState</name>
+<client_module>
+</client_module>
+<supplier_module>
+<name>string</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="src/BattleState.cpp" line="65" />
+</extent>
+<extent>
+<description>pass by value</description>
+<source_reference file="src/BattleState.cpp" line="388" />
+</extent>
+<name>vector</name>
+<visible>true</visible>
+<concrete>true</concrete>
+<extent>
+<description>pass by value</description>
+<source_reference file="src/BattleState.cpp" line="66" />
+</extent>
+</supplier_module>
+</module>
+</structural_detail>
+</CCCC_Project>

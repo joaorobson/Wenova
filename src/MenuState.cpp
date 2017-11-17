@@ -3,7 +3,6 @@
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
-
 /**
  * @file MenuState.cpp
  * This file contains the definition of the MenuState.h class methods.
@@ -89,7 +88,7 @@ MenuState::MenuState(bool main_menu) {
     InputManager::get_instance()->
                               set_analogic_sensibility_value(SENSIBILITY_VALUE);
     InputManager::get_instance()->
-															map_keyboard_to_joystick(InputManager::MENU_MODE);
+                              map_keyboard_to_joystick(InputManager::MENU_MODE);
 
     blocked  = Sound("menu/sound/cancel.ogg");
     selected = Sound("menu/sound/select.ogg");
@@ -130,7 +129,7 @@ void MenuState::update(float delta) {
      * If conditions are met, the body is executed.
      * The music stops playing and leaves the edit state.
      */
-    if (input_manager->quit_requested() || pressed[SELECT] || pressed[B]) {
+    if (input_manager->quit_requested() or pressed[SELECT] or pressed[B]) {
         music.stop();
         m_quit_requested = true;
         return;
@@ -141,7 +140,7 @@ void MenuState::update(float delta) {
     /**
      * Select options in the menu.
      */
-    if (pressed[LEFT] && (current_option != N_ZERO)) {
+    if (pressed[LEFT]and(current_option != N_ZERO)) {
         changed.play();
         current_option--;
     } else {
@@ -151,7 +150,8 @@ void MenuState::update(float delta) {
     /**
      * Select options in the menu.
      */
-    if (pressed[RIGHT] && (current_option != (int)options.size() - 1)) {
+    if (pressed[RIGHT]and(current_option != static_cast<int>(options.size())
+                                                                         - 1)) {
         changed.play();
         current_option++;
     } else {
@@ -172,7 +172,7 @@ void MenuState::update(float delta) {
     /**
      * Starts the game when selected.
      */
-    if (pressed[START] || pressed[A]) {
+    if (pressed[START] or pressed[A]) {
         selected.play();
 
         if (not start_pressed) {
@@ -205,7 +205,7 @@ void MenuState::update(float delta) {
     /**
      * Sets new configuration.
      */
-    if (is_holding[LB] && is_holding[RT] && is_holding[Y]) {
+    if (is_holding[LB] and is_holding[RT] and is_holding[Y]) {
         m_quit_requested = true;
         Game::get_instance().push(new EditState("1"));
         return;
@@ -235,8 +235,8 @@ void MenuState::update(float delta) {
         /**
          * Modify the options positioning after current option select.
          */
-        for (unsigned int idx = current_option + 1; idx < options.size(); idx++)
-        {
+        for (unsigned int idx = current_option + 1; idx < options.size();
+                                                                        idx++) {
             Text *prev_option = options[idx - 1];
 
             int new_x = prev_option->get_x() + prev_option->get_width() +
