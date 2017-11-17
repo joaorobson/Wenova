@@ -14,18 +14,21 @@
 #include <string>
 #include "Fighter.h"
 
-#include "easylogging++.h"
+#include "easylogging++.h" //NOLINT
 
 class Flesh : public Fighter {
  public:
     Flesh(string skin, float x, float y, int cid, Fighter *cpartner = nullptr);
-    const float BASIC_ATTACK_DAMAGE = 0.3;
-    const float SPECIAL_1_DAMAGE = 1;
-    const float INITIAL_SPEED = 3;
+    const float BASIC_ATTACK_DAMAGE = 0.3;  ///< The basic attack damage of the
+    ///< characters.
+    const float SPECIAL_1_DAMAGE = 1;  ///< The attack damage of the characters
+    ///< on special 1.
+    const float INITIAL_SPEED = 3;/**< The initia speed of the characters. */
 
  private:
-    float additional_attack_damage;
-    float additional_speed;
+    float additional_attack_damage;   ///< Additional attack damage possible
+    ///< for characters.
+    float additional_speed; /**< Additional speed possible for characters. */
 
     void check_jump(bool change = true);
     void check_fall(bool change = true);

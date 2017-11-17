@@ -12,13 +12,13 @@
 #define INCLUDE_HEALEFFECT_H_
 
 #include "Effect.h"
-#include "easylogging++.h"
+#include "easylogging++.h" //NOLINT
 
-#include <string>
+#include <string> //NOLINT
 
 class HealEffect : public Effect {
  private:
-    float healing_factor;
+    float healing_factor; /**< The healing factor of the character. */
 
  public:
     HealEffect(Fighter* cparent, string csprite, string ctags, int frames = 1,

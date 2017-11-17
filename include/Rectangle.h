@@ -17,10 +17,10 @@
 
 class Rectangle {
  public:
-    float x;
-    float y;
-    float width;
-    float height;
+    float x; /**< Cordinate on axis x of the rectangle. */
+    float y; /**< Cordinate on axis y of the rectangle. */
+    float width; /**< Width of the rectangle. */
+    float height; /**< Height of the rectangle. */
 
     Rectangle();
     Rectangle(float x, float y, float width, float height);

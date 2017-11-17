@@ -12,10 +12,10 @@
 #define INCLUDE_SOUND_H_
 
 #include "SDL_mixer.h"
-#include "easylogging++.h"
+#include "easylogging++.h" //NOLINT
 
-#include <memory>
-#include <string>
+#include <memory> //NOLINT
+#include <string> //NOLINT
 
 using std::string;
 using std::shared_ptr;

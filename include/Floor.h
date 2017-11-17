@@ -14,14 +14,15 @@
 #include "GameObject.h"
 #include "Sprite.h"
 
-#include "easylogging++.h"
+#include "easylogging++.h" //NOLINT
 
 class Floor : public GameObject {
  private:
-    int id;
+    int id; /**< The id of the floor. */
 
  protected:
-    bool is_crossingable;
+    bool is_crossingable;  ///< Check if the character is crossingable through
+    ///< the floor.
 
  public:
     Floor(float x, float y, float width, float crotation, bool cplatform);

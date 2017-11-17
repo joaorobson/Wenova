@@ -19,7 +19,7 @@
  */
 Timer::Timer() {
     LOG(DEBUG) << "Timer initialized";
-    time = 0;
+    time = INITIAL_TIME;
 }
 
 /**

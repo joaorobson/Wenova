@@ -11,11 +11,11 @@
 #ifndef INCLUDE_TIMER_H_
 #define INCLUDE_TIMER_H_
 
-#include "easylogging++.h"
+#include "easylogging++.h" //NOLINT
 
 class Timer {
  private:
-    float time;
+    float time; /**< The time of the timer. */
 
  public:
     Timer();

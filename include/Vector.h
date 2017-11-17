@@ -13,13 +13,16 @@
 
 #include <algorithm>
 
-#include "easylogging++.h"
+#include "easylogging++.h" //NOLINT
+
+#define INITIAL_VALUE_X 0
+#define INITIAL_VALUE_Y 0
 
 class Vector {
  public:
-    float x;
-    float y;
-    explicit Vector(float mx = 0, float my = 0);
+    float x; /**< The first value of the vector. */
+    float y; /**< The second value of the vector. */
+    explicit Vector(float mx = INITIAL_VALUE_X, float my = INITIAL_VALUE_Y);
     void rotate(Vector origin, float angle);
     /**
      * Not used method.
