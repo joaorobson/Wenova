@@ -11,9 +11,9 @@
 #ifndef INCLUDE_RECTANGLE_H_
 #define INCLUDE_RECTANGLE_H_
 
-#include "SDL2/SDL.h"
-
 #include "Vector.h"
+
+#include "SDL2/SDL.h"
 
 class Rectangle {
  public:

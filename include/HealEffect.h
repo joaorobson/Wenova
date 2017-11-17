@@ -11,10 +11,11 @@
 #ifndef INCLUDE_HEALEFFECT_H_
 #define INCLUDE_HEALEFFECT_H_
 
-#include "Effect.h"
-#include "easylogging++.h" //NOLINT
+#include <string>
 
-#include <string> //NOLINT
+#include "Effect.h"
+
+#include "easylogging++.h" //NOLINT
 
 class HealEffect : public Effect {
  private:

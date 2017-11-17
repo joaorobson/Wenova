@@ -12,6 +12,7 @@
 #define INCLUDE_FLESH_H_
 
 #include <string>
+
 #include "Fighter.h"
 
 #include "easylogging++.h" //NOLINT
