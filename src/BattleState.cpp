@@ -22,7 +22,31 @@
 #include "Flesh.h"
 #include "BattleEnd.h"
 
-#define N_BACKGROUND 2
+#define N_BACKGROUND
+
+#define HUD1 133
+#define HUD2 589.5
+#define HUD3 1147
+#define HUD4 679.5
+
+#define CHAR_POS1 177
+#define CHAR_POS2 313
+#define CHAR_POS3 276
+#define CHAR_POS4 510
+#define CHAR_POS5 1128
+#define CHAR_POS6 245
+#define CHAR_POS7 954
+#define CHAR_POS8 474
+#define CHAR_POS9 116
+#define CHAR_POS10 227
+#define CHAR_POS11 146
+#define CHAR_POS12 394
+#define CHAR_POS13 1036
+#define CHAR_POS14 221
+#define CHAR_POS15 1063
+#define CHAR_POS16 382
+
+#define SENSIBILITY_VALUE 20000
 
 using std::fstream;
 using std::stringstream;
@@ -50,21 +74,25 @@ BattleState::BattleState(string stage,
     sound.play(-1);
 
     vector< pair<int, int> > char_positions;
-    vector< pair<int, int> > hud_positions = { ii(133, 589.5),
-                                               ii(133, 679.5),
-                                               ii(1147, 589.5),
-                                               ii(1147, 679.5)
+    vector< pair<int, int> > hud_positions = { ii(HUD1, HUD2),
+                                               ii(HUD1, HUD4),
+                                               ii(HUD3, HUD2),
+                                               ii(HUD3, HUD4)
                                              };
     /**
      * If the condition is met, the character position is set one way. if not
      * the default settins are used.
      */
     if (stage == "1") {
-        char_positions = { ii(177, 313),
-                           ii(276, 510), ii(1128, 245), ii(954, 474)};
+        char_positions = { ii(CHAR_POS1, CHAR_POS2),
+                           ii(CHAR_POS3, CHAR_POS4),
+                           ii(CHAR_POS5, CHAR_POS6),
+                           ii(CHAR_POS7, CHAR_POS8)};
     } else {
-        char_positions = { ii(116, 227),
-                           ii(146, 394), ii(1036, 221), ii(1063, 382)};
+        char_positions = { ii(CHAR_POS9, CHAR_POS10),
+                           ii(CHAR_POS11, CHAR_POS12),
+                           ii(CHAR_POS13, CHAR_POS14),
+                           ii(CHAR_POS15, CHAR_POS16)};
     };
 
     /**
@@ -114,7 +142,8 @@ BattleState::BattleState(string stage,
     time_counter = new TimeCounter();
     add_object(time_counter);
 
-    InputManager::get_instance()->set_analogic_sensibility_value(20000);
+    InputManager::get_instance()->
+                            set_analogic_sensibility_value(SENSIBILITY_VALUE);
     InputManager::get_instance()->
                             map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
@@ -251,7 +280,7 @@ void BattleState::update(float delta) {
      * parameter on add_object method. If not, the else body is run and the
      * game over tag is added to a player.
      */
-    if (not alive[0] && not alive[1] && not alive[2] && not alive[3] &&
+    if (not alive[0] and not alive[1] and not alive[2] and not alive[3] and
         not game_over) {
         game_over = true;
         battleEnd = new BattleEnd(3);
@@ -260,11 +289,11 @@ void BattleState::update(float delta) {
         /*Nothing to do*/
     }
 
-    if (not alive[0] && not alive[1] && not game_over) {
+    if (not alive[0] and not alive[1] and not game_over) {
         game_over = true;
         battleEnd = new BattleEnd(2);
         add_object(battleEnd);
-    } else if (not alive[2] && not alive[3] && not game_over) {
+    } else if (not alive[2] and not alive[3] and not game_over) {
         game_over = true;
         battleEnd = new BattleEnd(1);
         add_object(battleEnd);
@@ -358,7 +387,7 @@ void BattleState::read_level_design(string stage) {
     } else {
         /*Nothing to do*/
     }
-    
+
     string s;
     int n_backgrounds, n_sprites, speed, n_columns;
 
