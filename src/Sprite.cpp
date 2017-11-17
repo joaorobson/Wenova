@@ -9,13 +9,13 @@
  * This file contains the definition of the Sprite class methods.
  */
 
-#include <iostream>
 #include <assert.h>
+#include <iostream>
 
-#include "Sprite.h"
+#include "Config.h"
 #include "Game.h"
 #include "Resources.h"
-#include "Config.h"
+#include "Sprite.h"
 
 #include <cmath>
 
@@ -55,7 +55,8 @@ Sprite::Sprite(string file, int cframe_count, float cframe_time, int ccolumns,
 
 /**
  * A constructor.
- * Initialize the texture, scales of x and y, counting and time of frames and the
+ * Initialize the texture, scales of x and y, counting and time of frames and
+ * the
  * current frame and the elapsed time to each one initial value.
  */
 Sprite::Sprite() {
@@ -67,12 +68,11 @@ Sprite::Sprite() {
     frame_time = INITIAL_FRAME_TIME;
     current_frame = time_elapsed = NO_TIME_ELAPSED;
     finished = false;
-    columns = INITIAL_VALUE; 
-    rows = INITIAL_VALUE; 
-    height = INITIAL_VALUE; 
-    width = INITIAL_VALUE; 
+    columns = INITIAL_VALUE;
+    rows = INITIAL_VALUE;
+    height = INITIAL_VALUE;
+    width = INITIAL_VALUE;
 }
-
 
 /**
  * The destructor.
@@ -90,8 +90,8 @@ Sprite::~Sprite() {
 void Sprite::open(string file) {
     texture = Resources::get_image(file);
 
-    int query_texture = SDL_QueryTexture(texture.get(), nullptr, nullptr,
-                                         &width, &height);
+    int query_texture =
+        SDL_QueryTexture(texture.get(), nullptr, nullptr, &width, &height);
 
     width /= columns;
     height /= rows;
@@ -106,9 +106,7 @@ void Sprite::open(string file) {
     }
 
     set_clip((current_frame % columns) * width,
-             (current_frame / columns) * height,
-             width,
-             height);
+             (current_frame / columns) * height, width, height);
 }
 
 /**
@@ -121,19 +119,14 @@ void Sprite::open(string file) {
  * @param flip determines the flip movement.
  */
 void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
-    SDL_Rect dstrect = SDL_Rect {x,
-                             y,
-                             static_cast<int>(clip_rect.w * scale_x_axis),
-                             static_cast<int>(clip_rect.h * scale_y_axis)};
+    SDL_Rect dstrect =
+        SDL_Rect{x, y, static_cast<int>(clip_rect.w * scale_x_axis),
+                 static_cast<int>(clip_rect.h * scale_y_axis)};
 
     angle *= (_180_DEGREES / PI); /**< Conversion from degrees to radians. */
-    int render_copy = SDL_RenderCopyEx(Game::get_instance().get_renderer(),
-                                       texture.get(),
-                                       &clip_rect,
-                                       &dstrect,
-                                       angle,
-                                       nullptr,
-                                       flip);
+    int render_copy =
+        SDL_RenderCopyEx(Game::get_instance().get_renderer(), texture.get(),
+                         &clip_rect, &dstrect, angle, nullptr, flip);
     /**
      * Check if the texture portion copied was initialized correctly.
      */
@@ -156,8 +149,8 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
  */
 void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate,
                       int clip_width, int clip_height) {
-    clip_rect = SDL_Rect {x_axis_coordinate, y_axis_coordinate, clip_width,
-                      clip_height};
+    clip_rect =
+        SDL_Rect{x_axis_coordinate, y_axis_coordinate, clip_width, clip_height};
 }
 
 /**
@@ -196,7 +189,8 @@ void Sprite::set_frame_count(int cframe_count) {
  * Sets the current time of a frame.
  * Not used method.
  *
- * @param cframe_time stores the value that will be saved and updated the time of
+ * @param cframe_time stores the value that will be saved and updated the time
+ * of
  * the old frame.
  */
 /*
@@ -224,7 +218,8 @@ void Sprite::update(float delta_time) {
 
         current_frame = current_frame + 1;
         /**
-         * Check if the current frame has reached the limit number of repetitions.
+         * Check if the current frame has reached the limit number of
+         * repetitions.
          */
         if (current_frame == frame_count) {
             finished = true;
@@ -233,9 +228,7 @@ void Sprite::update(float delta_time) {
             /* Nothing to do. */
         }
         set_clip((current_frame % columns) * width,
-                 (current_frame / columns) * height,
-                 width,
-                 height);
+                 (current_frame / columns) * height, width, height);
     } else {
         /* Nothing to do. */
     }

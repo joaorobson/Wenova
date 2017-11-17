@@ -418,11 +418,10 @@ void Fighter::set_partner(Fighter *cpartner) {
  * Not used method
  * @returns
  */
-/*
 Fighter *Fighter::get_partner() {
     return partner;
 }
-*/
+
 /**
  * Brief Description.
  *

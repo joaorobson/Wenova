@@ -20,11 +20,12 @@
 #define SHADED Text::TextStyle::SHADED
 #define BLENDED Text::TextStyle::BLENDED
 
-#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_X 0 
-#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y 0 
+#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_X 0
+#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y 0
 #define CLIP_BORDERS_OFFSET 0.5
 #define NO_OFFSET 0
-#define BLACK_BACKGROUND_ON_SDL_RGBA_COLOR {0,0,0,255}
+#define BLACK_BACKGROUND_ON_SDL_RGBA_COLOR \
+    { 0, 0, 0, 255 }
 
 /**
  * A constructor.
@@ -38,20 +39,19 @@
  * @param ccolor is text color.
  * @param x_axis_position is the text horizontal position.
  * @param y_axis_position is the text vertical position.
- */ 
+ */
 Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
            SDL_Color ccolor, int x_axis_position, int y_axis_position) {
-
-  font_size = cfont_size;  
-  style = cstyle;
-  text = ctext;
-  color = ccolor;
-  box.set_x(x_axis_position);
-  box.set_y(y_axis_position);
-  texture = nullptr;
-  open(cfont_file, font_size);
-  remake_texture();
-  set_pos(x_axis_position, y_axis_position, true, true);
+    font_size = cfont_size;
+    style = cstyle;
+    text = ctext;
+    color = ccolor;
+    box.set_x(x_axis_position);
+    box.set_y(y_axis_position);
+    texture = nullptr;
+    open(cfont_file, font_size);
+    remake_texture();
+    set_pos(x_axis_position, y_axis_position, true, true);
 }
 
 /**
@@ -59,21 +59,20 @@ Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
  * Initialize the texture attribute to null.
  */
 Text::Text() {
-  texture = nullptr;
-  set_style(style);
+    texture = nullptr;
+    set_style(style);
 }
-
 
 /**
  * The destructor.
  * Free the memory allocated to store Text objects.
  */
 Text::~Text() {
-  if (texture != nullptr) {
-    SDL_DestroyTexture(texture);
-  } else { 
-    LOG(FATAL) << "texture has null value";
-  } 
+    if (texture != nullptr) {
+        SDL_DestroyTexture(texture);
+    } else {
+        LOG(FATAL) << "texture has null value";
+    }
 }
 
 /**
@@ -84,26 +83,24 @@ Text::~Text() {
  * @param camera_y is the scenario vertical position.
  */
 void Text::render(int camera_x, int camera_y) {
-  SDL_Rect src_rect = { RECTANGLE_UPPER_LEFT_CORNER_POSITION_X,
-                        RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y,
-                        static_cast<int>(box.get_width()),
-                        static_cast<int>(box.get_height())
-                      };
-
-  SDL_Rect dest_rect = { static_cast<int>(box.get_x()) + camera_x,
-                         static_cast<int>(box.get_y()) + camera_y,
+    SDL_Rect src_rect = {RECTANGLE_UPPER_LEFT_CORNER_POSITION_X,
+                         RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y,
                          static_cast<int>(box.get_width()),
-                         static_cast<int>(box.get_height())
-                       };
+                         static_cast<int>(box.get_height())};
 
-  int render_copy = SDL_RenderCopy(Game::get_instance().get_renderer(),
-                                   texture, &src_rect, &dest_rect);
-  if (render_copy) {
-    printf("Render text: %s\n", SDL_GetError());
-    exit(-1);
-  } else { 
-    /* Nothing to do. */    
-  } 
+    SDL_Rect dest_rect = {static_cast<int>(box.get_x()) + camera_x,
+                          static_cast<int>(box.get_y()) + camera_y,
+                          static_cast<int>(box.get_width()),
+                          static_cast<int>(box.get_height())};
+
+    int render_copy = SDL_RenderCopy(Game::get_instance().get_renderer(),
+                                     texture, &src_rect, &dest_rect);
+    if (render_copy) {
+        printf("Render text: %s\n", SDL_GetError());
+        exit(-1);
+    } else {
+        /* Nothing to do. */
+    }
 }
 
 /**
@@ -117,10 +114,10 @@ void Text::render(int camera_x, int camera_y) {
  */
 void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x,
                    bool center_y) {
-  box.set_x(x_axis_position - (center_x ? clip_rect.w * CLIP_BORDERS_OFFSET : 
-                                          NO_OFFSET));
-  box.set_y(y_axis_position - (center_y ? clip_rect.h * CLIP_BORDERS_OFFSET : 
-                                          NO_OFFSET));
+    box.set_x(x_axis_position -
+              (center_x ? clip_rect.w * CLIP_BORDERS_OFFSET : NO_OFFSET));
+    box.set_y(y_axis_position -
+              (center_y ? clip_rect.h * CLIP_BORDERS_OFFSET : NO_OFFSET));
 }
 
 /**
@@ -131,9 +128,9 @@ void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x,
  * texture.
  */
 void Text::set_text(string ctext) {
-  assert(ctext != "");
-  text = ctext;
-  remake_texture();
+    assert(ctext != "");
+    text = ctext;
+    remake_texture();
 }
 
 /**
@@ -157,9 +154,9 @@ void Text::set_color(SDL_Color ccolor) {
  * texture.
  */
 void Text::set_style(TextStyle cstyle) {
-  assert(cstyle != (TextStyle) NULL);
-  style = cstyle;
-  remake_texture();
+    assert(cstyle != (TextStyle) NULL);
+    style = cstyle;
+    remake_texture();
 }
 
 /**
@@ -185,45 +182,45 @@ void Text::set_font_size(int cfont_size) {
  * text box width and height.
  */
 void Text::remake_texture() {
-  if (texture != nullptr) {
-    SDL_DestroyTexture(texture);
-  } else { 
-    LOG(FATAL) << "texture has null value";
-  } 
+    if (texture != nullptr) {
+        SDL_DestroyTexture(texture);
+    } else {
+        /* Nothing to do. */
+    }
 
-  SDL_Surface * surface;
-  switch (style) {
-    case SOLID:
-      surface = TTF_RenderText_Solid(font.get(), text.c_str(), color);
-      break;
-    case SHADED:
-      surface = TTF_RenderText_Shaded(font.get(), text.c_str(), color,
-                                      BLACK_BACKGROUND_ON_SDL_RGBA_COLOR);
-      break;
-    case BLENDED:
-      surface = TTF_RenderText_Blended(font.get(), text.c_str(), color);
-      break;
-  }
+    SDL_Surface* surface;
+    switch (style) {
+        case SOLID:
+            surface = TTF_RenderText_Solid(font.get(), text.c_str(), color);
+            break;
+        case SHADED:
+            surface = TTF_RenderText_Shaded(font.get(), text.c_str(), color,
+                                            BLACK_BACKGROUND_ON_SDL_RGBA_COLOR);
+            break;
+        case BLENDED:
+            surface = TTF_RenderText_Blended(font.get(), text.c_str(), color);
+            break;
+    }
 
-  if (surface == nullptr) {
-    printf("%s\n", SDL_GetError());
-    exit(-3);
-  } else { 
-    /* Nothing to do. */    
-  } 
+    if (surface == nullptr) {
+        printf("%s\n", SDL_GetError());
+        exit(-3);
+    } else {
+        /* Nothing to do. */
+    }
 
     texture = SDL_CreateTextureFromSurface(Game::get_instance().get_renderer(),
                                            surface);
     SDL_FreeSurface(surface);
 
-  int w, h;
-  int query_texture = SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
-  if (query_texture) {
-    printf("Remake texture: %s\n", SDL_GetError());
-    exit(-1);
-  } else {
-    /* Nothing to do. */
-  }
+    int w, h;
+    int query_texture = SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
+    if (query_texture) {
+        printf("Remake texture: %s\n", SDL_GetError());
+        exit(-1);
+    } else {
+        /* Nothing to do. */
+    }
 
     box.set_width(w);
     box.set_height(h);
@@ -239,8 +236,8 @@ void Text::remake_texture() {
  * @param size is the font size.
  */
 void Text::open(string file, int size) {
-  assert(file != "");
-  font = Resources::get_font(RESOURCES_FOLDER + file, size);
+    assert(file != "");
+    font = Resources::get_font(RESOURCES_FOLDER + file, size);
 }
 
 /**
@@ -250,8 +247,8 @@ void Text::open(string file, int size) {
  * @return the new text box horizontal coordinate.
  */
 float Text::get_x() {
-  assert(box.get_x() >= 0);
-  return box.get_x();
+    assert(box.get_x() >= 0);
+    return box.get_x();
 }
 
 /**
@@ -261,8 +258,8 @@ float Text::get_x() {
  * @return the new text box vertical coordinate.
  */
 float Text::get_y() {
-  assert(box.get_y() >= 0);
-  return box.get_y();
+    assert(box.get_y() >= 0);
+    return box.get_y();
 }
 
 /**
@@ -272,8 +269,8 @@ float Text::get_y() {
  * @return the new text box width.
  */
 float Text::get_width() {
-  assert(box.get_width() >= 0);
-  return box.get_width();
+    assert(box.get_width() >= 0);
+    return box.get_width();
 }
 
 /**
@@ -283,8 +280,8 @@ float Text::get_width() {
  * @return the new text box height.
  */
 float Text::get_height() {
-  assert(box.get_height() >= 0);
-  return box.get_height();
+    assert(box.get_height() >= 0);
+    return box.get_height();
 }
 
 /**
@@ -294,8 +291,6 @@ float Text::get_height() {
  * @return the new text.
  */
 string Text::get_text() {
-  assert(text != "");
-  return text;
+    assert(text != "");
+    return text;
 }
-
-

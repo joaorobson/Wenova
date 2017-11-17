@@ -9,6 +9,7 @@
 
 #include "Game.h"
 #include "MenuState.h"
+
 #include "easylogging++.h"  // NOLINT
 INITIALIZE_EASYLOGGINGPP
 

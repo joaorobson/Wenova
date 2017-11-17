@@ -30,12 +30,9 @@
  * @param ctags is the character condition tag.
  * @param frames is the respective effect frame.
  */
-FleshUltimateEffect::FleshUltimateEffect(Fighter * cparent,
-                                         string csprite,
-                                         string ctags,
-                                         int frames) :
-    Effect(cparent, csprite,
-           ctags, frames) {
+FleshUltimateEffect::FleshUltimateEffect(Fighter* cparent, string csprite,
+                                         string ctags, int frames)
+        : Effect(cparent, csprite, ctags, frames) {
     /**
      * Check if is the parent fighter. If so, adds the "in ultimate" tag and
      * multiply his maximum life by 1.5.W
@@ -62,8 +59,8 @@ void FleshUltimateEffect::update(float delta_character_state) {
     if (parent) {
         box.x = parent->box.x;
         box.y = parent->box.get_draw_y() -
-                box.get_height() / HEIGHT_DIVISOR_VALUE -
-                ATTACK_VERTICAL_POSITION_DECREASE;
+            box.get_height() / HEIGHT_DIVISOR_VALUE -
+            ATTACK_VERTICAL_POSITION_DECREASE;
         parent->increment_special(DECREASE_IN_CHARACTER_STATE *
                                   delta_character_state);
     } else {

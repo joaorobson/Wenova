@@ -22,13 +22,14 @@ class UltimateEffect : public Effect {
     Rectangle sprite_box; /**< Box where the effect sprite is positionated. */
     float healing_factor; /**< Healing factor applied after a attack. */
 
-  void update(float delta_character_state);
-  void render();
-  bool is_dead();
-  void notify_collision(GameObject &object);
+    void update(float delta_character_state);
+    void render();
+    bool is_dead();
+    void notify_collision(const GameObject &object);
+
  public:
-  UltimateEffect(Fighter * cparent, string csprite, string caura, string ctags,
-                 int frames = 1);
+    UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags,
+                   int frames = 1);
 };
 
 #endif  // INCLUDE_ULTIMATEEFFECT_H_

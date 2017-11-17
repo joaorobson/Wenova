@@ -9,8 +9,8 @@
  * This file contains the definition of the Sprite class methods.
  */
 
-#include <assert.h>
 #include "UltimateEffect.h"
+#include <assert.h>
 #define IN_ULTIMATE_TAG "in_ultimate"
 #define PLAYER_TAG "player"
 #define ATTACK_VERTICAL_POSITION_DECREASE 10
@@ -19,7 +19,6 @@
 #define X_AXIS_POSITION 0
 #define Y_AXIS_POSITION 0
 #define HEALING_EFFECT_INITIAL_VALUE 0
-
 
 /**
  * A constructor.
@@ -33,16 +32,13 @@
  * @param ccolumns is the name of the tags.
  * @param frames if the number of the frames.
  */
-UltimateEffect::UltimateEffect(Fighter * cparent,
-                               string csprite,
-                               string caura,
-                               string ctags,
-                               int frames) :
-    Effect(cparent, csprite, ctags, frames),
-    aura{Sprite(caura, 14, 10, 4)}, /**< Initialize the fighter aura image. */
-    sprite_box{box}
-    {
-    healing_factor = HEALING_EFFECT_INITIAL_VALUE; 
+UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura,
+                               string ctags, int frames)
+        : Effect(cparent, csprite, ctags, frames)
+        , aura{Sprite(caura, 14, 10, 4)}
+        , /**< Initialize the fighter aura image. */
+        sprite_box{box} {
+    healing_factor = HEALING_EFFECT_INITIAL_VALUE;
     box = Rectangle(X_AXIS_POSITION, Y_AXIS_POSITION, aura.get_width(),
                     aura.get_height());
     /**
@@ -67,8 +63,8 @@ void UltimateEffect::update(float delta_character_state) {
         sprite_box.x = parent->box.x;
 
         sprite_box.y = parent->box.get_draw_y() -
-                       sprite_box.get_height() / HEIGHT_DIVISOR_VALUE -
-                       ATTACK_VERTICAL_POSITION_DECREASE;
+            sprite_box.get_height() / HEIGHT_DIVISOR_VALUE -
+            ATTACK_VERTICAL_POSITION_DECREASE;
         box.x = parent->box.x;
         box.y = parent->box.y;
         parent->increment_special(-0.4 * delta_character_state);
@@ -112,19 +108,17 @@ bool UltimateEffect::is_dead() {
  * Notify collision between two fighters.
  * Check if the fighters have collided.
  */
-/*
-void UltimateEffect::notify_collision(GameObject & object) {
-    int partner_id = (parent->get_partner() ? parent->get_partner()->get_id() :
-                      -100);
+void UltimateEffect::notify_collision(const GameObject &object) {
+    int partner_id =
+        (parent->get_partner() ? parent->get_partner()->get_id() : -100);
     if (object.is(PLAYER_TAG)) {
-        Fighter & fighter = (Fighter &)object;
+        Fighter &fighter = (Fighter &) object;
         if (fighter.get_id() == partner_id) {
             parent->get_partner()->increment_life(healing_factor);
         } else {
-           // Nothing to do. 
+            // Nothing to do.
         }
     } else {
-        // Nothing to do. 
+        // Nothing to do.
     }
 }
-*/
