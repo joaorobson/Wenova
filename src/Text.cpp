@@ -10,6 +10,7 @@
  */
 
 #include "Text.h"
+#include <assert.h>
 
 #include "Config.h"
 #include "Game.h"
@@ -19,15 +20,12 @@
 #define SHADED Text::TextStyle::SHADED
 #define BLENDED Text::TextStyle::BLENDED
 
-/**
- * A constructor.
- * Initialize the texture attribute to null.
- */
-Text::Text()
-        : texture(nullptr)
-        , style(SOLID)
-        , font_size(0) {
-}
+#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_X 0
+#define RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y 0
+#define CLIP_BORDERS_OFFSET 0.5
+#define NO_OFFSET 0
+#define BLACK_BACKGROUND_ON_SDL_RGBA_COLOR \
+    { 0, 0, 0, 255 }
 
 /**
  * A constructor.
@@ -57,12 +55,23 @@ Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
 }
 
 /**
+ * A constructor.
+ * Initialize the texture attribute to null.
+ */
+Text::Text() {
+    texture = nullptr;
+    set_style(style);
+}
+
+/**
  * The destructor.
  * Free the memory allocated to store Text objects.
  */
 Text::~Text() {
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
+    } else {
+        LOG(FATAL) << "texture has null value";
     }
 }
 
@@ -74,7 +83,9 @@ Text::~Text() {
  * @param camera_y is the scenario vertical position.
  */
 void Text::render(int camera_x, int camera_y) {
-    SDL_Rect src_rect = {0, 0, static_cast<int>(box.get_width()),
+    SDL_Rect src_rect = {RECTANGLE_UPPER_LEFT_CORNER_POSITION_X,
+                         RECTANGLE_UPPER_LEFT_CORNER_POSITION_Y,
+                         static_cast<int>(box.get_width()),
                          static_cast<int>(box.get_height())};
 
     SDL_Rect dest_rect = {static_cast<int>(box.get_x()) + camera_x,
@@ -87,6 +98,8 @@ void Text::render(int camera_x, int camera_y) {
     if (render_copy) {
         printf("Render text: %s\n", SDL_GetError());
         exit(-1);
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -101,8 +114,10 @@ void Text::render(int camera_x, int camera_y) {
  */
 void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x,
                    bool center_y) {
-    box.set_x(x_axis_position - (center_x ? clip_rect.w * 0.5 : 0));
-    box.set_y(y_axis_position - (center_y ? clip_rect.h * 0.5 : 0));
+    box.set_x(x_axis_position -
+              (center_x ? clip_rect.w * CLIP_BORDERS_OFFSET : NO_OFFSET));
+    box.set_y(y_axis_position -
+              (center_y ? clip_rect.h * CLIP_BORDERS_OFFSET : NO_OFFSET));
 }
 
 /**
@@ -113,6 +128,7 @@ void Text::set_pos(int x_axis_position, int y_axis_position, bool center_x,
  * texture.
  */
 void Text::set_text(string ctext) {
+    assert(ctext != "");
     text = ctext;
     remake_texture();
 }
@@ -137,12 +153,11 @@ void Text::set_color(SDL_Color ccolor) {
  * @param cstyle stores the style that will be saved and updated in the
  * texture.
  */
-/*
 void Text::set_style(TextStyle cstyle) {
+    assert(cstyle != (TextStyle) NULL);
     style = cstyle;
     remake_texture();
 }
-*/
 
 /**
  * cfont_size setter.
@@ -154,60 +169,11 @@ void Text::set_style(TextStyle cstyle) {
  */
 /*
 void Text::set_font_size(int cfont_size) {
-    font_size = cfont_size;
-    remake_texture();
+  assert(cfont_size > 0);
+  font_size = cfont_size;
+  remake_texture();
 }
 */
-
-/**
- * Text box horizontal coordinate getter.
- * Returns the saved text box horizontal coordinate.
- *
- * @return the new text box horizontal coordinate.
- */
-float Text::get_x() {
-    return box.get_x();
-}
-
-/**
- * Text box vertical coordinate getter.
- * Returns the saved text box vertical coordinate.
- *
- * @return the new text box vertical coordinate.
- */
-float Text::get_y() {
-    return box.get_y();
-}
-
-/**
- * Text box width getter.
- * Returns the saved text box width.
- *
- * @return the new text box width.
- */
-float Text::get_width() {
-    return box.get_width();
-}
-
-/**
- * Text box height getter.
- * Returns the saved text box height.
- *
- * @return the new text box height.
- */
-float Text::get_height() {
-    return box.get_height();
-}
-
-/**
- * Text getter.
- * Returns the saved text.
- *
- * @return the new text.
- */
-string Text::get_text() {
-    return text;
-}
 
 /**
  * Change texture.
@@ -218,6 +184,8 @@ string Text::get_text() {
 void Text::remake_texture() {
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
+    } else {
+        /* Nothing to do. */
     }
 
     SDL_Surface* surface;
@@ -227,7 +195,7 @@ void Text::remake_texture() {
             break;
         case SHADED:
             surface = TTF_RenderText_Shaded(font.get(), text.c_str(), color,
-                                            {0, 0, 0, 255});
+                                            BLACK_BACKGROUND_ON_SDL_RGBA_COLOR);
             break;
         case BLENDED:
             surface = TTF_RenderText_Blended(font.get(), text.c_str(), color);
@@ -237,6 +205,8 @@ void Text::remake_texture() {
     if (surface == nullptr) {
         printf("%s\n", SDL_GetError());
         exit(-3);
+    } else {
+        /* Nothing to do. */
     }
 
     texture = SDL_CreateTextureFromSurface(Game::get_instance().get_renderer(),
@@ -248,6 +218,8 @@ void Text::remake_texture() {
     if (query_texture) {
         printf("Remake texture: %s\n", SDL_GetError());
         exit(-1);
+    } else {
+        /* Nothing to do. */
     }
 
     box.set_width(w);
@@ -264,5 +236,61 @@ void Text::remake_texture() {
  * @param size is the font size.
  */
 void Text::open(string file, int size) {
+    assert(file != "");
     font = Resources::get_font(RESOURCES_FOLDER + file, size);
+}
+
+/**
+ * Text box horizontal coordinate getter.
+ * Returns the saved text box horizontal coordinate.
+ *
+ * @return the new text box horizontal coordinate.
+ */
+float Text::get_x() {
+    assert(box.get_x() >= 0);
+    return box.get_x();
+}
+
+/**
+ * Text box vertical coordinate getter.
+ * Returns the saved text box vertical coordinate.
+ *
+ * @return the new text box vertical coordinate.
+ */
+float Text::get_y() {
+    assert(box.get_y() >= 0);
+    return box.get_y();
+}
+
+/**
+ * Text box width getter.
+ * Returns the saved text box width.
+ *
+ * @return the new text box width.
+ */
+float Text::get_width() {
+    assert(box.get_width() >= 0);
+    return box.get_width();
+}
+
+/**
+ * Text box height getter.
+ * Returns the saved text box height.
+ *
+ * @return the new text box height.
+ */
+float Text::get_height() {
+    assert(box.get_height() >= 0);
+    return box.get_height();
+}
+
+/**
+ * Text getter.
+ * Returns the saved text.
+ *
+ * @return the new text.
+ */
+string Text::get_text() {
+    assert(text != "");
+    return text;
 }
