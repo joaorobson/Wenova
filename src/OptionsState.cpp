@@ -86,13 +86,8 @@ OptionsState::OptionsState() {
     on_submenu = false;
 
     background = Sprite("menu/background.jpg");
-    title = new Text(FONT_FILE,
-                     FONT_SIZE_LABEL_OPTIONS,
-                     Text::TextStyle::SOLID,
-                     TEXT_OPTIONS,
-                     WHITE,
-                     FONT_X,
-                     100);
+    title = new Text(FONT_FILE, FONT_SIZE_LABEL_OPTIONS, Text::TextStyle::SOLID,
+                     TEXT_OPTIONS, WHITE, FONT_X, 100);
 
     blocked = Sound("menu/sound/cancel.ogg");
     selected = Sound("menu/sound/select.ogg");
@@ -101,9 +96,10 @@ OptionsState::OptionsState() {
     build_options();
 
     for (unsigned i = 0; i < options.size(); i++) {
-        assert(get_current_sub_option(i) >= 0);
+        int id_option = get_current_sub_option(i);
+        assert(id_option >= 0);
 
-        current_sub_option.push_back(get_current_sub_option(i));
+        current_sub_option.push_back(id_option);
     }
 
     InputManager::get_instance()->map_keyboard_to_joystick(
@@ -228,8 +224,7 @@ void OptionsState::update(float) {
                     ii(RESOLUTION_2_WIDTH, RESOLUTION_2_HEIGHT),
                     ii(RESOLUTION_3_WIDTH, RESOLUTION_3_HEIGHT),
                     ii(RESOLUTION_4_WIDTH, RESOLUTION_4_HEIGHT),
-                    ii(RESOLUTION_5_WIDTH, RESOLUTION_5_HEIGHT)
-                };
+                    ii(RESOLUTION_5_WIDTH, RESOLUTION_5_HEIGHT)};
 
                 int id_resolution = current_sub_option[current_option];
                 int new_width = resolutions[id_resolution].first;
@@ -251,9 +246,10 @@ void OptionsState::update(float) {
             on_submenu = false;
 
             for (unsigned i = 0; i < options.size(); i++) {
-                assert(get_current_sub_option(i) >= 0);
+                int id_option = get_current_sub_option(i);
+                assert(id_option >= 0);
 
-                current_sub_option[i] = get_current_sub_option(i);
+                current_sub_option[i] = id_option;
             }
         } else {
             selected.play();
@@ -275,9 +271,10 @@ void OptionsState::update(float) {
         int prev_text_size = 1;
 
         if (i) {
-            prev_text_size = std::max(static_cast<int>
-                                         (sub_options[options[i - 1]->
-                                         get_text()].size()), 1);
+            prev_text_size =
+                std::max(static_cast<int>(
+                             sub_options[options[i - 1]->get_text()].size()),
+                         1);
         } else {
             /* Nothing to do. */
         }
@@ -287,10 +284,8 @@ void OptionsState::update(float) {
         int text_position_axi_y =
             (i ? options[i - 1]->get_y() + prev_text_height : 200);
 
-        cur_text->set_pos(text_position_axi_x,
-                          text_position_axi_y,
-                          NOT_CENTER_HORIZONTALLY,
-                          NOT_CENTER_VERTICALLY);
+        cur_text->set_pos(text_position_axi_x, text_position_axi_y,
+                          NOT_CENTER_HORIZONTALLY, NOT_CENTER_VERTICALLY);
 
         for (int j = 0;
              j < static_cast<int>(sub_options[cur_text->get_text()].size());
@@ -300,8 +295,7 @@ void OptionsState::update(float) {
             if (j) {
                 Text *prev_option = sub_options[cur_text->get_text()][j - 1];
                 text_position_axi_y = prev_option->get_y() +
-                                      prev_option->get_height() +
-                                      TEXT_OFFSET;
+                    prev_option->get_height() + TEXT_OFFSET;
             } else {
                 /* Nothing to do. */
             }
@@ -341,24 +335,24 @@ void OptionsState::render() {
  *
  */
 void OptionsState::render_submenu_option(int index) {
-  /**
-   * Check if selected option indicates that user is on a submenu.
-   * Set color of current selected option to DARK_GREY.
-   */
-  if (on_submenu and (index != static_cast<int>(options.size()) - 1) and
-      (index != current_option)) {
-      options[index]->set_color(DARK_GREY);
-  } else {
-      /**
-       * Check which option of a main was selected.
-       * Set it's text color to LIGHT_GREEN.
-       */
-      if (current_option == index) {
-          options[index]->set_color(LIGHT_GREEN);
-      } else {
-          options[index]->set_color(WHITE);
-      }
-  }
+    /**
+     * Check if selected option indicates that user is on a submenu.
+     * Set color of current selected option to DARK_GREY.
+     */
+    if (on_submenu and (index != static_cast<int>(options.size()) - 1) and
+        (index != current_option)) {
+        options[index]->set_color(DARK_GREY);
+    } else {
+        /**
+         * Check which option of a main was selected.
+         * Set it's text color to LIGHT_GREEN.
+         */
+        if (current_option == index) {
+            options[index]->set_color(LIGHT_GREEN);
+        } else {
+            options[index]->set_color(WHITE);
+        }
+    }
 }
 
 /**
@@ -373,7 +367,7 @@ void OptionsState::render_main_menu_option(int index, string text_option) {
         /**
          * Check if selected option indicates that user is on a submenu.
          */
-        if (on_submenu and(current_option == index)) {
+        if (on_submenu and (current_option == index)) {
             /**
              * Check which option of the submenu was selected.
              * Set it's text color to LIGHT_GREEN.
@@ -405,74 +399,44 @@ void OptionsState::render_main_menu_option(int index, string text_option) {
  * 'Options' and update the attributes that represent these options.
  */
 void OptionsState::build_options() {
-    options.push_back(new Text(FONT_FILE,
-                               FONT_SIZE_OPTIONS,
-                               Text::TextStyle::SOLID,
-                               SCREEN_RES_OPTION,
-                               WHITE,
-                               HORIZONTAL_POSITION_SCREEN_RES,
-                               VERTICAL_POSITION_SCREEN_RES));
+    options.push_back(new Text(
+        FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID, SCREEN_RES_OPTION,
+        WHITE, HORIZONTAL_POSITION_SCREEN_RES, VERTICAL_POSITION_SCREEN_RES));
     options.back()->set_pos(HORIZONTAL_POSITION_SCREEN_RES,
                             VERTICAL_POSITION_SCREEN_RES,
-                            NOT_CENTER_HORIZONTALLY,
-                            NOT_CENTER_VERTICALLY);
-    options.push_back(new Text(FONT_FILE,
-                               FONT_SIZE_OPTIONS,
-                               Text::TextStyle::SOLID,
-                               FULLSCREEN_OPTION,
+                            NOT_CENTER_HORIZONTALLY, NOT_CENTER_VERTICALLY);
+    options.push_back(new Text(FONT_FILE, FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID, FULLSCREEN_OPTION,
                                WHITE));
-    options.push_back(new Text(FONT_FILE,
-                               FONT_SIZE_OPTIONS,
-                               Text::TextStyle::SOLID,
-                               JOYSTICK_OPTION,
-                               WHITE));
-    options.push_back(new Text(FONT_FILE,
-                               FONT_SIZE_OPTIONS,
-                               Text::TextStyle::SOLID,
-                               KEYBOARD_OPTION,
-                               WHITE));
-    options.push_back(new Text(FONT_FILE,
-                               FONT_SIZE_OPTIONS,
-                               Text::TextStyle::SOLID,
-                               BACK_OPTION,
-                               WHITE));
+    options.push_back(new Text(FONT_FILE, FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID, JOYSTICK_OPTION, WHITE));
+    options.push_back(new Text(FONT_FILE, FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID, KEYBOARD_OPTION, WHITE));
+    options.push_back(new Text(FONT_FILE, FONT_SIZE_OPTIONS,
+                               Text::TextStyle::SOLID, BACK_OPTION, WHITE));
 
-    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_800x600,
-                                                      WHITE));
-    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_1024x768,
-                                                      WHITE));
-    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_1280x720,
-                                                      WHITE));
-    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_1366x768,
-                                                      WHITE));
-    sub_options[SCREEN_RES_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_1920x1080,
-                                                      WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_800x600, WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_1024x768, WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_1280x720, WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_1366x768, WHITE));
+    sub_options[SCREEN_RES_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_1920x1080, WHITE));
 
-    sub_options[FULLSCREEN_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_FULLSCREEN_OFF,
-                                                      WHITE));
-    sub_options[FULLSCREEN_OPTION].push_back(new Text(FONT_FILE,
-                                                      FONT_SIZE_OPTIONS,
-                                                      Text::TextStyle::SOLID,
-                                                      TEXT_FULLSCREEN_ON,
-                                                      WHITE));
+    sub_options[FULLSCREEN_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_FULLSCREEN_OFF, WHITE));
+    sub_options[FULLSCREEN_OPTION].push_back(
+        new Text(FONT_FILE, FONT_SIZE_OPTIONS, Text::TextStyle::SOLID,
+                 TEXT_FULLSCREEN_ON, WHITE));
 }
 
 /**
@@ -490,7 +454,8 @@ int OptionsState::get_current_sub_option(int option) {
     /**
      * Check if the selected option was screen resolution.
      * If so, it generates the screen resolution option at the submenu
-     * "SCREEN RESOLUTION". Otherwise, it indicates that selecte is at fullscreen
+     * "SCREEN RESOLUTION". Otherwise, it indicates that selecte is at
+     * fullscreen
      * option.
      */
     if (option == 0) {
@@ -502,8 +467,8 @@ int OptionsState::get_current_sub_option(int option) {
         assert(height >= RESOLUTION_1_HEIGHT);
         assert(height <= RESOLUTION_5_HEIGHT);
 
-        string resolution = std::to_string(width) + " x " +
-                            std::to_string(height);
+        string resolution =
+            std::to_string(width) + " x " + std::to_string(height);
         int sub_option = 0;
 
         for (auto text : sub_options[SCREEN_RES_OPTION]) {

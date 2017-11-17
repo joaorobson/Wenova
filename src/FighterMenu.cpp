@@ -115,7 +115,7 @@ void FighterMenu::unlock_skin(int idx) {
  *
  * @returns
  */
-Text * FighterMenu::get_name_text() {
+Text* FighterMenu::get_name_text() {
     assert(name_text != NULL);
 
     return name_text;
@@ -142,7 +142,7 @@ string FighterMenu::get_name() {
  * @returns
  */
 string FighterMenu::get_skin_name(int idx) {
-    vector<string> skins_names = { "default", "alt1", "alt2", "alt3" };
+    vector<string> skins_names = {"default", "alt1", "alt2", "alt3"};
 
     if (idx >= MIN_INDEX_ARRAY and idx < NUMBER_SKINS) {
         return skins_names[idx];

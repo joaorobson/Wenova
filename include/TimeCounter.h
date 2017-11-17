@@ -25,14 +25,14 @@ using std::string;
 class TimeCounter : public GameObject {
  public:
     static const int total_time = 100; /**< Const int number with duration */
-                                      /**< of a battle. */
+                                       /**< of a battle. */
  private:
     Sprite background_clock; /**< Background image of the clock of a battle. */
-    Timer timer;            /**< Timer of a battle with countdown. */
-    Text time_text;        /**< Text that shows the remaining time on */
-                            /**< screen during a battle. */
+    Timer timer;             /**< Timer of a battle with countdown. */
+    Text time_text;          /**< Text that shows the remaining time on */
+                             /**< screen during a battle. */
     float remaining_seconds; /**< Float number with the remaining time in */
-                            /**< seconds. */
+                             /**< seconds. */
 
  public:
     /**

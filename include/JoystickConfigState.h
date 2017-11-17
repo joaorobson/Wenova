@@ -34,9 +34,9 @@ class JoystickConfigState : public State {
     Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
     Sound selected; /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
-    bool on_test;  /**< Indicates if the user has entered at mode test on */
-                   /**< menu "Options" using joystick. */
-    bool is_keyboard;  /**< Indicates if user is using a keyboard. */
+    bool on_test;   /**< Indicates if the user has entered at mode test on */
+                    /**< menu "Options" using joystick. */
+    bool is_keyboard; /**< Indicates if user is using a keyboard. */
 
  public:
     /**

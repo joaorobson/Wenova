@@ -12,7 +12,8 @@
 
 using std::to_string;
 
-#define WHITE { 255, 255, 255, 255 }
+#define WHITE \
+    { 255, 255, 255, 255 }
 
 /**
  * Constructor.
@@ -22,20 +23,18 @@ using std::to_string;
  * @param id_winner and integer argument that represents the id of the team
  * that won the battle.
  */
-BattleEnd::BattleEnd(int id_winner) {
+BattleEnd::BattleEnd(int id_winner)
+        : back_btn(Sprite("victory/buttons/back.png"))
+        , back_txt(Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
+                        "BACK", WHITE))
+        , sprite(vector<Sprite>(N_SPRITES + 2))
+        , current_sprite(1)
+        , back_selected(false)
+        , quitRequested(false) {
     assert(id_winner >= 1);
     assert(id_winner <= 3);
-    back_btn = Sprite("victory/buttons/back.png");
 
-    back_txt = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                        "BACK", WHITE);
-    assert(back_txt != NULL);
-
-    back_txt->set_pos(1154, 650);
-
-    back_selected = false;
-
-    sprite = vector<Sprite>(N_SPRITES + 2);
+    back_txt.set_pos(1154, 650);
 
     string path = "victory/" + to_string(id_winner) + "/";
 
@@ -45,10 +44,6 @@ BattleEnd::BattleEnd(int id_winner) {
     for (int i = 1; i <= N_SPRITES; i++) {
         sprite[i] = Sprite(path + to_string(i) + ".png", 1, 5);
     }
-
-    current_sprite = 1;
-
-    quitRequested = false;
 }
 
 /**
@@ -65,9 +60,9 @@ void BattleEnd::update(float delta) {
      * Check if has rendered all 8 sprites on the vector "sprite".
      */
     if (sprite[current_sprite].is_finished()) {
-        if (back_selected and(current_sprite > 1)) {
+        if (back_selected and (current_sprite > 1)) {
             current_sprite--;
-        } else if (not back_selected and(current_sprite < N_SPRITES)) {
+        } else if (not back_selected and (current_sprite < N_SPRITES)) {
             current_sprite++;
         }
     } else {
@@ -82,8 +77,7 @@ void BattleEnd::update(float delta) {
      * the sprite count to current_sprite recieve 1.
      */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0) or
-        input_manager->joystick_button_press(InputManager::B, 0)
-        ) {
+        input_manager->joystick_button_press(InputManager::B, 0)) {
         for (int i = 1; i <= N_SPRITES; i++) {
             sprite[i].restart_count();
         }
@@ -112,7 +106,7 @@ void BattleEnd::update(float delta) {
 void BattleEnd::render() {
     sprite[current_sprite].render();
     back_btn.render(1094, 642);
-    back_txt->render();
+    back_txt.render();
 }
 
 /**
@@ -141,4 +135,5 @@ bool BattleEnd::quit_requested() {
  *
  * @param GameObject a pointer to a GameObject.
  */
-void BattleEnd::notify_collision(const GameObject&) {}
+void BattleEnd::notify_collision(const GameObject &) {
+}

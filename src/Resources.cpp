@@ -141,16 +141,17 @@ shared_ptr<Mix_Chunk> Resources::get_sound(string file) {
 
 /**
  * Not used method.
- */
+ *
 void Resources::clear_sound() {
     for (auto sound : sound_table) {
         if (sound.second.unique()) {
             sound_table.erase(sound.first);
         } else {
-            /* Nothing to do. */
+            // Nothing to do.
         }
     }
 }
+*/
 
 /**
  * Brief Description.

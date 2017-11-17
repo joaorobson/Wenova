@@ -23,9 +23,12 @@ JoystickButton::JoystickButton(int x, int y, string clabel, int cbutton_id,
     assert(clabel.empty() != true);
     assert(csprite.empty() != true);
 
-    assert(sprite.get_width() > 0);
-    assert(sprite.get_height() > 0);
-    box = Rectangle(x, y, sprite.get_width(), sprite.get_height());
+    int sprite_width = sprite.get_width();
+    int sprite_height = sprite.get_height();
+
+    assert(sprite_width > 0);
+    assert(sprite_height > 0);
+    box = Rectangle(x, y, sprite_width, sprite_height);
 
     rotation = 0;
 }

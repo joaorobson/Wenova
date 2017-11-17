@@ -19,13 +19,13 @@
 
 class JoystickButton : public GameObject {
  private:
-    Sprite sprite;  /**< Image of a joystick button at menu "Test mode". */
-    Sprite pressed_sprite;  /**< Image of a pressed joystick button at menu */
-                            /**< "Test mode". */
-    string label;  /**< String with the label of a joystick button. */
-    int button_id;  /**< Int number with the id of a joystick button. */
-    int joystick_id;  /**< Int number with the id of a joystick */
-    bool pressed;  /**< Indicates id a button was pressed */
+    Sprite sprite; /**< Image of a joystick button at menu "Test mode". */
+    Sprite pressed_sprite; /**< Image of a pressed joystick button at menu */
+                           /**< "Test mode". */
+    string label;          /**< String with the label of a joystick button. */
+    int button_id;         /**< Int number with the id of a joystick button. */
+    int joystick_id;       /**< Int number with the id of a joystick */
+    bool pressed;          /**< Indicates id a button was pressed */
 
     // TODO text com label escrito
 

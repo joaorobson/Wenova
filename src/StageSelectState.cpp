@@ -83,8 +83,8 @@ void StageSelectState::update(float delta) {
         if (stage_select == 2) {
             srand(clock());
             unsigned int thread = 0;
-            stage_select = rand_r(&thread) % (amount_stages -
-                                              (go_to_edit ? 0 : 1));
+            stage_select =
+                rand_r(&thread) % (amount_stages - (go_to_edit ? 0 : 1));
         } else {
             /* Nothing to do. */
         }
