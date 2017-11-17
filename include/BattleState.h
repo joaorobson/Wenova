@@ -27,11 +27,30 @@ class BattleState : public State{
 		  BattleState(string stage, vector< pair<string, string> > players_info);
 		  ~BattleState();
 
+			/**
+			 * update method.
+			 * Checks the current state of a started game.
+			 * This method checks the current state of the game and updates it.
+			 *
+			 * @param delta is a number of the type float used to update the background.
+			 */
 		  void update(float delta);
+			/**
+			 *Render Function.
+			 *This function renders the  background.
+			 */
 		  void render();
 
+			/**
+			 *Pause function.
+			 *Nothing to do.
+			 */
 		  void pause();
-		  void resume();
+			/**
+			 *Resume Function.
+			 *Nothing to do.
+			 */
+			void resume();
 
 	private:
 		  vector<pair<Sprite, Vector> > backgrounds;
@@ -40,6 +59,10 @@ class BattleState : public State{
 		  Sound sound;
 		  TimeCounter *time_counter;
 		  BattleEnd *battleEnd;
+			/**
+			 *read_level_design function.
+			 *this function receives a name that indicates the selected level.
+			 */
 			void read_level_design(string stage);
 		  bool game_over;
 		  int alive[N_VALUE1];

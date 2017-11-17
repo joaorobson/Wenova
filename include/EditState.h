@@ -22,9 +22,19 @@ class EditState : public State{
 		  EditState(string stage);
 
 		  void update(float delta);
-		  void render();
-
+			/**
+	     * Renders the first background of the list.
+	     */
+			void render();
+			/**
+			 *Pause function.
+			 *Nothing to do.
+			 */
 		  void pause();
+			/**
+			 *Resume Function.
+			 *Nothing to do.
+			 */
 		  void resume();
 
 	private:
