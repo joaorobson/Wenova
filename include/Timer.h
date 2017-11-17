@@ -5,7 +5,7 @@
  */
 /**
  * @file Timer.h
- * Brief Description.
+ * Control the timer in game.
  */
 
 #ifndef INCLUDE_TIMER_H_
@@ -18,10 +18,35 @@ class Timer {
     float time; /**< The time of the timer. */
 
  public:
+ 	/**
+	 * Initialize a timer
+	 */
     Timer();
+
+	/**
+	 * Update the timer
+	 *
+	 * @param delta is the variation of the time 
+	 */
     void update(float delta);
+
+	/**
+	 * Restart the timer
+	 */
     void restart();
+
+    /**
+	 * Check the timer
+	 *
+	 * @return the time of the timer
+	 */
     float get();
+
+    /**
+	 * Insert a timer
+	 *
+	 * @param ctime is the time to be put in timer
+	 */
     void set(float ctime);
 };
 

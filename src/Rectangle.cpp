@@ -11,7 +11,6 @@
 #include "Rectangle.h"
 
 /**
-<<<<<<< HEAD
  * The constructor
  * Initialize the rectangle null
  */

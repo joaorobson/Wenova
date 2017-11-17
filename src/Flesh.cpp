@@ -187,8 +187,8 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner)
 
 /**
  * Fighter's state machine
- * Check and update the Fighter's state according to the attack type and damage
- * suffered.
+ * Check and update the Fighter's state according to the attack type and
+ * damage suffered.
  *
  * @param float is the variation of character state.
  */
@@ -640,7 +640,6 @@ void Flesh::check_right(bool change) {
 }
 
 /**
-
  * Makes the character stay stoped
  *
  * @param change check if the state os character changed
@@ -729,7 +728,6 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
 }
 
 /**
-<<<<<<< HEAD
  * Keep the character attacking
  *
  * @param change check if the state os character changed

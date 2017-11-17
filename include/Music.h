@@ -5,7 +5,7 @@
  */
 /**
  * @file Music.h
- * Brief Description.
+ * Control the musics in game.
  */
 
 #ifndef INCLUDE_MUSIC_H_
@@ -25,12 +25,47 @@ class Music {
     shared_ptr<Mix_Music> music;
 
  public:
+ 	/**
+	 * The constructor.
+	 * Initialize the music null
+	 * container coordinates of the Music class.
+	 */
     Music();
+
+    /**
+	 * The constructor
+	 * Initialize the music
+	 * container coordinates of the Music class.
+	 *
+	 * @param file is the file where is the music.
+	 */
     explicit Music(string file);
 
+
+	/**
+	 * Play the music
+	 *
+	 * @param times is the times to play the music
+	 */
     void play(int times = -1);
+
+    /**
+	 * Stop the music
+	 */
     void stop();
+
+	/**
+	 * Open the object music
+	 *
+	 * @param file is where is the music.
+	 */
     void open(string file);
+
+    /**
+	 * Check if the music is open
+	 *
+	 * @returns if the music was open
+	 */
     bool is_open();
 };
 
