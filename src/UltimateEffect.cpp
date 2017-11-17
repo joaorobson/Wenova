@@ -112,7 +112,7 @@ void UltimateEffect::notify_collision(const GameObject &object) {
     int partner_id =
         (parent->get_partner() ? parent->get_partner()->get_id() : -100);
     if (object.is(PLAYER_TAG)) {
-        Fighter &fighter = (Fighter &) object;
+        Fighter const &fighter = (const Fighter &) object;
         if (fighter.get_id() == partner_id) {
             parent->get_partner()->increment_life(healing_factor);
         } else {
