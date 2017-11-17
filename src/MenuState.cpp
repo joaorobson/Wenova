@@ -85,6 +85,8 @@ MenuState::MenuState(bool main_menu) {
      */
     if (!Mix_PlayingMusic()) {
         music.play();
+    } else {
+        /*Nothing to do*/
     }
 }
 
@@ -113,6 +115,8 @@ void MenuState::update(float delta) {
         music.stop();
         m_quit_requested = true;
         return;
+    } else {
+      /*Nothing to do*/
     }
 
     /**
@@ -121,6 +125,8 @@ void MenuState::update(float delta) {
     if (pressed[LEFT] && (current_option != 0)) {
         changed.play();
         current_option--;
+    } else {
+      /*Nothing to do*/
     }
 
     /**
@@ -129,6 +135,8 @@ void MenuState::update(float delta) {
     if (pressed[RIGHT] && (current_option != (int)options.size() - 1)) {
         changed.play();
         current_option++;
+    } else {
+      /*Nothing to do*/
     }
 
     /**
@@ -138,6 +146,8 @@ void MenuState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new EditState("2"));
         return;
+    } else {
+      /*Nothing to do*/
     }
 
     /**
@@ -161,6 +171,8 @@ void MenuState::update(float delta) {
                 Game::get_instance().push(new StageSelectState(true));
             } else if (current_option == 2) {
                 Game::get_instance().push(new OptionsState());
+            } else {
+              /*Nothing to do*/
             }
 
             return;
@@ -174,6 +186,8 @@ void MenuState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new EditState("1"));
         return;
+    } else {
+      /*Nothing to do*/
     }
 
     /**
@@ -206,6 +220,8 @@ void MenuState::update(float delta) {
             options[idx]->set_pos(new_x, FONT_Y, false, true);
             options[idx]->set_color(WHITE);
         }
+    } else {
+      /*Nothing to do*/
     }
 
     /**
@@ -214,6 +230,8 @@ void MenuState::update(float delta) {
     if (text_timer.get() > TEXT_TIMER_COOLDOWN) {
         show_text = !show_text;
         text_timer.restart();
+    } else {
+      /*Nothing to do*/
     }
 
     text_timer.update(delta);
@@ -240,6 +258,8 @@ void MenuState::render() {
         }
     } else if (show_text) {
         start_option->render(0, 0);
+    } else {
+      /*Nothing to do*/
     }
 }
 
