@@ -40,6 +40,7 @@ using std::to_string;
  */
 EditState::EditState(string cstage) : stage(cstage) {
     assert(cstage.empty() != true);
+
     test_fighter = new Blood("test", WIDTH / 2, HEIGHT / 2 - 200, 0);
     add_object(test_fighter);
 
@@ -65,6 +66,7 @@ EditState::EditState(string cstage) : stage(cstage) {
  */
 void EditState::update(float delta) {
     assert(delta >= 0);
+
     InputManager *input_manager = InputManager::get_instance();
 
     /**
@@ -209,7 +211,9 @@ void EditState::resume() {}
 void EditState::read_level_design() {
     float x, y, width, crotation;
     int   platform;
-    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
+
+    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage +
+                          "/level_design.dat");
 
     /**
      * If the condition is false a message is displayed.
@@ -252,6 +256,7 @@ void EditState::read_level_design() {
      */
     while (std::getline(level_design, s)) {
         for (auto& c : s) c -= 15;
+
         stringstream editable_floors_line(s);
         editable_floors_line >> x >> y >> width >> crotation >> platform;
 
@@ -267,8 +272,8 @@ void EditState::read_level_design() {
  * of a new file.
  */
 void EditState::update_level_design() {
-    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat",
-                          std::ios::binary);
+    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage +
+                          "/level_design.dat", std::ios::binary);
     ofstream old_level_design(
         RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old",
         std::ios::trunc | std::ios::binary);
@@ -279,8 +284,8 @@ void EditState::update_level_design() {
 
     ofstream new_level_design(RESOURCES_FOLDER + "stage_" + stage +
                               "/level_design.dat", std::ios::trunc);
-    ifstream backup(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old",
-                    std::ios::binary);
+    ifstream backup(RESOURCES_FOLDER + "stage_" + stage +
+                    "/level_design.dat.old", std::ios::binary);
     string s;
 
     /**
@@ -298,8 +303,8 @@ void EditState::update_level_design() {
      */
     for (auto& go : object_array) {
         if (go->is("floor")) {
-            new_level_design << ((EditableFloor *)go.get())->get_information() <<
-            std::endl;
+            new_level_design << ((EditableFloor *)go.get())->
+                                  get_information() << std::endl;
         } else {
             /*Nothing to do*/
         }

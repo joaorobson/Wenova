@@ -18,24 +18,24 @@ using std::vector;
 using std::pair;
 
 class EditState : public State{
-public:
-	  EditState(string stage);
+	public:
+		  EditState(string stage);
 
-	  void update(float delta);
-	  void render();
+		  void update(float delta);
+		  void render();
 
-	  void pause();
-	  void resume();
+		  void pause();
+		  void resume();
 
-private:
-	  vector<pair<Sprite, Vector> > backgrounds;
-	  Fighter * test_fighter;
-	  string stage;
-	  Music music;
-	  Sound sound;
+	private:
+		  vector<pair<Sprite, Vector> > backgrounds;
+		  Fighter * test_fighter;
+		  string stage;
+		  Music music;
+		  Sound sound;
 
-	  void read_level_design();
-	  void update_level_design();
+		  void read_level_design();
+		  void update_level_design();
 };
 
 #endif

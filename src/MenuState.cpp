@@ -116,6 +116,7 @@ MenuState::MenuState(bool main_menu) {
  */
 void MenuState::update(float delta) {
     assert(delta >= 0);
+
     title.update(delta);
     planet.update(delta);
     green_ship.update(delta);
@@ -175,8 +176,11 @@ void MenuState::update(float delta) {
         selected.play();
 
         if (not start_pressed) {
+            assert(start_pressed == 0);
+
             start_pressed  = true;
             current_option = N_ZERO;
+
             assert(current_option == 0);
         } else {
             m_quit_requested = true;
@@ -231,7 +235,8 @@ void MenuState::update(float delta) {
         /**
          * Modify the options positioning after current option select.
          */
-        for (unsigned int idx = current_option + 1; idx < options.size(); idx++) {
+        for (unsigned int idx = current_option + 1; idx < options.size(); idx++)
+        {
             Text *prev_option = options[idx - 1];
 
             int new_x = prev_option->get_x() + prev_option->get_width() +
@@ -289,7 +294,7 @@ void MenuState::render() {
 void MenuState::process_input() {
     InputManager *input_manager = InputManager::get_instance();
 
-    // MENU BUTTONS HERE
+    // Menu buttons
     vector<pair<int, int> > joystick_buttons = {
         ii(A,      InputManager::A),
         ii(B,      InputManager::B),

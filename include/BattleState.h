@@ -23,26 +23,26 @@ using std::vector;
 using std::pair;
 
 class BattleState : public State{
-public:
-	  BattleState(string stage, vector< pair<string, string> > players_info);
-	  ~BattleState();
+	public:
+		  BattleState(string stage, vector< pair<string, string> > players_info);
+		  ~BattleState();
 
-	  void update(float delta);
-	  void render();
+		  void update(float delta);
+		  void render();
 
-	  void pause();
-	  void resume();
+		  void pause();
+		  void resume();
 
-private:
-	  vector<pair<Sprite, Vector> > backgrounds;
-	  Fighter* players[N_PLAYERS];
-	  Music music;
-	  Sound sound;
-	  TimeCounter *time_counter;
-	  BattleEnd *battleEnd;
-		void read_level_design(string stage);
-	  bool game_over;
-	  int alive[N_VALUE1];
+	private:
+		  vector<pair<Sprite, Vector> > backgrounds;
+		  Fighter* players[N_PLAYERS];
+		  Music music;
+		  Sound sound;
+		  TimeCounter *time_counter;
+		  BattleEnd *battleEnd;
+			void read_level_design(string stage);
+		  bool game_over;
+		  int alive[N_VALUE1];
 };
 
 #endif

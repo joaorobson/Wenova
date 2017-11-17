@@ -63,7 +63,6 @@ using std::to_string;
  */
 BattleState::BattleState(string stage,
                           vector< pair<string, string> > players_info) {
-
     assert(stage.empty() != true);
     assert(players_info.empty() != true);
 
@@ -72,8 +71,6 @@ BattleState::BattleState(string stage,
 
     music = Music("stage_" + stage + "/music.ogg");
     sound = Sound("stage_" + stage + "/sound.ogg");
-
-
 
     read_level_design(stage);
 
@@ -263,8 +260,8 @@ void BattleState::update(float delta) {
                  */
                 for (int i = N_PLAYERS / 2; i < N_PLAYERS; i++) {
                     /**
-                     * If condition is met, the remaining life of a player is added
-                     * to the sum_life_team_1 variable.
+                     * If condition is met, the remaining life of a player is
+                     * added to the sum_life_team_1 variable.
                      */
                     if (alive[i]) {
                         sum_life_team_2 += players[i]->get_remaining_life();
@@ -273,8 +270,9 @@ void BattleState::update(float delta) {
                     }
                 }
             /**
-             * If the first condition is met, battleEnd is instanciated and passed as a
-             * parameter on add_object method. If not, the else body is run.
+             * If the first condition is met, battleEnd is instanciated and
+             * passed as a parameter on add_object method. If not, the else
+             * body is run.
              */
             if (sum_life_team_1 > sum_life_team_2) {
                 battleEnd = new BattleEnd(1);
@@ -350,7 +348,6 @@ void BattleState::update(float delta) {
     for (auto & background : backgrounds) {
         background.first.update(delta);
     }
-
     update_array(delta);
 }
 
@@ -365,7 +362,6 @@ void BattleState::render() {
     for (auto & background : backgrounds) {
         background.first.render(background.second.x, background.second.y);
     }
-
     render_array();
 }
 
@@ -389,9 +385,11 @@ void BattleState::resume() {}
  */
 void BattleState::read_level_design(string stage) {
     assert(stage.empty() != true);
+
     float x, y, width, crotation;
     int platform;
     fstream level_design(RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat");
+
     /**
      * If the condition is false, a message is displayed.
      */
@@ -404,19 +402,22 @@ void BattleState::read_level_design(string stage) {
 
     string s;
     int n_backgrounds, n_sprites, speed, n_columns;
-
     std::getline(level_design, s);
+
     for (auto & c : s) {
       c -= 15;
     }
+
     stringstream n_background_line(s);
     n_background_line >> n_backgrounds;
 
     for (int i = 0; i < n_backgrounds; ++i) {
         std::getline(level_design, s);
+
         for (auto & c : s) {
           c -= 15;
         }
+
         stringstream backgrounds_line(s);
         backgrounds_line >> x >> y >> n_sprites >> speed >> n_columns;
         //printf("Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed, n_columns);
@@ -432,8 +433,10 @@ void BattleState::read_level_design(string stage) {
      */
     while (std::getline(level_design, s)) {
         for (auto & c : s) c -= 15;
+
         stringstream floors_line(s);
         floors_line >> x >> y >> width >> crotation >> platform;
+
         //printf("Battle: %.f %.f %.f %.f\n", x, y, width, crotation);
         add_object(new Floor(x, y, width, crotation, (bool) platform));
      }
