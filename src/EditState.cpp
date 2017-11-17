@@ -71,6 +71,8 @@ void EditState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -84,6 +86,8 @@ void EditState::update(float delta) {
         m_quit_requested = true;
         Game::get_instance().push(new MenuState());
         return;
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -93,6 +97,8 @@ void EditState::update(float delta) {
         int x = input_manager->get_mouse_x_position();
         int y = input_manager->get_mouse_y_position();
         test_fighter->reset_position(x, y);
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -117,6 +123,8 @@ void EditState::update(float delta) {
         auto go = new EditableFloor(x, y, 0, is_platform);
         go->set_selected(true);
         add_object(go);
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -125,6 +133,8 @@ void EditState::update(float delta) {
     if (input_manager->is_key_down(InputManager::K_CTRL) and
         input_manager->key_press(InputManager::K_S)) {
         update_level_design();
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -133,6 +143,8 @@ void EditState::update(float delta) {
     if (input_manager->is_key_down(InputManager::K_O)) {
         printf("%f, %f\n", object_array[0].get()->box.x,
                object_array[0].get()->box.y);
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -203,7 +215,10 @@ void EditState::read_level_design() {
     if (not level_design.is_open()) {
         printf("Level design of stage %s can't be opened\n", stage.c_str());
         exit(-5);
+    } else {
+        /*Nothing to do*/
     }
+
     string s;
     int    n_backgrounds, n_sprites, speed, n_columns;
 
@@ -283,6 +298,8 @@ void EditState::update_level_design() {
         if (go->is("floor")) {
             new_level_design << ((EditableFloor *)go.get())->get_information() <<
             std::endl;
+        } else {
+            /*Nothing to do*/
         }
     }
     new_level_design.close();
