@@ -8,10 +8,10 @@
  */
 
 #include "Game.h"
-#include "easylogging++.h"
-
-INITIALIZE_EASYLOGGINGPP
 #include "MenuState.h"
+
+#include "easylogging++.h"  // NOLINT
+INITIALIZE_EASYLOGGINGPP
 
 /**
  * Main.
@@ -21,7 +21,7 @@ int main(int, char **) {
     Game game("Wenova - Rise of Conquerors");
     LOG(INFO) << "Game initialized";
 
-    State * state =  new MenuState(false);
+    State *state =  new MenuState(false);
     game.push(state);
 
     game.run();

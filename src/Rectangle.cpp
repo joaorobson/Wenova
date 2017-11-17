@@ -11,6 +11,7 @@
 #include "Rectangle.h"
 
 /**
+<<<<<<< HEAD
  * The constructor
  * Initialize the rectangle null
  */
@@ -27,13 +28,20 @@ Rectangle::Rectangle() {}
  * @param h is the height of object
  */
 Rectangle::Rectangle(float ax, float ay, float w, float h)
-    : x(ax), y(ay), width(w), height(h) {}
+        : x(ax)
+        , y(ay)
+        , width(w)
+        , height(h) {
+}
 
 /**
  * Check if any object is inside the rectangle
+ * Not used method.
  *
  * @param mx is the cordinate x of the object
  * @param my is the cordinate y of the object
+ *
+ * @return if the rectangle is inside of the other
  */
 bool Rectangle::is_inside(float mx, float my) {
     bool horizontal_in = (mx >= x - width/2 and mx <= x + width/2);

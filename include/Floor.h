@@ -1,29 +1,41 @@
-#ifndef FLOOR_H
-#define FLOOR_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Floor.h
+ * Brief Description.
+ */
+
+#ifndef INCLUDE_FLOOR_H_
+#define INCLUDE_FLOOR_H_
 
 #include "GameObject.h"
 #include "Sprite.h"
 
-class Floor : public GameObject{
-private:
-	int id;
+#include "easylogging++.h"
 
-protected:
-	bool is_crossingable;
+class Floor : public GameObject {
+ private:
+    int id;
 
-public:
-	Floor(float x, float y, float width, float crotation, bool cplatform);
-	~Floor();
+ protected:
+    bool is_crossingable;
 
-	void update(float delta);
-	void render();
-	bool is_dead();
+ public:
+    Floor(float x, float y, float width, float crotation, bool cplatform);
+    ~Floor();
 
-	void notify_collision(GameObject & object);
+    void update(float delta);
+    void render();
+    bool is_dead();
 
-	int get_id();
+    void notify_collision(const GameObject& object);
 
-	static int floor_id;
+    int get_id() const;
+
+    static int floor_id;
 };
 
-#endif
+#endif  // INCLUDE_FLOOR_H_

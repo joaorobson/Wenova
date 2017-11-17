@@ -10,8 +10,6 @@
 
 #include "HealEffect.h"
 
-#include "easylogging++.h"
-
 /**
  * The constructor.
  * Initialize the heal effect
@@ -56,6 +54,8 @@ void HealEffect::update(float delta) {
 
 /**
  * Check if the Heal Effect is dead
+ *
+ * @return the sprite dead
  */
 bool HealEffect::is_dead() {
     return sprite.is_finished();

@@ -9,10 +9,9 @@
  */
 
 #include "Sound.h"
-#include "Resources.h"
-#include "Config.h"
 
-#include "easylogging++.h"
+#include "Config.h"
+#include "Resources.h"
 
 /**
  * The constructor.
@@ -74,6 +73,8 @@ void Sound::open(string cfile) {
 
 /**
  * Check if the sound is open
+ *
+ * @return if the sound was open
  */
 bool Sound::is_open() {
     return sound != nullptr;
@@ -87,4 +88,3 @@ bool Sound::is_open() {
 string Sound::get_file() {
     return file;
 }
-

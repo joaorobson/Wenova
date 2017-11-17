@@ -5,13 +5,12 @@
  */
 /** 
  * @file Timer.cpp
- * Implements class Timer methods.  
+ * Implements class Timer methods.
  */
 
 #include "Timer.h"
 
 #include <assert.h>
-#include "easylogging++.h"
 
 #define INITIAL_TIME 0
 
@@ -29,8 +28,8 @@ Timer::Timer() {
  * @param delta is the variation of the time 
  */
 void Timer::update(float delta) {
-	LOG(DEBUG) << "Timer uptaded";
-	assert(delta >=0);
+    LOG(DEBUG) << "Timer uptaded";
+    assert(delta >=0);
     time += delta;
 }
 

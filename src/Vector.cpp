@@ -1,17 +1,16 @@
 /* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
- * 
+ *
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
-/** 
+/**
  * @file Vector.cpp
- * Implements class Vector methods.  
+ * Implements class Vector methods.
  */
 
 #include "Vector.h"
-#include <cmath>
 
-#include "easylogging++.h"
+#include <cmath>
 
 #define RATE_TO_ROTATE_CORDINATE_X 200
 #define RATE_TO_ROTATE_CORDINATE_Y 200
@@ -23,7 +22,10 @@
  * @param mx is the cordinate inicial x of vector
  * @param my is the cordinate inicial y of vector
  */
-Vector::Vector(float mx, float my) : x(mx), y(my) {}
+Vector::Vector(float mx, float my)
+        : x(mx)
+        , y(my) {
+}
 
 /**
  * Rotate the vector
@@ -39,6 +41,7 @@ void Vector::rotate(Vector origin, float angle) {
 
 /**
  * Transform the Vector
+ * Not used method.
  *
  * @param module is the module of vector
  * @param angle is the angle you want to put
@@ -51,6 +54,9 @@ void Vector::transform(float module, float angle) {
 
 /**
  * Define the operater "+"
+ * @param rhs is the vector to sum
+ *
+ * @return is the sum of the vectors
  */
 Vector Vector::operator+(const Vector& rhs) const {
     return Vector(x + rhs.x, y + rhs.y);
@@ -58,6 +64,10 @@ Vector Vector::operator+(const Vector& rhs) const {
 
 /**
  * Define the operater "-"
+ *
+ * @param rhs is the vector to subtract
+ *
+ * @return is the subtract of the vectors
  */
 Vector Vector::operator-(const Vector& rhs) const {
     return Vector(x - rhs.x, y - rhs.y);
@@ -65,6 +75,10 @@ Vector Vector::operator-(const Vector& rhs) const {
 
 /**
  * Define the operater "*"
+ *
+ * @param rhs is the float to multiply the vector
+ *
+ * @return is the vector multiply for the constant
  */
 Vector Vector::operator*(const float rhs) const {
     return Vector(x * rhs, y * rhs);

@@ -9,10 +9,9 @@
  */
 
 #include "Music.h"
-#include "Resources.h"
-#include "Config.h"
 
-#include "easylogging++.h"
+#include "Config.h"
+#include "Resources.h"
 
 /**
  * The constructor.
@@ -79,6 +78,8 @@ void Music::open(string file) {
 
 /**
  * Check if the music is open
+ *
+ * @returns if the music was open
  */
 bool Music::is_open() {
     return music != nullptr;

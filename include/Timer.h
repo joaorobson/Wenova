@@ -1,16 +1,28 @@
-#ifndef TIMER_H
-#define TIMER_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Timer.h
+ * Brief Description.
+ */
 
-class Timer{
-private:
-	float time;
+#ifndef INCLUDE_TIMER_H_
+#define INCLUDE_TIMER_H_
 
-public:
-	Timer();
-	void update(float delta);
-	void restart();
-	float get();
-	void set(float ctime);
+#include "easylogging++.h"
+
+class Timer {
+ private:
+    float time;
+
+ public:
+    Timer();
+    void update(float delta);
+    void restart();
+    float get();
+    void set(float ctime);
 };
 
-#endif
+#endif  // INCLUDE_TIMER_H_

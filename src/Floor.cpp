@@ -9,10 +9,9 @@
  */
 
 #include "Floor.h"
-#include "InputManager.h"
-#include "Camera.h"
 
-#include "easylogging++.h"
+#include "Camera.h"
+#include "InputManager.h"
 
 #define LAYER 0
 #define PI 3.14159265358979
@@ -36,6 +35,7 @@ int Floor::floor_id = 1;
  * @param crotation is the rotation of the floor.
  * @param cplataform is the type of the plataform selected.
  */
+// TODO reavaliar se precisa ou não de Camera
 Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     LOG(DEBUG) << "Floor constructor activated";
     is_crossingable = cplatform;
@@ -59,13 +59,16 @@ Floor::~Floor() {}
 
 /**
  * Update the traits of floor
+ *
+ * @param float
  */
-void Floor::update(float) {}
+void Floor::update(float) {
     /**
      * Comment of printf for test
-     * printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height, 
-     *         rotation);
      */
+    // printf("%.f %.f %.f %.f %.f\n", box.x, box.y, box.width, box.height,
+    //         rotation);
+}
 
 /**
  * Render the floor
@@ -74,6 +77,8 @@ void Floor::render() {}
 
 /**
  * Check if the floor is dead
+ *
+ * @returns
  */
 bool Floor::is_dead() {
     return false;
@@ -81,14 +86,16 @@ bool Floor::is_dead() {
 
 /**
  * Notify a collision in the floor
+ *
+ * @param & is the object to verify the collision
  */
-void Floor::notify_collision(GameObject &) {}
+void Floor::notify_collision(const GameObject &) {}
 
 /**
  * Check the ID of floor
  *
  * @return the id of the floor
  */
-int Floor::get_id() {
+int Floor::get_id() const {
     return id;
 }

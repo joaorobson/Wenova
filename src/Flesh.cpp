@@ -9,11 +9,11 @@
  */
 
 #include "Flesh.h"
-#include "Game.h"
+
 #include "FleshUltimateEffect.h"
+#include "Game.h"
 
 #include <assert.h>
-#include "easylogging++.h"
 
 #define CROUCH_COOLDOWN 400.0
 
@@ -640,9 +640,11 @@ void Flesh::check_right(bool change) {
 }
 
 /**
+
  * Makes the character stay stoped
  *
  * @param change check if the state os character changed
+ * @param condition
  */
 void Flesh::check_idle(bool change, bool condition) {
     LOG(DEBUG) << "Checking if character is idle";
@@ -727,6 +729,7 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
 }
 
 /**
+<<<<<<< HEAD
  * Keep the character attacking
  *
  * @param change check if the state os character changed
@@ -775,7 +778,7 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
          */
         if (not condition) {
             orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT
-            : Orientation::RIGHT;
+                                                  : Orientation::RIGHT;
         }
     }
 }
@@ -985,7 +988,7 @@ void Flesh::check_defense(bool change) {
  */
 void Flesh::check_stunned(bool change) {
     LOG(DEBUG) << "Checking if character is stunned";
-    assert(STOPPED == 0);
+    assert(SPEED_X_STUNNED == 0);
     speed.x = SPEED_X_STUNNED;
     /**
      * Check if change happened
