@@ -65,7 +65,7 @@ BattleState::BattleState(string stage,
     } else {
         char_positions = { ii(116, 227),
                            ii(146, 394), ii(1036, 221), ii(1063, 382)};
-        };
+    };
 
     /**
      * Runs each iteration from 0 to the size of players_info -1.
@@ -141,6 +141,8 @@ void BattleState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -152,6 +154,8 @@ void BattleState::update(float delta) {
         Game::get_instance().push(new MenuState(true));
         m_quit_requested = true;
         return;
+    } else {
+        /*Nothing to do*/
     }
 
     /**
@@ -168,7 +172,11 @@ void BattleState::update(float delta) {
              */
             if (players[i]->is("dying")) {
                 alive[i] = false;
+            } else {
+                /*Nothing to do*/
             }
+        } else {
+            /*Nothing to do*/
         }
     }
 
@@ -201,6 +209,8 @@ void BattleState::update(float delta) {
                  */
                 if (alive[i]) {
                     sum_life_team_1 += players[i]->get_remaining_life();
+                } else {
+                    /*Nothing to do*/
                 }
             }
 
@@ -216,6 +226,8 @@ void BattleState::update(float delta) {
                      */
                     if (alive[i]) {
                         sum_life_team_2 += players[i]->get_remaining_life();
+                    } else {
+                        /*Nothing to do*/
                     }
                 }
             /**
@@ -244,6 +256,8 @@ void BattleState::update(float delta) {
         game_over = true;
         battleEnd = new BattleEnd(3);
         add_object(battleEnd);
+    } else {
+        /*Nothing to do*/
     }
 
     if (not alive[0] && not alive[1] && not game_over) {
@@ -254,15 +268,22 @@ void BattleState::update(float delta) {
         game_over = true;
         battleEnd = new BattleEnd(1);
         add_object(battleEnd);
+    } else {
+        /*Nothing to do*/
     }
 
     if (game_over) {
         for (int i = 0; i < N_PLAYERS; i++) {
             if (alive[i]) {
                 players[i]->add_tags("game_over");
+            } else {
+                /*Nothing to do*/
             }
         }
+    } else {
+        /*Nothing to do*/
     }
+
     /**
      * If game_over is true and quit_requested is also true, the music stops,
      * the sound stops and the menu is loaded again.
@@ -274,8 +295,13 @@ void BattleState::update(float delta) {
             m_quit_requested = true;
             Game::get_instance().push(new MenuState());
             return;
+        } else {
+            /*Nothing to do*/
         }
+    } else {
+        /*Nothing to do*/
     }
+
     /**
      * Updates the background list.
      */
@@ -329,7 +355,10 @@ void BattleState::read_level_design(string stage) {
     if (not level_design.is_open()) {
         printf("Level design of stage %s can't be opened\n", stage.c_str());
         exit(-5);
+    } else {
+        /*Nothing to do*/
     }
+    
     string s;
     int n_backgrounds, n_sprites, speed, n_columns;
 
