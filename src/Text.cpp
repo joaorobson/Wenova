@@ -60,6 +60,7 @@ Text::Text(string cfont_file, int cfont_size, TextStyle cstyle, string ctext,
  */
 Text::Text() {
   texture = nullptr;
+  set_style(style);
 }
 
 
@@ -155,13 +156,11 @@ void Text::set_color(SDL_Color ccolor) {
  * @param cstyle stores the style that will be saved and updated in the
  * texture.
  */
-/*
 void Text::set_style(TextStyle cstyle) {
   assert(cstyle != (TextStyle) NULL);
   style = cstyle;
   remake_texture();
 }
-*/
 
 /**
  * cfont_size setter.

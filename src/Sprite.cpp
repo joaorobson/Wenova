@@ -26,7 +26,7 @@
 #define INITIAL_X_Y_AXES_SCALE 1
 #define INITIAL_FRAME_COUNT_VALUE 1
 #define INITIAL_FRAME_TIME 1
-
+#define INITIAL_VALUE 0
 /**
  * A constructor.
  * Initialize the file where the images come from, counting and time of frames,
@@ -66,6 +66,11 @@ Sprite::Sprite() {
     frame_count = INITIAL_FRAME_COUNT_VALUE;
     frame_time = INITIAL_FRAME_TIME;
     current_frame = time_elapsed = NO_TIME_ELAPSED;
+    finished = false;
+    columns = INITIAL_VALUE; 
+    rows = INITIAL_VALUE; 
+    height = INITIAL_VALUE; 
+    width = INITIAL_VALUE; 
 }
 
 
@@ -158,10 +163,11 @@ void Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate,
 /**
  * Frame setter.
  * Sets a new frame.
- *
+ * Not used method.
  * @param frame stores the value of the new frame that will be saved and updated
  * as a current frame.
  */
+/*
 void Sprite::set_frame(int frame) {
     current_frame = frame;
     set_clip((current_frame % columns) * width,
@@ -169,29 +175,35 @@ void Sprite::set_frame(int frame) {
              width,
              height);
 }
+*/
 
 /**
  * Frame counting setter.
  * Sets the current value of the frame counter.
+ * Not used method.
  *
  * @param cframe_count stores the value that will be saved and updated the time
  * of the counter.
  */
+/*
 void Sprite::set_frame_count(int cframe_count) {
     frame_count = cframe_count;
 }
+*/
 
 /**
  * Frame time setter.
  * Sets the current time of a frame.
+ * Not used method.
  *
  * @param cframe_time stores the value that will be saved and updated the time of
  * the old frame.
  */
+/*
 void Sprite::set_frame_time(float cframe_time) {
     frame_time = cframe_time;
 }
-
+*/
 /**
  * Update method.
  * Update the sprites in the game.
@@ -304,14 +316,17 @@ void Sprite::set_scale_x(float scale) {
 /**
  * Scale y setter.
  * Sets individually the y axis scale to a new value.
+ * Not used method.
  *
  * @param scale stores the value that will be saved and updated in the
  * scale_y.
  */
+/*
 void Sprite::set_scale_y(float scale) {
     assert(scale >= 0);
     scale_y_axis = scale;
 }
+*/
 
 /**
  * Scale y and xsetter.
