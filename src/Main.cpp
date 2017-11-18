@@ -1,13 +1,25 @@
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Main.cpp
+ */
+
 #include "Game.h"
 #include "MenuState.h"
 
-int main(int, char **){
-	Game game("Wenova - Rise of Conquerors");
+#include "easylogging++.h"  // NOLINT
+INITIALIZE_EASYLOGGINGPP
 
-	State * state =  new MenuState(false);
-	game.push(state);
+int main(int, char **) {
+    Game game("Wenova - Rise of Conquerors");
 
-	game.run();
+    State *state = new MenuState(false);
+    game.push(state);
 
-	return 0;
+    game.run();
+
+    return 0;
 }

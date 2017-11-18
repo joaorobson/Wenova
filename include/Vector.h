@@ -1,17 +1,32 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.
+ *
+ * This work is licensed under the terms of the MIT license.
+ * For a copy, see <https://opensource.org/licenses/MIT>.
+ */
+/**
+ * @file Vector.h
+ * Brief Description.
+ */
 
-class Vector{
-public:
-	float x;
-	float y;
-	Vector(float mx = 0, float my = 0);
-	void rotate(Vector origin, float angle);
-	void transform(float module, float angle);
+#ifndef INCLUDE_VECTOR_H_
+#define INCLUDE_VECTOR_H_
 
-	Vector operator+(const Vector& rhs) const;
-	Vector operator-(const Vector& rhs) const;
-	Vector operator*(const float rhs) const;
+#include <algorithm>
+
+class Vector {
+ public:
+    float x;
+    float y;
+    explicit Vector(float mx = 0, float my = 0);
+    void rotate(Vector origin, float angle);
+    /**
+     * Not used method.
+     */
+    void transform(float module, float angle);
+
+    Vector operator+(const Vector& rhs) const;
+    Vector operator-(const Vector& rhs) const;
+    Vector operator*(const float rhs) const;
 };
 
-#endif
+#endif  // INCLUDE_VECTOR_H_

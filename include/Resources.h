@@ -11,10 +11,11 @@
 #ifndef INCLUDE_RESOURCES_H_
 #define INCLUDE_RESOURCES_H_
 
+#include <assert.h>
 #include <iostream>
-#include <unordered_map>
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
@@ -26,18 +27,18 @@ using std::shared_ptr;
 
 class Resources {
  private:
-    static unordered_map<string,
-                         shared_ptr<SDL_Texture> > image_table;  /**< Map of */
-                                      /**< a key string and a texture sprite. */
-    static unordered_map<string,
-                         shared_ptr<Mix_Music> > music_table;  /**< Map of */
-                                      /**< a key string and a mix music. */
-    static unordered_map<string,
-                         shared_ptr<Mix_Chunk> > sound_table;  /**< Map of */
-                                      /**< a key string and a mix chunk. */
-    static unordered_map<string,
-                         shared_ptr<TTF_Font> > font_table;  /**< Map of */
-                                      /**< a key string and a text font. */
+    static unordered_map<string, shared_ptr<SDL_Texture> >
+        image_table; /**< Map of */
+                     /**< a key string and a texture sprite. */
+    static unordered_map<string, shared_ptr<Mix_Music> >
+        music_table; /**< Map of */
+                     /**< a key string and a mix music. */
+    static unordered_map<string, shared_ptr<Mix_Chunk> >
+        sound_table; /**< Map of */
+                     /**< a key string and a mix chunk. */
+    static unordered_map<string, shared_ptr<TTF_Font> >
+        font_table; /**< Map of */
+                    /**< a key string and a text font. */
 
  public:
     static shared_ptr<SDL_Texture> get_image(string file);
@@ -47,6 +48,10 @@ class Resources {
     static void clear_music();
 
     static shared_ptr<Mix_Chunk> get_sound(string file);
+
+    /**
+     * Not used method.
+     */
     static void clear_sound();
 
     static shared_ptr<TTF_Font> get_font(string file, int size);

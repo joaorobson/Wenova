@@ -12,12 +12,14 @@ CFLAGS = -pedantic -std=c++11 -MMD -g3 -g -fPIC\
 		 -Wdisabled-optimization -Wformat=2 -Wlogical-op -Wmissing-declarations\
 		 -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls\
 		 -Wsign-promo -Wstrict-null-sentinel -Wundef\
-		 -Wzero-as-null-pointer-constant -Wuseless-cast -Wnon-virtual-dtor
-INCLUDES = -I$(INC_DIR) `sdl2-config --cflags`
+		 -Wzero-as-null-pointer-constant -Wuseless-cast -Wnon-virtual-dtor \
+		 -Werror
+INCLUDES = -I$(INC_DIR) -isystem easylogging `sdl2-config --cflags`
 LIBS = `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer -ldl
 
 SRC = ${wildcard $(SRC_DIR)/*.cpp}
 OBJ = ${addprefix $(OBJ_DIR)/, ${notdir ${SRC:.cpp=.o}}}
+OBJ += obj/Easylogging++.o
 
 RMDIR = rm -rf
 
@@ -52,6 +54,10 @@ endif
 all:
 #-------------------------------------------------------------
 	@mkdir -p $(OBJ_DIR) $(BIN_DIR)
+
+	@echo Building easylogging
+	$(CC) -std=c++11 -w -c easylogging/easylogging++.cc -isystem easylogging -o obj/Easylogging++.o
+
 	$(MAKE) $(TARGET)
 #-------------------------------------------------------------
 

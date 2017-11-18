@@ -10,6 +10,9 @@
  */
 #include "TimeCounter.h"
 
+#define INFERIOR_LIMIT_TIME 0
+#define UPPER_LIMIT_TIME 99
+
 using std::to_string;
 
 /**
@@ -17,24 +20,24 @@ using std::to_string;
  * This constructor builds sprites and texts to indicate the remaining time
  * in a battle.
  */
-TimeCounter::TimeCounter() {
+TimeCounter::TimeCounter()
+        : background_clock(Sprite("hud/time_board.png"))
+        , time_text(Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
+                         "99", {255, 255, 255, 255})) {
     remaining_seconds = total_time;
 
-    time_text = new Text("font/8-BIT WONDER.ttf", 50, Text::TextStyle::SOLID,
-                         "99", { 255, 255, 255, 255 });
-
-    background_clock = Sprite("hud/time_board.png");
     box = Rectangle(640, 664, background_clock.get_width(),
                     background_clock.get_height());
 
-    time_text->set_pos(640, 664, true, true);
+    time_text.set_pos(640, 664, true, true);
 }
 
 /**
  * Destructor.
  * Nothing to do.
  */
-TimeCounter::~TimeCounter() {}
+TimeCounter::~TimeCounter() {
+}
 
 /**
  * Function that updates the time showed.
@@ -43,15 +46,19 @@ TimeCounter::~TimeCounter() {}
  * @param delta a float variation to update the remaining time of a battle.
  */
 void TimeCounter::update(float delta) {
-    time_text->set_pos(640, 664, true, true);
+    time_text.set_pos(640, 664, true, true);
     timer.update(delta);
-    remaining_seconds -= delta * 0.01 / 3;
+
+    assert(remaining_seconds >= 0);
 
     // FIXME
-    if (remaining_seconds < 0) {
+    if (remaining_seconds > 0) {
+        remaining_seconds -= delta * 0.01 / 4;
+    } else {
         remaining_seconds = 0;
     }
-    time_text->set_text(get_time_string());
+
+    time_text.set_text(get_time_string());
 }
 
 /**
@@ -60,19 +67,11 @@ void TimeCounter::update(float delta) {
  * time of a battle.
  */
 void TimeCounter::render() {
-    background_clock.render(box.get_draw_x(), box.get_draw_y());
-    time_text->render();
-}
+    assert(box.get_draw_x() > 0.0);
+    assert(box.get_draw_y() > 0.0);
 
-/**
- * Function that returns remaining time.
- * This function returns a string representation of the remaining time
- * of a battle.
- *
- * @return is a string representing the remaining time.
- */
-string TimeCounter::get_time_string() {
-    return to_string(static_cast<int>(remaining_seconds));
+    background_clock.render(box.get_draw_x(), box.get_draw_y());
+    time_text.render();
 }
 
 /**
@@ -96,9 +95,26 @@ bool TimeCounter::is_over() {
 }
 
 /**
+ * Function that returns remaining time.
+ * This function returns a string representation of the remaining time
+ * of a battle.
+ *
+ * @return is a string representing the remaining time.
+ */
+string TimeCounter::get_time_string() {
+    if (remaining_seconds >= INFERIOR_LIMIT_TIME and
+        remaining_seconds <= UPPER_LIMIT_TIME) {
+        return to_string(static_cast<int>(remaining_seconds));
+    } else {
+        return to_string(UPPER_LIMIT_TIME);
+    }
+}
+
+/**
  * Function notify collision.
  * Nothing to do.
  *
  * @param GameObject a pointer to a GameObject.
  */
-void TimeCounter::notify_collision(GameObject&) {}
+void TimeCounter::notify_collision(const GameObject&) {
+}
