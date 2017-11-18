@@ -69,18 +69,18 @@ $(document).ready(function(){initNavTree('JoystickConfigState_8cpp.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;SDL_mixer.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Game_8h_source.html">Game.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="InputManager_8h_source.html">InputManager.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="JoystickButton_8h_source.html">JoystickButton.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="MenuState_8h_source.html">MenuState.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="OptionsState_8h_source.html">OptionsState.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="JoystickButton_8h_source.html">JoystickButton.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Game_8h_source.html">Game.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for JoystickConfigState.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="JoystickConfigState_8cpp__incl.png" border="0" usemap="#JoystickConfigState_8cpp" alt=""/></div>
 <map name="JoystickConfigState_8cpp" id="JoystickConfigState_8cpp">
-<area shape="rect" id="node3" href="JoystickConfigState_8h.html" title="This file contains the definitions of the methods and attributes of the class JoystickConfigState. " alt="" coords="315,80,465,107"/><area shape="rect" id="node21" href="InputManager_8h.html" title="Brief Description. " alt="" coords="1226,80,1337,107"/><area shape="rect" id="node25" href="MenuState_8h.html" title="MenuState.h" alt="" coords="194,80,290,107"/><area shape="rect" id="node27" href="OptionsState_8h.html" title="This file contains the definitions of all methods and attributes of the class OptionsState. " alt="" coords="634,80,744,107"/><area shape="rect" id="node28" href="JoystickButton_8h.html" title="This file contains the definitions of all methods and attributes of the class JoystickButton which co..." alt="" coords="490,80,610,107"/><area shape="rect" id="node29" href="Game_8h.html" title="Game.h" alt="" coords="996,80,1064,107"/><area shape="rect" id="node4" href="State_8h.html" title="State.h" alt="" coords="577,155,641,181"/><area shape="rect" id="node14" href="Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="486,155,553,181"/><area shape="rect" id="node17" href="Text_8h.html" title="Text.h" alt="" coords="404,155,461,181"/><area shape="rect" id="node19" href="Timer_8h.html" title="Timer.h" alt="" coords="116,155,182,181"/><area shape="rect" id="node20" href="Sound_8h.html" title="Sound.h" alt="" coords="207,155,277,181"/><area shape="rect" id="node5" href="GameObject_8h.html" title="GameObject.h" alt="" coords="692,229,798,256"/><area shape="rect" id="node6" href="Rectangle_8h.html" title="Rectangle.h" alt="" coords="474,304,565,331"/><area shape="rect" id="node8" href="Vector_8h.html" title="Vector.h" alt="" coords="484,379,554,405"/><area shape="rect" id="node26" href="Music_8h.html" title="Music.h" alt="" coords="23,155,90,181"/></map>
+<area shape="rect" id="node3" href="Game_8h.html" title="Brief Description. " alt="" coords="201,80,269,107"/><area shape="rect" id="node20" href="InputManager_8h.html" title="Brief Description. " alt="" coords="1367,155,1478,181"/><area shape="rect" id="node24" href="JoystickButton_8h.html" title="This file contains the definitions of all methods and attributes of the class JoystickButton which co..." alt="" coords="555,80,675,107"/><area shape="rect" id="node27" href="JoystickConfigState_8h.html" title="This file contains the definitions of the methods and attributes of the class JoystickConfigState. " alt="" coords="719,80,869,107"/><area shape="rect" id="node31" href="MenuState_8h.html" title="Brief Description. " alt="" coords="894,80,990,107"/><area shape="rect" id="node33" href="OptionsState_8h.html" title="This file contains the definitions of all methods and attributes of the class OptionsState. " alt="" coords="1014,80,1123,107"/><area shape="rect" id="node12" href="State_8h.html" title="Brief Description. " alt="" coords="673,155,737,181"/><area shape="rect" id="node13" href="GameObject_8h.html" title="Brief Description. " alt="" coords="302,229,409,256"/><area shape="rect" id="node16" href="Rectangle_8h.html" title="Brief Description. " alt="" coords="435,304,526,331"/><area shape="rect" id="node17" href="Vector_8h.html" title="Brief Description. " alt="" coords="892,379,962,405"/><area shape="rect" id="node25" href="Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="582,155,649,181"/><area shape="rect" id="node28" href="Sound_8h.html" title="Brief Description. " alt="" coords="1028,155,1098,181"/><area shape="rect" id="node29" href="Text_8h.html" title="Brief Description. " alt="" coords="945,155,1002,181"/><area shape="rect" id="node30" href="Timer_8h.html" title="Brief Description. " alt="" coords="761,155,827,181"/><area shape="rect" id="node32" href="Music_8h.html" title="Brief Description. " alt="" coords="1123,155,1190,181"/></map>
 </div>
 </div>
 <p><a href="JoystickConfigState_8cpp_source.html">Go to the source code of this file.</a></p>
@@ -111,6 +111,8 @@ Macros</h2></td></tr>
 <tr class="separator:ae3a0d5a32051fef2a946a99914e711f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a701197e83c96ca5814113ebe72527a68"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a701197e83c96ca5814113ebe72527a68">OFFSET_Y</a>&#160;&#160;&#160;400</td></tr>
 <tr class="separator:a701197e83c96ca5814113ebe72527a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabd77484d08720ad120665631a6c6718"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aabd77484d08720ad120665631a6c6718">OFFSET_LEFT_WALL</a>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:aabd77484d08720ad120665631a6c6718"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfd284d3dd63c4ce8f55c816a1704ac7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#acfd284d3dd63c4ce8f55c816a1704ac7">BUTTON_DISTANCE</a>&#160;&#160;&#160;50</td></tr>
 <tr class="separator:acfd284d3dd63c4ce8f55c816a1704ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63aedd809fc5a835720142d0f0e86146"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a63aedd809fc5a835720142d0f0e86146">DPAD_DISTANCE</a>&#160;&#160;&#160;35</td></tr>
@@ -127,12 +129,120 @@ Macros</h2></td></tr>
 <tr class="separator:a5a7142ee95ebc63218ed3aac2ae06b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79d10e672abb49ad63eeaa8aaef57c38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a79d10e672abb49ad63eeaa8aaef57c38">BLUE</a>&#160;&#160;&#160;{ 0, 108, 166, 1 }</td></tr>
 <tr class="separator:a79d10e672abb49ad63eeaa8aaef57c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f276f7c23b33dbd82aced0096756ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a51f276f7c23b33dbd82aced0096756ef">N_JOYSTICK</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a51f276f7c23b33dbd82aced0096756ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac477468e463191e2ce844ce9a9e34d6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aac477468e463191e2ce844ce9a9e34d6">FONT_FILE</a>&#160;&#160;&#160;&quot;font/8-BIT WONDER.ttf&quot;</td></tr>
+<tr class="separator:aac477468e463191e2ce844ce9a9e34d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa968a61524f9ed159c4c5464cb26dd41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aa968a61524f9ed159c4c5464cb26dd41">FONT_SIZE</a>&#160;&#160;&#160;22</td></tr>
+<tr class="separator:aa968a61524f9ed159c4c5464cb26dd41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a903a9f9d46e74efe9b511c2feb2cba36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a903a9f9d46e74efe9b511c2feb2cba36">FONT_SIZE_START_SELECT</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:a903a9f9d46e74efe9b511c2feb2cba36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35a2dd075d78a10df80d2426f0a97c7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a35a2dd075d78a10df80d2426f0a97c7c">TEST_LABEL</a>&#160;&#160;&#160;&quot;TEST&quot;</td></tr>
+<tr class="separator:a35a2dd075d78a10df80d2426f0a97c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1a32812d4e13b6f1f9f7c688af5c342"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#af1a32812d4e13b6f1f9f7c688af5c342">TEST_HORIZONTAL_POSITION</a>&#160;&#160;&#160;970</td></tr>
+<tr class="separator:af1a32812d4e13b6f1f9f7c688af5c342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af34c0ef0edd5bce45afcf491378a61e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#af34c0ef0edd5bce45afcf491378a61e7">TEST_VERTICAL_POSITION</a>&#160;&#160;&#160;650</td></tr>
+<tr class="separator:af34c0ef0edd5bce45afcf491378a61e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae82a5398e36bf6bdef4e244579753c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a5ae82a5398e36bf6bdef4e244579753c">BACK_LABEL</a>&#160;&#160;&#160;&quot;BACK&quot;</td></tr>
+<tr class="separator:a5ae82a5398e36bf6bdef4e244579753c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c2f2e1b7b958719b1c3a605891e241"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ad4c2f2e1b7b958719b1c3a605891e241">BACK_HORIZONTAL_POSITION</a>&#160;&#160;&#160;1154</td></tr>
+<tr class="separator:ad4c2f2e1b7b958719b1c3a605891e241"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681aec7034eb9ee0c4faa05d67f347d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a681aec7034eb9ee0c4faa05d67f347d8">BACK_VERTICAL_POSITION</a>&#160;&#160;&#160;650</td></tr>
+<tr class="separator:a681aec7034eb9ee0c4faa05d67f347d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a273df1cf0a0cddd31d93d0bb4aa0d3cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a273df1cf0a0cddd31d93d0bb4aa0d3cd">PRESS_LABEL</a>&#160;&#160;&#160;&quot;PRESS&quot;</td></tr>
+<tr class="separator:a273df1cf0a0cddd31d93d0bb4aa0d3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a377138469a140136beec7ae12bf7819c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a377138469a140136beec7ae12bf7819c">PRESS_HORIZONTAL_POSITION</a>&#160;&#160;&#160;640</td></tr>
+<tr class="separator:a377138469a140136beec7ae12bf7819c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ba8471cf42aad78b7922f4b23291418"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a6ba8471cf42aad78b7922f4b23291418">PRESS_VERTICAL_POSITION</a>&#160;&#160;&#160;300</td></tr>
+<tr class="separator:a6ba8471cf42aad78b7922f4b23291418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add71216f0c13b670f26004744e64aab5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#add71216f0c13b670f26004744e64aab5">SELECT_LABEL</a>&#160;&#160;&#160;&quot;SELECT&quot;</td></tr>
+<tr class="separator:add71216f0c13b670f26004744e64aab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae8aac3c822776c1e42396bec8145d8c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aae8aac3c822776c1e42396bec8145d8c">SELECT_HORIZONTAL_POSITION</a>&#160;&#160;&#160;500</td></tr>
+<tr class="separator:aae8aac3c822776c1e42396bec8145d8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb3325cf9807b38aa62dc54a720fb67"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a4bb3325cf9807b38aa62dc54a720fb67">SELECT_VERTICAL_POSITION</a>&#160;&#160;&#160;350</td></tr>
+<tr class="separator:a4bb3325cf9807b38aa62dc54a720fb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58b82f41f7d9b7e5bf76d7387ac27ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#af58b82f41f7d9b7e5bf76d7387ac27ed">AND_LABEL</a>&#160;&#160;&#160;&quot;AND&quot;</td></tr>
+<tr class="separator:af58b82f41f7d9b7e5bf76d7387ac27ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd9abfa53a1ff172f7e19759f3a8debf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#abd9abfa53a1ff172f7e19759f3a8debf">AND_HORIZONTAL_POSITION</a>&#160;&#160;&#160;640</td></tr>
+<tr class="separator:abd9abfa53a1ff172f7e19759f3a8debf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3dc11f6539d11a1a80721082535b4b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ae3dc11f6539d11a1a80721082535b4b2">AND_VERTICAL_POSITION</a>&#160;&#160;&#160;350</td></tr>
+<tr class="separator:ae3dc11f6539d11a1a80721082535b4b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9dcd041638cda20fd6885880662a59e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#af9dcd041638cda20fd6885880662a59e">START_LABEL</a>&#160;&#160;&#160;&quot;START&quot;</td></tr>
+<tr class="separator:af9dcd041638cda20fd6885880662a59e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac25f14f54a991824fee3e549aa19a85e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ac25f14f54a991824fee3e549aa19a85e">START_HORIZONTAL_POSITION</a>&#160;&#160;&#160;760</td></tr>
+<tr class="separator:ac25f14f54a991824fee3e549aa19a85e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a891df7f777f3265b72fb48778bfb74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a3a891df7f777f3265b72fb48778bfb74">START_VERTICAL_POSITION</a>&#160;&#160;&#160;350</td></tr>
+<tr class="separator:a3a891df7f777f3265b72fb48778bfb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfd6e9311a809124627078061f32d73a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#adfd6e9311a809124627078061f32d73a">TO_GO_BACK_LABEL</a>&#160;&#160;&#160;&quot;TO GO BACK&quot;</td></tr>
+<tr class="separator:adfd6e9311a809124627078061f32d73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad91ac367581978eab092995a120f879c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ad91ac367581978eab092995a120f879c">TO_GO_BACK_HORIZONTAL_POSITION</a>&#160;&#160;&#160;640</td></tr>
+<tr class="separator:ad91ac367581978eab092995a120f879c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065d962077b93d6fefa8783b7bbc6527"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a065d962077b93d6fefa8783b7bbc6527">TO_GO_BACK_VERTICAL_POSITION</a>&#160;&#160;&#160;400</td></tr>
+<tr class="separator:a065d962077b93d6fefa8783b7bbc6527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf293bda82ab92bfe778c067a2b723f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#adf293bda82ab92bfe778c067a2b723f0">UP_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;UP&quot;</td></tr>
+<tr class="separator:adf293bda82ab92bfe778c067a2b723f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6506858bf7b3949d4cfcce414eb9a5e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a6506858bf7b3949d4cfcce414eb9a5e5">UP_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;up&quot;</td></tr>
+<tr class="separator:a6506858bf7b3949d4cfcce414eb9a5e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3de9120b793085926a5517fb0396657e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a3de9120b793085926a5517fb0396657e">RIGHT_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;RIGHT&quot;</td></tr>
+<tr class="separator:a3de9120b793085926a5517fb0396657e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac64724edff2c414605962a022ccae35d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ac64724edff2c414605962a022ccae35d">RIGHT_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;right&quot;</td></tr>
+<tr class="separator:ac64724edff2c414605962a022ccae35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17f7dd2932139ec9601e4df01c221dc7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a17f7dd2932139ec9601e4df01c221dc7">DOWN_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;DOWN&quot;</td></tr>
+<tr class="separator:a17f7dd2932139ec9601e4df01c221dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0abed485432a622ad180b4cb0ca6205"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#af0abed485432a622ad180b4cb0ca6205">DOWN_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;down&quot;</td></tr>
+<tr class="separator:af0abed485432a622ad180b4cb0ca6205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52200d51400ef29064a3aa20e467ba83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a52200d51400ef29064a3aa20e467ba83">LEFT_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;LEFT&quot;</td></tr>
+<tr class="separator:a52200d51400ef29064a3aa20e467ba83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53be27e06d2983a1f32adf56178efd98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a53be27e06d2983a1f32adf56178efd98">LEFT_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;left&quot;</td></tr>
+<tr class="separator:a53be27e06d2983a1f32adf56178efd98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f6def226ec4f8b4aaccf71ed0bdd7ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a3f6def226ec4f8b4aaccf71ed0bdd7ec">X_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;X&quot;</td></tr>
+<tr class="separator:a3f6def226ec4f8b4aaccf71ed0bdd7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f0df67c3f3c9d68fff65d412292edcd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a2f0df67c3f3c9d68fff65d412292edcd">Y_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;Y&quot;</td></tr>
+<tr class="separator:a2f0df67c3f3c9d68fff65d412292edcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa38389857df8a62fc8e5b79c3fc86942"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aa38389857df8a62fc8e5b79c3fc86942">A_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;A&quot;</td></tr>
+<tr class="separator:aa38389857df8a62fc8e5b79c3fc86942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca2a6d961b9f1a2a7b487e7431d78bc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a0ca2a6d961b9f1a2a7b487e7431d78bc">B_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;B&quot;</td></tr>
+<tr class="separator:a0ca2a6d961b9f1a2a7b487e7431d78bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a779e575f456597fbee87a2474a90bfca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a779e575f456597fbee87a2474a90bfca">LB_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;LB&quot;</td></tr>
+<tr class="separator:a779e575f456597fbee87a2474a90bfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cf498d4e2a5a6d371dec23b9b1cab3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a5cf498d4e2a5a6d371dec23b9b1cab3c">RB_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;RB&quot;</td></tr>
+<tr class="separator:a5cf498d4e2a5a6d371dec23b9b1cab3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace2dc0459f6768a2042bbaaaf8b316a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ace2dc0459f6768a2042bbaaaf8b316a2">LT_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;LT&quot;</td></tr>
+<tr class="separator:ace2dc0459f6768a2042bbaaaf8b316a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab94bfc350fcdd3fc565efc03ea61277"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aab94bfc350fcdd3fc565efc03ea61277">RT_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;RT&quot;</td></tr>
+<tr class="separator:aab94bfc350fcdd3fc565efc03ea61277"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a661986755002d4a25d6aef777226383f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a661986755002d4a25d6aef777226383f">SELECT_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;select&quot;</td></tr>
+<tr class="separator:a661986755002d4a25d6aef777226383f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c7f86f56113164f3d4155bd8877893"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#a82c7f86f56113164f3d4155bd8877893">START_BUTTON_LABEL</a>&#160;&#160;&#160;&quot;start&quot;</td></tr>
+<tr class="separator:a82c7f86f56113164f3d4155bd8877893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae90463f50d422ef579a4cfa562c8c09a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ae90463f50d422ef579a4cfa562c8c09a">BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;button&quot;</td></tr>
+<tr class="separator:ae90463f50d422ef579a4cfa562c8c09a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8acd51cc4403b4edd655b49435cbfe2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ae8acd51cc4403b4edd655b49435cbfe2">TRIGGER_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;trigger&quot;</td></tr>
+<tr class="separator:ae8acd51cc4403b4edd655b49435cbfe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8cc4c828788e6f1eade8607dad019b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#ab8cc4c828788e6f1eade8607dad019b9">BACK_TRIGGER_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;back_trigger&quot;</td></tr>
+<tr class="separator:ab8cc4c828788e6f1eade8607dad019b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba93b264b3efcd0482ac96bfae94b97f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="JoystickConfigState_8cpp.html#aba93b264b3efcd0482ac96bfae94b97f">SELECT_START_BUTTON_SPRITE</a>&#160;&#160;&#160;&quot;select_start&quot;</td></tr>
+<tr class="separator:aba93b264b3efcd0482ac96bfae94b97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file renders images of options 'JOYSTICK' and 'KEYBOARD' of the menu 'Options' and controls the behavior of the joystick test mode functionality. </p>
 
 <p>Definition in file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="aa38389857df8a62fc8e5b79c3fc86942"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define A_BUTTON_LABEL&#160;&#160;&#160;&quot;A&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00094">94</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aa390a893be95e426a161386bd2f5958c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -161,6 +271,118 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abd9abfa53a1ff172f7e19759f3a8debf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AND_HORIZONTAL_POSITION&#160;&#160;&#160;640</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00069">69</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af58b82f41f7d9b7e5bf76d7387ac27ed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AND_LABEL&#160;&#160;&#160;&quot;AND&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00068">68</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae3dc11f6539d11a1a80721082535b4b2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AND_VERTICAL_POSITION&#160;&#160;&#160;350</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00070">70</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ca2a6d961b9f1a2a7b487e7431d78bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define B_BUTTON_LABEL&#160;&#160;&#160;&quot;B&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00095">95</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4c2f2e1b7b958719b1c3a605891e241"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BACK_HORIZONTAL_POSITION&#160;&#160;&#160;1154</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00057">57</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ae82a5398e36bf6bdef4e244579753c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BACK_LABEL&#160;&#160;&#160;&quot;BACK&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00056">56</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab8cc4c828788e6f1eade8607dad019b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BACK_TRIGGER_BUTTON_SPRITE&#160;&#160;&#160;&quot;back_trigger&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00105">105</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a681aec7034eb9ee0c4faa05d67f347d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BACK_VERTICAL_POSITION&#160;&#160;&#160;650</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00058">58</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a79d10e672abb49ad63eeaa8aaef57c38"></a>
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +393,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00040">40</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00043">43</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -199,7 +421,21 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00032">32</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00033">33</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae90463f50d422ef579a4cfa562c8c09a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUTTON_SPRITE&#160;&#160;&#160;&quot;button&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00103">103</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -213,7 +449,35 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00036">36</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00037">37</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a17f7dd2932139ec9601e4df01c221dc7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOWN_BUTTON_LABEL&#160;&#160;&#160;&quot;DOWN&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00086">86</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af0abed485432a622ad180b4cb0ca6205"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOWN_BUTTON_SPRITE&#160;&#160;&#160;&quot;down&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00087">87</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -255,7 +519,63 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00033">33</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00034">34</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aac477468e463191e2ce844ce9a9e34d6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FONT_FILE&#160;&#160;&#160;&quot;font/8-BIT WONDER.ttf&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00048">48</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa968a61524f9ed159c4c5464cb26dd41"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FONT_SIZE&#160;&#160;&#160;22</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00049">49</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a903a9f9d46e74efe9b511c2feb2cba36"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FONT_SIZE_START_SELECT&#160;&#160;&#160;25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00050">50</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a779e575f456597fbee87a2474a90bfca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LB_BUTTON_LABEL&#160;&#160;&#160;&quot;LB&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00096">96</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -287,6 +607,34 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a52200d51400ef29064a3aa20e467ba83"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LEFT_BUTTON_LABEL&#160;&#160;&#160;&quot;LEFT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00089">89</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a53be27e06d2983a1f32adf56178efd98"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LEFT_BUTTON_SPRITE&#160;&#160;&#160;&quot;left&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00090">90</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a5a7142ee95ebc63218ed3aac2ae06b13"></a>
 <div class="memitem">
 <div class="memproto">
@@ -297,7 +645,21 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00039">39</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00041">41</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ace2dc0459f6768a2042bbaaaf8b316a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LT_BUTTON_LABEL&#160;&#160;&#160;&quot;LT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00098">98</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -312,6 +674,34 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00020">20</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a51f276f7c23b33dbd82aced0096756ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define N_JOYSTICK&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00046">46</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aabd77484d08720ad120665631a6c6718"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OFFSET_LEFT_WALL&#160;&#160;&#160;20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00032">32</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -343,6 +733,174 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a377138469a140136beec7ae12bf7819c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRESS_HORIZONTAL_POSITION&#160;&#160;&#160;640</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00061">61</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a273df1cf0a0cddd31d93d0bb4aa0d3cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRESS_LABEL&#160;&#160;&#160;&quot;PRESS&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00060">60</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6ba8471cf42aad78b7922f4b23291418"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRESS_VERTICAL_POSITION&#160;&#160;&#160;300</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00062">62</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5cf498d4e2a5a6d371dec23b9b1cab3c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RB_BUTTON_LABEL&#160;&#160;&#160;&quot;RB&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00097">97</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3de9120b793085926a5517fb0396657e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIGHT_BUTTON_LABEL&#160;&#160;&#160;&quot;RIGHT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00083">83</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac64724edff2c414605962a022ccae35d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RIGHT_BUTTON_SPRITE&#160;&#160;&#160;&quot;right&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00084">84</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aab94bfc350fcdd3fc565efc03ea61277"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RT_BUTTON_LABEL&#160;&#160;&#160;&quot;RT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00099">99</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a661986755002d4a25d6aef777226383f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SELECT_BUTTON_LABEL&#160;&#160;&#160;&quot;select&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00100">100</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae8aac3c822776c1e42396bec8145d8c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SELECT_HORIZONTAL_POSITION&#160;&#160;&#160;500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00065">65</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add71216f0c13b670f26004744e64aab5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SELECT_LABEL&#160;&#160;&#160;&quot;SELECT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00064">64</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aba93b264b3efcd0482ac96bfae94b97f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SELECT_START_BUTTON_SPRITE&#160;&#160;&#160;&quot;select_start&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00106">106</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4bb3325cf9807b38aa62dc54a720fb67"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SELECT_VERTICAL_POSITION&#160;&#160;&#160;350</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00066">66</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="aff6900330cfab671848ebe0ab422baaf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -371,6 +929,160 @@ Macros</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a82c7f86f56113164f3d4155bd8877893"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define START_BUTTON_LABEL&#160;&#160;&#160;&quot;start&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00101">101</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac25f14f54a991824fee3e549aa19a85e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define START_HORIZONTAL_POSITION&#160;&#160;&#160;760</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00073">73</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af9dcd041638cda20fd6885880662a59e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define START_LABEL&#160;&#160;&#160;&quot;START&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00072">72</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3a891df7f777f3265b72fb48778bfb74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define START_VERTICAL_POSITION&#160;&#160;&#160;350</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00074">74</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af1a32812d4e13b6f1f9f7c688af5c342"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEST_HORIZONTAL_POSITION&#160;&#160;&#160;970</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00053">53</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a35a2dd075d78a10df80d2426f0a97c7c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEST_LABEL&#160;&#160;&#160;&quot;TEST&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00052">52</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af34c0ef0edd5bce45afcf491378a61e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TEST_VERTICAL_POSITION&#160;&#160;&#160;650</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00054">54</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad91ac367581978eab092995a120f879c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TO_GO_BACK_HORIZONTAL_POSITION&#160;&#160;&#160;640</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00077">77</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adfd6e9311a809124627078061f32d73a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TO_GO_BACK_LABEL&#160;&#160;&#160;&quot;TO GO BACK&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00076">76</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a065d962077b93d6fefa8783b7bbc6527"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TO_GO_BACK_VERTICAL_POSITION&#160;&#160;&#160;400</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00078">78</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae8acd51cc4403b4edd655b49435cbfe2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRIGGER_BUTTON_SPRITE&#160;&#160;&#160;&quot;trigger&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00104">104</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a9e98d4c0265f9f6c071a34000f71f17c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -381,7 +1093,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00034">34</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00035">35</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -395,7 +1107,35 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00035">35</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00036">36</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adf293bda82ab92bfe778c067a2b723f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UP_BUTTON_LABEL&#160;&#160;&#160;&quot;UP&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00080">80</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6506858bf7b3949d4cfcce414eb9a5e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UP_BUTTON_SPRITE&#160;&#160;&#160;&quot;up&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00081">81</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -409,7 +1149,35 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00038">38</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00039">39</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3f6def226ec4f8b4aaccf71ed0bdd7ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define X_BUTTON_LABEL&#160;&#160;&#160;&quot;X&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00092">92</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2f0df67c3f3c9d68fff65d412292edcd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Y_BUTTON_LABEL&#160;&#160;&#160;&quot;Y&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00093">93</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -419,7 +1187,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="JoystickConfigState_8cpp.html">JoystickConfigState.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

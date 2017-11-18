@@ -66,87 +66,94 @@ $(document).ready(function(){initNavTree('State_8cpp_source.html','');});
 <div class="title">State.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="State_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="State_8h.html">State.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Collision_8h.html">Collision.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">    5</a></span>&#160;<a class="code" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State::State</a>(){</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="classState.html#ac8003028ba92f3faee796aec6fe50989">m_pop_requested</a> = <a class="code" href="classState.html#a188e424199fd30dd24ed58691a8c935f">m_quit_requested</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;}</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">    9</a></span>&#160;<a class="code" href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">State::~State</a>(){</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classState.html#a8d991280635a9bdb470e05cb22382347">   12</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#a8d991280635a9bdb470e05cb22382347">State::add_object</a>(<a class="code" href="classGameObject.html">GameObject</a> * <span class="keywordtype">object</span>){</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.emplace_back(<span class="keywordtype">object</span>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classState.html#a69cfd2b095e4fe60b5ad8f8e54df37b6">   16</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classState.html#a69cfd2b095e4fe60b5ad8f8e54df37b6">State::pop_requested</a>(){</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classState.html#ac8003028ba92f3faee796aec6fe50989">m_pop_requested</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">   20</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">State::quit_requested</a>(){</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classState.html#a188e424199fd30dd24ed58691a8c935f">m_quit_requested</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classState.html#aed923ad0ac7c9041b1b0d4b09cac4696">   24</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#aed923ad0ac7c9041b1b0d4b09cac4696">State::update_array</a>(<span class="keywordtype">float</span> delta){</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">//collision tests</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0; i &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++i){</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> j = i + 1; j &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++j){</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">auto</span> a = <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[i].get();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">auto</span> b = <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[j].get();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="classCollision.html#aabc2afa6a5826bb5b053aba2f26ad4cd">Collision::is_colliding</a>(a-&gt;box, b-&gt;box, a-&gt;rotation, b-&gt;rotation)){</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                a-&gt;notify_collision(*b);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                b-&gt;notify_collision(*a);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<a href="State_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="State_8h.html">State.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Collision_8h.html">Collision.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">   18</a></span>&#160;<a class="code" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State::State</a>() {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classState.html#ac8003028ba92f3faee796aec6fe50989">m_pop_requested</a> = <a class="code" href="classState.html#a188e424199fd30dd24ed58691a8c935f">m_quit_requested</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">   25</a></span>&#160;<a class="code" href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">State::~State</a>() {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classState.html#a8d991280635a9bdb470e05cb22382347">   33</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#a8d991280635a9bdb470e05cb22382347">State::add_object</a>(<a class="code" href="classGameObject.html">GameObject</a>* <span class="keywordtype">object</span>) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.emplace_back(<span class="keywordtype">object</span>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">//update</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> it = 0; it &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++it){</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[it]-&gt;update(delta);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//death check</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> it = 0; it &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++it){</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span>(<a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[it]-&gt;is_dead()){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.erase(<a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.begin() + it);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classState.html#aa6f71b06e0199ebb1a1bdd383231755f">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#aa6f71b06e0199ebb1a1bdd383231755f">State::render_array</a>(){</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> &amp; go : <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>){</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        go-&gt;render();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">bool State::pop_requested() {</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">    return m_pop_requested;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">}</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">   53</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">State::quit_requested</a>() {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classState.html#a188e424199fd30dd24ed58691a8c935f">m_quit_requested</a>;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classState.html#adab8ae396587859e63f5cf1deee4bdd3">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#adab8ae396587859e63f5cf1deee4bdd3">State::load_assets</a>(){</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//NOTHING TO DO</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="ttc" id="classState_html_a69cfd2b095e4fe60b5ad8f8e54df37b6"><div class="ttname"><a href="classState.html#a69cfd2b095e4fe60b5ad8f8e54df37b6">State::pop_requested</a></div><div class="ttdeci">bool pop_requested()</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00016">State.cpp:16</a></div></div>
-<div class="ttc" id="classState_html_a188e424199fd30dd24ed58691a8c935f"><div class="ttname"><a href="classState.html#a188e424199fd30dd24ed58691a8c935f">State::m_quit_requested</a></div><div class="ttdeci">bool m_quit_requested</div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00015">State.h:15</a></div></div>
-<div class="ttc" id="classState_html_ac8003028ba92f3faee796aec6fe50989"><div class="ttname"><a href="classState.html#ac8003028ba92f3faee796aec6fe50989">State::m_pop_requested</a></div><div class="ttdeci">bool m_pop_requested</div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00014">State.h:14</a></div></div>
-<div class="ttc" id="classState_html_adab8ae396587859e63f5cf1deee4bdd3"><div class="ttname"><a href="classState.html#adab8ae396587859e63f5cf1deee4bdd3">State::load_assets</a></div><div class="ttdeci">virtual void load_assets()</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00057">State.cpp:57</a></div></div>
-<div class="ttc" id="classState_html_a8d991280635a9bdb470e05cb22382347"><div class="ttname"><a href="classState.html#a8d991280635a9bdb470e05cb22382347">State::add_object</a></div><div class="ttdeci">virtual void add_object(GameObject *object)</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00012">State.cpp:12</a></div></div>
-<div class="ttc" id="classState_html_a37d8ebb8aebeb4569cb4f7ce9f286673"><div class="ttname"><a href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">State::quit_requested</a></div><div class="ttdeci">bool quit_requested()</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00020">State.cpp:20</a></div></div>
-<div class="ttc" id="classGameObject_html"><div class="ttname"><a href="classGameObject.html">GameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8h_source.html#l00013">GameObject.h:13</a></div></div>
-<div class="ttc" id="classState_html_aed923ad0ac7c9041b1b0d4b09cac4696"><div class="ttname"><a href="classState.html#aed923ad0ac7c9041b1b0d4b09cac4696">State::update_array</a></div><div class="ttdeci">virtual void update_array(float delta)</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00024">State.cpp:24</a></div></div>
-<div class="ttc" id="State_8h_html"><div class="ttname"><a href="State_8h.html">State.h</a></div></div>
-<div class="ttc" id="classState_html_ab91bb1dd5aa6260ab2a456581daf9ec2"><div class="ttname"><a href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State::State</a></div><div class="ttdeci">State()</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00005">State.cpp:5</a></div></div>
-<div class="ttc" id="classCollision_html_aabc2afa6a5826bb5b053aba2f26ad4cd"><div class="ttname"><a href="classCollision.html#aabc2afa6a5826bb5b053aba2f26ad4cd">Collision::is_colliding</a></div><div class="ttdeci">static bool is_colliding(Rectangle &amp;a, Rectangle &amp;b, float angleOfA, float angleOfB)</div><div class="ttdef"><b>Definition:</b> <a href="Collision_8h_source.html#l00012">Collision.h:12</a></div></div>
-<div class="ttc" id="Collision_8h_html"><div class="ttname"><a href="Collision_8h.html">Collision.h</a></div></div>
-<div class="ttc" id="classState_html_afab438d92b90dc18d194dbd9c9c8bab3"><div class="ttname"><a href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">State::~State</a></div><div class="ttdeci">virtual ~State()</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00009">State.cpp:9</a></div></div>
-<div class="ttc" id="classState_html_aa6f71b06e0199ebb1a1bdd383231755f"><div class="ttname"><a href="classState.html#aa6f71b06e0199ebb1a1bdd383231755f">State::render_array</a></div><div class="ttdeci">virtual void render_array()</div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00051">State.cpp:51</a></div></div>
-<div class="ttc" id="classState_html_a21206144efd36d097282595ef1f239ff"><div class="ttname"><a href="classState.html#a21206144efd36d097282595ef1f239ff">State::object_array</a></div><div class="ttdeci">vector&lt; unique_ptr&lt; GameObject &gt; &gt; object_array</div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00017">State.h:17</a></div></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classState.html#aed923ad0ac7c9041b1b0d4b09cac4696">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#aed923ad0ac7c9041b1b0d4b09cac4696">State::update_array</a>(<span class="keywordtype">float</span> delta) {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// collision tests</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++i) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = i + 1; j &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++j) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keyword">auto</span> a = <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[i].get();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">auto</span> b = <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[j].get();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="classCollision.html#a18b32560f731b8a32f20d9d7d9e8bd5e">Collision::is_colliding</a>(a-&gt;box, b-&gt;box, a-&gt;rotation,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                        b-&gt;rotation)) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                a-&gt;notify_collision(*b);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                b-&gt;notify_collision(*a);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// update</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> it = 0; it &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++it) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[it]-&gt;update(delta);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// death check</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> it = 0; it &lt; <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.size(); ++it) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>[it]-&gt;is_dead()) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.erase(<a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>.begin() + it);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classState.html#aa6f71b06e0199ebb1a1bdd383231755f">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#aa6f71b06e0199ebb1a1bdd383231755f">State::render_array</a>() {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; go : <a class="code" href="classState.html#a21206144efd36d097282595ef1f239ff">object_array</a>) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        go-&gt;render();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="classState.html#adab8ae396587859e63f5cf1deee4bdd3">  102</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classState.html#adab8ae396587859e63f5cf1deee4bdd3">State::load_assets</a>() {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// NOTHING TO DO</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="ttc" id="classState_html_a188e424199fd30dd24ed58691a8c935f"><div class="ttname"><a href="classState.html#a188e424199fd30dd24ed58691a8c935f">State::m_quit_requested</a></div><div class="ttdeci">bool m_quit_requested</div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00025">State.h:25</a></div></div>
+<div class="ttc" id="classCollision_html_a18b32560f731b8a32f20d9d7d9e8bd5e"><div class="ttname"><a href="classCollision.html#a18b32560f731b8a32f20d9d7d9e8bd5e">Collision::is_colliding</a></div><div class="ttdeci">static bool is_colliding(const Rectangle &amp;a, const Rectangle &amp;b, float angleOfA, float angleOfB)</div><div class="ttdef"><b>Definition:</b> <a href="Collision_8h_source.html#l00022">Collision.h:22</a></div></div>
+<div class="ttc" id="classState_html_ac8003028ba92f3faee796aec6fe50989"><div class="ttname"><a href="classState.html#ac8003028ba92f3faee796aec6fe50989">State::m_pop_requested</a></div><div class="ttdeci">bool m_pop_requested</div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00024">State.h:24</a></div></div>
+<div class="ttc" id="classState_html_adab8ae396587859e63f5cf1deee4bdd3"><div class="ttname"><a href="classState.html#adab8ae396587859e63f5cf1deee4bdd3">State::load_assets</a></div><div class="ttdeci">virtual void load_assets()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00102">State.cpp:102</a></div></div>
+<div class="ttc" id="classState_html_a8d991280635a9bdb470e05cb22382347"><div class="ttname"><a href="classState.html#a8d991280635a9bdb470e05cb22382347">State::add_object</a></div><div class="ttdeci">virtual void add_object(GameObject *object)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00033">State.cpp:33</a></div></div>
+<div class="ttc" id="classState_html_a37d8ebb8aebeb4569cb4f7ce9f286673"><div class="ttname"><a href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">State::quit_requested</a></div><div class="ttdeci">bool quit_requested()</div><div class="ttdoc">Not used method. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00053">State.cpp:53</a></div></div>
+<div class="ttc" id="classGameObject_html"><div class="ttname"><a href="classGameObject.html">GameObject</a></div><div class="ttdef"><b>Definition:</b> <a href="GameObject_8h_source.html#l00021">GameObject.h:21</a></div></div>
+<div class="ttc" id="classState_html_aed923ad0ac7c9041b1b0d4b09cac4696"><div class="ttname"><a href="classState.html#aed923ad0ac7c9041b1b0d4b09cac4696">State::update_array</a></div><div class="ttdeci">virtual void update_array(float delta)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00062">State.cpp:62</a></div></div>
+<div class="ttc" id="State_8h_html"><div class="ttname"><a href="State_8h.html">State.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classState_html_ab91bb1dd5aa6260ab2a456581daf9ec2"><div class="ttname"><a href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State::State</a></div><div class="ttdeci">State()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00018">State.cpp:18</a></div></div>
+<div class="ttc" id="Collision_8h_html"><div class="ttname"><a href="Collision_8h.html">Collision.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classState_html_afab438d92b90dc18d194dbd9c9c8bab3"><div class="ttname"><a href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">State::~State</a></div><div class="ttdeci">virtual ~State()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00025">State.cpp:25</a></div></div>
+<div class="ttc" id="classState_html_aa6f71b06e0199ebb1a1bdd383231755f"><div class="ttname"><a href="classState.html#aa6f71b06e0199ebb1a1bdd383231755f">State::render_array</a></div><div class="ttdeci">virtual void render_array()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="State_8cpp_source.html#l00093">State.cpp:93</a></div></div>
+<div class="ttc" id="classState_html_a21206144efd36d097282595ef1f239ff"><div class="ttname"><a href="classState.html#a21206144efd36d097282595ef1f239ff">State::object_array</a></div><div class="ttdeci">vector&lt; unique_ptr&lt; GameObject &gt; &gt; object_array</div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00027">State.h:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="State_8cpp.html">State.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

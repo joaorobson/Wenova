@@ -1,23 +1,23 @@
 <map id="BattleState.cpp" name="BattleState.cpp">
-<area shape="rect" id="node2" href="$BattleState_8h.html" title="BattleState.h" alt="" coords="569,80,668,107"/>
-<area shape="rect" id="node23" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="1670,229,1781,256"/>
-<area shape="rect" id="node28" href="$BattleEnd_8h.html" title="This file contains the definitions of the methods and attributes of the class BattleEnd. " alt="" coords="754,155,845,181"/>
-<area shape="rect" id="node30" href="$Game_8h.html" title="Game.h" alt="" coords="1215,155,1282,181"/>
-<area shape="rect" id="node33" href="$Floor_8h.html" title="Floor.h" alt="" coords="1128,155,1190,181"/>
-<area shape="rect" id="node34" href="$MenuState_8h.html" title="MenuState.h" alt="" coords="250,155,346,181"/>
-<area shape="rect" id="node35" href="$FighterStats_8h.html" title="FighterStats.h" alt="" coords="782,80,886,107"/>
-<area shape="rect" id="node36" href="$Config_8h.html" title="Manages configuration about screen exhibition. " alt="" coords="120,80,190,107"/>
-<area shape="rect" id="node37" href="$Blood_8h.html" title="This file contains the declaration of the Blood class methods and attributes. " alt="" coords="428,80,494,107"/>
-<area shape="rect" id="node38" href="$Flesh_8h.html" title="Flesh.h" alt="" coords="692,80,757,107"/>
-<area shape="rect" id="node3" href="$State_8h.html" title="State.h" alt="" coords="837,229,901,256"/>
-<area shape="rect" id="node7" href="$Vector_8h.html" title="Vector.h" alt="" coords="572,453,642,480"/>
-<area shape="rect" id="node13" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="645,229,712,256"/>
-<area shape="rect" id="node16" href="$Text_8h.html" title="Text.h" alt="" coords="461,229,518,256"/>
-<area shape="rect" id="node18" href="$Timer_8h.html" title="Timer.h" alt="" coords="320,229,386,256"/>
-<area shape="rect" id="node19" href="$Music_8h.html" title="Music.h" alt="" coords="132,229,200,256"/>
-<area shape="rect" id="node21" href="$Sound_8h.html" title="Sound.h" alt="" coords="224,229,294,256"/>
-<area shape="rect" id="node22" href="$Fighter_8h.html" title="Fighter.h" alt="" coords="656,155,729,181"/>
-<area shape="rect" id="node27" href="$TimeCounter_8h.html" title="This file contains the definitions of all methods and attributes of the class TimeCounter. " alt="" coords="422,155,529,181"/>
-<area shape="rect" id="node4" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="1140,304,1246,331"/>
-<area shape="rect" id="node5" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="646,379,737,405"/>
+<area shape="rect" id="node2" href="$BattleState_8h.html" title="Brief Description. " alt="" coords="1036,80,1135,107"/>
+<area shape="rect" id="node3" href="$BattleEnd_8h.html" title="This file contains the definitions of the methods and attributes of the class BattleEnd. " alt="" coords="739,155,829,181"/>
+<area shape="rect" id="node23" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="256,229,367,256"/>
+<area shape="rect" id="node32" href="$Blood_8h.html" title="This file contains the declaration of the Blood class methods and attributes. " alt="" coords="1159,80,1225,107"/>
+<area shape="rect" id="node33" href="$Config_8h.html" title="Manages configuration about screen exhibition. " alt="" coords="430,155,500,181"/>
+<area shape="rect" id="node34" href="$FighterStats_8h.html" title="Brief Description. " alt="" coords="1667,80,1771,107"/>
+<area shape="rect" id="node35" href="$Flesh_8h.html" title="Brief Description. " alt="" coords="946,80,1011,107"/>
+<area shape="rect" id="node36" href="$Floor_8h.html" title="Brief Description. " alt="" coords="1618,155,1680,181"/>
+<area shape="rect" id="node37" href="$Game_8h.html" title="Brief Description. " alt="" coords="2043,155,2111,181"/>
+<area shape="rect" id="node40" href="$MenuState_8h.html" title="Brief Description. " alt="" coords="1288,155,1384,181"/>
+<area shape="rect" id="node4" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="1625,229,1692,256"/>
+<area shape="rect" id="node10" href="$State_8h.html" title="Brief Description. " alt="" coords="1487,229,1551,256"/>
+<area shape="rect" id="node15" href="$Vector_8h.html" title="Brief Description. " alt="" coords="45,453,115,480"/>
+<area shape="rect" id="node18" href="$Text_8h.html" title="Brief Description. " alt="" coords="821,229,879,256"/>
+<area shape="rect" id="node22" href="$Fighter_8h.html" title="Brief Description. " alt="" coords="1139,155,1212,181"/>
+<area shape="rect" id="node26" href="$Sound_8h.html" title="Brief Description. " alt="" coords="1341,229,1411,256"/>
+<area shape="rect" id="node28" href="$Timer_8h.html" title="Brief Description. " alt="" coords="1005,229,1072,256"/>
+<area shape="rect" id="node29" href="$Music_8h.html" title="Brief Description. " alt="" coords="1249,229,1316,256"/>
+<area shape="rect" id="node30" href="$TimeCounter_8h.html" title="This file contains the definitions of all methods and attributes of the class TimeCounter. " alt="" coords="955,155,1063,181"/>
+<area shape="rect" id="node11" href="$GameObject_8h.html" title="Brief Description. " alt="" coords="1481,304,1588,331"/>
+<area shape="rect" id="node14" href="$Rectangle_8h.html" title="Brief Description. " alt="" coords="762,379,853,405"/>
 </map>

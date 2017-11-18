@@ -28,7 +28,7 @@ var CharacterSelectState_8cpp =
     [ "CHARATERS_SPRITES_AMOUNT", "CharacterSelectState_8cpp.html#a32f0009115685febb7469c0e7305cf99", null ],
     [ "FIRST_PLAYER", "CharacterSelectState_8cpp.html#a89f0201fca94cbc3ca0f5fbce851e7c9", null ],
     [ "FRAME_TIME", "CharacterSelectState_8cpp.html#ab50ebddbf2f210d61bcc9013973747a1", null ],
-    [ "N_backgrounds_spritesS", "CharacterSelectState_8cpp.html#a37fab094c7a928739970d5bf78901f0b", null ],
+    [ "N_backgrounds_sprites", "CharacterSelectState_8cpp.html#ae289e406e8a289a63b885a8be3f02200", null ],
     [ "N_COLS", "CharacterSelectState_8cpp.html#a402e9fd28bf9c6d86e5e8e6a7f42099a", null ],
     [ "N_PLAYERS", "CharacterSelectState_8cpp.html#af996571cbbd04e1cc18d4e7a85a1c36b", null ],
     [ "N_ROWS", "CharacterSelectState_8cpp.html#a9c44d59e4de2821c0a19bf0277beb208", null ],

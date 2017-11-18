@@ -66,34 +66,42 @@ $(document).ready(function(){initNavTree('Main_8cpp_source.html','');});
 <div class="title">Main.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Game_8h.html">Game.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="MenuState_8h.html">MenuState.h</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="Main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">    4</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="Main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> **){</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <a class="code" href="classGame.html">Game</a> game(<span class="stringliteral">&quot;Wenova - Rise of Conquerors&quot;</span>);</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="classState.html">State</a> * state =  <span class="keyword">new</span> <a class="code" href="classMenuState.html">MenuState</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    game.<a class="code" href="classGame.html#a31bb86a922f699552f8c2a8be12c9bcb">push</a>(state);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    game.<a class="code" href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a>();</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-<div class="ttc" id="classGame_html_a31bb86a922f699552f8c2a8be12c9bcb"><div class="ttname"><a href="classGame.html#a31bb86a922f699552f8c2a8be12c9bcb">Game::push</a></div><div class="ttdeci">void push(State *state)</div><div class="ttdef"><b>Definition:</b> <a href="Game_8cpp_source.html#l00107">Game.cpp:107</a></div></div>
-<div class="ttc" id="Game_8h_html"><div class="ttname"><a href="Game_8h.html">Game.h</a></div></div>
-<div class="ttc" id="classGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdef"><b>Definition:</b> <a href="Game_8h_source.html#l00018">Game.h:18</a></div></div>
-<div class="ttc" id="Main_8cpp_html_a2c3f6775325c30275d11c6abee2db6a0"><div class="ttname"><a href="Main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a></div><div class="ttdeci">int main(int, char **)</div><div class="ttdef"><b>Definition:</b> <a href="Main_8cpp_source.html#l00004">Main.cpp:4</a></div></div>
-<div class="ttc" id="classState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00012">State.h:12</a></div></div>
-<div class="ttc" id="classMenuState_html"><div class="ttname"><a href="classMenuState.html">MenuState</a></div><div class="ttdef"><b>Definition:</b> <a href="MenuState_8h_source.html#l00011">MenuState.h:11</a></div></div>
-<div class="ttc" id="classGame_html_a1ab78f5ed0d5ea879157357cf2fb2afa"><div class="ttname"><a href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">Game::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition:</b> <a href="Game_8cpp_source.html#l00111">Game.cpp:111</a></div></div>
-<div class="ttc" id="MenuState_8h_html"><div class="ttname"><a href="MenuState_8h.html">MenuState.h</a></div></div>
+<a href="Main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Game_8h.html">Game.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="MenuState_8h.html">MenuState.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;easylogging++.h&quot;</span>  <span class="comment">// NOLINT</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;INITIALIZE_EASYLOGGINGPP</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="Main_8cpp.html#af8e3d6ca9d3a4317621bef0562bcc727">   16</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="Main_8cpp.html#af8e3d6ca9d3a4317621bef0562bcc727">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span> **) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classGame.html">Game</a> game(<span class="stringliteral">&quot;Wenova - Rise of Conquerors&quot;</span>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classState.html">State</a> *state = <span class="keyword">new</span> <a class="code" href="classMenuState.html">MenuState</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    game.<a class="code" href="classGame.html#a31bb86a922f699552f8c2a8be12c9bcb">push</a>(state);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    game.<a class="code" href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="ttc" id="classGame_html_a31bb86a922f699552f8c2a8be12c9bcb"><div class="ttname"><a href="classGame.html#a31bb86a922f699552f8c2a8be12c9bcb">Game::push</a></div><div class="ttdeci">void push(State *state)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Game_8cpp_source.html#l00152">Game.cpp:152</a></div></div>
+<div class="ttc" id="Game_8h_html"><div class="ttname"><a href="Game_8h.html">Game.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classGame_html"><div class="ttname"><a href="classGame.html">Game</a></div><div class="ttdef"><b>Definition:</b> <a href="Game_8h_source.html#l00030">Game.h:30</a></div></div>
+<div class="ttc" id="classState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00022">State.h:22</a></div></div>
+<div class="ttc" id="classMenuState_html"><div class="ttname"><a href="classMenuState.html">MenuState</a></div><div class="ttdef"><b>Definition:</b> <a href="MenuState_8h_source.html#l00023">MenuState.h:23</a></div></div>
+<div class="ttc" id="classGame_html_a1ab78f5ed0d5ea879157357cf2fb2afa"><div class="ttname"><a href="classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa">Game::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Game_8cpp_source.html#l00159">Game.cpp:159</a></div></div>
+<div class="ttc" id="MenuState_8h_html"><div class="ttname"><a href="MenuState_8h.html">MenuState.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="Main_8cpp_html_af8e3d6ca9d3a4317621bef0562bcc727"><div class="ttname"><a href="Main_8cpp.html#af8e3d6ca9d3a4317621bef0562bcc727">main</a></div><div class="ttdeci">INITIALIZE_EASYLOGGINGPP int main(int, char **)</div><div class="ttdef"><b>Definition:</b> <a href="Main_8cpp_source.html#l00016">Main.cpp:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="Main_8cpp.html">Main.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

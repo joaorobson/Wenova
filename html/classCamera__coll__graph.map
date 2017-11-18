@@ -1,5 +1,5 @@
 <map id="Camera" name="Camera">
-<area shape="rect" id="node2" href="$classVector.html" title="{Vector\n|+ x\l+ y\l|+ Vector()\l+ rotate()\l+ transform()\l+ operator+()\l+ operator&#45;()\l+ operator*()\l}" alt="" coords="5,389,101,555"/>
-<area shape="rect" id="node3" href="$classGameObject.html" title="{GameObject\n|+ rotation\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="127,382,255,562"/>
-<area shape="rect" id="node5" href="$classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="215,5,324,317"/>
+<area shape="rect" id="node2" href="$classVector.html" title="{Vector\n|+ x\l+ y\l|+ Vector()\l+ rotate()\l+ transform()\l+ operator+()\l+ operator&#45;()\l+ operator*()\l}" alt="" coords="5,396,101,561"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="{GameObject\n|+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="127,381,255,576"/>
+<area shape="rect" id="node4" href="$classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="136,5,245,317"/>
 </map>

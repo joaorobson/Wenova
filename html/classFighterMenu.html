@@ -79,7 +79,7 @@ Collaboration diagram for FighterMenu:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFighterMenu__coll__graph.png" border="0" usemap="#FighterMenu_coll__map" alt="Collaboration graph"/></div>
 <map name="FighterMenu_coll__map" id="FighterMenu_coll__map">
-<area shape="rect" id="node2" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="32,382,171,767"/><area shape="rect" id="node5" href="classText.html" title="{Text\n|&#45; texture\l&#45; style\l&#45; font_size\l&#45; color\l&#45; clip_rect\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_pos()\l+ set_text()\l+ set_color()\l+ set_style()\l+ set_font_size()\l+ get_x()\land 6 more...\l}" alt="" coords="288,433,408,716"/><area shape="rect" id="node6" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="293,5,403,317"/></map>
+<area shape="rect" id="node2" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ render()\l+ set_clip()\l+ update()\l+ get_current_frame()\l+ is_finished()\l+ restart_count()\l+ get_height()\l+ get_width()\l+ set_scale()\l+ set_scale_x()\l+ update_scale_x()\l&#45; open()\l&#45; set_frame()\l&#45; set_frame_count()\l&#45; set_frame_time()\l&#45; is_open()\l&#45; set_scale_y()\l&#45; set_scale()\l}" alt="" coords="24,382,171,914"/><area shape="rect" id="node5" href="classText.html" title="{Text\n|&#45; texture\l&#45; color\l&#45; clip_rect\l&#45; style\l&#45; font_size\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_text()\l+ set_pos()\l+ set_color()\l+ get_x()\l+ get_y()\l+ get_width()\l+ get_height()\l+ get_text()\l&#45; set_style()\l&#45; set_font_size()\l&#45; remake_texture()\l&#45; open()\l}" alt="" coords="284,470,412,826"/><area shape="rect" id="node6" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="293,5,403,317"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -126,7 +126,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00027">27</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00028">28</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a69f0f6bbac70744fe1d13e36437dad73"></a>
 <div class="memitem">
@@ -141,7 +141,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00006">6</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00023">23</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -153,7 +155,7 @@ Private Attributes</h2></td></tr>
           <td class="memname">FighterMenu::FighterMenu </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
+          <td class="paramname"><em>cname</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -165,7 +167,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>enabled</em> = <code>true</code>&#160;</td>
+          <td class="paramname"><em>cenabled</em> = <code>true</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -175,7 +177,17 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00008">8</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cname</td><td></td></tr>
+    <tr><td class="paramname">frames</td><td></td></tr>
+    <tr><td class="paramname">cenabled</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00033">33</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -193,7 +205,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00066">66</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00174">174</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -210,7 +225,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00053">53</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00129">129</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +245,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00049">49</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00118">118</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +266,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00062">62</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00161">161</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -263,7 +293,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00057">57</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00144">144</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -280,7 +319,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00033">33</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00068">68</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -298,7 +340,16 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00037">37</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00079">79</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -316,7 +367,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00041">41</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00092">92</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -334,7 +393,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00045">45</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idx</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="FighterMenu_8cpp_source.html#l00105">105</a> of file <a class="el" href="FighterMenu_8cpp_source.html">FighterMenu.cpp</a>.</p>
 
 </div>
 </div>
@@ -360,7 +427,7 @@ Private Attributes</h2></td></tr>
 <p>Image of fighter when it has been already. </p>
 <p>selected. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00030">30</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00031">31</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -384,7 +451,7 @@ Private Attributes</h2></td></tr>
 
 <p>Bool value that indicates if fighter is available. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00035">35</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00036">36</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -408,7 +475,7 @@ Private Attributes</h2></td></tr>
 
 <p>Int with the number of frames of a fighter's skin. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00034">34</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00035">35</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -432,7 +499,7 @@ Private Attributes</h2></td></tr>
 
 <p>String of the fighter's name. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00033">33</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00034">34</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -456,7 +523,7 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="classText.html">Text</a> with fighter's name. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00032">32</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00033">33</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -480,7 +547,7 @@ Private Attributes</h2></td></tr>
 
 <p><a class="el" href="classVector.html">Vector</a> of the fighter's skins. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00029">29</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00030">30</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -505,7 +572,7 @@ Private Attributes</h2></td></tr>
 <p>Bool vector that indicates fighter's. </p>
 <p>skin available. </p>
 
-<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00036">36</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
+<p>Definition at line <a class="el" href="FighterMenu_8h_source.html#l00037">37</a> of file <a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>.</p>
 
 </div>
 </div>
@@ -519,7 +586,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classFighterMenu.html">FighterMenu</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

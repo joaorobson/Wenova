@@ -66,38 +66,46 @@ $(document).ready(function(){initNavTree('HealEffect_8h_source.html','');});
 <div class="title">HealEffect.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="HealEffect_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HEALEFFECT_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define HEALEFFECT_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Effect_8h.html">Effect.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classHealEffect.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHealEffect.html">HealEffect</a> : <span class="keyword">public</span> <a class="code" href="classEffect.html">Effect</a>{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">    8</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">healing_factor</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <a class="code" href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">HealEffect</a>(<a class="code" href="classFighter.html">Fighter</a> * cparent, <span class="keywordtype">string</span> csprite, <span class="keywordtype">string</span> ctags, <span class="keywordtype">int</span> frames = 1, <span class="keywordtype">float</span> chealing_factor = 0.0);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">update</a>(<span class="keywordtype">float</span> delta);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">is_dead</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;};</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classFighter_html"><div class="ttname"><a href="classFighter.html">Fighter</a></div><div class="ttdef"><b>Definition:</b> <a href="Fighter_8h_source.html#l00015">Fighter.h:15</a></div></div>
-<div class="ttc" id="classHealEffect_html"><div class="ttname"><a href="classHealEffect.html">HealEffect</a></div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8h_source.html#l00006">HealEffect.h:6</a></div></div>
-<div class="ttc" id="classHealEffect_html_ae486c25a9090db772554f831ccbb0a17"><div class="ttname"><a href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">HealEffect::healing_factor</a></div><div class="ttdeci">float healing_factor</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8h_source.html#l00008">HealEffect.h:8</a></div></div>
-<div class="ttc" id="Effect_8h_html"><div class="ttname"><a href="Effect_8h.html">Effect.h</a></div></div>
-<div class="ttc" id="classHealEffect_html_a34ae2d78976212c2c8400828fe12a99d"><div class="ttname"><a href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">HealEffect::is_dead</a></div><div class="ttdeci">bool is_dead()</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00018">HealEffect.cpp:18</a></div></div>
-<div class="ttc" id="classHealEffect_html_a988dbf54cf650996aae69439029c9679"><div class="ttname"><a href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">HealEffect::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00007">HealEffect.cpp:7</a></div></div>
-<div class="ttc" id="classHealEffect_html_aa405b156fc2cb87889e584447c1e327b"><div class="ttname"><a href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">HealEffect::HealEffect</a></div><div class="ttdeci">HealEffect(Fighter *cparent, string csprite, string ctags, int frames=1, float chealing_factor=0.0)</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00003">HealEffect.cpp:3</a></div></div>
-<div class="ttc" id="classEffect_html"><div class="ttname"><a href="classEffect.html">Effect</a></div><div class="ttdef"><b>Definition:</b> <a href="Effect_8h_source.html#l00008">Effect.h:8</a></div></div>
+<a href="HealEffect_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef INCLUDE_HEALEFFECT_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_HEALEFFECT_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Effect_8h.html">Effect.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classHealEffect.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classHealEffect.html">HealEffect</a> : <span class="keyword">public</span> <a class="code" href="classEffect.html">Effect</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">   20</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">healing_factor</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">HealEffect</a>(<a class="code" href="classFighter.html">Fighter</a>* cparent, <span class="keywordtype">string</span> csprite, <span class="keywordtype">string</span> ctags, <span class="keywordtype">int</span> frames = 1,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;               <span class="keywordtype">float</span> chealing_factor = 0.0);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">update</a>(<span class="keywordtype">float</span> delta);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">is_dead</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif  // INCLUDE_HEALEFFECT_H_</span></div>
+<div class="ttc" id="classFighter_html"><div class="ttname"><a href="classFighter.html">Fighter</a></div><div class="ttdef"><b>Definition:</b> <a href="Fighter_8h_source.html#l00026">Fighter.h:26</a></div></div>
+<div class="ttc" id="classHealEffect_html"><div class="ttname"><a href="classHealEffect.html">HealEffect</a></div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8h_source.html#l00018">HealEffect.h:18</a></div></div>
+<div class="ttc" id="classHealEffect_html_ae486c25a9090db772554f831ccbb0a17"><div class="ttname"><a href="classHealEffect.html#ae486c25a9090db772554f831ccbb0a17">HealEffect::healing_factor</a></div><div class="ttdeci">float healing_factor</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8h_source.html#l00020">HealEffect.h:20</a></div></div>
+<div class="ttc" id="Effect_8h_html"><div class="ttname"><a href="Effect_8h.html">Effect.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classHealEffect_html_a34ae2d78976212c2c8400828fe12a99d"><div class="ttname"><a href="classHealEffect.html#a34ae2d78976212c2c8400828fe12a99d">HealEffect::is_dead</a></div><div class="ttdeci">bool is_dead()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00040">HealEffect.cpp:40</a></div></div>
+<div class="ttc" id="classHealEffect_html_a988dbf54cf650996aae69439029c9679"><div class="ttname"><a href="classHealEffect.html#a988dbf54cf650996aae69439029c9679">HealEffect::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00024">HealEffect.cpp:24</a></div></div>
+<div class="ttc" id="classHealEffect_html_aa405b156fc2cb87889e584447c1e327b"><div class="ttname"><a href="classHealEffect.html#aa405b156fc2cb87889e584447c1e327b">HealEffect::HealEffect</a></div><div class="ttdeci">HealEffect(Fighter *cparent, string csprite, string ctags, int frames=1, float chealing_factor=0.0)</div><div class="ttdef"><b>Definition:</b> <a href="HealEffect_8cpp_source.html#l00013">HealEffect.cpp:13</a></div></div>
+<div class="ttc" id="classEffect_html"><div class="ttname"><a href="classEffect.html">Effect</a></div><div class="ttdef"><b>Definition:</b> <a href="Effect_8h_source.html#l00020">Effect.h:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="HealEffect_8h.html">HealEffect.h</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

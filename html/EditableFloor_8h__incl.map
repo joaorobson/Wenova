@@ -1,7 +1,7 @@
 <map id="EditableFloor.h" name="EditableFloor.h">
-<area shape="rect" id="node2" href="$Floor_8h.html" title="Floor.h" alt="" coords="471,80,533,107"/>
-<area shape="rect" id="node10" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="499,155,565,181"/>
-<area shape="rect" id="node3" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="217,155,324,181"/>
-<area shape="rect" id="node4" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="5,229,96,256"/>
-<area shape="rect" id="node6" href="$Vector_8h.html" title="Vector.h" alt="" coords="15,304,85,331"/>
+<area shape="rect" id="node3" href="$Floor_8h.html" title="Brief Description. " alt="" coords="279,80,341,107"/>
+<area shape="rect" id="node12" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="241,155,308,181"/>
+<area shape="rect" id="node4" href="$GameObject_8h.html" title="Brief Description. " alt="" coords="437,155,544,181"/>
+<area shape="rect" id="node8" href="$Rectangle_8h.html" title="Brief Description. " alt="" coords="623,229,715,256"/>
+<area shape="rect" id="node10" href="$Vector_8h.html" title="Brief Description. " alt="" coords="634,304,704,331"/>
 </map>

@@ -69,27 +69,28 @@ $(document).ready(function(){initNavTree('CharacterSelectState_8h.html','');});
 <div class="title">CharacterSelectState.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;utility&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
+<code>#include &quot;<a class="el" href="FighterMenu_8h_source.html">FighterMenu.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="InputManager_8h_source.html">InputManager.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Sound_8h_source.html">Sound.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Sprite_8h_source.html">Sprite.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="State_8h_source.html">State.h</a>&quot;</code><br/>
-<code>#include &lt;string&gt;</code><br/>
-<code>#include &lt;utility&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
+<code>#include &quot;easylogging++.h&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CharacterSelectState.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="CharacterSelectState_8h__incl.png" border="0" usemap="#CharacterSelectState_8h" alt=""/></div>
 <map name="CharacterSelectState_8h" id="CharacterSelectState_8h">
-<area shape="rect" id="node2" href="FighterMenu_8h.html" title="This file contains the definitions of all methods and attributes of the class FighterMenu. " alt="" coords="290,80,395,107"/><area shape="rect" id="node6" href="Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="171,155,237,181"/><area shape="rect" id="node15" href="InputManager_8h.html" title="Brief Description. " alt="" coords="1055,80,1165,107"/><area shape="rect" id="node19" href="Sound_8h.html" title="Sound.h" alt="" coords="606,155,676,181"/><area shape="rect" id="node21" href="State_8h.html" title="State.h" alt="" coords="532,80,596,107"/><area shape="rect" id="node11" href="Text_8h.html" title="Text.h" alt="" coords="312,155,369,181"/><area shape="rect" id="node13" href="Rectangle_8h.html" title="Rectangle.h" alt="" coords="714,229,805,256"/><area shape="rect" id="node14" href="Vector_8h.html" title="Vector.h" alt="" coords="670,304,740,331"/><area shape="rect" id="node22" href="GameObject_8h.html" title="GameObject.h" alt="" coords="707,155,813,181"/></map>
+<area shape="rect" id="node5" href="FighterMenu_8h.html" title="This file contains the definitions of all methods and attributes of the class FighterMenu. " alt="" coords="654,80,759,107"/><area shape="rect" id="node7" href="Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="343,155,409,181"/><area shape="rect" id="node18" href="InputManager_8h.html" title="Brief Description. " alt="" coords="1173,155,1284,181"/><area shape="rect" id="node21" href="Sound_8h.html" title="Brief Description. " alt="" coords="247,155,317,181"/><area shape="rect" id="node23" href="State_8h.html" title="Brief Description. " alt="" coords="784,80,848,107"/><area shape="rect" id="node12" href="Text_8h.html" title="Brief Description. " alt="" coords="679,155,736,181"/><area shape="rect" id="node14" href="Rectangle_8h.html" title="Brief Description. " alt="" coords="714,229,805,256"/><area shape="rect" id="node15" href="Vector_8h.html" title="Brief Description. " alt="" coords="1034,304,1104,331"/><area shape="rect" id="node24" href="GameObject_8h.html" title="Brief Description. " alt="" coords="761,155,868,181"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="CharacterSelectState_8h__dep__incl.png" border="0" usemap="#CharacterSelectState_8hdep" alt=""/></div>
 <map name="CharacterSelectState_8hdep" id="CharacterSelectState_8hdep">
-<area shape="rect" id="node2" href="CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="5,80,176,107"/><area shape="rect" id="node3" href="StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="201,80,353,107"/></map>
+<area shape="rect" id="node2" href="CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="5,80,176,107"/><area shape="rect" id="node3" href="StageSelectState_8cpp.html" title="This file builds and renders the stages that the user can select. " alt="" coords="201,80,349,107"/></map>
 </div>
 </div>
 <p><a href="CharacterSelectState_8h_source.html">Go to the source code of this file.</a></p>
@@ -125,7 +126,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00025">25</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00026">26</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -139,7 +140,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00027">27</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00028">28</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -153,7 +154,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00024">24</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00025">25</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -167,7 +168,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00026">26</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00027">27</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -177,7 +178,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="CharacterSelectState_8h.html">CharacterSelectState.h</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,10 +1,10 @@
 <map id="FighterStats.h" name="FighterStats.h">
-<area shape="rect" id="node3" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="591,155,697,181"/>
-<area shape="rect" id="node10" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="231,155,297,181"/>
-<area shape="rect" id="node13" href="$Fighter_8h.html" title="Fighter.h" alt="" coords="443,80,516,107"/>
-<area shape="rect" id="node4" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="703,229,795,256"/>
-<area shape="rect" id="node6" href="$Vector_8h.html" title="Vector.h" alt="" coords="1026,304,1096,331"/>
-<area shape="rect" id="node14" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="943,155,1053,181"/>
-<area shape="rect" id="node18" href="$Sound_8h.html" title="Sound.h" alt="" coords="322,155,392,181"/>
-<area shape="rect" id="node20" href="$Timer_8h.html" title="Timer.h" alt="" coords="417,155,484,181"/>
+<area shape="rect" id="node3" href="$Fighter_8h.html" title="Brief Description. " alt="" coords="745,80,818,107"/>
+<area shape="rect" id="node4" href="$GameObject_8h.html" title="Brief Description. " alt="" coords="547,155,654,181"/>
+<area shape="rect" id="node19" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="1048,155,1115,181"/>
+<area shape="rect" id="node10" href="$Vector_8h.html" title="Brief Description. " alt="" coords="77,304,147,331"/>
+<area shape="rect" id="node12" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="227,155,338,181"/>
+<area shape="rect" id="node16" href="$Sound_8h.html" title="Brief Description. " alt="" coords="953,155,1023,181"/>
+<area shape="rect" id="node21" href="$Timer_8h.html" title="Brief Description. " alt="" coords="678,155,744,181"/>
+<area shape="rect" id="node8" href="$Rectangle_8h.html" title="Brief Description. " alt="" coords="596,229,687,256"/>
 </map>

@@ -66,6 +66,7 @@ $(document).ready(function(){initNavTree('classJoystickConfigState.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classJoystickConfigState-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -86,17 +87,13 @@ Collaboration diagram for JoystickConfigState:</div>
 <div class="dyncontent">
 <div class="center"><img src="classJoystickConfigState__coll__graph.png" border="0" usemap="#JoystickConfigState_coll__map" alt="Collaboration graph"/></div>
 <map name="JoystickConfigState_coll__map" id="JoystickConfigState_coll__map">
-<area shape="rect" id="node2" href="classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="45,448,180,701"/><area shape="rect" id="node4" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="215,382,353,767"/><area shape="rect" id="node6" href="classSound.html" title="{Sound\n|&#45; channel\l|+ Sound()\l+ Sound()\l+ play()\l+ stop()\l+ open()\l+ is_open()\l+ get_file()\l}" alt="" coords="411,492,497,657"/><area shape="rect" id="node9" href="classText.html" title="{Text\n|&#45; texture\l&#45; style\l&#45; font_size\l&#45; color\l&#45; clip_rect\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_pos()\l+ set_text()\l+ set_color()\l+ set_style()\l+ set_font_size()\l+ get_x()\land 6 more...\l}" alt="" coords="601,433,721,716"/><area shape="rect" id="node10" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="645,5,755,317"/></map>
+<area shape="rect" id="node2" href="classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="21,521,156,775"/><area shape="rect" id="node4" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ render()\l+ set_clip()\l+ update()\l+ get_current_frame()\l+ is_finished()\l+ restart_count()\l+ get_height()\l+ get_width()\l+ set_scale()\l+ set_scale_x()\l+ update_scale_x()\l&#45; open()\l&#45; set_frame()\l&#45; set_frame_count()\l&#45; set_frame_time()\l&#45; is_open()\l&#45; set_scale_y()\l&#45; set_scale()\l}" alt="" coords="189,382,336,914"/><area shape="rect" id="node6" href="classSound.html" title="{Sound\n|&#45; channel\l|+ Sound()\l+ Sound()\l+ play()\l+ stop()\l+ open()\l+ is_open()\l+ get_file()\l}" alt="" coords="411,565,497,731"/><area shape="rect" id="node9" href="classText.html" title="{Text\n|&#45; texture\l&#45; color\l&#45; clip_rect\l&#45; style\l&#45; font_size\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_text()\l+ set_pos()\l+ set_color()\l+ get_x()\l+ get_y()\l+ get_width()\l+ get_height()\l+ get_text()\l&#45; set_style()\l&#45; set_font_size()\l&#45; remake_texture()\l&#45; open()\l}" alt="" coords="603,470,731,826"/><area shape="rect" id="node10" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="645,5,755,317"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa2a1ffe8a55cc4307b216d9de3f2b0e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#aa2a1ffe8a55cc4307b216d9de3f2b0e5">JoystickConfigState</a> (int joystick_id, bool ckeyboard=false)</td></tr>
 <tr class="separator:aa2a1ffe8a55cc4307b216d9de3f2b0e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb35c2ca479a3b4654d9b525f1a39c14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#afb35c2ca479a3b4654d9b525f1a39c14">update</a> (float delta)</td></tr>
-<tr class="separator:afb35c2ca479a3b4654d9b525f1a39c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6510b8fe6b075be5f29d77a0bfa76e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#aa6510b8fe6b075be5f29d77a0bfa76e1">render</a> ()</td></tr>
-<tr class="separator:aa6510b8fe6b075be5f29d77a0bfa76e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e2d267c740364e8a2b8d5d151bd1c7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#a8e2d267c740364e8a2b8d5d151bd1c7e">pause</a> ()</td></tr>
 <tr class="separator:a8e2d267c740364e8a2b8d5d151bd1c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae557b04672614bde29eaad15f46fe0db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#ae557b04672614bde29eaad15f46fe0db">resume</a> ()</td></tr>
@@ -114,6 +111,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a69cfd2b095e4fe60b5ad8f8e54df37b6 inherit pub_methods_classState"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37d8ebb8aebeb4569cb4f7ce9f286673 inherit pub_methods_classState"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classState.html#a37d8ebb8aebeb4569cb4f7ce9f286673">quit_requested</a> ()</td></tr>
 <tr class="separator:a37d8ebb8aebeb4569cb4f7ce9f286673 inherit pub_methods_classState"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:afb35c2ca479a3b4654d9b525f1a39c14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#afb35c2ca479a3b4654d9b525f1a39c14">update</a> (float delta)</td></tr>
+<tr class="separator:afb35c2ca479a3b4654d9b525f1a39c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6510b8fe6b075be5f29d77a0bfa76e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#aa6510b8fe6b075be5f29d77a0bfa76e1">render</a> ()</td></tr>
+<tr class="separator:aa6510b8fe6b075be5f29d77a0bfa76e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -141,16 +145,16 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a4e178413f7100aee8aaf3829e98cb048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36b67bd16e2cffcefd40d4bcf0322c0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#a36b67bd16e2cffcefd40d4bcf0322c0a">to_go_back</a></td></tr>
 <tr class="separator:a36b67bd16e2cffcefd40d4bcf0322c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1b971e57320c9ac04496253dec8092d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#ab1b971e57320c9ac04496253dec8092d">on_test</a></td></tr>
-<tr class="separator:ab1b971e57320c9ac04496253dec8092d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e3a243a4b8dc65bd5bf0c48bcfeb010"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#a6e3a243a4b8dc65bd5bf0c48bcfeb010">is_keyboard</a></td></tr>
-<tr class="separator:a6e3a243a4b8dc65bd5bf0c48bcfeb010"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac349ec96fec0c2b1a7b062258dbce263"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSound.html">Sound</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#ac349ec96fec0c2b1a7b062258dbce263">blocked</a></td></tr>
 <tr class="separator:ac349ec96fec0c2b1a7b062258dbce263"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae8aadbdfa83f0a632c1c56f78878e52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSound.html">Sound</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#aae8aadbdfa83f0a632c1c56f78878e52">selected</a></td></tr>
 <tr class="separator:aae8aadbdfa83f0a632c1c56f78878e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9192cc976ef44e6be7d2f2387c169dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSound.html">Sound</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#af9192cc976ef44e6be7d2f2387c169dd">changed</a></td></tr>
 <tr class="separator:af9192cc976ef44e6be7d2f2387c169dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b971e57320c9ac04496253dec8092d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#ab1b971e57320c9ac04496253dec8092d">on_test</a></td></tr>
+<tr class="separator:ab1b971e57320c9ac04496253dec8092d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e3a243a4b8dc65bd5bf0c48bcfeb010"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystickConfigState.html#a6e3a243a4b8dc65bd5bf0c48bcfeb010">is_keyboard</a></td></tr>
+<tr class="separator:a6e3a243a4b8dc65bd5bf0c48bcfeb010"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -214,7 +218,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <p>Iterates four times to create the buttons of the test mode on menu "Options".</p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00052">52</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00118">118</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +249,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classState.html#ad8530393b468e4494f965f61259c84c4">State</a>.</p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00272">272</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00355">355</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -265,7 +269,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -276,7 +280,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classState.html#a71f5105bcdc39481be7684d853fe12e9">State</a>.</p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00239">239</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00322">322</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -306,7 +310,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classState.html#a6397f6c277e077f5284f06c9902b63ee">State</a>.</p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00278">278</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00362">362</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -327,7 +331,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -342,14 +346,14 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <p>Check if user has request to quit the menu "Options".</p>
 <p>Check if user request to enter in joystick test mode.</p>
-<p>Check if user request to quit the joystick test screen.</p>
-<p>Workaround to uncheck A button pressed in joystick test screen.</p>
 <p>Check if user request to quit the joystick help screen.</p>
 <p>Check if user request to enter the joystick test mode.</p>
+<p>Check if user request to quit the joystick test screen.</p>
+<p>Workaround to uncheck A button pressed in joystick test screen.</p>
 
 <p>Implements <a class="el" href="classState.html#a5db16224827148ce450fcc9a2f97581d">State</a>.</p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00173">173</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8cpp_source.html#l00249">249</a> of file <a class="el" href="JoystickConfigState_8cpp_source.html">JoystickConfigState.cpp</a>.</p>
 
 </div>
 </div>
@@ -470,7 +474,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Cancel sound activated after cancel button pressed. </p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00037">37</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00034">34</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
 
 </div>
 </div>
@@ -494,7 +498,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Change sound activated after cursor button pressed. </p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00039">39</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00036">36</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
 
 </div>
 </div>
@@ -518,7 +522,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Indicates if user is using a keyboard. </p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00036">36</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00039">39</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
 
 </div>
 </div>
@@ -591,7 +595,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Indicates if the user has entered at mode test on. </p>
 <p>menu "Options" using joystick. </p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00034">34</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00037">37</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
 
 </div>
 </div>
@@ -663,7 +667,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Select sound activated after select button pressed. </p>
 
-<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00038">38</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
+<p>Definition at line <a class="el" href="JoystickConfigState_8h_source.html#l00035">35</a> of file <a class="el" href="JoystickConfigState_8h_source.html">JoystickConfigState.h</a>.</p>
 
 </div>
 </div>
@@ -773,7 +777,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classJoystickConfigState.html">JoystickConfigState</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:55 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

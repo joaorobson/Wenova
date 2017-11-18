@@ -5,8 +5,8 @@ var classText =
       [ "SHADED", "classText.html#a55deaa7bb085ad93645d542b5689fa2aa8eac34454b77764eff697e6f55f7906b", null ],
       [ "BLENDED", "classText.html#a55deaa7bb085ad93645d542b5689fa2aaac6e9b56165c8afe563da5866b394f7b", null ]
     ] ],
-    [ "Text", "classText.html#ab3e26143fccc52699bcc5149cae852bc", null ],
     [ "Text", "classText.html#a2a201d60efefa3145e977b548be981c8", null ],
+    [ "Text", "classText.html#ab3e26143fccc52699bcc5149cae852bc", null ],
     [ "~Text", "classText.html#a2d49e5c280e205125b149f7777ae30c7", null ],
     [ "get_height", "classText.html#a2fdf9726f5084b074f2127f81f261d33", null ],
     [ "get_text", "classText.html#ab676a2fd33f0d37f33dbd1f53522a989", null ],

@@ -66,35 +66,40 @@ $(document).ready(function(){initNavTree('Timer_8h_source.html','');});
 <div class="title">Timer.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Timer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TIMER_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define TIMER_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="classTimer.html">    4</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTimer.html">Timer</a>{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be">    6</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be">time</a>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">Timer</a>();</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTimer.html#aae66539d6710fd5e7171fc0f4b973107">update</a>(<span class="keywordtype">float</span> delta);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTimer.html#aa3f7871196bb56202af2bc982bfbfff6">restart</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">float</span> <span class="keyword">get</span>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTimer.html#ad7c7163080ddd6ca8bc2db3dbde10055">set</a>(<span class="keywordtype">float</span> ctime);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classTimer_html_aae66539d6710fd5e7171fc0f4b973107"><div class="ttname"><a href="classTimer.html#aae66539d6710fd5e7171fc0f4b973107">Timer::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00007">Timer.cpp:7</a></div></div>
-<div class="ttc" id="classTimer_html_a5f16e8da27d2a5a5242dead46de05d97"><div class="ttname"><a href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">Timer::Timer</a></div><div class="ttdeci">Timer()</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00003">Timer.cpp:3</a></div></div>
-<div class="ttc" id="classTimer_html_a6c45df1d084a18e41e3a35f6a43df0be"><div class="ttname"><a href="classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be">Timer::time</a></div><div class="ttdeci">float time</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8h_source.html#l00006">Timer.h:6</a></div></div>
-<div class="ttc" id="classTimer_html_aa3f7871196bb56202af2bc982bfbfff6"><div class="ttname"><a href="classTimer.html#aa3f7871196bb56202af2bc982bfbfff6">Timer::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00011">Timer.cpp:11</a></div></div>
-<div class="ttc" id="classTimer_html"><div class="ttname"><a href="classTimer.html">Timer</a></div><div class="ttdef"><b>Definition:</b> <a href="Timer_8h_source.html#l00004">Timer.h:4</a></div></div>
-<div class="ttc" id="classTimer_html_ad7c7163080ddd6ca8bc2db3dbde10055"><div class="ttname"><a href="classTimer.html#ad7c7163080ddd6ca8bc2db3dbde10055">Timer::set</a></div><div class="ttdeci">void set(float ctime)</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00019">Timer.cpp:19</a></div></div>
+<a href="Timer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef INCLUDE_TIMER_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_TIMER_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classTimer.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTimer.html">Timer</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be">   16</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be">time</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">Timer</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTimer.html#aae66539d6710fd5e7171fc0f4b973107">update</a>(<span class="keywordtype">float</span> delta);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTimer.html#aa3f7871196bb56202af2bc982bfbfff6">restart</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">float</span> <span class="keyword">get</span>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTimer.html#ad7c7163080ddd6ca8bc2db3dbde10055">set</a>(<span class="keywordtype">float</span> ctime);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif  // INCLUDE_TIMER_H_</span></div>
+<div class="ttc" id="classTimer_html_aae66539d6710fd5e7171fc0f4b973107"><div class="ttname"><a href="classTimer.html#aae66539d6710fd5e7171fc0f4b973107">Timer::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00025">Timer.cpp:25</a></div></div>
+<div class="ttc" id="classTimer_html_a5f16e8da27d2a5a5242dead46de05d97"><div class="ttname"><a href="classTimer.html#a5f16e8da27d2a5a5242dead46de05d97">Timer::Timer</a></div><div class="ttdeci">Timer()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00016">Timer.cpp:16</a></div></div>
+<div class="ttc" id="classTimer_html_a6c45df1d084a18e41e3a35f6a43df0be"><div class="ttname"><a href="classTimer.html#a6c45df1d084a18e41e3a35f6a43df0be">Timer::time</a></div><div class="ttdeci">float time</div><div class="ttdef"><b>Definition:</b> <a href="Timer_8h_source.html#l00016">Timer.h:16</a></div></div>
+<div class="ttc" id="classTimer_html_aa3f7871196bb56202af2bc982bfbfff6"><div class="ttname"><a href="classTimer.html#aa3f7871196bb56202af2bc982bfbfff6">Timer::restart</a></div><div class="ttdeci">void restart()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00032">Timer.cpp:32</a></div></div>
+<div class="ttc" id="classTimer_html"><div class="ttname"><a href="classTimer.html">Timer</a></div><div class="ttdef"><b>Definition:</b> <a href="Timer_8h_source.html#l00014">Timer.h:14</a></div></div>
+<div class="ttc" id="classTimer_html_ad7c7163080ddd6ca8bc2db3dbde10055"><div class="ttname"><a href="classTimer.html#ad7c7163080ddd6ca8bc2db3dbde10055">Timer::set</a></div><div class="ttdeci">void set(float ctime)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Timer_8cpp_source.html#l00050">Timer.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="Timer_8h.html">Timer.h</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

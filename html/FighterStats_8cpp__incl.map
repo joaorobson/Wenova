@@ -1,11 +1,11 @@
 <map id="FighterStats.cpp" name="FighterStats.cpp">
-<area shape="rect" id="node2" href="$FighterStats_8h.html" title="FighterStats.h" alt="" coords="501,80,605,107"/>
-<area shape="rect" id="node15" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="964,229,1075,256"/>
-<area shape="rect" id="node4" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="661,229,768,256"/>
-<area shape="rect" id="node11" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="251,229,317,256"/>
-<area shape="rect" id="node14" href="$Fighter_8h.html" title="Fighter.h" alt="" coords="517,155,589,181"/>
-<area shape="rect" id="node5" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="755,304,847,331"/>
-<area shape="rect" id="node7" href="$Vector_8h.html" title="Vector.h" alt="" coords="623,379,693,405"/>
-<area shape="rect" id="node19" href="$Sound_8h.html" title="Sound.h" alt="" coords="342,229,412,256"/>
-<area shape="rect" id="node21" href="$Timer_8h.html" title="Timer.h" alt="" coords="520,229,587,256"/>
+<area shape="rect" id="node2" href="$FighterStats_8h.html" title="Brief Description. " alt="" coords="559,80,663,107"/>
+<area shape="rect" id="node13" href="$InputManager_8h.html" title="Brief Description. " alt="" coords="975,229,1086,256"/>
+<area shape="rect" id="node4" href="$Fighter_8h.html" title="Brief Description. " alt="" coords="457,155,530,181"/>
+<area shape="rect" id="node5" href="$GameObject_8h.html" title="Brief Description. " alt="" coords="648,229,755,256"/>
+<area shape="rect" id="node20" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="283,229,350,256"/>
+<area shape="rect" id="node11" href="$Vector_8h.html" title="Brief Description. " alt="" coords="602,379,672,405"/>
+<area shape="rect" id="node17" href="$Sound_8h.html" title="Brief Description. " alt="" coords="174,229,244,256"/>
+<area shape="rect" id="node22" href="$Timer_8h.html" title="Brief Description. " alt="" coords="374,229,440,256"/>
+<area shape="rect" id="node9" href="$Rectangle_8h.html" title="Brief Description. " alt="" coords="646,304,738,331"/>
 </map>

@@ -67,6 +67,7 @@ $(document).ready(function(){initNavTree('classCharacterSelectState.html','');})
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classCharacterSelectState-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -80,40 +81,20 @@ Inheritance diagram for CharacterSelectState:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCharacterSelectState__inherit__graph.png" border="0" usemap="#CharacterSelectState_inherit__map" alt="Inheritance graph"/></div>
 <map name="CharacterSelectState_inherit__map" id="CharacterSelectState_inherit__map">
-<area shape="rect" id="node2" href="classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l# object_array\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="24,6,159,274"/></map>
+<area shape="rect" id="node2" href="classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l# object_array\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="32,6,167,274"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for CharacterSelectState:</div>
 <div class="dyncontent">
 <div class="center"><img src="classCharacterSelectState__coll__graph.png" border="0" usemap="#CharacterSelectState_coll__map" alt="Collaboration graph"/></div>
 <map name="CharacterSelectState_coll__map" id="CharacterSelectState_coll__map">
-<area shape="rect" id="node2" href="classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="59,845,193,1099"/><area shape="rect" id="node4" href="classFighterMenu.html" title="{FighterMenu\n|&#45; n_frames\l&#45; enabled\l&#45; skin_available\l|+ FighterMenu()\l+ FighterMenu()\l+ is_enabled()\l+ is_skin_available()\l+ lock_skin()\l+ unlock_skin()\l+ get_name_text()\l+ get_name()\l+ get_skin_name()\l+ get_skin()\l+ get_disabled()\l}" alt="" coords="433,845,573,1099"/><area shape="rect" id="node5" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="195,382,333,767"/><area shape="rect" id="node8" href="classText.html" title="{Text\n|&#45; texture\l&#45; style\l&#45; font_size\l&#45; color\l&#45; clip_rect\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_pos()\l+ set_text()\l+ set_color()\l+ set_style()\l+ set_font_size()\l+ get_x()\land 6 more...\l}" alt="" coords="364,433,484,716"/><area shape="rect" id="node12" href="classSound.html" title="{Sound\n|&#45; channel\l|+ Sound()\l+ Sound()\l+ play()\l+ stop()\l+ open()\l+ is_open()\l+ get_file()\l}" alt="" coords="678,492,764,657"/><area shape="rect" id="node9" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="213,5,323,317"/></map>
+<area shape="rect" id="node2" href="classState.html" title="{State\n|# m_pop_requested\l# m_quit_requested\l|+ State()\l+ ~State()\l+ update()\l+ render()\l+ pause()\l+ resume()\l+ add_object()\l+ load_assets()\l+ pop_requested()\l+ quit_requested()\l# update_array()\l# render_array()\l}" alt="" coords="52,992,187,1245"/><area shape="rect" id="node4" href="classFighterMenu.html" title="{FighterMenu\n|&#45; n_frames\l&#45; enabled\l&#45; skin_available\l|+ FighterMenu()\l+ FighterMenu()\l+ is_enabled()\l+ is_skin_available()\l+ lock_skin()\l+ unlock_skin()\l+ get_name_text()\l+ get_name()\l+ get_skin_name()\l+ get_skin()\l+ get_disabled()\l}" alt="" coords="433,992,573,1245"/><area shape="rect" id="node5" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ render()\l+ set_clip()\l+ update()\l+ get_current_frame()\l+ is_finished()\l+ restart_count()\l+ get_height()\l+ get_width()\l+ set_scale()\l+ set_scale_x()\l+ update_scale_x()\l&#45; open()\l&#45; set_frame()\l&#45; set_frame_count()\l&#45; set_frame_time()\l&#45; is_open()\l&#45; set_scale_y()\l&#45; set_scale()\l}" alt="" coords="187,382,333,914"/><area shape="rect" id="node8" href="classText.html" title="{Text\n|&#45; texture\l&#45; color\l&#45; clip_rect\l&#45; style\l&#45; font_size\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_text()\l+ set_pos()\l+ set_color()\l+ get_x()\l+ get_y()\l+ get_width()\l+ get_height()\l+ get_text()\l&#45; set_style()\l&#45; set_font_size()\l&#45; remake_texture()\l&#45; open()\l}" alt="" coords="357,470,485,826"/><area shape="rect" id="node12" href="classSound.html" title="{Sound\n|&#45; channel\l|+ Sound()\l+ Sound()\l+ play()\l+ stop()\l+ open()\l+ is_open()\l+ get_file()\l}" alt="" coords="678,565,764,731"/><area shape="rect" id="node9" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="213,5,323,317"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a44baabc88e8bd9d6f5bc4abfb072026a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a44baabc88e8bd9d6f5bc4abfb072026a">CharacterSelectState</a> (string cselected_stage)</td></tr>
 <tr class="separator:a44baabc88e8bd9d6f5bc4abfb072026a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15bde14ae5fab3b7bb3eea141fcffe98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a15bde14ae5fab3b7bb3eea141fcffe98">update</a> (float delta)</td></tr>
-<tr class="separator:a15bde14ae5fab3b7bb3eea141fcffe98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e94a6d14a97ca6338a35a831b78dc33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a5e94a6d14a97ca6338a35a831b78dc33">render</a> ()</td></tr>
-<tr class="separator:a5e94a6d14a97ca6338a35a831b78dc33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab2630d56ad37b1c0a584f5752e09117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aab2630d56ad37b1c0a584f5752e09117">pause</a> ()</td></tr>
-<tr class="separator:aab2630d56ad37b1c0a584f5752e09117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30a79323e93904f2b4969d632f8f8899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a30a79323e93904f2b4969d632f8f8899">resume</a> ()</td></tr>
-<tr class="separator:a30a79323e93904f2b4969d632f8f8899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a690574c541a712eb9a5df53249955c3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a690574c541a712eb9a5df53249955c3d">process_input</a> ()</td></tr>
-<tr class="separator:a690574c541a712eb9a5df53249955c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55aefbdc79dfd395cd856ce98e55eeef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a55aefbdc79dfd395cd856ce98e55eeef">character_enabled</a> (int row, int col)</td></tr>
-<tr class="separator:a55aefbdc79dfd395cd856ce98e55eeef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa11f8e6d4b9e78d47030dd0948acbd24"><td class="memItemLeft" align="right" valign="top">pair&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aa11f8e6d4b9e78d47030dd0948acbd24">get_chars_info</a> (int idx)</td></tr>
-<tr class="separator:aa11f8e6d4b9e78d47030dd0948acbd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc8e33c9597ecc01eac5215f8c982ccf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#adc8e33c9597ecc01eac5215f8c982ccf">all_players_selected</a> ()</td></tr>
-<tr class="separator:adc8e33c9597ecc01eac5215f8c982ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf4dabbeeee7fdd296e5a1c153734bd4"><td class="memItemLeft" align="right" valign="top">vector&lt; pair&lt; string, string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#adf4dabbeeee7fdd296e5a1c153734bd4">export_players</a> ()</td></tr>
-<tr class="separator:adf4dabbeeee7fdd296e5a1c153734bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1073c2667360359c0f4a34de94a6e9d"><td class="memItemLeft" align="right" valign="top">pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aa1073c2667360359c0f4a34de94a6e9d">get_slot</a> (int row, int col)</td></tr>
-<tr class="separator:aa1073c2667360359c0f4a34de94a6e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classState"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classState')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classState.html">State</a></td></tr>
 <tr class="memitem:ab91bb1dd5aa6260ab2a456581daf9ec2 inherit pub_methods_classState"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State</a> ()</td></tr>
 <tr class="separator:ab91bb1dd5aa6260ab2a456581daf9ec2 inherit pub_methods_classState"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +129,70 @@ Private Types</h2></td></tr>
  }</td></tr>
 <tr class="separator:a18200773df2723909daa8745ba8f62d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a23c31ac7a6abed38cde2c0714b04182d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a23c31ac7a6abed38cde2c0714b04182d">get_characters_slots_sprites</a> ()</td></tr>
+<tr class="separator:a23c31ac7a6abed38cde2c0714b04182d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9ce2f043447a8687a8be209dd46fe77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aa9ce2f043447a8687a8be209dd46fe77">set_characters_slots_sprites</a> (<a class="el" href="classSprite.html">Sprite</a> ccharacters_slots_sprites)</td></tr>
+<tr class="separator:aa9ce2f043447a8687a8be209dd46fe77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb3edf721a02902442a0652a95f6760d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aeb3edf721a02902442a0652a95f6760d">get_planet_sprite</a> ()</td></tr>
+<tr class="separator:aeb3edf721a02902442a0652a95f6760d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7902dcfd159d9c6f31fab53901e20036"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a7902dcfd159d9c6f31fab53901e20036">set_planet_sprite</a> (<a class="el" href="classSprite.html">Sprite</a> cplanet_sprite)</td></tr>
+<tr class="separator:a7902dcfd159d9c6f31fab53901e20036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77738ed0d9ba9b8a9cb9fa6d0ff62991"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a77738ed0d9ba9b8a9cb9fa6d0ff62991">get_selected_tags_sprites</a> ()</td></tr>
+<tr class="separator:a77738ed0d9ba9b8a9cb9fa6d0ff62991"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5460dc66ff80229d6a8b5fe8e53cf920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a5460dc66ff80229d6a8b5fe8e53cf920">set_selected_tags_sprites</a> (<a class="el" href="classSprite.html">Sprite</a> cselected_tags_sprites)</td></tr>
+<tr class="separator:a5460dc66ff80229d6a8b5fe8e53cf920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af36fa86f13c68773b55a6b3a85738608"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#af36fa86f13c68773b55a6b3a85738608">set_ready_to_fight_sprite</a> (<a class="el" href="classSprite.html">Sprite</a> cready_to_fight_sprite)</td></tr>
+<tr class="separator:af36fa86f13c68773b55a6b3a85738608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5fa82d4d7390dbfbb74ee58d34e6462"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#af5fa82d4d7390dbfbb74ee58d34e6462">set_blocked_sound</a> (<a class="el" href="classSound.html">Sound</a> cblocked_sound)</td></tr>
+<tr class="separator:af5fa82d4d7390dbfbb74ee58d34e6462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad435db2cb41f8586a3c1134dccc13c28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#ad435db2cb41f8586a3c1134dccc13c28">set_select_sound</a> (<a class="el" href="classSound.html">Sound</a> cselect_sound)</td></tr>
+<tr class="separator:ad435db2cb41f8586a3c1134dccc13c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bc422dc0581f1a2fe648bc5248eac4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a9bc422dc0581f1a2fe648bc5248eac4d">set_changed_sound</a> (<a class="el" href="classSound.html">Sound</a> cchanged_sound)</td></tr>
+<tr class="separator:a9bc422dc0581f1a2fe648bc5248eac4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8e67b84204a57f878d0130f85e1d5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aee8e67b84204a57f878d0130f85e1d5b">set_selected_stage</a> (string cselected_stage)</td></tr>
+<tr class="separator:aee8e67b84204a57f878d0130f85e1d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a690574c541a712eb9a5df53249955c3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a690574c541a712eb9a5df53249955c3d">process_input</a> ()</td></tr>
+<tr class="separator:a690574c541a712eb9a5df53249955c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15bde14ae5fab3b7bb3eea141fcffe98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a15bde14ae5fab3b7bb3eea141fcffe98">update</a> (float delta)</td></tr>
+<tr class="separator:a15bde14ae5fab3b7bb3eea141fcffe98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e94a6d14a97ca6338a35a831b78dc33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a5e94a6d14a97ca6338a35a831b78dc33">render</a> ()</td></tr>
+<tr class="separator:a5e94a6d14a97ca6338a35a831b78dc33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace2458053ce27d53275da993c00a21b6"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; string, <br class="typebreak"/>
+string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#ace2458053ce27d53275da993c00a21b6">export_players</a> ()</td></tr>
+<tr class="separator:ace2458053ce27d53275da993c00a21b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc8e33c9597ecc01eac5215f8c982ccf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#adc8e33c9597ecc01eac5215f8c982ccf">all_players_selected</a> ()</td></tr>
+<tr class="separator:adc8e33c9597ecc01eac5215f8c982ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24717046111dd7d472f3a2d05fc0a787"><td class="memItemLeft" align="right" valign="top">std::pair&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a24717046111dd7d472f3a2d05fc0a787">get_chars_info</a> (int idx)</td></tr>
+<tr class="separator:a24717046111dd7d472f3a2d05fc0a787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a879195c6ab5d2d118d3baa9242f20b8c"><td class="memItemLeft" align="right" valign="top">std::pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a879195c6ab5d2d118d3baa9242f20b8c">get_slot</a> (int row, int col)</td></tr>
+<tr class="separator:a879195c6ab5d2d118d3baa9242f20b8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c3041d850b072918512f802fcf21548"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a9c3041d850b072918512f802fcf21548">check_constants</a> ()</td></tr>
+<tr class="separator:a9c3041d850b072918512f802fcf21548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4394bb180f1ed61d5a43ff8a2d3e57c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a4394bb180f1ed61d5a43ff8a2d3e57c7">load_resources</a> ()</td></tr>
+<tr class="separator:a4394bb180f1ed61d5a43ff8a2d3e57c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6606095cd7157133deddaa6fc4484430"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a6606095cd7157133deddaa6fc4484430">initialize_elements_positions</a> ()</td></tr>
+<tr class="separator:a6606095cd7157133deddaa6fc4484430"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5098e66954b4262fc47b0ca323321622"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a5098e66954b4262fc47b0ca323321622">handle_menu_interaction</a> ()</td></tr>
+<tr class="separator:a5098e66954b4262fc47b0ca323321622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1131f9b25af5b3a070eeda1acb525bac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a1131f9b25af5b3a070eeda1acb525bac">handle_exiting</a> ()</td></tr>
+<tr class="separator:a1131f9b25af5b3a070eeda1acb525bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75aaac68b84bdf261f23b55a948c52c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a75aaac68b84bdf261f23b55a948c52c2">handle_random_select</a> (unsigned int player)</td></tr>
+<tr class="separator:a75aaac68b84bdf261f23b55a948c52c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e175cc4335e19e2a4499b7fb50350c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a51e175cc4335e19e2a4499b7fb50350c">handle_navigating</a> (unsigned int player)</td></tr>
+<tr class="separator:a51e175cc4335e19e2a4499b7fb50350c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ef1197607d9682f8c5889974ee113c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a6ef1197607d9682f8c5889974ee113c2">handle_select</a> (unsigned int player)</td></tr>
+<tr class="separator:a6ef1197607d9682f8c5889974ee113c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68ab66d56a04b4345cf39c7a7d3048d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a68ab66d56a04b4345cf39c7a7d3048d3">play_sprites_animation</a> (float delta_time)</td></tr>
+<tr class="separator:a68ab66d56a04b4345cf39c7a7d3048d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2630d56ad37b1c0a584f5752e09117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aab2630d56ad37b1c0a584f5752e09117">pause</a> ()</td></tr>
+<tr class="separator:aab2630d56ad37b1c0a584f5752e09117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30a79323e93904f2b4969d632f8f8899"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a30a79323e93904f2b4969d632f8f8899">resume</a> ()</td></tr>
+<tr class="separator:a30a79323e93904f2b4969d632f8f8899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55aefbdc79dfd395cd856ce98e55eeef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a55aefbdc79dfd395cd856ce98e55eeef">character_enabled</a> (int row, int col)</td></tr>
+<tr class="separator:a55aefbdc79dfd395cd856ce98e55eeef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9ab1bc7e4e772521d20282f8a780f27d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a9ab1bc7e4e772521d20282f8a780f27d">backgrounds_sprites</a> [2]</td></tr>
@@ -170,6 +215,18 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a5c9000528e967f6398f6ff40087be760"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2e2d87ddf0bb98101e6f094522350f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSound.html">Sound</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#ab2e2d87ddf0bb98101e6f094522350f0">changed_sound</a></td></tr>
 <tr class="separator:ab2e2d87ddf0bb98101e6f094522350f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a925642f4f0964202effeda106f0a8f72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFighterMenu.html">FighterMenu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a925642f4f0964202effeda106f0a8f72">chars</a> [8]</td></tr>
+<tr class="separator:a925642f4f0964202effeda106f0a8f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae04eee5c77f2343049ed05a9e39d337a"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#ae04eee5c77f2343049ed05a9e39d337a">names_tags_positions</a></td></tr>
+<tr class="separator:ae04eee5c77f2343049ed05a9e39d337a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a355cd3851c05da0526bb63cb63efd411"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a355cd3851c05da0526bb63cb63efd411">characters_positions</a></td></tr>
+<tr class="separator:a355cd3851c05da0526bb63cb63efd411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98e5e4dbfd18506e2c7fea49e8cd0342"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a98e5e4dbfd18506e2c7fea49e8cd0342">names_positions_deltas</a></td></tr>
+<tr class="separator:a98e5e4dbfd18506e2c7fea49e8cd0342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed4febbf645ad337d108707326b1e622"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aed4febbf645ad337d108707326b1e622">numbers_positions_deltas</a></td></tr>
+<tr class="separator:aed4febbf645ad337d108707326b1e622"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a042f15cd0971c928d809d9b429253791"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a042f15cd0971c928d809d9b429253791">selected_stage</a></td></tr>
+<tr class="separator:a042f15cd0971c928d809d9b429253791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a784927909c4eb748b5f4e637ad38c421"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a784927909c4eb748b5f4e637ad38c421">current_row</a> [4]</td></tr>
 <tr class="separator:a784927909c4eb748b5f4e637ad38c421"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc57f97751d037ee701e881cf8ad1ca7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#afc57f97751d037ee701e881cf8ad1ca7">current_column</a> [4]</td></tr>
@@ -180,20 +237,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a9ff5402d2210de54a20974b9db1a7c31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbd0a4c7fad345d631d3127e065a23bb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#abbd0a4c7fad345d631d3127e065a23bb">is_ready</a></td></tr>
 <tr class="separator:abbd0a4c7fad345d631d3127e065a23bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a042f15cd0971c928d809d9b429253791"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a042f15cd0971c928d809d9b429253791">selected_stage</a></td></tr>
-<tr class="separator:a042f15cd0971c928d809d9b429253791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8360bca9e1b232d700232a87f2f94f1a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a8360bca9e1b232d700232a87f2f94f1a">is_key_pressed</a> [4][15]</td></tr>
 <tr class="separator:a8360bca9e1b232d700232a87f2f94f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae04eee5c77f2343049ed05a9e39d337a"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#ae04eee5c77f2343049ed05a9e39d337a">names_tags_positions</a></td></tr>
-<tr class="separator:ae04eee5c77f2343049ed05a9e39d337a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a355cd3851c05da0526bb63cb63efd411"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a355cd3851c05da0526bb63cb63efd411">characters_positions</a></td></tr>
-<tr class="separator:a355cd3851c05da0526bb63cb63efd411"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98e5e4dbfd18506e2c7fea49e8cd0342"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a98e5e4dbfd18506e2c7fea49e8cd0342">names_positions_deltas</a></td></tr>
-<tr class="separator:a98e5e4dbfd18506e2c7fea49e8cd0342"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed4febbf645ad337d108707326b1e622"><td class="memItemLeft" align="right" valign="top">vector&lt; std::pair&lt; int, int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#aed4febbf645ad337d108707326b1e622">numbers_positions_deltas</a></td></tr>
-<tr class="separator:aed4febbf645ad337d108707326b1e622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a925642f4f0964202effeda106f0a8f72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFighterMenu.html">FighterMenu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCharacterSelectState.html#a925642f4f0964202effeda106f0a8f72">chars</a> [8]</td></tr>
-<tr class="separator:a925642f4f0964202effeda106f0a8f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -212,7 +257,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00029">29</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00030">30</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="a18200773df2723909daa8745ba8f62d8"></a>
 <div class="memitem">
@@ -256,7 +301,7 @@ Additional Inherited Members</h2></td></tr>
 </td></tr>
 </table>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00055">55</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00078">78</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -291,9 +336,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <p>&lt; Allocated channels for mixing.</p>
-<p>Load backgrounds_spritess following standards for file name.</p>
-<p>Load information for players based on standards for file name.</p>
-<p>Load information for characters based on standards for file name.</p>
+<p>Check if memsets succeeds.</p>
 
 <p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00116">116</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
@@ -303,6 +346,9 @@ Additional Inherited Members</h2></td></tr>
 <a class="anchor" id="adc8e33c9597ecc01eac5215f8c982ccf"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool CharacterSelectState::all_players_selected </td>
@@ -311,19 +357,27 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Searchs for characters identifying which the player chose. </p>
 <p>Check if all players selected their characters and skins.</p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00466">466</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00378">378</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="a55aefbdc79dfd395cd856ce98e55eeef"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool CharacterSelectState::character_enabled </td>
@@ -343,44 +397,186 @@ Additional Inherited Members</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Not implemented. </p>
 
 </div>
 </div>
-<a class="anchor" id="adf4dabbeeee7fdd296e5a1c153734bd4"></a>
+<a class="anchor" id="a9c3041d850b072918512f802fcf21548"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; pair&lt; string, string &gt; &gt; CharacterSelectState::export_players </td>
+          <td class="memname">void CharacterSelectState::check_constants </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verify if constants values are ok. </p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px </p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00626">626</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ace2458053ce27d53275da993c00a21b6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; std::pair&lt; string, string &gt; &gt; CharacterSelectState::export_players </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Get information about players choice about characters and skins. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classVector.html">Vector</a> of pairs of strings containing information about characters and skins choosen. </dd></dl>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00495">495</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00318">318</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa11f8e6d4b9e78d47030dd0948acbd24"></a>
+<a class="anchor" id="a23c31ac7a6abed38cde2c0714b04182d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pair&lt; string, int &gt; CharacterSelectState::get_chars_info </td>
+          <td class="memname"><a class="el" href="classSprite.html">Sprite</a> CharacterSelectState::get_characters_slots_sprites </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Accessor methods. </p>
+<p>Not vectors included because it would cause complexity to increase a lot and program is already stable. </p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00116">116</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a24717046111dd7d472f3a2d05fc0a787"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; string, int &gt; CharacterSelectState::get_chars_info </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>idx</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Get information about the character the player choose. </p>
@@ -392,16 +588,69 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Name and number of frames in corresponding sprite </dd></dl>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00482">482</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00419">419</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa1073c2667360359c0f4a34de94a6e9d"></a>
+<a class="anchor" id="aeb3edf721a02902442a0652a95f6760d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pair&lt; int, int &gt; CharacterSelectState::get_slot </td>
+          <td class="memname"><a class="el" href="classSprite.html">Sprite</a> CharacterSelectState::get_planet_sprite </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00133">133</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a77738ed0d9ba9b8a9cb9fa6d0ff62991"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSprite.html">Sprite</a> CharacterSelectState::get_selected_tags_sprites </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00149">149</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a879195c6ab5d2d118d3baa9242f20b8c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; int, int &gt; CharacterSelectState::get_slot </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>row</em>, </td>
@@ -418,6 +667,11 @@ Additional Inherited Members</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Get slot of character on the board. </p>
@@ -428,9 +682,281 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>pair of ints which indicates the corresponding slot. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>pair of ints which indicates the corresponding slot.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>[510 or 645] </td></tr>
+    <tr><td class="paramname">col</td><td>[55 or 197 or 395 or 536]</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::pair of ints which indicates the corresponding slot. </dd></dl>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00539">539</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00478">478</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1131f9b25af5b3a070eeda1acb525bac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::handle_exiting </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handle all options of leaving this menu. </p>
+<p>Can be forward or backward </p>
+<p>&lt; Only enable start when all</p>
+<p>&lt; players have selected a character.</p>
+<p>&lt; Process request for going</p>
+<p>&lt; previous menu (SelectStage).</p>
+<p>&lt; Process request</p>
+<p>&lt; for leaving the game. </p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00857">857</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5098e66954b4262fc47b0ca323321622"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::handle_menu_interaction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Handle interaction of the user with the menu. </p>
+<p>If char is selected you can only deselect.</p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00904">904</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a51e175cc4335e19e2a4499b7fb50350c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::handle_navigating </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Will handle the player navigating through characters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>player which will random selected [0, N_PLAYERS - 1] </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>To know if should reset skin to default.</p>
+<p>Navigate in X axis.</p>
+<p>Navigate in Y axis.</p>
+<p>Reset skin for default if character navigate to other character.</p>
+<p>Navigate through skins.</p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00989">989</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75aaac68b84bdf261f23b55a948c52c2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::handle_random_select </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Will handle process of choosing random character and skin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>player which will random selected [0, N_PLAYERS - 1] </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Select random row and column.</p>
+<p>Select random skin for character.</p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00933">933</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6ef1197607d9682f8c5889974ee113c2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::handle_select </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Will handle the act of get the character selected. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">player</td><td>player which will random selected [0, N_PLAYERS - 1] </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Select character and lock skin.</p>
+<p>Check if character and skin are unblocked.</p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l01077">1077</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6606095cd7157133deddaa6fc4484430"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::initialize_elements_positions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set initial values for elements. </p>
+<p>This method intend to only start the values for the elements of when choosing character, not render them </p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px </p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00594">594</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4394bb180f1ed61d5a43ff8a2d3e57c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::load_resources </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes attributes relateds to resources. </p>
+<p>Understand resources as what is inside of folder res </p>
+<p>Load backgrounds_sprites following standards for file name.</p>
+<p>Load information for players based on standards for file name.</p>
+<p>Load information for characters based on standards for file name.</p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00535">535</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
@@ -450,7 +976,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -459,13 +985,52 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classState.html#ad8530393b468e4494f965f61259c84c4">State</a>.</p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00549">549</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l01145">1145</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a68ab66d56a04b4345cf39c7a7d3048d3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::play_sprites_animation </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>delta_time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Play sprites for every animated object when choosing charater. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delta_time</td><td>Time spent on each frame </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>&lt; If split on more lines break code</p>
+<p>&lt; If split on more </p>
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l01113">1113</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="a690574c541a712eb9a5df53249955c3d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void CharacterSelectState::process_input </td>
@@ -474,11 +1039,16 @@ Additional Inherited Members</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Process interaction of the player with joystick while choosing character. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00512">512</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00164">164</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
@@ -498,7 +1068,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -506,15 +1076,23 @@ Additional Inherited Members</h2></td></tr>
 <p>Render the board. </p>
 <p>Render the board of with characters options, including all effects.</p>
 <p>Render the board with characters options, including all effects. </p>
-<p>Put backgrounds_spritess, planet_sprite and characters_slots_sprites centralized.</p>
-<p>Result should be 0 for backgrounds_spritess images.</p>
+<p>Put backgrounds_sprites, <a class="el" href="classCharacterSelectState.html#aeb3edf721a02902442a0652a95f6760d">get_planet_sprite()</a> and <a class="el" href="classCharacterSelectState.html#a23c31ac7a6abed38cde2c0714b04182d" title="Accessor methods. ">get_characters_slots_sprites()</a> centralized.</p>
+<p>Result should be 0 for backgrounds_sprites images.</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
+<p>&lt; Unit: px</p>
 <p>Iterate over elements rendering things.</p>
 <p>Render not available skins for not selected characters.</p>
 <p>Mark selected character with skin.</p>
 
 <p>Implements <a class="el" href="classState.html#a71f5105bcdc39481be7684d853fe12e9">State</a>.</p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00380">380</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00219">219</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
@@ -534,7 +1112,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -543,7 +1121,215 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classState.html#a6397f6c277e077f5284f06c9902b63ee">State</a>.</p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00555">555</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l01151">1151</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af5fa82d4d7390dbfbb74ee58d34e6462"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_blocked_sound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSound.html">Sound</a>&#160;</td>
+          <td class="paramname"><em>cblocked_sound</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00173">173</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9bc422dc0581f1a2fe648bc5248eac4d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_changed_sound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSound.html">Sound</a>&#160;</td>
+          <td class="paramname"><em>cchanged_sound</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00189">189</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa9ce2f043447a8687a8be209dd46fe77"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_characters_slots_sprites </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSprite.html">Sprite</a>&#160;</td>
+          <td class="paramname"><em>ccharacters_slots_sprites</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00125">125</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7902dcfd159d9c6f31fab53901e20036"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_planet_sprite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSprite.html">Sprite</a>&#160;</td>
+          <td class="paramname"><em>cplanet_sprite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00141">141</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af36fa86f13c68773b55a6b3a85738608"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_ready_to_fight_sprite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSprite.html">Sprite</a>&#160;</td>
+          <td class="paramname"><em>cready_to_fight_sprite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00165">165</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad435db2cb41f8586a3c1134dccc13c28"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_select_sound </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSound.html">Sound</a>&#160;</td>
+          <td class="paramname"><em>cselect_sound</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00181">181</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee8e67b84204a57f878d0130f85e1d5b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_selected_stage </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>cselected_stage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00197">197</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5460dc66ff80229d6a8b5fe8e53cf920"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterSelectState::set_selected_tags_sprites </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSprite.html">Sprite</a>&#160;</td>
+          <td class="paramname"><em>cselected_tags_sprites</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00157">157</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -558,42 +1344,30 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">void CharacterSelectState::update </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>delta</em></td><td>)</td>
+          <td class="paramname"><em>delta_time</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Updates player selection while player move between characters. </p>
+<p>Updates what is seen given on each frame.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">delta</td><td>Variation of how much the characters player travelled </td></tr>
+    <tr><td class="paramname">delta</td><td>Variation of how much the characters player travelled</td></tr>
+    <tr><td class="paramname">delta_time</td><td>Time for each frame on playing sprites. </td></tr>
   </table>
   </dd>
 </dl>
-<p>Process request for leaving the game.</p>
-<p>Process request for going next menu.</p>
-<p>Only enable start when all players have selected a character.</p>
-<p>Handle all players selection.</p>
-<p>Random Character.</p>
-<p>Select random row and column.</p>
-<p>Select random skin for character.</p>
-<p>Change current selected character.</p>
-<p>Reset skin if character changed_sound.</p>
-<p>Change skin.</p>
-<p>Select character and lock skin.</p>
-<p>Check if character or skin are unblocked_sound.</p>
-<p>Unselect character.</p>
-<p>Make characters move while you are selecting (not static).</p>
 
 <p>Implements <a class="el" href="classState.html#a5db16224827148ce450fcc9a2f97581d">State</a>.</p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00197">197</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8cpp_source.html#l00192">192</a> of file <a class="el" href="CharacterSelectState_8cpp_source.html">CharacterSelectState.cpp</a>.</p>
 
 </div>
 </div>
@@ -619,7 +1393,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Some screens have. </p>
 <p>multilayer background. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00031">31</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00032">32</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -643,7 +1417,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>When try to select not allowed things. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00042">42</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00045">45</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -667,7 +1441,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>When switching between characters. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00044">44</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00048">48</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -691,7 +1465,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Relative to backgrounds_sprites. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00091">91</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00072">72</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -715,7 +1489,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Images for character thumbnails. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00035">35</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00036">36</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -739,7 +1513,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Board of fighters. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00095">95</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00050">50</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -761,7 +1535,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00047">47</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00093">93</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -783,7 +1557,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00046">46</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00092">92</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -805,7 +1579,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00048">48</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00094">94</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -827,7 +1601,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00050">50</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00096">96</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -849,7 +1623,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00069">69</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00099">99</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -873,7 +1647,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Ready to start the match. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00051">51</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00097">97</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +1671,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Relative to names_tags_positions. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00092">92</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00073">73</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -925,7 +1699,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Remembering (0 0) is on left top corner.</p>
 <p>So, for the following coordinates: Unit: px; Range: [0, backgrounds_sprites_image_size - size_of_object]. (Range for fit on screen)Relative to backgrounds_sprites. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00090">90</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00071">71</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -947,7 +1721,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00038">38</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00040">40</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -971,7 +1745,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Relative to slots. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00093">93</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00074">74</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -993,7 +1767,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00034">34</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00035">35</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -1018,7 +1792,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Numbers which jump. </p>
 <p>for slots. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00036">36</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00038">38</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1816,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>When everything is ready. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00040">40</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00043">43</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1840,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>When really select characters. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00043">43</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00046">46</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -1088,7 +1862,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00053">53</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00076">76</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -1112,7 +1886,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Highlight selected characters. </p>
 
-<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00039">39</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
+<p>Definition at line <a class="el" href="CharacterSelectState_8h_source.html#l00042">42</a> of file <a class="el" href="CharacterSelectState_8h_source.html">CharacterSelectState.h</a>.</p>
 
 </div>
 </div>
@@ -1126,7 +1900,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classCharacterSelectState.html">CharacterSelectState</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,6 +1,6 @@
 <map id="JoystickButton.h" name="JoystickButton.h">
-<area shape="rect" id="node3" href="$GameObject_8h.html" title="GameObject.h" alt="" coords="227,80,333,107"/>
-<area shape="rect" id="node10" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="507,80,573,107"/>
-<area shape="rect" id="node4" href="$Rectangle_8h.html" title="Rectangle.h" alt="" coords="234,155,325,181"/>
-<area shape="rect" id="node6" href="$Vector_8h.html" title="Vector.h" alt="" coords="245,229,315,256"/>
+<area shape="rect" id="node2" href="$GameObject_8h.html" title="Brief Description. " alt="" coords="473,80,580,107"/>
+<area shape="rect" id="node11" href="$Sprite_8h.html" title="This file contains the declaration of the Sprite class methods and attributes. " alt="" coords="279,80,345,107"/>
+<area shape="rect" id="node7" href="$Rectangle_8h.html" title="Brief Description. " alt="" coords="487,155,579,181"/>
+<area shape="rect" id="node9" href="$Vector_8h.html" title="Brief Description. " alt="" coords="498,229,568,256"/>
 </map>

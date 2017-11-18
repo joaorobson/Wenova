@@ -1,5 +1,5 @@
 <map id="StageSelectState.h" name="StageSelectState.h">
 <area shape="rect" id="node2" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="5,80,176,107"/>
-<area shape="rect" id="node3" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="201,80,311,107"/>
-<area shape="rect" id="node4" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="336,80,488,107"/>
+<area shape="rect" id="node3" href="$MenuState_8cpp.html" title="Brief Description. " alt="" coords="201,80,311,107"/>
+<area shape="rect" id="node4" href="$StageSelectState_8cpp.html" title="This file builds and renders the stages that the user can select. " alt="" coords="336,80,484,107"/>
 </map>

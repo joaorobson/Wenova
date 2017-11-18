@@ -66,6 +66,7 @@ $(document).ready(function(){initNavTree('classBattleEnd.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classBattleEnd-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -86,35 +87,42 @@ Collaboration diagram for BattleEnd:</div>
 <div class="dyncontent">
 <div class="center"><img src="classBattleEnd__coll__graph.png" border="0" usemap="#BattleEnd_coll__map" alt="Collaboration graph"/></div>
 <map name="BattleEnd_coll__map" id="BattleEnd_coll__map">
-<area shape="rect" id="node2" href="classGameObject.html" title="{GameObject\n|+ rotation\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="141,485,269,665"/><area shape="rect" id="node4" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="188,5,297,317"/><area shape="rect" id="node8" href="classText.html" title="{Text\n|&#45; texture\l&#45; style\l&#45; font_size\l&#45; color\l&#45; clip_rect\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_pos()\l+ set_text()\l+ set_color()\l+ set_style()\l+ set_font_size()\l+ get_x()\land 6 more...\l}" alt="" coords="293,433,413,716"/><area shape="rect" id="node5" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ get_width()\l+ get_height()\l+ is_open()\l+ open()\l+ set_clip()\l+ set_frame()\l+ set_frame_count()\land 11 more...\l}" alt="" coords="437,382,576,767"/></map>
+<area shape="rect" id="node2" href="classGameObject.html" title="{GameObject\n|+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="5,551,133,745"/><area shape="rect" id="node3" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="23,5,132,317"/><area shape="rect" id="node7" href="classText.html" title="{Text\n|&#45; texture\l&#45; color\l&#45; clip_rect\l&#45; style\l&#45; font_size\l|+ Text()\l+ Text()\l+ ~Text()\l+ render()\l+ set_text()\l+ set_pos()\l+ set_color()\l+ get_x()\l+ get_y()\l+ get_width()\l+ get_height()\l+ get_text()\l&#45; set_style()\l&#45; set_font_size()\l&#45; remake_texture()\l&#45; open()\l}" alt="" coords="157,470,285,826"/><area shape="rect" id="node4" href="classSprite.html" title="{Sprite\n|&#45; width\l&#45; height\l&#45; current_frame\l&#45; time_elapsed\l&#45; frame_time\l&#45; frame_count\l&#45; rows\l&#45; columns\l&#45; clip_rect\l&#45; scale_x_axis\l&#45; scale_y_axis\l&#45; finished\l|+ Sprite()\l+ Sprite()\l+ ~Sprite()\l+ render()\l+ set_clip()\l+ update()\l+ get_current_frame()\l+ is_finished()\l+ restart_count()\l+ get_height()\l+ get_width()\l+ set_scale()\l+ set_scale_x()\l+ update_scale_x()\l&#45; open()\l&#45; set_frame()\l&#45; set_frame_count()\l&#45; set_frame_time()\l&#45; is_open()\l&#45; set_scale_y()\l&#45; set_scale()\l}" alt="" coords="309,382,456,914"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a0fd87229d343ddcb7b783b30ebd791b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a0fd87229d343ddcb7b783b30ebd791b5">BattleEnd</a> (int id_winner)</td></tr>
 <tr class="separator:a0fd87229d343ddcb7b783b30ebd791b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a894d0d19c62f88d617ae07d93cd0ab07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a894d0d19c62f88d617ae07d93cd0ab07">quit_requested</a> ()</td></tr>
+<tr class="separator:a894d0d19c62f88d617ae07d93cd0ab07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6ed5cca02b77255bd4fd8b5bedb6c2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#ad6ed5cca02b77255bd4fd8b5bedb6c2e">notify_collision</a> (const <a class="el" href="classGameObject.html">GameObject</a> &amp;object)</td></tr>
+<tr class="separator:ad6ed5cca02b77255bd4fd8b5bedb6c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classGameObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGameObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGameObject.html">GameObject</a></td></tr>
+<tr class="memitem:a224d4f6d9dd75c8a6f9d022eaf586fd9 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a224d4f6d9dd75c8a6f9d022eaf586fd9">~GameObject</a> ()</td></tr>
+<tr class="separator:a224d4f6d9dd75c8a6f9d022eaf586fd9 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cf952a39003eaa03abd0bb71fbce6fe inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a3cf952a39003eaa03abd0bb71fbce6fe">is</a> (const std::string &amp;type) const </td></tr>
+<tr class="separator:a3cf952a39003eaa03abd0bb71fbce6fe inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3415c51b95a1ada23ecdf28be2da9800 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a3415c51b95a1ada23ecdf28be2da9800">add_tags</a> (std::string ctags)</td></tr>
+<tr class="separator:a3415c51b95a1ada23ecdf28be2da9800 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96e887bbc8d15aa18f2cc3ff0c8098e inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ac96e887bbc8d15aa18f2cc3ff0c8098e">remove_tags</a> (std::string ctags)</td></tr>
+<tr class="separator:ac96e887bbc8d15aa18f2cc3ff0c8098e inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
 <tr class="memitem:ae6aea5e6aba7d0deda7f0544b9e3b2e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#ae6aea5e6aba7d0deda7f0544b9e3b2e2">update</a> (float delta)</td></tr>
 <tr class="separator:ae6aea5e6aba7d0deda7f0544b9e3b2e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc34221e79aa933d59793755712eb58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#aabc34221e79aa933d59793755712eb58">render</a> ()</td></tr>
 <tr class="separator:aabc34221e79aa933d59793755712eb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accdf07475f7085398a8770e4adcf131d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#accdf07475f7085398a8770e4adcf131d">is_dead</a> ()</td></tr>
 <tr class="separator:accdf07475f7085398a8770e4adcf131d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a894d0d19c62f88d617ae07d93cd0ab07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a894d0d19c62f88d617ae07d93cd0ab07">quit_requested</a> ()</td></tr>
-<tr class="separator:a894d0d19c62f88d617ae07d93cd0ab07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb24b1d864fc20652b8aff0c4d84f295"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#aeb24b1d864fc20652b8aff0c4d84f295">notify_collision</a> (<a class="el" href="classGameObject.html">GameObject</a> &amp;object)</td></tr>
-<tr class="separator:aeb24b1d864fc20652b8aff0c4d84f295"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classGameObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGameObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGameObject.html">GameObject</a></td></tr>
-<tr class="memitem:a224d4f6d9dd75c8a6f9d022eaf586fd9 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a224d4f6d9dd75c8a6f9d022eaf586fd9">~GameObject</a> ()</td></tr>
-<tr class="separator:a224d4f6d9dd75c8a6f9d022eaf586fd9 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0700f8adcdb41f1b2ddfdf8b4c150a05 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a0700f8adcdb41f1b2ddfdf8b4c150a05">is</a> (string type)</td></tr>
-<tr class="separator:a0700f8adcdb41f1b2ddfdf8b4c150a05 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa3bf943c105703d7713f967af79f428 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#aaa3bf943c105703d7713f967af79f428">add_tags</a> (string ctags)</td></tr>
-<tr class="separator:aaa3bf943c105703d7713f967af79f428 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d560eda7b7b3d81e2e586b6175df6f2 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a1d560eda7b7b3d81e2e586b6175df6f2">remove_tags</a> (string ctags)</td></tr>
-<tr class="separator:a1d560eda7b7b3d81e2e586b6175df6f2 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a254c6b451db46a29a4e59c198c81b483"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a254c6b451db46a29a4e59c198c81b483">back_btn</a></td></tr>
+<tr class="separator:a254c6b451db46a29a4e59c198c81b483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a074e24bcf745a5fe6cbdb80911d6d1da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classText.html">Text</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a074e24bcf745a5fe6cbdb80911d6d1da">back_txt</a></td></tr>
+<tr class="separator:a074e24bcf745a5fe6cbdb80911d6d1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadd94ab987ecadf60073a0721bcd1b9b"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classSprite.html">Sprite</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#aadd94ab987ecadf60073a0721bcd1b9b">sprite</a></td></tr>
 <tr class="separator:aadd94ab987ecadf60073a0721bcd1b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69c4b43d2cd8a8b94e486126870b9ece"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a69c4b43d2cd8a8b94e486126870b9ece">current_sprite</a></td></tr>
@@ -123,10 +131,6 @@ Private Attributes</h2></td></tr>
 <tr class="separator:acc82e15c669c1ffa737d07cb44a0a6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8648e0a1265a8638d7b65aa133e9f7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#ac8648e0a1265a8638d7b65aa133e9f7d">quitRequested</a></td></tr>
 <tr class="separator:ac8648e0a1265a8638d7b65aa133e9f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a254c6b451db46a29a4e59c198c81b483"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a254c6b451db46a29a4e59c198c81b483">back_btn</a></td></tr>
-<tr class="separator:a254c6b451db46a29a4e59c198c81b483"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e07b6c9481457a6003b0352d12153f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classText.html">Text</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBattleEnd.html#a5e07b6c9481457a6003b0352d12153f3">back_txt</a></td></tr>
-<tr class="separator:a5e07b6c9481457a6003b0352d12153f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -135,12 +139,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a6eb4598f058d5082cf5f88c45c65a281 inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55f6ebdf4cfbab508680ad7290fb26c inherit pub_attribs_classGameObject"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ac55f6ebdf4cfbab508680ad7290fb26c">rotation</a> = 0</td></tr>
 <tr class="separator:ac55f6ebdf4cfbab508680ad7290fb26c inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaef7781812cf8f2ec60f8c542818403f inherit pub_attribs_classGameObject"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; string, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#aaef7781812cf8f2ec60f8c542818403f">tags</a></td></tr>
-<tr class="separator:aaef7781812cf8f2ec60f8c542818403f inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2fe51a8b40148dad8efb54798eee00 inherit pub_attribs_classGameObject"><td class="memItemLeft" align="right" valign="top">std::unordered_map<br class="typebreak"/>
+&lt; std::string, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a0f2fe51a8b40148dad8efb54798eee00">tags</a></td></tr>
+<tr class="separator:a0f2fe51a8b40148dad8efb54798eee00 inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00026">26</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00027">27</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0fd87229d343ddcb7b783b30ebd791b5"></a>
 <div class="memitem">
@@ -172,9 +177,8 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>Iterates over the 8 images of victory to create an array of sprites.</p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00025">25</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00026">26</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,7 +199,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -206,11 +210,11 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classGameObject.html#a1f7a0fe56fad48d89f84c83abd8ff306">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00113">113</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00118">118</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aeb24b1d864fc20652b8aff0c4d84f295"></a>
+<a class="anchor" id="ad6ed5cca02b77255bd4fd8b5bedb6c2e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -220,7 +224,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void BattleEnd::notify_collision </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classGameObject.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classGameObject.html">GameObject</a> &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td></td>
         </tr>
@@ -241,9 +245,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classGameObject.html#a2718124907263b8a9bd812aff5deb76e">GameObject</a>.</p>
+<p>Implements <a class="el" href="classGameObject.html#a31f175cd49555f553bd51f70712d81a9">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00133">133</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00138">138</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,7 +268,7 @@ Additional Inherited Members</h2></td></tr>
 <p>This function returns true when a quit request is open by the user.</p>
 <dl class="section return"><dt>Returns</dt><dd>a boolean value that represents the the quit request of the user. </dd></dl>
 
-<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00123">123</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00128">128</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +288,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -294,7 +298,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classGameObject.html#adee58d508cfa907162d1192a25dc21b9">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00101">101</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00106">106</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
 
 </div>
 </div>
@@ -315,7 +319,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -334,7 +338,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classGameObject.html#a7e86c04a826af9f0958fb9abbf8a7b9c">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00057">57</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8cpp_source.html#l00056">56</a> of file <a class="el" href="BattleEnd_8cpp_source.html">BattleEnd.cpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +363,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Image of button "B" to quit the battle. </p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00088">88</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00029">29</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 
 </div>
 </div>
@@ -384,11 +388,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Bool value that indicates if the user has. </p>
 <p>pressed the return button. </p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00084">84</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00037">37</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5e07b6c9481457a6003b0352d12153f3"></a>
+<a class="anchor" id="a074e24bcf745a5fe6cbdb80911d6d1da"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -396,7 +400,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classText.html">Text</a>* BattleEnd::back_txt</td>
+          <td class="memname"><a class="el" href="classText.html">Text</a> BattleEnd::back_txt</td>
         </tr>
       </table>
   </td>
@@ -406,10 +410,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classText.html">Text</a> "BACK" to indicates that button "B" quits the. </p>
-<p>battle. </p>
+<p><a class="el" href="classText.html">Text</a> "BACK" to indicates that button "B" quits. </p>
+<p>the battle. </p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00089">89</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00030">30</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 
 </div>
 </div>
@@ -431,10 +435,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Int number with the id of the current sprite of. </p>
-<p>the vector of sprites. </p>
+<p>Int number with the id of the current sprite. </p>
+<p>of the vector of sprites. </p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00082">82</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00035">35</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 
 </div>
 </div>
@@ -456,10 +460,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Bool value that indicates if user has requested. </p>
-<p>to quit the battle. </p>
+<p>Bool value that indicates if user has. </p>
+<p>requested to quit the battle. </p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00086">86</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00039">39</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 
 </div>
 </div>
@@ -481,10 +485,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classVector.html">Vector</a> of sprites with images to display the. </p>
-<p>winner team at the end of a battle. </p>
+<p><a class="el" href="classVector.html">Vector</a> of sprites with images to display. </p>
+<p>the winner team at the end of a battle. </p>
 
-<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00079">79</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
+<p>Definition at line <a class="el" href="BattleEnd_8h_source.html#l00032">32</a> of file <a class="el" href="BattleEnd_8h_source.html">BattleEnd.h</a>.</p>
 
 </div>
 </div>
@@ -498,7 +502,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBattleEnd.html">BattleEnd</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

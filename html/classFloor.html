@@ -81,14 +81,14 @@ Inheritance diagram for Floor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFloor__inherit__graph.png" border="0" usemap="#Floor_inherit__map" alt="Inheritance graph"/></div>
 <map name="Floor_inherit__map" id="Floor_inherit__map">
-<area shape="rect" id="node3" href="classEditableFloor.html" title="{EditableFloor\n|&#45; standard_sprite\l&#45; platform_sprite\l&#45; selected_sprite\l&#45; state\l&#45; is_deleted\l&#45; is_selected\l|+ EditableFloor()\l+ EditableFloor()\l+ ~EditableFloor()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ get_information()\l+ set_selected()\l}" alt="" coords="4,507,133,775"/><area shape="rect" id="node2" href="classGameObject.html" title="{GameObject\n|+ box\l+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="5,6,133,215"/></map>
+<area shape="rect" id="node3" href="classEditableFloor.html" title="{EditableFloor\n|&#45; standard_sprite\l&#45; platform_sprite\l&#45; selected_sprite\l&#45; is_deleted\l&#45; is_selected\l|+ EditableFloor()\l+ EditableFloor()\l+ ~EditableFloor()\l+ set_selected()\l+ get_information()\l&#45; render()\l&#45; update()\l&#45; is_dead()\l&#45; handle_platforms_interaction()\l&#45; handle_box_moving()\l&#45; handle_box_resizing()\l&#45; handle_box_rotating()\l&#45; handle_acceleration\l_increasing()\l&#45; notify_collision()\l}" alt="" coords="5,507,208,848"/><area shape="rect" id="node2" href="classGameObject.html" title="{GameObject\n|+ box\l+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="43,6,171,215"/></map>
 </div>
 <div class="dynheader">
 Collaboration diagram for Floor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classFloor__coll__graph.png" border="0" usemap="#Floor_coll__map" alt="Collaboration graph"/></div>
 <map name="Floor_coll__map" id="Floor_coll__map">
-<area shape="rect" id="node2" href="classGameObject.html" title="{GameObject\n|+ rotation\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="99,382,227,562"/><area shape="rect" id="node4" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="188,5,297,317"/></map>
+<area shape="rect" id="node2" href="classGameObject.html" title="{GameObject\n|+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="5,381,133,576"/><area shape="rect" id="node3" href="classRectangle.html" title="{Rectangle\n|+ x\l+ y\l+ width\l+ height\l|+ Rectangle()\l+ Rectangle()\l+ is_inside()\l+ get_x()\l+ get_y()\l+ set_x()\l+ set_y()\l+ get_draw_x()\l+ get_draw_y()\l+ get_width()\l+ get_height()\l+ set_width()\l+ set_height()\l+ get_center()\l}" alt="" coords="15,5,124,317"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -103,19 +103,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a49634e1b7daa71be3b19ba0ae35a9e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ffd6e87e6e3e3d886cccb4614f9d4fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFloor.html#a4ffd6e87e6e3e3d886cccb4614f9d4fe">is_dead</a> ()</td></tr>
 <tr class="separator:a4ffd6e87e6e3e3d886cccb4614f9d4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a266b06d22c71675494bf59047f897e32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFloor.html#a266b06d22c71675494bf59047f897e32">notify_collision</a> (<a class="el" href="classGameObject.html">GameObject</a> &amp;object)</td></tr>
-<tr class="separator:a266b06d22c71675494bf59047f897e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a467705f834e30721f8f0e49f96b47ae7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFloor.html#a467705f834e30721f8f0e49f96b47ae7">get_id</a> ()</td></tr>
-<tr class="separator:a467705f834e30721f8f0e49f96b47ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ddb04486e4afa6d803c9ad3bd369885"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFloor.html#a7ddb04486e4afa6d803c9ad3bd369885">notify_collision</a> (const <a class="el" href="classGameObject.html">GameObject</a> &amp;object)</td></tr>
+<tr class="separator:a7ddb04486e4afa6d803c9ad3bd369885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fcb69c636e71cb3666150d226fdc80f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFloor.html#a0fcb69c636e71cb3666150d226fdc80f">get_id</a> () const </td></tr>
+<tr class="separator:a0fcb69c636e71cb3666150d226fdc80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classGameObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGameObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGameObject.html">GameObject</a></td></tr>
 <tr class="memitem:a224d4f6d9dd75c8a6f9d022eaf586fd9 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a224d4f6d9dd75c8a6f9d022eaf586fd9">~GameObject</a> ()</td></tr>
 <tr class="separator:a224d4f6d9dd75c8a6f9d022eaf586fd9 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0700f8adcdb41f1b2ddfdf8b4c150a05 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a0700f8adcdb41f1b2ddfdf8b4c150a05">is</a> (string type)</td></tr>
-<tr class="separator:a0700f8adcdb41f1b2ddfdf8b4c150a05 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa3bf943c105703d7713f967af79f428 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#aaa3bf943c105703d7713f967af79f428">add_tags</a> (string ctags)</td></tr>
-<tr class="separator:aaa3bf943c105703d7713f967af79f428 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d560eda7b7b3d81e2e586b6175df6f2 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a1d560eda7b7b3d81e2e586b6175df6f2">remove_tags</a> (string ctags)</td></tr>
-<tr class="separator:a1d560eda7b7b3d81e2e586b6175df6f2 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cf952a39003eaa03abd0bb71fbce6fe inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a3cf952a39003eaa03abd0bb71fbce6fe">is</a> (const std::string &amp;type) const </td></tr>
+<tr class="separator:a3cf952a39003eaa03abd0bb71fbce6fe inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3415c51b95a1ada23ecdf28be2da9800 inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a3415c51b95a1ada23ecdf28be2da9800">add_tags</a> (std::string ctags)</td></tr>
+<tr class="separator:a3415c51b95a1ada23ecdf28be2da9800 inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96e887bbc8d15aa18f2cc3ff0c8098e inherit pub_methods_classGameObject"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ac96e887bbc8d15aa18f2cc3ff0c8098e">remove_tags</a> (std::string ctags)</td></tr>
+<tr class="separator:ac96e887bbc8d15aa18f2cc3ff0c8098e inherit pub_methods_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -139,12 +139,13 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a6eb4598f058d5082cf5f88c45c65a281 inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55f6ebdf4cfbab508680ad7290fb26c inherit pub_attribs_classGameObject"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ac55f6ebdf4cfbab508680ad7290fb26c">rotation</a> = 0</td></tr>
 <tr class="separator:ac55f6ebdf4cfbab508680ad7290fb26c inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaef7781812cf8f2ec60f8c542818403f inherit pub_attribs_classGameObject"><td class="memItemLeft" align="right" valign="top">unordered_map&lt; string, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#aaef7781812cf8f2ec60f8c542818403f">tags</a></td></tr>
-<tr class="separator:aaef7781812cf8f2ec60f8c542818403f inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f2fe51a8b40148dad8efb54798eee00 inherit pub_attribs_classGameObject"><td class="memItemLeft" align="right" valign="top">std::unordered_map<br class="typebreak"/>
+&lt; std::string, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a0f2fe51a8b40148dad8efb54798eee00">tags</a></td></tr>
+<tr class="separator:a0f2fe51a8b40148dad8efb54798eee00 inherit pub_attribs_classGameObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="Floor_8h_source.html#l00007">7</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8h_source.html#l00017">17</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a4cf99b4d1fcc35b413897770d4b4f50b"></a>
 <div class="memitem">
@@ -188,7 +189,19 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00014">14</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+    <tr><td class="paramname">width</td><td></td></tr>
+    <tr><td class="paramname">crotation</td><td></td></tr>
+    <tr><td class="paramname">cplatform</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00033">33</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
@@ -205,12 +218,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00023">23</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Brief Description. </p>
+
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00047">47</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a467705f834e30721f8f0e49f96b47ae7"></a>
+<a class="anchor" id="a0fcb69c636e71cb3666150d226fdc80f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -218,12 +233,15 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">int Floor::get_id </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00040">40</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Brief Description. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00088">88</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
@@ -248,13 +266,16 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Brief Description. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
 <p>Implements <a class="el" href="classGameObject.html#a1f7a0fe56fad48d89f84c83abd8ff306">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00033">33</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00071">71</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a266b06d22c71675494bf59047f897e32"></a>
+<a class="anchor" id="a7ddb04486e4afa6d803c9ad3bd369885"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -264,7 +285,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void Floor::notify_collision </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classGameObject.html">GameObject</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classGameObject.html">GameObject</a> &amp;&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
           <td></td>
         </tr>
@@ -276,9 +297,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classGameObject.html#a2718124907263b8a9bd812aff5deb76e">GameObject</a>.</p>
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00037">37</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Implements <a class="el" href="classGameObject.html#a31f175cd49555f553bd51f70712d81a9">GameObject</a>.</p>
+
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00080">80</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
@@ -303,9 +332,11 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Brief Description. </p>
+
 <p>Implements <a class="el" href="classGameObject.html#adee58d508cfa907162d1192a25dc21b9">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00030">30</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00063">63</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,9 +362,17 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Brief Description. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">float</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classGameObject.html#a7e86c04a826af9f0958fb9abbf8a7b9c">GameObject</a>.</p>
 
-<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00026">26</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8cpp_source.html#l00055">55</a> of file <a class="el" href="Floor_8cpp_source.html">Floor.cpp</a>.</p>
 
 </div>
 </div>
@@ -356,7 +395,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Floor_8h_source.html#l00026">26</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8h_source.html#l00036">36</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
 
 </div>
 </div>
@@ -378,7 +417,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Floor_8h_source.html#l00009">9</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8h_source.html#l00019">19</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
 
 </div>
 </div>
@@ -400,7 +439,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="Floor_8h_source.html#l00012">12</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
+<p>Definition at line <a class="el" href="Floor_8h_source.html#l00022">22</a> of file <a class="el" href="Floor_8h_source.html">Floor.h</a>.</p>
 
 </div>
 </div>
@@ -414,7 +453,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classFloor.html">Floor</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:55 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

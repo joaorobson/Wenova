@@ -69,8 +69,8 @@ Preprocessing /home/travis/build/joaorobson/Wenova/src/Sound.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/Sound.cpp...
 Preprocessing /home/travis/build/joaorobson/Wenova/src/Sprite.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/Sprite.cpp...
-Preprocessing /home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp...
-Parsing file /home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp...
+Preprocessing /home/travis/build/joaorobson/Wenova/src/StageSelectState.cpp...
+Parsing file /home/travis/build/joaorobson/Wenova/src/StageSelectState.cpp...
 Preprocessing /home/travis/build/joaorobson/Wenova/src/State.cpp...
 Parsing file /home/travis/build/joaorobson/Wenova/src/State.cpp...
 Preprocessing /home/travis/build/joaorobson/Wenova/src/Text.cpp...
@@ -117,8 +117,7 @@ Preprocessing /home/travis/build/joaorobson/Wenova/include/FleshUltimateEffect.h
 Parsing file /home/travis/build/joaorobson/Wenova/include/FleshUltimateEffect.h...
 Preprocessing /home/travis/build/joaorobson/Wenova/include/Floor.h...
 Parsing file /home/travis/build/joaorobson/Wenova/include/Floor.h...
-Prepr/home/travis/build/joaorobson/Wenova/src/StageSelectStage.cpp:7: warning: the name `StageSelectState.cpp' supplied as the second argument in the \file statement is not an input file
-ocessing /home/travis/build/joaorobson/Wenova/include/Game.h...
+Preprocessing /home/travis/build/joaorobson/Wenova/include/Game.h...
 Parsing file /home/travis/build/joaorobson/Wenova/include/Game.h...
 Preprocessing /home/travis/build/joaorobson/Wenova/include/GameObject.h...
 Parsing file /home/travis/build/joaorobson/Wenova/include/GameObject.h...
@@ -270,7 +269,7 @@ Generating code for file Sound.cpp...
 Generating code for file Sound.h...
 Generating code for file Sprite.cpp...
 Generating code for file Sprite.h...
-Generating code for file StageSelectStage.cpp...
+Generating code for file StageSelectState.cpp...
 Generating code for file StageSelectState.h...
 Generating code for file State.cpp...
 Generating code for file State.h...
@@ -294,46 +293,83 @@ Generating docs for file BattleState.cpp...
 Generating docs for file BattleState.h...
 Generating docs for file Blood.cpp...
 Generating docs for file Blood.h...
-Generating docs for fi/home/travis/build/joaorobson/Wenova/include/BattleEnd.h:71: warning: argument 'GameObject' of command @param is not found in the argument list of BattleEnd::notify_collision(GameObject &object)
-/home/travis/build/joaorobson/Wenova/include/BattleEnd.h:71: warning: The following parameters of BattleEnd::notify_collision(GameObject &object) are not documented:
+Generating docs for fi/home/travis/build/joaorobson/Wenova/src/Animation.cpp:67: warning: unexpected end of comment block while parsing the argument of command param
+/home/travis/build/joaorobson/Wenova/include/BattleEnd.h:63: warning: argument 'GameObject' of command @param is not found in the argument list of BattleEnd::notify_collision(const GameObject &object)
+/home/travis/build/joaorobson/Wenova/include/BattleEnd.h:63: warning: The following parameters of BattleEnd::notify_collision(const GameObject &object) are not documented:
   parameter 'object'
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: argument 'x' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: argument 'y' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: argument 'cid' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:24: warning: The following parameters of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr) are not documented:
+/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:234: warning: argument 'level_design' of command @param is not found in the argument list of BattleState::read_level_design(string stage)
+/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:234: warning: argument 's' of command @param is not found in the argument list of BattleState::read_level_design(string stage)
+/home/travis/build/joaorobson/Wenova/src/BattleState.cpp:234: warning: The following parameters of BattleState::read_level_design(string stage) are not documented:
+  parameter 'stage'
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:68: warning: argument 'x' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:68: warning: argument 'y' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:68: warning: argument 'cid' of command @param is not found in the argument list of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:68: warning: The following parameters of Blood::Blood(string skin, float x_axis_position, float y_axis_position, int character_id, Fighter *cpartner=nullptr) are not documented:
   parameter 'x_axis_position'
   parameter 'y_axis_position'
   parameter 'character_id'
   parameter 'cpartner'
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: argument 'delta' of command @param is not found in the argument list of Blood::update_machine_state(float delta_character_state)
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: The following parameters of Blood::update_machine_state(float delta_character_state) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:142: warning: argument 'delta' of command @param is not found in the argument list of Blood::update_machine_state(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:142: warning: The following parameters of Blood::update_machine_state(float delta_character_state) are not documented:
   parameter 'delta_character_state'
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: argument 'state' of command @param is not found in the argument list of Blood::update_machine_state(float delta_character_state)
-/home/travis/build/joaorobson/Wenova/src/Blood.cpp:99: warning: The following parameters of Blood::update_machine_state(float delta_character_state) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:142: warning: argument 'state' of command @param is not found in the argument list of Blood::update_machine_state(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/Blood.cpp:142: warning: The following parameters of Blood::update_machine_state(float delta_character_state) are not documented:
   parameter 'delta_character_state'
-/home/travis/build/joaorobson/Wenova/include/EditableFloor.h:82: warning: argument 'unamed' of command @param is not found in the argument list of EditableFloor::notify_collision(GameObject &)
-/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:41: warning: argument 'delta' of command @param is not found in the argument list of FleshUltimateEffect::update(float delta_character_state)
-/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:41: warning: The following parameters of FleshUltimateEffect::update(float delta_character_state) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Camera.cpp:44: warning: argument 'new_focus' of command @param is not found in the argument list of Camera::update(float delta)
+/home/travis/build/joaorobson/Wenova/src/CharacterSelectState.cpp:187: warning: argument 'delta' of command @param is not found in the argument list of CharacterSelectState::update(float delta_time)
+/home/travis/build/joaorobson/Wenova/include/EditableFloor.h:136: warning: argument 'unamed' of command @param is not found in the argument list of EditableFloor::notify_collision(const GameObject &)
+/home/travis/build/joaorobson/Wenova/src/EditableFloor.cpp:213: warning: argument 'delta' of command @param is not found in the argument list of EditableFloor::update(float delta_time)
+<read_level_design>:1: warning: argument 'level_design' of command @param is not found in the argument list of EditState::read_level_design()
+<read_level_design>:1: warning: argument 's' of command @param is not found in the argument list of EditState::read_level_design()
+/home/travis/build/joaorobson/Wenova/src/Effect.cpp:49: warning: unexpected end of comment block while parsing the argument of command param
+/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:188: warning: unexpected end of comment block while parsing the argument of command param
+/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:88: warning: argument 'float' of command @param is not found in the argument list of FighterStats::update(float delta)
+/home/travis/build/joaorobson/Wenova/src/FighterStats.cpp:88: warning: The following parameters of FighterStats::update(float delta) are not documented:
+  parameter 'delta'
+/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:573: warning: argument 'bool' of command @param is not found in the argument list of Flesh::check_special_2(bool change=true)
+/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:573: warning: The following parameters of Flesh::check_special_2(bool change=true) are not documented:
+  parameter 'change'
+/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:585: warning: argument 'bool' of command @param is not found in the argument list of Flesh::check_ultimate(bool change=true)
+/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:585: warning: The following parameters of Flesh::check_ultimate(bool change=true) are not documented:
+  parameter 'change'
+/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:84: warning: argument 'float' of command @param is not found in the argument list of Flesh::update_machine_state(float delta)
+/home/travis/build/joaorobson/Wenova/src/Flesh.cpp:84: warning: The following parameters of Flesh::update_machine_state(float delta) are not documented:
+  parameter 'delta'
+/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:49: warning: argument 'delta' of command @param is not found in the argument list of FleshUltimateEffect::update(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/FleshUltimateEffect.cpp:49: warning: The following parameters of FleshUltimateEffect::update(float delta_character_state) are not documented:
   parameter 'delta_character_state'
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:100: warning: argument 'name' of command @param is not found in the argument list of Sprite::open(string file)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:100: warning: The following parameters of Sprite::open(string file) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Floor.cpp:78: warning: unexpected end of comment block while parsing the argument of command param
+/home/travis/build/joaorobson/Wenova/src/Floor.cpp:52: warning: argument 'float' of command @param is not found in the argument list of Floor::update(float delta)
+/home/travis/build/joaorobson/Wenova/src/Floor.cpp:52: warning: The following parameters of Floor::update(float delta) are not documented:
+  parameter 'delta'
+/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:81: warning: unexpected end of comment block while parsing the argument of command param
+/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:44: warning: argument 'float' of command @param is not found in the argument list of JoystickButton::update(float delta)
+/home/travis/build/joaorobson/Wenova/src/JoystickButton.cpp:44: warning: The following parameters of JoystickButton::update(float delta) are not documented:
+  parameter 'delta'
+/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:51: warning: argument 'mx' of command @param is not found in the argument list of Rectangle::get_x() const
+/home/travis/build/joaorobson/Wenova/src/Rectangle.cpp:51: warning: argument 'my' of command @param is not found in the argument list of Rectangle::get_x() const
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:85: warning: argument 'name' of command @param is not found in the argument list of Sprite::open(string file)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:85: warning: The following parameters of Sprite::open(string file) are not documented:
   parameter 'file'
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'x' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'y' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'w' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: argument 'h' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:128: warning: The following parameters of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:142: warning: argument 'x' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:142: warning: argument 'y' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:142: warning: argument 'w' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:142: warning: argument 'h' of command @param is not found in the argument list of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:142: warning: The following parameters of Sprite::set_clip(int x_axis_coordinate, int y_axis_coordinate, int clip_width, int clip_height) are not documented:
   parameter 'x_axis_coordinate'
   parameter 'y_axis_coordinate'
   parameter 'clip_width'
   parameter 'clip_height'
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:277: warning: argument 'cscale_x' of command @param is not found in the argument list of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:277: warning: argument 'cscale_y' of command @param is not found in the argument list of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:277: warning: The following parameters of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:337: warning: argument 'cscale_x' of command @param is not found in the argument list of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:337: warning: argument 'cscale_y' of command @param is not found in the argument list of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:337: warning: The following parameters of Sprite::set_scale(float cscale_x_axis, float cscale_y_axis) are not documented:
   parameter 'cscale_x_axis'
   parameter 'cscale_y_axis'
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:180: warning: argument 'delta' of command @param is not found in the argument list of Sprite::update(float delta_time)
-/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:180: warning: The following parameters of Sprite::update(float delta_time) are not documented:
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:201: warning: argument 'frame' of command @param is not found in the argument list of Sprite::update(float delta_time)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:201: warning: argument 'cframe_count' of command @param is not found in the argument list of Sprite::update(float delta_time)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:201: warning: argument 'cframe_time' of command @param is not found in the argument list of Sprite::update(float delta_time)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:201: warning: argument 'delta' of command @param is not found in the argument list of Sprite::update(float delta_time)
+/home/travis/build/joaorobson/Wenova/src/Sprite.cpp:201: warning: The following parameters of Sprite::update(float delta_time) are not documented:
   parameter 'delta_time'
 le Camera.cpp...
 Generating docs for file Camera.h...
@@ -386,7 +422,7 @@ Generating docs for file Sound.cpp...
 Generating docs for file Sound.h...
 Generating docs for file Sprite.cpp...
 Generating docs for file Sprite.h...
-Generating docs for file StageSelectStage.cpp...
+Generating docs for file StageSelectState.cpp...
 Generating docs for file StageSelectState.h...
 Generating docs for file State.cpp...
 Generating docs for file State.h...
@@ -434,22 +470,25 @@ Generating docs for compound Rectangle...
 Generating docs for compound Resources...
 Generating docs for compound Sound...
 Generating docs for compound Sprite...
-Generating /home/travis/build/joaorobson/Wenova/src/Text.cpp:97: warning: argument 'x' of command @param is not found in the argument list of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false)
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:97: warning: argument 'y' of command @param is not found in the argument list of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false)
-/home/travis/build/joaorobson/Wenova/src/Text.cpp:97: warning: The following parameters of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false) are not documented:
+Generating /home/travis/build/joaorobson/Wenova/src/Text.cpp:178: warning: argument 'cfont_size' of command @param is not found in the argument list of Text::remake_texture()
+/home/travis/build/joaorobson/Wenova/src/Text.cpp:107: warning: argument 'x' of command @param is not found in the argument list of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false)
+/home/travis/build/joaorobson/Wenova/src/Text.cpp:107: warning: argument 'y' of command @param is not found in the argument list of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false)
+/home/travis/build/joaorobson/Wenova/src/Text.cpp:107: warning: The following parameters of Text::set_pos(int x_axis_position, int y_axis_position, bool center_x=false, bool center_y=false) are not documented:
   parameter 'x_axis_position'
   parameter 'y_axis_position'
-/home/travis/build/joaorobson/Wenova/include/TimeCounter.h:71: warning: argument 'GameObject' of command @param is not found in the argument list of TimeCounter::notify_collision(GameObject &object)
-/home/travis/build/joaorobson/Wenova/include/TimeCounter.h:71: warning: The following parameters of TimeCounter::notify_collision(GameObject &object) are not documented:
+/home/travis/build/joaorobson/Wenova/include/TimeCounter.h:60: warning: argument 'GameObject' of command @param is not found in the argument list of TimeCounter::notify_collision(const GameObject &object)
+/home/travis/build/joaorobson/Wenova/include/TimeCounter.h:60: warning: The following parameters of TimeCounter::notify_collision(const GameObject &object) are not documented:
   parameter 'object'
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:15: warning: argument 'Fighter' of command @param is not found in the argument list of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1)
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:15: warning: argument 'ccolumns' of command @param is not found in the argument list of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1)
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:15: warning: The following parameters of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1) are not documented:
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:39: warning: argument 'Fighter' of command @param is not found in the argument list of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1)
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:39: warning: argument 'ccolumns' of command @param is not found in the argument list of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1)
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:39: warning: The following parameters of UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura, string ctags, int frames=1) are not documented:
   parameter 'cparent'
   parameter 'ctags'
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:44: warning: argument 'delta' of command @param is not found in the argument list of UltimateEffect::update(float delta_character_state)
-/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:44: warning: The following parameters of UltimateEffect::update(float delta_character_state) are not documented:
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:55: warning: argument 'delta' of command @param is not found in the argument list of UltimateEffect::update(float delta_character_state)
+/home/travis/build/joaorobson/Wenova/src/UltimateEffect.cpp:55: warning: The following parameters of UltimateEffect::update(float delta_character_state) are not documented:
   parameter 'delta_character_state'
+/home/travis/build/joaorobson/Wenova/src/Vector.cpp:49: warning: argument 'module' of command @param is not found in the argument list of Vector::operator+(const Vector &rhs) const
+/home/travis/build/joaorobson/Wenova/src/Vector.cpp:49: warning: argument 'angle' of command @param is not found in the argument list of Vector::operator+(const Vector &rhs) const
 docs for compound StageSelectState...
 Generating docs for compound State...
 Generating docs for compound StateData...
@@ -479,195 +518,196 @@ Generating example index...
 finalizing index lists...
 Running dot...
 Generating dot graphs using 3 parallel threads...
-Running dot for graph 1/189
-Running dot for graph 2/189
-Running dot for graph 3/189
-Running dot for graph 4/189
-Running dot for graph 5/189
-Running dot for graph 6/189
-Running dot for graph 7/189
-Running dot for graph 8/189
-Running dot for graph 9/189
-Running dot for graph 10/189
-Running dot for graph 11/189
-Running dot for graph 12/189
-Running dot for graph 13/189
-Running dot for graph 14/189
-Running dot for graph 15/189
-Running dot for graph 16/189
-Running dot for graph 17/189
-Running dot for graph 18/189
-Running dot for graph 19/189
-Running dot for graph 20/189
-Running dot for graph 21/189
-Running dot for graph 22/189
-Running dot for graph 23/189
-Running dot for graph 24/189
-Running dot for graph 25/189
-Running dot for graph 26/189
-Running dot for graph 27/189
-Running dot for graph 28/189
-Running dot for graph 29/189
-Running dot for graph 30/189
-Running dot for graph 31/189
-Running dot for graph 32/189
-Running dot for graph 33/189
-Running dot for graph 34/189
-Running dot for graph 35/189
-Running dot for graph 36/189
-Running dot for graph 37/189
-Running dot for graph 38/189
-Running dot for graph 39/189
-Running dot for graph 40/189
-Running dot for graph 41/189
-Running dot for graph 42/189
-Running dot for graph 43/189
-Running dot for graph 44/189
-Running dot for graph 45/189
-Running dot for graph 46/189
-Running dot for graph 47/189
-Running dot for graph 48/189
-Running dot for graph 49/189
-Running dot for graph 50/189
-Running dot for graph 51/189
-Running dot for graph 52/189
-Running dot for graph 53/189
-Running dot for graph 54/189
-Running dot for graph 55/189
-Running dot for graph 56/189
-Running dot for graph 57/189
-Running dot for graph 58/189
-Running dot for graph 59/189
-Running dot for graph 60/189
-Running dot for graph 61/189
-Running dot for graph 62/189
-Running dot for graph 63/189
-Running dot for graph 64/189
-Running dot for graph 65/189
-Running dot for graph 66/189
-Running dot for graph 67/189
-Running dot for graph 68/189
-Running dot for graph 69/189
-Running dot for graph 70/189
-Running dot for graph 71/189
-Running dot for graph 72/189
-Running dot for graph 73/189
-Running dot for graph 74/189
-Running dot for graph 75/189
-Running dot for graph 76/189
-Running dot for graph 77/189
-Running dot for graph 78/189
-Running dot for graph 79/189
-Running dot for graph 80/189
-Running dot for graph 81/189
-Running dot for graph 82/189
-Running dot for graph 83/189
-Running dot for graph 84/189
-Running dot for graph 85/189
-Running dot for graph 86/189
-Running dot for graph 87/189
-Running dot for graph 88/189
-Running dot for graph 89/189
-Running dot for graph 90/189
-Running dot for graph 91/189
-Running dot for graph 92/189
-Running dot for graph 93/189
-Running dot for graph 94/189
-Running dot for graph 95/189
-Running dot for graph 96/189
-Running dot for graph 97/189
-Running dot for graph 98/189
-Running dot for graph 99/189
-Running dot for graph 100/189
-Running dot for graph 101/189
-Running dot for graph 102/189
-Running dot for graph 103/189
-Running dot for graph 104/189
-Running dot for graph 105/189
-Running dot for graph 106/189
-Running dot for graph 107/189
-Running dot for graph 108/189
-Running dot for graph 109/189
-Running dot for graph 110/189
-Running dot for graph 111/189
-Running dot for graph 112/189
-Running dot for graph 113/189
-Running dot for graph 114/189
-Running dot for graph 115/189
-Running dot for graph 116/189
-Running dot for graph 117/189
-Running dot for graph 118/189
-Running dot for graph 119/189
-Running dot for graph 120/189
-Running dot for graph 121/189
-Running dot for graph 122/189
-Running dot for graph 123/189
-Running dot for graph 124/189
-Running dot for graph 125/189
-Running dot for graph 126/189
-Running dot for graph 127/189
-Running dot for graph 128/189
-Running dot for graph 129/189
-Running dot for graph 130/189
-Running dot for graph 131/189
-Running dot for graph 132/189
-Running dot for graph 133/189
-Running dot for graph 134/189
-Running dot for graph 135/189
-Running dot for graph 136/189
-Running dot for graph 137/189
-Running dot for graph 138/189
-Running dot for graph 139/189
-Running dot for graph 140/189
-Running dot for graph 141/189
-Running dot for graph 142/189
-Running dot for graph 143/189
-Running dot for graph 144/189
-Running dot for graph 145/189
-Running dot for graph 146/189
-Running dot for graph 147/189
-Running dot for graph 148/189
-Running dot for graph 149/189
-Running dot for graph 150/189
-Running dot for graph 151/189
-Running dot for graph 152/189
-Running dot for graph 153/189
-Running dot for graph 154/189
-Running dot for graph 155/189
-Running dot for graph 156/189
-Running dot for graph 157/189
-Running dot for graph 158/189
-Running dot for graph 159/189
-Running dot for graph 160/189
-Running dot for graph 161/189
-Running dot for graph 162/189
-Running dot for graph 163/189
-Running dot for graph 164/189
-Running dot for graph 165/189
-Running dot for graph 166/189
-Running dot for graph 167/189
-Running dot for graph 168/189
-Running dot for graph 169/189
-Running dot for graph 170/189
-Running dot for graph 171/189
-Running dot for graph 172/189
-Running dot for graph 173/189
-Running dot for graph 174/189
-Running dot for graph 175/189
-Running dot for graph 176/189
-Running dot for graph 177/189
-Running dot for graph 178/189
-Running dot for graph 179/189
-Running dot for graph 180/189
-Running dot for graph 181/189
-Running dot for graph 182/189
-Running dot for graph 183/189
-Running dot for graph 184/189
-Running dot for graph 185/189
-Running dot for graph 186/189
-Running dot for graph 187/189
-Running dot for graph 188/189
-Running dot for graph 189/189
+Running dot for graph 1/190
+Running dot for graph 2/190
+Running dot for graph 3/190
+Running dot for graph 4/190
+Running dot for graph 5/190
+Running dot for graph 6/190
+Running dot for graph 7/190
+Running dot for graph 8/190
+Running dot for graph 9/190
+Running dot for graph 10/190
+Running dot for graph 11/190
+Running dot for graph 12/190
+Running dot for graph 13/190
+Running dot for graph 14/190
+Running dot for graph 15/190
+Running dot for graph 16/190
+Running dot for graph 17/190
+Running dot for graph 18/190
+Running dot for graph 19/190
+Running dot for graph 20/190
+Running dot for graph 21/190
+Running dot for graph 22/190
+Running dot for graph 23/190
+Running dot for graph 24/190
+Running dot for graph 25/190
+Running dot for graph 26/190
+Running dot for graph 27/190
+Running dot for graph 28/190
+Running dot for graph 29/190
+Running dot for graph 30/190
+Running dot for graph 31/190
+Running dot for graph 32/190
+Running dot for graph 33/190
+Running dot for graph 34/190
+Running dot for graph 35/190
+Running dot for graph 36/190
+Running dot for graph 37/190
+Running dot for graph 38/190
+Running dot for graph 39/190
+Running dot for graph 40/190
+Running dot for graph 41/190
+Running dot for graph 42/190
+Running dot for graph 43/190
+Running dot for graph 44/190
+Running dot for graph 45/190
+Running dot for graph 46/190
+Running dot for graph 47/190
+Running dot for graph 48/190
+Running dot for graph 49/190
+Running dot for graph 50/190
+Running dot for graph 51/190
+Running dot for graph 52/190
+Running dot for graph 53/190
+Running dot for graph 54/190
+Running dot for graph 55/190
+Running dot for graph 56/190
+Running dot for graph 57/190
+Running dot for graph 58/190
+Running dot for graph 59/190
+Running dot for graph 60/190
+Running dot for graph 61/190
+Running dot for graph 62/190
+Running dot for graph 63/190
+Running dot for graph 64/190
+Running dot for graph 65/190
+Running dot for graph 66/190
+Running dot for graph 67/190
+Running dot for graph 68/190
+Running dot for graph 69/190
+Running dot for graph 70/190
+Running dot for graph 71/190
+Running dot for graph 72/190
+Running dot for graph 73/190
+Running dot for graph 74/190
+Running dot for graph 75/190
+Running dot for graph 76/190
+Running dot for graph 77/190
+Running dot for graph 78/190
+Running dot for graph 79/190
+Running dot for graph 80/190
+Running dot for graph 81/190
+Running dot for graph 82/190
+Running dot for graph 83/190
+Running dot for graph 84/190
+Running dot for graph 85/190
+Running dot for graph 86/190
+Running dot for graph 87/190
+Running dot for graph 88/190
+Running dot for graph 89/190
+Running dot for graph 90/190
+Running dot for graph 91/190
+Running dot for graph 92/190
+Running dot for graph 93/190
+Running dot for graph 94/190
+Running dot for graph 95/190
+Running dot for graph 96/190
+Running dot for graph 97/190
+Running dot for graph 98/190
+Running dot for graph 99/190
+Running dot for graph 100/190
+Running dot for graph 101/190
+Running dot for graph 102/190
+Running dot for graph 103/190
+Running dot for graph 104/190
+Running dot for graph 105/190
+Running dot for graph 106/190
+Running dot for graph 107/190
+Running dot for graph 108/190
+Running dot for graph 109/190
+Running dot for graph 110/190
+Running dot for graph 111/190
+Running dot for graph 112/190
+Running dot for graph 113/190
+Running dot for graph 114/190
+Running dot for graph 115/190
+Running dot for graph 116/190
+Running dot for graph 117/190
+Running dot for graph 118/190
+Running dot for graph 119/190
+Running dot for graph 120/190
+Running dot for graph 121/190
+Running dot for graph 122/190
+Running dot for graph 123/190
+Running dot for graph 124/190
+Running dot for graph 125/190
+Running dot for graph 126/190
+Running dot for graph 127/190
+Running dot for graph 128/190
+Running dot for graph 129/190
+Running dot for graph 130/190
+Running dot for graph 131/190
+Running dot for graph 132/190
+Running dot for graph 133/190
+Running dot for graph 134/190
+Running dot for graph 135/190
+Running dot for graph 136/190
+Running dot for graph 137/190
+Running dot for graph 138/190
+Running dot for graph 139/190
+Running dot for graph 140/190
+Running dot for graph 141/190
+Running dot for graph 142/190
+Running dot for graph 143/190
+Running dot for graph 144/190
+Running dot for graph 145/190
+Running dot for graph 146/190
+Running dot for graph 147/190
+Running dot for graph 148/190
+Running dot for graph 149/190
+Running dot for graph 150/190
+Running dot for graph 151/190
+Running dot for graph 152/190
+Running dot for graph 153/190
+Running dot for graph 154/190
+Running dot for graph 155/190
+Running dot for graph 156/190
+Running dot for graph 157/190
+Running dot for graph 158/190
+Running dot for graph 159/190
+Running dot for graph 160/190
+Running dot for graph 161/190
+Running dot for graph 162/190
+Running dot for graph 163/190
+Running dot for graph 164/190
+Running dot for graph 165/190
+Running dot for graph 166/190
+Running dot for graph 167/190
+Running dot for graph 168/190
+Running dot for graph 169/190
+Running dot for graph 170/190
+Running dot for graph 171/190
+Running dot for graph 172/190
+Running dot for graph 173/190
+Running dot for graph 174/190
+Running dot for graph 175/190
+Running dot for graph 176/190
+Running dot for graph 177/190
+Running dot for graph 178/190
+Running dot for graph 179/190
+Running dot for graph 180/190
+Running dot for graph 181/190
+Running dot for graph 182/190
+Running dot for graph 183/190
+Running dot for graph 184/190
+Running dot for graph 185/190
+Running dot for graph 186/190
+Running dot for graph 187/190
+Running dot for graph 188/190
+Running dot for graph 189/190
+Running dot for graph 190/190
 Patching output file 1/114
 Patching output file 2/114
 Patching output file 3/114
@@ -782,5 +822,5 @@ Patching output file 111/114
 Patching output file 112/114
 Patching output file 113/114
 Patching output file 114/114
-lookup cache used 2853/65536 hits=17235 misses=2930
+lookup cache used 3195/65536 hits=17837 misses=3274
 finished...

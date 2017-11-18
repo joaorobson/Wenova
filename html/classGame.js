@@ -18,7 +18,7 @@ var classGame =
     [ "height", "classGame.html#aa6d1743c45de5558a0ca99078df85250", null ],
     [ "instance", "classGame.html#aa469cdc0a30f4fd2d6d99b23f4fbf257", null ],
     [ "renderer", "classGame.html#ae5164c37c0dc74cfb56041174017bf57", null ],
-    [ "state_stack", "classGame.html#a3855a14787167c44d5792ca195f86618", null ],
+    [ "state_stack", "classGame.html#ac76157043660792540b2a124edfd6e01", null ],
     [ "stored_state", "classGame.html#a9504e272fbdf4884d7cfb32e5c72fd76", null ],
     [ "width", "classGame.html#a06b5a675d7c0f6a9b58d395872b1a4e7", null ],
     [ "window", "classGame.html#adc376cc3011b5c8f1c3897626100174c", null ]

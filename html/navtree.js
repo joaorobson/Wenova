@@ -16,9 +16,10 @@ var NAVTREE =
     [ "Files", null, [
       [ "File List", "files.html", "files" ],
       [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
+        [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Variables", "globals_vars.html", null ],
+        [ "Macros", "globals_defs.html", "globals_defs" ]
       ] ]
     ] ]
   ] ]
@@ -27,10 +28,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Animation_8cpp.html",
-"OptionsState_8cpp.html#ac444bfb0c84f3a3034a49fa835fb3507",
-"classFighter.html#a1d38a22eb2383417fc4aead153558b6ea4c6d6d1871f23ecb986fdb0780529c21",
-"classInputManager.html#a1c644674be0409342cabea8f0be1b8ba",
-"classSprite.html#a66810a5b9096e04235b784604741344c"
+"InputManager_8h.html#a4c580ea9135ad50b79f935257ca7360d",
+"classBattleState.html#a5c4b927b6db328fd7476ee54a737184d",
+"classFighter.html#aca54ff75c80544aa13b89aa810d4313a",
+"classInputManager.html#ad0e7e6e2ee462d03d2a9f979c03ac388",
+"classText.html#a2a201d60efefa3145e977b548be981c8"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

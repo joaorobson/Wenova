@@ -1,5 +1,5 @@
 <map id="EditState.h" name="EditState.h">
-<area shape="rect" id="node2" href="$EditState_8cpp.html" title="EditState.cpp" alt="" coords="5,80,107,107"/>
-<area shape="rect" id="node3" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="131,80,241,107"/>
-<area shape="rect" id="node4" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="267,80,419,107"/>
+<area shape="rect" id="node2" href="$EditState_8cpp.html" title="Brief Description. " alt="" coords="5,80,107,107"/>
+<area shape="rect" id="node3" href="$MenuState_8cpp.html" title="Brief Description. " alt="" coords="131,80,241,107"/>
+<area shape="rect" id="node4" href="$StageSelectState_8cpp.html" title="This file builds and renders the stages that the user can select. " alt="" coords="267,80,415,107"/>
 </map>

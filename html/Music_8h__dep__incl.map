@@ -1,14 +1,14 @@
 <map id="Music.h" name="Music.h">
-<area shape="rect" id="node2" href="$BattleState_8h.html" title="BattleState.h" alt="" coords="345,80,444,107"/>
-<area shape="rect" id="node6" href="$MenuState_8h.html" title="MenuState.h" alt="" coords="576,80,672,107"/>
-<area shape="rect" id="node12" href="$EditState_8h.html" title="EditState.h" alt="" coords="697,80,783,107"/>
-<area shape="rect" id="node13" href="$Music_8cpp.html" title="Music.cpp" alt="" coords="808,80,889,107"/>
-<area shape="rect" id="node3" href="$BattleState_8cpp.html" title="BattleState.cpp" alt="" coords="5,155,116,181"/>
+<area shape="rect" id="node2" href="$BattleState_8h.html" title="Brief Description. " alt="" coords="345,80,444,107"/>
+<area shape="rect" id="node6" href="$MenuState_8h.html" title="Brief Description. " alt="" coords="576,80,672,107"/>
+<area shape="rect" id="node12" href="$EditState_8h.html" title="Brief Description. " alt="" coords="697,80,783,107"/>
+<area shape="rect" id="node13" href="$Music_8cpp.html" title="Brief Description. " alt="" coords="808,80,889,107"/>
+<area shape="rect" id="node3" href="$BattleState_8cpp.html" title="Brief Description. " alt="" coords="5,155,116,181"/>
 <area shape="rect" id="node4" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="142,155,313,181"/>
-<area shape="rect" id="node5" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="627,155,737,181"/>
-<area shape="rect" id="node7" href="$EditState_8cpp.html" title="EditState.cpp" alt="" coords="909,155,1011,181"/>
+<area shape="rect" id="node5" href="$MenuState_8cpp.html" title="Brief Description. " alt="" coords="627,155,737,181"/>
+<area shape="rect" id="node7" href="$EditState_8cpp.html" title="Brief Description. " alt="" coords="909,155,1011,181"/>
 <area shape="rect" id="node8" href="$JoystickConfigState_8cpp.html" title="This file renders images of options &#39;JOYSTICK&#39; and &#39;KEYBOARD&#39; of the menu &#39;Options&#39; and controls the ..." alt="" coords="339,155,503,181"/>
 <area shape="rect" id="node9" href="$Main_8cpp.html" title="Main.cpp" alt="" coords="528,155,601,181"/>
 <area shape="rect" id="node10" href="$OptionsState_8cpp.html" title="This file builds all options and sub options of the menu &#39;Options&#39; of the game and control their beha..." alt="" coords="763,155,885,181"/>
-<area shape="rect" id="node11" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="1035,155,1187,181"/>
+<area shape="rect" id="node11" href="$StageSelectState_8cpp.html" title="This file builds and renders the stages that the user can select. " alt="" coords="1035,155,1183,181"/>
 </map>

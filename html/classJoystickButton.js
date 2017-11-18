@@ -3,7 +3,7 @@ var classJoystickButton =
     [ "JoystickButton", "classJoystickButton.html#a195e70339d79fd0b37310d155359b784", null ],
     [ "~JoystickButton", "classJoystickButton.html#af8f34a9b7f5030fa691fb52c22b9bfaf", null ],
     [ "is_dead", "classJoystickButton.html#a973f065327f9f4d2ed74f86966ff6c67", null ],
-    [ "notify_collision", "classJoystickButton.html#a9f8d49cff03d8451841cf0ff0b71ae4d", null ],
+    [ "notify_collision", "classJoystickButton.html#a02259678da582dbf393791b7471822e4", null ],
     [ "render", "classJoystickButton.html#aa9de230d47a55bfaf78b8acbe55672ea", null ],
     [ "update", "classJoystickButton.html#a379d7f3b98bd6057ed48d88f4e3880e0", null ],
     [ "button_id", "classJoystickButton.html#a1ccbd1629bf3b4ba32e57f56589d6b31", null ],

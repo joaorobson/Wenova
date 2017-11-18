@@ -1,7 +1,7 @@
 <map id="TimeCounter.h" name="TimeCounter.h">
-<area shape="rect" id="node2" href="$BattleState_8h.html" title="BattleState.h" alt="" coords="179,80,277,107"/>
+<area shape="rect" id="node2" href="$BattleState_8h.html" title="Brief Description. " alt="" coords="179,80,277,107"/>
 <area shape="rect" id="node6" href="$TimeCounter_8cpp.html" title="This file renders and updates a clock during a battle indicating the remaining time. " alt="" coords="301,80,424,107"/>
-<area shape="rect" id="node3" href="$BattleState_8cpp.html" title="BattleState.cpp" alt="" coords="5,155,116,181"/>
+<area shape="rect" id="node3" href="$BattleState_8cpp.html" title="Brief Description. " alt="" coords="5,155,116,181"/>
 <area shape="rect" id="node4" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="142,155,313,181"/>
-<area shape="rect" id="node5" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="338,155,448,181"/>
+<area shape="rect" id="node5" href="$MenuState_8cpp.html" title="Brief Description. " alt="" coords="338,155,448,181"/>
 </map>

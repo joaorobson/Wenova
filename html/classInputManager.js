@@ -7,6 +7,8 @@ var classInputManager =
     [ "get_instance", "classInputManager.html#a5aa0301fba8805c92cdce71b6347983f", null ],
     [ "get_mouse_x_position", "classInputManager.html#a3e22320ccb1006de094c0a6ce7e4e8b2", null ],
     [ "get_mouse_y_position", "classInputManager.html#a559dff7142d8871d5fb441c259c3c0b6", null ],
+    [ "handle_events", "classInputManager.html#ad4218b249a149304d6af77b9ef64bb49", null ],
+    [ "handle_mouse_update", "classInputManager.html#a8ec8e70895a826427fe98a77ccf15b44", null ],
     [ "is_joystick_button_down", "classInputManager.html#aa51d8be2ea57e1e0d8f8cabf763dfa4a", null ],
     [ "is_key_down", "classInputManager.html#a0d17416e891174fae8169232be250d3c", null ],
     [ "is_mouse_down", "classInputManager.html#a08a772664f1578345d704c4b22752a05", null ],

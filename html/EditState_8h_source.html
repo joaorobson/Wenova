@@ -66,78 +66,84 @@ $(document).ready(function(){initNavTree('EditState_8h_source.html','');});
 <div class="title">EditState.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="EditState_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef EDITSTATE_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define EDITSTATE_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="State_8h.html">State.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Sprite_8h.html">Sprite.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Text_8h.html">Text.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Timer_8h.html">Timer.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Music_8h.html">Music.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Sound_8h.html">Sound.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Fighter_8h.html">Fighter.h</a>&quot;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Vector_8h.html">Vector.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using</span> std::vector;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using</span> std::pair;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classEditState.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEditState.html">EditState</a> : <span class="keyword">public</span> <a class="code" href="classState.html">State</a>{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classEditState.html#a22a80b3b503df59e8b1aabdffdd46470">   21</a></span>&#160;    vector&lt;pair&lt;Sprite, Vector&gt; &gt; <a class="code" href="classEditState.html#a22a80b3b503df59e8b1aabdffdd46470">backgrounds</a>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classEditState.html#a8a970fae8610a47888db39b64b151771">   22</a></span>&#160;    <a class="code" href="classFighter.html">Fighter</a> * <a class="code" href="classEditState.html#a8a970fae8610a47888db39b64b151771">test_fighter</a>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">   23</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">stage</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classEditState.html#a49cb28520541fb61cfb76d2348467ce9">   24</a></span>&#160;    <a class="code" href="classMusic.html">Music</a> <a class="code" href="classEditState.html#a49cb28520541fb61cfb76d2348467ce9">music</a>;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classEditState.html#afb0eeb1149cd89315288cf563f3b5808">   25</a></span>&#160;    <a class="code" href="classSound.html">Sound</a> <a class="code" href="classEditState.html#afb0eeb1149cd89315288cf563f3b5808">sound</a>;</div>
+<a href="EditState_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef INCLUDE_EDITSTATE_H_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_EDITSTATE_H_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Fighter_8h.html">Fighter.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Music_8h.html">Music.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Sound_8h.html">Sound.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Sprite_8h.html">Sprite.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="State_8h.html">State.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Text_8h.html">Text.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Timer_8h.html">Timer.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Vector_8h.html">Vector.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a3f349fd7c8ee82c0fb0dc2298eb89415">read_level_design</a>();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a6f45892efb4244fe589b46d289d57dcc">update_level_design</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> std::vector;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">using</span> std::pair;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classEditState.html#a3c715a6a3e6c8a8d00271abbc9b9ff95">EditState</a>(<span class="keywordtype">string</span> <a class="code" href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">stage</a>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a786a8969952801889caf998afabaec76">update</a>(<span class="keywordtype">float</span> delta);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a470a34bfa11912914d0872d6d487c88b">render</a>();</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#abc50e333d80e03057323729833d52786">pause</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#aa1e8c567c021e9cb4143efabbf96d942">resume</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="Sound_8h_html"><div class="ttname"><a href="Sound_8h.html">Sound.h</a></div></div>
-<div class="ttc" id="classEditState_html_a22a80b3b503df59e8b1aabdffdd46470"><div class="ttname"><a href="classEditState.html#a22a80b3b503df59e8b1aabdffdd46470">EditState::backgrounds</a></div><div class="ttdeci">vector&lt; pair&lt; Sprite, Vector &gt; &gt; backgrounds</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00021">EditState.h:21</a></div></div>
-<div class="ttc" id="classEditState_html_a6f45892efb4244fe589b46d289d57dcc"><div class="ttname"><a href="classEditState.html#a6f45892efb4244fe589b46d289d57dcc">EditState::update_level_design</a></div><div class="ttdeci">void update_level_design()</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00167">EditState.cpp:167</a></div></div>
-<div class="ttc" id="Text_8h_html"><div class="ttname"><a href="Text_8h.html">Text.h</a></div></div>
-<div class="ttc" id="Fighter_8h_html"><div class="ttname"><a href="Fighter_8h.html">Fighter.h</a></div></div>
-<div class="ttc" id="Timer_8h_html"><div class="ttname"><a href="Timer_8h.html">Timer.h</a></div></div>
-<div class="ttc" id="classFighter_html"><div class="ttname"><a href="classFighter.html">Fighter</a></div><div class="ttdef"><b>Definition:</b> <a href="Fighter_8h_source.html#l00015">Fighter.h:15</a></div></div>
-<div class="ttc" id="classEditState_html_a3f349fd7c8ee82c0fb0dc2298eb89415"><div class="ttname"><a href="classEditState.html#a3f349fd7c8ee82c0fb0dc2298eb89415">EditState::read_level_design</a></div><div class="ttdeci">void read_level_design()</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00128">EditState.cpp:128</a></div></div>
-<div class="ttc" id="classEditState_html_a9aed00cc456cc09fb14969e6c5d78cea"><div class="ttname"><a href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">EditState::stage</a></div><div class="ttdeci">string stage</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00023">EditState.h:23</a></div></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classEditState.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEditState.html">EditState</a> : <span class="keyword">public</span> <a class="code" href="classState.html">State</a> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classEditState.html#a22a80b3b503df59e8b1aabdffdd46470">   32</a></span>&#160;    vector&lt;pair&lt;Sprite, Vector&gt; &gt; <a class="code" href="classEditState.html#a22a80b3b503df59e8b1aabdffdd46470">backgrounds</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classEditState.html#a8a970fae8610a47888db39b64b151771">   33</a></span>&#160;    <a class="code" href="classFighter.html">Fighter</a>* <a class="code" href="classEditState.html#a8a970fae8610a47888db39b64b151771">test_fighter</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">   34</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">stage</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classEditState.html#a49cb28520541fb61cfb76d2348467ce9">   35</a></span>&#160;    <a class="code" href="classMusic.html">Music</a> <a class="code" href="classEditState.html#a49cb28520541fb61cfb76d2348467ce9">music</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classEditState.html#afb0eeb1149cd89315288cf563f3b5808">   36</a></span>&#160;    <a class="code" href="classSound.html">Sound</a> <a class="code" href="classEditState.html#afb0eeb1149cd89315288cf563f3b5808">sound</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a3f349fd7c8ee82c0fb0dc2298eb89415">read_level_design</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a6f45892efb4244fe589b46d289d57dcc">update_level_design</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classEditState.html#a3c715a6a3e6c8a8d00271abbc9b9ff95">EditState</a>(<span class="keywordtype">string</span> <a class="code" href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">stage</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a786a8969952801889caf998afabaec76">update</a>(<span class="keywordtype">float</span> delta);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#a470a34bfa11912914d0872d6d487c88b">render</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#abc50e333d80e03057323729833d52786">pause</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEditState.html#aa1e8c567c021e9cb4143efabbf96d942">resume</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif  // INCLUDE_EDITSTATE_H_</span></div>
+<div class="ttc" id="Sound_8h_html"><div class="ttname"><a href="Sound_8h.html">Sound.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classEditState_html_a22a80b3b503df59e8b1aabdffdd46470"><div class="ttname"><a href="classEditState.html#a22a80b3b503df59e8b1aabdffdd46470">EditState::backgrounds</a></div><div class="ttdeci">vector&lt; pair&lt; Sprite, Vector &gt; &gt; backgrounds</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00032">EditState.h:32</a></div></div>
+<div class="ttc" id="classEditState_html_a6f45892efb4244fe589b46d289d57dcc"><div class="ttname"><a href="classEditState.html#a6f45892efb4244fe589b46d289d57dcc">EditState::update_level_design</a></div><div class="ttdeci">void update_level_design()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00212">EditState.cpp:212</a></div></div>
+<div class="ttc" id="Text_8h_html"><div class="ttname"><a href="Text_8h.html">Text.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="Fighter_8h_html"><div class="ttname"><a href="Fighter_8h.html">Fighter.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="Timer_8h_html"><div class="ttname"><a href="Timer_8h.html">Timer.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classFighter_html"><div class="ttname"><a href="classFighter.html">Fighter</a></div><div class="ttdef"><b>Definition:</b> <a href="Fighter_8h_source.html#l00026">Fighter.h:26</a></div></div>
+<div class="ttc" id="classEditState_html_a3f349fd7c8ee82c0fb0dc2298eb89415"><div class="ttname"><a href="classEditState.html#a3f349fd7c8ee82c0fb0dc2298eb89415">EditState::read_level_design</a></div><div class="ttdeci">void read_level_design()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00159">EditState.cpp:159</a></div></div>
+<div class="ttc" id="classEditState_html_a9aed00cc456cc09fb14969e6c5d78cea"><div class="ttname"><a href="classEditState.html#a9aed00cc456cc09fb14969e6c5d78cea">EditState::stage</a></div><div class="ttdeci">string stage</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00034">EditState.h:34</a></div></div>
 <div class="ttc" id="Sprite_8h_html"><div class="ttname"><a href="Sprite_8h.html">Sprite.h</a></div><div class="ttdoc">This file contains the declaration of the Sprite class methods and attributes. </div></div>
-<div class="ttc" id="classEditState_html_a786a8969952801889caf998afabaec76"><div class="ttname"><a href="classEditState.html#a786a8969952801889caf998afabaec76">EditState::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00040">EditState.cpp:40</a></div></div>
-<div class="ttc" id="classState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00012">State.h:12</a></div></div>
-<div class="ttc" id="classEditState_html_afb0eeb1149cd89315288cf563f3b5808"><div class="ttname"><a href="classEditState.html#afb0eeb1149cd89315288cf563f3b5808">EditState::sound</a></div><div class="ttdeci">Sound sound</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00025">EditState.h:25</a></div></div>
-<div class="ttc" id="classEditState_html_a3c715a6a3e6c8a8d00271abbc9b9ff95"><div class="ttname"><a href="classEditState.html#a3c715a6a3e6c8a8d00271abbc9b9ff95">EditState::EditState</a></div><div class="ttdeci">EditState(string stage)</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00025">EditState.cpp:25</a></div></div>
-<div class="ttc" id="classSound_html"><div class="ttname"><a href="classSound.html">Sound</a></div><div class="ttdef"><b>Definition:</b> <a href="Sound_8h_source.html#l00012">Sound.h:12</a></div></div>
-<div class="ttc" id="classEditState_html"><div class="ttname"><a href="classEditState.html">EditState</a></div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00019">EditState.h:19</a></div></div>
-<div class="ttc" id="Vector_8h_html"><div class="ttname"><a href="Vector_8h.html">Vector.h</a></div></div>
-<div class="ttc" id="classEditState_html_abc50e333d80e03057323729833d52786"><div class="ttname"><a href="classEditState.html#abc50e333d80e03057323729833d52786">EditState::pause</a></div><div class="ttdeci">void pause()</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00120">EditState.cpp:120</a></div></div>
-<div class="ttc" id="State_8h_html"><div class="ttname"><a href="State_8h.html">State.h</a></div></div>
-<div class="ttc" id="Music_8h_html"><div class="ttname"><a href="Music_8h.html">Music.h</a></div></div>
-<div class="ttc" id="classEditState_html_a49cb28520541fb61cfb76d2348467ce9"><div class="ttname"><a href="classEditState.html#a49cb28520541fb61cfb76d2348467ce9">EditState::music</a></div><div class="ttdeci">Music music</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00024">EditState.h:24</a></div></div>
-<div class="ttc" id="classEditState_html_a470a34bfa11912914d0872d6d487c88b"><div class="ttname"><a href="classEditState.html#a470a34bfa11912914d0872d6d487c88b">EditState::render</a></div><div class="ttdeci">void render()</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00112">EditState.cpp:112</a></div></div>
-<div class="ttc" id="classEditState_html_aa1e8c567c021e9cb4143efabbf96d942"><div class="ttname"><a href="classEditState.html#aa1e8c567c021e9cb4143efabbf96d942">EditState::resume</a></div><div class="ttdeci">void resume()</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00124">EditState.cpp:124</a></div></div>
-<div class="ttc" id="classEditState_html_a8a970fae8610a47888db39b64b151771"><div class="ttname"><a href="classEditState.html#a8a970fae8610a47888db39b64b151771">EditState::test_fighter</a></div><div class="ttdeci">Fighter * test_fighter</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00022">EditState.h:22</a></div></div>
-<div class="ttc" id="classMusic_html"><div class="ttname"><a href="classMusic.html">Music</a></div><div class="ttdef"><b>Definition:</b> <a href="Music_8h_source.html#l00012">Music.h:12</a></div></div>
+<div class="ttc" id="classEditState_html_a786a8969952801889caf998afabaec76"><div class="ttname"><a href="classEditState.html#a786a8969952801889caf998afabaec76">EditState::update</a></div><div class="ttdeci">void update(float delta)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00062">EditState.cpp:62</a></div></div>
+<div class="ttc" id="classState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> <a href="State_8h_source.html#l00022">State.h:22</a></div></div>
+<div class="ttc" id="classEditState_html_afb0eeb1149cd89315288cf563f3b5808"><div class="ttname"><a href="classEditState.html#afb0eeb1149cd89315288cf563f3b5808">EditState::sound</a></div><div class="ttdeci">Sound sound</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00036">EditState.h:36</a></div></div>
+<div class="ttc" id="classEditState_html_a3c715a6a3e6c8a8d00271abbc9b9ff95"><div class="ttname"><a href="classEditState.html#a3c715a6a3e6c8a8d00271abbc9b9ff95">EditState::EditState</a></div><div class="ttdeci">EditState(string stage)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00040">EditState.cpp:40</a></div></div>
+<div class="ttc" id="classSound_html"><div class="ttname"><a href="classSound.html">Sound</a></div><div class="ttdef"><b>Definition:</b> <a href="Sound_8h_source.html#l00022">Sound.h:22</a></div></div>
+<div class="ttc" id="classEditState_html"><div class="ttname"><a href="classEditState.html">EditState</a></div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00030">EditState.h:30</a></div></div>
+<div class="ttc" id="Vector_8h_html"><div class="ttname"><a href="Vector_8h.html">Vector.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classEditState_html_abc50e333d80e03057323729833d52786"><div class="ttname"><a href="classEditState.html#abc50e333d80e03057323729833d52786">EditState::pause</a></div><div class="ttdeci">void pause()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00147">EditState.cpp:147</a></div></div>
+<div class="ttc" id="State_8h_html"><div class="ttname"><a href="State_8h.html">State.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="Music_8h_html"><div class="ttname"><a href="Music_8h.html">Music.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="classEditState_html_a49cb28520541fb61cfb76d2348467ce9"><div class="ttname"><a href="classEditState.html#a49cb28520541fb61cfb76d2348467ce9">EditState::music</a></div><div class="ttdeci">Music music</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00035">EditState.h:35</a></div></div>
+<div class="ttc" id="classEditState_html_a470a34bfa11912914d0872d6d487c88b"><div class="ttname"><a href="classEditState.html#a470a34bfa11912914d0872d6d487c88b">EditState::render</a></div><div class="ttdeci">void render()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00136">EditState.cpp:136</a></div></div>
+<div class="ttc" id="classEditState_html_aa1e8c567c021e9cb4143efabbf96d942"><div class="ttname"><a href="classEditState.html#aa1e8c567c021e9cb4143efabbf96d942">EditState::resume</a></div><div class="ttdeci">void resume()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="EditState_8cpp_source.html#l00153">EditState.cpp:153</a></div></div>
+<div class="ttc" id="classEditState_html_a8a970fae8610a47888db39b64b151771"><div class="ttname"><a href="classEditState.html#a8a970fae8610a47888db39b64b151771">EditState::test_fighter</a></div><div class="ttdeci">Fighter * test_fighter</div><div class="ttdef"><b>Definition:</b> <a href="EditState_8h_source.html#l00033">EditState.h:33</a></div></div>
+<div class="ttc" id="classMusic_html"><div class="ttname"><a href="classMusic.html">Music</a></div><div class="ttdef"><b>Definition:</b> <a href="Music_8h_source.html#l00022">Music.h:22</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="EditState_8h.html">EditState.h</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

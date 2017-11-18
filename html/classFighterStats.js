@@ -3,7 +3,7 @@ var classFighterStats =
     [ "FighterStats", "classFighterStats.html#ab3d2fa48d5e06cb4a1afc13af67cea04", null ],
     [ "~FighterStats", "classFighterStats.html#a440864278b0b322c37b3d57666830bac", null ],
     [ "is_dead", "classFighterStats.html#a288a2fdb28b643f7c5f03812c5aba314", null ],
-    [ "notify_collision", "classFighterStats.html#a4fccb3b0bfa3596efd27bc7d2d5d3c67", null ],
+    [ "notify_collision", "classFighterStats.html#a48b3607545c948d06753d6e9baac55f4", null ],
     [ "render", "classFighterStats.html#a139ccfa1e7a2b013448a546f1c3f5ee9", null ],
     [ "update", "classFighterStats.html#ad31b48d4a333b263762c8ca045cde375", null ],
     [ "bg", "classFighterStats.html#aa73869dde53aa3dec696d0f81e118d62", null ],

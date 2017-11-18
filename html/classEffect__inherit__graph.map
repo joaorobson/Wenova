@@ -1,6 +1,6 @@
 <map id="Effect" name="Effect">
-<area shape="rect" id="node3" href="$classFleshUltimateEffect.html" title="{FleshUltimateEffect\n||+ FleshUltimateEffect()\l+ update()\l+ render()\l+ is_dead()\l}" alt="" coords="5,499,163,621"/>
+<area shape="rect" id="node3" href="$classFleshUltimateEffect.html" title="{FleshUltimateEffect\n||+ FleshUltimateEffect()\l+ update()\l+ render()\l&#45; is_dead()\l}" alt="" coords="5,499,163,621"/>
 <area shape="rect" id="node4" href="$classHealEffect.html" title="{HealEffect\n|&#45; healing_factor\l|+ HealEffect()\l+ update()\l+ is_dead()\l}" alt="" coords="187,507,297,613"/>
-<area shape="rect" id="node5" href="$classUltimateEffect.html" title="{UltimateEffect\n|&#45; aura\l&#45; sprite_box\l&#45; healing_factor\l|+ UltimateEffect()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l}" alt="" coords="323,477,451,643"/>
+<area shape="rect" id="node5" href="$classUltimateEffect.html" title="{UltimateEffect\n|&#45; aura\l&#45; sprite_box\l&#45; healing_factor\l|+ UltimateEffect()\l&#45; update()\l&#45; render()\l&#45; is_dead()\l&#45; notify_collision()\l}" alt="" coords="322,477,448,643"/>
 <area shape="rect" id="node2" href="$classGameObject.html" title="{GameObject\n|+ box\l+ rotation\l+ tags\l|+ ~GameObject()\l+ update()\l+ render()\l+ is_dead()\l+ notify_collision()\l+ is()\l+ add_tags()\l+ remove_tags()\l}" alt="" coords="179,6,307,215"/>
 </map>

@@ -1,7 +1,7 @@
 var classSprite =
 [
-    [ "Sprite", "classSprite.html#a12cba3ac1868418add3c4d95ce87e615", null ],
     [ "Sprite", "classSprite.html#a2302d0a6afaac8e0f46b4ff7a7d24103", null ],
+    [ "Sprite", "classSprite.html#a12cba3ac1868418add3c4d95ce87e615", null ],
     [ "~Sprite", "classSprite.html#a8accab430f9d90ae5117b57d67e32b84", null ],
     [ "get_current_frame", "classSprite.html#a6d7536d69532fe13a6edffc869851a68", null ],
     [ "get_height", "classSprite.html#a022a73166758e68921eac4c147074a45", null ],

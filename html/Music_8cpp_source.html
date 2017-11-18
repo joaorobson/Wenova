@@ -66,60 +66,65 @@ $(document).ready(function(){initNavTree('Music_8cpp_source.html','');});
 <div class="title">Music.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="Music_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Music_8h.html">Music.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Resources_8h.html">Resources.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Config.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">    6</a></span>&#160;<a class="code" href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">Music::Music</a>(){</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classMusic.html#a769113513e796dd408b4deb7e758074d">   10</a></span>&#160;<a class="code" href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">Music::Music</a>(<span class="keywordtype">string</span> file){</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    this-&gt;<a class="code" href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">open</a>(file);</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classMusic.html#a9a7e8dcfb20c25b2f8d91b430717a9c9">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMusic.html#a9a7e8dcfb20c25b2f8d91b430717a9c9">Music::play</a>(<span class="keywordtype">int</span> times){</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">int</span> mix_play_music = Mix_PlayMusic(<a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a>.get(), times);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span>(mix_play_music){</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        printf(<span class="stringliteral">&quot;Play music: %s\n&quot;</span>, Mix_GetError());</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        exit(-1);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classMusic.html#a008211b514c1c89c15399d3384d3fcea">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMusic.html#a008211b514c1c89c15399d3384d3fcea">Music::stop</a>(){</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> mix_fade_out_music = Mix_FadeOutMusic(0);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span>(!mix_fade_out_music){</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        printf(<span class="stringliteral">&quot;Stop music: %s\n&quot;</span>, Mix_GetError());</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        exit(-1);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">   30</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">Music::open</a>(<span class="keywordtype">string</span> file){</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a> = <a class="code" href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">Resources::get_music</a>(<a class="code" href="Config_8h.html#a9034945bd6c4ce026a96e08341280511">RESOURCES_FOLDER</a> + file);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classMusic.html#a1ca92cfee41a82741851e386601d47e4">   34</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMusic.html#a1ca92cfee41a82741851e386601d47e4">Music::is_open</a>(){</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a> != <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="ttc" id="classMusic_html_a2df37ee75eea9f6d3cd523cb57be992c"><div class="ttname"><a href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">Music::open</a></div><div class="ttdeci">void open(string file)</div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00030">Music.cpp:30</a></div></div>
-<div class="ttc" id="classMusic_html_a9a7e8dcfb20c25b2f8d91b430717a9c9"><div class="ttname"><a href="classMusic.html#a9a7e8dcfb20c25b2f8d91b430717a9c9">Music::play</a></div><div class="ttdeci">void play(int times=-1)</div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00014">Music.cpp:14</a></div></div>
-<div class="ttc" id="classMusic_html_a008211b514c1c89c15399d3384d3fcea"><div class="ttname"><a href="classMusic.html#a008211b514c1c89c15399d3384d3fcea">Music::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00022">Music.cpp:22</a></div></div>
+<a href="Music_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Copyright (c) 2017 Wenova - Rise of Conquerors. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * This work is licensed under the terms of the MIT license.</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * For a copy, see &lt;https://opensource.org/licenses/MIT&gt;.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Music_8h.html">Music.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Config_8h.html">Config.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Resources_8h.html">Resources.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">   19</a></span>&#160;<a class="code" href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">Music::Music</a>() {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classMusic.html#a769113513e796dd408b4deb7e758074d">   28</a></span>&#160;<a class="code" href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">Music::Music</a>(<span class="keywordtype">string</span> file) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    this-&gt;<a class="code" href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">open</a>(file);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classMusic.html#a9a7e8dcfb20c25b2f8d91b430717a9c9">   37</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMusic.html#a9a7e8dcfb20c25b2f8d91b430717a9c9">Music::play</a>(<span class="keywordtype">int</span> times) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span> mix_play_music = Mix_PlayMusic(<a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a>.get(), times);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (mix_play_music) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        printf(<span class="stringliteral">&quot;Play music: %s\n&quot;</span>, Mix_GetError());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classMusic.html#a008211b514c1c89c15399d3384d3fcea">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMusic.html#a008211b514c1c89c15399d3384d3fcea">Music::stop</a>() {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> mix_fade_out_music = Mix_FadeOutMusic(0);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">if</span> (!mix_fade_out_music) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        printf(<span class="stringliteral">&quot;Stop music: %s\n&quot;</span>, Mix_GetError());</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        exit(-1);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">Music::open</a>(<span class="keywordtype">string</span> file) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a> = <a class="code" href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">Resources::get_music</a>(<a class="code" href="Config_8h.html#a9034945bd6c4ce026a96e08341280511">RESOURCES_FOLDER</a> + file);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classMusic.html#a1ca92cfee41a82741851e386601d47e4">   70</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classMusic.html#a1ca92cfee41a82741851e386601d47e4">Music::is_open</a>() {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">music</a> != <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="ttc" id="classMusic_html_a2df37ee75eea9f6d3cd523cb57be992c"><div class="ttname"><a href="classMusic.html#a2df37ee75eea9f6d3cd523cb57be992c">Music::open</a></div><div class="ttdeci">void open(string file)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00061">Music.cpp:61</a></div></div>
+<div class="ttc" id="classMusic_html_a9a7e8dcfb20c25b2f8d91b430717a9c9"><div class="ttname"><a href="classMusic.html#a9a7e8dcfb20c25b2f8d91b430717a9c9">Music::play</a></div><div class="ttdeci">void play(int times=-1)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00037">Music.cpp:37</a></div></div>
+<div class="ttc" id="classMusic_html_a008211b514c1c89c15399d3384d3fcea"><div class="ttname"><a href="classMusic.html#a008211b514c1c89c15399d3384d3fcea">Music::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00048">Music.cpp:48</a></div></div>
 <div class="ttc" id="Config_8h_html"><div class="ttname"><a href="Config_8h.html">Config.h</a></div><div class="ttdoc">Manages configuration about screen exhibition. </div></div>
-<div class="ttc" id="classMusic_html_aca13ee2c258e47773fbd7c5a0ddd79eb"><div class="ttname"><a href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">Music::music</a></div><div class="ttdeci">shared_ptr&lt; Mix_Music &gt; music</div><div class="ttdef"><b>Definition:</b> <a href="Music_8h_source.html#l00014">Music.h:14</a></div></div>
-<div class="ttc" id="classMusic_html_ab5143f67c021bc77894c8e91de2b916b"><div class="ttname"><a href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">Music::Music</a></div><div class="ttdeci">Music()</div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00006">Music.cpp:6</a></div></div>
+<div class="ttc" id="classMusic_html_aca13ee2c258e47773fbd7c5a0ddd79eb"><div class="ttname"><a href="classMusic.html#aca13ee2c258e47773fbd7c5a0ddd79eb">Music::music</a></div><div class="ttdeci">shared_ptr&lt; Mix_Music &gt; music</div><div class="ttdef"><b>Definition:</b> <a href="Music_8h_source.html#l00024">Music.h:24</a></div></div>
+<div class="ttc" id="classMusic_html_ab5143f67c021bc77894c8e91de2b916b"><div class="ttname"><a href="classMusic.html#ab5143f67c021bc77894c8e91de2b916b">Music::Music</a></div><div class="ttdeci">Music()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00019">Music.cpp:19</a></div></div>
 <div class="ttc" id="Resources_8h_html"><div class="ttname"><a href="Resources_8h.html">Resources.h</a></div><div class="ttdoc">This file contains the definitions of all methods and attributes of the class Resources. </div></div>
-<div class="ttc" id="Music_8h_html"><div class="ttname"><a href="Music_8h.html">Music.h</a></div></div>
-<div class="ttc" id="Config_8h_html_a9034945bd6c4ce026a96e08341280511"><div class="ttname"><a href="Config_8h.html#a9034945bd6c4ce026a96e08341280511">RESOURCES_FOLDER</a></div><div class="ttdeci">#define RESOURCES_FOLDER</div><div class="ttdef"><b>Definition:</b> <a href="Config_8h_source.html#l00016">Config.h:16</a></div></div>
-<div class="ttc" id="classResources_html_a29cbd47244b28a5715b6457ebcdcc6df"><div class="ttname"><a href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">Resources::get_music</a></div><div class="ttdeci">static shared_ptr&lt; Mix_Music &gt; get_music(string file)</div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00039">Resources.cpp:39</a></div></div>
-<div class="ttc" id="classMusic_html_a1ca92cfee41a82741851e386601d47e4"><div class="ttname"><a href="classMusic.html#a1ca92cfee41a82741851e386601d47e4">Music::is_open</a></div><div class="ttdeci">bool is_open()</div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00034">Music.cpp:34</a></div></div>
+<div class="ttc" id="Music_8h_html"><div class="ttname"><a href="Music_8h.html">Music.h</a></div><div class="ttdoc">Brief Description. </div></div>
+<div class="ttc" id="Config_8h_html_a9034945bd6c4ce026a96e08341280511"><div class="ttname"><a href="Config_8h.html#a9034945bd6c4ce026a96e08341280511">RESOURCES_FOLDER</a></div><div class="ttdeci">#define RESOURCES_FOLDER</div><div class="ttdef"><b>Definition:</b> <a href="Config_8h_source.html#l00021">Config.h:21</a></div></div>
+<div class="ttc" id="classResources_html_a29cbd47244b28a5715b6457ebcdcc6df"><div class="ttname"><a href="classResources.html#a29cbd47244b28a5715b6457ebcdcc6df">Resources::get_music</a></div><div class="ttdeci">static shared_ptr&lt; Mix_Music &gt; get_music(string file)</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Resources_8cpp_source.html#l00074">Resources.cpp:74</a></div></div>
+<div class="ttc" id="classMusic_html_a1ca92cfee41a82741851e386601d47e4"><div class="ttname"><a href="classMusic.html#a1ca92cfee41a82741851e386601d47e4">Music::is_open</a></div><div class="ttdeci">bool is_open()</div><div class="ttdoc">Brief Description. </div><div class="ttdef"><b>Definition:</b> <a href="Music_8cpp_source.html#l00070">Music.cpp:70</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="Music_8cpp.html">Music.cpp</a></li>
-    <li class="footer">Generated on Mon Oct 9 2017 18:38:44 for Wenova by
+    <li class="footer">Generated on Sat Nov 18 2017 18:58:54 for Wenova by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

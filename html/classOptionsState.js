@@ -14,6 +14,8 @@ var classOptionsState =
     [ "pause", "classOptionsState.html#ac0b4834167d8807d69e4b22e2a847588", null ],
     [ "process_input", "classOptionsState.html#af7007e4cb4e37dc36999dbd6b57e317b", null ],
     [ "render", "classOptionsState.html#a2a2f86adf9095f3c36ba4a7fc4552e64", null ],
+    [ "render_main_menu_option", "classOptionsState.html#aba45360a34bb7b1ad5a015dd32702df8", null ],
+    [ "render_submenu_option", "classOptionsState.html#a12279b8189990f2c92f24ab59b583641", null ],
     [ "resume", "classOptionsState.html#a8a89378ecf28b866950ab2de1769f4e5", null ],
     [ "update", "classOptionsState.html#a288ac683261cc36efea6a1ccac045c0f", null ],
     [ "background", "classOptionsState.html#a215a88b8ecc87332c718853c241304e4", null ],

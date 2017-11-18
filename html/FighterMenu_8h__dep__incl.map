@@ -1,6 +1,6 @@
 <map id="FighterMenu.h" name="FighterMenu.h">
-<area shape="rect" id="node2" href="$CharacterSelectState_8h.html" title="Controls all process of players choosing characters and skins. " alt="" coords="105,80,263,107"/>
-<area shape="rect" id="node5" href="$FighterMenu_8cpp.html" title="FighterMenu.cpp" alt="" coords="287,80,405,107"/>
+<area shape="rect" id="node2" href="$CharacterSelectState_8h.html" title="Controls all process of players choosing characters and skins. " alt="" coords="103,80,261,107"/>
+<area shape="rect" id="node5" href="$FighterMenu_8cpp.html" title="Brief Description. " alt="" coords="286,80,404,107"/>
 <area shape="rect" id="node3" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="5,155,176,181"/>
-<area shape="rect" id="node4" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="201,155,353,181"/>
+<area shape="rect" id="node4" href="$StageSelectState_8cpp.html" title="This file builds and renders the stages that the user can select. " alt="" coords="201,155,349,181"/>
 </map>

@@ -47,7 +47,7 @@ var files =
     [ "Flesh.h", "Flesh_8h.html", [
       [ "Flesh", "classFlesh.html", "classFlesh" ]
     ] ],
-    [ "FleshUltimateEffect.cpp", "FleshUltimateEffect_8cpp.html", null ],
+    [ "FleshUltimateEffect.cpp", "FleshUltimateEffect_8cpp.html", "FleshUltimateEffect_8cpp" ],
     [ "FleshUltimateEffect.h", "FleshUltimateEffect_8h.html", [
       [ "FleshUltimateEffect", "classFleshUltimateEffect.html", "classFleshUltimateEffect" ]
     ] ],
@@ -105,7 +105,7 @@ var files =
     [ "Sprite.h", "Sprite_8h.html", [
       [ "Sprite", "classSprite.html", "classSprite" ]
     ] ],
-    [ "StageSelectStage.cpp", "StageSelectStage_8cpp.html", null ],
+    [ "StageSelectState.cpp", "StageSelectState_8cpp.html", null ],
     [ "StageSelectState.h", "StageSelectState_8h.html", "StageSelectState_8h" ],
     [ "State.cpp", "State_8cpp.html", null ],
     [ "State.h", "State_8h.html", [
@@ -118,7 +118,7 @@ var files =
     [ "Text.h", "Text_8h.html", [
       [ "Text", "classText.html", "classText" ]
     ] ],
-    [ "TimeCounter.cpp", "TimeCounter_8cpp.html", null ],
+    [ "TimeCounter.cpp", "TimeCounter_8cpp.html", "TimeCounter_8cpp" ],
     [ "TimeCounter.h", "TimeCounter_8h.html", [
       [ "TimeCounter", "classTimeCounter.html", "classTimeCounter" ]
     ] ],
@@ -126,7 +126,7 @@ var files =
     [ "Timer.h", "Timer_8h.html", [
       [ "Timer", "classTimer.html", "classTimer" ]
     ] ],
-    [ "UltimateEffect.cpp", "UltimateEffect_8cpp.html", null ],
+    [ "UltimateEffect.cpp", "UltimateEffect_8cpp.html", "UltimateEffect_8cpp" ],
     [ "UltimateEffect.h", "UltimateEffect_8h.html", [
       [ "UltimateEffect", "classUltimateEffect.html", "classUltimateEffect" ]
     ] ],

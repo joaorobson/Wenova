@@ -3,7 +3,7 @@ var classResources =
     [ "clear_fonts", "classResources.html#aea9bff602c8873735fe92fd719cc1579", null ],
     [ "clear_images", "classResources.html#aab4007359f1d923dc519fb9a01921cd0", null ],
     [ "clear_music", "classResources.html#afc1ccd99c22521c8531c85794fea957e", null ],
-    [ "clear_sound", "classResources.html#a9aa26b7909cf05e66623f8721f6df5e4", null ],
+    [ "clear_sound", "classResources.html#aa84c6772cbdd6614f8ee2e77498a2f89", null ],
     [ "get_font", "classResources.html#a3b03c9af533df5b2045ba272a90eda83", null ],
     [ "get_image", "classResources.html#aaba6124e032a550a807365557bf546ce", null ],
     [ "get_music", "classResources.html#a29cbd47244b28a5715b6457ebcdcc6df", null ],

@@ -1,11 +1,11 @@
 <map id="Effect.h" name="Effect.h">
-<area shape="rect" id="node2" href="$HealEffect_8h.html" title="HealEffect.h" alt="" coords="71,80,165,107"/>
+<area shape="rect" id="node2" href="$HealEffect_8h.html" title="Brief Description. " alt="" coords="71,80,165,107"/>
 <area shape="rect" id="node5" href="$UltimateEffect_8h.html" title="This file contains the declaration of the UltimateEffect class methods and attributes. " alt="" coords="191,80,307,107"/>
-<area shape="rect" id="node7" href="$Effect_8cpp.html" title="Effect.cpp" alt="" coords="332,80,413,107"/>
+<area shape="rect" id="node7" href="$Effect_8cpp.html" title="Brief Description. " alt="" coords="332,80,413,107"/>
 <area shape="rect" id="node8" href="$FleshUltimateEffect_8h.html" title="This file contains the declaration of the FleshUltimateEffect class methods and attributes. " alt="" coords="439,80,587,107"/>
 <area shape="rect" id="node3" href="$Blood_8cpp.html" title="This file contains the definition of the Blood class methods. " alt="" coords="139,155,217,181"/>
-<area shape="rect" id="node4" href="$HealEffect_8cpp.html" title="HealEffect.cpp" alt="" coords="5,155,115,181"/>
+<area shape="rect" id="node4" href="$HealEffect_8cpp.html" title="Brief Description. " alt="" coords="5,155,115,181"/>
 <area shape="rect" id="node6" href="$UltimateEffect_8cpp.html" title="This file contains the definition of the Sprite class methods. " alt="" coords="243,155,372,181"/>
-<area shape="rect" id="node9" href="$Flesh_8cpp.html" title="Flesh.cpp" alt="" coords="435,155,513,181"/>
+<area shape="rect" id="node9" href="$Flesh_8cpp.html" title="Brief Description. " alt="" coords="435,155,513,181"/>
 <area shape="rect" id="node10" href="$FleshUltimateEffect_8cpp.html" title="This file contains the definition of the FleshUltimateEffect class methods. " alt="" coords="539,155,701,181"/>
 </map>

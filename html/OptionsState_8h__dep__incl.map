@@ -1,5 +1,5 @@
 <map id="OptionsState.h" name="OptionsState.h">
 <area shape="rect" id="node2" href="$JoystickConfigState_8cpp.html" title="This file renders images of options &#39;JOYSTICK&#39; and &#39;KEYBOARD&#39; of the menu &#39;Options&#39; and controls the ..." alt="" coords="5,80,169,107"/>
-<area shape="rect" id="node3" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="195,80,305,107"/>
+<area shape="rect" id="node3" href="$MenuState_8cpp.html" title="Brief Description. " alt="" coords="195,80,305,107"/>
 <area shape="rect" id="node4" href="$OptionsState_8cpp.html" title="This file builds all options and sub options of the menu &#39;Options&#39; of the game and control their beha..." alt="" coords="331,80,453,107"/>
 </map>

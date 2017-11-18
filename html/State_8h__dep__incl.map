@@ -1,28 +1,28 @@
 <map id="State.h" name="State.h">
 <area shape="rect" id="node2" href="$BattleEnd_8h.html" title="This file contains the definitions of the methods and attributes of the class BattleEnd. " alt="" coords="144,80,235,107"/>
-<area shape="rect" id="node4" href="$BattleState_8h.html" title="BattleState.h" alt="" coords="184,155,283,181"/>
-<area shape="rect" id="node8" href="$Game_8h.html" title="Game.h" alt="" coords="1206,155,1273,181"/>
-<area shape="rect" id="node21" href="$MenuState_8h.html" title="MenuState.h" alt="" coords="760,155,856,181"/>
+<area shape="rect" id="node4" href="$BattleState_8h.html" title="Brief Description. " alt="" coords="184,155,283,181"/>
+<area shape="rect" id="node8" href="$Game_8h.html" title="Brief Description. " alt="" coords="1206,155,1273,181"/>
+<area shape="rect" id="node21" href="$MenuState_8h.html" title="Brief Description. " alt="" coords="760,155,856,181"/>
 <area shape="rect" id="node22" href="$CharacterSelectState_8h.html" title="Controls all process of players choosing characters and skins. " alt="" coords="307,155,465,181"/>
 <area shape="rect" id="node23" href="$StageSelectState_8h.html" title="This file contains the definitions of all methods and attributes of the class StageSelectState. " alt="" coords="490,155,624,181"/>
-<area shape="rect" id="node24" href="$EditState_8h.html" title="EditState.h" alt="" coords="649,155,735,181"/>
+<area shape="rect" id="node24" href="$EditState_8h.html" title="Brief Description. " alt="" coords="649,155,735,181"/>
 <area shape="rect" id="node25" href="$JoystickConfigState_8h.html" title="This file contains the definitions of the methods and attributes of the class JoystickConfigState. " alt="" coords="881,155,1031,181"/>
 <area shape="rect" id="node26" href="$OptionsState_8h.html" title="This file contains the definitions of all methods and attributes of the class OptionsState. " alt="" coords="1056,155,1165,181"/>
-<area shape="rect" id="node27" href="$State_8cpp.html" title="State.cpp" alt="" coords="933,80,1011,107"/>
+<area shape="rect" id="node27" href="$State_8cpp.html" title="Brief Description. " alt="" coords="933,80,1011,107"/>
 <area shape="rect" id="node3" href="$BattleEnd_8cpp.html" title="This file renders images at the end of a battle indicating the team that won. " alt="" coords="5,155,109,181"/>
-<area shape="rect" id="node5" href="$BattleState_8cpp.html" title="BattleState.cpp" alt="" coords="112,229,223,256"/>
-<area shape="rect" id="node6" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="249,229,420,256"/>
-<area shape="rect" id="node7" href="$MenuState_8cpp.html" title="MenuState.cpp" alt="" coords="622,229,732,256"/>
+<area shape="rect" id="node5" href="$BattleState_8cpp.html" title="Brief Description. " alt="" coords="115,229,225,256"/>
+<area shape="rect" id="node6" href="$CharacterSelectState_8cpp.html" title="Implements class CharacterSelectState methods. " alt="" coords="251,229,423,256"/>
+<area shape="rect" id="node7" href="$MenuState_8cpp.html" title="Brief Description. " alt="" coords="622,229,732,256"/>
 <area shape="rect" id="node9" href="$Blood_8cpp.html" title="This file contains the definition of the Blood class methods. " alt="" coords="1807,229,1885,256"/>
-<area shape="rect" id="node10" href="$EditState_8cpp.html" title="EditState.cpp" alt="" coords="757,229,859,256"/>
-<area shape="rect" id="node11" href="$Flesh_8cpp.html" title="Flesh.cpp" alt="" coords="1911,229,1989,256"/>
-<area shape="rect" id="node12" href="$Game_8cpp.html" title="Game.cpp" alt="" coords="2015,229,2096,256"/>
+<area shape="rect" id="node10" href="$EditState_8cpp.html" title="Brief Description. " alt="" coords="757,229,859,256"/>
+<area shape="rect" id="node11" href="$Flesh_8cpp.html" title="Brief Description. " alt="" coords="1911,229,1989,256"/>
+<area shape="rect" id="node12" href="$Game_8cpp.html" title="Brief Description. " alt="" coords="2015,229,2096,256"/>
 <area shape="rect" id="node13" href="$InputManager_8cpp.html" title="Implements methods of class InputManager. " alt="" coords="1318,229,1444,256"/>
 <area shape="rect" id="node14" href="$JoystickConfigState_8cpp.html" title="This file renders images of options &#39;JOYSTICK&#39; and &#39;KEYBOARD&#39; of the menu &#39;Options&#39; and controls the ..." alt="" coords="883,229,1047,256"/>
 <area shape="rect" id="node15" href="$Main_8cpp.html" title="Main.cpp" alt="" coords="1219,229,1292,256"/>
 <area shape="rect" id="node16" href="$OptionsState_8cpp.html" title="This file builds all options and sub options of the menu &#39;Options&#39; of the game and control their beha..." alt="" coords="1072,229,1195,256"/>
-<area shape="rect" id="node17" href="$Resources_8cpp.html" title="Resources.cpp" alt="" coords="1469,229,1579,256"/>
+<area shape="rect" id="node17" href="$Resources_8cpp.html" title="Brief Description. " alt="" coords="1469,229,1579,256"/>
 <area shape="rect" id="node18" href="$Sprite_8cpp.html" title="This file contains the definition of the Sprite class methods. " alt="" coords="1603,229,1684,256"/>
-<area shape="rect" id="node19" href="$StageSelectStage_8cpp.html" title="StageSelectStage.cpp" alt="" coords="445,229,597,256"/>
+<area shape="rect" id="node19" href="$StageSelectState_8cpp.html" title="This file builds and renders the stages that the user can select. " alt="" coords="448,229,596,256"/>
 <area shape="rect" id="node20" href="$Text_8cpp.html" title="This file contains the definition of the Text class methods. " alt="" coords="1709,229,1781,256"/>
 </map>
