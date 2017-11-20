@@ -33,14 +33,14 @@ class Flesh : public Fighter {
      */
     Flesh(string skin, float x, float y, int cid, Fighter *cpartner = nullptr);
     const float BASIC_ATTACK_DAMAGE = 0.3;  ///< The basic attack damage of the
-    ///< characters.
+                                            ///< characters.
     const float SPECIAL_1_DAMAGE = 1;  ///< The attack damage of the characters
-    ///< on special 1.
+                                       ///< on special 1.
     const float INITIAL_SPEED = 3;/**< The initia speed of the characters. */
 
  private:
     float additional_attack_damage;   ///< Additional attack damage possible
-    ///< for characters.
+                                      ///< for characters.
     float additional_speed; /**< Additional speed possible for characters. */
 
     /**

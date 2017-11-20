@@ -22,7 +22,7 @@ class Floor : public GameObject {
 
  protected:
     bool is_crossingable;  ///< Check if the character is crossingable through
-    ///< the floor.
+                           ///< the floor.
 
  public:
     /**
