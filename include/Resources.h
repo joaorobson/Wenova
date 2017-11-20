@@ -11,6 +11,7 @@
 #ifndef INCLUDE_RESOURCES_H_
 #define INCLUDE_RESOURCES_H_
 
+#include <assert.h>
 #include <iostream>
 #include <memory>
 #include <string>

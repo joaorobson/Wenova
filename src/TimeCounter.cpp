@@ -10,6 +10,9 @@
  */
 #include "TimeCounter.h"
 
+#define INFERIOR_LIMIT_TIME 0
+#define UPPER_LIMIT_TIME 99
+
 using std::to_string;
 
 /**
@@ -45,12 +48,16 @@ TimeCounter::~TimeCounter() {
 void TimeCounter::update(float delta) {
     time_text.set_pos(640, 664, true, true);
     timer.update(delta);
-    remaining_seconds -= delta * 0.01 / 3;
+
+    assert(remaining_seconds >= 0);
 
     // FIXME
-    if (remaining_seconds < 0) {
+    if (remaining_seconds > 0) {
+        remaining_seconds -= delta * 0.01 / 4;
+    } else {
         remaining_seconds = 0;
     }
+
     time_text.set_text(get_time_string());
 }
 
@@ -60,19 +67,11 @@ void TimeCounter::update(float delta) {
  * time of a battle.
  */
 void TimeCounter::render() {
+    assert(box.get_draw_x() > 0.0);
+    assert(box.get_draw_y() > 0.0);
+
     background_clock.render(box.get_draw_x(), box.get_draw_y());
     time_text.render();
-}
-
-/**
- * Function that returns remaining time.
- * This function returns a string representation of the remaining time
- * of a battle.
- *
- * @return is a string representing the remaining time.
- */
-string TimeCounter::get_time_string() {
-    return to_string(static_cast<int>(remaining_seconds));
 }
 
 /**
@@ -93,6 +92,22 @@ bool TimeCounter::is_dead() {
  */
 bool TimeCounter::is_over() {
     return remaining_seconds <= 0;
+}
+
+/**
+ * Function that returns remaining time.
+ * This function returns a string representation of the remaining time
+ * of a battle.
+ *
+ * @return is a string representing the remaining time.
+ */
+string TimeCounter::get_time_string() {
+    if (remaining_seconds >= INFERIOR_LIMIT_TIME and
+        remaining_seconds <= UPPER_LIMIT_TIME) {
+        return to_string(static_cast<int>(remaining_seconds));
+    } else {
+        return to_string(UPPER_LIMIT_TIME);
+    }
 }
 
 /**

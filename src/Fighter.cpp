@@ -415,7 +415,7 @@ void Fighter::set_partner(Fighter *cpartner) {
 
 /**
  * Brief Description.
- *
+ * Not used method
  * @returns
  */
 Fighter *Fighter::get_partner() {

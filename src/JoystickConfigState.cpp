@@ -32,6 +32,7 @@
 #define SELECT_Y BOTTOM_Y - 100
 #define OFFSET_X 700
 #define OFFSET_Y 400
+#define OFFSET_LEFT_WALL 20
 #define BUTTON_DISTANCE 50
 #define DPAD_DISTANCE 35
 #define TRIGGERS_X_DISTANCE 300
@@ -44,6 +45,68 @@
     { 181, 201, 60, 1 }
 #define BLUE \
     { 0, 108, 166, 1 }
+
+#define N_JOYSTICK 4
+
+#define FONT_FILE "font/8-BIT WONDER.ttf"
+#define FONT_SIZE 22
+#define FONT_SIZE_START_SELECT 25
+
+#define TEST_LABEL "TEST"
+#define TEST_HORIZONTAL_POSITION 970
+#define TEST_VERTICAL_POSITION 650
+
+#define BACK_LABEL "BACK"
+#define BACK_HORIZONTAL_POSITION 1154
+#define BACK_VERTICAL_POSITION 650
+
+#define PRESS_LABEL "PRESS"
+#define PRESS_HORIZONTAL_POSITION 640
+#define PRESS_VERTICAL_POSITION 300
+
+#define SELECT_LABEL "SELECT"
+#define SELECT_HORIZONTAL_POSITION 500
+#define SELECT_VERTICAL_POSITION 350
+
+#define AND_LABEL "AND"
+#define AND_HORIZONTAL_POSITION 640
+#define AND_VERTICAL_POSITION 350
+
+#define START_LABEL "START"
+#define START_HORIZONTAL_POSITION 760
+#define START_VERTICAL_POSITION 350
+
+#define TO_GO_BACK_LABEL "TO GO BACK"
+#define TO_GO_BACK_HORIZONTAL_POSITION 640
+#define TO_GO_BACK_VERTICAL_POSITION 400
+
+#define UP_BUTTON_LABEL "UP"
+#define UP_BUTTON_SPRITE "up"
+
+#define RIGHT_BUTTON_LABEL "RIGHT"
+#define RIGHT_BUTTON_SPRITE "right"
+
+#define DOWN_BUTTON_LABEL "DOWN"
+#define DOWN_BUTTON_SPRITE "down"
+
+#define LEFT_BUTTON_LABEL "LEFT"
+#define LEFT_BUTTON_SPRITE "left"
+
+#define X_BUTTON_LABEL "X"
+#define Y_BUTTON_LABEL "Y"
+#define A_BUTTON_LABEL "A"
+#define B_BUTTON_LABEL "B"
+#define LB_BUTTON_LABEL "LB"
+#define RB_BUTTON_LABEL "RB"
+#define LT_BUTTON_LABEL "LT"
+#define RT_BUTTON_LABEL "RT"
+#define SELECT_BUTTON_LABEL "select"
+#define START_BUTTON_LABEL "start"
+
+#define BUTTON_SPRITE "button"
+#define TRIGGER_BUTTON_SPRITE "trigger"
+#define BACK_TRIGGER_BUTTON_SPRITE "back_trigger"
+#define SELECT_START_BUTTON_SPRITE "select_start"
 
 /**
  * Constructor.
@@ -65,29 +128,43 @@ JoystickConfigState::JoystickConfigState(int joystick_id, bool ckeyboard) {
     joystick_help = Sprite("joysticks/help/controls_help.png");
     test_btn = Sprite("joysticks/help/a.png");
     back_btn = Sprite("joysticks/help/b.png");
-    test_txt = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                        "TEST", WHITE);
 
-    back_txt = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                        "BACK", WHITE);
+    test_txt = new Text(FONT_FILE, FONT_SIZE, Text::TextStyle::SOLID,
+                        TEST_LABEL, WHITE);
+    assert(test_txt != NULL);
 
-    press = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                     "PRESS", LIGHT_GREEN, 640, 300);
+    back_txt = new Text(FONT_FILE, FONT_SIZE, Text::TextStyle::SOLID,
+                        BACK_LABEL, WHITE);
+    assert(back_txt != NULL);
 
-    select_text = new Text("font/8-BIT WONDER.ttf", 25, Text::TextStyle::SOLID,
-                           "SELECT", BLUE, 500, 350);
+    press = new Text(FONT_FILE, FONT_SIZE, Text::TextStyle::SOLID, PRESS_LABEL,
+                     LIGHT_GREEN, PRESS_HORIZONTAL_POSITION,
+                     PRESS_VERTICAL_POSITION);
+    assert(press != NULL);
 
-    and_text = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                        "AND", LIGHT_GREEN, 640, 350);
+    select_text = new Text(
+        FONT_FILE, FONT_SIZE_START_SELECT, Text::TextStyle::SOLID, SELECT_LABEL,
+        BLUE, SELECT_HORIZONTAL_POSITION, SELECT_VERTICAL_POSITION);
+    assert(select_text != NULL);
 
-    start_text = new Text("font/8-BIT WONDER.ttf", 25, Text::TextStyle::SOLID,
-                          "START", BLUE, 760, 350);
+    and_text =
+        new Text(FONT_FILE, FONT_SIZE, Text::TextStyle::SOLID, AND_LABEL,
+                 LIGHT_GREEN, AND_HORIZONTAL_POSITION, AND_VERTICAL_POSITION);
+    assert(and_text != NULL);
 
-    to_go_back = new Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
-                          "TO GO BACK", LIGHT_GREEN, 640, 400);
+    start_text = new Text(FONT_FILE, FONT_SIZE_START_SELECT,
+                          Text::TextStyle::SOLID, START_LABEL, BLUE,
+                          START_HORIZONTAL_POSITION, START_VERTICAL_POSITION);
+    assert(start_text != NULL);
 
-    test_txt->set_pos(970, 650);
-    back_txt->set_pos(1154, 650);
+    to_go_back =
+        new Text(FONT_FILE, FONT_SIZE, Text::TextStyle::SOLID, TO_GO_BACK_LABEL,
+                 LIGHT_GREEN, TO_GO_BACK_HORIZONTAL_POSITION,
+                 TO_GO_BACK_VERTICAL_POSITION);
+    assert(to_go_back != NULL);
+
+    test_txt->set_pos(TEST_HORIZONTAL_POSITION, TEST_VERTICAL_POSITION);
+    back_txt->set_pos(BACK_HORIZONTAL_POSITION, BACK_VERTICAL_POSITION);
 
     blocked = Sound("menu/sound/cancel.ogg");
     selected = Sound("menu/sound/select.ogg");
@@ -99,59 +176,64 @@ JoystickConfigState::JoystickConfigState(int joystick_id, bool ckeyboard) {
      * Iterates four times to create the buttons of the test mode on menu
      * "Options".
      */
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < N_JOYSTICK; i++) {
         joystick_id = i;
-        int offset_x = OFFSET_X * (i % 2) + 20;
+        int offset_x = OFFSET_X * (i % 2) + OFFSET_LEFT_WALL;
         int offset_y = OFFSET_Y * (i > 1);
         add_object(new JoystickButton(
-            offset_x + DOWN_X, offset_y + DOWN_Y - 2 * DPAD_DISTANCE, "UP",
-            InputManager::UP, joystick_id, "up"));
+            offset_x + DOWN_X, offset_y + DOWN_Y - 2 * DPAD_DISTANCE,
+            UP_BUTTON_LABEL, InputManager::UP, joystick_id, UP_BUTTON_SPRITE));
         add_object(new JoystickButton(offset_x + DOWN_X + DPAD_DISTANCE,
                                       offset_y + DOWN_Y - DPAD_DISTANCE,
-                                      "RIGHT", InputManager::RIGHT, joystick_id,
-                                      "right"));
+                                      RIGHT_BUTTON_LABEL, InputManager::RIGHT,
+                                      joystick_id, RIGHT_BUTTON_SPRITE));
         add_object(new JoystickButton(offset_x + DOWN_X, offset_y + DOWN_Y,
-                                      "DOWN", InputManager::DOWN, joystick_id,
-                                      "down"));
+                                      DOWN_BUTTON_LABEL, InputManager::DOWN,
+                                      joystick_id, DOWN_BUTTON_SPRITE));
         add_object(new JoystickButton(offset_x + DOWN_X - DPAD_DISTANCE,
-                                      offset_y + DOWN_Y - DPAD_DISTANCE, "LEFT",
-                                      InputManager::LEFT, joystick_id, "left"));
+                                      offset_y + DOWN_Y - DPAD_DISTANCE,
+                                      LEFT_BUTTON_LABEL, InputManager::LEFT,
+                                      joystick_id, LEFT_BUTTON_SPRITE));
 
         // ABXY
-        add_object(new JoystickButton(offset_x + A_X - BUTTON_DISTANCE,
-                                      offset_y + A_Y - BUTTON_DISTANCE, "X",
-                                      InputManager::X, joystick_id, "button"));
-        add_object(new JoystickButton(offset_x + A_X, offset_y + A_Y, "A",
-                                      InputManager::A, joystick_id, "button"));
-        add_object(new JoystickButton(offset_x + A_X + BUTTON_DISTANCE,
-                                      offset_y + A_Y - BUTTON_DISTANCE, "B",
-                                      InputManager::B, joystick_id, "button"));
-        add_object(new JoystickButton(offset_x + A_X,
-                                      offset_y + A_Y - 2 * BUTTON_DISTANCE, "Y",
-                                      InputManager::Y, joystick_id, "button"));
+        add_object(new JoystickButton(
+            offset_x + A_X - BUTTON_DISTANCE, offset_y + A_Y - BUTTON_DISTANCE,
+            X_BUTTON_LABEL, InputManager::X, joystick_id, BUTTON_SPRITE));
+        add_object(new JoystickButton(offset_x + A_X, offset_y + A_Y,
+                                      A_BUTTON_LABEL, InputManager::A,
+                                      joystick_id, BUTTON_SPRITE));
+        add_object(new JoystickButton(
+            offset_x + A_X + BUTTON_DISTANCE, offset_y + A_Y - BUTTON_DISTANCE,
+            B_BUTTON_LABEL, InputManager::B, joystick_id, BUTTON_SPRITE));
+        add_object(new JoystickButton(
+            offset_x + A_X, offset_y + A_Y - 2 * BUTTON_DISTANCE,
+            Y_BUTTON_LABEL, InputManager::Y, joystick_id, BUTTON_SPRITE));
 
         // Triggers
-        add_object(new JoystickButton(offset_x + LB_X, offset_y + LB_Y, "LB",
-                                      InputManager::LB, joystick_id,
-                                      "trigger"));
+        add_object(new JoystickButton(offset_x + LB_X, offset_y + LB_Y,
+                                      LB_BUTTON_LABEL, InputManager::LB,
+                                      joystick_id, TRIGGER_BUTTON_SPRITE));
         add_object(new JoystickButton(offset_x + LB_X + TRIGGERS_X_DISTANCE,
-                                      offset_y + LB_Y, "RB", InputManager::RB,
-                                      joystick_id, "trigger"));
-        add_object(new JoystickButton(
-            offset_x + LB_X, offset_y + LB_Y - TRIGGERS_Y_DISTANCE, "LT",
-            InputManager::LT, joystick_id, "back_trigger"));
+                                      offset_y + LB_Y, RB_BUTTON_LABEL,
+                                      InputManager::RB, joystick_id,
+                                      TRIGGER_BUTTON_SPRITE));
+        add_object(new JoystickButton(offset_x + LB_X,
+                                      offset_y + LB_Y - TRIGGERS_Y_DISTANCE,
+                                      LT_BUTTON_LABEL, InputManager::LT,
+                                      joystick_id, BACK_TRIGGER_BUTTON_SPRITE));
         add_object(new JoystickButton(offset_x + LB_X + TRIGGERS_X_DISTANCE,
                                       offset_y + LB_Y - TRIGGERS_Y_DISTANCE,
-                                      "RT", InputManager::RT, joystick_id,
-                                      "back_trigger"));
+                                      RT_BUTTON_LABEL, InputManager::RT,
+                                      joystick_id, BACK_TRIGGER_BUTTON_SPRITE));
 
         // Select and start
         add_object(new JoystickButton(offset_x + SELECT_X, offset_y + SELECT_Y,
-                                      "select", InputManager::SELECT,
-                                      joystick_id, "select_start"));
-        add_object(new JoystickButton(
-            offset_x + MIDDLE_X + DISTANCE_START, offset_y + SELECT_Y, "start",
-            InputManager::START, joystick_id, "select_start"));
+                                      SELECT_BUTTON_LABEL, InputManager::SELECT,
+                                      joystick_id, SELECT_START_BUTTON_SPRITE));
+        add_object(new JoystickButton(offset_x + MIDDLE_X + DISTANCE_START,
+                                      offset_y + SELECT_Y, START_BUTTON_LABEL,
+                                      InputManager::START, joystick_id,
+                                      SELECT_START_BUTTON_SPRITE));
     }
 
     InputManager::get_instance()->set_analogic_sensibility_value(20000);
@@ -169,6 +251,9 @@ JoystickConfigState::JoystickConfigState(int joystick_id, bool ckeyboard) {
  */
 void JoystickConfigState::update(float delta) {
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
+
+    assert(delta >= 0);
 
     /**
      * Check if user has request to quit the menu "Options".
@@ -176,31 +261,14 @@ void JoystickConfigState::update(float delta) {
     if (input_manager->quit_requested()) {
         m_quit_requested = true;
         return;
+    } else {
+        /* Nothing to do. */
     }
 
     /**
      * Check if user request to enter in joystick test mode.
      */
-    if (on_test) {
-        /**
-         * Check if user request to quit the joystick test screen.
-         */
-        if (input_manager->is_joystick_button_down(InputManager::SELECT, 0) and
-            input_manager->is_joystick_button_down(InputManager::START, 0)) {
-            selected.play();
-            on_test = false;
-            InputManager::get_instance()->map_keyboard_to_joystick(
-                InputManager::MENU_MODE);
-        }
-
-        /**
-         * Workaround to uncheck A button pressed in joystick test screen.
-         */
-        if (input_manager->joystick_button_release(InputManager::A, 0)) {
-            InputManager::get_instance()->map_keyboard_to_joystick(
-                InputManager::BATTLE_MODE);
-        }
-    } else {
+    if (not on_test) {
         /**
          * Check if user request to quit the joystick help screen.
          */
@@ -210,15 +278,38 @@ void JoystickConfigState::update(float delta) {
             m_quit_requested = true;
             Game::get_instance().push(new OptionsState());
             return;
+        } else {
+            /**
+             * Check if user request to enter the joystick test mode.
+             */
+            if (input_manager->joystick_button_press(InputManager::A, 0) and
+                not is_keyboard) {
+                selected.play();
+                on_test = true;
+            } else {
+                /* Nothing to do. */
+            }
         }
-
+    } else {
         /**
-         * Check if user request to enter the joystick test mode.
+         * Check if user request to quit the joystick test screen.
          */
-        if (input_manager->joystick_button_press(InputManager::A, 0) and
-            not is_keyboard) {
+        if (input_manager->is_joystick_button_down(InputManager::SELECT, 0) and
+            input_manager->is_joystick_button_down(InputManager::START, 0)) {
             selected.play();
-            on_test = true;
+            on_test = false;
+            InputManager::get_instance()->map_keyboard_to_joystick(
+                InputManager::MENU_MODE);
+        } else {
+            /**
+             * Workaround to uncheck A button pressed in joystick test screen.
+             */
+            if (input_manager->joystick_button_release(InputManager::A, 0)) {
+                InputManager::get_instance()->map_keyboard_to_joystick(
+                    InputManager::BATTLE_MODE);
+            } else {
+                /* Nothing to do. */
+            }
         }
     }
 

@@ -3,13 +3,22 @@
  * This work is licensed under the terms of the MIT license.
  *
  * For a copy, see <https://opensource.org/licenses/MIT>.
-*/
+ */
 /**
  * @file UltimateEffect.cpp
  * This file contains the definition of the Sprite class methods.
  */
 
 #include "UltimateEffect.h"
+#include <assert.h>
+#define IN_ULTIMATE_TAG "in_ultimate"
+#define PLAYER_TAG "player"
+#define ATTACK_VERTICAL_POSITION_DECREASE 10
+#define HEIGHT_DIVISOR_VALUE 2
+#define NO_LIFE_STATE 0
+#define X_AXIS_POSITION 0
+#define Y_AXIS_POSITION 0
+#define HEALING_EFFECT_INITIAL_VALUE 0
 
 /**
  * A constructor.
@@ -26,16 +35,19 @@
 UltimateEffect::UltimateEffect(Fighter *cparent, string csprite, string caura,
                                string ctags, int frames)
         : Effect(cparent, csprite, ctags, frames)
-        , aura(Sprite(caura, 14, 10, 4))
-        , sprite_box(box)
-        , healing_factor(1) {
-    box = Rectangle(0, 0, aura.get_width(), aura.get_height());
-
+        , aura{Sprite(caura, 14, 10, 4)}
+        , /**< Initialize the fighter aura image. */
+        sprite_box{box} {
+    healing_factor = HEALING_EFFECT_INITIAL_VALUE;
+    box = Rectangle(X_AXIS_POSITION, Y_AXIS_POSITION, aura.get_width(),
+                    aura.get_height());
     /**
      * Check if is the parent fighter. If so, adds the "in ultimate" tag.
      */
     if (parent) {
-        parent->add_tags("in_ultimate");
+        parent->add_tags(IN_ULTIMATE_TAG);
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -49,12 +61,16 @@ void UltimateEffect::update(float delta_character_state) {
     healing_factor = 1 * delta_character_state;
     if (parent) {
         sprite_box.x = parent->box.x;
-        sprite_box.y =
-            parent->box.get_draw_y() - sprite_box.get_height() / 2 - 10;
+
+        sprite_box.y = parent->box.get_draw_y() -
+            sprite_box.get_height() / HEIGHT_DIVISOR_VALUE -
+            ATTACK_VERTICAL_POSITION_DECREASE;
         box.x = parent->box.x;
         box.y = parent->box.y;
         parent->increment_special(-0.4 * delta_character_state);
         parent->increment_life(healing_factor);
+    } else {
+        /* Nothing to do. */
     }
     sprite.update(delta_character_state);
     aura.update(delta_character_state);
@@ -74,13 +90,16 @@ void UltimateEffect::render() {
  * Check if the last state of Figher is dead.
  */
 bool UltimateEffect::is_dead() {
-    bool dead = parent->get_special() <= 0 or parent->is_dead();
+    assert(NO_LIFE_STATE == 0);
+    bool dead = parent->get_special() <= NO_LIFE_STATE or parent->is_dead();
     /**
      * Check if fighter is dead. If so, update his life tags.
      *
      */
     if (dead) {
-        parent->remove_tags("in_ultimate");
+        parent->remove_tags(IN_ULTIMATE_TAG);
+    } else {
+        /* Nothing to do. */
     }
     return dead;
 }
@@ -92,11 +111,14 @@ bool UltimateEffect::is_dead() {
 void UltimateEffect::notify_collision(const GameObject &object) {
     int partner_id =
         (parent->get_partner() ? parent->get_partner()->get_id() : -100);
-    if (not object.is("player")) {
-        return;
-    }
-    Fighter const &fighter = (const Fighter &) object;
-    if (fighter.get_id() == partner_id) {
-        parent->get_partner()->increment_life(healing_factor);
+    if (object.is(PLAYER_TAG)) {
+        Fighter const &fighter = (const Fighter &) object;
+        if (fighter.get_id() == partner_id) {
+            parent->get_partner()->increment_life(healing_factor);
+        } else {
+            // Nothing to do.
+        }
+    } else {
+        // Nothing to do.
     }
 }

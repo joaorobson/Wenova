@@ -24,16 +24,19 @@ using std::to_string;
  * that won the battle.
  */
 BattleEnd::BattleEnd(int id_winner)
-        : sprite(vector<Sprite>(N_SPRITES + 2))
-        , back_btn(Sprite("victory/buttons/back.png"))
+        : back_btn(Sprite("victory/buttons/back.png"))
         , back_txt(Text("font/8-BIT WONDER.ttf", 22, Text::TextStyle::SOLID,
                         "BACK", WHITE))
+        , sprite(vector<Sprite>(N_SPRITES + 2))
         , current_sprite(1)
         , back_selected(false)
         , quitRequested(false) {
-    string path = "victory/" + to_string(id_winner) + "/";
+    assert(id_winner >= 1);
+    assert(id_winner <= 3);
 
     back_txt.set_pos(1154, 650);
+
+    string path = "victory/" + to_string(id_winner) + "/";
 
     /**
      * Iterates over the 8 images of victory to create an array of sprites.
@@ -62,9 +65,12 @@ void BattleEnd::update(float delta) {
         } else if (not back_selected and (current_sprite < N_SPRITES)) {
             current_sprite++;
         }
+    } else {
+        /* Nothing to do. */
     }
 
     InputManager *input_manager = InputManager::get_instance();
+    assert(input_manager != nullptr);
 
     /**
      * Check if user has requested to quit the battle so it can restart
@@ -76,6 +82,8 @@ void BattleEnd::update(float delta) {
             sprite[i].restart_count();
         }
         back_selected = true;
+    } else {
+        /* Nothing to do. */
     }
 
     /**
@@ -85,6 +93,8 @@ void BattleEnd::update(float delta) {
         (current_sprite == 1)) {
         quitRequested = true;
         return;
+    } else {
+        /* Nothing to do. */
     }
 }
 

@@ -19,6 +19,7 @@
 // maybe
 // #include "Timer.h"
 
+#include <assert.h>
 #include <map>
 #include <string>
 #include <utility>
@@ -34,29 +35,15 @@ class OptionsState : public State {
     Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
     Sound selected; /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
-    int current_option; /**< Number of current option of main Menu. */
-    bool on_submenu; /**< Indicates if user is on submenu of menu "Options". */
     map<string, vector<Text *> > sub_options; /**< Map of sub options of the */
                                               /**< menu "Options". */
     vector<Text *> options; /**< Text of all options of the menu "Options". */
     vector<int> current_sub_option; /**< Vector with current options */
                                     /**< of submenu. */
-
-    /**
-     * Get the option on a sub menu.
-     * This function identifies which sub menu and option the user selected.
-     *
-     * @param option an integer argument that represents the selected option of
-     * the
-     * main menu.
-     *
-     * @return an integer value that represents the current sub option of a sub
-     * menu.
-     */
-    int get_current_sub_option(int option);
-
     enum Button { A, B, UP, DOWN, SELECT, START };
     bool pressed[15];
+    int current_option; /**< Number of current option of main Menu. */
+    bool on_submenu; /**< Indicates if user is on submenu of menu "Options". */
 
  public:
     /**
@@ -67,6 +54,18 @@ class OptionsState : public State {
     OptionsState();
 
     /**
+     * Pause function.
+     * Nothing to do.
+     */
+    void pause();
+    /**
+     * Resume function.
+     * Nothing to do.
+     */
+    void resume();
+
+ private:
+    /**
      * Update function.
      * This function identifies the pressed button and updates the values of the
      * selected option.
@@ -74,6 +73,7 @@ class OptionsState : public State {
      * @param delta a float variation to update menu state.
      */
     void update(float delta);
+
     /**
      * Render function.
      * This function renders all text of the menu 'Options' and changes its
@@ -90,23 +90,29 @@ class OptionsState : public State {
     void build_options();
 
     /**
-     * Pause function.
-     * Nothing to do.
-     */
-    void pause();
-    /**
-     * Resume function.
-     * Nothing to do.
-     */
-    void resume();
-
-    /**
      * Process an input of the user.
      * This function maps the buttons that are used on the menu 'Option'
      * according
      * to constants of the InputManager class.
      */
     void process_input();
+
+    void render_submenu_option(int index);
+
+    void render_main_menu_option(int index, string text_option);
+
+    /**
+     * Get the option on a sub menu.
+     * This function identifies which sub menu and option the user selected.
+     *
+     * @param option an integer argument that represents the selected option of
+     * the
+     * main menu.
+     *
+     * @return an integer value that represents the current sub option of a sub
+     * menu.
+     */
+    int get_current_sub_option(int option);
 };
 
 #endif  // INCLUDE_OPTIONSSTATE_H_

@@ -31,12 +31,12 @@ class JoystickConfigState : public State {
     Text *and_text;    /**< Text "AND" on test mode. */
     Text *start_text;  /**< Text "START" on test mode. */
     Text *to_go_back;  /**< Text "TO GO BACK" on test mode. */
-    bool on_test;      /**< Indicates if the user has entered at mode test on */
-                       /**< menu "Options" using joystick. */
-    bool is_keyboard;  /**< Indicates if user is using a keyboard. */
     Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
     Sound selected; /**< Select sound activated after select button pressed. */
     Sound changed;  /**< Change sound activated after cursor button pressed. */
+    bool on_test;   /**< Indicates if the user has entered at mode test on */
+                    /**< menu "Options" using joystick. */
+    bool is_keyboard; /**< Indicates if user is using a keyboard. */
 
  public:
     /**
@@ -53,6 +53,19 @@ class JoystickConfigState : public State {
     explicit JoystickConfigState(int joystick_id, bool ckeyboard = false);
 
     /**
+     * Pause function.
+     * Nothing to do.
+     */
+    void pause();
+
+    /**
+     * Resume function.
+     * Nothing to do.
+     */
+    void resume();
+
+ private:
+    /**
      * Function that updates sprites on joystick test mode.
      * This function makes sprites change color accoding to the button pressed
      * by
@@ -62,6 +75,7 @@ class JoystickConfigState : public State {
      * @param delta a float variation to update joystick state.
      */
     void update(float delta);
+
     /**
      * Function that renders keyboard or joystick help images.
      * This function renders keyboard or joystick help images if user select one
@@ -70,17 +84,6 @@ class JoystickConfigState : public State {
      * Besides that, it will render buttons on the joystick test mode.
      */
     void render();
-
-    /**
-     * Pause function.
-     * Nothing to do.
-     */
-    void pause();
-    /**
-     * Resume function.
-     * Nothing to do.
-     */
-    void resume();
 };
 
 #endif  // INCLUDE_JOYSTICKCONFIGSTATE_H_
