@@ -42,6 +42,8 @@ void HealEffect::update(float delta) {
     if (parent) {
         box.x = parent->box.x;
         box.y = parent->box.y;
+    } else {
+        /* Nothing to do. */
     }
     sprite.update(delta);
     /**
@@ -49,6 +51,8 @@ void HealEffect::update(float delta) {
      */
     if (parent) {
         parent->increment_life(healing_factor);
+    } else {
+        /* Nothing to do. */
     }
 }
 

@@ -51,6 +51,8 @@ void Sound::play(int times) {
     if (channel == -1) {
         printf("Play chunk: %s\n", Mix_GetError());
         exit(-1);
+    } else {
+        /* Nothing to do. */
     }
 }
 

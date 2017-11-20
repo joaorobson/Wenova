@@ -49,6 +49,8 @@ void Music::play(int times) {
     if (mix_play_music) {
         printf("Play music: %s\n", Mix_GetError());
         exit(-1);
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -64,6 +66,8 @@ void Music::stop() {
     if (not mix_fade_out_music) {
         printf("Stop music: %s\n", Mix_GetError());
         exit(-1);
+    } else {
+        /* Nothing to do. */
     }
 }
 

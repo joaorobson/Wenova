@@ -48,6 +48,8 @@ Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
      */
     if (is_crossingable) {
         tags[PLATFORM] = true;
+    } else {
+        /* Nothing to do. */
     }
 }
 

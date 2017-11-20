@@ -212,6 +212,8 @@ void Flesh::update_machine_state(float) {
                 speed.y = SPEED_Y_JUMP_ATTACK_UP;
                 check_fall();
                 check_idle();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -228,6 +230,8 @@ void Flesh::update_machine_state(float) {
                 check_idle();
                 check_defense();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -247,6 +251,8 @@ void Flesh::update_machine_state(float) {
                 check_idle_atk_neutral_2();
             } else if (pressed[ATTACK_BUTTON]) {
                 combo++;
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -266,6 +272,8 @@ void Flesh::update_machine_state(float) {
                 check_idle_atk_neutral_3();
             } else if (pressed[ATTACK_BUTTON]) {
                 combo++;
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -281,6 +289,8 @@ void Flesh::update_machine_state(float) {
                 check_idle();
                 check_defense();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -297,6 +307,8 @@ void Flesh::update_machine_state(float) {
                 check_fall();
                 check_defense();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -313,6 +325,8 @@ void Flesh::update_machine_state(float) {
              */
             if (sprite[state].is_finished()) {
                 check_fall();
+            } else {
+                /* Nothing to do. */
             }
             /**
              * Check if in use sprite is on floor
@@ -323,6 +337,8 @@ void Flesh::update_machine_state(float) {
                 check_right();
                 check_left();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -339,6 +355,8 @@ void Flesh::update_machine_state(float) {
                 check_idle();
                 check_defense();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -363,6 +381,8 @@ void Flesh::update_machine_state(float) {
                 check_left();
                 check_right();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -382,6 +402,8 @@ void Flesh::update_machine_state(float) {
                 check_defense();
                 check_crouch();
                 check_fall();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -397,6 +419,8 @@ void Flesh::update_machine_state(float) {
                 check_idle();
                 check_defense();
                 check_crouch();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -414,6 +438,8 @@ void Flesh::update_machine_state(float) {
                 check_defense();
                 check_crouch();
                 check_dead();
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -428,6 +454,8 @@ void Flesh::update_machine_state(float) {
              */
             if (grab) {
                 check_idle_atk_front(true, true);
+            } else {
+                /* Nothing to do. */
             }
             check_idle(true, on_floor);
             check_defense();
@@ -546,6 +574,10 @@ void Flesh::update_machine_state(float) {
             printf("Invalid flesh %d %d state\n", id, state);
             exit(-1);
         break;
+
+        default:
+            LOG(ERROR) << "There isn't this state";
+        break;
     }
 }
 
@@ -566,9 +598,13 @@ void Flesh::check_jump(bool change) {
          */
         if (change) {
             temporary_state = FighterState::JUMPING;
+        } else {
+            /* Nothing to do. */
         }
         speed.y = SPEED_Y_JUMP_BUTTON;
         on_floor = false;
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -589,7 +625,11 @@ void Flesh::check_fall(bool change) {
          */
         if (change) {
             temporary_state = FighterState::FALLING;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -610,9 +650,13 @@ void Flesh::check_left(bool change) {
          */
         if (change) {
             temporary_state = FighterState::RUNNING;
+        } else {
+            /* Nothing to do. */
         }
         speed.x = - (INITIAL_SPEED + additional_speed);
         orientation = Orientation::LEFT;
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -633,9 +677,13 @@ void Flesh::check_right(bool change) {
          */
         if (change) {
             temporary_state = FighterState::RUNNING;
+        } else {
+            /* Nothing to do. */
         }
         speed.x = (INITIAL_SPEED + additional_speed);
         orientation = Orientation::RIGHT;
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -660,7 +708,11 @@ void Flesh::check_idle(bool change, bool condition) {
          */
         if (change) {
             temporary_state = FighterState::IDLE;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -681,7 +733,11 @@ void Flesh::check_crouch(bool change) {
          */
         if (change) {
             temporary_state = FighterState::CROUCH;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -702,7 +758,11 @@ void Flesh::check_idle_atk_neutral_1(bool change) {
          */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_NEUTRAL_1;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -723,7 +783,11 @@ void Flesh::check_idle_atk_neutral_2(bool change) {
          */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_NEUTRAL_2;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -744,7 +808,11 @@ void Flesh::check_idle_atk_neutral_3(bool change) {
          */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_NEUTRAL_3;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -770,6 +838,8 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
          */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_FRONT;
+        } else {
+            /* Nothing to do. */
         }
         /**
          * Check if condition did't happen
@@ -777,7 +847,11 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
         if (not condition) {
             orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT
                                                   : Orientation::RIGHT;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -799,7 +873,11 @@ void Flesh::check_jump_atk_down_fallloop(bool change) {
          */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_DOWN_FALLLOOP;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -819,7 +897,11 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
          */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_DOWN_DMG;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -841,7 +923,11 @@ void Flesh::check_jump_atk_neutral(bool change) {
          */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_NEUTRAL;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -863,7 +949,11 @@ void Flesh::check_idle_atk_down(bool change) {
          */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_DOWN;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -881,6 +971,8 @@ void Flesh::check_special_1(bool change) {
     if (pressed[SPECIAL1_BUTTON]) {
         if (speed.y == 0) {
             speed.y = -5;
+        } else {
+            /* Nothing to do. */
         }
         box.y -= BOX_Y_ESPECIAL_1;
         /**
@@ -888,7 +980,11 @@ void Flesh::check_special_1(bool change) {
          */
         if (change) {
             temporary_state = FighterState::SPECIAL_1;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -925,6 +1021,8 @@ void Flesh::check_ultimate(bool) {
             FleshUltimateEffect(this, path + "ult_effect.png", "has_sprite",
                                 1));
         ultimate_sound.play();
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -951,10 +1049,16 @@ void Flesh::check_pass_through_platform(bool change) {
              */
             if (change) {
                 temporary_state = FighterState::FALLING;
+            } else {
+                /* Nothing to do. */
             }
             pass_through_timer.restart();
+        } else {
+            /* Nothing to do. */
         }
         crouch_timer.restart();
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -975,7 +1079,11 @@ void Flesh::check_defense(bool change) {
          */
         if (change) {
                 temporary_state = FighterState::DEFENDING;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -993,6 +1101,8 @@ void Flesh::check_stunned(bool change) {
      */
     if (change) {
         temporary_state = FighterState::STUNNED;
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -1012,7 +1122,11 @@ void Flesh::check_dead(bool change) {
          */
         if (change) {
             temporary_state = FighterState::DYING;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -1033,7 +1147,11 @@ void Flesh::check_crouch_atk(bool change) {
          */
         if (change) {
             temporary_state = FighterState::CROUCH_ATK;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -1054,6 +1172,8 @@ void Flesh::check_jump_atk_up(bool change) {
          */
         if (combo) {
             return;
+        } else {
+            /* Nothing to do. */
         }
         combo++;
         speed.y = SPEED_Y_JUMP_BUTTON;
@@ -1062,7 +1182,11 @@ void Flesh::check_jump_atk_up(bool change) {
          */
         if (change) {
             temporary_state = FighterState::JUMP_ATK_UP;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
 
@@ -1084,6 +1208,10 @@ void Flesh::check_idle_atk_up(bool change) {
          */
         if (change) {
             temporary_state = FighterState::IDLE_ATK_UP;
+        } else {
+            /* Nothing to do. */
         }
+    } else {
+        /* Nothing to do. */
     }
 }
