@@ -20,8 +20,8 @@
 
 class Vector {
  public:
-    float x; /**< The first value of the vector. Unit: px. */
-    float y; /**< The second value of the vector. Unit: px. */
+    float x = 0.0; /**< The first value of the vector. Unit: px. */
+    float y = 0.0; /**< The second value of the vector. Unit: px. */
 
     /**
      * The constructor

@@ -19,7 +19,7 @@
 
 class HealEffect : public Effect {
  private:
-    float healing_factor; /**< The healing factor of the character. */
+    float healing_factor = 0.0; /**< The healing factor of the character. */
 
  public:
  	/**

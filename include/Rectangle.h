@@ -17,10 +17,10 @@
 
 class Rectangle {
  public:
-    float x;      /**< Cordinate on axis x of the rectangle. Unit: px. */
-    float y;      /**< Cordinate on axis y of the rectangle. Unit: px. */
-    float width;  /**< Width of the rectangle. Unit: px. */
-    float height; /**< Height of the rectangle. Unit: px. */
+    float x = 0.0;      /**< Cordinate on axis x of the rectangle. Unit: px. */
+    float y = 0.0;      /**< Cordinate on axis y of the rectangle. Unit: px. */
+    float width = 0.0;  /**< Width of the rectangle. Unit: px. */
+    float height = 0.0; /**< Height of the rectangle. Unit: px. */
 
     /**
      * The constructor

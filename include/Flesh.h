@@ -36,12 +36,13 @@ class Flesh : public Fighter {
                                             ///< characters.
     const float SPECIAL_1_DAMAGE = 1;  ///< The attack damage of the characters
                                        ///< on special 1.
-    const float INITIAL_SPEED = 3;/**< The initia speed of the characters. */
+    const float INITIAL_SPEED = 3; /**< The initial speed of the characters. */
 
  private:
-    float additional_attack_damage;   ///< Additional attack damage possible
-                                      ///< for characters.
-    float additional_speed; /**< Additional speed possible for characters. */
+    float additional_attack_damage = 0.0;  ///< Additional attack damage
+                                           ///< possible for characters.
+    float additional_speed = 0.0;   ///< Additional speed possible for
+                                    ///< characters.
 
     /**
      * Makes the character jump

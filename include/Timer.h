@@ -15,7 +15,7 @@
 
 class Timer {
  private:
-    float time; /**< The time of the timer. */
+    float time = 0.0; /**< The time of the timer. */
 
  public:
  	/**
