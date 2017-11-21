@@ -63,11 +63,11 @@ void Music::stop() {
     /**
      * Check if the music stoped
      */
-    if (not mix_fade_out_music) {
+    if (mix_fade_out_music) {
+        /* Nothing to do. */
+    } else {
         printf("Stop music: %s\n", Mix_GetError());
         exit(-1);
-    } else {
-        /* Nothing to do. */
     }
 }
 

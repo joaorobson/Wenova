@@ -558,6 +558,8 @@ void Flesh::update_machine_state(float) {
              */
             if (sprite[state].is_finished()) {
                 remaining_life = REMAINING_LIFE_DYING;
+            } else {
+                /* Nothing to do. */
             }
         break;
 
@@ -844,11 +846,11 @@ void Flesh::check_idle_atk_front(bool change, bool condition) {
         /**
          * Check if condition did't happen
          */
-        if (not condition) {
+        if (condition) {
+            /* Nothing to do. */
+        } else {
             orientation = is_holding[LEFT_BUTTON] ? Orientation::LEFT
                                                   : Orientation::RIGHT;
-        } else {
-            /* Nothing to do. */
         }
     } else {
         /* Nothing to do. */
@@ -1171,19 +1173,18 @@ void Flesh::check_jump_atk_up(bool change) {
          * Check if combo happened
          */
         if (combo) {
-            return;
-        } else {
             /* Nothing to do. */
-        }
-        combo++;
-        speed.y = SPEED_Y_JUMP_BUTTON;
-        /**
-         * Check if change happened
-         */
-        if (change) {
-            temporary_state = FighterState::JUMP_ATK_UP;
         } else {
-            /* Nothing to do. */
+            combo++;
+            speed.y = SPEED_Y_JUMP_BUTTON;
+            /**
+             * Check if change happened
+             */
+            if (change) {
+                temporary_state = FighterState::JUMP_ATK_UP;
+            } else {
+                /* Nothing to do. */
+            }
         }
     } else {
         /* Nothing to do. */
