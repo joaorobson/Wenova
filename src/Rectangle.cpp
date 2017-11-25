@@ -10,6 +10,8 @@
 
 #include "Rectangle.h"
 
+#include <assert.h>
+
 /**
  * The constructor
  * Initialize the rectangle null
@@ -31,6 +33,9 @@ Rectangle::Rectangle(float ax, float ay, float w, float h)
         , y(ay)
         , width(w)
         , height(h) {
+    LOG(DEBUG) << "Rectangle constructor activated";
+    assert(w >= 0.0);
+    assert(h >= 0.0);
 }
 
 /**
@@ -127,6 +132,7 @@ float Rectangle::get_height() const {
  * @param w is the size to be put in the variable 'width' of Rectangle
  */
 void Rectangle::set_width(float w) {
+    assert(w >= 0);
     width = w;
 }
 
@@ -136,6 +142,7 @@ void Rectangle::set_width(float w) {
  * @param h is the size to be put in the variable 'height' of Rectangle
  */
 void Rectangle::set_height(float h) {
+    assert(h >= 0);
     height = h;
 }
 

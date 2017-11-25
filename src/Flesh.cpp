@@ -17,7 +17,9 @@
 
 #define CROUCH_COOLDOWN 400.0
 
-#define INITIAL_COMBO  0
+#define INITIAL_COMBO 0
+#define INITIAL_ADDITIONAL_ATTACK_DAMAGE 1
+#define INITIAL_ADDITIONAL_SPEED 0
 
 #define RATE_ADD_TO_JUMP_ATTACK_UP 7
 #define RATE_ADD_TO_JUMP_ATTACK_NEUTRAL 7
@@ -181,8 +183,8 @@ Flesh::Flesh(string skin, float x, float y, int cid, Fighter *cpartner)
     tags[FLESH_TAG] = true;
     tags[skin] = true;
     box = Rectangle(x, y, 84, 84);
-    additional_attack_damage = 1;
-    additional_speed = 0;
+    additional_attack_damage = INITIAL_ADDITIONAL_ATTACK_DAMAGE;
+    additional_speed = INITIAL_ADDITIONAL_SPEED;
 }
 
 /**
@@ -751,6 +753,7 @@ void Flesh::check_crouch(bool change) {
 void Flesh::check_idle_atk_neutral_1(bool change) {
     LOG(DEBUG) << "Checking if character is attacking in idle neutral 1";
     assert(ATTACK_BUTTON >= 0);
+    assert(DOWN_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without pressing down button
      */
@@ -915,6 +918,8 @@ void Flesh::check_jump_atk_down_dmg(bool change) {
 void Flesh::check_jump_atk_neutral(bool change) {
     LOG(DEBUG) << "Checking if character is attacking in jump neutral";
     assert(ATTACK_BUTTON >= 0);
+    assert(DOWN_BUTTON >= 0);
+    assert(UP_BUTTON >= 0);
     /**
      * Check if user is pressing attack button without down or up button
      */
@@ -1014,6 +1019,7 @@ void Flesh::check_special_2(bool) {
  */
 void Flesh::check_ultimate(bool) {
     LOG(DEBUG) << "Checking if character is activate ultimate";
+    assert(ULTIMATE_BUTTON >= 0);
     /**
      * Check if user is pressing ultimate button with his atribute special on
      * maximun
@@ -1037,7 +1043,7 @@ void Flesh::check_pass_through_platform(bool change) {
     LOG(DEBUG) << "Checking if character is passing through platform";
     assert(DOWN_BUTTON >= 0);
     assert(ATTACK_BUTTON >= 0);
-    assert(CROUCH_COOLDOWN == 400.0);
+    assert(CROUCH_COOLDOWN >= 0.0);
     /**
      * Check if user is pressing down button without attack button
      */
@@ -1165,6 +1171,7 @@ void Flesh::check_crouch_atk(bool change) {
 void Flesh::check_jump_atk_up(bool change) {
     LOG(DEBUG) << "Checking if character is attacking in jump up";
     assert(ATTACK_BUTTON >= 0);
+    assert(UP_BUTTON >= 0);
     /**
      * Check if user is pressing attack and up button
      */

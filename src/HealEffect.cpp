@@ -10,6 +10,8 @@
 
 #include "HealEffect.h"
 
+#include <assert.h>
+
 /**
  * The constructor.
  * Initialize the heal effect
@@ -26,6 +28,8 @@ HealEffect::HealEffect(Fighter * cparent, string csprite, string ctags,
                        int frames, float chealing_factor)
     : Effect(cparent, csprite, ctags, frames) {
     LOG(DEBUG) << "HealEffect constructor activated";
+    assert(csprite.empty() == false);
+    assert(ctags.empty() == false);
     healing_factor = chealing_factor;
 }
 

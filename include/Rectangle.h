@@ -14,6 +14,7 @@
 #include "Vector.h"
 
 #include "SDL2/SDL.h"
+#include "easylogging++.h" //NOLINT
 
 class Rectangle {
  public:

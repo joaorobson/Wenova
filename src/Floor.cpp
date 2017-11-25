@@ -13,6 +13,8 @@
 #include "Camera.h"
 #include "InputManager.h"
 
+#include <assert.h>
+
 #define LAYER 0
 #define PI 3.14159265358979
 #define HEIGHT 20
@@ -30,7 +32,7 @@ int Floor::floor_id = 1;
  *
  * @param x is the box horizontal coordinate.
  * @param y is the box veretical coordinate.
- * @param widht is the widht of the floor.
+ * @param width is the width of the floor.
  * @param height is the height of the floor.
  * @param crotation is the rotation of the floor.
  * @param cplataform is the type of the plataform selected.
@@ -38,6 +40,7 @@ int Floor::floor_id = 1;
 // TODO reavaliar se precisa ou não de Camera
 Floor::Floor(float x, float y, float width, float crotation, bool cplatform) {
     LOG(DEBUG) << "Floor constructor activated";
+    assert(width >= 0);
     is_crossingable = cplatform;
     rotation = crotation * PI / 180.0;
     box = Rectangle(x, y, width, HEIGHT);
@@ -99,5 +102,6 @@ void Floor::notify_collision(const GameObject &) {}
  * @return the id of the floor
  */
 int Floor::get_id() const {
+    assert(id >= 0);
     return id;
 }
