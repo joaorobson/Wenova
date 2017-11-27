@@ -43,8 +43,8 @@ class Rectangle {
 
 
     /**
-     * Check if any object is inside the rectangle
      * Not used method.
+     * Check if any object is inside the rectangle
      *
      * @param mx is the cordinate x of the object
      * @param my is the cordinate y of the object

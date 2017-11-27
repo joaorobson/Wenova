@@ -39,20 +39,22 @@ Rectangle::Rectangle(float ax, float ay, float w, float h)
 }
 
 /**
- * Check if any object is inside the rectangle
  * Not used method.
+ * Check if any object is inside the rectangle
  *
  * @param mx is the cordinate x of the object
  * @param my is the cordinate y of the object
  *
  * @return if the rectangle is inside of the other
  */
+/*
 bool Rectangle::is_inside(float mx, float my) {
     bool horizontal_in = (mx >= x - width/2 and mx <= x + width/2);
     bool vertical_in = (my >= y - height/2 and my <= y + height/2);
 
     return horizontal_in and vertical_in;
 }
+*/
 
 /**
  * Check the horizontal size of rectangle
