@@ -41,7 +41,6 @@ class Music {
 	 */
     explicit Music(string file);
 
-
 	/**
 	 * Play the music
 	 *

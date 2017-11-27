@@ -191,7 +191,6 @@ class Flesh : public Fighter {
      */
     void check_ultimate(bool change = true);
 
-
     /**
      * Makes the character pass through platform
      *

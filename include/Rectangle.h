@@ -41,7 +41,6 @@ class Rectangle {
      */
     Rectangle(float x, float y, float width, float height);
 
-
     /**
      * Not used method.
      * Check if any object is inside the rectangle
