@@ -37,7 +37,6 @@ class HealEffect : public Effect {
     HealEffect(Fighter* cparent, string csprite, string ctags, int frames = 1,
                float chealing_factor = 0.0);
 
-
 	/**
 	 * Update the Heal Effects
 	 * 

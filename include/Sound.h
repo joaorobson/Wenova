@@ -23,8 +23,8 @@ using std::shared_ptr;
 class Sound {
  private:
     shared_ptr<Mix_Chunk> sound;
-    int channel; /**< The channel of the sound. */
-    string file; /**< The name of the the file where the sound is. */
+    int channel = 0; /**< The channel of the sound. */
+    string file;     /**< The name of the the file where the sound is. */
 
  public:
     /**

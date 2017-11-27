@@ -41,8 +41,8 @@ class Vector {
     void rotate(Vector origin, float angle);
 
     /**
-     * Transform the Vector
      * Not used method.
+     * Transform the Vector
      *
      * @param module is the module of vector
      * @param angle is the angle you want to put

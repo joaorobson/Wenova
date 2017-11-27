@@ -18,11 +18,11 @@
 
 class Floor : public GameObject {
  private:
-    int id; /**< The id of the floor. */
+    int id = 1; /**< The id of the floor. */
 
  protected:
-    bool is_crossingable;  ///< Check if the character is crossingable through
-                           ///< the floor.
+    bool is_crossingable = false;  ///< Check if the character is crossingable
+                                   ///< through the floor.
 
  public:
     /**
@@ -46,7 +46,6 @@ class Floor : public GameObject {
      */
     ~Floor();
 
-
     /**
      * Update the traits of floor
      *
@@ -66,14 +65,12 @@ class Floor : public GameObject {
      */
     bool is_dead();
 
-
     /**
      * Notify a collision in the floor
      *
      * @param & is the object to verify the collision
      */
     void notify_collision(const GameObject& object);
-
 
     /**
      * Check the ID of floor
