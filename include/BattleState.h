@@ -33,8 +33,27 @@ class BattleState : public State{
      BattleState(string stage, vector<pair<string,string>>players_info);
      ~BattleState();
 
+     /**
+      *function setCharPositions
+      *set the position of the characters on screen.
+      *@param stage is the name of the stage chosen.
+      */
      vector<pair<int, int> > setCharPositions(string stage);
+     /**
+      *function setPlayersInfo
+      *this function sets the characteristics of the character.
+      */
      void setPlayersInfo(string stage, vector<pair<string,string>>players_info);
+     /**
+      *function setHud
+      *this function sets the elements on screen - non characters
+      */
+     void setHud();
+     /**
+      *function startTime
+      *this function starts the time counter for the match.
+      */
+     void startTime();
      /**
       * update method.
       * Checks the current state of a started game.

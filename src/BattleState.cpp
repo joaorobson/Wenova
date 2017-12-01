@@ -74,48 +74,26 @@ BattleState::BattleState(string stage,
     sound = Sound("stage_" + stage + "/sound.ogg");
 
     read_level_design(stage);
-
     music.play();
     sound.play(-1);
-
-    vector< pair<int, int> > hud_positions = { ii(HUD1, HUD2),
-                                               ii(HUD1, HUD4),
-                                               ii(HUD3, HUD2),
-                                               ii(HUD3, HUD4)
-                                             };
     setPlayersInfo(stage,players_info);
-    /**
-     * Runs each iteration from NUMBER_PLAYERS-1 until bigger or equal to 0.
-     * Each iteration decreases de variable count.
-     */
-    for (int i=NUMBER_PLAYERS-1; i >= 0; i--) {
-        add_object(new FighterStats(players[i], i + 1, i > 1,
-            hud_positions[i].first,
-            hud_positions[i].second));
-    }
-
-    /**
-     * Runs each iteration from 0 to the size of players_info -1.
-     */
-    for (int i=NUMBER_PLAYERS-1; i >= 0; i--) {
-        add_object(players[i]);
-    }
-
-    time_counter = new TimeCounter();
-    add_object(time_counter);
-
+    setHud();
+    startTime();
     InputManager::get_instance()->
                             set_analogic_sensibility_value(SENSIBILITY_VALUE);
     InputManager::get_instance()->
                             map_keyboard_to_joystick(InputManager::BATTLE_MODE);
 }
-
 /**
  * A Destructor.
  * Destructs a previously initialized object of this class.
  */
 BattleState::~BattleState() {}
-
+/**
+ *function setCharPositions
+ *set the position of the characters on screen.
+ *@param stage is the name of the stage chosen.
+ */
 vector<pair<int, int> > BattleState::setCharPositions(string stage){
 
   vector< pair<int, int> > char_positions;
@@ -137,7 +115,10 @@ vector<pair<int, int> > BattleState::setCharPositions(string stage){
   }
   return char_positions;
 }
-
+/**
+ *function setPlayersInfo
+ *this function sets the characteristics of the character.
+ */
 void BattleState::setPlayersInfo(string stage, vector< pair<string, string>
                                  > players_info){
 
@@ -167,12 +148,46 @@ void BattleState::setPlayersInfo(string stage, vector< pair<string, string>
       } else {
           /*Nothing to do*/
       }
+      /**
+       * Runs each iteration from 0 to the size of players_info -1.
+       */
+      for (int j=NUMBER_PLAYERS-1; j >= 0; j--) {
+          add_object(players[i]);
+      }
   }
 
   players[0]->set_partner(players[1]);
   players[1]->set_partner(players[0]);
   players[2]->set_partner(players[3]);
   players[3]->set_partner(players[2]);
+}
+/**
+ *function setHud
+ *this function sets the elements on screen - non characters
+ */
+void BattleState::setHud(){
+
+    vector< pair<int, int> > hud_positions = { ii(HUD1, HUD2), ii(HUD1, HUD4),
+                                              ii(HUD3, HUD2), ii(HUD3, HUD4)
+                                             };
+
+    /**
+    * Runs each iteration from NUMBER_PLAYERS-1 until bigger or equal to 0.
+    * Each iteration decreases de variable count.
+    */
+    for (int i=NUMBER_PLAYERS-1; i >= 0; i--) {
+        add_object(new FighterStats(players[i], i + 1, i > 1,
+            hud_positions[i].first,
+            hud_positions[i].second));
+    }
+ }
+ /**
+  *function startTime
+  *this function starts the time counter for the match.
+  */
+void BattleState::startTime(){
+  time_counter = new TimeCounter();
+  add_object(time_counter);
 }
 /**
  * update method.
@@ -361,7 +376,6 @@ void BattleState::update(float delta) {
     }
     update_array(delta);
 }
-
 /**
  * render method.
  * renders the background given a x and y positions.
@@ -375,19 +389,16 @@ void BattleState::render() {
     }
     render_array();
 }
-
 /**
  * pause method.
  * Not implemented.
  */
 void BattleState::pause() {}
-
 /**
  * resume method.
  * Not implemented.
  */
 void BattleState::resume() {}
-
 /**
  * read_level_design method.
  * Reads the levels in the game.
