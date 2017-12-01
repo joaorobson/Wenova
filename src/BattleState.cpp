@@ -83,41 +83,7 @@ BattleState::BattleState(string stage,
                                                ii(HUD3, HUD2),
                                                ii(HUD3, HUD4)
                                              };
-
-
-    /**
-     * Runs each iteration from 0 to the size of players_info -1.
-     */
-    for (int i = 0; i < static_cast<int>(players_info.size()); i++) {
-        string char_name = players_info[i].first;
-        string skin_name = players_info[i].second;
-
-        /**
-         * If the condition is met, Blood method is called, else Flesh method
-         * is called.
-         */
-        if (char_name == "blood") {
-            players[i] = new Blood(skin_name, setCharPositions(stage)[i].first,
-                                   setCharPositions(stage)[i].second, i);
-
-            assert(skin_name.empty() != true);
-
-        } else if (char_name == "flesh") {
-            players[i] = new Flesh(skin_name, setCharPositions(stage)[i].first,
-                                   setCharPositions(stage)[i].second, i);
-
-            assert(skin_name.empty() != true);
-
-        } else {
-            /*Nothing to do*/
-        }
-    }
-
-    players[0]->set_partner(players[1]);
-    players[1]->set_partner(players[0]);
-    players[2]->set_partner(players[3]);
-    players[3]->set_partner(players[2]);
-
+    setPlayersInfo(stage,players_info);
     /**
      * Runs each iteration from NUMBER_PLAYERS-1 until bigger or equal to 0.
      * Each iteration decreases de variable count.
@@ -172,6 +138,42 @@ vector<pair<int, int> > BattleState::setCharPositions(string stage){
   return char_positions;
 }
 
+void BattleState::setPlayersInfo(string stage, vector< pair<string, string>
+                                 > players_info){
+
+  /**
+   * Runs each iteration from 0 to the size of players_info -1.
+   */
+  for (int i = 0; i < static_cast<int>(players_info.size()); i++) {
+      string char_name = players_info[i].first;
+      string skin_name = players_info[i].second;
+
+      /**
+       * If the condition is met, Blood method is called, else Flesh method
+       * is called.
+       */
+      if (char_name == "blood") {
+          players[i] = new Blood(skin_name, setCharPositions(stage)[i].first,
+                                 setCharPositions(stage)[i].second, i);
+
+          assert(skin_name.empty() != true);
+
+      } else if (char_name == "flesh") {
+          players[i] = new Flesh(skin_name, setCharPositions(stage)[i].first,
+                                 setCharPositions(stage)[i].second, i);
+
+          assert(skin_name.empty() != true);
+
+      } else {
+          /*Nothing to do*/
+      }
+  }
+
+  players[0]->set_partner(players[1]);
+  players[1]->set_partner(players[0]);
+  players[2]->set_partner(players[3]);
+  players[3]->set_partner(players[2]);
+}
 /**
  * update method.
  * Checks the current state of a started game.

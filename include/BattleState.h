@@ -30,10 +30,11 @@ using std::pair;
 
 class BattleState : public State{
  public:
-     BattleState(string stage, vector< pair<string, string> > players_info);
+     BattleState(string stage, vector<pair<string,string>>players_info);
      ~BattleState();
 
      vector<pair<int, int> > setCharPositions(string stage);
+     void setPlayersInfo(string stage, vector<pair<string,string>>players_info);
      /**
       * update method.
       * Checks the current state of a started game.
