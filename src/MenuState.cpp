@@ -9,13 +9,13 @@
  */
 #include "SDL_mixer.h"
 
-#include "MenuState.h"
-#include "OptionsState.h"
-#include "InputManager.h"
 #include "BattleState.h"
-#include "JoystickConfigState.h"
 #include "EditState.h"
 #include "Game.h"
+#include "InputManager.h"
+#include "JoystickConfigState.h"
+#include "MenuState.h"
+#include "OptionsState.h"
 #include "Resources.h"
 #include "StageSelectState.h"
 
@@ -24,37 +24,39 @@
 #define FONT_X 640 /**< Unity in pixel*/
 #define FONT_Y 680 /**< Unity in pixel*/
 
-#define LIGHT_GREEN { 181, 201, 60, 1 } /**< Unity in integer*/
-#define WHITE { 255, 255, 255, 255 }    /**< Unity in integer*/
+#define LIGHT_GREEN \
+    { 181, 201, 60, 1 } /**< Unity in integer*/
+#define WHITE \
+    { 255, 255, 255, 255 } /**< Unity in integer*/
 
 #define FRAME_TIME 7.5 /**< Unity in seconds*/
 #define TEXT_TIMER_COOLDOWN 50 /**< Unity in seconds*/
 
-#define N_ZERO 0  /**< Unity in integer*/
-#define N_ONE 1   /**< Unity in integer*/
-#define N_TWO 2   /**< Unity in integer*/
+#define N_ZERO 0 /**< Unity in integer*/
+#define N_ONE 1 /**< Unity in integer*/
+#define N_TWO 2 /**< Unity in integer*/
 
-#define N_PLANET_RENDER_1 423    /**< Unity in pixel*/
-#define N_PLANET_RENDER_2 177    /**< Unity in pixel*/
+#define N_PLANET_RENDER_1 423 /**< Unity in pixel*/
+#define N_PLANET_RENDER_2 177 /**< Unity in pixel*/
 #define N_GREENSHIP_RENDER_1 805 /**< Unity in pixel*/
 #define N_GREENSHIP_RENDER_2 405 /**< Unity in pixel*/
-#define N_REDSHIP_RENDER_1 36    /**< Unity in pixel*/
-#define N_REDSHIP_RENDER_2 400   /**< Unity in pixel*/
-#define N_TITLE_RENDER 260       /**< Unity in pixel*/
+#define N_REDSHIP_RENDER_1 36 /**< Unity in pixel*/
+#define N_REDSHIP_RENDER_2 400 /**< Unity in pixel*/
+#define N_TITLE_RENDER 260 /**< Unity in pixel*/
 
-#define N_CHANNELS 50   /**< Unity in pixel*/
-#define FONT_SIZE 30    /**< Unity in pixel*/
-#define SENSIBILITY_VALUE 32000   /**< Unity in pixel*/
+#define N_CHANNELS 50 /**< Unity in pixel*/
+#define FONT_SIZE 30 /**< Unity in pixel*/
+#define SENSIBILITY_VALUE 32000 /**< Unity in pixel*/
 
 #define BACKGROUNDSPRITE "menu/background.jpg" /**< string*/
-#define TITLESPRITE "menu/title.png"           /**< string*/
-#define PLANETSPRITE "menu/planet.png"         /**< string*/
-#define GREENSHIPSPRITE "menu/green_ship.png"  /**< string*/
-#define REDSHIPSPRITE "menu/red_ship.png"      /**< string*/
-#define CANCELSOUND "menu/sound/cancel.ogg"    /**< string*/
-#define SELECTSOUND "menu/sound/select.ogg"    /**< string*/
-#define CURSORSOUND "menu/sound/cursor.ogg"    /**< string*/
-#define MENUMUSIC "menu/wenova.ogg"            /**< string*/
+#define TITLESPRITE "menu/title.png" /**< string*/
+#define PLANETSPRITE "menu/planet.png" /**< string*/
+#define GREENSHIPSPRITE "menu/green_ship.png" /**< string*/
+#define REDSHIPSPRITE "menu/red_ship.png" /**< string*/
+#define CANCELSOUND "menu/sound/cancel.ogg" /**< string*/
+#define SELECTSOUND "menu/sound/select.ogg" /**< string*/
+#define CURSORSOUND "menu/sound/cursor.ogg" /**< string*/
+#define MENUMUSIC "menu/wenova.ogg" /**< string*/
 
 #define FONT "font/8-BIT WONDER.ttf"
 
@@ -68,19 +70,19 @@ MenuState::MenuState(bool main_menu) {
     Mix_AllocateChannels(N_CHANNELS);
 
     current_option = N_ZERO;
-    start_pressed  = main_menu;
-    show_text      = true;
+    start_pressed = main_menu;
+    show_text = true;
 
     backgroundSetUp();
     optionSelection();
-    InputManager::get_instance()->
-                              set_analogic_sensibility_value(SENSIBILITY_VALUE);
-    InputManager::get_instance()->
-                              map_keyboard_to_joystick(InputManager::MENU_MODE);
+    InputManager::get_instance()->set_analogic_sensibility_value(
+        SENSIBILITY_VALUE);
+    InputManager::get_instance()->map_keyboard_to_joystick(
+        InputManager::MENU_MODE);
 
-    blocked  = Sound(CANCELSOUND);
+    blocked = Sound(CANCELSOUND);
     selected = Sound(SELECTSOUND);
-    changed  = Sound(CURSORSOUND);
+    changed = Sound(CURSORSOUND);
     music = Music(MENUMUSIC);
     /**
      * Plays music if it is not playing.
@@ -91,43 +93,35 @@ MenuState::MenuState(bool main_menu) {
         /*Nothing to do*/
     }
 }
-MenuState::~MenuState() {}
+MenuState::~MenuState() {
+}
 /**
  *function backgroundSetUp
  *sets up the elements in the background on the menu
  */
 void MenuState::backgroundSetUp() {
-  background = Sprite(BACKGROUNDSPRITE);
-  title      = Sprite(TITLESPRITE, 5, FRAME_TIME);
-  planet     = Sprite(PLANETSPRITE, 8, FRAME_TIME);
-  green_ship = Sprite(GREENSHIPSPRITE, 8, FRAME_TIME, N_ZERO, 2);
-  red_ship   = Sprite(REDSHIPSPRITE, 8, FRAME_TIME);
+    background = Sprite(BACKGROUNDSPRITE);
+    title = Sprite(TITLESPRITE, 5, FRAME_TIME);
+    planet = Sprite(PLANETSPRITE, 8, FRAME_TIME);
+    green_ship = Sprite(GREENSHIPSPRITE, 8, FRAME_TIME, N_ZERO, 2);
+    red_ship = Sprite(REDSHIPSPRITE, 8, FRAME_TIME);
 }
 /**
  *function optionSelection
  *defines the style of the options the player has to chose from.
  */
 void MenuState::optionSelection() {
-  start_option = new Text(FONT,
-                          FONT_SIZE,
-                          Text::TextStyle::SOLID,
-                          "PRESS START",
-                          LIGHT_GREEN,
-                          FONT_X,
-                          FONT_Y);
+    start_option = new Text(FONT, FONT_SIZE, Text::TextStyle::SOLID,
+                            "PRESS START", LIGHT_GREEN, FONT_X, FONT_Y);
 
-  options.push_back(new Text(FONT, FONT_SIZE,
-                             Text::TextStyle::SOLID, "START", WHITE, FONT_X,
-                             FONT_Y));
-  options.push_back(new Text(FONT, FONT_SIZE,
-                             Text::TextStyle::SOLID, "EDIT", WHITE, FONT_X,
-                             FONT_Y));
-  options.push_back(new Text(FONT, FONT_SIZE,
-                             Text::TextStyle::SOLID, "OPTIONS", WHITE, FONT_X,
-                             FONT_Y));
-  options.push_back(new Text(FONT, FONT_SIZE,
-                             Text::TextStyle::SOLID, "EXIT", WHITE, FONT_X,
-                             FONT_Y));
+    options.push_back(new Text(FONT, FONT_SIZE, Text::TextStyle::SOLID, "START",
+                               WHITE, FONT_X, FONT_Y));
+    options.push_back(new Text(FONT, FONT_SIZE, Text::TextStyle::SOLID, "EDIT",
+                               WHITE, FONT_X, FONT_Y));
+    options.push_back(new Text(FONT, FONT_SIZE, Text::TextStyle::SOLID,
+                               "OPTIONS", WHITE, FONT_X, FONT_Y));
+    options.push_back(new Text(FONT, FONT_SIZE, Text::TextStyle::SOLID, "EXIT",
+                               WHITE, FONT_X, FONT_Y));
 }
 /**
  * update method.
@@ -157,28 +151,28 @@ void MenuState::update(float delta) {
         m_quit_requested = true;
         return;
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     /**
      * Select options in the menu.
      */
-    if (pressed[LEFT]and(current_option != N_ZERO)) {
+    if (pressed[LEFT] and (current_option != N_ZERO)) {
         changed.play();
         current_option--;
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     /**
      * Select options in the menu.
      */
-    if (pressed[RIGHT]and(current_option != static_cast<int>(options.size())
-                                                                         - 1)) {
+    if (pressed[RIGHT] and
+        (current_option != static_cast<int>(options.size()) - 1)) {
         changed.play();
         current_option++;
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     /**
@@ -189,7 +183,7 @@ void MenuState::update(float delta) {
         Game::get_instance().push(new EditState("2"));
         return;
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     /**
@@ -201,7 +195,7 @@ void MenuState::update(float delta) {
         if (not start_pressed) {
             assert(start_pressed == 0);
 
-            start_pressed  = true;
+            start_pressed = true;
             current_option = N_ZERO;
 
             assert(current_option == 0);
@@ -218,7 +212,7 @@ void MenuState::update(float delta) {
             } else if (current_option == N_TWO) {
                 Game::get_instance().push(new OptionsState());
             } else {
-              /*Nothing to do*/
+                /*Nothing to do*/
             }
 
             return;
@@ -233,7 +227,7 @@ void MenuState::update(float delta) {
         Game::get_instance().push(new EditState("1"));
         return;
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     /**
@@ -250,7 +244,7 @@ void MenuState::update(float delta) {
             Text *next_option = options[idx + 1];
 
             int new_x = next_option->get_x() - options[idx]->get_width() -
-                        OPTION_OFFSET;
+                OPTION_OFFSET;
             options[idx]->set_pos(new_x, FONT_Y, false, true);
             options[idx]->set_color(WHITE);
         }
@@ -259,16 +253,16 @@ void MenuState::update(float delta) {
          * Modify the options positioning after current option select.
          */
         for (unsigned int idx = current_option + 1; idx < options.size();
-                                                                        idx++) {
+             idx++) {
             Text *prev_option = options[idx - 1];
 
-            int new_x = prev_option->get_x() + prev_option->get_width() +
-                        OPTION_OFFSET;
+            int new_x =
+                prev_option->get_x() + prev_option->get_width() + OPTION_OFFSET;
             options[idx]->set_pos(new_x, FONT_Y, false, true);
             options[idx]->set_color(WHITE);
         }
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     /**
@@ -278,7 +272,7 @@ void MenuState::update(float delta) {
         show_text = !show_text;
         text_timer.restart();
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 
     text_timer.update(delta);
@@ -305,7 +299,7 @@ void MenuState::render() {
     } else if (show_text) {
         start_option->render(N_ZERO, N_ZERO);
     } else {
-      /*Nothing to do*/
+        /*Nothing to do*/
     }
 }
 /**
@@ -317,27 +311,20 @@ void MenuState::process_input() {
 
     // Menu buttons
     vector<pair<int, int> > joystick_buttons = {
-        ii(A,      InputManager::A),
-        ii(B,      InputManager::B),
-        ii(Y,      InputManager::Y),
-        ii(LEFT,   InputManager::LEFT),
-        ii(RIGHT,  InputManager::RIGHT),
-        ii(SELECT, InputManager::SELECT),
-        ii(START,  InputManager::START),
-        ii(LB,     InputManager::LB),
-        ii(RT,     InputManager::RT)
-    };
+        ii(A, InputManager::A),         ii(B, InputManager::B),
+        ii(Y, InputManager::Y),         ii(LEFT, InputManager::LEFT),
+        ii(RIGHT, InputManager::RIGHT), ii(SELECT, InputManager::SELECT),
+        ii(START, InputManager::START), ii(LB, InputManager::LB),
+        ii(RT, InputManager::RT)};
 
     /**
      * Checks the state of the button the user pressed.
      */
     for (ii button : joystick_buttons) {
-        pressed[button.first]    = input_manager->joystick_button_press(
-            button.second,
-            N_ZERO);
-        is_holding[button.first] = input_manager->is_joystick_button_down(
-            button.second,
-            N_ZERO);
+        pressed[button.first] =
+            input_manager->joystick_button_press(button.second, N_ZERO);
+        is_holding[button.first] =
+            input_manager->is_joystick_button_down(button.second, N_ZERO);
     }
 }
 
@@ -345,10 +332,12 @@ void MenuState::process_input() {
  * pause method.
  * not implemented.
  */
-void MenuState::pause()  {}
+void MenuState::pause() {
+}
 
 /**
  * resume method.
  * not implemented.
  */
-void MenuState::resume() {}
+void MenuState::resume() {
+}

@@ -13,8 +13,8 @@
 
 #define N_SPRITES 8
 
-#include "State.h"
 #include "Sprite.h"
+#include "State.h"
 #include "Text.h"
 
 #include <string>
@@ -24,7 +24,7 @@ using std::string;
 using std::vector;
 
 class BattleEnd : public GameObject {
- public:
+   public:
     /**
      * Constructor.
      * This constructor builds sprites and texts to indicates the team that won
@@ -73,21 +73,21 @@ class BattleEnd : public GameObject {
      *
      * @param GameObject a pointer to a GameObject.
      */
-    void notify_collision(GameObject & object);
+    void notify_collision(GameObject &object);
 
- private:
-    vector<Sprite> sprite;  /**< Vector of sprites with images to display the */
-                            /**< winner team at the end of a battle. */
+   private:
+    vector<Sprite> sprite; /**< Vector of sprites with images to display the */
+    /**< winner team at the end of a battle. */
 
-    int current_sprite;  /**< Int number with the id of the current sprite of */
-                         /**< the vector of sprites. */
-    bool back_selected;  /**< Bool value that indicates if the user has */
-                         /**< pressed the return button. */
-    bool quitRequested;  /**< Bool value that indicates if user has requested */
-                         /**< to quit the battle. */
-    Sprite back_btn;  /**< Image of button "B" to quit the battle. */
-    Text  *back_txt;  /**< Text "BACK" to indicates that button "B" quits the */
-                      /**< battle. */
+    int current_sprite; /**< Int number with the id of the current sprite of */
+    /**< the vector of sprites. */
+    bool back_selected; /**< Bool value that indicates if the user has */
+    /**< pressed the return button. */
+    bool quitRequested; /**< Bool value that indicates if user has requested */
+    /**< to quit the battle. */
+    Sprite back_btn; /**< Image of button "B" to quit the battle. */
+    Text *back_txt; /**< Text "BACK" to indicates that button "B" quits the */
+    /**< battle. */
 };
 
 #endif  // INCLUDE_BATTLEEND_H_

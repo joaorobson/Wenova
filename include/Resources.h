@@ -12,9 +12,9 @@
 #define INCLUDE_RESOURCES_H_
 
 #include <iostream>
-#include <unordered_map>
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 #include "SDL2/SDL_image.h"
 #include "SDL2/SDL_mixer.h"
@@ -25,21 +25,21 @@ using std::string;
 using std::shared_ptr;
 
 class Resources {
- private:
-    static unordered_map<string,
-                         shared_ptr<SDL_Texture> > image_table;  /**< Map of */
-                                      /**< a key string and a texture sprite. */
-    static unordered_map<string,
-                         shared_ptr<Mix_Music> > music_table;  /**< Map of */
-                                      /**< a key string and a mix music. */
-    static unordered_map<string,
-                         shared_ptr<Mix_Chunk> > sound_table;  /**< Map of */
-                                      /**< a key string and a mix chunk. */
-    static unordered_map<string,
-                         shared_ptr<TTF_Font> > font_table;  /**< Map of */
-                                      /**< a key string and a text font. */
+   private:
+    static unordered_map<string, shared_ptr<SDL_Texture> >
+        image_table; /**< Map of */
+    /**< a key string and a texture sprite. */
+    static unordered_map<string, shared_ptr<Mix_Music> >
+        music_table; /**< Map of */
+    /**< a key string and a mix music. */
+    static unordered_map<string, shared_ptr<Mix_Chunk> >
+        sound_table; /**< Map of */
+    /**< a key string and a mix chunk. */
+    static unordered_map<string, shared_ptr<TTF_Font> >
+        font_table; /**< Map of */
+    /**< a key string and a text font. */
 
- public:
+   public:
     static shared_ptr<SDL_Texture> get_image(string file);
     static void clear_images();
 

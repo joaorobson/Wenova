@@ -5,11 +5,11 @@
 #include <algorithm>
 
 unordered_map<string, shared_ptr<SDL_Texture> > Resources::image_table;
-unordered_map<string, shared_ptr<Mix_Music> >   Resources::music_table;
-unordered_map<string, shared_ptr<Mix_Chunk> >   Resources::sound_table;
-unordered_map<string, shared_ptr<TTF_Font> >    Resources::font_table;
+unordered_map<string, shared_ptr<Mix_Music> > Resources::music_table;
+unordered_map<string, shared_ptr<Mix_Chunk> > Resources::sound_table;
+unordered_map<string, shared_ptr<TTF_Font> > Resources::font_table;
 
-shared_ptr<SDL_Texture>Resources::get_image(string file) {
+shared_ptr<SDL_Texture> Resources::get_image(string file) {
     if (image_table.find(file) == image_table.end()) {
         SDL_Texture *tx =
             IMG_LoadTexture(Game::get_instance().get_renderer(), file.c_str());
@@ -19,8 +19,8 @@ shared_ptr<SDL_Texture>Resources::get_image(string file) {
             exit(-1);
         }
 
-        shared_ptr<SDL_Texture> texture(tx, [] (SDL_Texture *txt)
-                                        { SDL_DestroyTexture(txt); });
+        shared_ptr<SDL_Texture> texture(
+            tx, [](SDL_Texture *txt) { SDL_DestroyTexture(txt); });
 
         image_table.emplace(file, texture);
     }
@@ -36,7 +36,7 @@ void Resources::clear_images() {
     }
 }
 
-shared_ptr<Mix_Music>Resources::get_music(string file) {
+shared_ptr<Mix_Music> Resources::get_music(string file) {
     if (music_table.find(file) == music_table.end()) {
         Mix_Music *mx = Mix_LoadMUS(file.c_str());
 
@@ -45,8 +45,8 @@ shared_ptr<Mix_Music>Resources::get_music(string file) {
             exit(-1);
         }
 
-        shared_ptr<Mix_Music> music(mx, [] (Mix_Music *msc)
-                                    { Mix_FreeMusic(msc); });
+        shared_ptr<Mix_Music> music(mx,
+                                    [](Mix_Music *msc) { Mix_FreeMusic(msc); });
 
         music_table.emplace(file, music);
     }
@@ -62,7 +62,7 @@ void Resources::clear_music() {
     }
 }
 
-shared_ptr<Mix_Chunk>Resources::get_sound(string file) {
+shared_ptr<Mix_Chunk> Resources::get_sound(string file) {
     if (sound_table.find(file) == sound_table.end()) {
         Mix_Chunk *ck = Mix_LoadWAV(file.c_str());
 
@@ -71,8 +71,8 @@ shared_ptr<Mix_Chunk>Resources::get_sound(string file) {
             exit(-1);
         }
 
-        shared_ptr<Mix_Chunk> sound(ck, [] (Mix_Chunk *chk)
-                                    { Mix_FreeChunk(chk); });
+        shared_ptr<Mix_Chunk> sound(ck,
+                                    [](Mix_Chunk *chk) { Mix_FreeChunk(chk); });
 
         sound_table.emplace(file, sound);
     }
@@ -88,7 +88,7 @@ void Resources::clear_sound() {
     }
 }
 
-shared_ptr<TTF_Font>Resources::get_font(string file, int size) {
+shared_ptr<TTF_Font> Resources::get_font(string file, int size) {
     string tsize = std::to_string(size);
 
     if (font_table.find(file + tsize) == font_table.end()) {
@@ -99,8 +99,8 @@ shared_ptr<TTF_Font>Resources::get_font(string file, int size) {
             exit(-1);
         }
 
-        shared_ptr<TTF_Font> font(ft, [] (TTF_Font *fnt)
-                                  { TTF_CloseFont(fnt); });
+        shared_ptr<TTF_Font> font(ft,
+                                  [](TTF_Font *fnt) { TTF_CloseFont(fnt); });
 
         font_table.emplace(file + tsize, font);
     }

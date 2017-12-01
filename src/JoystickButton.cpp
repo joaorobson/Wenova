@@ -3,8 +3,7 @@
 #include "InputManager.h"
 
 JoystickButton::JoystickButton(int x, int y, string clabel, int cbutton_id,
-                               int cjoystick_id,
-                               string csprite) {
+                               int cjoystick_id, string csprite) {
     sprite = Sprite("joysticks/" + csprite + ".png");
     pressed_sprite = Sprite("joysticks/pressed_" + csprite + ".png");
     box = Rectangle(x, y, sprite.get_width(), sprite.get_height());
@@ -15,7 +14,8 @@ JoystickButton::JoystickButton(int x, int y, string clabel, int cbutton_id,
     pressed = false;
 }
 
-JoystickButton::~JoystickButton() {}
+JoystickButton::~JoystickButton() {
+}
 
 void JoystickButton::update(float) {
     InputManager *input_manager = InputManager::get_instance();
@@ -34,4 +34,5 @@ bool JoystickButton::is_dead() {
     return false;
 }
 
-void JoystickButton::notify_collision(GameObject&) {}
+void JoystickButton::notify_collision(GameObject &) {
+}

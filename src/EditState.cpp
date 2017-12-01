@@ -12,13 +12,13 @@
 #include <fstream>
 #include <sstream>
 
-#include "InputManager.h"
-#include "Game.h"
 #include "Blood.h"
-#include "Flesh.h"
-#include "EditableFloor.h"
-#include "MenuState.h"
 #include "Config.h"
+#include "EditableFloor.h"
+#include "Flesh.h"
+#include "Game.h"
+#include "InputManager.h"
+#include "MenuState.h"
 #include "Rectangle.h"
 
 #define WIDTH 1280
@@ -51,8 +51,8 @@ EditState::EditState(string cstage) : stage(cstage) {
 
     read_level_design();
     InputManager::get_instance()->set_analogic_sensibility_value(20000);
-    InputManager::get_instance()->
-    map_keyboard_to_joystick(InputManager::BATTLE_MODE);
+    InputManager::get_instance()->map_keyboard_to_joystick(
+        InputManager::BATTLE_MODE);
 }
 
 /**
@@ -66,7 +66,7 @@ EditState::EditState(string cstage) : stage(cstage) {
 void EditState::update(float delta) {
     assert(delta >= 0);
 
-    InputManager *input_manager = InputManager::get_instance();
+    InputManager* input_manager = InputManager::get_instance();
 
     /**
      * If quit_requested = true, then m_quit_requested = true.
@@ -109,8 +109,8 @@ void EditState::update(float delta) {
      */
     if (input_manager->key_press(InputManager::K_F) or
         input_manager->key_press(InputManager::K_P)) {
-        int  x           = input_manager->get_mouse_x_position();
-        int  y           = input_manager->get_mouse_y_position();
+        int x = input_manager->get_mouse_x_position();
+        int y = input_manager->get_mouse_y_position();
         bool is_platform = input_manager->key_press(InputManager::K_P);
 
         /**
@@ -119,8 +119,8 @@ void EditState::update(float delta) {
          */
         for (auto& go : object_array) {
             if (go->is("floor")) {
-                (reinterpret_cast<EditableFloor *>(go.get())->
-                                                          set_selected(false));
+                (reinterpret_cast<EditableFloor*>(go.get())->set_selected(
+                    false));
             }
         }
 
@@ -156,7 +156,7 @@ void EditState::update(float delta) {
      */
     if (input_manager->key_press(InputManager::K_SHIFT)) {
         Rectangle player_box = test_fighter->box;
-        bool is_blood        = test_fighter->is("blood");
+        bool is_blood = test_fighter->is("blood");
         test_fighter->kill();
 
         if (is_blood) {
@@ -182,9 +182,9 @@ void EditState::update(float delta) {
  * renders the background given a x and y positions.
  */
 void EditState::render() {
-   /**
-    * Renders the first background of the list.
-    */
+    /**
+     * Renders the first background of the list.
+     */
     for (auto& background : backgrounds) {
         background.first.render(background.second.x, background.second.y);
     }
@@ -196,13 +196,15 @@ void EditState::render() {
  * pause method.
  * Not implemented.
  */
-void EditState::pause()  {}
+void EditState::pause() {
+}
 
 /**
  * resume method.
  * Not implemented.
  */
-void EditState::resume() {}
+void EditState::resume() {
+}
 
 /**
  * read_level_design method.
@@ -210,7 +212,7 @@ void EditState::resume() {}
  */
 void EditState::read_level_design() {
     float x, y, width, crotation;
-    int   platform;
+    int platform;
 
     ifstream level_design(RESOURCES_FOLDER + "stage_" + stage +
                           "/level_design.dat");
@@ -226,11 +228,12 @@ void EditState::read_level_design() {
     }
 
     string s;
-    int    n_backgrounds, n_sprites, speed, n_columns;
+    int n_backgrounds, n_sprites, speed, n_columns;
 
     std::getline(level_design, s);
 
-    for (auto& c : s) c -= 15;
+    for (auto& c : s)
+        c -= 15;
     stringstream n_background_line(s);
     n_background_line >> n_backgrounds;
 
@@ -241,11 +244,13 @@ void EditState::read_level_design() {
     for (int i = 0; i < n_backgrounds; ++i) {
         std::getline(level_design, s);
 
-        for (auto& c : s) c -= 15;
+        for (auto& c : s)
+            c -= 15;
         stringstream backgrounds_line(s);
         backgrounds_line >> x >> y >> n_sprites >> speed >> n_columns;
-        Sprite background_sprite("stage_" + stage + "/background_" + to_string(
-                                     i) + ".png", n_sprites, speed, n_columns);
+        Sprite background_sprite(
+            "stage_" + stage + "/background_" + to_string(i) + ".png",
+            n_sprites, speed, n_columns);
         Vector position(x, y);
         backgrounds.push_back(std::make_pair(background_sprite, position));
     }
@@ -255,7 +260,8 @@ void EditState::read_level_design() {
      * is added.
      */
     while (std::getline(level_design, s)) {
-        for (auto& c : s) c -= 15;
+        for (auto& c : s)
+            c -= 15;
 
         stringstream editable_floors_line(s);
         editable_floors_line >> x >> y >> width >> crotation >> platform;
@@ -273,8 +279,9 @@ void EditState::read_level_design() {
  * of a new file.
  */
 void EditState::update_level_design() {
-    ifstream level_design(RESOURCES_FOLDER + "stage_" + stage +
-                          "/level_design.dat", std::ios::binary);
+    ifstream level_design(
+        RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat",
+        std::ios::binary);
     ofstream old_level_design(
         RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old",
         std::ios::trunc | std::ios::binary);
@@ -283,10 +290,12 @@ void EditState::update_level_design() {
     level_design.close();
     old_level_design.close();
 
-    ofstream new_level_design(RESOURCES_FOLDER + "stage_" + stage +
-                              "/level_design.dat", std::ios::trunc);
-    ifstream backup(RESOURCES_FOLDER + "stage_" + stage +
-                    "/level_design.dat.old", std::ios::binary);
+    ofstream new_level_design(
+        RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat",
+        std::ios::trunc);
+    ifstream backup(
+        RESOURCES_FOLDER + "stage_" + stage + "/level_design.dat.old",
+        std::ios::binary);
     string s;
 
     /**
@@ -304,8 +313,9 @@ void EditState::update_level_design() {
      */
     for (auto& go : object_array) {
         if (go->is("floor")) {
-            new_level_design << (reinterpret_cast<EditableFloor *>(go.get())->
-                                  get_information()) << std::endl;
+            new_level_design << (reinterpret_cast<EditableFloor*>(go.get())
+                                     ->get_information())
+                             << std::endl;
         } else {
             /*Nothing to do*/
         }

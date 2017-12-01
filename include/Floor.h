@@ -4,26 +4,26 @@
 #include "GameObject.h"
 #include "Sprite.h"
 
-class Floor : public GameObject{
-private:
-	int id;
+class Floor : public GameObject {
+   private:
+    int id;
 
-protected:
-	bool is_crossingable;
+   protected:
+    bool is_crossingable;
 
-public:
-	Floor(float x, float y, float width, float crotation, bool cplatform);
-	~Floor();
+   public:
+    Floor(float x, float y, float width, float crotation, bool cplatform);
+    ~Floor();
 
-	void update(float delta);
-	void render();
-	bool is_dead();
+    void update(float delta);
+    void render();
+    bool is_dead();
 
-	void notify_collision(GameObject & object);
+    void notify_collision(GameObject& object);
 
-	int get_id();
+    int get_id();
 
-	static int floor_id;
+    static int floor_id;
 };
 
 #endif

@@ -25,7 +25,7 @@
 #define N_JOYSTICK_BUTTONS 10
 
 class InputManager {
- private:
+   private:
     static InputManager* input_manager;
 
     /**
@@ -49,7 +49,7 @@ class InputManager {
 
     bool has_quit_request;
     int update_counter;  ///< Will be incrementes when updating input state,
-                         ///< refer to key presses.
+    ///< refer to key presses.
 
     int mouse_x_position; /**< Unit: px */
     int mouse_y_position; /**< Unit: px */
@@ -62,13 +62,13 @@ class InputManager {
     int offset_y; /**< Unit: px, [0, 720] */
 
     int keyboard_to_joystick_id;  ///< Which profile will be used for mapping
-                                  ///< keyboard_for_joystick.
-                                  ///< Ex: (Menu handler or gameplay).
+    ///< keyboard_for_joystick.
+    ///< Ex: (Menu handler or gameplay).
 
     float mouse_sensibility_value; /**< Refer to mouse sensibility. */
     int analogic_sensibility_value; /**< Refer to joystick lever sensibility.*/
     int triggers_sensibility_value;  ///< Refer to joystick RT and LT
-                                     ///< (triggers) lever sensibility. */
+    ///< (triggers) lever sensibility. */
 
     /**
      * Manages joystick interaction with the game.
@@ -83,7 +83,7 @@ class InputManager {
      */
     void reset_keyboard_to_joystick();
 
- public:
+   public:
     /**
      * Initializes variables.
      */
@@ -255,7 +255,7 @@ class InputManager {
     static const int LB = SDL_CONTROLLER_BUTTON_LEFTSHOULDER; /**< Same as j. */
     static const int RB = SDL_CONTROLLER_BUTTON_RIGHTSHOULDER; /**< Same as l */
     static const int RT = 0x21;  ///< Arbitrary value, but it's right.
-                                 ///< Same as .(period).
+    ///< Same as .(period).
     static const int LT = 0x20; /**< Same as , (comma) */
     static const int SELECT = SDL_CONTROLLER_BUTTON_BACK; /**< Same as esc. */
     static const int START = SDL_CONTROLLER_BUTTON_START; /**< Same as enter. */
@@ -302,7 +302,7 @@ class InputManager {
     static const int K_CTRL = SDLK_LCTRL; /**< Nothing. */
     static const int K_C = SDLK_c; /**< Make platform rigid / crossingable.  */
     static const int K_S = SDLK_s;  ///< Cross the platform
-                                    ///< allowed if pressed twice.
+    ///< allowed if pressed twice.
     static const int K_F = SDLK_f; /**< Put rigid platform. */
     static const int K_P = SDLK_p; /**< Put crossingable platform. */
     static const int K_O = SDLK_o; /**< Nothing. */
@@ -314,7 +314,7 @@ class InputManager {
     static const int K_DEC_W = SDLK_COMMA; /**< Decrease platform size. */
     static const int K_DEL = SDLK_DELETE; /**< Delete platform. */
     static const int RIGHT_MOUSE_BUTTON = SDL_BUTTON_RIGHT;  ///< Bring char
-                                                             ///< to cursor.
+    ///< to cursor.
     static const int LEFT_MOUSE_BUTTON =
         SDL_BUTTON_LEFT; /**< Select platform. */
 

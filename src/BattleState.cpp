@@ -13,42 +13,42 @@
 #include <fstream>
 #include <sstream>
 
-
-#include "InputManager.h"
-#include "Game.h"
-#include "Floor.h"
-#include "MenuState.h"
-#include "FighterStats.h"
-#include "Config.h"
-#include "Blood.h"
-#include "Flesh.h"
 #include "BattleEnd.h"
+#include "Blood.h"
+#include "Config.h"
+#include "FighterStats.h"
+#include "Flesh.h"
+#include "Floor.h"
+#include "Game.h"
+#include "InputManager.h"
+#include "MenuState.h"
 
 #define N_BACKGROUND
 
-#define HUD1 133   /**< Unity in pixel*/
+#define HUD1 133 /**< Unity in pixel*/
 #define HUD2 589.5 /**< Unity in pixel*/
-#define HUD3 1147  /**< Unity in pixel*/
+#define HUD3 1147 /**< Unity in pixel*/
 #define HUD4 679.5 /**< Unity in pixel*/
 
-#define CHAR_POS1 177   /**< Unity in pixel*/
-#define CHAR_POS2 313   /**< Unity in pixel*/
-#define CHAR_POS3 276   /**< Unity in pixel*/
-#define CHAR_POS4 510   /**< Unity in pixel*/
-#define CHAR_POS5 1128  /**< Unity in pixel*/
-#define CHAR_POS6 245   /**< Unity in pixel*/
-#define CHAR_POS7 954   /**< Unity in pixel*/
-#define CHAR_POS8 474   /**< Unity in pixel*/
-#define CHAR_POS9 116   /**< Unity in pixel*/
-#define CHAR_POS10 227  /**< Unity in pixel*/
-#define CHAR_POS11 146  /**< Unity in pixel*/
-#define CHAR_POS12 394  /**< Unity in pixel*/
+#define CHAR_POS1 177 /**< Unity in pixel*/
+#define CHAR_POS2 313 /**< Unity in pixel*/
+#define CHAR_POS3 276 /**< Unity in pixel*/
+#define CHAR_POS4 510 /**< Unity in pixel*/
+#define CHAR_POS5 1128 /**< Unity in pixel*/
+#define CHAR_POS6 245 /**< Unity in pixel*/
+#define CHAR_POS7 954 /**< Unity in pixel*/
+#define CHAR_POS8 474 /**< Unity in pixel*/
+#define CHAR_POS9 116 /**< Unity in pixel*/
+#define CHAR_POS10 227 /**< Unity in pixel*/
+#define CHAR_POS11 146 /**< Unity in pixel*/
+#define CHAR_POS12 394 /**< Unity in pixel*/
 #define CHAR_POS13 1036 /**< Unity in pixel*/
-#define CHAR_POS14 221  /**< Unity in pixel*/
+#define CHAR_POS14 221 /**< Unity in pixel*/
 #define CHAR_POS15 1063 /**< Unity in pixel*/
-#define CHAR_POS16 382  /**< Unity in pixel*/
+#define CHAR_POS16 382 /**< Unity in pixel*/
 
-#define LEVELNOTFOUND "Level design of stage %s can't be opened\n" /**< string*/
+#define LEVELNOTFOUND "Level design of stage %s can't be opened\n" /**< \
+                                                                      string*/
 #define MUSIC "/music.ogg" /**< string*/
 #define SOUND "/sound.ogg" /**< string*/
 #define SENSIBILITY_VALUE 20000 /**< Unity value*/
@@ -66,7 +66,7 @@ using std::to_string;
  * @param players_info a description.
  */
 BattleState::BattleState(string stage,
-                          vector< pair<string, string> > players_info) {
+                         vector<pair<string, string> > players_info) {
     assert(stage.empty() != true);
     assert(players_info.empty() != true);
 
@@ -79,122 +79,116 @@ BattleState::BattleState(string stage,
     read_level_design(stage);
     music.play();
     sound.play(-1);
-    setPlayersInfo(stage,players_info);
+    setPlayersInfo(stage, players_info);
     setHud();
     startTime();
-    InputManager::get_instance()->
-                            set_analogic_sensibility_value(SENSIBILITY_VALUE);
-    InputManager::get_instance()->
-                            map_keyboard_to_joystick(InputManager::BATTLE_MODE);
+    InputManager::get_instance()->set_analogic_sensibility_value(
+        SENSIBILITY_VALUE);
+    InputManager::get_instance()->map_keyboard_to_joystick(
+        InputManager::BATTLE_MODE);
 }
 /**
  * A Destructor.
  * Destructs a previously initialized object of this class.
  */
-BattleState::~BattleState() {}
+BattleState::~BattleState() {
+}
 /**
  *function setCharPositions
  *set the position of the characters on screen.
  *@param stage is the name of the stage chosen.
  */
-vector<pair<int, int> > BattleState::setCharPositions(string stage){
+vector<pair<int, int> > BattleState::setCharPositions(string stage) {
+    vector<pair<int, int> > char_positions;
 
-  vector< pair<int, int> > char_positions;
-
-  /**
-   * If the condition is met, the character position is set one way. if not
-   * the default settins are used.
-   */
-  if (stage == "1") {
-      char_positions = { ii(CHAR_POS1, CHAR_POS2),
-                         ii(CHAR_POS3, CHAR_POS4),
-                         ii(CHAR_POS5, CHAR_POS6),
-                         ii(CHAR_POS7, CHAR_POS8)};
-  } else {
-      char_positions = { ii(CHAR_POS9, CHAR_POS10),
-                         ii(CHAR_POS11, CHAR_POS12),
-                         ii(CHAR_POS13, CHAR_POS14),
-                         ii(CHAR_POS15, CHAR_POS16)};
-  }
-  return char_positions;
+    /**
+     * If the condition is met, the character position is set one way. if not
+     * the default settins are used.
+     */
+    if (stage == "1") {
+        char_positions = {ii(CHAR_POS1, CHAR_POS2), ii(CHAR_POS3, CHAR_POS4),
+                          ii(CHAR_POS5, CHAR_POS6), ii(CHAR_POS7, CHAR_POS8)};
+    } else {
+        char_positions = {ii(CHAR_POS9, CHAR_POS10), ii(CHAR_POS11, CHAR_POS12),
+                          ii(CHAR_POS13, CHAR_POS14),
+                          ii(CHAR_POS15, CHAR_POS16)};
+    }
+    return char_positions;
 }
 /**
  *function setPlayersInfo
  *this function sets the characteristics of the character.
  */
-void BattleState::setPlayersInfo(string stage, vector< pair<string, string>
-                                 > players_info){
+void BattleState::setPlayersInfo(string stage,
+                                 vector<pair<string, string> > players_info) {
+    /**
+     * Runs each iteration from 0 to the size of players_info -1.
+     */
+    for (int i = 0; i < static_cast<int>(players_info.size()); i++) {
+        string char_name = players_info[i].first;
+        string skin_name = players_info[i].second;
 
-  /**
-   * Runs each iteration from 0 to the size of players_info -1.
-   */
-  for (int i = 0; i < static_cast<int>(players_info.size()); i++) {
-      string char_name = players_info[i].first;
-      string skin_name = players_info[i].second;
+        /**
+         * If the condition is met, Blood method is called, else Flesh method
+         * is called.
+         */
+        if (char_name == "blood") {
+            players[i] = new Blood(skin_name, setCharPositions(stage)[i].first,
+                                   setCharPositions(stage)[i].second, i);
 
-      /**
-       * If the condition is met, Blood method is called, else Flesh method
-       * is called.
-       */
-      if (char_name == "blood") {
-          players[i] = new Blood(skin_name, setCharPositions(stage)[i].first,
-                                 setCharPositions(stage)[i].second, i);
+            assert(skin_name.empty() != true);
 
-          assert(skin_name.empty() != true);
+        } else if (char_name == "flesh") {
+            players[i] = new Flesh(skin_name, setCharPositions(stage)[i].first,
+                                   setCharPositions(stage)[i].second, i);
 
-      } else if (char_name == "flesh") {
-          players[i] = new Flesh(skin_name, setCharPositions(stage)[i].first,
-                                 setCharPositions(stage)[i].second, i);
+            assert(skin_name.empty() != true);
 
-          assert(skin_name.empty() != true);
+        } else {
+            /*Nothing to do*/
+        }
+        /**
+         * Runs each iteration from 0 to the size of players_info -1.
+         */
+        for (int j = NUMBER_PLAYERS - 1; j >= 0; j--) {
+            add_object(players[i]);
+        }
+    }
 
-      } else {
-          /*Nothing to do*/
-      }
-      /**
-       * Runs each iteration from 0 to the size of players_info -1.
-       */
-      for (int j=NUMBER_PLAYERS-1; j >= 0; j--) {
-          add_object(players[i]);
-      }
-  }
-
-  players[0]->set_partner(players[1]);
-  players[1]->set_partner(players[0]);
-  players[2]->set_partner(players[3]);
-  players[3]->set_partner(players[2]);
+    players[0]->set_partner(players[1]);
+    players[1]->set_partner(players[0]);
+    players[2]->set_partner(players[3]);
+    players[3]->set_partner(players[2]);
 }
 /**
  *function setHud
  *this function sets the elements on screen - non characters.
  */
-void BattleState::setHud(){
-
-    vector< pair<int, int> > hud_positions = { ii(HUD1, HUD2), ii(HUD1, HUD4),
-                                              ii(HUD3, HUD2), ii(HUD3, HUD4)
-                                             };
+void BattleState::setHud() {
+    vector<pair<int, int> > hud_positions = {ii(HUD1, HUD2), ii(HUD1, HUD4),
+                                             ii(HUD3, HUD2), ii(HUD3, HUD4)};
 
     /**
     * Runs each iteration from NUMBER_PLAYERS-1 until bigger or equal to 0.
     * Each iteration decreases de variable count.
     */
-    for (int i=NUMBER_PLAYERS-1; i >= 0; i--) {
+    for (int i = NUMBER_PLAYERS - 1; i >= 0; i--) {
         add_object(new FighterStats(players[i], i + 1, i > 1,
-            hud_positions[i].first,
-            hud_positions[i].second));
+                                    hud_positions[i].first,
+                                    hud_positions[i].second));
     }
- }
- /**
-  *function startTime
-  *this function starts the time counter for the match.
-  */
+}
+/**
+ *function startTime
+ *this function starts the time counter for the match.
+ */
 /**
  *function startTime
  *this function is responsable for the timer in a match.
  */
-void BattleState::startTime(){
-  time_counter = new TimeCounter();
-  add_object(time_counter);
+void BattleState::startTime() {
+    time_counter = new TimeCounter();
+    add_object(time_counter);
 }
 /**
  * update method.
@@ -204,7 +198,7 @@ void BattleState::startTime(){
  * @param delta is a number of the type float used to update the background.
  */
 void BattleState::update(float delta) {
-    InputManager * input_manager = InputManager::get_instance();
+    InputManager* input_manager = InputManager::get_instance();
     assert(delta >= 0);
     exitBattle(input_manager);
     returnMenu(input_manager);
@@ -214,7 +208,7 @@ void BattleState::update(float delta) {
     /**
      * Updates the background list.
      */
-    for (auto & background : backgrounds) {
+    for (auto& background : backgrounds) {
         background.first.update(delta);
     }
     update_array(delta);
@@ -239,10 +233,10 @@ void BattleState::exitBattle(InputManager* input_manager) {
  *returns the game to the menu when requested via input from controller.
  */
 void BattleState::returnMenu(InputManager* input_manager) {
-  /**
-   * If joystick_button_press = true, the body is executed.
-   * The music stops playing and the menu is updated and leave the edit state.
-   */
+    /**
+     * If joystick_button_press = true, the body is executed.
+     * The music stops playing and the menu is updated and leave the edit state.
+     */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0)) {
         music.stop();
         Game::get_instance().push(new MenuState(true));
@@ -257,27 +251,27 @@ void BattleState::returnMenu(InputManager* input_manager) {
  *checks if the player is still alive in a battle
  */
 void BattleState::isPlayerAlive() {
-  /**
-   * Runs each iteration from 0 to the size of NUMBER_PLAYERS -1.
-   */
-  for (int i = 0; i < NUMBER_PLAYERS; i++) {
-      /**
-       * If alive on a give index returns true, the body is executed.
-       */
-      if (alive[i]) {
-          /**
-           * If players on a given index returns the text "dying", the
-           * variable alive on that index is set to false.
-           */
-          if (players[i]->is("dying")) {
-              alive[i] = false;
-          } else {
-              /*Nothing to do*/
-          }
-      } else {
-          /*Nothing to do*/
-      }
-  }
+    /**
+     * Runs each iteration from 0 to the size of NUMBER_PLAYERS -1.
+     */
+    for (int i = 0; i < NUMBER_PLAYERS; i++) {
+        /**
+         * If alive on a give index returns true, the body is executed.
+         */
+        if (alive[i]) {
+            /**
+             * If players on a given index returns the text "dying", the
+             * variable alive on that index is set to false.
+             */
+            if (players[i]->is("dying")) {
+                alive[i] = false;
+            } else {
+                /*Nothing to do*/
+            }
+        } else {
+            /*Nothing to do*/
+        }
+    }
 }
 /**
  *isGameOver method
@@ -288,7 +282,8 @@ void BattleState::isGameOver() {
         game_over = true;
 
         /**
-         * If the first condition is met, battleEnd is instanciated and passed as a
+         * If the first condition is met, battleEnd is instanciated and passed
+         * as a
          * parameter on add_object method. If not, the else body is run.
          */
         if (alive[0] + alive[1] > alive[2] + alive[3]) {
@@ -316,21 +311,21 @@ void BattleState::isGameOver() {
             }
 
             int sum_life_team_2 = 0;
+            /**
+             * Runs each iteration from NUMBER_PLAYERS divided by 2 until
+             * NUMBER_PLAYERS -1.
+             */
+            for (int i = NUMBER_PLAYERS / 2; i < NUMBER_PLAYERS; i++) {
                 /**
-                 * Runs each iteration from NUMBER_PLAYERS divided by 2 until
-                 * NUMBER_PLAYERS -1.
+                 * If condition is met, the remaining life of a player is
+                 * added to the sum_life_team_1 variable.
                  */
-                for (int i = NUMBER_PLAYERS / 2; i < NUMBER_PLAYERS; i++) {
-                    /**
-                     * If condition is met, the remaining life of a player is
-                     * added to the sum_life_team_1 variable.
-                     */
-                    if (alive[i]) {
-                        sum_life_team_2 += players[i]->get_remaining_life();
-                    } else {
-                        /*Nothing to do*/
-                    }
+                if (alive[i]) {
+                    sum_life_team_2 += players[i]->get_remaining_life();
+                } else {
+                    /*Nothing to do*/
                 }
+            }
             /**
              * If the first condition is met, battleEnd is instanciated and
              * passed as a parameter on add_object method. If not, the else
@@ -417,7 +412,7 @@ void BattleState::render() {
     /**
     * Renders each background from the background list.
     */
-    for (auto & background : backgrounds) {
+    for (auto& background : backgrounds) {
         background.first.render(background.second.x, background.second.y);
     }
     render_array();
@@ -426,12 +421,14 @@ void BattleState::render() {
  * pause method.
  * Not implemented.
  */
-void BattleState::pause() {}
+void BattleState::pause() {
+}
 /**
  * resume method.
  * Not implemented.
  */
-void BattleState::resume() {}
+void BattleState::resume() {
+}
 /**
  * read_level_design method.
  * Reads the levels in the game.
@@ -460,8 +457,8 @@ void BattleState::read_level_design(string stage) {
     int n_backgrounds, n_sprites, speed, n_columns;
     std::getline(level_design, s);
 
-    for (auto & c : s) {
-      c -= 15;
+    for (auto& c : s) {
+        c -= 15;
     }
 
     stringstream n_background_line(s);
@@ -470,8 +467,8 @@ void BattleState::read_level_design(string stage) {
     for (int i = 0; i < n_backgrounds; ++i) {
         std::getline(level_design, s);
 
-        for (auto & c : s) {
-          c -= 15;
+        for (auto& c : s) {
+            c -= 15;
         }
 
         stringstream backgrounds_line(s);
@@ -479,9 +476,9 @@ void BattleState::read_level_design(string stage) {
         /**printf("Dados: %.f %.f %d %d %d\n", x, y, n_sprites, speed,
          *        n_columns);
          */
-        Sprite background_sprite("stage_" + stage + "/background_" +
-                                to_string(i) + ".png",
-                                n_sprites, speed, n_columns);
+        Sprite background_sprite(
+            "stage_" + stage + "/background_" + to_string(i) + ".png",
+            n_sprites, speed, n_columns);
         Vector position(x, y);
         backgrounds.push_back(std::make_pair(background_sprite, position));
     }
@@ -490,15 +487,16 @@ void BattleState::read_level_design(string stage) {
      * For as long as the condition is true, add_object is called.
      */
     while (std::getline(level_design, s)) {
-        for (auto & c : s) c -= 15;
+        for (auto& c : s)
+            c -= 15;
 
         stringstream floors_line(s);
         floors_line >> x >> y >> width >> crotation >> platform;
 
         // printf("Battle: %.f %.f %.f %.f\n", x, y, width, crotation);
-        add_object(new Floor(x, y, width, crotation,
-                   static_cast<bool>(platform)));
-     }
+        add_object(
+            new Floor(x, y, width, crotation, static_cast<bool>(platform)));
+    }
 
     level_design.close();
 }

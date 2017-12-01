@@ -18,7 +18,7 @@
 #include <string>
 
 class EditableFloor : public Floor {
- private:
+   private:
     enum FloorState { SELECTED, NOT_SELECTED };
 
     Sprite standard_sprite;
@@ -30,7 +30,7 @@ class EditableFloor : public Floor {
     bool is_deleted;
     bool is_selected;
 
- public:
+   public:
     /**
      * Create platform with default width of 100px.
      *

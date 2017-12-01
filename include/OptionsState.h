@@ -11,58 +11,59 @@
 #ifndef INCLUDE_OPTIONSSTATE_H_
 #define INCLUDE_OPTIONSSTATE_H_
 
+#include "Sound.h"
+#include "Sprite.h"
 #include "State.h"
 #include "Text.h"
-#include "Sprite.h"
-#include "Sound.h"
 
 // maybe
 // #include "Timer.h"
 
-#include <utility>
 #include <map>
 #include <string>
+#include <utility>
 #include <vector>
 
 using std::pair;
 using std::map;
 
 class OptionsState : public State {
- private:
-    Sprite background;  /**< Background image of menu "Options". */
-    Text *title;  /**< Text title of menu "Options". */
-    Sound blocked;  /**< Cancel sound activated after cancel button pressed. */
-    Sound selected;  /**< Select sound activated after select button pressed. */
-    Sound changed;  /**< Change sound activated after cursor button pressed. */
-    int current_option;  /**< Number of current option of main Menu. */
-    bool on_submenu;  /**< Indicates if user is on submenu of menu "Options". */
-    map<string, vector<Text *> > sub_options;  /**< Map of sub options of the */
-                                               /**< menu "Options". */
-    vector<Text *> options;  /**< Text of all options of the menu "Options". */
-    vector<int> current_sub_option;  /**< Vector with current options */
-                                     /**< of submenu. */
+   private:
+    Sprite background; /**< Background image of menu "Options". */
+    Text *title; /**< Text title of menu "Options". */
+    Sound blocked; /**< Cancel sound activated after cancel button pressed. */
+    Sound selected; /**< Select sound activated after select button pressed. */
+    Sound changed; /**< Change sound activated after cursor button pressed. */
+    int current_option; /**< Number of current option of main Menu. */
+    bool on_submenu; /**< Indicates if user is on submenu of menu "Options". */
+    map<string, vector<Text *> > sub_options; /**< Map of sub options of the */
+    /**< menu "Options". */
+    vector<Text *> options; /**< Text of all options of the menu "Options". */
+    vector<int> current_sub_option; /**< Vector with current options */
+    /**< of submenu. */
 
     /**
      * Get the option on a sub menu.
      * This function identifies which sub menu and option the user selected.
      *
-     * @param option an integer argument that represents the selected option of the
+     * @param option an integer argument that represents the selected option of
+     * the
      * main menu.
      *
      * @return an integer value that represents the current sub option of a sub
      * menu.
      */
-     int get_current_sub_option(int option);
+    int get_current_sub_option(int option);
 
     enum Button { A, B, UP, DOWN, SELECT, START };
     bool pressed[15];
 
- public:
-   /**
-    * Constructor.
-    * This constructor builds the options and sub options to initialize the
-    * attributes.
-    */
+   public:
+    /**
+     * Constructor.
+     * This constructor builds the options and sub options to initialize the
+     * attributes.
+     */
     OptionsState();
 
     /**
@@ -75,7 +76,8 @@ class OptionsState : public State {
     void update(float delta);
     /**
      * Render function.
-     * This function renders all text of the menu 'Options' and changes its color
+     * This function renders all text of the menu 'Options' and changes its
+     * color
      * according to the menu tha user selected.
      */
     void render();
@@ -100,7 +102,8 @@ class OptionsState : public State {
 
     /**
      * Process an input of the user.
-     * This function maps the buttons that are used on the menu 'Option' according
+     * This function maps the buttons that are used on the menu 'Option'
+     * according
      * to constants of the InputManager class.
      */
     void process_input();

@@ -27,14 +27,14 @@
 #define N_BUTTONS 15
 
 class CharacterSelectState : public State {
- private:
+   private:
     Sprite backgrounds_sprites[N_BACKGROUNDS_SPRITES];  ///< Some screens have
-                                                        ///< multilayer
-                                                        ///< background.
+    ///< multilayer
+    ///< background.
     Sprite planet_sprite;
     Sprite characters_slots_sprites; /**< Images for character thumbnails. */
     Sprite players_numbers_sprites[N_PLAYERS];  ///< Numbers which jump
-                                                ///< for slots.
+    ///< for slots.
     Sprite names_tags_sprites[N_PLAYERS];
     Sprite selected_tags_sprites; /**< Highlight selected characters. */
     Sprite ready_to_fight_sprite; /**< When everything is ready. */
@@ -94,7 +94,7 @@ class CharacterSelectState : public State {
 
     FighterMenu chars[N_CHARS]; /**< Board of fighters */
 
- public:
+   public:
     /**
      * Load all artistic files and initializes board variables based
      * on the stage that was selected
