@@ -96,23 +96,6 @@ class OptionsState : public State {
      * to constants of the InputManager class.
      */
     void process_input();
-
-    void render_submenu_option(int index);
-
-    void render_main_menu_option(int index, string text_option);
-
-    /**
-     * Get the option on a sub menu.
-     * This function identifies which sub menu and option the user selected.
-     *
-     * @param option an integer argument that represents the selected option of
-     * the
-     * main menu.
-     *
-     * @return an integer value that represents the current sub option of a sub
-     * menu.
-     */
-    int get_current_sub_option(int option);
 };
 
 #endif  // INCLUDE_OPTIONSSTATE_H_
