@@ -138,6 +138,95 @@ Blood::Blood(string skin, float x_axis_position, float y_axis_position,
     box = Rectangle(x_axis_position, y_axis_position, 84, 84);
 }
 
+
+void Blood::idle_state_on() {
+    attack_damage = 0;
+    attack_mask = 0;
+    combo = 0;
+    check_jump();
+    check_left(on_floor);
+    check_right(on_floor);
+    check_crouch();
+    check_defense();
+    check_idle_atk_neutral_1();
+    check_idle_atk_front();
+    check_idle_atk_up();
+    check_idle_atk_down();
+    check_special_1_1();
+    check_special_2();
+    check_ultimate();
+    check_pass_through_platform();
+    check_fall();
+    check_dead();
+}
+
+void Blood::jumping_state_on() {
+    attack_damage = 0;
+    attack_mask = 0;
+    check_left(on_floor);
+    check_right(on_floor);
+    check_fall();
+    check_idle();
+    check_defense();
+    check_crouch();
+    check_jump_atk_neutral();
+    check_jump_atk_up();
+    check_jump_atk_down();
+    check_ultimate();
+}
+
+void Blood::falling_state_on() {
+    attack_damage = 0;
+    attack_mask = 0;
+    check_idle();
+    check_left(on_floor);
+    check_right(on_floor);
+    check_fall();
+    check_defense();
+    check_crouch();
+    check_jump_atk_neutral();
+    check_jump_atk_up();
+    check_jump_atk_down();
+    check_ultimate();
+}
+
+void Blood::running_state_on() {
+    attack_damage = 0;
+    attack_mask = 0;
+    combo = 0;
+    check_jump();
+    check_left(false);
+    check_right(false);
+    check_idle();
+    check_crouch();
+    check_defense();
+    check_idle_atk_neutral_1();
+    check_idle_atk_front();
+    check_special_1_1();
+    check_special_2();
+    check_idle_atk_up();
+    check_idle_atk_down();
+    check_ultimate();
+    check_pass_through_platform();
+    check_fall();
+}
+
+void Blood::defending_state_on() {
+    attack_damage = 0;
+    attack_mask = 0;
+    check_idle();
+    check_fall();
+}
+
+void Blood::crouch_state_on() {
+    attack_damage = 0;
+    attack_mask = 0;
+    check_idle();
+    check_crouch_atk();
+    check_defense();
+    check_fall();
+}
+
 /**
  * Fighter's state machine.
  * Check and update the Fighter's state according to the attack type and damage
@@ -430,91 +519,27 @@ void Blood::update_machine_state(float delta_character_state) {
             break;
 
         case FighterState::IDLE:
-            attack_damage = 0;
-            attack_mask = 0;
-            combo = 0;
-            check_jump();
-            check_left(on_floor);
-            check_right(on_floor);
-            check_crouch();
-            check_defense();
-            check_idle_atk_neutral_1();
-            check_idle_atk_front();
-            check_idle_atk_up();
-            check_idle_atk_down();
-            check_special_1_1();
-            check_special_2();
-            check_ultimate();
-            check_pass_through_platform();
-            check_fall();
-            check_dead();
+            Blood::idle_state_on();
             break;
 
         case FighterState::JUMPING:
-            attack_damage = 0;
-            attack_mask = 0;
-            check_left(on_floor);
-            check_right(on_floor);
-            check_fall();
-            check_idle();
-            check_defense();
-            check_crouch();
-            check_jump_atk_neutral();
-            check_jump_atk_up();
-            check_jump_atk_down();
-            check_ultimate();
+            Blood::jumping_state_on();
             break;
 
         case FighterState::FALLING:
-            attack_damage = 0;
-            attack_mask = 0;
-            check_idle();
-            check_left(on_floor);
-            check_right(on_floor);
-            check_fall();
-            check_defense();
-            check_crouch();
-            check_jump_atk_neutral();
-            check_jump_atk_up();
-            check_jump_atk_down();
-            check_ultimate();
+            Blood::falling_state_on();
             break;
 
         case FighterState::RUNNING:
-            attack_damage = 0;
-            attack_mask = 0;
-            combo = 0;
-            check_jump();
-            check_left(false);
-            check_right(false);
-            check_idle();
-            check_crouch();
-            check_defense();
-            check_idle_atk_neutral_1();
-            check_idle_atk_front();
-            check_special_1_1();
-            check_special_2();
-            check_idle_atk_up();
-            check_idle_atk_down();
-            check_ultimate();
-            check_pass_through_platform();
-            check_fall();
+            Blood::running_state_on();
             break;
 
         case FighterState::DEFENDING:
-            attack_damage = 0;
-            attack_mask = 0;
-            check_idle();
-            check_fall();
+            Blood::defending_state_on();
             break;
 
         case FighterState::CROUCH:
-            attack_damage = 0;
-            attack_mask = 0;
-            check_idle();
-            check_crouch_atk();
-            check_defense();
-            check_fall();
+            Blood::crouch_state_on();
             break;
 
         case FighterState::DYING:

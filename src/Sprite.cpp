@@ -16,6 +16,7 @@
 #include "Game.h"
 #include "Resources.h"
 #include "Sprite.h"
+#include "SpriteResources.h"
 
 #include <cmath>
 
@@ -98,12 +99,7 @@ void Sprite::open(string file) {
     /**
      * Check if the SDL texture was initialized correctly.
      */
-    if (query_texture) {
-        printf("Open: %s\n", SDL_GetError());
-        exit(-1);
-    } else {
-        /* Nothing to do. */
-    }
+    check_query_texture_value(query_texture);
 
     set_clip((current_frame % columns) * width,
              (current_frame / columns) * height, width, height);
@@ -130,12 +126,7 @@ void Sprite::render(int x, int y, float angle, SDL_RendererFlip flip) {
     /**
      * Check if the texture portion copied was initialized correctly.
      */
-    if (render_copy) {
-        printf("Render: %s\n", SDL_GetError());
-        exit(-1);
-    } else {
-        /* Nothing to do. */
-    }
+    check_render_copy_value(render_copy);
 }
 
 /**

@@ -15,6 +15,7 @@
 #include "Config.h"
 #include "Game.h"
 #include "Resources.h"
+#include "TextResources.h"
 
 #define SOLID Text::TextStyle::SOLID
 #define SHADED Text::TextStyle::SHADED
@@ -201,13 +202,7 @@ void Text::remake_texture() {
             surface = TTF_RenderText_Blended(font.get(), text.c_str(), color);
             break;
     }
-
-    if (surface == nullptr) {
-        printf("%s\n", SDL_GetError());
-        exit(-3);
-    } else {
-        /* Nothing to do. */
-    }
+    check_surface_value(surface);
 
     texture = SDL_CreateTextureFromSurface(Game::get_instance().get_renderer(),
                                            surface);
@@ -215,12 +210,8 @@ void Text::remake_texture() {
 
     int w, h;
     int query_texture = SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
-    if (query_texture) {
-        printf("Remake texture: %s\n", SDL_GetError());
-        exit(-1);
-    } else {
-        /* Nothing to do. */
-    }
+
+    check_texture_value(query_texture);
 
     box.set_width(w);
     box.set_height(h);

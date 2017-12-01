@@ -46,6 +46,12 @@ class Blood : public Fighter {
     void check_special_1_2(bool change = true);
     void check_special_2(bool change = true);
     void check_ultimate();
+    void idle_state_on();
+    void jumping_state_on();
+    void falling_state_on();
+    void running_state_on();
+    void defending_state_on();
+    void crouch_state_on();
 };
 
 #endif  // INCLUDE_BLOOD_H_
