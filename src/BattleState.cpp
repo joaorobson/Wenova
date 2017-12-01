@@ -78,27 +78,12 @@ BattleState::BattleState(string stage,
     music.play();
     sound.play(-1);
 
-    vector< pair<int, int> > char_positions;
     vector< pair<int, int> > hud_positions = { ii(HUD1, HUD2),
                                                ii(HUD1, HUD4),
                                                ii(HUD3, HUD2),
                                                ii(HUD3, HUD4)
                                              };
-    /**
-     * If the condition is met, the character position is set one way. if not
-     * the default settins are used.
-     */
-    if (stage == "1") {
-        char_positions = { ii(CHAR_POS1, CHAR_POS2),
-                           ii(CHAR_POS3, CHAR_POS4),
-                           ii(CHAR_POS5, CHAR_POS6),
-                           ii(CHAR_POS7, CHAR_POS8)};
-    } else {
-        char_positions = { ii(CHAR_POS9, CHAR_POS10),
-                           ii(CHAR_POS11, CHAR_POS12),
-                           ii(CHAR_POS13, CHAR_POS14),
-                           ii(CHAR_POS15, CHAR_POS16)};
-    }
+
 
     /**
      * Runs each iteration from 0 to the size of players_info -1.
@@ -112,14 +97,14 @@ BattleState::BattleState(string stage,
          * is called.
          */
         if (char_name == "blood") {
-            players[i] = new Blood(skin_name, char_positions[i].first,
-                                   char_positions[i].second, i);
+            players[i] = new Blood(skin_name, setCharPositions(stage)[i].first,
+                                   setCharPositions(stage)[i].second, i);
 
             assert(skin_name.empty() != true);
 
         } else if (char_name == "flesh") {
-            players[i] = new Flesh(skin_name, char_positions[i].first,
-                                   char_positions[i].second, i);
+            players[i] = new Flesh(skin_name, setCharPositions(stage)[i].first,
+                                   setCharPositions(stage)[i].second, i);
 
             assert(skin_name.empty() != true);
 
@@ -164,6 +149,28 @@ BattleState::BattleState(string stage,
  * Destructs a previously initialized object of this class.
  */
 BattleState::~BattleState() {}
+
+vector<pair<int, int> > BattleState::setCharPositions(string stage){
+
+  vector< pair<int, int> > char_positions;
+
+  /**
+   * If the condition is met, the character position is set one way. if not
+   * the default settins are used.
+   */
+  if (stage == "1") {
+      char_positions = { ii(CHAR_POS1, CHAR_POS2),
+                         ii(CHAR_POS3, CHAR_POS4),
+                         ii(CHAR_POS5, CHAR_POS6),
+                         ii(CHAR_POS7, CHAR_POS8)};
+  } else {
+      char_positions = { ii(CHAR_POS9, CHAR_POS10),
+                         ii(CHAR_POS11, CHAR_POS12),
+                         ii(CHAR_POS13, CHAR_POS14),
+                         ii(CHAR_POS15, CHAR_POS16)};
+  }
+  return char_positions;
+}
 
 /**
  * update method.
