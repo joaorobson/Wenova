@@ -48,6 +48,9 @@
 #define CHAR_POS15 1063 /**< Unity in pixel*/
 #define CHAR_POS16 382  /**< Unity in pixel*/
 
+#define LEVELNOTFOUND "Level design of stage %s can't be opened\n" /**< string*/
+#define MUSIC "/music.ogg"
+#define SOUND "/sound.ogg"
 #define SENSIBILITY_VALUE 20000
 
 using std::fstream;
@@ -70,8 +73,8 @@ BattleState::BattleState(string stage,
     game_over = false;
     memset(alive, 1, sizeof alive);
 
-    music = Music("stage_" + stage + "/music.ogg");
-    sound = Sound("stage_" + stage + "/sound.ogg");
+    music = Music("stage_" + stage + MUSIC);
+    sound = Sound("stage_" + stage + SOUND);
 
     read_level_design(stage);
     music.play();
@@ -163,7 +166,7 @@ void BattleState::setPlayersInfo(string stage, vector< pair<string, string>
 }
 /**
  *function setHud
- *this function sets the elements on screen - non characters
+ *this function sets the elements on screen - non characters.
  */
 void BattleState::setHud(){
 
@@ -185,6 +188,10 @@ void BattleState::setHud(){
   *function startTime
   *this function starts the time counter for the match.
   */
+/**
+ *function startTime
+ *this function is responsable for the timer in a match.
+ */
 void BattleState::startTime(){
   time_counter = new TimeCounter();
   add_object(time_counter);
@@ -222,32 +229,61 @@ void BattleState::update(float delta) {
     } else {
         /*Nothing to do*/
     }
-
     /**
-     * Runs each iteration from 0 to the size of NUMBER_PLAYERS -1.
+     *isPlayerAlive method
+     *checks if the player is still alive in a battle
      */
-    for (int i = 0; i < NUMBER_PLAYERS; i++) {
-        /**
-         * If alive on a give index returns true, the body is executed.
-         */
-        if (alive[i]) {
-            /**
-             * If players on a given index returns the text "dying", the
-             * variable alive on that index is set to false.
-             */
-            if (players[i]->is("dying")) {
-                alive[i] = false;
-            } else {
-                /*Nothing to do*/
-            }
-        } else {
-            /*Nothing to do*/
-        }
+    isPlayerAlive();
+    /**
+     *isGameOver method
+     *Checks if the game is over or not.
+     */
+    isGameOver();
+    /**
+     *gameOverOutcome method
+     *presents one of many outcomes when the game is over.
+     */
+    gameOverOutcome();
+    /**
+     * Updates the background list.
+     */
+    for (auto & background : backgrounds) {
+        background.first.update(delta);
     }
-
-    /**
-     * If is_over returns true and game_over equals false, the body is executed.
-     */
+    update_array(delta);
+}
+/**
+ *isPlayerAlive method
+ *checks if the player is still alive in a battle
+ */
+void BattleState::isPlayerAlive() {
+  /**
+   * Runs each iteration from 0 to the size of NUMBER_PLAYERS -1.
+   */
+  for (int i = 0; i < NUMBER_PLAYERS; i++) {
+      /**
+       * If alive on a give index returns true, the body is executed.
+       */
+      if (alive[i]) {
+          /**
+           * If players on a given index returns the text "dying", the
+           * variable alive on that index is set to false.
+           */
+          if (players[i]->is("dying")) {
+              alive[i] = false;
+          } else {
+              /*Nothing to do*/
+          }
+      } else {
+          /*Nothing to do*/
+      }
+  }
+}
+/**
+ *isGameOver method
+ *Checks if the game is over or not.
+ */
+void BattleState::isGameOver() {
     if (time_counter->is_over() and not game_over) {
         game_over = true;
 
@@ -311,7 +347,7 @@ void BattleState::update(float delta) {
                 add_object(battleEnd);
             }
         }
-  }
+    }
     /**
      * If the condition is met, battleEnd is instanciated and passed as a
      * parameter on add_object method. If not, the else body is run and the
@@ -337,7 +373,12 @@ void BattleState::update(float delta) {
     } else {
         /*Nothing to do*/
     }
-
+}
+/**
+ * render method.
+ * renders the background given a x and y positions.
+ */
+void BattleState::gameOverOutcome() {
     if (game_over) {
         for (int i = 0; i < NUMBER_PLAYERS; i++) {
             if (alive[i]) {
@@ -367,18 +408,10 @@ void BattleState::update(float delta) {
     } else {
         /*Nothing to do*/
     }
-
-    /**
-     * Updates the background list.
-     */
-    for (auto & background : backgrounds) {
-        background.first.update(delta);
-    }
-    update_array(delta);
 }
 /**
- * render method.
- * renders the background given a x and y positions.
+ *gameOverOutcome method
+ *presents one of many outcomes when the game is over.
  */
 void BattleState::render() {
     /**
@@ -417,7 +450,7 @@ void BattleState::read_level_design(string stage) {
      * If the condition is false, a message is displayed.
      */
     if (not level_design.is_open()) {
-        printf("Level design of stage %s can't be opened\n", stage.c_str());
+        printf(LEVELNOTFOUND, stage.c_str());
         exit(-5);
     } else {
         /*Nothing to do*/

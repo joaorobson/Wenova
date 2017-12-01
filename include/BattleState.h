@@ -63,6 +63,21 @@ class BattleState : public State{
       */
      void update(float delta);
      /**
+      *isPlayerAlive method
+      *checks if the player is still alive in a battle
+      */
+     void isPlayerAlive();
+     /**
+      *isGameOver method
+      *Checks if the game is over or not.
+      */
+     void isGameOver();
+     /**
+      *gameOverOutcome method
+      *presents one of many outcomes when the game is over.
+      */
+     void gameOverOutcome();
+     /**
       *Render Function.
       *This function renders the  background.
       */

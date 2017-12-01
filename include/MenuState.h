@@ -21,6 +21,17 @@
 class MenuState : public State {
  public:
      MenuState(bool main_menu = false);
+     ~MenuState();
+     /**
+      *function backgroundSetUp
+      *sets up the elements in the background on the menu
+      */
+     void backgroundSetUp();
+     /**
+      *function optionSelection
+      *defines the style of the options the player has to chose from.
+      */
+     void optionSelection();
      /**
       *update function.
       *updates the objects on the menu screen of the game.

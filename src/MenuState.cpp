@@ -46,6 +46,16 @@
 #define FONT_SIZE 30
 #define SENSIBILITY_VALUE 32000
 
+#define BACKGROUNDSPRITE "menu/background.jpg"
+#define TITLESPRITE "menu/title.png"
+#define PLANETSPRITE "menu/planet.png"
+#define GREENSHIPSPRITE "menu/green_ship.png"
+#define REDSHIPSPRITE "menu/red_ship.png"
+#define CANCELSOUND "menu/sound/cancel.ogg"
+#define SELECTSOUND "menu/sound/select.ogg"
+#define CURSORSOUND "menu/sound/cursor.ogg"
+#define MENUMUSIC "menu/wenova.ogg"
+
 #define FONT "font/8-BIT WONDER.ttf"
 
 /**
@@ -61,44 +71,17 @@ MenuState::MenuState(bool main_menu) {
     start_pressed  = main_menu;
     show_text      = true;
 
-    background = Sprite("menu/background.jpg");
-    title      = Sprite("menu/title.png", 5, FRAME_TIME);
-    planet     = Sprite("menu/planet.png", 8, FRAME_TIME);
-    green_ship = Sprite("menu/green_ship.png", 8, FRAME_TIME, N_ZERO, 2);
-    red_ship   = Sprite("menu/red_ship.png", 8, FRAME_TIME);
-
-    start_option = new Text(FONT,
-                            FONT_SIZE,
-                            Text::TextStyle::SOLID,
-                            "PRESS START",
-                            LIGHT_GREEN,
-                            FONT_X,
-                            FONT_Y);
-
-    options.push_back(new Text(FONT, FONT_SIZE,
-                               Text::TextStyle::SOLID, "START", WHITE, FONT_X,
-                               FONT_Y));
-    options.push_back(new Text(FONT, FONT_SIZE,
-                               Text::TextStyle::SOLID, "EDIT", WHITE, FONT_X,
-                               FONT_Y));
-    options.push_back(new Text(FONT, FONT_SIZE,
-                               Text::TextStyle::SOLID, "OPTIONS", WHITE, FONT_X,
-                               FONT_Y));
-    options.push_back(new Text(FONT, FONT_SIZE,
-                               Text::TextStyle::SOLID, "EXIT", WHITE, FONT_X,
-                               FONT_Y));
-
+    backgroundSetUp();
+    optionSelection();
     InputManager::get_instance()->
                               set_analogic_sensibility_value(SENSIBILITY_VALUE);
     InputManager::get_instance()->
                               map_keyboard_to_joystick(InputManager::MENU_MODE);
 
-    blocked  = Sound("menu/sound/cancel.ogg");
-    selected = Sound("menu/sound/select.ogg");
-    changed  = Sound("menu/sound/cursor.ogg");
-
-    music = Music("menu/wenova.ogg");
-
+    blocked  = Sound(CANCELSOUND);
+    selected = Sound(SELECTSOUND);
+    changed  = Sound(CURSORSOUND);
+    music = Music(MENUMUSIC);
     /**
      * Plays music if it is not playing.
      */
@@ -108,7 +91,44 @@ MenuState::MenuState(bool main_menu) {
         /*Nothing to do*/
     }
 }
+MenuState::~MenuState() {}
+/**
+ *function backgroundSetUp
+ *sets up the elements in the background on the menu
+ */
+void MenuState::backgroundSetUp() {
+  background = Sprite(BACKGROUNDSPRITE);
+  title      = Sprite(TITLESPRITE, 5, FRAME_TIME);
+  planet     = Sprite(PLANETSPRITE, 8, FRAME_TIME);
+  green_ship = Sprite(GREENSHIPSPRITE, 8, FRAME_TIME, N_ZERO, 2);
+  red_ship   = Sprite(REDSHIPSPRITE, 8, FRAME_TIME);
+}
+/**
+ *function optionSelection
+ *defines the style of the options the player has to chose from.
+ */
+void MenuState::optionSelection() {
+  start_option = new Text(FONT,
+                          FONT_SIZE,
+                          Text::TextStyle::SOLID,
+                          "PRESS START",
+                          LIGHT_GREEN,
+                          FONT_X,
+                          FONT_Y);
 
+  options.push_back(new Text(FONT, FONT_SIZE,
+                             Text::TextStyle::SOLID, "START", WHITE, FONT_X,
+                             FONT_Y));
+  options.push_back(new Text(FONT, FONT_SIZE,
+                             Text::TextStyle::SOLID, "EDIT", WHITE, FONT_X,
+                             FONT_Y));
+  options.push_back(new Text(FONT, FONT_SIZE,
+                             Text::TextStyle::SOLID, "OPTIONS", WHITE, FONT_X,
+                             FONT_Y));
+  options.push_back(new Text(FONT, FONT_SIZE,
+                             Text::TextStyle::SOLID, "EXIT", WHITE, FONT_X,
+                             FONT_Y));
+}
 /**
  * update method.
  * this method changes the state of the menu.
@@ -263,7 +283,6 @@ void MenuState::update(float delta) {
 
     text_timer.update(delta);
 }
-
 /**
  * render method.
  * this method renders the menu of the game on the screen.
@@ -289,7 +308,6 @@ void MenuState::render() {
       /*Nothing to do*/
     }
 }
-
 /**
  * process_input method.
  * this method recognizes the user input button and acts accordingly.
