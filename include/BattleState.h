@@ -4,7 +4,7 @@
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
 #ifndef INCLUDE_BATTLESTATE_H_
-#define BATTLESTATE_H
+#define INCLUDE_BATTLESTATE_H_
 
 #include "State.h"
 #include "Sprite.h"
@@ -22,8 +22,8 @@
 #include <utility>
 #include <string>
 
-#define N_PLAYERS 4
-#define N_VALUE1 5
+#define NUMBER_PLAYERS 4 /**< Represents the number of players*/
+#define NUMBER_VALUE 5 /**< Relative to the players*/
 
 using std::vector;
 using std::pair;
@@ -32,7 +32,6 @@ class BattleState : public State{
  public:
      BattleState(string stage, vector< pair<string, string> > players_info);
      ~BattleState();
-
      /**
       * update method.
       * Checks the current state of a started game.
@@ -46,7 +45,6 @@ class BattleState : public State{
       *This function renders the  background.
       */
      void render();
-
      /**
       *Pause function.
       *Nothing to do.
@@ -59,19 +57,19 @@ class BattleState : public State{
      void resume();
 
  private:
-     vector<pair<Sprite, Vector> > backgrounds;
-     Fighter* players[N_PLAYERS];
-     Music music;
-     Sound sound;
-     TimeCounter *time_counter;
-     BattleEnd *battleEnd;
+     vector<pair<Sprite, Vector> > backgrounds; /**< Images of the background.*/
+     Fighter* players[NUMBER_PLAYERS]; /**< Number of players.*/
+     Music music; /**< Music that plays in the stage.*/
+     Sound sound; /**< Checks if sound is on.*/
+     TimeCounter *time_counter; /**< Remaining time of the battle.*/
+     BattleEnd *battleEnd; /**< Refers to the end of the battle.*/
      /**
       *read_level_design function.
       *this function receives a name that indicates the selected level.
       */
      void read_level_design(string stage);
-     bool game_over;
-     int alive[N_VALUE1];
+     bool game_over; /**< Relative to the state of the game, if over or not.*/
+     int alive[NUMBER_VALUE]; /**< Relative to the players.*/
 };
 
-#endif
+#endif  //  INCLUDE_BATTLESTATE_H_

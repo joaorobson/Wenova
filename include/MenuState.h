@@ -3,8 +3,8 @@
  * This work is licensed under the terms of the MIT license.
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
-#ifndef INCLUDE_MENU_STATE_H_
-#define MENU_STATE_H
+#ifndef INCLUDE_MENUSTATE_H_
+#define INCLUDE_MENUSTATE_H_
 
 #include "State.h"
 #include "Sprite.h"
@@ -16,7 +16,7 @@
 #include <assert.h>
 #include <vector>
 
-#define N_VALUE 15
+#define N_VALUE 15 /**< Relative to button pressed*/
 
 class MenuState : public State {
  public:
@@ -48,19 +48,21 @@ class MenuState : public State {
      void process_input();
 
  private:
-     Sprite background, green_ship, red_ship, title, planet;
-     Text* start_option;
-     Sound blocked, selected, changed;
-     Music music;
-     Timer text_timer;
-     vector<Text*> options;
+     Sprite background, green_ship, red_ship, title, planet; /**< Images of
+     // the greenship, redship, title and planet.*/
+     Text* start_option; /**< Start option logo.*/
+     Sound blocked, selected, changed; /**< States of the sound configuration.*/
+     Music music; /**< Music that plays in the menu.*/
+     Timer text_timer; /**< Time that it takes to change text.*/
+     vector<Text*> options; /**< Texts displayed in the menu.*/
      /**
       * Buttons the controller has for input.
       */
      enum Button { A, B, Y, LEFT, RIGHT, SELECT, START, LB, RT };
-     bool pressed[N_VALUE], is_holding[N_VALUE];
-     bool start_pressed, show_text;
-     int current_option;
+
+     bool pressed[N_VALUE], is_holding[N_VALUE]; /**< Button State.*/
+     bool start_pressed, show_text; /**< Relative to start state and text.*/
+     int current_option; /**< Current selected option by the player*/
 };
 
 #endif  //  INCLUDE_MENUSTATE_H_

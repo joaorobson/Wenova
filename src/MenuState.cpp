@@ -45,6 +45,9 @@
 #define N_CHANNELS 50
 #define FONT_SIZE 30
 #define SENSIBILITY_VALUE 32000
+
+#define FONT "font/8-BIT WONDER.ttf"
+
 /**
  * The constructor.
  * Initialize the game menu.
@@ -64,7 +67,7 @@ MenuState::MenuState(bool main_menu) {
     green_ship = Sprite("menu/green_ship.png", 8, FRAME_TIME, N_ZERO, 2);
     red_ship   = Sprite("menu/red_ship.png", 8, FRAME_TIME);
 
-    start_option = new Text("font/8-BIT WONDER.ttf",
+    start_option = new Text(FONT,
                             FONT_SIZE,
                             Text::TextStyle::SOLID,
                             "PRESS START",
@@ -72,16 +75,16 @@ MenuState::MenuState(bool main_menu) {
                             FONT_X,
                             FONT_Y);
 
-    options.push_back(new Text("font/8-BIT WONDER.ttf", FONT_SIZE,
+    options.push_back(new Text(FONT, FONT_SIZE,
                                Text::TextStyle::SOLID, "START", WHITE, FONT_X,
                                FONT_Y));
-    options.push_back(new Text("font/8-BIT WONDER.ttf", FONT_SIZE,
+    options.push_back(new Text(FONT, FONT_SIZE,
                                Text::TextStyle::SOLID, "EDIT", WHITE, FONT_X,
                                FONT_Y));
-    options.push_back(new Text("font/8-BIT WONDER.ttf", FONT_SIZE,
+    options.push_back(new Text(FONT, FONT_SIZE,
                                Text::TextStyle::SOLID, "OPTIONS", WHITE, FONT_X,
                                FONT_Y));
-    options.push_back(new Text("font/8-BIT WONDER.ttf", FONT_SIZE,
+    options.push_back(new Text(FONT, FONT_SIZE,
                                Text::TextStyle::SOLID, "EXIT", WHITE, FONT_X,
                                FONT_Y));
 

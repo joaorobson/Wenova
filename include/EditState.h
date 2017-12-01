@@ -4,7 +4,7 @@
  * For a copy, see <https://opensource.org/licenses/MIT>.
  */
 #ifndef INCLUDE_EDITSTATE_H_
-#define EDITSTATE_H
+#define INCLUDE_EDITSTATE_H_
 
 #include "State.h"
 #include "Sprite.h"
@@ -25,8 +25,11 @@ using std::pair;
 
 class EditState : public State{
  public:
-     EditState(string stage);
-
+     EditState(string stage); /**< Updates the selected stage.*/
+     /**
+      *update function
+      *updates the framerate given a delta argument.
+      */
      void update(float delta);
      /**
       * Renders the first background of the list.
@@ -44,14 +47,22 @@ class EditState : public State{
      void resume();
 
  private:
-     vector<pair<Sprite, Vector> > backgrounds;
-     Fighter * test_fighter;
-     string stage;
-     Music music;
-     Sound sound;
+     vector<pair<Sprite, Vector> > backgrounds; /**< Images of the background.*/
+     Fighter * test_fighter; /**< Checks if the fighter is available.*/
+     string stage; /**< Name of the stages.*/
+     Music music; /**< Music that plays in the stage.*/
+     Sound sound; /**< Checks if sound is on.*/
 
+     /**
+      *read_level_design function.
+      *checks if the current level is loaded correctly.
+      */
      void read_level_design();
+     /**
+      *update_level_design function.
+      *updates the elements of the level being played.
+      */
      void update_level_design();
 };
 
-#endif
+#endif  //  INCLUDE_EDITSTATE_H_

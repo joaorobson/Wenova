@@ -26,27 +26,27 @@
 
 #define N_BACKGROUND
 
-#define HUD1 133
-#define HUD2 589.5
-#define HUD3 1147
-#define HUD4 679.5
+#define HUD1 133   /**< Unity in pixel*/
+#define HUD2 589.5 /**< Unity in pixel*/
+#define HUD3 1147  /**< Unity in pixel*/
+#define HUD4 679.5 /**< Unity in pixel*/
 
-#define CHAR_POS1 177
-#define CHAR_POS2 313
-#define CHAR_POS3 276
-#define CHAR_POS4 510
-#define CHAR_POS5 1128
-#define CHAR_POS6 245
-#define CHAR_POS7 954
-#define CHAR_POS8 474
-#define CHAR_POS9 116
-#define CHAR_POS10 227
-#define CHAR_POS11 146
-#define CHAR_POS12 394
-#define CHAR_POS13 1036
-#define CHAR_POS14 221
-#define CHAR_POS15 1063
-#define CHAR_POS16 382
+#define CHAR_POS1 177   /**< Unity in pixel*/
+#define CHAR_POS2 313   /**< Unity in pixel*/
+#define CHAR_POS3 276   /**< Unity in pixel*/
+#define CHAR_POS4 510   /**< Unity in pixel*/
+#define CHAR_POS5 1128  /**< Unity in pixel*/
+#define CHAR_POS6 245   /**< Unity in pixel*/
+#define CHAR_POS7 954   /**< Unity in pixel*/
+#define CHAR_POS8 474   /**< Unity in pixel*/
+#define CHAR_POS9 116   /**< Unity in pixel*/
+#define CHAR_POS10 227  /**< Unity in pixel*/
+#define CHAR_POS11 146  /**< Unity in pixel*/
+#define CHAR_POS12 394  /**< Unity in pixel*/
+#define CHAR_POS13 1036 /**< Unity in pixel*/
+#define CHAR_POS14 221  /**< Unity in pixel*/
+#define CHAR_POS15 1063 /**< Unity in pixel*/
+#define CHAR_POS16 382  /**< Unity in pixel*/
 
 #define SENSIBILITY_VALUE 20000
 
@@ -134,10 +134,10 @@ BattleState::BattleState(string stage,
     players[3]->set_partner(players[2]);
 
     /**
-     * Runs each iteration from N_PLAYERS-1 until bigger or equal to 0.
+     * Runs each iteration from NUMBER_PLAYERS-1 until bigger or equal to 0.
      * Each iteration decreases de variable count.
      */
-    for (int i=N_PLAYERS-1; i >= 0; i--) {
+    for (int i=NUMBER_PLAYERS-1; i >= 0; i--) {
         add_object(new FighterStats(players[i], i + 1, i > 1,
             hud_positions[i].first,
             hud_positions[i].second));
@@ -146,7 +146,7 @@ BattleState::BattleState(string stage,
     /**
      * Runs each iteration from 0 to the size of players_info -1.
      */
-    for (int i=N_PLAYERS-1; i >= 0; i--) {
+    for (int i=NUMBER_PLAYERS-1; i >= 0; i--) {
         add_object(players[i]);
     }
 
@@ -200,9 +200,9 @@ void BattleState::update(float delta) {
     }
 
     /**
-     * Runs each iteration from 0 to the size of N_PLAYERS -1.
+     * Runs each iteration from 0 to the size of NUMBER_PLAYERS -1.
      */
-    for (int i = 0; i < N_PLAYERS; i++) {
+    for (int i = 0; i < NUMBER_PLAYERS; i++) {
         /**
          * If alive on a give index returns true, the body is executed.
          */
@@ -243,7 +243,7 @@ void BattleState::update(float delta) {
              * Runs each iteration from 0 to the size of players_info divided
              * by 2.
              */
-            for (int i = 0; i < N_PLAYERS / 2; i++) {
+            for (int i = 0; i < NUMBER_PLAYERS / 2; i++) {
                 /**
                  * If condition is met, the remaining life of a player is added
                  * to the sum_life_team_1 variable.
@@ -257,10 +257,10 @@ void BattleState::update(float delta) {
 
             int sum_life_team_2 = 0;
                 /**
-                 * Runs each iteration from N_PLAYERS divided by 2 until
-                 * N_PLAYERS -1.
+                 * Runs each iteration from NUMBER_PLAYERS divided by 2 until
+                 * NUMBER_PLAYERS -1.
                  */
-                for (int i = N_PLAYERS / 2; i < N_PLAYERS; i++) {
+                for (int i = NUMBER_PLAYERS / 2; i < NUMBER_PLAYERS; i++) {
                     /**
                      * If condition is met, the remaining life of a player is
                      * added to the sum_life_team_1 variable.
@@ -315,7 +315,7 @@ void BattleState::update(float delta) {
     }
 
     if (game_over) {
-        for (int i = 0; i < N_PLAYERS; i++) {
+        for (int i = 0; i < NUMBER_PLAYERS; i++) {
             if (alive[i]) {
                 players[i]->add_tags("game_over");
             } else {
