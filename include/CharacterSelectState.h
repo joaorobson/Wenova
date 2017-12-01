@@ -26,6 +26,8 @@
 #define N_PLAYERS 4
 #define N_BUTTONS 15
 
+using namespace std;
+
 class CharacterSelectState : public State {
    private:
     Sprite backgrounds_sprites[N_BACKGROUNDS_SPRITES];  ///< Some screens have
