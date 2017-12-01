@@ -32,7 +32,6 @@ class BattleState : public State{
  public:
      BattleState(string stage, vector<pair<string,string>>players_info);
      ~BattleState();
-
      /**
       *exitBattle method
       *checks if exiting the battle is requested.
@@ -69,7 +68,7 @@ class BattleState : public State{
       * Checks the current state of a started game.
       * This method checks the current state of the game and updates it.
       *
-      * @param delta is a number of the type float used to update the background.
+      * @param delta is a number of type float used to update the background.
       */
      void update(float delta);
      /**
