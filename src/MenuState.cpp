@@ -19,42 +19,42 @@
 #include "Resources.h"
 #include "StageSelectState.h"
 
-#define OPTION_OFFSET 50
+#define OPTION_OFFSET 50 /**< Unity in pixel*/
 
-#define FONT_X 640
-#define FONT_Y 680
+#define FONT_X 640 /**< Unity in pixel*/
+#define FONT_Y 680 /**< Unity in pixel*/
 
-#define LIGHT_GREEN { 181, 201, 60, 1 }
-#define WHITE { 255, 255, 255, 255 }
+#define LIGHT_GREEN { 181, 201, 60, 1 } /**< Unity in integer*/
+#define WHITE { 255, 255, 255, 255 }    /**< Unity in integer*/
 
-#define FRAME_TIME 7.5
-#define TEXT_TIMER_COOLDOWN 50
+#define FRAME_TIME 7.5 /**< Unity in seconds*/
+#define TEXT_TIMER_COOLDOWN 50 /**< Unity in seconds*/
 
-#define N_ZERO 0
-#define N_ONE 1
-#define N_TWO 2
+#define N_ZERO 0  /**< Unity in integer*/
+#define N_ONE 1   /**< Unity in integer*/
+#define N_TWO 2   /**< Unity in integer*/
 
-#define N_PLANET_RENDER_1 423
-#define N_PLANET_RENDER_2 177
-#define N_GREENSHIP_RENDER_1 805
-#define N_GREENSHIP_RENDER_2 405
-#define N_REDSHIP_RENDER_1 36
-#define N_REDSHIP_RENDER_2 400
-#define N_TITLE_RENDER 260
+#define N_PLANET_RENDER_1 423    /**< Unity in pixel*/
+#define N_PLANET_RENDER_2 177    /**< Unity in pixel*/
+#define N_GREENSHIP_RENDER_1 805 /**< Unity in pixel*/
+#define N_GREENSHIP_RENDER_2 405 /**< Unity in pixel*/
+#define N_REDSHIP_RENDER_1 36    /**< Unity in pixel*/
+#define N_REDSHIP_RENDER_2 400   /**< Unity in pixel*/
+#define N_TITLE_RENDER 260       /**< Unity in pixel*/
 
-#define N_CHANNELS 50
-#define FONT_SIZE 30
-#define SENSIBILITY_VALUE 32000
+#define N_CHANNELS 50   /**< Unity in pixel*/
+#define FONT_SIZE 30    /**< Unity in pixel*/
+#define SENSIBILITY_VALUE 32000   /**< Unity in pixel*/
 
-#define BACKGROUNDSPRITE "menu/background.jpg"
-#define TITLESPRITE "menu/title.png"
-#define PLANETSPRITE "menu/planet.png"
-#define GREENSHIPSPRITE "menu/green_ship.png"
-#define REDSHIPSPRITE "menu/red_ship.png"
-#define CANCELSOUND "menu/sound/cancel.ogg"
-#define SELECTSOUND "menu/sound/select.ogg"
-#define CURSORSOUND "menu/sound/cursor.ogg"
-#define MENUMUSIC "menu/wenova.ogg"
+#define BACKGROUNDSPRITE "menu/background.jpg" /**< string*/
+#define TITLESPRITE "menu/title.png"           /**< string*/
+#define PLANETSPRITE "menu/planet.png"         /**< string*/
+#define GREENSHIPSPRITE "menu/green_ship.png"  /**< string*/
+#define REDSHIPSPRITE "menu/red_ship.png"      /**< string*/
+#define CANCELSOUND "menu/sound/cancel.ogg"    /**< string*/
+#define SELECTSOUND "menu/sound/select.ogg"    /**< string*/
+#define CURSORSOUND "menu/sound/cursor.ogg"    /**< string*/
+#define MENUMUSIC "menu/wenova.ogg"            /**< string*/
 
 #define FONT "font/8-BIT WONDER.ttf"
 
