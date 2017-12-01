@@ -34,6 +34,16 @@ class BattleState : public State{
      ~BattleState();
 
      /**
+      *exitBattle method
+      *checks if exiting the battle is requested.
+      */
+     void exitBattle(InputManager* input_manager);
+     /**
+      *returnMenu method
+      *returns the game to the menu when requested via input from controller.
+      */
+     void returnMenu(InputManager* input_manager);
+     /**
       *function setCharPositions
       *set the position of the characters on screen.
       *@param stage is the name of the stage chosen.

@@ -49,9 +49,9 @@
 #define CHAR_POS16 382  /**< Unity in pixel*/
 
 #define LEVELNOTFOUND "Level design of stage %s can't be opened\n" /**< string*/
-#define MUSIC "/music.ogg"
-#define SOUND "/sound.ogg"
-#define SENSIBILITY_VALUE 20000
+#define MUSIC "/music.ogg" /**< string*/
+#define SOUND "/sound.ogg" /**< string*/
+#define SENSIBILITY_VALUE 20000 /**< Unity value*/
 
 using std::fstream;
 using std::stringstream;
@@ -206,7 +206,24 @@ void BattleState::startTime(){
 void BattleState::update(float delta) {
     InputManager * input_manager = InputManager::get_instance();
     assert(delta >= 0);
-
+    exitBattle(input_manager);
+    returnMenu(input_manager);
+    isPlayerAlive();
+    isGameOver();
+    gameOverOutcome();
+    /**
+     * Updates the background list.
+     */
+    for (auto & background : backgrounds) {
+        background.first.update(delta);
+    }
+    update_array(delta);
+}
+/**
+ *exitBattle method
+ *checks if exiting the battle is requested.
+ */
+void BattleState::exitBattle(InputManager* input_manager) {
     /**
      * If quit_requested = true, then m_quit_requested = true.
      */
@@ -216,11 +233,16 @@ void BattleState::update(float delta) {
     } else {
         /*Nothing to do*/
     }
-
-    /**
-     * If joystick_button_press = true, the body is executed.
-     * The music stops playing and the menu is updated and leave the edit state.
-     */
+}
+/**
+ *returnMenu method
+ *returns the game to the menu when requested via input from controller.
+ */
+void BattleState::returnMenu(InputManager* input_manager) {
+  /**
+   * If joystick_button_press = true, the body is executed.
+   * The music stops playing and the menu is updated and leave the edit state.
+   */
     if (input_manager->joystick_button_press(InputManager::SELECT, 0)) {
         music.stop();
         Game::get_instance().push(new MenuState(true));
@@ -229,28 +251,6 @@ void BattleState::update(float delta) {
     } else {
         /*Nothing to do*/
     }
-    /**
-     *isPlayerAlive method
-     *checks if the player is still alive in a battle
-     */
-    isPlayerAlive();
-    /**
-     *isGameOver method
-     *Checks if the game is over or not.
-     */
-    isGameOver();
-    /**
-     *gameOverOutcome method
-     *presents one of many outcomes when the game is over.
-     */
-    gameOverOutcome();
-    /**
-     * Updates the background list.
-     */
-    for (auto & background : backgrounds) {
-        background.first.update(delta);
-    }
-    update_array(delta);
 }
 /**
  *isPlayerAlive method
